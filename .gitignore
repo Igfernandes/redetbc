@@ -2,12 +2,14 @@
 /vendor
 /node_modules
 /public/hot
-/public/storage
+/public/storage/framework/cache/*
+/public/storage/framework/sessions/*
+/public/storage/framework/views/*
 /storage/*.key
 /storage/framework/cache/data
 /storage/framework/sessions
 /storage/framework/views
-/storage/logs
+/storage/logs/*
 
 # Environment file
 .env
