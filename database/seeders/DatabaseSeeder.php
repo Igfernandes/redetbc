@@ -31,11 +31,9 @@ class DatabaseSeeder extends Seeder
         $this->call(Tour::class);
         $this->call(SpaceSeeder::class);
         $this->call(HotelSeeder::class);
-        $this->call(CarSeeder::class);
         $this->call(EventSeeder::class);
         $this->call(SocialSeeder::class);
         $this->call(DemoSeeder::class);
-        $this->call(FlightSeeder::class);
         $this->call(BoatSeeder::class);
     }
 }
