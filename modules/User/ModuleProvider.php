@@ -1,12 +1,7 @@
 <?php
 namespace Modules\User;
-use App\Helpers\ReCaptchaEngine;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\MessageBag;
-use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Http\Requests\LoginRequest;
 use Modules\ModuleServiceProvider;
 use Modules\User\Chatify\ChatifyMessenger;
 use Modules\User\Models\Plan;

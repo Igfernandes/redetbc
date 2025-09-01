@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Modules\Api\ModuleProvider;
 
 return [
 
@@ -202,6 +203,7 @@ return [
         \Modules\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class, // Xử lý ảnh,
         Barryvdh\Debugbar\ServiceProvider::class, // Debug BAR
+        Modules\Page\Providers\RouterServiceProvider::class,
 
         App\Providers\RouteServiceProvider::class,
         Plugins\ServiceProvider::class,
@@ -210,6 +212,15 @@ return [
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
 
 
+        \Modules\Api\ModuleProvider::class,
+        \Modules\Dashboard\ModuleProvider::class,
+
+        
+        \Modules\Core\ModuleProvider::class,
+        \Modules\Ai\ModuleProvider::class,
+        \Modules\Booking\ModuleProvider::class,
+        \Modules\User\ModuleProvider::class,
+        \Modules\Boat\ModuleProvider::class
 
     ],
 
@@ -228,9 +239,9 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
-    'version'=>"3.4.2",
-    'asset_version'=>env('APP_ASSET_VERSION','3.4.0'),
+    'version' => "3.4.2",
+    'asset_version' => env('APP_ASSET_VERSION', '3.4.0'),
 
-    'updater_url'=>"http://check.bookingcore.co/updater.php"
+    'updater_url' => "http://check.bookingcore.co/updater.php"
 
 ];

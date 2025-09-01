@@ -40,7 +40,7 @@ class Page extends BaseModel
 
     public function getDetailUrl($locale = false)
     {
-        return route('page.frontend.detail',['slug'=>$this->slug]);
+        return route('page.detail',['slug'=>$this->slug]);
     }
 
     public static function getModelName()

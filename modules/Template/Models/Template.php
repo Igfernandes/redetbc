@@ -285,27 +285,27 @@ class Template extends BaseModel
     {
         $blocks = $this->getAllBlocks();
         $items = json_decode($this->content, true);
-        $items = $this->maybeMigrateContent($items);
+        $items = $this->maybeMigrateContent($items ?: []);
 
-        if (empty($items))
+        // Se não tiver ROOT ou nodes, retorna vazio
+        if (empty($items['ROOT']) || empty($items['ROOT']['nodes'])) {
             return '';
-
-        $html = '';
-
-        if (empty($items['ROOT']['nodes'])) return;
+        }
 
         BaseBlock::$_blocksToRenders = $items;
         BaseBlock::$_allBlocks = $blocks;
 
-        $blockModel = app()->make($blocks[$items['ROOT']['type']]);
-        if (method_exists($blockModel, 'content')) {
-            $blockModel->nodeId = 'ROOT';
-            $html .= call_user_func([
-                $blockModel,
-                'content'
-            ], $items['ROOT']['model'] ?? []);
+        $rootType = $items['ROOT']['type'] ?? null;
+
+        if ($rootType && array_key_exists($rootType, $blocks)) {
+            $blockModel = app()->make($blocks[$rootType]);
+            if (method_exists($blockModel, 'content')) {
+                $blockModel->nodeId = 'ROOT';
+                return call_user_func([$blockModel, 'content'], $items['ROOT']['model'] ?? []);
+            }
         }
-        return $html;
+
+        return '';
     }
 
     public function getPreview($type, $model = [])
