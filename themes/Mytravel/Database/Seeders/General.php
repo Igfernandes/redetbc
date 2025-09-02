@@ -241,10 +241,6 @@ class General extends Seeder
             'img_3' => DB::table('media_files')->insertGetId(['file_name' => 'call-to-action-bg-5', 'file_path' => 'mytravel/general/call-to-action-bg-5.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg']),
         ];
 
-        $home_car = [
-            'img_1' => DB::table('media_files')->insertGetId(['file_name' => 'home-car-banner', 'file_path' => 'mytravel/general/home-car-banner.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg']),
-            'img_2' => DB::table('media_files')->insertGetId(['file_name' => 'call-to-action-bg-6', 'file_path' => 'mytravel/general/call-to-action-bg-6.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'])
-        ];
 
         DB::table('core_templates')->insert([
             'title'       => 'Become a vendor',
@@ -277,14 +273,6 @@ class General extends Seeder
             'create_user' => '1',
             'created_at'  => date("Y-m-d H:i:s")
         ]);
-
-        DB::table('core_templates')->insert([
-            'title'       => 'Home Car',
-            'content'     => '[{"type":"form_search_all_service","name":"Form Search All Service","model":{"title_for_car":"","title_for_event":"","title_for_flight":"","title_for_hotel":"","title_for_space":"","title_for_tour":"","service_types":["car"],"title":"Discover The World With MyCars","sub_title":"","style":"","bg_image":'.$home_car['img_1'].',"hide_form_search":"","single_form_search":true},"component":"RegularBlock","open":true,"is_container":false},{"type":"term_car","name":"Car: List Term Items","model":{"title":"Select by Category","location_id":"","number":"","order":"","order_by":"","is_featured":"","term_car":["65","66","67","68","64","63","62","61"]},"component":"RegularBlock","open":true,"is_container":false},{"type":"list_car","name":"Car: List Items","model":{"title":"Top Hire Cars","desc":"","number":20,"style":"style_2","location_id":"","order":"id","order_by":"desc","is_featured":""},"component":"RegularBlock","open":true,"is_container":false},{"type":"call_to_action","name":"Call To Action","model":{"title":"Tell us where you would like to go.","sub_title":"3,000+ VIP Transport Options!","link_title":"Search Options","link_more":"#","style":"","bg_image":'.$home_car['img_2'].',"bg_gradient":"gradient_overlay_half_bg_dark"},"component":"RegularBlock","open":true,"is_container":false},{"type":"list_locations","name":"List Locations","model":{"service_type":["car"],"title":"Top Destination","number":10,"layout":"style_5","order":"id","order_by":"desc","custom_ids":"","to_location_detail":""},"component":"RegularBlock","open":true,"is_container":false},{"type":"list_news","name":"News: List Items","model":{"title":"Recent Article","number":3,"category_id":"","order":"id","order_by":"desc"},"component":"RegularBlock","open":true,"is_container":false}]',
-            'create_user' => '1',
-            'created_at'  => date("Y-m-d H:i:s")
-        ]);
-
 
         $home_v2 = [
             'img_1' => DB::table('media_files')->insertGetId(['file_name' => 'banner-home-2', 'file_path' => 'mytravel/general/banner-home-2.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg']),
@@ -895,12 +883,6 @@ class General extends Seeder
                         'item_model' => 'custom',
                         'children'   => array(),
                     ),
-                    array(
-                        'name'       => 'Home Car',
-                        'url'        => '/page/home-car',
-                        'item_model' => 'custom',
-                        'children'   => array(),
-                    ),
                 ),
             ),
             array(
@@ -984,35 +966,6 @@ class General extends Seeder
                     array(
                         'name'       => 'Space Detail',
                         'url'        => $locale.'/space/stay-greenwich-village',
-                        'item_model' => 'custom',
-                        'model_name' => 'Custom',
-                        'children'   => array(),
-                    ),
-                ),
-            ),
-            array(
-                'name'       => 'Car',
-                'url'        => $locale.'/car',
-                'item_model' => 'custom',
-                'model_name' => 'Custom',
-                'children'   => array(
-                    array(
-                        'name'       => 'Car List',
-                        'url'        => $locale.'/car',
-                        'item_model' => 'custom',
-                        'model_name' => 'Custom',
-                        'children'   => array(),
-                    ),
-                    array(
-                        'name'       => 'Car Map',
-                        'url'        => $locale.'/car?_layout=map',
-                        'item_model' => 'custom',
-                        'model_name' => 'Custom',
-                        'children'   => array(),
-                    ),
-                    array(
-                        'name'       => 'Car Detail',
-                        'url'        => $locale.'/car/vinfast-lux-a20-plus',
                         'item_model' => 'custom',
                         'model_name' => 'Custom',
                         'children'   => array(),

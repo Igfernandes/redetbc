@@ -19,7 +19,6 @@ return new class extends Migration
             'bravo_tours',
             'bravo_events',
             'bravo_spaces',
-            'bravo_cars',
             'bravo_boats',
             'bravo_flight',
             'bravo_airline',

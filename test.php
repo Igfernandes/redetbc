@@ -1,7 +1,6 @@
 <?php
 $modules = [
     'boat',
-    'car',
     'tour',
     'hotel',
     'event',

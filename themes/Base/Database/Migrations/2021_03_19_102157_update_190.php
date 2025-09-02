@@ -4,15 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Booking\Models\Booking;
-use Modules\Booking\Models\Service;
-use Modules\Booking\Models\ServiceTranslation;
-use Modules\Car\Models\Car;
 use Modules\Event\Models\Event;
 use Modules\Event\Models\EventTranslation;
 use Modules\Hotel\Models\Hotel;
 use Modules\Hotel\Models\HotelTranslation;
-use Modules\Location\Models\LocationCategory;
-use Modules\Location\Models\LocationCategoryTranslation;
 use Modules\Space\Models\Space;
 use Modules\Space\Models\SpaceTranslation;
 use Modules\Tour\Models\Tour;
@@ -41,12 +36,6 @@ class Update190 extends Migration
         });
         Schema::table(Hotel::getTableName(), function (Blueprint $table) {
             if (!Schema::hasColumn(Hotel::getTableName(), 'service_fee')) {
-                $table->tinyInteger('enable_service_fee')->nullable();
-                $table->text('service_fee')->nullable();
-            }
-        });
-        Schema::table(Car::getTableName(), function (Blueprint $table) {
-            if (!Schema::hasColumn(Car::getTableName(), 'service_fee')) {
                 $table->tinyInteger('enable_service_fee')->nullable();
                 $table->text('service_fee')->nullable();
             }

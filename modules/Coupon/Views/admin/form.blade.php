@@ -77,7 +77,7 @@
                             'multiple'    => true,
                             'placeholder' => __('-- Select Services --')
                         ]
-                    ], $row->getServicesToArray() , true)
+                    ], $row->getServicesToArray(), true)
                     ?>
                 </div>
             </div>
@@ -94,12 +94,8 @@
                             'allowClear'  => true,
                             'multiple'    => true,
                             'placeholder' => __('-- Select User --'),
-                            'pre_selected' => route('user.admin.getForSelect2', [
-                                'type'         => 'car',
-                                'pre_selected' => 1
-                            ])
                         ]
-                    ], $row->getUsersToArray() , true)
+                    ], $row->getUsersToArray(), true)
                     ?>
                 </div>
             </div>

@@ -49,11 +49,6 @@ class RolesAndPermissionsSeeder extends Seeder
         $vendor->givePermission('hotel_update');
         $vendor->givePermission('hotel_delete');
 
-        $vendor->givePermission('car_view');
-        $vendor->givePermission('car_create');
-        $vendor->givePermission('car_update');
-        $vendor->givePermission('car_delete');
-
         $vendor->givePermission('event_view');
         $vendor->givePermission('event_create');
         $vendor->givePermission('event_update');

@@ -6,7 +6,6 @@ use Illuminate\Validation\Rule;
 use Matrix\Exception;
 use Modules\Boat\Models\Boat;
 use Modules\Booking\Models\Service;
-use Modules\Car\Models\Car;
 use Modules\Event\Models\Event;
 use Modules\Flight\Models\Flight;
 use Modules\FrontendController;
@@ -210,7 +209,6 @@ class UserController extends FrontendController
             try {
                 Service::where('author_id',$user->id)->delete();
                 Tour::where('author_id',$user->id)->delete();
-                Car::where('author_id',$user->id)->delete();
                 Space::where('author_id',$user->id)->delete();
                 Hotel::where('author_id',$user->id)->delete();
                 Event::where('author_id',$user->id)->delete();

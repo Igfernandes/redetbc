@@ -1067,7 +1067,6 @@ class Booking extends BaseModel
             return 0;
         }
         switch ($this->object_model){
-            case "car":
             case "boat":
                 return 0;
             case "tour":

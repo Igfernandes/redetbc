@@ -86,14 +86,12 @@ class SettingClass extends BaseSettingsClass
                     'booking_enquiry_for_hotel',
                     'booking_enquiry_for_tour',
                     'booking_enquiry_for_space',
-                    'booking_enquiry_for_car',
                     'booking_enquiry_for_event',
                     'booking_enquiry_for_boat',
 
                     'booking_enquiry_type_hotel',
                     'booking_enquiry_type_tour',
                     'booking_enquiry_type_space',
-                    'booking_enquiry_type_car',
                     'booking_enquiry_type_event',
                     'booking_enquiry_type_boat',
 

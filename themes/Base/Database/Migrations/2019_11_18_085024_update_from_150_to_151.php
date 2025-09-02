@@ -44,11 +44,7 @@ class UpdateFrom150To151 extends Migration
         Schema::table('bravo_hotel_rooms', function (Blueprint $table) {
             DB::statement('ALTER TABLE bravo_hotel_rooms MODIFY size integer');
         });
-        Schema::table('bravo_cars', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_cars', 'review_score')) {
-                $table->decimal('review_score',2,1)->nullable();
-            }
-        });
+      
     }
 
     /**
