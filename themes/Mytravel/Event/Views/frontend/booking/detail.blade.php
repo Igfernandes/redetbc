@@ -176,11 +176,7 @@
                                 </li>
                             @endforeach
                         @endif
-                            @includeIf('Coupon::frontend/booking/checkout-coupon')
-                        <li class="d-flex justify-content-between py-2">
-                            <div class="label">{{__("Total:")}}</div>
-                            <div class="val">{{format_money($booking->total)}}</div>
-                        </li>
+                       
                         @if($booking->status !='draft')
                             <li class="d-flex justify-content-between py-2">
                                 <div class="label">{{__("Paid:")}}</div>

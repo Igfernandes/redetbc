@@ -57,7 +57,7 @@
 
             if(how_to_pay == 'full'){
                 var pay_now_need_pay = parseFloat({{floatval($booking->total)}}) - convert_to_money;
-            }else{
+            }else {
                 var pay_now_need_pay = parseFloat({{floatval($booking->deposit == null ? $booking->total : $booking->deposit)}}) - convert_to_money;
             }
 
@@ -69,56 +69,5 @@
         }
 
 
-        jQuery(function () {
-            $(".bravo_apply_coupon").click(function () {
-                var parent = $(this).closest('.section-coupon-form');
-                parent.find(".group-form .fa-spin").removeClass("d-none");
-                parent.find(".message").html('');
-                $.ajax({
-                    'url': bookingCore.url + '/booking/{{$booking->code}}/apply-coupon',
-                    'data': parent.find('input,textarea,select').serialize(),
-                    'cache': false,
-                    'method':"post",
-                    success: function (res) {
-                        parent.find(".group-form .fa-spin").addClass("d-none");
-                        if (res.reload !== undefined) {
-                            window.location.reload();
-                        }
-                        if(res.message && res.status === 1)
-                        {
-                            parent.find('.message').html('<div class="alert alert-success">' + res.message+ '</div>');
-                        }
-                        if(res.message && res.status === 0)
-                        {
-                            parent.find('.message').html('<div class="alert alert-danger">' + res.message+ '</div>');
-                        }
-                    }
-                });
-            });
-            $(".bravo_remove_coupon").click(function (e) {
-                e.preventDefault();
-                var parent = $(this).closest('.section-coupon-form');
-                var parentItem = $(this).closest('.item');
-                parentItem.find(".fa-spin").removeClass("d-none");
-                $.ajax({
-                    'url': bookingCore.url + '/booking/{{$booking->code}}/remove-coupon',
-                    'data': {
-                        coupon_code:$(this).attr('data-code')
-                    },
-                    'cache': false,
-                    'method':"post",
-                    success: function (res) {
-                        parentItem.find(".fa-spin").addClass("d-none");
-                        if (res.reload !== undefined) {
-                            window.location.reload();
-                        }
-                        if(res.message && res.status === 0)
-                        {
-                            parent.find('.message').html('<div class="alert alert-danger">' + res.message+ '</div>');
-                        }
-                    }
-                });
-            });
-        })
     </script>
 @endpush

@@ -703,9 +703,6 @@ class RunUpdater
             if (!Schema::hasColumn('bravo_bookings', 'total_before_discount')) {
                 $table->decimal('total_before_discount', 10, 2)->nullable()->default(0);
             }
-            if (!Schema::hasColumn('bravo_bookings', 'coupon_amount')) {
-                $table->decimal('coupon_amount', 10, 2)->nullable()->default(0);
-            }
         });
 
 
@@ -745,8 +742,6 @@ class RunUpdater
         $vendor->givePermission('boat_view');
         $vendor->givePermission('boat_update');
         $vendor->givePermission('boat_delete');
-
-        DB::statement('ALTER TABLE bravo_coupons MODIFY only_for_user varchar(191)');
 
         Schema::table('users', function (Blueprint $table) {
             if (!Schema::hasColumn('users', 'stripe_customer_id')) {
