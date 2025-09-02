@@ -9,20 +9,13 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Modules\Booking\Models\Booking;
-use Modules\Booking\Models\Service;
-use Modules\Booking\Models\ServiceTranslation;
-use Modules\Car\Models\Car;
-use Modules\Car\Models\CarTranslation;
 use Modules\Core\Models\NotificationPush;
 use Modules\Core\Models\Settings;
-use Modules\Event\Models\Event;
-use Modules\Event\Models\EventTranslation;
 use Modules\Flight\Models\BookingPassengers;
 use Modules\Flight\Models\Flight;
 use Modules\Flight\Models\FlightSeat;
 use Modules\Hotel\Models\Hotel;
 use Modules\Hotel\Models\HotelRoom;
-use Modules\Hotel\Models\HotelTranslation;
 use Modules\Location\Models\LocationCategory;
 use Modules\Location\Models\LocationCategoryTranslation;
 use Modules\Review\Models\Review;
@@ -223,18 +216,8 @@ class RunUpdater
 
         // Vendor
         $vendor = Role::firstOrCreate(['name'=>'vendor']);
-        $vendor->givePermission('car_create');
-        $vendor->givePermission('car_view');
-        $vendor->givePermission('car_update');
-        $vendor->givePermission('car_delete');
         // Admin
         $role = Role::firstOrCreate(['name'=>'administrator']);
-        $role->givePermission('car_view');
-        $role->givePermission('car_create');
-        $role->givePermission('car_update');
-        $role->givePermission('car_delete');
-        $role->givePermission('car_manage_others');
-        $role->givePermission('car_manage_attributes');
 
         Settings::store('update_to_150', true);
         Artisan::call('cache:clear');
@@ -274,17 +257,7 @@ class RunUpdater
                 $table->string('ical_import_url')->nullable();
             }
         });
-        Schema::table(Car::getTableName(), function (Blueprint $table) {
-            if (!Schema::hasColumn(Car::getTableName(), 'ical_import_url')) {
-                $table->string('ical_import_url')->nullable();
-            }
-        });
 
-        Schema::table(CarTranslation::getTableName(), function (Blueprint $table) {
-            if (Schema::hasColumn(CarTranslation::getTableName(), 'extra_price')) {
-                $table->dropColumn('extra_price');
-            }
-        });
         Schema::table(SpaceTranslation::getTableName(), function (Blueprint $table) {
             if (Schema::hasColumn(SpaceTranslation::getTableName(), 'extra_price')) {
                 $table->dropColumn('extra_price');
@@ -371,15 +344,6 @@ class RunUpdater
                     'name'  => 'hotel_search_fields',
                     'val'   => '[{"title":"Location","field":"location","size":"4","position":"1"},{"title":"Check In - Out","field":"date","size":"4","position":"2"},{"title":"Guests","field":"guests","size":"4","position":"3"}]',
                     'group' => 'hotel'
-                ]
-            );
-        }
-        if (empty(setting_item('car_search_fields'))) {
-            DB::table('core_settings')->insert(
-                [
-                    'name'  => 'car_search_fields',
-                    'val'   => '[{"title":"Location","field":"location","size":"6","position":"1"},{"title":"From - To","field":"date","size":"6","position":"2"}]',
-                    'group' => 'car'
                 ]
             );
         }
@@ -693,15 +657,6 @@ class RunUpdater
         $role->givePermission('flight_delete');
         $role->givePermission('flight_manage_others');
         $role->givePermission('flight_manage_attributes');
-
-        Schema::table('bravo_cars', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_cars', 'min_day_before_booking')) {
-                $table->integer('min_day_before_booking')->nullable();
-            }
-            if (!Schema::hasColumn('bravo_cars', 'min_day_stays')) {
-                $table->integer('min_day_stays')->nullable();
-            }
-        });
 
         if (Schema::hasTable("user_wallets")) {
             Schema::table('user_wallets', function (Blueprint $table) {

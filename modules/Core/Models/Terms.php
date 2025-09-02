@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use Modules\Boat\Models\Boat;
 use Modules\Boat\Models\BoatTerm;
-use Modules\Car\Models\Car;
-use Modules\Car\Models\CarTerm;
 use Modules\Event\Models\Event;
 use Modules\Event\Models\EventTerm;
 use Modules\Flight\Models\Flight;
@@ -128,9 +126,6 @@ class Terms extends BaseModel
     }
     public function hotel(){
         return $this->belongsToMany(Hotel::class,HotelTerm::getTableName(),'term_id','target_id');
-    }
-    public function car(){
-        return $this->belongsToMany(Car::class,CarTerm::getTableName(),'term_id','target_id');
     }
     public function event(){
         return $this->belongsToMany(Event::class,EventTerm::getTableName(),'term_id','target_id');

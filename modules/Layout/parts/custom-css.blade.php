@@ -343,19 +343,6 @@ $style_typo = json_decode(setting_item_with_lang('style_typo',false,"{}"),true);
     .bravo_wrap .bravo_detail_hotel .bravo_single_book {
         border-top: 5px solid {{$main_color}};
     }
-    .bravo_wrap .bravo_detail_car  .bravo_single_book {
-        border-top: 5px solid {{$main_color}};
-    }
-    .bravo_wrap .bravo_detail_car .bravo_content .g-header .review-score .head .score:after {
-        border-bottom: 25px solid {{$main_color}};
-    }
-    .bravo_wrap .bravo_detail_car .bravo_content .g-header .review-score .head .score {
-        background: {{$main_color}};
-    }
-    .bravo_wrap .bravo_detail_car .bravo_content .g-header .review-score .head .left .text-rating {
-        color: {{$main_color}};
-    }
-
     body{
     @if(!empty($style_typo) && is_array($style_typo))
         @foreach($style_typo as $k=>$v)

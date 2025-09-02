@@ -111,8 +111,6 @@ class Updater250
         setting_update_item('booking_enquiry_type_tour','booking_and_enquiry');
         setting_update_item('booking_enquiry_for_space','1');
         setting_update_item('booking_enquiry_type_space','booking_and_enquiry');
-        setting_update_item('booking_enquiry_for_car','1');
-        setting_update_item('booking_enquiry_type_car','booking_and_enquiry');
         setting_update_item('booking_enquiry_for_event','1');
         setting_update_item('booking_enquiry_type_event','booking_and_enquiry');
         setting_update_item('booking_enquiry_for_boat','1');

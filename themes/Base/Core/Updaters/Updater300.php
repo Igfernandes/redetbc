@@ -65,7 +65,6 @@ class Updater300
             'bravo_tours',
             'bravo_events',
             'bravo_spaces',
-            'bravo_cars',
             'bravo_boats',
             'bravo_flight',
             'bravo_airline',
@@ -120,12 +119,7 @@ class Updater300
         $vendor->givePermission('hotel_create');
         $vendor->givePermission('hotel_update');
         $vendor->givePermission('hotel_delete');
-
-        $vendor->givePermission('car_view');
-        $vendor->givePermission('car_create');
-        $vendor->givePermission('car_update');
-        $vendor->givePermission('car_delete');
-
+        
         $vendor->givePermission('event_view');
         $vendor->givePermission('event_create');
         $vendor->givePermission('event_update');

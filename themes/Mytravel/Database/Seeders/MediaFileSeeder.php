@@ -131,43 +131,6 @@ class MediaFileSeeder extends Seeder
             ['file_name' => 'news-banner', 'file_path' => 'mytravel/news/news-banner.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
         ]);
 
-        //Car
-        DB::table('media_files')->insert([
-            ['file_name' => 'banner-search-car', 'file_path' => 'mytravel/car/banner-search-car.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ['file_name' => 'Convertibles', 'file_path' => 'mytravel/car/terms/convertibles.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ['file_name' => 'Coupes', 'file_path' => 'mytravel/car/terms/couple.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ['file_name' => 'Hatchbacks', 'file_path' => 'mytravel/car/terms/hatchback.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ['file_name' => 'Minivans', 'file_path' => 'mytravel/car/terms/minivans.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ['file_name' => 'Sedan', 'file_path' => 'mytravel/car/terms/sedan.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ['file_name' => 'SUVs', 'file_path' => 'mytravel/car/terms/suv.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ['file_name' => 'Trucks', 'file_path' => 'mytravel/car/terms/trucks.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ['file_name' => 'Wagons', 'file_path' => 'mytravel/car/terms/wagons.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-
-            ['file_name' => 'home-car-bg-1', 'file_path' => 'mytravel/car/home-car-bg-1.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ['file_name' => 'number-1', 'file_path' => 'mytravel/car/number-1.svg', 'file_type' => 'image/svg', 'file_extension' => 'svg'],
-            ['file_name' => 'number-2', 'file_path' => 'mytravel/car/number-2.svg', 'file_type' => 'image/svg', 'file_extension' => 'svg'],
-            ['file_name' => 'number-3', 'file_path' => 'mytravel/car/number-3.svg', 'file_type' => 'image/svg', 'file_extension' => 'svg'],
-
-            ['file_name' => 'banner-car-single', 'file_path' => 'mytravel/car/banner-single.jpg', 'file_type' => 'image/jpg', 'file_extension' => 'jpg'],
-
-            ['file_name' => 'Airbag', 'file_path' => 'mytravel/car/feature/Airbag.svg', 'file_type' => 'image/svg', 'file_extension' => 'svg'],
-            ['file_name' => 'FM Radio', 'file_path' => 'mytravel/car/feature/Radio.svg', 'file_type' => 'image/svg', 'file_extension' => 'svg'],
-            ['file_name' => 'Sensor', 'file_path' => 'mytravel/car/feature/Sensor.svg', 'file_type' => 'image/svg', 'file_extension' => 'svg'],
-            ['file_name' => 'Speed Km', 'file_path' => 'mytravel/car/feature/Speed.svg', 'file_type' => 'image/svg', 'file_extension' => 'svg'],
-            ['file_name' => 'Steering Wheel', 'file_path' => 'mytravel/car/feature/Steering.svg', 'file_type' => 'image/svg', 'file_extension' => 'svg'],
-            ['file_name' => 'Power Windows', 'file_path' => 'mytravel/car/feature/Windows.svg', 'file_type' => 'image/svg', 'file_extension' => 'svg'],
-        ]);
-        for ($i=1 ; $i <= 12 ; $i++){
-            DB::table('media_files')->insert([
-                ['file_name' => 'car-'.$i, 'file_path' => 'mytravel/car/car-'.$i.'.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ]);
-        }
-        for ($i=1 ; $i <= 7 ; $i++){
-            DB::table('media_files')->insert([
-                ['file_name' => 'car-gallery-'.$i, 'file_path' => 'mytravel/car/gallery-'.$i.'.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
-            ]);
-        }
-
         //Event
         DB::table('media_files')->insert([
             ['file_name' => 'banner-search-event', 'file_path' => 'mytravel/event/banner-search.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],

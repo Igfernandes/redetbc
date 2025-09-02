@@ -40,16 +40,6 @@ class MytravelCustomFields extends Migration
             }
         });
 
-        Schema::table('bravo_cars', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_cars', 'specifications')) {
-                $table->text('specifications')->nullable();
-            }
-        });
-        Schema::table('bravo_car_translations', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_car_translations', 'specifications')) {
-                $table->text('specifications')->nullable();
-            }
-        });
     }
 
     /**

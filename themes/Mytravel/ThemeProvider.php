@@ -2,14 +2,9 @@
 namespace Themes\Mytravel;
 
 use Illuminate\Contracts\Http\Kernel;
-use Illuminate\Support\Facades\View;
-use Modules\Theme\Abstracts\AbstractThemeProvider;
-use Themes\Base\Core\Middleware\RunUpdater;
-use Themes\Mytravel\Car\Blocks\ListCar;
 use Themes\Mytravel\Database\Seeders\DatabaseSeeder;
 use Themes\Mytravel\Event\Blocks\ListEvent;
 use Themes\Mytravel\Hotel\Blocks\ListHotel;
-use Themes\Mytravel\Car\Blocks\TermCar;
 use Themes\Mytravel\Location\Blocks\ListLocations;
 use Themes\Mytravel\Location\Blocks\UnmissableDestinations;
 use Themes\Mytravel\Space\Blocks\ListSpace;
@@ -70,13 +65,11 @@ class ThemeProvider extends \Themes\Base\ThemeProvider
             "list_tours"=>ListTours::class,
             'list_hotel'=>ListHotel::class,
             'list_space'=>ListSpace::class,
-            'list_car'=>ListCar::class,
             'list_event'=>ListEvent::class,
             'testimonial'=>Testimonial::class,
             'brands_list'=>BrandsList::class,
             'breadcrumb_section'=>BreadcrumbSection::class,
-            'video_player'=>VideoPlayer::class,
-            'term_car'=>TermCar::class,
+            'video_player'=>VideoPlayer::class
         ];
     }
 
@@ -85,7 +78,6 @@ class ThemeProvider extends \Themes\Base\ThemeProvider
         parent::register();
         $this->app->register(\Themes\Mytravel\Tour\ModuleProvider::class);
         $this->app->register(\Themes\Mytravel\Hotel\ModuleProvider::class);
-        $this->app->register(\Themes\Mytravel\Car\ModuleProvider::class);
         $this->app->register(UpdaterProvider::class);
     }
 
