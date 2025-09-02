@@ -10,9 +10,7 @@ class ListLocations extends BaseBlock
     {
         $list_service = [];
         foreach (get_bookable_services() as $key => $service) {
-            if($key == "flight"){
-                continue;
-            }
+           
             $list_service[] = ['value'   => $key,
                                'name' => ucwords($key)
             ];

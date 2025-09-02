@@ -954,12 +954,6 @@ class General extends Seeder
                 ),
             ),
             array(
-                'name'       => 'Flight',
-                'url'        => $locale . '/flight',
-                'item_model' => 'custom',
-                'model_name' => 'Custom',
-            ),
-            array(
                 'name'       => 'Boat',
                 'url'        => $locale . '/boat',
                 'item_model' => 'custom',

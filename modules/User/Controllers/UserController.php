@@ -7,7 +7,6 @@ use Matrix\Exception;
 use Modules\Boat\Models\Boat;
 use Modules\Booking\Models\Service;
 use Modules\Event\Models\Event;
-use Modules\Flight\Models\Flight;
 use Modules\FrontendController;
 use Modules\Hotel\Models\Hotel;
 use Modules\Space\Models\Space;
@@ -213,7 +212,6 @@ class UserController extends FrontendController
                 Hotel::where('author_id',$user->id)->delete();
                 Event::where('author_id',$user->id)->delete();
                 Boat::where('author_id',$user->id)->delete();
-                Flight::where('author_id',$user->id)->delete();
                 $user->sendEmailPermanentlyDelete();
                 $user->delete();
                 \DB::commit();

@@ -2,7 +2,6 @@
 namespace Themes\Mytravel\Database\Seeders;
 use Database\Seeders\BoatSeeder;
 use Database\Seeders\EventSeeder;
-use Database\Seeders\FlightSeeder;
 use Database\Seeders\HotelSeeder;
 use Database\Seeders\Language;
 use Database\Seeders\LocationSeeder;

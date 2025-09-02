@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Schema;
 use Modules\Boat\Models\Boat;
 use Modules\Booking\Models\Service;
 use Modules\Event\Models\Event;
-use Modules\Flight\Models\Flight;
 use Modules\Hotel\Models\Hotel;
 use Modules\Space\Models\Space;
 use Modules\Tour\Models\Tour;
@@ -46,7 +45,7 @@ class Updater300
         }
 
         // Update bc_services
-        foreach ([Hotel::class,Tour::class,Space::class,Event::class,Boat::class,Flight::class] as $class){
+        foreach ([Hotel::class,Tour::class,Space::class,Event::class,Boat::class] as $class){
 
             $tbName = (new $class)->getTable();
             $type = (new $class)->type;
@@ -66,10 +65,6 @@ class Updater300
             'bravo_events',
             'bravo_spaces',
             'bravo_boats',
-            'bravo_flight',
-            'bravo_airline',
-            'bravo_airport',
-            'bravo_flight_seat',
             'bravo_seat_type',
             'media_files',
             'bravo_review',
@@ -137,10 +132,6 @@ class Updater300
             'boat_delete',
             'boat_manage_others',
             'boat_manage_attributes',
-            'flight_view',
-            'flight_create',
-            'flight_update',
-            'flight_delete',
         ]);
     }
 }

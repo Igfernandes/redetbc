@@ -20,10 +20,7 @@ return new class extends Migration
             'bravo_events',
             'bravo_spaces',
             'bravo_boats',
-            'bravo_flight',
-            'bravo_airline',
             'bravo_airport',
-            'bravo_flight_seat',
             'bravo_seat_type',
         ];
         foreach ($tableAddAuthorId as $tbName){
