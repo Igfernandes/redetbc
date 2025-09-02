@@ -62,7 +62,6 @@ return new class extends Migration
             $table->tinyInteger('is_refund_wallet')->nullable();
             $table->tinyInteger('is_paid')->nullable();
             $table->decimal('total_before_discount', 10, 2)->default(0.00);
-            $table->decimal('coupon_amount', 10, 2)->default(0.00);
         });
     }
 

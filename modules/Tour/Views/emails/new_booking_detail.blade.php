@@ -187,16 +187,6 @@ $lang_local = app()->getLocale();
                             </tr>
                         @endforeach
                     @endif
-                    @if(!empty($booking->coupon_amount) and $booking->coupon_amount > 0)
-                        <tr>
-                            <td class="label">
-                                {{__("Coupon")}}
-                            </td>
-                            <td class="val">
-                                -{{ format_money($booking->coupon_amount) }}
-                            </td>
-                        </tr>
-                    @endif
                 </table>
             </td>
         </tr>
