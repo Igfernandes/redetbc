@@ -215,7 +215,9 @@ return [
         \Modules\Api\ModuleProvider::class,
         \Modules\Dashboard\ModuleProvider::class,
 
-        
+        \Modules\Language\ModuleProvider::class,
+        \Modules\Report\ModuleProvider::class,
+        \Modules\Booking\ModuleProvider::class,
         \Modules\Core\ModuleProvider::class,
         \Modules\Ai\ModuleProvider::class,
         \Modules\Booking\ModuleProvider::class,
