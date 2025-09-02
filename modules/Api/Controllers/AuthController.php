@@ -1,5 +1,4 @@
 <?php
-
 namespace Modules\Api\Controllers;
 
 use App\User;
@@ -25,7 +24,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:sanctum', ['except' => ['login', 'register']]);
+        $this->middleware('auth:sanctum', ['except' => ['login','register']]);
     }
 
     /**
@@ -40,25 +39,25 @@ class AuthController extends Controller
             'device_name' => 'required',
         ]);
         if ($validator->fails()) {
-            return $this->sendError('', ['errors' => $validator->errors()]);
+            return $this->sendError('',['errors'=>$validator->errors()]);
         }
 
         $user = User::where('email', $request->email)->first();
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
-            return $this->sendError(__("Password is not correct"), ['code' => 'invalid_credentials']);
+            return $this->sendError(__("Password is not correct"),['code'=>'invalid_credentials']);
         }
 
         return [
-            'access_token' => $user->createToken($request->device_name)->plainTextToken,
-            'user' => new UserResource($user),
-            'status' => 1
+            'access_token'=>$user->createToken($request->device_name)->plainTextToken,
+            'user'=> new UserResource($user),
+            'status'=>1
         ];
     }
 
     public function register(Request $request)
     {
-        if (!is_enable_registration()) {
+        if(!is_enable_registration()){
             return $this->sendError(__("You are not allowed to register"));
         }
         $rules = [
@@ -93,15 +92,6 @@ class AuthController extends Controller
             'last_name.required'  => __('The last name is required field'),
             'term.required'       => __('The terms and conditions field is required'),
         ];
-        \var_dump([
-            'first_name' => $request->input('first_name'),
-            'last_name'  => $request->input('last_name'),
-            'email'      => $request->input('email'),
-            'password'   => Hash::make($request->input('password')),
-            'publish'    => $request->input('publish'),
-            'phone'      => $request->input('phone'),
-        ]);
-        exit();
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
             return $this->sendError($validator->errors());
@@ -112,7 +102,7 @@ class AuthController extends Controller
                 'email'      => $request->input('email'),
                 'password'   => Hash::make($request->input('password')),
                 'publish'    => $request->input('publish'),
-                'phone'      => $request->input('phone'),
+                'phone'    => $request->input('phone'),
             ]);
             event(new Registered($user));
             //Auth::loginUsingId($user->id);
@@ -135,18 +125,17 @@ class AuthController extends Controller
     {
         $user = auth()->user();
 
-        if (!empty($user['avatar_id'])) {
-            $user['avatar_url'] = get_file_url($user['avatar_id'], 'full');
+        if(!empty($user['avatar_id'])){
+            $user['avatar_url'] = get_file_url($user['avatar_id'],'full');
             $user['avatar_thumb_url'] = get_file_url($user['avatar_id']);
         }
 
         return $this->sendSuccess([
-            'data' => $user
+            'data'=>$user
         ]);
     }
 
-    public function updateUser(Request $request)
-    {
+    public function updateUser(Request $request){
         $user = Auth::user();
         $rules = [
             'first_name' => 'required|max:255',
@@ -185,8 +174,7 @@ class AuthController extends Controller
         return $this->sendSuccess(__('Successfully logged out'));
     }
 
-    public function changePassword(Request $request)
-    {
+    public function changePassword(Request $request){
 
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'current_password' => 'required',
@@ -194,12 +182,12 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $this->sendError('', ['errors' => $validator->errors()]);
+            return $this->sendError('',['errors'=>$validator->errors()]);
         }
         $user = auth()->user();
 
         if (!Hash::check($request->current_password, $user->password)) {
-            return $this->sendError(__("Current password is not correct"), ['code' => 'invalid_current_password']);
+            return $this->sendError(__("Current password is not correct"),['code'=>'invalid_current_password']);
         }
 
         $user->password = Hash::make($request->new_password);
@@ -208,6 +196,6 @@ class AuthController extends Controller
         // Invalidate all Tokens
         $user->tokens()->delete();
 
-        return $this->sendSuccess(['message' => __("Password updated. Please re-login"), 'code' => "need_relogin"]);
+        return $this->sendSuccess(['message'=>__("Password updated. Please re-login"),'code'=>"need_relogin"]);
     }
 }

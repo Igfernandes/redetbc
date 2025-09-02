@@ -14,27 +14,28 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function sendError($message, $data = [])
-    {
+    public function sendError($message,$data = []){
 
         $data['status'] = 0;
 
-        return $this->sendSuccess($data, $message);
+        return $this->sendSuccess($data,$message);
+
     }
 
-    public function sendSuccess($data = [], $message = '')
+    public function sendSuccess($data = [],$message = '')
     {
-        if (is_string($data)) {
+        if(is_string($data))
+        {
             return response()->json([
-                'message' => $data,
-                'status' => true
+                'message'=>$data,
+                'status'=>true
             ]);
         }
 
-        if (!isset($data['status'])) $data['status'] = 1;
+        if(!isset($data['status'])) $data['status'] = 1;
 
-        if ($message)
-            $data['message'] = $message;
+        if($message)
+        $data['message'] = $message;
 
         return response()->json($data);
     }
@@ -50,12 +51,11 @@ class Controller extends BaseController
         return Auth::user();
     }
 
-    protected function registerJs($file, $inFooter = true, $pos = 10, $version = false)
-    {
-        Assets::registerJs($file, $inFooter, $pos, $version);
+    protected function registerJs($file,$inFooter = true, $pos = 10,$version = false){
+        Assets::registerJs($file,$inFooter,$pos,$version);
     }
-    protected function registerCss($file, $inFooter = false, $pos = 10, $version = false)
-    {
-        Assets::registerCss($file, $inFooter, $pos, $version);
+    protected function registerCss($file,$inFooter = false, $pos = 10,$version = false){
+        Assets::registerCss($file,$inFooter,$pos,$version);
     }
+
 }

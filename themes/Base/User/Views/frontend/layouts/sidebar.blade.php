@@ -1,11 +1,12 @@
 <?php
 $dataUser = Auth::user();
 $menus = [
-    'profile'         => [
-        'url'      => route("user.profile.index"),
-        'title'    => __("My Profile"),
-        'icon'     => 'fa fa-cogs',
-        'position' => 9
+    'dashboard'       => [
+        'url'        => route("vendor.dashboard"),
+        'title'      => __("Dashboard"),
+        'icon'       => 'fa fa-home',
+        'permission' => 'dashboard_vendor_access',
+        'position'   => 10
     ],
     'booking-history' => [
         'url'      => route("user.booking_history"),
@@ -13,32 +14,18 @@ $menus = [
         'icon'     => 'fa fa-clock-o',
         'position' => 20
     ],
-    'booking-history' => [
-        'url'      => route("user.network"),
-        'title'    => __("Rede"),
-        'icon'     => 'fa fa-clock-o',
-        'position' => 20
+    "wishlist"=>[
+        'url'   => route("user.wishList.index"),
+        'title' => __("Wishlist"),
+        'icon'  => 'fa fa-heart-o',
+        'position' => 21
     ],
-    'wallet'       => [
-        'url'        => route("user.wallet"),
-        'title'      => __("Wallet"),
-        'icon'       => 'fa fa-home',
-        'position'   => 20
+    'profile'         => [
+        'url'      => route("user.profile.index"),
+        'title'    => __("My Profile"),
+        'icon'     => 'fa fa-cogs',
+        'position' => 22
     ],
-    'dashboard'       => [
-        'url'        => route("vendor.dashboard"),
-        'title'      => __("Commission"),
-        'icon'       => 'fa fa-home',
-        'permission' => 'dashboard_vendor_access',
-        'position'   => 10
-    ],
-    // "wishlist" => [
-    //     'url'   => route("user.wishList.index"),
-    //     'title' => __("Wishlist"),
-    //     'icon'  => 'fa fa-heart-o',
-    //     'position' => 21
-    // ],
-
     'password'        => [
         'url'      => route("user.change_password"),
         'title'    => __("Change password"),
@@ -55,113 +42,116 @@ $menus = [
 ];
 
 // Modules
-// $custom_modules = \Modules\ServiceProvider::getActivatedModules();
-// if (!empty($custom_modules)) {
-//     foreach ($custom_modules as $module) {
-//         $moduleClass = $module['class'];
-//         if (class_exists($moduleClass)) {
-//             $menuConfig = call_user_func([$moduleClass, 'getUserMenu']);
-//             if (!empty($menuConfig)) {
-//                 $menus = array_merge($menus, $menuConfig);
-//             }
-//             $menuSubMenu = call_user_func([$moduleClass, 'getUserSubMenu']);
-//             if (!empty($menuSubMenu)) {
-//                 foreach ($menuSubMenu as $k => $submenu) {
-//                     $submenu['id'] = $submenu['id'] ?? '_' . $k;
-//                     if (!empty($submenu['parent']) and isset($menus[$submenu['parent']])) {
-//                         $menus[$submenu['parent']]['children'][$submenu['id']] = $submenu;
-//                         $menus[$submenu['parent']]['children'] = array_values(\Illuminate\Support\Arr::sort($menus[$submenu['parent']]['children'], function ($value) {
-//                             return $value['position'] ?? 100;
-//                         }));
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
+$custom_modules = \Modules\ServiceProvider::getActivatedModules();
+if(!empty($custom_modules)){
+    foreach($custom_modules as $module){
+        $moduleClass = $module['class'];
+        if(class_exists($moduleClass))
+        {
+            $menuConfig = call_user_func([$moduleClass,'getUserMenu']);
+            if(!empty($menuConfig)){
+                $menus = array_merge($menus,$menuConfig);
+            }
+            $menuSubMenu = call_user_func([$moduleClass,'getUserSubMenu']);
+            if(!empty($menuSubMenu)){
+                foreach($menuSubMenu as $k=>$submenu){
+                    $submenu['id'] = $submenu['id'] ?? '_'.$k;
+                    if(!empty($submenu['parent']) and isset($menus[$submenu['parent']])){
+                        $menus[$submenu['parent']]['children'][$submenu['id']] = $submenu;
+                        $menus[$submenu['parent']]['children'] = array_values(\Illuminate\Support\Arr::sort($menus[$submenu['parent']]['children'], function ($value) {
+                            return $value['position'] ?? 100;
+                        }));
+                    }
+                }
+            }
+        }
+    }
+}
 
 // Plugins Menu
-// $plugins_modules = \Plugins\ServiceProvider::getModules();
-// if (!empty($plugins_modules)) {
-//     foreach ($plugins_modules as $module) {
-//         $moduleClass = "\\Plugins\\" . ucfirst($module) . "\\ModuleProvider";
-//         if (class_exists($moduleClass)) {
-//             $menuConfig = call_user_func([$moduleClass, 'getUserMenu']);
-//             if (!empty($menuConfig)) {
-//                 $menus = array_merge($menus, $menuConfig);
-//             }
-//             $menuSubMenu = call_user_func([$moduleClass, 'getUserSubMenu']);
-//             if (!empty($menuSubMenu)) {
-//                 foreach ($menuSubMenu as $k => $submenu) {
-//                     $submenu['id'] = $submenu['id'] ?? '_' . $k;
-//                     if (!empty($submenu['parent']) and isset($menus[$submenu['parent']])) {
-//                         $menus[$submenu['parent']]['children'][$submenu['id']] = $submenu;
-//                         $menus[$submenu['parent']]['children'] = array_values(\Illuminate\Support\Arr::sort($menus[$submenu['parent']]['children'], function ($value) {
-//                             return $value['position'] ?? 100;
-//                         }));
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
+$plugins_modules = \Plugins\ServiceProvider::getModules();
+if(!empty($plugins_modules)){
+    foreach($plugins_modules as $module){
+        $moduleClass = "\\Plugins\\".ucfirst($module)."\\ModuleProvider";
+        if(class_exists($moduleClass))
+        {
+            $menuConfig = call_user_func([$moduleClass,'getUserMenu']);
+            if(!empty($menuConfig)){
+                $menus = array_merge($menus,$menuConfig);
+            }
+            $menuSubMenu = call_user_func([$moduleClass,'getUserSubMenu']);
+            if(!empty($menuSubMenu)){
+                foreach($menuSubMenu as $k=>$submenu){
+                    $submenu['id'] = $submenu['id'] ?? '_'.$k;
+                    if(!empty($submenu['parent']) and isset($menus[$submenu['parent']])){
+                        $menus[$submenu['parent']]['children'][$submenu['id']] = $submenu;
+                        $menus[$submenu['parent']]['children'] = array_values(\Illuminate\Support\Arr::sort($menus[$submenu['parent']]['children'], function ($value) {
+                            return $value['position'] ?? 100;
+                        }));
+                    }
+                }
+            }
+        }
+    }
+}
 
 // Custom Menu
-// $custom_modules = \Custom\ServiceProvider::getModules();
-// if (!empty($custom_modules)) {
-//     foreach ($custom_modules as $module) {
-//         $moduleClass = "\\Custom\\" . ucfirst($module) . "\\ModuleProvider";
-//         if (class_exists($moduleClass)) {
-//             $menuConfig = call_user_func([$moduleClass, 'getUserMenu']);
-//             if (!empty($menuConfig)) {
-//                 $menus = array_merge($menus, $menuConfig);
-//             }
-//             $menuSubMenu = call_user_func([$moduleClass, 'getUserSubMenu']);
-//             if (!empty($menuSubMenu)) {
-//                 foreach ($menuSubMenu as $k => $submenu) {
-//                     $submenu['id'] = $submenu['id'] ?? '_' . $k;
-//                     if (!empty($submenu['parent']) and isset($menus[$submenu['parent']])) {
-//                         $menus[$submenu['parent']]['children'][$submenu['id']] = $submenu;
-//                         $menus[$submenu['parent']]['children'] = array_values(\Illuminate\Support\Arr::sort($menus[$submenu['parent']]['children'], function ($value) {
-//                             return $value['position'] ?? 100;
-//                         }));
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
+$custom_modules = \Custom\ServiceProvider::getModules();
+if(!empty($custom_modules)){
+    foreach($custom_modules as $module){
+        $moduleClass = "\\Custom\\".ucfirst($module)."\\ModuleProvider";
+        if(class_exists($moduleClass))
+        {
+            $menuConfig = call_user_func([$moduleClass,'getUserMenu']);
+            if(!empty($menuConfig)){
+                $menus = array_merge($menus,$menuConfig);
+            }
+            $menuSubMenu = call_user_func([$moduleClass,'getUserSubMenu']);
+            if(!empty($menuSubMenu)){
+                foreach($menuSubMenu as $k=>$submenu){
+                    $submenu['id'] = $submenu['id'] ?? '_'.$k;
+                    if(!empty($submenu['parent']) and isset($menus[$submenu['parent']])){
+                        $menus[$submenu['parent']]['children'][$submenu['id']] = $submenu;
+                        $menus[$submenu['parent']]['children'] = array_values(\Illuminate\Support\Arr::sort($menus[$submenu['parent']]['children'], function ($value) {
+                            return $value['position'] ?? 100;
+                        }));
+                    }
+                }
+            }
+        }
+    }
+}
 
 $currentUrl = url(Illuminate\Support\Facades\Route::current()->uri());
 if (!empty($menus))
     $menus = array_values(\Illuminate\Support\Arr::sort($menus, function ($value) {
         return $value['position'] ?? 100;
     }));
-foreach ($menus as $k => $menuItem) {
-    if (!empty($menuItem['permission']) and !Auth::user()->hasPermission($menuItem['permission'])) {
-        unset($menus[$k]);
-        continue;
-    }
-    $menus[$k]['class'] = $currentUrl == url($menuItem['url']) ? 'active' : '';
-    if (!empty($menuItem['children'])) {
-        $menus[$k]['class'] .= ' has-children';
-        foreach ($menuItem['children'] as $k2 => $menuItem2) {
-            if (!empty($menuItem2['permission']) and !Auth::user()->hasPermission($menuItem2['permission'])) {
-                unset($menus[$k]['children'][$k2]);
-                continue;
+    foreach ($menus as $k => $menuItem) {
+        if (!empty($menuItem['permission']) and !Auth::user()->hasPermission($menuItem['permission'])) {
+            unset($menus[$k]);
+            continue;
+        }
+        $menus[$k]['class'] = $currentUrl == url($menuItem['url']) ? 'active' : '';
+        if (!empty($menuItem['children'])) {
+            $menus[$k]['class'] .= ' has-children';
+            foreach ($menuItem['children'] as $k2 => $menuItem2) {
+                if (!empty($menuItem2['permission']) and !Auth::user()->hasPermission($menuItem2['permission'])) {
+                    unset($menus[$k]['children'][$k2]);
+                    continue;
+                }
+                $menus[$k]['children'][$k2]['class'] = $currentUrl == url($menuItem2['url']) ? 'active active_child' : '';
             }
-            $menus[$k]['children'][$k2]['class'] = $currentUrl == url($menuItem2['url']) ? 'active active_child' : '';
         }
     }
-}
 ?>
 <div class="sidebar-user">
     <div class="bravo-close-menu-user"><i class="icofont-scroll-left"></i></div>
     <div class="logo">
         @if($avatar_url = $dataUser->getAvatarUrl())
-        <div class="avatar avatar-cover" style="background-image: url('{{$dataUser->getAvatarUrl()}}')"></div>
+            <div class="avatar avatar-cover" style="background-image: url('{{$dataUser->getAvatarUrl()}}')"></div>
         @else
-        <span class="avatar-text">{{ucfirst($dataUser->getDisplayName()[0])}}</span>
+            <span class="avatar-text">{{ucfirst($dataUser->getDisplayName()[0])}}</span>
         @endif
     </div>
     <div class="user-profile-avatar">
@@ -173,35 +163,35 @@ foreach ($menus as $k => $menuItem) {
     </div>
     <div class="user-profile-plan">
         @if( !Auth::user()->hasPermission("dashboard_vendor_access") and setting_item('vendor_enable'))
-        <a href=" {{ route("user.upgrade_vendor") }}">{{ __("Become a vendor") }}</a>
+            <a href=" {{ route("user.upgrade_vendor") }}">{{ __("Become a vendor") }}</a>
         @endif
     </div>
     <div class="sidebar-menu">
         <ul class="main-menu">
             @foreach($menus as $menuItem)
-            <li class="{{$menuItem['class']}}" position="{{$menuItem['position'] ?? ""}}">
-                <a href="{{ url($menuItem['url']) }}">
-                    @if(!empty($menuItem['icon']))
-                    <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
-                    @endif
-                    {!! clean($menuItem['title']) !!}
+                <li class="{{$menuItem['class']}}" position="{{$menuItem['position'] ?? ""}}">
+                    <a href="{{ url($menuItem['url']) }}">
+                        @if(!empty($menuItem['icon']))
+                            <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
+                        @endif
+                        {!! clean($menuItem['title']) !!}
 
-                </a>
-                @if(!empty($menuItem['children']))
-                <i class="caret"></i>
-                @endif
-                @if(!empty($menuItem['children']))
-                <ul class="children">
-                    @foreach($menuItem['children'] as $menuItem2)
-                    <li class="{{$menuItem2['class']}}"><a href="{{ url($menuItem2['url']) }}">
-                            @if(!empty($menuItem2['icon']))
-                            <i class="{{$menuItem2['icon']}}"></i>
-                            @endif
-                            {!! clean($menuItem2['title']) !!}</a></li>
-                    @endforeach
-                </ul>
-                @endif
-            </li>
+                    </a>
+                    @if(!empty($menuItem['children']))
+                        <i class="caret"></i>
+                    @endif
+                    @if(!empty($menuItem['children']))
+                        <ul class="children">
+                            @foreach($menuItem['children'] as $menuItem2)
+                                <li class="{{$menuItem2['class']}}"><a href="{{ url($menuItem2['url']) }}">
+                                        @if(!empty($menuItem2['icon']))
+                                            <i class="{{$menuItem2['icon']}}"></i>
+                                        @endif
+                                        {!! clean($menuItem2['title']) !!}</a></li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </li>
             @endforeach
         </ul>
     </div>

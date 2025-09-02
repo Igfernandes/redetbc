@@ -49,8 +49,6 @@
             'name',
             'first_name',
             'last_name',
-            'sex',
-            'religion',
             'email',
             'email_verified_at',
             'password',
@@ -58,9 +56,6 @@
             'address2',
             'phone',
             'birthday',
-            'role_id',
-            'religion',
-            'sex',
             'city',
             'state',
             'country',
@@ -70,7 +65,6 @@
             'bio',
             'business_name',
             'status',
-            'owner_id'
         ];
 
         protected $attributes = [

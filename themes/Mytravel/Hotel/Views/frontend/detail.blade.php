@@ -8,8 +8,6 @@
         <div class="border-bottom mb-3">
             @include('Layout::parts.bc')
         </div>
-        
-        <div>sdasad</div>
         <div class="bravo_content">
             <div class="container">
                 <div class="row">
