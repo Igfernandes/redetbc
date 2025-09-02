@@ -22,38 +22,6 @@
         <span class="invalid-feedback error error-phone"></span>
     </div>
     <div class="form-group">
-        <label>{{__('Religion')}}</label>
-        <br>
-        <select name="religion" class="custom-select">
-            <option value="">{{__('-- Please select --')}}</option>
-            <option value="CATHOLIC">{{__("Catholic")}}</option>
-            <option value="EVANGELICAL">{{__("Evangelical")}}</option>
-            <option value="EVANGELICAL">{{__("Both")}}</option>
-        </select>
-        <span class="invalid-feedback error error-religion"></span>
-    </div>
-    <div class="form-group">
-        <label>{{__('Sex')}}</label>
-        <br>
-        <select name="sex" class="custom-select">
-            <option value="">{{__('-- Please select --')}}</option>
-            <option value="MASCULINE">{{__("Masculine")}}</option>
-            <option value="FEMININE">{{__("Feminine")}}</option>
-        </select>
-        <span class="invalid-feedback error error-religion"></span>
-    </div>
-
-    <div class="form-group">
-        <label>{{__("Are you wanna be Host?")}}</label>
-        <label for="yes">{{__('Yes')}}</label>
-        <input type="checkbox" name="host" value="{{__('Yes')}}" id="yes">
-        <br>
-        <div class="d-flex mt-2 mb-1">
-            <span style="font-size: .7rem; display: block;">Os anfitriões iniciam com um plano, mas podem registrar imóveis e atividades para contratação na plataforma.</span>
-        </div>
-
-    </div>
-    <div class="form-group mt-2">
         <input type="email" class="form-control" name="email" autocomplete="off" placeholder="{{__('Email address')}}">
         <i class="input-icon field-icon icofont-mail"></i>
         <span class="invalid-feedback error error-email"></span>
@@ -72,10 +40,10 @@
         <div><span class="invalid-feedback error error-term"></span></div>
     </div>
     @if(setting_item("user_enable_register_recaptcha"))
-    <div class="form-group">
-        {{recaptcha_field($captcha_action ?? 'register')}}
-    </div>
-    <div><span class="invalid-feedback error error-g-recaptcha-response"></span></div>
+        <div class="form-group">
+            {{recaptcha_field($captcha_action ?? 'register')}}
+        </div>
+        <div><span class="invalid-feedback error error-g-recaptcha-response"></span></div>
     @endif
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
@@ -85,39 +53,39 @@
         </button>
     </div>
     @if(setting_item('facebook_enable') or setting_item('google_enable') or setting_item('twitter_enable'))
-    <div class="advanced">
-        <p class="text-center f14 c-grey">{{__("or continue with")}}</p>
-        <div class="row">
-            @if(setting_item('facebook_enable'))
-            <div class="col-xs-12 col-sm-4">
-                <a href="{{url('/social-login/facebook')}}" class="btn btn_login_fb_link"
-                    data-channel="facebook">
-                    <i class="input-icon fa fa-facebook"></i>
-                    {{__('Facebook')}}
-                </a>
+        <div class="advanced">
+            <p class="text-center f14 c-grey">{{__("or continue with")}}</p>
+            <div class="row">
+                @if(setting_item('facebook_enable'))
+                    <div class="col-xs-12 col-sm-4">
+                        <a href="{{url('/social-login/facebook')}}" class="btn btn_login_fb_link"
+                           data-channel="facebook">
+                            <i class="input-icon fa fa-facebook"></i>
+                            {{__('Facebook')}}
+                        </a>
+                    </div>
+                @endif
+                @if(setting_item('google_enable'))
+                    <div class="col-xs-12 col-sm-4">
+                        <a href="{{url('social-login/google')}}" class="btn btn_login_gg_link" data-channel="google">
+                            <i class="input-icon fa fa-google"></i>
+                            {{__('Google')}}
+                        </a>
+                    </div>
+                @endif
+                @if(setting_item('twitter_enable'))
+                    <div class="col-xs-12 col-sm-4">
+                        <a href="{{url('social-login/twitter')}}" class="btn btn_login_tw_link" data-channel="twitter">
+                            <i class="input-icon fa fa-twitter"></i>
+                            {{__('Twitter')}}
+                        </a>
+                    </div>
+                @endif
             </div>
-            @endif
-            @if(setting_item('google_enable'))
-            <div class="col-xs-12 col-sm-4">
-                <a href="{{url('social-login/google')}}" class="btn btn_login_gg_link" data-channel="google">
-                    <i class="input-icon fa fa-google"></i>
-                    {{__('Google')}}
-                </a>
-            </div>
-            @endif
-            @if(setting_item('twitter_enable'))
-            <div class="col-xs-12 col-sm-4">
-                <a href="{{url('social-login/twitter')}}" class="btn btn_login_tw_link" data-channel="twitter">
-                    <i class="input-icon fa fa-twitter"></i>
-                    {{__('Twitter')}}
-                </a>
-            </div>
-            @endif
         </div>
-    </div>
     @endif
     <div class="c-grey f14 text-center">
-        {{__(" Already have an account?")}}
+       {{__(" Already have an account?")}}
         <a href="#" data-target="#login" data-toggle="modal">{{__("Log In")}}</a>
     </div>
 </form>

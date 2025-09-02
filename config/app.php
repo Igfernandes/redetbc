@@ -199,7 +199,7 @@ return [
         * Custom Service Providers...
         */
         \Themes\ThemeServiceProvider::class,
-        \Modules\ServiceProvider::class,
+        Modules\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class, // Xử lý ảnh,
         Barryvdh\Debugbar\ServiceProvider::class, // Debug BAR
 
