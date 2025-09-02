@@ -128,18 +128,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../module/flight/scss/flight.scss":
-/*!********************************************!*\
-  !*** ../../module/flight/scss/flight.scss ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
 
 /***/ "../../module/boat/scss/boat.scss":
 /*!****************************************!*\
@@ -340,7 +328,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			"css/app": 0,
 /******/ 			"module/support/css/support": 0,
 /******/ 			"module/boat/css/boat": 0,
-/******/ 			"module/flight/css/flight": 0,
 /******/ 			"module/social/css/social": 0,
 /******/ 			"module/event/css/event": 0,
 /******/ 			"module/location/css/location": 0,

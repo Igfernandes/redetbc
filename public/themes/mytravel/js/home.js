@@ -1200,9 +1200,6 @@ jQuery(function ($) {
     });
 
 
-
-    //Flight
-
     $('.custom-select-dropdown .btn-minus').on('click',function(e){
         e.stopPropagation();
         var parent = $(this).closest('.custom-select-dropdown-parent');
