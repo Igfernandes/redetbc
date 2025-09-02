@@ -29,7 +29,6 @@ class ThemeProvider extends AbstractThemeProvider
         'space'=>\Modules\Space\ModuleProvider::class,
         'event'=>\Modules\Event\ModuleProvider::class,
         'tour'=>\Modules\Tour\ModuleProvider::class,
-        'flight'=>\Modules\Flight\ModuleProvider::class,
         'boat'=>\Modules\Boat\ModuleProvider::class,
         'contact'=>\Modules\Contact\ModuleProvider::class,
         'dashboard'=>\Modules\Dashboard\ModuleProvider::class,

@@ -27,7 +27,7 @@
                         </div>
                         <!-- Nav Classic -->
                         <ul class="nav tab-nav-pill flex-nowrap pb-4 pb-lg-5 tab-nav justify-content-lg-center" role="tablist">
-                            @php $i = 0 ;$not_in =['flight']@endphp
+                          
                             @foreach($types as $type=>$moduleClass)
                                 @php
                                 $tb_name = $moduleClass::getTableName();

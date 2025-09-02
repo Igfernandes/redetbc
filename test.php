@@ -4,7 +4,6 @@ $modules = [
     'tour',
     'hotel',
     'event',
-    'flight'
 ];
 $folderNames = [
     'bookingHistory',

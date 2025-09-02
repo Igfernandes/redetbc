@@ -11,13 +11,9 @@ use Illuminate\Support\Facades\Schema;
 use Modules\Booking\Models\Booking;
 use Modules\Core\Models\NotificationPush;
 use Modules\Core\Models\Settings;
-use Modules\Flight\Models\BookingPassengers;
-use Modules\Flight\Models\Flight;
-use Modules\Flight\Models\FlightSeat;
 use Modules\Hotel\Models\Hotel;
 use Modules\Hotel\Models\HotelRoom;
 use Modules\Location\Models\LocationCategory;
-use Modules\Location\Models\LocationCategoryTranslation;
 use Modules\Review\Models\Review;
 use Modules\Space\Models\Space;
 use Modules\Space\Models\SpaceTranslation;
@@ -43,7 +39,7 @@ class RunUpdater
      */
     public function handle($request, Closure $next)
     {
-        if (strpos($request->path(), 'install') === false && file_exists(storage_path().'/installed') and !app()->runningInConsole()) {
+        if (strpos($request->path(), 'install') === false && file_exists(storage_path() . '/installed') and !app()->runningInConsole()) {
 
             $this->updateTo110();
             $this->updateTo120();
@@ -91,14 +87,14 @@ class RunUpdater
         Artisan::call('migrate', [
             '--force' => true,
         ]);
-        $vendor = Role::firstOrCreate(['name'=>'vendor']);
+        $vendor = Role::firstOrCreate(['name' => 'vendor']);
         $vendor->givePermission('media_upload');
         $vendor->givePermission('tour_view');
         $vendor->givePermission('tour_create');
         $vendor->givePermission('tour_update');
         $vendor->givePermission('tour_delete');
         $vendor->givePermission('dashboard_vendor_access');
-        $role = Role::firstOrCreate(['name'=>'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
         $role->givePermission('dashboard_vendor_access');
         Settings::store('update_to_110', true);
         Artisan::call('cache:clear');
@@ -113,13 +109,13 @@ class RunUpdater
             '--force' => true,
         ]);
         // Vendor
-        $vendor = Role::firstOrCreate(['name'=>'vendor']);
+        $vendor = Role::firstOrCreate(['name' => 'vendor']);
         $vendor->givePermission('space_create');
         $vendor->givePermission('space_view');
         $vendor->givePermission('space_update');
         $vendor->givePermission('space_delete');
         // Admin
-        $role = Role::firstOrCreate(['name'=>'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
         $role->givePermission('space_view');
         $role->givePermission('space_create');
         $role->givePermission('space_update');
@@ -183,7 +179,7 @@ class RunUpdater
         ]);
 
         // Admin
-        $role = Role::firstOrCreate(['name'=>'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
         $role->givePermission('vendor_payout_view');
         $role->givePermission('vendor_payout_manage');
         $role->givePermission('hotel_view');
@@ -193,7 +189,7 @@ class RunUpdater
         $role->givePermission('hotel_manage_others');
         $role->givePermission('hotel_manage_attributes');
 
-        $vendor = Role::firstOrCreate(['name'=>'vendor']);
+        $vendor = Role::firstOrCreate(['name' => 'vendor']);
         $vendor->givePermission('hotel_view');
         $vendor->givePermission('hotel_create');
         $vendor->givePermission('hotel_update');
@@ -211,13 +207,13 @@ class RunUpdater
         Artisan::call('migrate', [
             '--force' => true,
         ]);
-        $role = Role::firstOrCreate(['name'=>'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
         $role->givePermission('plugin_manage');
 
         // Vendor
-        $vendor = Role::firstOrCreate(['name'=>'vendor']);
+        $vendor = Role::firstOrCreate(['name' => 'vendor']);
         // Admin
-        $role = Role::firstOrCreate(['name'=>'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
 
         Settings::store('update_to_150', true);
         Artisan::call('cache:clear');
@@ -232,8 +228,8 @@ class RunUpdater
             '--force' => true,
         ]);
         $allServices = get_bookable_services();
-        foreach ($allServices as $k=>$service) {
-            if(in_array($k,['plan'])) continue;
+        foreach ($allServices as $k => $service) {
+            if (in_array($k, ['plan'])) continue;
             $alls = $service::query()->whereNull('review_score')->get();
             if (!empty($alls)) {
                 foreach ($alls as $item) {
@@ -438,7 +434,7 @@ class RunUpdater
         });
 
         // Admin
-        $role = Role::firstOrCreate(['name'=>'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
         $role->givePermission('enquiry_view');
         $role->givePermission('enquiry_update');
         $role->givePermission('enquiry_manage_others');
@@ -450,7 +446,7 @@ class RunUpdater
         $role->givePermission('event_manage_attributes');
 
         // Vendor
-        $role = Role::firstOrCreate(['name'=>'vendor']);
+        $role = Role::firstOrCreate(['name' => 'vendor']);
         $role->givePermission('enquiry_view');
         $role->givePermission('enquiry_update');
         $role->givePermission('event_view');
@@ -493,14 +489,14 @@ class RunUpdater
 
         Schema::table('bravo_bookings', function (Blueprint $table) {
             if (!Schema::hasColumn('bravo_bookings', 'wallet_credit_used')) {
-                $table->double('wallet_credit_used')->nullable();// Credit used
-                $table->double('wallet_total_used')->nullable();// Credit in total (after exchange credit to money)
+                $table->double('wallet_credit_used')->nullable(); // Credit used
+                $table->double('wallet_total_used')->nullable(); // Credit in total (after exchange credit to money)
             }
             if (!Schema::hasColumn('bravo_bookings', 'wallet_transaction_id')) {
-                $table->bigInteger('wallet_transaction_id')->nullable();// Credit used
+                $table->bigInteger('wallet_transaction_id')->nullable(); // Credit used
             }
             if (!Schema::hasColumn('bravo_bookings', 'is_refund_wallet')) {
-                $table->tinyInteger('is_refund_wallet')->nullable();// Credit used
+                $table->tinyInteger('is_refund_wallet')->nullable(); // Credit used
             }
         });
 
@@ -538,7 +534,6 @@ class RunUpdater
         });
 
         Settings::store('update_to_182', true);
-
     }
 
     public function updateTo190()
@@ -572,7 +567,7 @@ class RunUpdater
         });
         Schema::table('core_pages', function (Blueprint $table) {
             if (!Schema::hasColumn('core_pages', 'header_style')) {
-                $table->string('header_style',255)->nullable();
+                $table->string('header_style', 255)->nullable();
             }
             if (!Schema::hasColumn('core_pages', 'custom_logo')) {
                 $table->integer('custom_logo')->nullable();
@@ -581,10 +576,10 @@ class RunUpdater
 
         Schema::table('bravo_events', function (Blueprint $table) {
             if (!Schema::hasColumn('bravo_events', 'end_time')) {
-                $table->string('end_time',255)->nullable();
+                $table->string('end_time', 255)->nullable();
             }
             if (!Schema::hasColumn('bravo_events', 'duration_unit')) {
-                $table->string('duration_unit',255)->nullable();
+                $table->string('duration_unit', 255)->nullable();
             }
         });
 
@@ -597,8 +592,8 @@ class RunUpdater
                 $table->string('object_model', 40)->nullable();
                 $table->time('start_time')->nullable();
                 $table->time('end_time')->nullable();
-                $table->float('duration',255)->nullable();
-                $table->string('duration_unit',255)->nullable();
+                $table->float('duration', 255)->nullable();
+                $table->string('duration_unit', 255)->nullable();
 
                 $table->integer('create_user')->nullable();
                 $table->integer('update_user')->nullable();
@@ -630,7 +625,7 @@ class RunUpdater
             }
         });
 
-        setting_update_item('update_to_200',$version);
+        setting_update_item('update_to_200', $version);
         Artisan::call('cache:clear');
     }
 
@@ -644,19 +639,9 @@ class RunUpdater
         ]);
 
         // Vendor
-        $vendor = Role::firstOrCreate(['name'=>'vendor']);
-        $vendor->givePermission('flight_create');
-        $vendor->givePermission('flight_view');
-        $vendor->givePermission('flight_update');
-        $vendor->givePermission('flight_delete');
+        $vendor = Role::firstOrCreate(['name' => 'vendor']);
         // Admin
-        $role = Role::firstOrCreate(['name'=>'administrator']);
-        $role->givePermission('flight_view');
-        $role->givePermission('flight_create');
-        $role->givePermission('flight_update');
-        $role->givePermission('flight_delete');
-        $role->givePermission('flight_manage_others');
-        $role->givePermission('flight_manage_attributes');
+        $role = Role::firstOrCreate(['name' => 'administrator']);
 
         if (Schema::hasTable("user_wallets")) {
             Schema::table('user_wallets', function (Blueprint $table) {
@@ -666,7 +651,7 @@ class RunUpdater
             });
         }
 
-        setting_update_item('update_to_210',$version);
+        setting_update_item('update_to_210', $version);
         Artisan::call('cache:clear');
     }
 
@@ -693,36 +678,38 @@ class RunUpdater
         foreach ($allServices as $service) {
             $alls = $service::query()->orderBy('id', 'desc')->get();
             if (!empty($alls)) {
-                foreach ($alls as $item) {  $item->save();$item->update_service_rate();
+                foreach ($alls as $item) {
+                    $item->save();
+                    $item->update_service_rate();
                 }
             }
         }
 
-        setting_update_item("search_open_tab",'current_tab');
-        setting_update_item("map_clustering",'on');
-        setting_update_item("map_fit_bounds",'on');
+        setting_update_item("search_open_tab", 'current_tab');
+        setting_update_item("map_clustering", 'on');
+        setting_update_item("map_fit_bounds", 'on');
 
-        Schema::table('media_files',function (Blueprint $table){
-            if(!Schema::hasColumn('media_files','file_edit')){
+        Schema::table('media_files', function (Blueprint $table) {
+            if (!Schema::hasColumn('media_files', 'file_edit')) {
                 $table->tinyInteger('file_edit')->default(0)->nullable();
             }
         });
 
-        $role = Role::firstOrCreate(['name'=>'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
         $role->givePermission(PermissionHelper::all());
 
 
         Schema::table('bravo_bookings', function (Blueprint $table) {
             if (!Schema::hasColumn('bravo_bookings', 'total_before_discount')) {
-                $table->decimal('total_before_discount',10,2)->nullable()->default(0);
+                $table->decimal('total_before_discount', 10, 2)->nullable()->default(0);
             }
             if (!Schema::hasColumn('bravo_bookings', 'coupon_amount')) {
-                $table->decimal('coupon_amount',10,2)->nullable()->default(0);
+                $table->decimal('coupon_amount', 10, 2)->nullable()->default(0);
             }
         });
 
 
-        setting_update_item('update_to_220',$version);
+        setting_update_item('update_to_220', $version);
         Artisan::call('cache:clear');
     }
     public function updateTo230()
@@ -734,10 +721,10 @@ class RunUpdater
             '--force' => true,
         ]);
 
-        $role = Role::firstOrCreate(['name'=>'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
         $role->givePermission(PermissionHelper::all());
 
-        setting_update_item('update_to_230',$version);
+        setting_update_item('update_to_230', $version);
         Artisan::call('cache:clear');
     }
     public function updateTo240()
@@ -749,11 +736,11 @@ class RunUpdater
             '--force' => true,
         ]);
 
-        $role = Role::firstOrCreate(['name'=>'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
         $role->givePermission(PermissionHelper::all());
 
         // Vendor
-        $vendor = Role::firstOrCreate(['name'=>'vendor']);
+        $vendor = Role::firstOrCreate(['name' => 'vendor']);
         $vendor->givePermission('boat_create');
         $vendor->givePermission('boat_view');
         $vendor->givePermission('boat_update');
@@ -783,13 +770,13 @@ class RunUpdater
                 $table->text('exclude')->nullable();
             }
         });
-        Schema::table(NotificationPush::getTableName(),function (Blueprint $table){
-            if(!Schema::hasColumn(NotificationPush::getTableName(),'for_admin')){
+        Schema::table(NotificationPush::getTableName(), function (Blueprint $table) {
+            if (!Schema::hasColumn(NotificationPush::getTableName(), 'for_admin')) {
                 $table->boolean('for_admin')->default(0)->nullable();
             }
         });
 
-        setting_update_item('update_to_240',$version);
+        setting_update_item('update_to_240', $version);
 
         Artisan::call('cache:clear');
     }
@@ -843,37 +830,17 @@ class RunUpdater
             LocationCategory::insert($argv);
         }
     }
-    protected function removeForeignKey(){
+    protected function removeForeignKey()
+    {
         try {
-            $flightForeignKey = $this->getForeignKeyByTable(Flight::getTableName());
-            Schema::table(Flight::getTableName(),function(Blueprint $blueprint)use ($flightForeignKey){
-                foreach ($flightForeignKey as $key){
-                    $blueprint->dropForeign($key);
-
-                }
-            });
-            $flightSeatForeignKey = $this->getForeignKeyByTable(FlightSeat::getTableName());
-            Schema::table(FlightSeat::getTableName(),function(Blueprint $blueprint) use ($flightSeatForeignKey){
-                foreach ($flightSeatForeignKey as $key){
-                    $blueprint->dropForeign($key);
-
-                }
-            });
-            $bookingPassengersForeignKey = $this->getForeignKeyByTable(FlightSeat::getTableName());
-            Schema::table(BookingPassengers::getTableName(),function(Blueprint $blueprint) use ($bookingPassengersForeignKey){
-                foreach ($bookingPassengersForeignKey as $key){
-                    $blueprint->dropForeign($key);
-
-                }
-            });
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
         }
-
     }
 
-    protected function getForeignKeyByTable($tableName){
+    protected function getForeignKeyByTable($tableName)
+    {
         $conn = Schema::getConnection()->getDoctrineSchemaManager();
-        return array_map(function($key) {
+        return array_map(function ($key) {
             return $key->getName();
         }, $conn->listTableForeignKeys($tableName));
     }
