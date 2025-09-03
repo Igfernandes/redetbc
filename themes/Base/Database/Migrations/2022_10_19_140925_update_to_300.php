@@ -20,8 +20,6 @@ return new class extends Migration
             'bravo_events',
             'bravo_spaces',
             'bravo_boats',
-            'bravo_airport',
-            'bravo_seat_type',
         ];
         foreach ($tableAddAuthorId as $tbName){
             Schema::table($tbName,function(Blueprint $blueprint) use ($tbName){
