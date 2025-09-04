@@ -109,6 +109,7 @@
         public function addMeta($key, $val, $multiple = false)
         {
             if(is_array($val) or is_object($val)) $val = json_encode($val);
+           
             if ($multiple) {
                 return DB::table('user_meta')->insert([
                     'name'    => $key,
