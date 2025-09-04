@@ -708,11 +708,6 @@ class General extends Seeder
                 'group' => "vendor",
             ],
             [
-                'name'  => "role_verify_fields",
-                'val'   => '{"phone":{"name":"Phone","type":"text","roles":["1","2","3"],"required":null,"order":null,"icon":"fa fa-phone"},"id_card":{"name":"ID Card","type":"file","roles":["1","2","3"],"required":"1","order":"0","icon":"fa fa-id-card"},"trade_license":{"name":"Trade License","type":"multi_files","roles":["1","3"],"required":"1","order":"0","icon":"fa fa-copyright"}}',
-                'group' => "vendor",
-            ],
-            [
                 'name'  => "vendor_show_email",
                 'val'   => "1",
                 'group' => "vendor",
