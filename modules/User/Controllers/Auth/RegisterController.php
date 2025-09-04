@@ -101,7 +101,7 @@
                 return response()->json([
                     'error'    => false,
                     'messages' => false,
-                    'redirect' => $request->input('redirect') ?? $request->headers->get('referer') ?? url(app_get_locale(false, '/'))
+                    'redirect' => $request->input('redirect') ?? $request->headers->get('referer') ?? url(app_get_locale(false, '/user/validation/update'))
                 ], 200);
             }
         }
