@@ -179,7 +179,7 @@
 
                     <ul>
 
-                        @if(!Auth::id())
+                        @if(!Auth::id() || Auth::user() === null )
 
                             <li>
 

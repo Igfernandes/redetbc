@@ -137,9 +137,8 @@ foreach ($menus as $k => $menuItem) {
         continue;
     }
 
-
-    if (!isset($menuItem['is_verified']) || $userAuthData->is_verified !== $menuItem['is_verified']) {
-        if (strstr($menuItem['url'], 'verification') === false) {
+    if ($userAuthData->is_verified === 0 && strstr($menuItem['url'], 'verification') === false) {
+        if (!isset($menuItem['is_verified']) || $menuItem['is_verified'] !== 0) {
             unset($menus[$k]);
             continue;
         }
