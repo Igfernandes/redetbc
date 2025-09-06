@@ -16,6 +16,8 @@ $('.bravo-form-register-vendor [type=submit]').click(function (e) {
             'last_name': form.find('input[name=last_name]').val(),
             'business_name': form.find('input[name=business_name]').val(),
             'phone': form.find('input[name=phone]').val(),
+            'religion': form.find('select[name="religion"]').val(),
+            'sex': form.find('select[name="sex"]').val(),
             'term': form.find('input[name=term]').is(":checked") ? 1 : '',
             'g-recaptcha-response': form.find('[name=g-recaptcha-response]').val(),
         },
