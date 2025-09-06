@@ -1,7 +1,6 @@
 <?php
 use Modules\Core\Models\Settings;
 use App\Currency;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 
 //include '../../custom/Helpers/CustomHelper.php';

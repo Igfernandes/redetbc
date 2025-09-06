@@ -44,7 +44,8 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\HideDebugbar::class,
             SetCurrentCurrency::class,
             SetLanguageForAdmin::class,
-            RequireChangePassword::class
+            RequireChangePassword::class,
+            \App\Http\Middleware\CheckVerification::class,
         ],
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,

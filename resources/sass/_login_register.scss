@@ -1,10 +1,15 @@
-.bravo-login-page{
+.bravo-login-page {
     padding: 100px 0px;
 }
 
 .modal .modal-content {
     border-radius: 5px;
     padding: 20px 30px 30px;
+    max-height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-scrollbar: none;
     .modal-header {
         padding: 0 0 10px;
         border: none;
@@ -27,10 +32,10 @@
                 height: 45px;
                 -webkit-box-shadow: none;
                 box-shadow: none;
-                border: 1px solid #DAE1E7;
+                border: 1px solid #dae1e7;
                 border-radius: 3px;
                 font-size: 14px;
-                color: #5E6D77;
+                color: #5e6d77;
             }
             .input-icon {
                 position: absolute;
@@ -43,7 +48,8 @@
                 line-height: 0px;
             }
         }
-        label, .st-link {
+        label,
+        .st-link {
             font-size: 14px;
             font-weight: 400;
         }
@@ -58,8 +64,8 @@
         .form-submit {
             height: 45px;
             width: 100%;
-            background: #5191FA;
-            color: #FFF;
+            background: #5191fa;
+            color: #fff;
             text-transform: uppercase;
             font-size: 14px;
             border: none;
@@ -80,25 +86,25 @@
     }
 }
 
-.bravo-login-form{
-    .form-title{
+.bravo-login-form {
+    .form-title {
         font-size: 24px;
         font-weight: 500;
         margin-bottom: 30px;
     }
-    .form-control{
+    .form-control {
         height: 45px;
         -webkit-box-shadow: none;
         box-shadow: none;
-        border: 1px solid #DAE1E7;
+        border: 1px solid #dae1e7;
         border-radius: 3px;
         font-size: 14px;
-        color: #5E6D77;
+        color: #5e6d77;
     }
-    .form-group{
+    .form-group {
         position: relative;
         margin-bottom: 20px;
-        .form-icon{
+        .form-icon {
             position: absolute;
             top: 50%;
             right: 15px;
@@ -110,31 +116,28 @@
         }
     }
 }
-.btn_login_fb_link{
+.btn_login_fb_link {
     background: #395899;
-    color:white;
+    color: white;
 }
 
-.btn_login_tw_link{
+.btn_login_tw_link {
     background: #03a9f4;
-    color:white;
+    color: white;
 }
-.btn_login_gg_link{
+.btn_login_gg_link {
     background: #f34a38;
-    color:white;
+    color: white;
 }
 .btn_login_fb_link,
 .btn_login_tw_link,
-.btn_login_gg_link
-{
+.btn_login_gg_link {
     border-radius: 2px;
     font-size: 12px;
     display: block;
-    &:hover{
-        color:white;
-        outline:none;
+    &:hover {
+        color: white;
+        outline: none;
         box-shadow: none;
     }
 }
-
-

@@ -1,6 +1,9 @@
 <?php
+
 namespace Themes\Mytravel\Database\Seeders;
+
 use Database\Seeders\BoatSeeder;
+use Database\Seeders\CoreSettingsSeeder;
 use Database\Seeders\EventSeeder;
 use Database\Seeders\HotelSeeder;
 use Database\Seeders\Language;
@@ -15,22 +18,25 @@ use Database\Seeders\UsersTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
-    public function run(){
+    public function run()
+    {
 
         Artisan::call('cache:clear');
-        $this->call(RolesAndPermissionsSeeder::class);
-        $this->call(Language::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(MediaFileSeeder::class);
-        $this->call(General::class);
-        $this->call(LocationSeeder::class);
-        $this->call(News::class);
-        $this->call(Tour::class);
-        $this->call(SpaceSeeder::class);
-        $this->call(HotelSeeder::class);
-        $this->call(EventSeeder::class);
-        $this->call(SocialSeeder::class);
-        $this->call(BoatSeeder::class);
-        $this->call(Hotel::class);
+
+        $this->call(CoreSettingsSeeder::class);
+        // $this->call(RolesAndPermissionsSeeder::class);
+        // $this->call(Language::class);
+        // $this->call(UsersTableSeeder::class);
+        // $this->call(MediaFileSeeder::class);
+        // $this->call(General::class);
+        // $this->call(LocationSeeder::class);
+        // $this->call(News::class);
+        // $this->call(Tour::class);
+        // $this->call(SpaceSeeder::class);
+        // $this->call(HotelSeeder::class);
+        // $this->call(EventSeeder::class);
+        // $this->call(SocialSeeder::class);
+        // $this->call(BoatSeeder::class);
+        // $this->call(Hotel::class);
     }
 }

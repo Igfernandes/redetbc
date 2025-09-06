@@ -12,7 +12,7 @@
             <div class="private-file-lists mb-2">
                 @php ($old = json_decode($field['data'],true))
                 @if(!empty($old))
-                <input type="hidden" name="verify_data_{{$field['id']}}" value="{{($field['data'])}}">
+                <input type="hidden" accept=".png,.jpg,.jpge" name="verify_data_{{$field['id']}}" value="{{($field['data'])}}">
                 <a target="_blank" href="{{route('media.private.view',['path'=>$old['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("View document")}} &nbsp;&nbsp;<i class="fa fa-download"></i></a>
 
                 @endif

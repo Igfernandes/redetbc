@@ -1,7 +1,7 @@
 <?php
+
 namespace Modules\User\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +14,7 @@ class VerificationController extends FrontendController
 {
     public function index()
     {
-        if( setting_item('user_disable_verification_feature')){
+        if (setting_item('user_disable_verification_feature')) {
             return redirect(route("user.profile.index"));
         }
         $user = Auth::user();
@@ -28,6 +28,7 @@ class VerificationController extends FrontendController
                 ],
             ],
         ];
+        
         return view('User::frontend.verification.index', $data);
     }
 
@@ -48,6 +49,7 @@ class VerificationController extends FrontendController
                 ],
             ],
         ];
+
         return view('User::frontend.verification.update', $data);
     }
 
@@ -62,6 +64,7 @@ class VerificationController extends FrontendController
         $rules = [];
         $messages = [];
         $input = \request()->input();
+
         foreach ($fields as $field) {
             if (!empty($field['required'])) {
                 $rules[$field['field_id']][] = 'required';
@@ -86,10 +89,11 @@ class VerificationController extends FrontendController
                     break;
             }
         }
+        
         if (!empty($rules)) {
             \Validator::make($input, $rules, $messages)->validate();
         }
-        $checkAll = false;
+
         foreach ($fields as $field) {
             $check = false;
             $old = $user->getVerifyData($field['id']);
@@ -113,6 +117,8 @@ class VerificationController extends FrontendController
             if ($check)
                 $checkAll = true;
         }
+
+
         if ($checkAll) {
             $user->verify_submit_status = 'new';
             $user->is_verified = 0;

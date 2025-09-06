@@ -21,8 +21,8 @@ use Themes\Mytravel\Tour\Blocks\Testimonial;
 class ThemeProvider extends \Themes\Base\ThemeProvider
 {
 
-    public static $version = '2.4.0';
-    public static $asset_version = '2.4.0';
+    public static $version = '2.5.0';
+    public static $asset_version = '2.5.0';
     public static $name = 'My Travel';
     public static $parent = 'base';
 
