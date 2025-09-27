@@ -6,6 +6,7 @@ namespace Modules\User\Controllers;
 
 use App\Helpers\ReCaptchaEngine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Modules\FrontendController;
 use Modules\User\Events\CreatePlanRequest;
@@ -25,8 +26,15 @@ class PlanController extends FrontendController
         if (!auth()->check()) {
             return redirect(route('login'));
         }
-        $plans = Plan::query()->where('role_id',auth()->user()->role_id)->whereStatus('publish')->get();
-        $data = ['page_title' => __('Pricing Packages'), 'plans' => $plans, 'user' => auth()->user(),];
+        $plans = Plan::query()->where('role_id', auth()->user()->role_id)->whereStatus('publish')->get();
+
+        $plansAnnual = \array_filter($plans->toArray(), fn($plan) => !empty($plan->annual_price) && $plan->annual_price != 0);
+        $data = [
+            'page_title' => __('Pricing Packages'),
+            'plans' => $plans,
+            'has_annual' => \count($plansAnnual) > 0,
+            'user' => auth()->user(),
+        ];
         return view("User::frontend.plan.index", $data);
     }
 
@@ -57,25 +65,62 @@ class PlanController extends FrontendController
         if (!is_enable_plan()) {
             return redirect('/');
         }
+
         $plan = Plan::find($id);
         if (!$plan) return;
+
 
         $user = auth()->user();
 
         $plan_page = route('plan');
-        $gateways = get_available_gateways();
 
         if ($user->role_id != $plan->role_id) {
             return redirect()->to($plan_page)->with("warning", __("This plan is not suitable for your role."));
         }
 
+        $dateMoreOneMonth = date("Y-m-d H:i:s", strtotime("+1 month"));
+        $host = env('APP_URL');
+
+        $payload = [
+            "billingTypes" => [
+                "CREDIT_CARD"
+            ],
+            "chargeTypes" => [
+                "RECURRENT"
+            ],
+            "minutesToExpire" => 120,
+            "callback" => [
+                "cancelUrl" =>  "$host/plan",
+                "expiredUrl" => "$host/plan",
+                "successUrl" => "$host/user/verification"
+            ],
+            "items" => [
+                [
+                    "name" => "Plano" . $plan->title,
+                    "quantity" => 1,
+                    "value" => $plan->price
+                ]
+            ],
+            "subscription" => [
+                "cycle" => "MONTHLY",
+                "nextDueDate" => $dateMoreOneMonth
+            ]
+        ];
+
+        if (!empty($user->gateway_customer_id)) {
+            $payload['costumer'] = $user->gateway_customer_id;
+        }
+
+        $response = Http::withHeaders([
+            'access_token' => env('GATEWAY_ACCESS_TOKEN'), // se precisar de token
+        ])->post(env('GATEWAY_API_URL') . "/checkouts", $payload);
 
         if ($request->query('annual') and !$plan->annual_price) {
             return redirect()->to($plan_page)->with("warning", __("This plan doesn't have annual pricing"));
         }
+        $data = $response->json();
 
-        return view('User::frontend.plan.checkout', ['plan' => $plan, 'user' => $user, 'gateways' => $gateways]);
-
+        return \redirect()->to($data["link"] ?? $plan_page)->with("warning", __("We are experiencing technical issues to proceed with the payment. Please try again later."));
     }
 
     public function buyProcess(Request $request, $id)
@@ -155,8 +200,7 @@ class PlanController extends FrontendController
             event(new UpdatePlanRequest($user));
 
             return redirect()->route('user.plan')->with('success', __("Purchased user package successfully"));
-        }
-        else {
+        } else {
             $is_annual = !empty($request->input('annual')) ? true : false;
 
             $payment = new PlanPayment();
@@ -172,7 +216,7 @@ class PlanController extends FrontendController
             $payment->addMeta('user_request', $user->id);
             $payment->addMeta('annual', $is_annual);
 
-            $user->applyPlan($plan,$payment->amount,$is_annual,false);
+            $user->applyPlan($plan, $payment->amount, $is_annual, false);
 
             $res = $gatewayObj->processNormal($payment);
 
@@ -192,18 +236,14 @@ class PlanController extends FrontendController
                     return redirect()->to($redirect_url)->with('success', $message);
                 }
                 return redirect()->route('user.plan.thank-you')->with("success", $message);
-
-            }
-            else {
+            } else {
                 return redirect()->back()->with("error", $message);
             }
         }
-
     }
 
     public function thankYou(Request $request)
     {
         return view('User::frontend.plan.thankyou');
     }
-
 }

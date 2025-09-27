@@ -2,19 +2,9 @@
 
 namespace Themes\Mytravel\Database\Seeders;
 
-use Database\Seeders\BoatSeeder;
 use Database\Seeders\CoreSettingsSeeder;
-use Database\Seeders\EventSeeder;
-use Database\Seeders\HotelSeeder;
-use Database\Seeders\Language;
-use Database\Seeders\LocationSeeder;
-use Database\Seeders\News;
-use Database\Seeders\RolesAndPermissionsSeeder;
-use Database\Seeders\SocialSeeder;
-use Database\Seeders\SpaceSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
-use Database\Seeders\UsersTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {

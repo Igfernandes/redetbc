@@ -10,8 +10,8 @@ class UpdateUserTable extends Migration
 	{
 		Schema::table('users', function (Blueprint $table) {
 			//
-            if (!Schema::hasColumn('users', 'stripe_customer_id')) {
-                $table->string('stripe_customer_id')->nullable();
+            if (!Schema::hasColumn('users', 'gateway_customer_id')) {
+                $table->string('gateway_customer_id')->nullable();
             }
             if (!Schema::hasColumn('users', 'vendor_commission_amount')) {
                 $table->integer('vendor_commission_amount')->nullable();
@@ -29,7 +29,7 @@ class UpdateUserTable extends Migration
 	{
 		Schema::table('users', function (Blueprint $table) {
 			//
-            $table->dropColumn('stripe_customer_id');
+            $table->dropColumn('gateway_customer_id');
             $table->dropColumn('total_before_fees');
             $table->dropColumn('vendor_commission_type');
             $table->dropColumn('vendor_commission_amount');

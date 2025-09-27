@@ -102,10 +102,10 @@ class StripeCheckoutGateway extends BaseGateway
         $payment->status = 'draft';
         $payment->amount = (float) $booking->pay_now;
 
-        $stripe_customer_id =  $this->tryCreateUser($booking);
+        $gateway_customer_id =  $this->tryCreateUser($booking);
         $session_data = [
             'mode' => 'payment',
-            'customer' => $stripe_customer_id,
+            'customer' => $gateway_customer_id,
             'success_url' => $this->getReturnUrl() . '?c=' . $booking->code.'&session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => $this->getCancelUrl() . '?c=' . $booking->code,
             'line_items'=>[
@@ -151,8 +151,8 @@ class StripeCheckoutGateway extends BaseGateway
     public function tryCreateUser(Booking $booking){
 
         $user = auth()->user();
-        if($user and $user->stripe_customer_id){
-            return $user->stripe_customer_id;
+        if($user and $user->gateway_customer_id){
+            return $user->gateway_customer_id;
         }
 
         try {
@@ -168,7 +168,7 @@ class StripeCheckoutGateway extends BaseGateway
 
         if(!empty($customer->id)){
             if($user) {
-                $user->stripe_customer_id = $customer->id;
+                $user->gateway_customer_id = $customer->id;
                 $user->save();
             }
             return $customer->id;

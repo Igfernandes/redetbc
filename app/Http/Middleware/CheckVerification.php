@@ -12,7 +12,7 @@ class CheckVerification
     {
         $user = Auth::user();
 
-        $isRouteException = $request->is('api/*') ||  \array_search($request->path(), ["/", "login"]) !== false;
+        $isRouteException = $request->is('api/*') ||  \array_search($request->path(), ["/", "login", "register"]) !== false;
 
         if (is_admin() ||  $isRouteException)
             return $next($request);
@@ -28,7 +28,10 @@ class CheckVerification
             'logout',          // logout
             'login',           // login
             'register',        // registro
-            'plan',           // tela de planos
+            'plan',           // tela de planos,
+            'user/plan/*',
+            'user/profile',
+            'user/verification',
             'news',
             'page/eventos',
             'page/noticias',

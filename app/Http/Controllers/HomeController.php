@@ -11,6 +11,7 @@ use Modules\News\Models\Tag;
 use Modules\News\Models\News;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Modules\User\Models\Role;
 
 class HomeController extends Controller
 {
@@ -30,8 +31,11 @@ class HomeController extends Controller
     {
         $home_page_id = setting_item('home_page_id');
 
-  
-
+        $roles = [];
+        foreach (Role::all(['id', 'name'])->toArray() as $role) {
+            $roles[strtolower($role['name'])] = $role['id'];
+        }
+        
         if ($home_page_id && $page = Page::where("id", $home_page_id)->where("status", "publish")->first()) {
             $this->setActiveMenu($page);
             $translation = $page->translate();
@@ -43,6 +47,7 @@ class HomeController extends Controller
                 "seo_meta" => $seo_meta,
                 'translation' => $translation,
                 'is_home' => true,
+                'roles' => $roles
             ];
             return view('Page::frontend.detail', $data);
         }
@@ -55,8 +60,10 @@ class HomeController extends Controller
             'breadcrumbs' => [
                 ['name' => __('News'), 'url' => url("/news"), 'class' => 'active'],
             ],
-            "seo_meta" => News::getSeoMetaForPageList()
+            "seo_meta" => News::getSeoMetaForPageList(),
+            'roles' => $roles
         ];
+
         return view('News::frontend.index', $data);
     }
 

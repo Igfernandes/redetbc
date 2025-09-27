@@ -287,8 +287,7 @@ setting_item('tour_location_search_style')=='autocompletePlace' || setting_item(
 </div>
 
 <script>
-    var save_cookie_url = '{{route('
-    core.cookie.check ')}}';
+    var save_cookie_url = "{{route('core.cookie.check')}}";
 </script>
 
 <script src="{{ asset('js/cookie.js?_ver='.config('app.asset_version')) }}"></script>
@@ -310,6 +309,7 @@ setting_item('tour_location_search_style')=='autocompletePlace' || setting_item(
 @endif
 
 {!! \App\Helpers\Assets::js(true) !!}
+@if(Auth()->user() === null)
 <script>
 $(document).ready(function() {
     // Pega os parâmetros da query string
@@ -322,6 +322,7 @@ $(document).ready(function() {
     }
 });
 </script>
+@endif
 @stack('js')
 
 

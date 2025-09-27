@@ -64,6 +64,7 @@
             'avatar_id',
             'bio',
             'business_name',
+            'gateway_customer_id',
             'status',
         ];
 

@@ -11,7 +11,7 @@
         @endif"
 
     data-header-fix-moment="500" data-header-fix-effect="slide">
-    @if(Auth::user() == null || Auth::user()->is_verified === 0)
+    @if(Auth::user() == null || !Auth::user()->plan)
     <div class="subscribe-plan">
         <div class="content">
             <p>

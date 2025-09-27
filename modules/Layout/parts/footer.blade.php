@@ -127,7 +127,7 @@
 		<button class="btn save-cookie">{!! clean(setting_item_with_lang('cookie_agreement_button_text')) !!}</button>
 	</div>
 	<script>
-        var save_cookie_url = '{{route('core.cookie.check')}}';
+        var save_cookie_url = "{{route('core.cookie.check')}}";
 	</script>
 	<script src="{{ asset('js/cookie.js?_ver='.config('app.asset_version')) }}"></script>
 @endif
