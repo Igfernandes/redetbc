@@ -21,6 +21,7 @@ class VerificationController extends FrontendController
         $data = [
             'fields'         => $user->verification_fields,
             'only_show_data' => 1,
+            'hasPlan' =>  !empty($user->user_plan),
             'breadcrumbs'    => [
                 [
                     'name'  => __('Verification'),
@@ -28,7 +29,7 @@ class VerificationController extends FrontendController
                 ],
             ],
         ];
-        
+
         return view('User::frontend.verification.index', $data);
     }
 
@@ -89,11 +90,11 @@ class VerificationController extends FrontendController
                     break;
             }
         }
-        
+
         if (!empty($rules)) {
             \Validator::make($input, $rules, $messages)->validate();
         }
-
+        $checkAll = false;
         foreach ($fields as $field) {
             $check = false;
             $old = $user->getVerifyData($field['id']);

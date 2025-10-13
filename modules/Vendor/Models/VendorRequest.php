@@ -16,6 +16,7 @@ class VendorRequest extends BaseModel
         'role_request',
         'status',
         'approved_time',
+        'type',
         'approved_by'
     ];
 

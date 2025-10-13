@@ -16,6 +16,7 @@ class RolesAndPermissionsSeeder extends Seeder
     public function run()
     {
         $admin = Role::firstOrCreate([
+            'id' => 1,
             'code' => 'administrator',
             'name' => 'administrator'
         ]);
@@ -26,7 +27,12 @@ class RolesAndPermissionsSeeder extends Seeder
         $this->initVendor();
 
         // this can be done as separate statements
-        Role::firstOrCreate(['name' => 'customer', 'code' => 'customer']);
+        Role::firstOrCreate(['id' => 2,'name' => 'customer', 'code' => 'customer']);
+
+        // this can be done as separate statements
+        Role::firstOrCreate(['id' => 3, 'name' => 'Anfitrião', 'code' => 'presenter']);
+        Role::firstOrCreate(['id' => 4, 'name' => 'Hotel', 'code' => 'hotel']);
+        Role::firstOrCreate(['id' => 5, 'name' => 'Visitante', 'code' => 'visa']);
     }
 
     public function initVendor()

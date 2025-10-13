@@ -1,57 +1,73 @@
 <form class="form bravo-form-register" method="post" action="{{route('auth.register.store')}}">
     @csrf
-    <div class="row">
-        <div class="col-lg-6 col-md-12">
-            <div class="form-group">
-                <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="{{__("First Name")}}">
-                <i class="input-icon field-icon icofont-waiter-alt"></i>
-                <span class="invalid-feedback error error-first_name"></span>
+    <div class="">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="{{__("First Name")}}">
+                    <i class="input-icon field-icon icofont-waiter-alt"></i>
+                    <span class="invalid-feedback error error-first_name"></span>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="{{__("Last Name")}}">
+                    <i class="input-icon field-icon icofont-waiter-alt"></i>
+                    <span class="invalid-feedback error error-last_name"></span>
+                </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-12">
-            <div class="form-group">
-                <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="{{__("Last Name")}}">
-                <i class="input-icon field-icon icofont-waiter-alt"></i>
-                <span class="invalid-feedback error error-last_name"></span>
-            </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__('Phone')}}">
+            <i class="input-icon field-icon icofont-ui-touch-phone"></i>
+            <span class="invalid-feedback error error-phone"></span>
         </div>
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__('Phone')}}">
-        <i class="input-icon field-icon icofont-ui-touch-phone"></i>
-        <span class="invalid-feedback error error-phone"></span>
-    </div>
-    <div class="form-group">
-        <label>{{__('Religion')}}</label>
-        <br>
-        <select name="religion" class="custom-select">
-            <option value="">{{__('-- Please select --')}}</option>
-            <option value="CATHOLIC">{{__("Catholic")}}</option>
-            <option value="EVANGELICAL">{{__("Evangelical")}}</option>
-            <option value="EVANGELICAL">{{__("Both")}}</option>
-        </select>
-        <span class="invalid-feedback error error-religion"></span>
-    </div>
-    <div class="form-group">
-        <label>{{__('Sex')}}</label>
-        <br>
-        <select name="sex" class="custom-select">
-            <option value="">{{__('-- Please select --')}}</option>
-            <option value="MASCULINE">{{__("Masculine")}}</option>
-            <option value="FEMININE">{{__("Feminine")}}</option>
-        </select>
-        <span class="invalid-feedback error error-religion"></span>
-    </div>
+        <div class="box-icons roles">
+            <div>
+                <span>{{_('Select your profile')}}*</span>
+                <span class="invalid-feedback error error-role"></span>
+            </div>
+            <ul>
+                @if(isset($roles['traveler']))
+                <li>
+                    <input type="radio" name="role" value="{{$roles['traveler']}}">
+                    <div class="text">
+                        <i class="icofont-travelling"></i>
+                        <span>{{_('Traveler')}}</span>
+                    </div>
+                </li>
+                @endif
+                @if(isset($roles['presenter']))
+                <li>
+                    <input type="radio" name="role" value="{{$roles['presenter']}}">
+                    <div class="text">
+                        <i class="icofont-hotel-boy-alt"></i>
+                        <span>{{_('Anfitrião')}}</span>
+                    </div>
+                </li>
+                @endif
+                @if(isset($roles['hotel']))
+                <li>
+                    <input type="radio" name="role" value="{{$roles['hotel']}}">
+                    <div class="text">
+                        <i class="icofont-building-alt"></i>
+                        <span>{{_('Hotel')}}</span>
+                    </div>
+                </li>
+                @endif
+            </ul>
+        </div>
 
-    <div class="form-group mt-2">
-        <input type="email" class="form-control" name="email" autocomplete="off" placeholder="{{__('Email address')}}">
-        <i class="input-icon field-icon icofont-mail"></i>
-        <span class="invalid-feedback error error-email"></span>
-    </div>
-    <div class="form-group">
-        <input type="password" class="form-control" name="password" autocomplete="off" placeholder="{{__('Password')}}">
-        <i class="input-icon field-icon icofont-ui-password"></i>
-        <span class="invalid-feedback error error-password"></span>
+        <div class="form-group mt-2">
+            <input type="email" class="form-control" name="email" autocomplete="off" placeholder="{{__('Email address')}}">
+            <i class="input-icon field-icon icofont-mail"></i>
+            <span class="invalid-feedback error error-email"></span>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" autocomplete="off" placeholder="{{__('Password')}}">
+            <i class="input-icon field-icon icofont-ui-password"></i>
+            <span class="invalid-feedback error error-password"></span>
+        </div>
     </div>
     <div class="form-group">
         <label for="term">
@@ -74,7 +90,7 @@
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
         </button>
     </div>
-   
+
     <div class="c-grey f14 text-center">
         {{__(" Already have an account?")}}
         <a href="#" data-target="#login" data-toggle="modal">{{__("Log In")}}</a>

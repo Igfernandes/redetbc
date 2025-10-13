@@ -3383,6 +3383,7 @@ INSERT INTO `core_settings` (`id`, `name`, `group`, `val`, `autoload`, `create_u
 (418, 'event_map_lng_default', NULL, '', NULL, 1, NULL, NULL, '2025-04-15 10:31:54', '2025-04-15 10:31:54'),
 (419, 'event_map_zoom_default', NULL, '', NULL, 1, NULL, NULL, '2025-04-15 10:31:54', '2025-04-15 10:31:54'),
 (420, 'event_location_search_value', NULL, '', NULL, 1, NULL, NULL, '2025-04-15 10:31:54', '2025-04-15 10:31:54');
+ (421, 'role_verify_fields', 'vendor', '{"documents":{"name":"Photos of documents","type":"multi_files","roles":["2","3"],"required":"1","order":"0","icon":"fa fa-copyright"},"id_card_front":{"name":"Photo holding front document","type":"upload-image","roles":["2","3"],"required":"1","order":"0","icon":"fa fa-id-card"},"id_card_back":{"name":"Photo holding back document","type":"upload-image","roles":["2","3"],"required":"1","order":"0","icon":"fa fa-id-card"},"sex":{"name":"Photo holding document","type":"text","roles":["2","3"],"required":"1","order":"0","icon":"fa fa-id-card"},"religion":{"name":"Photo holding document","type":"text","roles":["2","3","4","5"],"required":"1","order":"0","icon":"fa fa-id-card"}}', NULL, 1, NULL, NULL, '2025-04-15 10:31:54', '2025-04-15 10:31:54')
 --
 -- Dumping data for table `core_subscribers`
 --

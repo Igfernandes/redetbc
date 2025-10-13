@@ -103,10 +103,15 @@ class VerificationController extends AdminController
 
         $verifiedFields = $request->input('fields') ?? [];
         $full = true;
+        $userAttributes = \array_keys($row->getAttributes());
 
-        foreach ($fields as $field) {
+        foreach ($fields as $name => $field) {
             if (in_array($field['id'], $verifiedFields)) {
                 $row->addMeta('is_verified_' . $field['id'], 1);
+
+                if (!empty($field['data']) && \array_search($name, $userAttributes)) {
+                    $row->$name = $field['data'];
+                }
             } else {
                 $row->addMeta('is_verified_' . $field['id'], 0);
                 $full = false;

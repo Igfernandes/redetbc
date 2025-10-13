@@ -744,8 +744,8 @@ class RunUpdater
         $vendor->givePermission('boat_delete');
 
         Schema::table('users', function (Blueprint $table) {
-            if (!Schema::hasColumn('users', 'stripe_customer_id')) {
-                $table->string('stripe_customer_id')->nullable();
+            if (!Schema::hasColumn('users', 'gateway_customer_id')) {
+                $table->string('gateway_customer_id')->nullable();
             }
         });
 

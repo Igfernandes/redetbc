@@ -17,27 +17,26 @@ Pricing Section
     display: block;
 }
 
-.tabs-box .tab-btn{
+.tabs-box .tab-btn {
     cursor: pointer;
 }
 
-
-.pricing-section{
+.pricing-section {
     position: relative;
-    padding: 100px 0 70px;
+    padding: 31px 0 27px;
 }
 
-.pricing-tabs{
+.pricing-tabs {
     position: relative;
 }
 
-.pricing-tabs .tab-buttons{
+.pricing-tabs .tab-buttons {
     text-align: center;
     position: relative;
     margin-bottom: 30px;
 }
 
-.pricing-tabs .tab-buttons h4{
+.pricing-tabs .tab-buttons h4 {
     display: block;
     font-weight: 500;
     font-size: 16px;
@@ -46,7 +45,7 @@ Pricing Section
     margin-bottom: 15px;
 }
 
-.pricing-tabs .tab-btns{
+.pricing-tabs .tab-btns {
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -59,7 +58,7 @@ Pricing Section
     align-items: center;
 }
 
-.pricing-tabs .tab-btns:before{
+.pricing-tabs .tab-btns:before {
     position: absolute;
     top: 0;
     left: 50%;
@@ -68,8 +67,8 @@ Pricing Section
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-    background: #1967D2;
-    border: 1px solid #E7E7EC;
+    background: #1967d2;
+    border: 1px solid #e7e7ec;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-box-shadow: 0px 8px 15px rgba(140, 152, 164, 0.1);
@@ -83,7 +82,7 @@ Pricing Section
     transition: all 300ms linear;
 }
 
-.pricing-tabs .tab-btns li{
+.pricing-tabs .tab-btns li {
     list-style: none;
     position: relative;
     font-size: 14px;
@@ -98,7 +97,7 @@ Pricing Section
     transition: all 300ms ease;
 }
 
-.pricing-tabs .tab-btns li:before{
+.pricing-tabs .tab-btns li:before {
     position: absolute;
     right: -26px;
     height: 20px;
@@ -112,41 +111,41 @@ Pricing Section
     transition: all 300ms ease;
 }
 
-.pricing-tabs .tab-btns li.active-btn:before{
+.pricing-tabs .tab-btns li.active-btn:before {
     right: 6px;
 }
 
-.pricing-tabs .tab-btns li:last-child:before{
+.pricing-tabs .tab-btns li:last-child:before {
     display: none;
 }
 
-.pricing-table{
+.pricing-table {
     position: relative;
     margin-bottom: 30px;
 }
 
-.pricing-table .inner-box{
+.pricing-table .inner-box {
     position: relative;
-    background: #FFFFFF;
-    border: 1px solid #ECEDF2;
+    background: #ffffff;
+    border: 5px solid #ecedf2;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-radius: 8px;
     padding: 40px 40px;
     overflow: hidden;
-    -webkit-transition:all 300ms ease;
-    -o-transition:all 300ms ease;
-    transition:all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
 }
 
 .pricing-table .inner-box:hover,
-.pricing-table.tagged .inner-box{
-    border: 1px solid #1967D2;
+.pricing-table.tagged .inner-box {
+    border: 1px solid #1967d2;
     -webkit-box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
     box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
 }
 
-.pricing-table .tag{
+.pricing-table .tag {
     position: absolute;
     right: 30px;
     top: 30px;
@@ -154,32 +153,32 @@ Pricing Section
     border-radius: 30px;
     font-size: 13px;
     line-height: 20px;
-    color: #34A853;
+    color: #34a853;
     padding: 5px 25px;
 }
 
-.pricing-table .tag:before{
+.pricing-table .tag:before {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    background: #34A853;
+    background: #34a853;
     opacity: 0.15;
     content: "";
     border-radius: 30px;
 }
 
-.pricing-table .title{
+.pricing-table .title {
     display: block;
     font-weight: 500;
-    font-size: 18px;
+    color: #fda32d;
+    font-size: 25px;
     line-height: 24px;
-    color: #1967D2;
     margin-bottom: 10px;
 }
 
-.pricing-table .price{
+.pricing-table .price {
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -192,12 +191,12 @@ Pricing Section
     color: #202124;
     font-weight: 500;
     margin-bottom: 40px;
-    -webkit-transition:all 300ms ease;
-    -o-transition:all 300ms ease;
-    transition:all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
 }
 
-.pricing-table .duration{
+.pricing-table .duration {
     position: relative;
     font-size: 18px;
     line-height: 1em;
@@ -207,17 +206,17 @@ Pricing Section
     margin-left: 7px;
 }
 
-.pricing-table .table-content{
+.pricing-table .table-content {
     position: relative;
     margin-bottom: 50px;
 }
 
-.pricing-table .table-content ul{
+.pricing-table .table-content ul {
     position: relative;
     list-style: none;
 }
 
-.pricing-table .table-content ul li{
+.pricing-table .table-content ul li {
     position: relative;
     font-size: 14px;
     line-height: 25px;
@@ -227,7 +226,7 @@ Pricing Section
     padding-left: 30px;
 }
 
-.pricing-table .table-content ul li:before{
+.pricing-table .table-content ul li:before {
     position: absolute;
     left: 0;
     top: 0;
@@ -237,11 +236,11 @@ Pricing Section
     content: "\f00c";
 }
 
-.pricing-table .table-footer{
+.pricing-table .table-footer {
     position: relative;
 }
 
-.pricing-table .table-footer a{
+.pricing-table .table-footer a {
     position: relative;
     display: block;
     width: 100%;

@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(HotelSeeder::class);
         $this->call(EventSeeder::class);
         $this->call(SocialSeeder::class);
+        $this->call(CoreSettingsSeeder::class);
         $this->call(DemoSeeder::class);
         $this->call(BoatSeeder::class);
     }

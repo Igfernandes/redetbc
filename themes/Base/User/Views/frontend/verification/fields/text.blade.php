@@ -11,7 +11,7 @@
             @if(empty($only_show_data))
                 <input type="text" class="form-control" name="verify_data_{{$field['id']}}" value="{{$field['data']}}">
             @else
-                <div class=""><strong>{{$field['data'] ? $field['data'] : __('N/A')}}</strong></div>
+                <div class=""><strong style="word-break: break-all;">{{$field['data'] ? $field['data'] : __('N/A')}}</strong></div>
                 @if(!empty($field['is_verified']))
                     <a class="badge badge-success" href="#" onclick="return false"><i>{{__("Verified")}}</i></a>
                 @else

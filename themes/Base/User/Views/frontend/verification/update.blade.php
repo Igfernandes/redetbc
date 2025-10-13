@@ -14,12 +14,15 @@
         @break
         @case("phone")
         @include('User::frontend.verification.fields.phone')
-        @break 
+        @break
         @case("upload-image")
         @include('User::frontend.verification.fields.upload-image')
         @break
         @case("file")
         @include('User::frontend.verification.fields.file')
+        @break 
+        @case("select")
+        @include('User::frontend.verification.fields.select')
         @break
         @case("multi_files")
         @include('User::frontend.verification.fields.multi_files')
@@ -34,7 +37,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-4">
-                <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp;  {{__("Save changes")}} </button>
+                <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Save changes")}} </button>
             </div>
         </div>
     </form>

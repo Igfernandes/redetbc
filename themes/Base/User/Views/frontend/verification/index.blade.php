@@ -4,7 +4,6 @@
 <h2 class="title-bar">
     {{__("Verification data")}}
 </h2>
-@include('admin.message')
 <div class="booking-history-manager">
     <div class="text">
         <p class="text-justify">Para que possamos garantir a segurança das informações, a legitimidade dos usuários e o uso adequado de todos os recursos da plataforma, será necessário realizar um processo de verificação de identidade. Esse processo tem como objetivo confirmar que o cadastro está sendo feito por uma pessoa real e que os documentos apresentados são autênticos.</p>
@@ -16,9 +15,12 @@
     @break
     @case("phone")
     @include('User::frontend.verification.fields.phone')
-    @break 
+    @break
     @case("upload-image")
     @include('User::frontend.verification.fields.upload-image')
+    @break
+    @case("select")
+    @include('User::frontend.verification.fields.select')
     @break
     @case("file")
     @include('User::frontend.verification.fields.file')

@@ -24,6 +24,21 @@ $menus = [
         'position' => 21,
         'is_verified' => 1
     ],
+    'network' => [
+        'url'      => route("user.network"),
+        'title'    => __("Network"),
+        'icon'     => 'fa fa-sitemap',
+        'position' => 22,
+        'is_verified' => 1,
+        'is_affiliate' => 1
+    ],
+    'upgrade' => [
+        'url'      => route("user.upgrade"),
+        'title'    => __("Upgrade Plan"),
+        'icon'     => 'fa fa-sitemap',
+        'position' => 22,
+        'is_verified' => 1
+    ],
     'profile'         => [
         'url'      => route("user.profile.index"),
         'title'    => __("My Profile"),
@@ -137,13 +152,17 @@ foreach ($menus as $k => $menuItem) {
         continue;
     }
 
-    if ($userAuthData->is_verified === 0 && strstr($menuItem['url'], 'verification') === false) {
+    if (!$userAuthData->is_verified && strstr($menuItem['url'], 'verification') === false) {
         if (!isset($menuItem['is_verified']) || $menuItem['is_verified'] !== 0) {
             unset($menus[$k]);
             continue;
         }
     }
 
+    if (isset($menuItem['is_affiliate']) && $userAuthData->is_affiliate != $menuItem['is_affiliate']) {
+        unset($menus[$k]);
+        continue;
+    }
 
     $menus[$k]['class'] = $currentUrl == url($menuItem['url']) ? 'active' : '';
     if (!empty($menuItem['children'])) {
@@ -174,11 +193,18 @@ foreach ($menus as $k => $menuItem) {
             <p>{{ __("Member Since :time",["time"=> date("M Y",strtotime($userAuthData->created_at))]) }}</p>
         </div>
     </div>
+    @if($userAuthData->is_verified && !Auth::user()->is_affiliate)
+    @if(!hasRequestAffiliate())
     <div class="user-profile-plan">
-        @if( !Auth::user()->hasPermission("dashboard_vendor_access") and setting_item('vendor_enable'))
-        <a href=" {{ route('user.upgrade_vendor') }}">{{ __("Become a vendor") }}</a>
-        @endif
+        <a href=" {{ route('user.upgrade_vendor') }}">{{ __("Become a affiliate") }}</a>
     </div>
+    @elseif(hasRequestAffiliate())
+    <div class="user-profile-plan ">
+        <a class="bg-secondary">{{ __("Awaiting approve") }}</a>
+    </div>
+    @endif
+    @endif
+
     <div class="sidebar-menu">
         <ul class="main-menu">
             @foreach($menus as $menuItem)
@@ -188,7 +214,6 @@ foreach ($menus as $k => $menuItem) {
                     <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
                     @endif
                     {!! clean($menuItem['title']) !!}
-
                 </a>
                 @if(!empty($menuItem['children']))
                 <i class="caret"></i>

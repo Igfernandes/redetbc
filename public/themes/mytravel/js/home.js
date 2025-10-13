@@ -470,8 +470,7 @@ jQuery(function ($) {
                 first_name: form.find("input[name=first_name]").val(),
                 last_name: form.find("input[name=last_name]").val(),
                 phone: form.find("input[name=phone]").val(),
-                religion: form.find('select[name="religion"]').val(),
-                sex: form.find('select[name="sex"]').val(),
+                role: form.find('input[name="role"]:checked').val(),
                 term: form.find("input[name=term]").is(":checked") ? 1 : "",
                 "g-recaptcha-response": form
                     .find("[name=g-recaptcha-response]")
@@ -538,7 +537,8 @@ jQuery(function ($) {
     $("#login").on("show.bs.modal", function (event) {
         $("#register").modal("hide");
     });
-
+    $("#religion").on("show.bs.modal", function (event) {});
+    $("#religion").modal("show");
     var onSubmitSubscribe = false;
     //Subscribe box
     $(".bravo-subscribe-form").on("submit", function (e) {

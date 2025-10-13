@@ -40,6 +40,9 @@
                                                     @case("phone")
                                                     @include('User::frontend.verification.fields.phone')
                                                     @break
+                                                   @case("select")
+                                                    @include('User::frontend.verification.fields.select')
+                                                    @break
                                                     @case("file")
                                                     @include('User::frontend.verification.fields.file')
                                                     @break

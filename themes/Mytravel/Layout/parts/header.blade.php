@@ -1,6 +1,6 @@
 <header id="header"
 
-        class="@if(!empty($is_home) or !empty($header_transparent))
+    class="@if(!empty($is_home) or !empty($header_transparent))
 
             u-header u-header--abs-top u-header--white-nav-links-xl u-header--bg-transparent u-header--show-hide border-bottom border-xl-bottom-0 border-color-white
 
@@ -10,7 +10,33 @@
 
         @endif"
 
-        data-header-fix-moment="500" data-header-fix-effect="slide">
+    data-header-fix-moment="500" data-header-fix-effect="slide">
+    @if(Auth::user() == null || !Auth::user()->user_plan)
+    <div class="subscribe-plan">
+        <div class="content">
+            <p>
+                {{ __("Join the club: choose your plan and get full access to the platform.") }}
+            </p> &nbsp;
+
+            @if(Auth::user() == null)
+            <a data-target="#register" data-toggle="modal">{{ __("Subscribe now") }}</a>
+            @else
+            <a href="/plan">{{ __("Subscribe now") }}</a>
+            @endif
+        </div>
+    </div>
+    @endif
+
+    @if(hasUpgradePlanRequest() && !Route::is('user.upgrade_vendor_plans'))
+    <div class="upgrade-plan ">
+        <div class="content d-flex justify-content-center text-center py-2 bg-warning">
+            <p class="mb-0">
+                {{ __("Your plan upgrade request has been approved.") }}
+            </p> &nbsp;&nbsp;
+            <a href="{{route('user.upgrade_vendor_plans')}}">{{ __("Complete the plan upgrade") }}</a>
+        </div>
+    </div>
+    @endif
 
     <div class="u-header__section u-header__shadow-on-show-hide">
 
@@ -28,9 +54,9 @@
 
                             @if($logo_id = setting_item("logo_id"))
 
-                                <?php $logo = get_file_url($logo_id,'full') ?>
+                            <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                                <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
+                            <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
 
                             @endif
 
@@ -40,9 +66,9 @@
 
                             @if($logo_id = setting_item("logo_id_2"))
 
-                                <?php $logo = get_file_url($logo_id,'full') ?>
+                            <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                                <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
+                            <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
 
                             @endif
 
@@ -61,99 +87,99 @@
 
                         @if(!empty($header_right_menu))
 
-                            <ul class="topbar-items">
+                        <ul class="topbar-items">
 
-                                @include('Core::frontend.currency-switcher')
+                            @include('Core::frontend.currency-switcher')
 
-                                @include('Language::frontend.switcher')
+                            @include('Language::frontend.switcher')
 
-                                @if(!Auth::id())
+                            @if(!Auth::id())
 
-                                    <li class="login-item">
+                            <li class="login-item">
 
-                                        <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
+                                <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
 
-                                    </li>
+                            </li>
 
-                                    <li class="signup-item">
+                            <li class="signup-item">
 
-                                        <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                                <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
 
-                                    </li>
+                            </li>
 
-                                @else
+                            @else
 
-                                    <li class="login-item dropdown">
+                            <li class="login-item dropdown">
 
-                                        <a href="#" data-toggle="dropdown" class="is_login">
+                                <a href="#" data-toggle="dropdown" class="is_login">
 
-                                            @if($avatar_url = Auth::user()->getAvatarUrl())
+                                    @if($avatar_url = Auth::user()->getAvatarUrl())
 
-                                                <img class="avatar" src="{{$avatar_url}}" alt="{{ Auth::user()->getDisplayName()}}">
+                                    <img class="avatar" src="{{$avatar_url}}" alt="{{ Auth::user()->getDisplayName()}}">
 
-                                            @else
+                                    @else
 
-                                                <span class="avatar-text">{{ucfirst( Auth::user()->getDisplayName()[0])}}</span>
+                                    <span class="avatar-text">{{ucfirst( Auth::user()->getDisplayName()[0])}}</span>
 
-                                            @endif
+                                    @endif
 
-                                            {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                                    {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
 
-                                            <i class="fa fa-angle-down"></i>
+                                    <i class="fa fa-angle-down"></i>
 
-                                        </a>
+                                </a>
 
-                                        <ul class="dropdown-menu text-left">
+                                <ul class="dropdown-menu text-left">
 
 
 
-                                            @if(Auth::user()->hasPermission('dashboard_vendor_access'))
+                                    @if(Auth::user()->hasPermission('dashboard_vendor_access'))
 
-                                                <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}</a></li>
+                                    <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}</a></li>
 
-                                            @endif
+                                    @endif
 
-                                            <li class="@if(Auth::user()->hasPermission('dashboard_vendor_access')) menu-hr @endif">
+                                    <li class="@if(Auth::user()->hasPermission('dashboard_vendor_access')) menu-hr @endif">
 
-                                                <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
-
-                                            </li>
-
-                                            @if(setting_item('inbox_enable'))
-
-                                                <li class="menu-hr"><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Messages")}}</a></li>
-
-                                            @endif
-
-                                            <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
-
-                                            <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Change password")}}</a></li>
-
-                                            @if(Auth::user()->hasPermission('dashboard_access'))
-
-                                                <li class="menu-hr"><a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a></li>
-
-                                            @endif
-
-                                            <li class="menu-hr">
-
-                                                <a  href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__('Logout')}}</a>
-
-                                            </li>
-
-                                        </ul>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-
-                                            {{ csrf_field() }}
-
-                                        </form>
+                                        <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
 
                                     </li>
 
-                                @endif
+                                    @if(setting_item('inbox_enable'))
 
-                            </ul>
+                                    <li class="menu-hr"><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Messages")}}</a></li>
+
+                                    @endif
+
+                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
+
+                                    <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Change password")}}</a></li>
+
+                                    @if(Auth::user()->hasPermission('dashboard_access'))
+
+                                    <li class="menu-hr"><a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a></li>
+
+                                    @endif
+
+                                    <li class="menu-hr">
+
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__('Logout')}}</a>
+
+                                    </li>
+
+                                </ul>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+
+                                    {{ csrf_field() }}
+
+                                </form>
+
+                            </li>
+
+                            @endif
+
+                        </ul>
 
                         @endif
 
@@ -181,79 +207,79 @@
 
                         @if(!Auth::id() || Auth::user() === null )
 
-                            <li>
+                        <li>
 
-                                <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
+                            <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
 
-                            </li>
+                        </li>
 
-                            <li>
+                        <li>
 
-                                <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                            <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
 
-                            </li>
+                        </li>
 
                         @else
 
-                            <li>
+                        <li>
 
-                                <a href="{{route('user.profile.index')}}">
+                            <a href="{{route('user.profile.index')}}">
 
-                                    <i class="icofont-user-suited"></i> {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                                <i class="icofont-user-suited"></i> {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
 
-                                </a>
+                            </a>
 
-                            </li>
+                        </li>
 
-                            <li>
+                        <li>
 
-                                <a href="{{route('user.profile.index')}}">
+                            <a href="{{route('user.profile.index')}}">
 
-                                    <i class="icon ion-md-construct"></i> {{__("My profile")}}
+                                <i class="icon ion-md-construct"></i> {{__("My profile")}}
 
-                                </a>
+                            </a>
 
-                            </li>
+                        </li>
 
-                            @if(Auth::user()->hasPermission('dashboard_vendor_access'))
+                        @if(Auth::user()->hasPermission('dashboard_vendor_access'))
 
-                                <li>
+                        <li>
 
-                                    <a href="{{route('vendor.dashboard')}}">
+                            <a href="{{route('vendor.dashboard')}}">
 
-                                        <i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}
+                                <i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}
 
-                                    </a>
+                            </a>
 
-                                </li>
+                        </li>
 
-                            @endif
+                        @endif
 
-                            @if(Auth::user()->hasPermission('dashboard_access'))
+                        @if(Auth::user()->hasPermission('dashboard_access'))
 
-                                <li>
+                        <li>
 
-                                    <a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a>
+                            <a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a>
 
-                                </li>
+                        </li>
 
-                            @endif
+                        @endif
 
-                            <li>
+                        <li>
 
-                                <a  href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
 
-                                    <i class="fa fa-sign-out"></i> {{__('Logout')}}
+                                <i class="fa fa-sign-out"></i> {{__('Logout')}}
 
-                                </a>
+                            </a>
 
-                                <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
 
-                                    {{ csrf_field() }}
+                                {{ csrf_field() }}
 
-                                </form>
+                            </form>
 
-                            </li>
+                        </li>
 
 
 
@@ -288,7 +314,3 @@
     </div>
 
 </header>
-
-
-
-

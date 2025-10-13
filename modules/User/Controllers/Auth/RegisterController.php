@@ -5,6 +5,7 @@ namespace Modules\User\Controllers\Auth;
 
 
 use App\Helpers\ReCaptchaEngine;
+use App\Services\AsaasService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,10 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
                 'string',
                 'max:255'
             ],
+            'role'  => [
+                'required',
+                'exists:core_roles,id'
+            ],
             'email'      => [
                 'required',
                 'string',
@@ -57,19 +62,14 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
                     ->uncompromised(),
             ],
             'phone'       => ['required', 'unique:users'],
-            'term'       => ['required'],
-            'religion'   => ['required', 'in:CATHOLIC,EVANGELICAL,BOTH'],
-            'sex'        => ['required', 'in:MASCULINE,FEMININE'],
+            'term'       => ['required']
         ];
         $messages = [
             'phone.required'      => __('Phone is required field'),
             'email.required'      => __('Email is required field'),
             'email.email'         => __('Email invalidate'),
             'password.required'   => __('Password is required field'),
-            'religion.required'   => __('The religion is required field'),
-            'religion.in'         => __('The religion is options invalid'),
-            'sex.required'        => __('The sex is required field'),
-            'sex.in'              => __('The sex is options invalid'),
+            'role.exists'             => __('The role is options invalid'),
             'first_name.required' => __('The first name is required field'),
             'last_name.required'  => __('The last name is required field'),
             'term.required'       => __('The terms and conditions field is required'),
@@ -91,32 +91,38 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
                 'messages' => $validator->errors()
             ], 200);
         } else {
-
-            $user = \App\User::create([
+            $data = [
+                'name' => explode("@", "$request->input('email')")[0],
                 'first_name' => $request->input('first_name'),
                 'last_name'  => $request->input('last_name'),
                 'email'      => $request->input('email'),
                 'password'   => Hash::make($request->input('password')),
                 'status'    => $request->input('publish', 'publish'),
-                'phone'    => $request->input('phone'),
-                'religion' => $request->input('religion'),
-                'sex' => $request->input('sex'),
-                'role_id' => 3
-            ]);
+                'phone'    => $request->input('phone')
+            ];
+
+            $relationKey = session('relationKey');
+
+            if (!empty($relationKey))
+                $data['owner_id'] = $relationKey;
+
+            $user = \App\User::create($data);
+
             event(new Registered($user));
             Auth::loginUsingId($user->id);
+
             try {
                 event(new SendMailUserRegistered($user));
             } catch (Exception $exception) {
 
                 Log::warning("SendMailUserRegistered: " . $exception->getMessage());
             }
-            $user->assignRole(setting_item('user_role'));
+            $user->assignRole($request->input('role'));
             return response()->json([
                 'error'    => false,
                 'messages' => false,
-                'redirect' => $request->input('redirect') ?? $request->headers->get('referer') ?? url(app_get_locale(false, '/user/validation/update'))
-            ], 200);
+                'redirect' => url('/plan')
+            ],);
         }
     }
 }
