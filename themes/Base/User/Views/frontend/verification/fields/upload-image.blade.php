@@ -1,7 +1,7 @@
 <div class="form-group">
     <div class="row align-items-center">
 
-        <label class="col-md-4 col-form-label">{{$field['name_'.app()->getLocale()] ?? $field['name'] ?? $field['id']}}
+        <label class="col-md-4 col-form-label" style="word-break: break-all;">{{$field['name_'.app()->getLocale()] ?? $field['name'] ?? $field['id']}}
 
             @if(!empty($field['required']))
             <span class="text-danger">*</span>

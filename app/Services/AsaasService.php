@@ -2,10 +2,18 @@
 
 namespace App\Services;
 
+use App\Services\Traits\Checkout;
+use App\Services\Traits\HandlePlan;
+use App\Services\Traits\HandleTransfer;
+use App\Services\Traits\Subscribe;
+use App\Services\Traits\Withdrawal;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class AsaasService
 {
+    use Subscribe, Checkout, Withdrawal, HandlePlan, HandleTransfer;
+
     protected string $baseUrl = "";
     protected string $apiKey = "";
 
@@ -71,22 +79,6 @@ class AsaasService
     }
 
 
-    /**
-     * Cria um pagamento
-     *
-     * @param array $data [
-     *   'customer' => string ID do cliente Asaas,
-     *   'billingType' => string Tipo de cobrança (ex: "CREDIT_CARD", "BOLETO"),
-     *   'value' => float Valor da cobrança,
-     *   'dueDate' => string Data de vencimento (Y-m-d),
-     * ]
-     *
-     * @return array Dados do pagamento criado
-     */
-    public function createPayment(array $data)
-    {
-        return $this->request('post', 'payments', $data);
-    }
 
     /**
      * Consulta informações de um pagamento
@@ -110,5 +102,31 @@ class AsaasService
     public function deleteCustomer(string $id)
     {
         return $this->request('delete', "customers/{$id}");
+    }
+
+    /**
+     * Consulta informações de um pagamento
+     *
+     * @param string $id ID do pagamento no Asaas
+     *
+     * @return array Dados do pagamento
+     */
+    public function webhook(Request $request)
+    {
+        // Pega todo o payload enviado pelo Asaas
+        $webhookData = $request->all();
+        if (isset($webhookData['payment']))
+            $payment = $webhookData['payment'];
+        elseif (isset($webhookData['subscription']))
+            $payment =  $webhookData['subscription'];
+        else $payment = [];
+
+        if (isset($payment['checkoutSession']) && !empty($payment['checkoutSession']))
+            return $this->plan($payment);
+        else {
+            return $this->transfer($webhookData);
+        }
+
+        response()->json(['status' => false]);
     }
 }

@@ -8,19 +8,19 @@
             <div class="panel-body">
 
                 @if(is_default_lang())
-                    <div class="form-group">
-                        <label>{{__("Enable User Plans")}}</label>
-                        <div class="form-controls">
-                            <label><input type="checkbox" name="user_plans_enable" value="1" @if(!empty($settings['user_plans_enable'])) checked @endif /> {{__("On")}} </label>
-                        </div>
+                <div class="form-group">
+                    <label>{{__("Enable User Plans")}}</label>
+                    <div class="form-controls">
+                        <label><input type="checkbox" name="user_plans_enable" value="1" @if(!empty($settings['user_plans_enable'])) checked @endif /> {{__("On")}} </label>
                     </div>
+                </div>
                 @else
-                    <div class="form-group">
-                        <label> <input type="checkbox" @if(setting_item('user_plans_enable') ?? '' == 1) checked @endif name="user_plans_enable" disabled value="1"> {{__("On")}}</label>
-                    </div>
-                    @if(setting_item('user_plans_enable')!= 1)
-                        <p>{{__('You must enable on main lang.')}}</p>
-                    @endif
+                <div class="form-group">
+                    <label> <input type="checkbox" @if(setting_item('user_plans_enable') ?? ''==1) checked @endif name="user_plans_enable" disabled value="1"> {{__("On")}}</label>
+                </div>
+                @if(setting_item('user_plans_enable')!= 1)
+                <p>{{__('You must enable on main lang.')}}</p>
+                @endif
                 @endif
 
 
@@ -60,7 +60,7 @@
         <h3 class="form-group-title">{{__("Plan Request options")}}</h3>
         <div class="form-group-desc">{{ __('Content email send to Customer or Administrator.')}}
             @foreach(\Modules\User\Emails\PlanPaymentEmail::CODE as $item=>$value)
-                <div><code>{{$value}}</code></div>
+            <div><code>{{$value}}</code></div>
             @endforeach
         </div>
     </div>
@@ -80,16 +80,16 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="NewRequestPlanAdmin">
                             @if(is_default_lang())
-                                <div class="form-group">
-                                    <label> <input type="checkbox" @if(setting_item('plan_new_payment_admin_enable')?? '' == 1) checked @endif name="plan_new_payment_admin_enable" value="1"> {{__("Enable send email to Administrator?")}}</label>
-                                </div>
+                            <div class="form-group">
+                                <label> <input type="checkbox" @if(setting_item('plan_new_payment_admin_enable')?? ''==1) checked @endif name="plan_new_payment_admin_enable" value="1"> {{__("Enable send email to Administrator?")}}</label>
+                            </div>
                             @else
-                                <div class="form-group">
-                                    <label> <input type="checkbox" @if(setting_item('plan_new_payment_admin_enable') ?? '' == 1) checked @endif name="plan_new_payment_admin_enable" disabled value="1"> {{__("Enable send email to Administrator?")}}</label>
-                                </div>
-                                @if(setting_item('plan_new_payment_admin_enable')!= 1)
-                                    <p>{{__('You must enable on main lang.')}}</p>
-                                @endif
+                            <div class="form-group">
+                                <label> <input type="checkbox" @if(setting_item('plan_new_payment_admin_enable') ?? ''==1) checked @endif name="plan_new_payment_admin_enable" disabled value="1"> {{__("Enable send email to Administrator?")}}</label>
+                            </div>
+                            @if(setting_item('plan_new_payment_admin_enable')!= 1)
+                            <p>{{__('You must enable on main lang.')}}</p>
+                            @endif
                             @endif
                             <div data-condition="plan_new_payment_admin_enable:is(1)">
                                 <div class="form-group">
@@ -108,16 +108,16 @@
                         </div>
                         <div class="tab-pane" id="NewRequestPlanUser">
                             @if(is_default_lang())
-                                <div class="form-group">
-                                    <label> <input type="checkbox" @if(setting_item('plan_new_payment_user_enable')?? '' == 1) checked @endif name="plan_new_payment_user_enable" value="1"> {{__("Enable send email to customer?")}}</label>
-                                </div>
+                            <div class="form-group">
+                                <label> <input type="checkbox" @if(setting_item('plan_new_payment_user_enable')?? ''==1) checked @endif name="plan_new_payment_user_enable" value="1"> {{__("Enable send email to customer?")}}</label>
+                            </div>
                             @else
-                                <div class="form-group">
-                                    <label> <input type="checkbox" @if(setting_item('plan_new_payment_user_enable') ?? '' == 1) checked @endif name="plan_new_payment_user_enable" disabled value="1"> {{__("Enable send email to customer?")}}</label>
-                                </div>
-                                @if(setting_item('plan_new_payment_user_enable')!= 1)
-                                    <p>{{__('You must enable on main lang.')}}</p>
-                                @endif
+                            <div class="form-group">
+                                <label> <input type="checkbox" @if(setting_item('plan_new_payment_user_enable') ?? ''==1) checked @endif name="plan_new_payment_user_enable" disabled value="1"> {{__("Enable send email to customer?")}}</label>
+                            </div>
+                            @if(setting_item('plan_new_payment_user_enable')!= 1)
+                            <p>{{__('You must enable on main lang.')}}</p>
+                            @endif
                             @endif
                             <div data-condition="plan_new_payment_user_enable:is(1)">
                                 <div class="form-group">
@@ -153,16 +153,16 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="UpdateRequestPlanAdmin">
                             @if(is_default_lang())
-                                <div class="form-group">
-                                    <label> <input type="checkbox" @if(setting_item('plan_update_payment_admin_enable')?? '' == 1) checked @endif name="plan_update_payment_admin_enable" value="1"> {{__("Enable send email to Administrator?")}}</label>
-                                </div>
+                            <div class="form-group">
+                                <label> <input type="checkbox" @if(setting_item('plan_update_payment_admin_enable')?? ''==1) checked @endif name="plan_update_payment_admin_enable" value="1"> {{__("Enable send email to Administrator?")}}</label>
+                            </div>
                             @else
-                                <div class="form-group">
-                                    <label> <input type="checkbox" @if(setting_item('plan_update_payment_admin_enable') ?? '' == 1) checked @endif name="plan_update_payment_admin_enable" disabled value="1"> {{__("Enable send email to Administrator?")}}</label>
-                                </div>
-                                @if(setting_item('plan_update_payment_admin_enable')!= 1)
-                                    <p>{{__('You must enable on main lang.')}}</p>
-                                @endif
+                            <div class="form-group">
+                                <label> <input type="checkbox" @if(setting_item('plan_update_payment_admin_enable') ?? ''==1) checked @endif name="plan_update_payment_admin_enable" disabled value="1"> {{__("Enable send email to Administrator?")}}</label>
+                            </div>
+                            @if(setting_item('plan_update_payment_admin_enable')!= 1)
+                            <p>{{__('You must enable on main lang.')}}</p>
+                            @endif
                             @endif
                             <div data-condition="plan_update_payment_admin_enable:is(1)">
                                 <div class="form-group">
@@ -181,16 +181,16 @@
                         </div>
                         <div class="tab-pane" id="UpdateRequestPlanUser">
                             @if(is_default_lang())
-                                <div class="form-group">
-                                    <label> <input type="checkbox" @if(setting_item('plan_update_payment_user_enable')?? '' == 1) checked @endif name="plan_update_payment_user_enable" value="1"> {{__("Enable send email to customer?")}}</label>
-                                </div>
+                            <div class="form-group">
+                                <label> <input type="checkbox" @if(setting_item('plan_update_payment_user_enable')?? ''==1) checked @endif name="plan_update_payment_user_enable" value="1"> {{__("Enable send email to customer?")}}</label>
+                            </div>
                             @else
-                                <div class="form-group">
-                                    <label> <input type="checkbox" @if(setting_item('plan_update_payment_user_enable') ?? '' == 1) checked @endif name="plan_update_payment_user_enable" disabled value="1"> {{__("Enable send email to customer?")}}</label>
-                                </div>
-                                @if(setting_item('plan_update_payment_user_enable')!= 1)
-                                    <p>{{__('You must enable on main lang.')}}</p>
-                                @endif
+                            <div class="form-group">
+                                <label> <input type="checkbox" @if(setting_item('plan_update_payment_user_enable') ?? ''==1) checked @endif name="plan_update_payment_user_enable" disabled value="1"> {{__("Enable send email to customer?")}}</label>
+                            </div>
+                            @if(setting_item('plan_update_payment_user_enable')!= 1)
+                            <p>{{__('You must enable on main lang.')}}</p>
+                            @endif
                             @endif
                             <div data-condition="plan_update_payment_user_enable:is(1)">
                                 <div class="form-group">

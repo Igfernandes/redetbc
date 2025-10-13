@@ -11,7 +11,7 @@
         @endif"
 
     data-header-fix-moment="500" data-header-fix-effect="slide">
-    @if(Auth::user() == null || !Auth::user()->plan)
+    @if(Auth::user() == null || !Auth::user()->user_plan)
     <div class="subscribe-plan">
         <div class="content">
             <p>
@@ -23,6 +23,17 @@
             @else
             <a href="/plan">{{ __("Subscribe now") }}</a>
             @endif
+        </div>
+    </div>
+    @endif
+
+    @if(hasUpgradePlanRequest() && !Route::is('user.upgrade_vendor_plans'))
+    <div class="upgrade-plan ">
+        <div class="content d-flex justify-content-center text-center py-2 bg-warning">
+            <p class="mb-0">
+                {{ __("Your plan upgrade request has been approved.") }}
+            </p> &nbsp;&nbsp;
+            <a href="{{route('user.upgrade_vendor_plans')}}">{{ __("Complete the plan upgrade") }}</a>
         </div>
     </div>
     @endif

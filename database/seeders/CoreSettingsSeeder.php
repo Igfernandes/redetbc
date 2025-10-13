@@ -45,7 +45,8 @@ class CoreSettingsSeeder extends Seeder
                     ],
                     "sex" => [
                         "name"     => "Select Sex",
-                        "type"     => "text",
+                        "type"     => "select",
+                        "options" => ['Select sex', 'MASCULINE' => 'MASCULINE', 'FEMININE' => 'FEMININE'],
                         "roles"    => ["2", "3"],
                         "required" => "1",
                         "order"    => "0",
@@ -53,7 +54,8 @@ class CoreSettingsSeeder extends Seeder
                     ],
                     "religion" => [
                         "name"     => "Select Religion",
-                        "type"     => "text",
+                        "type"     => "select",
+                        "options" => ['Select Religion', "CATHOLIC" => "CATHOLIC", "EVANGELICAL" => "EVANGELICAL", "BOTH" => "BOTH"],
                         "roles"    => ["2", "3"],
                         "required" => "1",
                         "order"    => "0",

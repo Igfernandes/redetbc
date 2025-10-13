@@ -94,8 +94,11 @@ class PlanController extends AdminController
             'duration_type',
             'max_service',
             'status',
+            'days_gratuity',
+            'snippet',
             'role_id',
             'annual_price',
+            'commission',
             'image_id'
         ], $request->input());
 

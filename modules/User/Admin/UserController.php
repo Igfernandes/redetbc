@@ -2,6 +2,7 @@
 
 namespace Modules\User\Admin;
 
+use App\UserMeta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,7 @@ use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Modules\Vendor\Models\VendorRequest;
 use Modules\User\Exports\UserExport;
+use Modules\User\Models\UserPlan;
 
 class UserController extends AdminController
 {
@@ -142,8 +144,9 @@ class UserController extends AdminController
         $urow->password = bcrypt($password);
         $urow->setRememberToken(Str::random(60));
         if ($urow->save()) {
+            $roleModel = new Role();
 
-            if ($request->input('role_id') and $role = Role::findById($request->input('role_id'))) {
+            if ($request->input('role_id') and $role = $roleModel->findById($request->input('role_id'))) {
                 $urow->assignRole($role);
             }
             return redirect()->back()->with('success', __('Password updated!'));
@@ -173,7 +176,7 @@ class UserController extends AdminController
         $rules = [
             'first_name'              => 'required|max:255',
             'last_name'              => 'required|max:255',
-            'business_name'              => 'required|max:255',
+            'business_name'              => 'nullable|max:255',
             'status'              => 'required|max:50',
             'role_id'              => 'required|max:11',
             'email'              => [
@@ -192,9 +195,7 @@ class UserController extends AdminController
             ],
         ];
 
-        $request->validate($rules, [
-            'business_name.required' => __("Display name is a required field")
-        ]);
+        $request->validate($rules);
 
         $data = [
             'first_name' => $request->input('first_name'),
@@ -216,6 +217,7 @@ class UserController extends AdminController
             'zip_code' => $request->input('zip_code'),
             'vendor_commission_type' => $request->input('vendor_commission_type'),
             'vendor_commission_amount' => $request->input('vendor_commission_amount'),
+            'commission_amount' => $request->input('commission_amount'),
         ];
         $row->role_id = $request->input('role_id');
         if ($request->input('is_email_verified')) {
@@ -239,7 +241,8 @@ class UserController extends AdminController
         if ($row->save()) {
 
             if (!is_demo_mode()) {
-                if ($request->input('role_id') and $role = Role::findById($request->input('role_id'))) {
+                $roleModel = new Role();
+                if ($request->input('role_id') and $role = $roleModel->findById($request->input('role_id'))) {
                     $row->syncRoles($role);
                 }
             }
@@ -330,9 +333,9 @@ class UserController extends AdminController
                 if ($id == Auth::id()) continue;
                 $query = User::where("id", $id)->first();
                 if (!empty($query)) {
-                    $query->email .= '_d_' . uniqid() . rand(0, 99999);
-                    $query->phone = null;
-                    $query->save();
+                    UserPlan::where('user_id', $id)->delete();
+                    UserMeta::where('user_id', $id)->delete();
+
                     $query->forceDelete();
                 }
             }
@@ -381,7 +384,8 @@ class UserController extends AdminController
                         $vendorRequest->update(['status' => $action, 'approved_time' => now(), 'approved_by' => Auth::id()]);
                         $user = User::find($vendorRequest->user_id);
                         if (!empty($user)) {
-                            $user->assignRole($vendorRequest->role_request);
+                            $user->is_affiliate = true;
+                            $user->save();
                         }
                         event(new VendorApproved($user, $vendorRequest));
                     }

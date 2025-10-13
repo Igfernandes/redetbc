@@ -35,7 +35,7 @@ class HomeController extends Controller
         foreach (Role::all(['id', 'name'])->toArray() as $role) {
             $roles[strtolower($role['name'])] = $role['id'];
         }
-        
+
         if ($home_page_id && $page = Page::where("id", $home_page_id)->where("status", "publish")->first()) {
             $this->setActiveMenu($page);
             $translation = $page->translate();

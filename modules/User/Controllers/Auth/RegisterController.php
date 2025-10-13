@@ -91,33 +91,22 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
                 'messages' => $validator->errors()
             ], 200);
         } else {
-            $asaasService = new AsaasService();
-
-            $foundCostumers = $asaasService->getCustomers([
-                "limit" => 1,
-                "email" => $request->input('email'),
-            ]);
-
-            if (!isset($foundCostumers['data']) || count($foundCostumers) === 0) {
-                $costumer =  $asaasService->createCustomer([
-                    "name" => $request->input('first_name') . " " . $request->input('last_name'),
-                    "email" => $request->input('email'),
-                    "phone" =>  $request->input('phone')
-                ]);
-                $costumerId = $costumer['id'];
-            } else {
-                $costumerId = $foundCostumers['data'][0]['id'];
-            }
-
-            $user = \App\User::create([
+            $data = [
+                'name' => explode("@", "$request->input('email')")[0],
                 'first_name' => $request->input('first_name'),
                 'last_name'  => $request->input('last_name'),
                 'email'      => $request->input('email'),
                 'password'   => Hash::make($request->input('password')),
                 'status'    => $request->input('publish', 'publish'),
-                'phone'    => $request->input('phone'),
-                'gateway_customer_id' => $costumerId
-            ]);
+                'phone'    => $request->input('phone')
+            ];
+
+            $relationKey = session('relationKey');
+
+            if (!empty($relationKey))
+                $data['owner_id'] = $relationKey;
+
+            $user = \App\User::create($data);
 
             event(new Registered($user));
             Auth::loginUsingId($user->id);

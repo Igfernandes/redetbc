@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AsaasController;
 use \Illuminate\Support\Facades\Route;
+use Modules\User\Controllers\UpgradeController;
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verified']], function () {
     Route::match(['get'], '/dashboard', 'UserController@dashboard')->name("vendor.dashboard");
@@ -15,6 +16,14 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verified']], functio
     Route::post('/profile/change-password', 'PasswordController@changePasswordUpdate')->name("user.change_password.update");
     Route::get('/booking-history', 'UserController@bookingHistory')->name("user.booking_history");
 
+    Route::get('/network', 'NetworkController@index')->name("user.network");
+    Route::get('/network/wallet', 'NetworkController@wallet')->name("user.network.wallet");
+    Route::post('/network/wallet/reloadChart', 'NetworkController@reloadChart');
+    Route::post('/network/wallet', 'NetworkController@save')->name('user.network.wallet.save');
+    Route::get('/network/wallet/request', 'NetworkController@request')->name('user.network.wallet.request');
+
+    Route::get('/upgrade', 'UpgradeController@index')->name("user.upgrade");
+    Route::get('/upgrade/buy', [UpgradeController::class, 'store'])->name("user.upgrade.store");
 
     Route::post('/wishlist', 'UserWishListController@handleWishList')->name("user.wishList.handle");
     Route::get('/wishlist', 'UserWishListController@index')->name("user.wishList.index");
@@ -34,6 +43,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verified']], functio
     });
 
     Route::match(['get'], '/upgrade-vendor', 'UserController@upgradeVendor')->name("user.upgrade_vendor");
+    Route::match(['get'], '/upgrade-vendor-plan', 'UserController@upgradeVendorPlans')->name("user.upgrade_vendor_plans");
 
     Route::get('wallet', 'WalletController@wallet')->name('user.wallet');
     Route::get('wallet/buy', 'WalletController@buy')->name('user.wallet.buy');
@@ -72,6 +82,7 @@ Route::post('register', 'Auth\RegisterController@register')->name('auth.register
 
 Route::get('/user/my-plan', 'PlanController@myPlan')->name('user.plan')->middleware(['auth', 'verified']);
 Route::get('/plan', 'PlanController@index')->name('plan');
+Route::post('/asaas/webhook', [AsaasController::class, "webhook"])->name('plan.webhook');
 Route::get('/plan/thank-you', 'PlanController@thankYou')->name('user.plan.thank-you');
 Route::get('/user/plan/buy/{id}', 'PlanController@buy')->name('user.plan.buy')->middleware(['auth', 'verified']);
 Route::post('/user/plan/buyProcess/{id}', 'PlanController@buyProcess')->name('user.plan.buyProcess')->middleware(['auth', 'verified']);

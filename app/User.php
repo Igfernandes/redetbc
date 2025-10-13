@@ -64,6 +64,9 @@
             'avatar_id',
             'bio',
             'business_name',
+            'sex',
+            'religion',
+            'owner_id',
             'gateway_customer_id',
             'status',
         ];
