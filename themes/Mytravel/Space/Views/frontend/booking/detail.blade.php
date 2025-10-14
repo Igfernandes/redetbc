@@ -183,7 +183,6 @@
                                 </li>
                             @endif
                         @endif
-                        @include ('Booking::frontend/booking/checkout-deposit-amount')
                     </ul>
                 </div>
             </div>

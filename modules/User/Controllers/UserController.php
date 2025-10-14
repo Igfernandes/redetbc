@@ -172,28 +172,7 @@ class UserController extends FrontendController
         }
     }
 
-    public function upgradeVendor()
-    {
-        $user = Auth::user();
-        $data = [
-            "user_id" => $user->id,
-            "status" => "pending",
-            "type" => "affiliate"
-        ];
 
-        $vendorRequest = VendorRequest::query()->where($data)->first();
-        if (!empty($vendorRequest)) {
-            return redirect()->back()->with('warning', __("You have just done the become vendor request, please wait for the Admin's approved"));
-        }
-
-        $vendorRequestData = $user->vendorRequest()->save(new VendorRequest($data));
-        try {
-            event(new NewVendorRegistered($user, $vendorRequestData));
-        } catch (Exception $exception) {
-            Log::warning("NewVendorRegistered: " . $exception->getMessage());
-        }
-        return redirect()->back()->with('success', __('Request vendor success!'));
-    }
 
     public function upgradeVendorPlans()
     {

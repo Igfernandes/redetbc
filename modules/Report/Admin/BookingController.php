@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Report\Admin;
 
 use App\User;
@@ -19,11 +20,11 @@ class BookingController extends AdminController
     public function index(Request $request)
     {
         $this->checkPermission('booking_view');
-        $query = Booking::where('status', '!=', 'draft');
+        $query = new Booking();
         if (!empty($request->s)) {
-            if( is_numeric($request->s) ){
+            if (is_numeric($request->s)) {
                 $query->Where('id', '=', $request->s);
-            }else{
+            } else {
                 $query->where(function ($query) use ($request) {
                     $query->where('first_name', 'like', '%' . $request->s . '%')
                         ->orWhere('last_name', 'like', '%' . $request->s . '%')
@@ -42,7 +43,7 @@ class BookingController extends AdminController
             $query->where('vendor_id', Auth::id());
         }
         $query->whereIn('object_model', array_keys(get_bookable_services()));
-        $query->orderBy('id','desc');
+        $query->orderBy('id', 'desc');
         $data = [
             'rows'                  => $query->paginate(20),
             'page_title'            => __("All Bookings"),
@@ -70,10 +71,9 @@ class BookingController extends AdminController
                     $query->where("vendor_id", Auth::id());
                 }
                 $row = $query->first();
-                if(!empty($row)){
+                if (!empty($row)) {
                     $row->delete();
                     event(new BookingUpdatedEvent($row));
-
                 }
             }
         } else {
@@ -84,11 +84,11 @@ class BookingController extends AdminController
                     $this->checkPermission('booking_update');
                 }
                 $item = $query->first();
-                if(!empty($item)){
+                if (!empty($item)) {
                     $item->status = $action;
                     $item->save();
 
-                    if($action == Booking::CANCELLED) $item->tryRefundToWallet();
+                    if ($action == Booking::CANCELLED) $item->tryRefundToWallet();
                     event(new BookingUpdatedEvent($item));
                 }
             }

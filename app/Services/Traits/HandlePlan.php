@@ -65,7 +65,6 @@ trait HandlePlan
 
         event(new CreatePlanRequest($user));
         \Log::info('Webhook Asaas recebido', $payment);
-        // Opcional: retorna resposta para o Asaas
         return response()->json(['status' => 'ok']);
     }
 }

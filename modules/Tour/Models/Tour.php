@@ -1,7 +1,9 @@
 <?php
+
 namespace Modules\Tour\Models;
 
 use App\Currency;
+use App\Scopes\CreatedByUserScope;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Arr;
@@ -17,6 +19,7 @@ use Modules\Media\Helpers\FileHelper;
 use Illuminate\Support\Facades\Cache;
 use Validator;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Booking\Models\BookingMessage;
 use Modules\Core\Models\SEO;
 use Modules\User\Models\UserWishList;
 use Modules\Core\Models\Attributes;
@@ -86,8 +89,8 @@ class Tour extends Bookable
         'itinerary' => 'array',
         'service_fee' => 'array',
         'surrounding' => 'array',
-        'start_date'=> 'date',
-        'end_date'=> 'date',
+        'start_date' => 'date',
+        'end_date' => 'date',
         'last_booking_date'   => 'date',
 
     ];
@@ -115,6 +118,10 @@ class Tour extends Bookable
         $this->tourDateClass = TourDate::class;
         $this->userWishListClass = UserWishList::class;
         $this->reviewClass = Review::class;
+    }
+    protected static function booted()
+    {
+        static::addGlobalScope(new CreatedByUserScope);
     }
 
     /**
@@ -199,7 +206,7 @@ class Tour extends Bookable
 
     public function getEditUrl()
     {
-        return route('tour.admin.edit',['id'=>$this->id]);
+        return route('tour.admin.edit', ['id' => $this->id]);
     }
 
     public function getDiscountPercentAttribute()
@@ -247,69 +254,69 @@ class Tour extends Bookable
         $res = $this->addToCartValidate($request);
         if ($res !== true)
             return $res;
+
         // Add Booking
         // get Price Availability Calendar
         $dataPriceAvailability = $this->getDataPriceAvailabilityInRanges($request->input('start_date'));
         $total = 0;
         $total_guests = 0;
         $discount = 0;
-        $base_price = ($this->sale_price and $this->sale_price > 0 and $this->sale_price < $this->price) ? $this->sale_price : $this->price;
+        $base_price = ($this->sale_price && $this->sale_price > 0 && $this->sale_price < $this->price) ? $this->sale_price : $this->price;
         // for Availability Calendar
         $base_price = $dataPriceAvailability['base_price'] ?? $base_price;
+
         $extra_price = [];
         $extra_price_input = $request->input('extra_price');
         $person_types = [];
         $person_types_input = $request->input('person_types');
         $discount_by_people = [];
         $meta = $this->meta;
+
         if ($meta) {
             // for Availability Calendar
             $meta->person_types = $dataPriceAvailability['person_types'] ?? $meta->person_types;
-            if ($meta->enable_person_types and !empty($meta->person_types)) {
-                if (!empty($meta->person_types)) {
-                    foreach ($meta->person_types as $k => $type) {
-                        if (isset($person_types_input[$k]) and $person_types_input[$k]['number']) {
-                            $type['number'] = $person_types_input[$k]['number'];
-                            $person_types[] = $type;
-                            $total += $type['price'] * $type['number'];
-                            $total_guests += $type['number'];
-                        }
+            if ($meta->enable_person_types && !empty($meta->person_types)) {
+                foreach ($meta->person_types as $k => $type) {
+                    if (isset($person_types_input[$k]) && $person_types_input[$k]['number']) {
+                        $type['number'] = $person_types_input[$k]['number'];
+                        $person_types[] = $type;
+                        $total += $type['price'] * $type['number'];
+                        $total_guests += $type['number'];
                     }
                 }
             } else {
                 $total += $base_price * $request->input('guests');
                 $total_guests += $request->input('guests');
             }
-            if ($meta->enable_extra_price and !empty($meta->extra_price)) {
-                if (!empty($meta->extra_price)) {
-                    foreach ($meta->extra_price as $k => $type) {
-                        if (isset($extra_price_input[$k]) and !empty($extra_price_input[$k]['enable'])) {
-                            $type_total = 0;
-                            switch ($type['type']) {
-                                case "one_time":
-                                    $type_total = $type['price'];
-                                    break;
-                                case "per_hour":
-                                    $type_total = $type['price'] * $this->duration;
-                                    break;
-                                case "per_day":
-                                    $type_total = $type['price'] * ceil($this->duration / 24);
-                                    break;
-                            }
-                            if (!empty($type['per_person'])) {
-                                $type_total *= $total_guests;
-                            }
-                            $type['total'] = $type_total;
-                            $total += $type_total;
-                            $extra_price[] = $type;
+
+            if ($meta->enable_extra_price && !empty($meta->extra_price)) {
+                foreach ($meta->extra_price as $k => $type) {
+                    if (isset($extra_price_input[$k]) && !empty($extra_price_input[$k]['enable'])) {
+                        $type_total = 0;
+                        switch ($type['type']) {
+                            case "one_time":
+                                $type_total = $type['price'];
+                                break;
+                            case "per_hour":
+                                $type_total = $type['price'] * $this->duration;
+                                break;
+                            case "per_day":
+                                $type_total = $type['price'] * ceil($this->duration / 24);
+                                break;
                         }
+                        if (!empty($type['per_person'])) {
+                            $type_total *= $total_guests;
+                        }
+                        $type['total'] = $type_total;
+                        $total += $type_total;
+                        $extra_price[] = $type;
                     }
                 }
             }
-            if ($meta->discount_by_people and !empty($meta->discount_by_people)) {
-                foreach ($meta->discount_by_people as $type) {
-                    if ($type['from'] <= $total_guests and (!$type['to'] or $type['to'] >= $total_guests)) {
 
+            if ($meta->discount_by_people && !empty($meta->discount_by_people)) {
+                foreach ($meta->discount_by_people as $type) {
+                    if ($type['from'] <= $total_guests && (!$type['to'] || $type['to'] >= $total_guests)) {
                         $type_total = 0;
                         switch ($type['type']) {
                             case "fixed":
@@ -331,6 +338,7 @@ class Tour extends Bookable
             $total += $base_price * $request->input('guests');
             $total_guests += $request->input('guests');
         }
+
         $start_date = new \DateTime($request->input('start_date'));
         if (empty($start_date)) {
             return $this->sendError(__("Start date is not a valid date"));
@@ -338,19 +346,20 @@ class Tour extends Bookable
         if (!$this->checkBusyDate($start_date)) {
             return $this->sendError(__("Start date is not a valid date"));
         }
+
         //Buyer Fees for Admin
         $total_before_fees = $total;
         $total_buyer_fee = 0;
         if (!empty($list_buyer_fees = setting_item('tour_booking_buyer_fees'))) {
             $list_fees = json_decode($list_buyer_fees, true);
-            $total_buyer_fee = $this->calculateServiceFees($list_fees , $total_before_fees , $total_guests);
+            $total_buyer_fee = $this->calculateServiceFees($list_fees, $total_before_fees, $total_guests);
             $total += $total_buyer_fee;
         }
 
         //Service Fees for Vendor
         $total_service_fee = 0;
-        if(!empty($this->enable_service_fee) and !empty($list_service_fee = $this->service_fee)){
-            $total_service_fee = $this->calculateServiceFees($list_service_fee , $total_before_fees , $total_guests);
+        if (!empty($this->enable_service_fee) && !empty($list_service_fee = $this->service_fee)) {
+            $total_service_fee = $this->calculateServiceFees($list_service_fee, $total_before_fees, $total_guests);
             $total += $total_service_fee;
         }
 
@@ -372,8 +381,7 @@ class Tour extends Bookable
         $booking->total_before_fees = $total_before_fees;
         $booking->total_before_discount = $total_before_fees;
 
-
-        if($this->isFixedDate()){
+        if ($this->isFixedDate()) {
             $booking->start_date = $this->start_date;
             $booking->end_date = $this->end_date;
         }
@@ -397,6 +405,7 @@ class Tour extends Bookable
                 $booking->deposit = $booking->deposit + $total_buyer_fee + $total_service_fee;
             }
         }
+
         $check = $booking->save();
         if ($check) {
             $this->bookingClass::clearDraftBookings();
@@ -406,10 +415,16 @@ class Tour extends Bookable
             $booking->addMeta('extra_price', $extra_price);
             $booking->addMeta('person_types', $person_types);
             $booking->addMeta('discount_by_people', $discount_by_people);
-            if($this->isFixedDate()){
-                $booking->addMeta('enable_fixed_date',1);
-                $booking->addMeta('fixed_date_data',['start_date'=>$this->start_date,'end_date'=>$this->end_date,'last_booking_date'=>$this->last_booking_date]);
+
+            if ($this->isFixedDate()) {
+                $booking->addMeta('enable_fixed_date', 1);
+                $booking->addMeta('fixed_date_data', [
+                    'start_date' => $this->start_date,
+                    'end_date' => $this->end_date,
+                    'last_booking_date' => $this->last_booking_date
+                ]);
             }
+
             if ($this->isDepositEnable()) {
                 $booking->addMeta('deposit_info', [
                     'type'    => $this->getDepositType(),
@@ -417,13 +432,22 @@ class Tour extends Bookable
                     'fomular' => $this->getDepositFomular(),
                 ]);
             }
+
+            BookingMessage::create([
+                'booking_id' => $booking->id,
+                'sender_id' => Auth::id(),
+                'message' => "Olá! Acabei de solicitar a reserva. Aguardando confirmação do proprietário.",
+            ]);
+
             return $this->sendSuccess([
-                'url'          => $booking->getCheckoutUrl(),
+                'url'          => "/user/chat", // redireciona para o chat
                 'booking_code' => $booking->code,
             ]);
         }
+
         return $this->sendError(__("Can not check availability"));
     }
+
 
     public function getDataPriceAvailabilityInRanges($start_date)
     {
@@ -500,13 +524,13 @@ class Tour extends Bookable
             return $this->sendError(__("Your selected dates are not valid"));
         }
 
-        if($this->isFixedDate()){
-            if(Carbon::parse($request->start_date.' 00:00:00') <= $this->last_booking_date){
+        if ($this->isFixedDate()) {
+            if (Carbon::parse($request->start_date . ' 00:00:00') <= $this->last_booking_date) {
                 return $this->sendError(__("This tour is not available at selected dates"));
             }
-        }else{
+        } else {
             // Validate Date and Booking
-            if(!$this->isAvailableInRanges($start_date)){
+            if (!$this->isAvailableInRanges($start_date)) {
                 return $this->sendError(__("This tour is not available at selected dates"));
             }
 
@@ -521,10 +545,10 @@ class Tour extends Bookable
                 }
             }
 
-            if(!empty($this->min_day_before_booking)){
-                $minday_before = strtotime("today +".$this->min_day_before_booking." days");
-                if(  strtotime($start_date) < $minday_before){
-                    return $this->sendError(__("You must book the service for :number days in advance",["number"=>$this->min_day_before_booking]));
+            if (!empty($this->min_day_before_booking)) {
+                $minday_before = strtotime("today +" . $this->min_day_before_booking . " days");
+                if (strtotime($start_date) < $minday_before) {
+                    return $this->sendError(__("You must book the service for :number days in advance", ["number" => $this->min_day_before_booking]));
                 }
             }
         }
@@ -543,25 +567,25 @@ class Tour extends Bookable
         return true;
     }
 
-    public function isAvailableInRanges($start_date){
+    public function isAvailableInRanges($start_date)
+    {
 
-        if($this->default_state)
-        {
+        if ($this->default_state) {
             $notAvailableDates = $this->tourDateClass::query()->where([
-                ['start_date','>=',$start_date],
-                ['end_date','<=',$start_date],
-                ['active','0'],
-                ['target_id','=',$this->id],
+                ['start_date', '>=', $start_date],
+                ['end_date', '<=', $start_date],
+                ['active', '0'],
+                ['target_id', '=', $this->id],
             ])->count('id');
-            if($notAvailableDates) return false;
-        }else{
+            if ($notAvailableDates) return false;
+        } else {
             $availableDates = $this->tourDateClass::query()->where([
-                ['start_date','>=',$start_date],
-                ['end_date','<=',$start_date],
-                ['active','=',1],
-                ['target_id','=',$this->id],
+                ['start_date', '>=', $start_date],
+                ['end_date', '<=', $start_date],
+                ['active', '=', 1],
+                ['target_id', '=', $this->id],
             ])->count('id');
-            if($availableDates < 1) return false;
+            if ($availableDates < 1) return false;
         }
         return true;
     }
@@ -597,8 +621,8 @@ class Tour extends Bookable
                 if (!empty($booking_data['person_types'])) {
                     foreach ($booking_data['person_types'] as $k => &$type) {
                         if (!empty($lang)) {
-                            $type['name'] = !empty($type['name_' . $lang])?$type['name_' . $lang]:$type['name'];
-                            $type['desc'] = !empty($type['desc_' . $lang])?$type['desc_' . $lang]:$type['desc'];
+                            $type['name'] = !empty($type['name_' . $lang]) ? $type['name_' . $lang] : $type['name'];
+                            $type['desc'] = !empty($type['desc_' . $lang]) ? $type['desc_' . $lang] : $type['desc'];
                         }
                         $type['min'] = (int)$type['min'];
                         $type['max'] = (int)$type['max'];
@@ -652,7 +676,7 @@ class Tour extends Bookable
                 $booking_data['buyer_fees'][] = $item;
             }
         }
-        if(!empty($this->enable_service_fee) and !empty($service_fee = $this->service_fee)){
+        if (!empty($this->enable_service_fee) and !empty($service_fee = $this->service_fee)) {
             foreach ($service_fee as $item) {
                 $item['type_name'] = $item['name_' . app()->getLocale()] ?? $item['name'] ?? '';
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
@@ -664,15 +688,15 @@ class Tour extends Bookable
             }
         }
 
-        if($this->isFixedDate()){
+        if ($this->isFixedDate()) {
             $booking_data['is_fixed_date'] = true;
             $booking_data['start_date'] = $this->start_date->format('Y-m-d');
-            $booking_data['start_date_html'] =display_date($this->start_date);
-            $booking_data['end_date_html'] =display_date($this->end_date);
+            $booking_data['start_date_html'] = display_date($this->start_date);
+            $booking_data['end_date_html'] = display_date($this->end_date);
             $booking_data['end_date'] = $this->end_date;
             $booking_data['last_booking_date'] = $this->last_booking_date;
             $booking_data['last_booking_date_html'] = display_date($this->last_booking_date);
-            $booking_data['open_hours'] =[];
+            $booking_data['open_hours'] = [];
         }
 
         return $booking_data;
@@ -715,7 +739,8 @@ class Tour extends Bookable
         return setting_item("tour_review_approved", 0);
     }
 
-    public function review_after_booking(){
+    public function review_after_booking()
+    {
         return setting_item("tour_enable_review_after_booking", 0);
     }
 
@@ -727,9 +752,9 @@ class Tour extends Bookable
             $status_making_completed_booking = json_decode($options);
         }
         $number_review = $this->reviewClass::countReviewByServiceID($this->id, Auth::id(), false, $this->type) ?? 0;
-        $number_booking = $this->bookingClass::countBookingByServiceID($this->id, Auth::id(),$status_making_completed_booking) ?? 0;
+        $number_booking = $this->bookingClass::countBookingByServiceID($this->id, Auth::id(), $status_making_completed_booking) ?? 0;
         $number = $number_booking - $number_review;
-        if($number < 0) $number = 0;
+        if ($number < 0) $number = 0;
         return $number;
     }
 
@@ -820,8 +845,9 @@ class Tour extends Bookable
         return __(":number Tour", ['number' => $number]);
     }
 
-    public function getReviewList(){
-        return $this->reviewClass::select(['id','title','content','rate_number','author_ip','status','created_at','vendor_id','author_id'])
+    public function getReviewList()
+    {
+        return $this->reviewClass::select(['id', 'title', 'content', 'rate_number', 'author_ip', 'status', 'created_at', 'vendor_id', 'author_id'])
             ->where('object_id', $this->id)
             ->where('object_model', 'tour')
             ->where("status", "approved")
@@ -976,7 +1002,7 @@ class Tour extends Bookable
     {
         $model_Tour = parent::query()->select("bravo_tours.*");
         $model_Tour->where("bravo_tours.status", "publish");
-        if (!empty($location_id = $request['location_id'] ?? "" )) {
+        if (!empty($location_id = $request['location_id'] ?? "")) {
             $location = Location::where('id', $location_id)->where("status", "publish")->first();
             if (!empty($location)) {
                 $model_Tour->join('bravo_locations', function ($join) use ($location) {
@@ -998,25 +1024,25 @@ class Tour extends Bookable
         }
 
         $category_ids = $request['cat_id'] ?? [];
-        if(!is_array($category_ids)) $category_ids = [$category_ids];
+        if (!is_array($category_ids)) $category_ids = [$category_ids];
         $category_ids = array_filter(array_values($category_ids));
         $list_cat = TourCategory::whereIn('slug', $category_ids)->orWhereIn('id', $category_ids)->where("status", "publish")->get();
-        foreach ($list_cat as $index=>$cat){
-            $model_Tour->join('bravo_tour_category as tc'.$index, function ($join) use ($cat,$index) {
-                $join->on('tc'.$index.'.id', '=', 'bravo_tours.category_id')
-                    ->where('tc'.$index.'._lft','>=',$cat->_lft)
-                    ->where('tc'.$index.'._rgt','<=',$cat->_rgt);
+        foreach ($list_cat as $index => $cat) {
+            $model_Tour->join('bravo_tour_category as tc' . $index, function ($join) use ($cat, $index) {
+                $join->on('tc' . $index . '.id', '=', 'bravo_tours.category_id')
+                    ->where('tc' . $index . '._lft', '>=', $cat->_lft)
+                    ->where('tc' . $index . '._rgt', '<=', $cat->_rgt);
             });
         }
 
-        if(!empty($request['attrs'])){
-            $model_Tour = $this->filterAttrs($model_Tour,$request['attrs'],'bravo_tour_term','tour_id');
+        if (!empty($request['attrs'])) {
+            $model_Tour = $this->filterAttrs($model_Tour, $request['attrs'], 'bravo_tour_term', 'tour_id');
         }
 
         $review_scores = $request["review_score"] ?? "";
         if (is_array($review_scores)) $review_scores = array_filter($review_scores);
         if (!empty($review_scores) && count($review_scores)) {
-            $model_Tour = $this->filterReviewScore($model_Tour,$review_scores);
+            $model_Tour = $this->filterReviewScore($model_Tour, $review_scores);
         }
 
         if (!empty($service_name = $request['service_name'] ?? [])) {
@@ -1029,20 +1055,18 @@ class Tour extends Bookable
                 $model_Tour->where('bravo_tours.title', 'LIKE', '%' . $service_name . '%');
             }
         }
-        if(!empty($lat = $request["map_lat"] ?? "") and !empty($lgn = $request["map_lgn"] ?? "") and !empty($request["map_place"] ?? ""))
-        {
-            $model_Tour = $this->filterLatLng($model_Tour,$lat,$lgn);
+        if (!empty($lat = $request["map_lat"] ?? "") and !empty($lgn = $request["map_lgn"] ?? "") and !empty($request["map_place"] ?? "")) {
+            $model_Tour = $this->filterLatLng($model_Tour, $lat, $lgn);
         }
-        if(!empty($request['is_featured']))
-        {
-            $model_Tour->where('bravo_tours.is_featured',1);
+        if (!empty($request['is_featured'])) {
+            $model_Tour->where('bravo_tours.is_featured', 1);
         }
-        if (!empty($request['custom_ids']) and !empty( $ids = array_filter($request['custom_ids']) )) {
+        if (!empty($request['custom_ids']) and !empty($ids = array_filter($request['custom_ids']))) {
             $model_Tour->whereIn("bravo_tours.id", $ids);
             $model_Tour->orderByRaw('FIELD (id, ' . implode(', ', $ids) . ') ASC');
         }
         $orderby = $request['orderby'] ?? "";
-        switch ($orderby){
+        switch ($orderby) {
             case "price_low_high":
                 $raw_sql = "CASE WHEN IFNULL( bravo_tours.sale_price, 0 ) > 0 THEN bravo_tours.sale_price ELSE bravo_tours.price END AS tmp_min_price";
                 $model_Tour->selectRaw($raw_sql);
@@ -1057,9 +1081,9 @@ class Tour extends Bookable
                 $model_Tour->orderBy($model_Tour->qualifyColumn("review_score"), "desc");
                 break;
             default:
-                if(!empty($request['order']) and !empty($request['order_by'])){
+                if (!empty($request['order']) and !empty($request['order_by'])) {
                     $model_Tour->orderBy($model_Tour->qualifyColumn($request['order']), $request['order_by']);
-                }else{
+                } else {
                     $model_Tour->orderBy($model_Tour->qualifyColumn("is_featured"), "desc");
                     $model_Tour->orderBy($model_Tour->qualifyColumn("id"), "desc");
                 }
@@ -1116,10 +1140,10 @@ class Tour extends Bookable
             }
             $data['booking_fee'] = setting_item_array('tour_booking_buyer_fees');
             if (!empty($location_id = $this->location_id)) {
-                $related =  parent::query()->where('location_id', $location_id)->where("status", "publish")->take(4)->whereNotIn('id', [$this->id])->with(['location','translation','hasWishList'])->get();
+                $related =  parent::query()->where('location_id', $location_id)->where("status", "publish")->take(4)->whereNotIn('id', [$this->id])->with(['location', 'translation', 'hasWishList'])->get();
                 $data['related'] = $related->map(function ($related) {
-                        return $related->dataForApi();
-                    }) ?? null;
+                    return $related->dataForApi();
+                }) ?? null;
             }
             $data['terms'] = Terms::getTermsByIdForAPI($this->tour_term->pluck('term_id'));
         } else {
@@ -1143,8 +1167,8 @@ class Tour extends Bookable
                 "title"    => __("Filter Price"),
                 "field"    => "price_range",
                 "position" => "1",
-                "min_price" => floor ( Currency::convertPrice($min_max_price[0]) ),
-                "max_price" => ceil (Currency::convertPrice($min_max_price[1]) ),
+                "min_price" => floor(Currency::convertPrice($min_max_price[0])),
+                "max_price" => ceil(Currency::convertPrice($min_max_price[1])),
             ],
             [
                 "title"    => __("Review Score"),
@@ -1157,7 +1181,7 @@ class Tour extends Bookable
                 "title"    => __("Tour Type"),
                 "field"    => "cat_id",
                 "position" => "3",
-                "data" => $category->map(function($category){
+                "data" => $category->map(function ($category) {
                     return $category->dataForApi();
                 })
             ],
@@ -1176,12 +1200,11 @@ class Tour extends Bookable
         $search_fields = array_values(\Illuminate\Support\Arr::sort($search_fields, function ($value) {
             return $value['position'] ?? 0;
         }));
-        foreach ( $search_fields as &$item){
-            if($item['field'] == 'attr' and !empty($item['attr']) ){
+        foreach ($search_fields as &$item) {
+            if ($item['field'] == 'attr' and !empty($item['attr'])) {
                 $attr = Attributes::find($item['attr']);
                 $item['attr_title'] = $attr->translate()->name;
-                foreach($attr->terms as $term)
-                {
+                foreach ($attr->terms as $term) {
                     $translate = $term->translate();
                     $item['terms'][] =  [
                         'id' => $term->id,
@@ -1195,9 +1218,7 @@ class Tour extends Bookable
 
     public function isFixedDate(): bool
     {
-        if(!empty($this->enable_fixed_date) and $this->last_booking_date >= Carbon::today()) return    true;
+        if (!empty($this->enable_fixed_date) and $this->last_booking_date >= Carbon::today()) return    true;
         return false;
-
     }
-
 }

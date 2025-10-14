@@ -44,8 +44,8 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             <li class="@if(is_vendor())  @endif">
                                 <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
                             </li>
-                            @if(setting_item('inbox_enable') && $isVerification)
-                            <li class=""><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Messages")}}</a></li>
+                            @if(auth()->user()->is_verified)
+                            <li class=""><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Reservas")}}</a></li>
                             @endif
                             @if( $isVerification)
                             <li class=""><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>

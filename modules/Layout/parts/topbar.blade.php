@@ -43,7 +43,7 @@
                             </li>
                             @if(setting_item('inbox_enable')  && $isVerification)
                             <li class="menu-hr">
-                                <a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Messages")}}
+                                <a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Reservas")}}
                                     @if($count = auth()->user()->unseen_message_count)
                                     <span class="badge badge-danger">{{$count}}</span>
                                     @endif

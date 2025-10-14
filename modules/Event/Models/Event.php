@@ -3,6 +3,7 @@
 namespace Modules\Event\Models;
 
 use App\Currency;
+use App\Scopes\CreatedByUserScope;
 use Illuminate\Http\Response;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
@@ -21,6 +22,7 @@ use Modules\Location\Models\Location;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Review\Models\Review;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Booking\Models\BookingMessage;
 use Modules\Event\Models\EventTranslation;
 use Modules\User\Models\UserWishList;
 
@@ -81,6 +83,10 @@ class Event extends Bookable
         $this->userWishListClass = UserWishList::class;
         $this->locationClass = Location::class;
     }
+    protected static function booted()
+    {
+        static::addGlobalScope(new CreatedByUserScope);
+    }
 
     public static function getModelName()
     {
@@ -100,15 +106,15 @@ class Event extends Bookable
     static public function getSeoMetaForPageList()
     {
         $meta['seo_title'] = __("Search for Events");
-        if (!empty($title = setting_item_with_lang("event_page_list_seo_title",false))) {
+        if (!empty($title = setting_item_with_lang("event_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
-        }else if(!empty($title = setting_item_with_lang("event_page_search_title"))) {
+        } else if (!empty($title = setting_item_with_lang("event_page_search_title"))) {
             $meta['seo_title'] = $title;
         }
         $meta['seo_image'] = null;
         if (!empty($title = setting_item("event_page_list_seo_image"))) {
             $meta['seo_image'] = $title;
-        }else if(!empty($title = setting_item("event_page_search_banner"))) {
+        } else if (!empty($title = setting_item("event_page_search_banner"))) {
             $meta['seo_image'] = $title;
         }
         $meta['seo_desc'] = setting_item_with_lang("event_page_list_seo_desc");
@@ -117,48 +123,51 @@ class Event extends Bookable
         return $meta;
     }
 
-    public function terms(){
+    public function terms()
+    {
         return $this->hasMany($this->eventTermClass, "target_id");
     }
 
     public function getDetailUrl($include_param = true)
     {
         $param = [];
-        if($include_param){
-            if(!empty($date =  request()->input('date'))){
-                $dates = explode(" - ",$date);
-                if(!empty($dates)){
+        if ($include_param) {
+            if (!empty($date =  request()->input('date'))) {
+                $dates = explode(" - ", $date);
+                if (!empty($dates)) {
                     $param['start'] = $dates[0] ?? "";
                     $param['end'] = $dates[1] ?? "";
                 }
             }
-            if(!empty($adults =  request()->input('adults'))){
+            if (!empty($adults =  request()->input('adults'))) {
                 $param['adults'] = $adults;
             }
-            if(!empty($children =  request()->input('children'))){
+            if (!empty($children =  request()->input('children'))) {
                 $param['children'] = $children;
             }
         }
-        $urlDetail = app_get_locale(false, false, '/') . env('EVENT_ROUTE_PREFIX','event') . "/" . $this->slug;
-        if(!empty($param)){
-            $urlDetail .= "?".http_build_query($param);
+        $urlDetail = app_get_locale(false, false, '/') . env('EVENT_ROUTE_PREFIX', 'event') . "/" . $this->slug;
+        if (!empty($param)) {
+            $urlDetail .= "?" . http_build_query($param);
         }
         return url($urlDetail);
     }
 
-    public static function getLinkForPageSearch( $locale = false , $param = [] ){
+    public static function getLinkForPageSearch($locale = false, $param = [])
+    {
 
-        return url(app_get_locale(false , false , '/'). env('EVENT_ROUTE_PREFIX','event')."?".http_build_query($param));
+        return url(app_get_locale(false, false, '/') . env('EVENT_ROUTE_PREFIX', 'event') . "?" . http_build_query($param));
     }
 
     public function getEditUrl()
     {
-        return url(route('event.admin.edit',['id'=>$this->id]));
+        return url(route('event.admin.edit', ['id' => $this->id]));
     }
 
     public function getDiscountPercentAttribute()
     {
-        if (    !empty($this->price) and $this->price > 0
+        if (
+            !empty($this->price) and $this->price > 0
             and !empty($this->sale_price) and $this->sale_price > 0
             and $this->price > $this->sale_price
         ) {
@@ -169,8 +178,8 @@ class Event extends Bookable
 
     public function fill(array $attributes)
     {
-        if(!empty($attributes)){
-            foreach ( $this->fillable as $item ){
+        if (!empty($attributes)) {
+            foreach ($this->fillable as $item) {
                 $attributes[$item] = $attributes[$item] ?? null;
             }
         }
@@ -187,7 +196,7 @@ class Event extends Bookable
     public function addToCart(Request $request)
     {
         $res = $this->addToCartValidate($request);
-        if($res !== true) return $res;
+        if ($res !== true) return $res;
 
         $total = 0;
         $total_tickets = 0;
@@ -196,12 +205,13 @@ class Event extends Bookable
         $extra_price_input = $request->input('extra_price');
         $ticket_types = [];
         $ticket_types_input = $request->input('ticket_types');
-        $base_price = ($this->sale_price and $this->sale_price > 0 and $this->sale_price < $this->price) ? $this->sale_price : $this->price;
-        if($this->getBookingType() == "ticket"){
+        $base_price = ($this->sale_price && $this->sale_price > 0 && $this->sale_price < $this->price) ? $this->sale_price : $this->price;
+
+        if ($this->getBookingType() == "ticket") {
             $ticketsAvailableBook = $this->getDataAvailableBooking($request->input("start_date"));
             if (!empty($ticketsAvailableBook)) {
                 foreach ($ticketsAvailableBook as $k => $type) {
-                    if (isset($ticket_types_input[$k]) and $ticket_types_input[$k]['number']) {
+                    if (isset($ticket_types_input[$k]) && $ticket_types_input[$k]['number']) {
                         $type['number'] = $ticket_types_input[$k]['number'];
                         $ticket_types[] = $type;
                         $total += $type['price'] * $type['number'];
@@ -210,14 +220,15 @@ class Event extends Bookable
                 }
             }
         }
-        if($this->getBookingType() == "time_slot"){
+
+        if ($this->getBookingType() == "time_slot") {
             $total_tickets = count($request->input('select_start_time'));
             $total += $base_price * $total_tickets;
         }
 
-        if ($this->enable_extra_price and !empty($this->extra_price)) {
+        if ($this->enable_extra_price && !empty($this->extra_price)) {
             foreach (array_values($this->extra_price) as $k => $type) {
-                if (isset($extra_price_input[$k]) and !empty($extra_price_input[$k]['enable'])) {
+                if (isset($extra_price_input[$k]) && !empty($extra_price_input[$k]['enable'])) {
                     $type_total = 0;
                     switch ($type['type']) {
                         case "one_time":
@@ -239,7 +250,7 @@ class Event extends Bookable
             return $this->sendError(__("Start date is not a valid date"));
         }
 
-        if(!$this->checkBusyDate($start_date)){
+        if (!$this->checkBusyDate($start_date)) {
             return $this->sendError(__("Start date is not a valid date"));
         }
         if (empty($total_tickets)) {
@@ -251,14 +262,14 @@ class Event extends Bookable
         $total_buyer_fee = 0;
         if (!empty($list_buyer_fees = setting_item('event_booking_buyer_fees'))) {
             $list_fees = json_decode($list_buyer_fees, true);
-            $total_buyer_fee = $this->calculateServiceFees($list_fees , $total_before_fees , $total_tickets);
+            $total_buyer_fee = $this->calculateServiceFees($list_fees, $total_before_fees, $total_tickets);
             $total += $total_buyer_fee;
         }
 
         //Service Fees for Vendor
         $total_service_fee = 0;
-        if(!empty($this->enable_service_fee) and !empty($list_service_fee = $this->service_fee)){
-            $total_service_fee = $this->calculateServiceFees($list_service_fee , $total_before_fees , $total_tickets);
+        if (!empty($this->enable_service_fee) && !empty($list_service_fee = $this->service_fee)) {
+            $total_service_fee = $this->calculateServiceFees($list_service_fee, $total_before_fees, $total_tickets);
             $total += $total_service_fee;
         }
 
@@ -280,15 +291,15 @@ class Event extends Bookable
         $booking->total_before_discount = $total_before_fees;
 
         $booking->calculateCommission();
-        if($this->isDepositEnable())
-        {
+
+        if ($this->isDepositEnable()) {
             $booking_deposit_fomular = $this->getDepositFomular();
             $tmp_price_total = $booking->total;
-            if($booking_deposit_fomular == "deposit_and_fee"){
+            if ($booking_deposit_fomular == "deposit_and_fee") {
                 $tmp_price_total = $booking->total_before_fees;
             }
 
-            switch ($this->getDepositType()){
+            switch ($this->getDepositType()) {
                 case "percent":
                     $booking->deposit = $tmp_price_total * $this->getDepositAmount() / 100;
                     break;
@@ -296,29 +307,31 @@ class Event extends Bookable
                     $booking->deposit = $this->getDepositAmount();
                     break;
             }
-            if($booking_deposit_fomular == "deposit_and_fee"){
-                $booking->deposit = $booking->deposit + $total_buyer_fee + $total_service_fee;
+            if ($booking_deposit_fomular == "deposit_and_fee") {
+                $booking->deposit += $total_buyer_fee + $total_service_fee;
             }
         }
 
         $check = $booking->save();
+
         if ($check) {
 
             $this->bookingClass::clearDraftBookings();
+
             $booking->addMeta('duration', $this->duration);
             $booking->addMeta('start_time', $this->start_time);
             $booking->addMeta('total_tickets', $total_tickets);
             $booking->addMeta('extra_price', $extra_price);
             $booking->addMeta('base_price', $base_price);
             $booking->addMeta('booking_type', $this->getBookingType());
-            if($this->getBookingType() == "ticket"){
+            if ($this->getBookingType() == "ticket") {
                 $booking->addMeta('ticket_types', $ticket_types);
             }
-            if($this->getBookingType() == "time_slot"){
+            if ($this->getBookingType() == "time_slot") {
                 $booking->addMeta('duration_unit', $this->duration_unit);
-                if(!empty($timeSlots = $request->input('select_start_time'))){
-                    $booking->addMeta('select_start_time', $request->input('select_start_time') );
-                    foreach ($timeSlots as $item){
+                if (!empty($timeSlots = $request->input('select_start_time'))) {
+                    $booking->addMeta('select_start_time', $request->input('select_start_time'));
+                    foreach ($timeSlots as $item) {
                         $bookingTimeSlot = new $this->bookingTimeSlotsClass();
                         $bookingTimeSlot->booking_id = $booking->id;
                         $bookingTimeSlot->object_id = $request->input('service_id');
@@ -328,29 +341,37 @@ class Event extends Bookable
                         $bookingTimeSlot->start_time = $item;
                         $type_time =  $this->duration_unit == "hour" ? HOUR_IN_SECONDS : MINUTE_IN_SECONDS;
                         $end_time = strtotime($item) + $type_time * $this->duration;
-                        $bookingTimeSlot->end_time = date("H:i",$end_time);
+                        $bookingTimeSlot->end_time = date("H:i", $end_time);
                         $bookingTimeSlot->save();
                     }
                 }
             }
 
-            if($this->isDepositEnable())
-            {
-                $booking->addMeta('deposit_info',[
-                    'type'=>$this->getDepositType(),
-                    'amount'=>$this->getDepositAmount(),
-                    'fomular'=>$this->getDepositFomular(),
+            if ($this->isDepositEnable()) {
+                $booking->addMeta('deposit_info', [
+                    'type' => $this->getDepositType(),
+                    'amount' => $this->getDepositAmount(),
+                    'fomular' => $this->getDepositFomular(),
                 ]);
             }
+            BookingMessage::create([
+                'booking_id' => $booking->id,
+                'sender_id' => Auth::id(),
+                'message' => "Olá! Acabei de solicitar a reserva. Aguardando confirmação do proprietário.",
+            ]);
+
             return $this->sendSuccess([
-                'url' => $booking->getCheckoutUrl(),
+                'url' => "/user/chat", // redireciona para o chat
                 'booking_code' => $booking->code,
             ]);
         }
+
         return $this->sendError(__("Can not check availability"));
     }
 
-    public function calculateServiceFees($list_buyer_fees , $amount , $guests){
+
+    public function calculateServiceFees($list_buyer_fees, $amount, $guests)
+    {
         $total_amount_fee = 0;
         if (!empty($list_buyer_fees)) {
             foreach ($list_buyer_fees as $item) {
@@ -359,7 +380,7 @@ class Event extends Bookable
                 // for Percent
                 if (!empty($item['unit']) and $item['unit'] == "percent") {
                     $fee_price = ($amount / 100) * $item['price'];
-                }else{
+                } else {
                     //for Fixed and per Ticket
                     if (!empty($item['per_ticket']) and $item['per_ticket'] == "on") {
                         $fee_price = $fee_price * $guests;
@@ -375,22 +396,22 @@ class Event extends Bookable
     {
         $ticket_types = $this->ticket_types;
         $eventDate = $this->eventDateClass::where('target_id', $this->id)->where('start_date', $start_date)->first();
-        if(!empty($eventDate) and $eventDate->active == 0){
+        if (!empty($eventDate) and $eventDate->active == 0) {
             return [];
         }
-        if(!empty($eventDate->ticket_types)){
+        if (!empty($eventDate->ticket_types)) {
             $ticket_types = $eventDate->ticket_types;
         }
         $dataBooking = $this->bookingClass::select("id")->where('object_id', $this->id)->where('start_date', $start_date)->whereNotIn('status', $this->bookingClass::$notAcceptedStatus)->get();
-        foreach ($dataBooking as $booking){
+        foreach ($dataBooking as $booking) {
             $bookingTicketTypes = $booking->getJsonMeta('ticket_types') ?? [];
-            if(!empty($bookingTicketTypes)){
-                foreach ($bookingTicketTypes as $bookingTicket){
+            if (!empty($bookingTicketTypes)) {
+                foreach ($bookingTicketTypes as $bookingTicket) {
                     $numberBoook = $bookingTicket['number'];
-                    foreach ($ticket_types as &$ticket){
-                        if( $ticket['code'] == $bookingTicket['code']){
+                    foreach ($ticket_types as &$ticket) {
+                        if ($ticket['code'] == $bookingTicket['code']) {
                             $ticket['number'] =  $ticket['number'] - $numberBoook;
-                            if($ticket['number'] < 0){
+                            if ($ticket['number'] < 0) {
                                 $ticket['number'] = 0;
                             }
                         }
@@ -405,16 +426,16 @@ class Event extends Bookable
     {
         $time_slots = $this->getBookingTimeSlot();
         $eventDate = $this->eventDateClass::where('target_id', $this->id)->where('start_date', $start_date)->first();
-        if(!empty($eventDate) and $eventDate->active == 0){
+        if (!empty($eventDate) and $eventDate->active == 0) {
             return [];
         }
         $dataBooking = $this->bookingClass::select("id")->where('object_id', $this->id)->where('start_date', $start_date)->whereNotIn('status', $this->bookingClass::$notAcceptedStatus)->get();
-        foreach ($dataBooking as $booking){
+        foreach ($dataBooking as $booking) {
             $timeSlots = $booking->time_slots;
-            foreach ($timeSlots as $item){
-                $value = date("H:i",strtotime($item->start_time));
-                if( in_array($value,$time_slots)){
-                    $time_slots = array_diff( $time_slots , [$value]);
+            foreach ($timeSlots as $item) {
+                $value = date("H:i", strtotime($item->start_time));
+                if (in_array($value, $time_slots)) {
+                    $time_slots = array_diff($time_slots, [$value]);
                 }
             }
         }
@@ -432,36 +453,35 @@ class Event extends Bookable
                 return $this->sendError('', ['errors' => $validator->errors()]);
             }
         }
-        if(strtotime($request->input("start_date")) < strtotime(date('Y-m-d 00:00:00')))
-        {
+        if (strtotime($request->input("start_date")) < strtotime(date('Y-m-d 00:00:00'))) {
             return $this->sendError(__("Your selected dates are not valid"));
         }
 
-        if($this->getBookingType() == "ticket"){
+        if ($this->getBookingType() == "ticket") {
             $ticket_types_input = $request->input('ticket_types');
             $ticketsAvailableBook = $this->getDataAvailableBooking($request->input("start_date"));
             if (!empty($ticketsAvailableBook)) {
                 foreach ($ticketsAvailableBook as $k => $ticketBook) {
                     if (isset($ticket_types_input[$k]) and $ticket_types_input[$k]['number']) {
                         $currentNumberUserBook = $ticket_types_input[$k]['number'];
-                        if($ticketBook["number"] < $currentNumberUserBook){
+                        if ($ticketBook["number"] < $currentNumberUserBook) {
                             $lang_local = app()->getLocale();
-                            $title = $ticketBook['name_'.$lang_local] ?? $ticketBook["name"];
-                            return $this->sendError(__("There are :numberTicket :titleTicket available for your selected date",["numberTicket"=>$ticketBook["number"],"titleTicket"=>$title]));
+                            $title = $ticketBook['name_' . $lang_local] ?? $ticketBook["name"];
+                            return $this->sendError(__("There are :numberTicket :titleTicket available for your selected date", ["numberTicket" => $ticketBook["number"], "titleTicket" => $title]));
                         }
                     }
                 }
             }
         }
-        if($this->getBookingType() == "time_slot"){
+        if ($this->getBookingType() == "time_slot") {
             $time_slot_select = $request->input("select_start_time");
-            if(empty( $time_slot_select )){
+            if (empty($time_slot_select)) {
                 return $this->sendError(__("Please select start time!"));
             }
             $time_slots_availableBook = $this->getDataTimeSlotsAvailableBooking($request->input("start_date"));
-            foreach ($time_slot_select as $itemSelect){
-                if(!in_array($itemSelect,$time_slots_availableBook)){
-                    return $this->sendError(__(":slot not available for your selected ",["slot"=>$itemSelect]));
+            foreach ($time_slot_select as $itemSelect) {
+                if (!in_array($itemSelect, $time_slots_availableBook)) {
+                    return $this->sendError(__(":slot not available for your selected ", ["slot" => $itemSelect]));
                 }
             }
         }
@@ -471,19 +491,19 @@ class Event extends Bookable
     public function beforeCheckout(Request $request, $booking)
     {
         $service = $booking->service;
-        if($service->getBookingType() == "ticket"){
+        if ($service->getBookingType() == "ticket") {
             $ticket_types_input = $booking->getMeta('ticket_types');
-            if(!empty($ticket_types_input)){
-                $ticket_types_input = json_decode($ticket_types_input,true);
+            if (!empty($ticket_types_input)) {
+                $ticket_types_input = json_decode($ticket_types_input, true);
                 $ticketsAvailableBook = $this->getDataAvailableBooking($booking->start_date);
                 if (!empty($ticketsAvailableBook)) {
                     foreach ($ticketsAvailableBook as $k => $ticketBook) {
                         if (isset($ticket_types_input[$k]) and $ticket_types_input[$k]['number']) {
                             $currentNumberUserBook = $ticket_types_input[$k]['number'];
-                            if($ticketBook["number"] < $currentNumberUserBook){
+                            if ($ticketBook["number"] < $currentNumberUserBook) {
                                 $lang_local = app()->getLocale();
-                                $title = $ticketBook['name_'.$lang_local] ?? $ticketBook["name"];
-                                return $this->sendError(__("There are :numberTicket :titleTicket available for your selected date",["numberTicket"=>$ticketBook["number"],"titleTicket"=>$title]));
+                                $title = $ticketBook['name_' . $lang_local] ?? $ticketBook["name"];
+                                return $this->sendError(__("There are :numberTicket :titleTicket available for your selected date", ["numberTicket" => $ticketBook["number"], "titleTicket" => $title]));
                             }
                         }
                     }
@@ -493,7 +513,7 @@ class Event extends Bookable
         if ($service->getBookingType() == "time_slot") {
             $time_slot_select = $booking->getMeta("select_start_time");
             if (!empty($time_slot_select)) {
-                $time_slot_select = json_decode($time_slot_select,true);
+                $time_slot_select = json_decode($time_slot_select, true);
                 $time_slots_availableBook = $this->getDataTimeSlotsAvailableBooking($booking->start_date);
                 foreach ($time_slot_select as $itemSelect) {
                     if (!in_array($itemSelect, $time_slots_availableBook)) {
@@ -519,14 +539,14 @@ class Event extends Bookable
             'start_date_html' => request()->input('start') ? display_date(request()->input('start')) : __('Please select date!'),
             'end_date'        => request()->input('end') ?? "",
             'end_date_html'   => request()->input('end') ? display_date(request()->input('end')) : "",
-            'deposit'=>$this->isDepositEnable(),
-            'deposit_type'=>$this->getDepositType(),
-            'deposit_amount'=>$this->getDepositAmount(),
-            'deposit_fomular'=>$this->getDepositFomular(),
+            'deposit' => $this->isDepositEnable(),
+            'deposit_type' => $this->getDepositType(),
+            'deposit_amount' => $this->getDepositAmount(),
+            'deposit_fomular' => $this->getDepositFomular(),
 
-            'is_form_enquiry_and_book'=> $this->isFormEnquiryAndBook(),
-            'enquiry_type'=> $this->getBookingEnquiryType(),
-            'booking_type'=> $this->getBookingType(),
+            'is_form_enquiry_and_book' => $this->isFormEnquiryAndBook(),
+            'enquiry_type' => $this->getBookingEnquiryType(),
+            'booking_type' => $this->getBookingType(),
             'is_fixed_date'            => false,
         ];
         $lang = app()->getLocale();
@@ -576,10 +596,10 @@ class Event extends Bookable
             $booking_data['extra_price'] = array_values((array)$booking_data['extra_price']);
         }
         $list_fees = setting_item_array('event_booking_buyer_fees');
-        if(!empty($list_fees)){
-            foreach ($list_fees as $item){
-                $item['type_name'] = $item['name_'.app()->getLocale()] ?? $item['name'] ?? '';
-                $item['type_desc'] = $item['desc_'.app()->getLocale()] ?? $item['desc'] ?? '';
+        if (!empty($list_fees)) {
+            foreach ($list_fees as $item) {
+                $item['type_name'] = $item['name_' . app()->getLocale()] ?? $item['name'] ?? '';
+                $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_ticket']) and $item['per_ticket'] == 'on') {
                     $item['price_type'] .= '/' . __('ticket');
@@ -587,7 +607,7 @@ class Event extends Bookable
                 $booking_data['buyer_fees'][] = $item;
             }
         }
-        if(!empty($this->enable_service_fee) and !empty($service_fee = $this->service_fee)){
+        if (!empty($this->enable_service_fee) and !empty($service_fee = $this->service_fee)) {
             foreach ($service_fee as $item) {
                 $item['type_name'] = $item['name_' . app()->getLocale()] ?? $item['name'] ?? '';
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
@@ -599,15 +619,15 @@ class Event extends Bookable
             }
         }
 
-        if($this->isFixedDate()){
+        if ($this->isFixedDate()) {
             $booking_data['is_fixed_date'] = true;
             $booking_data['start_date'] = $this->start_date->format('Y-m-d');
-            $booking_data['start_date_html'] =display_date($this->start_date);
-            $booking_data['end_date_html'] =display_date($this->end_date);
+            $booking_data['start_date_html'] = display_date($this->start_date);
+            $booking_data['end_date_html'] = display_date($this->end_date);
             $booking_data['end_date'] = $this->end_date;
             $booking_data['last_booking_date'] = $this->last_booking_date;
             $booking_data['last_booking_date_html'] = display_date($this->last_booking_date);
-            $booking_data['open_hours'] =[];
+            $booking_data['open_hours'] = [];
         }
 
         return $booking_data;
@@ -650,7 +670,8 @@ class Event extends Bookable
         return setting_item("event_review_approved", 0);
     }
 
-    public function review_after_booking(){
+    public function review_after_booking()
+    {
         return setting_item("event_enable_review_after_booking", 0);
     }
 
@@ -662,9 +683,9 @@ class Event extends Bookable
             $status_making_completed_booking = json_decode($options);
         }
         $number_review = $this->reviewClass::countReviewByServiceID($this->id, Auth::id(), false, $this->type) ?? 0;
-        $number_booking = $this->bookingClass::countBookingByServiceID($this->id, Auth::id(),$status_making_completed_booking) ?? 0;
+        $number_booking = $this->bookingClass::countBookingByServiceID($this->id, Auth::id(), $status_making_completed_booking) ?? 0;
         $number = $number_booking - $number_review;
-        if($number < 0) $number = 0;
+        if ($number < 0) $number = 0;
         return $number;
     }
 
@@ -719,7 +740,7 @@ class Event extends Bookable
     public function getScoreReview()
     {
         $event_id = $this->id;
-        $list_score = Cache::rememberForever('review_'.$this->type.'_' . $event_id, function () use ($event_id) {
+        $list_score = Cache::rememberForever('review_' . $this->type . '_' . $event_id, function () use ($event_id) {
             $dataReview = $this->reviewClass::selectRaw(" AVG(rate_number) as score_total , COUNT(id) as total_review ")->where('object_id', $event_id)->where('object_model', "event")->where("status", "approved")->first();
             $score_total = !empty($dataReview->score_total) ? number_format($dataReview->score_total, 1) : 0;
             return [
@@ -727,52 +748,54 @@ class Event extends Bookable
                 'total_review' => !empty($dataReview->total_review) ? $dataReview->total_review : 0,
             ];
         });
-        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever( round( $list_score['score_total'] )) : __("Not rated");
+        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Not rated");
         return $list_score;
     }
 
     public function getNumberReviewsInService($status = false)
     {
-        return $this->reviewClass::countReviewByServiceID($this->id, false, $status,$this->type) ?? 0;
+        return $this->reviewClass::countReviewByServiceID($this->id, false, $status, $this->type) ?? 0;
     }
 
-    public function getReviewList(){
-        return $this->reviewClass::select(['id','title','content','rate_number','author_ip','status','created_at','vendor_id','author_id'])->where('object_id', $this->id)->where('object_model', 'event')->where("status", "approved")->orderBy("id", "desc")->with('author')->paginate(setting_item('event_review_number_per_page', 5));
+    public function getReviewList()
+    {
+        return $this->reviewClass::select(['id', 'title', 'content', 'rate_number', 'author_ip', 'status', 'created_at', 'vendor_id', 'author_id'])->where('object_id', $this->id)->where('object_model', 'event')->where("status", "approved")->orderBy("id", "desc")->with('author')->paginate(setting_item('event_review_number_per_page', 5));
     }
 
     public function getNumberServiceInLocation($location)
     {
         $number = 0;
-        if(!empty($location)) {
+        if (!empty($location)) {
             $number = parent::join('bravo_locations', function ($join) use ($location) {
-                $join->on('bravo_locations.id', '=', $this->table.'.location_id')->where('bravo_locations._lft', '>=', $location->_lft)->where('bravo_locations._rgt', '<=', $location->_rgt);
-            })->where($this->table.".status", "publish")->with(['translation'])->count($this->table.".id");
+                $join->on('bravo_locations.id', '=', $this->table . '.location_id')->where('bravo_locations._lft', '>=', $location->_lft)->where('bravo_locations._rgt', '<=', $location->_rgt);
+            })->where($this->table . ".status", "publish")->with(['translation'])->count($this->table . ".id");
         }
-        if(empty($number)) return false;
+        if (empty($number)) return false;
         if ($number > 1) {
             return __(":number Events", ['number' => $number]);
         }
         return __(":number Event", ['number' => $number]);
     }
 
-    public function getBookingsInRange($from,$to){
+    public function getBookingsInRange($from, $to)
+    {
 
         $query = $this->bookingClass::query();
-        $query->whereNotIn('status',$this->bookingClass::$notAcceptedStatus);
-        $query->where('start_date','<=',$to)->where('end_date','>=',$from)->take(100);
+        $query->whereNotIn('status', $this->bookingClass::$notAcceptedStatus);
+        $query->where('start_date', '<=', $to)->where('end_date', '>=', $from)->take(100);
 
-        $query->where('object_id',$this->id);
-        $query->where('object_model',$this->type);
+        $query->where('object_id', $this->id);
+        $query->where('object_model', $this->type);
 
-        return $query->orderBy('id','asc')->get();
-
+        return $query->orderBy('id', 'asc')->get();
     }
 
-    public function saveCloneByID($clone_id){
+    public function saveCloneByID($clone_id)
+    {
         $old = parent::find($clone_id);
-        if(empty($old)) return false;
+        if (empty($old)) return false;
         $selected_terms = $old->terms->pluck('term_id');
-        $old->title = $old->title." - Copy";
+        $old->title = $old->title . " - Copy";
         $new = $old->replicate();
         $new->save();
         //Terms
@@ -783,14 +806,14 @@ class Event extends Bookable
             ]);
         }
         //Language
-        $langs = $this->eventTranslationClass::where("origin_id",$old->id)->get();
-        if(!empty($langs)){
-            foreach ($langs as $lang){
+        $langs = $this->eventTranslationClass::where("origin_id", $old->id)->get();
+        if (!empty($langs)) {
+            foreach ($langs as $lang) {
                 $langNew = $lang->replicate();
                 $langNew->origin_id = $new->id;
                 $langNew->save();
-                $langSeo = SEO::where('object_id', $lang->id)->where('object_model', $lang->getSeoType()."_".$lang->locale)->first();
-                if(!empty($langSeo)){
+                $langSeo = SEO::where('object_id', $lang->id)->where('object_model', $lang->getSeoType() . "_" . $lang->locale)->first();
+                if (!empty($langSeo)) {
                     $langSeoNew = $langSeo->replicate();
                     $langSeoNew->object_id = $langNew->id;
                     $langSeoNew->save();
@@ -799,120 +822,130 @@ class Event extends Bookable
         }
         //SEO
         $metaSeo = SEO::where('object_id', $old->id)->where('object_model', $this->seo_type)->first();
-        if(!empty($metaSeo)){
+        if (!empty($metaSeo)) {
             $metaSeoNew = $metaSeo->replicate();
             $metaSeoNew->object_id = $new->id;
             $metaSeoNew->save();
         }
     }
 
-    public function hasWishList(){
-        return $this->hasOne($this->userWishListClass, 'object_id','id')->where('object_model' , $this->type)->where('user_id' , Auth::id() ?? 0);
+    public function hasWishList()
+    {
+        return $this->hasOne($this->userWishListClass, 'object_id', 'id')->where('object_model', $this->type)->where('user_id', Auth::id() ?? 0);
     }
 
     public function isWishList()
     {
-        if(Auth::id()){
-            if(!empty($this->hasWishList) and !empty($this->hasWishList->id)){
+        if (Auth::id()) {
+            if (!empty($this->hasWishList) and !empty($this->hasWishList->id)) {
                 return 'active';
             }
         }
         return '';
     }
 
-    public static function getServiceIconFeatured(){
+    public static function getServiceIconFeatured()
+    {
         return "icofont-ticket";
     }
 
-    public static function isEnable(){
+    public static function isEnable()
+    {
         return setting_item('event_disable') == false;
     }
 
-    public function getBookingInRanges($object_id,$object_model,$from,$to,$object_child_id = false){
+    public function getBookingInRanges($object_id, $object_model, $from, $to, $object_child_id = false)
+    {
 
         $query = $this->bookingClass::selectRaw(" * , SUM( number ) as total_numbers ")->where([
-            'object_id'=>$object_id,
-            'object_model'=>$object_model,
-        ])->whereNotIn('status',$this->bookingClass::$notAcceptedStatus)
-            ->where('end_date','>=',$from)
-            ->where('start_date','<=',$to)
+            'object_id' => $object_id,
+            'object_model' => $object_model,
+        ])->whereNotIn('status', $this->bookingClass::$notAcceptedStatus)
+            ->where('end_date', '>=', $from)
+            ->where('start_date', '<=', $to)
             ->groupBy('start_date')
             ->take(200);
 
-        if($object_child_id){
-            $query->where('object_child_id',$object_child_id);
+        if ($object_child_id) {
+            $query->where('object_child_id', $object_child_id);
         }
 
         return $query->get();
     }
 
-    public function isDepositEnable(){
+    public function isDepositEnable()
+    {
         return (setting_item('event_deposit_enable') and setting_item('event_deposit_amount'));
     }
-    public function getDepositAmount(){
+    public function getDepositAmount()
+    {
         return setting_item('event_deposit_amount');
     }
-    public function getDepositType(){
+    public function getDepositType()
+    {
         return setting_item('event_deposit_type');
     }
-    public function getDepositFomular(){
-        return setting_item('event_deposit_fomular','default');
+    public function getDepositFomular()
+    {
+        return setting_item('event_deposit_fomular', 'default');
     }
 
-	public function detailBookingEachDate($booking){
-		$startDate = $booking->start_date;
-		$endDate = $booking->end_date;
-		$rowDates= json_decode($booking->getMeta('tmp_dates'));
+    public function detailBookingEachDate($booking)
+    {
+        $startDate = $booking->start_date;
+        $endDate = $booking->end_date;
+        $rowDates = json_decode($booking->getMeta('tmp_dates'));
 
-		$allDates=[];
-		$service = $booking->service;
-        $period = periodDate($startDate,$endDate);
-        foreach ($period as $dt){
-			$price = (!empty($service->sale_price) and $service->sale_price > 0 and $service->sale_price < $service->price) ? $service->sale_price : $service->price;
-			$date['price'] =$price;
-			$date['price_html'] = format_money($price);
-			$date['from'] = $dt->getTimestamp();
-			$date['from_html'] = $dt->format('d/m/Y');
-			$date['to'] = $dt->getTimestamp();
-			$date['to_html'] = $dt->format('d/m/Y');
-			$allDates[date('Y-m-d',$i)] = $date;
-		}
+        $allDates = [];
+        $service = $booking->service;
+        $period = periodDate($startDate, $endDate);
+        foreach ($period as $dt) {
+            $price = (!empty($service->sale_price) and $service->sale_price > 0 and $service->sale_price < $service->price) ? $service->sale_price : $service->price;
+            $date['price'] = $price;
+            $date['price_html'] = format_money($price);
+            $date['from'] = $dt->getTimestamp();
+            $date['from_html'] = $dt->format('d/m/Y');
+            $date['to'] = $dt->getTimestamp();
+            $date['to_html'] = $dt->format('d/m/Y');
+            $allDates[date('Y-m-d', $i)] = $date;
+        }
 
-		if(!empty($rowDates))
-		{
-			foreach ($rowDates as $item => $row)
-			{
-				$startDate = strtotime($item);
-				$price = $row->price;
-				$date['price'] = $price;
-				$date['price_html'] = format_money($price);
-				$date['from'] = $startDate;
-				$date['from_html'] = date('d/m/Y',$startDate);
-				$date['to'] = $startDate;
-				$date['to_html'] = date('d/m/Y',($startDate));
-				$allDates[date('Y-m-d',$startDate)] = $date;
-			}
-		}
-		return $allDates;
-	}
+        if (!empty($rowDates)) {
+            foreach ($rowDates as $item => $row) {
+                $startDate = strtotime($item);
+                $price = $row->price;
+                $date['price'] = $price;
+                $date['price_html'] = format_money($price);
+                $date['from'] = $startDate;
+                $date['from_html'] = date('d/m/Y', $startDate);
+                $date['to'] = $startDate;
+                $date['to_html'] = date('d/m/Y', ($startDate));
+                $allDates[date('Y-m-d', $startDate)] = $date;
+            }
+        }
+        return $allDates;
+    }
 
-    public static function isEnableEnquiry(){
-        if(!empty(setting_item('booking_enquiry_for_event'))){
+    public static function isEnableEnquiry()
+    {
+        if (!empty(setting_item('booking_enquiry_for_event'))) {
             return true;
         }
         return false;
     }
-    public static function isFormEnquiryAndBook(){
+    public static function isFormEnquiryAndBook()
+    {
         $check = setting_item('booking_enquiry_for_event');
-        if(!empty($check) and setting_item('booking_enquiry_type_event') == "booking_and_enquiry" ){
+        if (!empty($check) and setting_item('booking_enquiry_type_event') == "booking_and_enquiry") {
             return true;
         }
         return false;
     }
-    public static function getBookingEnquiryType(){
+    public static function getBookingEnquiryType()
+    {
         $check = setting_item('booking_enquiry_for_event');
-        if(!empty($check)){
-            if( setting_item('booking_enquiry_type_event') == "only_enquiry" ) {
+        if (!empty($check)) {
+            if (setting_item('booking_enquiry_type_event') == "only_enquiry") {
                 return "enquiry";
             }
         }
@@ -923,9 +956,9 @@ class Event extends Bookable
     {
         $query = parent::query()->select("bravo_events.*");
         $query->where("bravo_events.status", "publish");
-        if (!empty($location_id = $request['location_id'] ?? "" )) {
-            $location = Location::where('id', $location_id)->where("status","publish")->first();
-            if(!empty($location)){
+        if (!empty($location_id = $request['location_id'] ?? "")) {
+            $location = Location::where('id', $location_id)->where("status", "publish")->first();
+            if (!empty($location)) {
                 $query->join('bravo_locations', function ($join) use ($location) {
                     $join->on('bravo_locations.id', '=', 'bravo_events.location_id')
                         ->where('bravo_locations._lft', '>=', $location->_lft)
@@ -938,64 +971,57 @@ class Event extends Bookable
             $pri_to =  Currency::convertPriceToMain(explode(";", $price_range)[1]);
             $raw_sql_min_max = "( (IFNULL(bravo_events.sale_price,0) > 0 and bravo_events.sale_price >= ? ) OR (IFNULL(bravo_events.sale_price,0) <= 0 and bravo_events.price >= ? ) )
                             AND ( (IFNULL(bravo_events.sale_price,0) > 0 and bravo_events.sale_price <= ? ) OR (IFNULL(bravo_events.sale_price,0) <= 0 and bravo_events.price <= ? ) )";
-            $query->WhereRaw($raw_sql_min_max,[$pri_from,$pri_from,$pri_to,$pri_to]);
+            $query->WhereRaw($raw_sql_min_max, [$pri_from, $pri_from, $pri_to, $pri_to]);
         }
 
         $terms = $request['terms'] ?? "";
-        if($term_id = $request['term_id'] ?? "")
-        {
+        if ($term_id = $request['term_id'] ?? "") {
             $terms[] = $term_id;
         }
 
         if (is_array($terms) and !empty($terms = array_filter(array_values($terms)))) {
-            foreach ($terms as $index=>$termId){
-                $query->join('bravo_event_term as tt'.$index, function($join) use ($termId,$index){
-                    $join->on('tt'.$index.'.target_id', "bravo_events.id");
-                    $join->where('tt'.$index.'.term_id', $termId);
+            foreach ($terms as $index => $termId) {
+                $query->join('bravo_event_term as tt' . $index, function ($join) use ($termId, $index) {
+                    $join->on('tt' . $index . '.target_id', "bravo_events.id");
+                    $join->where('tt' . $index . '.term_id', $termId);
                 });
             }
         }
 
-        if(!empty($request['attrs'])){
-            $this->filterAttrs($query,$request['attrs'],'bravo_event_term');
+        if (!empty($request['attrs'])) {
+            $this->filterAttrs($query, $request['attrs'], 'bravo_event_term');
         }
 
         $review_scores = $request['review_score'] ?? "";
         if (is_array($review_scores)) $review_scores = array_filter($review_scores);
         if (!empty($review_scores) && count($review_scores)) {
-            $this->filterReviewScore($query,$review_scores);
+            $this->filterReviewScore($query, $review_scores);
         }
 
-        if(!empty( $service_name = $request["service_name"] ?? "" ))
-        {
-            if( setting_item('site_enable_multi_lang') && setting_item('site_locale') != app()->getLocale() ){
+        if (!empty($service_name = $request["service_name"] ?? "")) {
+            if (setting_item('site_enable_multi_lang') && setting_item('site_locale') != app()->getLocale()) {
                 $query->leftJoin('bravo_event_translations', function ($join) {
                     $join->on('bravo_events.id', '=', 'bravo_event_translations.origin_id');
                 });
                 $query->where('bravo_event_translations.title', 'LIKE', '%' . $service_name . '%');
-
-            }
-            else
-            {
+            } else {
                 $query->where('bravo_events.title', 'LIKE', '%' . $service_name . '%');
             }
         }
 
-        if(!empty($lat = $request["map_lat"] ?? "") and !empty($lgn = $request["map_lgn"] ?? "") and !empty($request["map_place"] ?? ""))
-        {
-            $this->filterLatLng($query,$lat,$lgn);
+        if (!empty($lat = $request["map_lat"] ?? "") and !empty($lgn = $request["map_lgn"] ?? "") and !empty($request["map_place"] ?? "")) {
+            $this->filterLatLng($query, $lat, $lgn);
         }
 
-        if(!empty($request['is_featured']))
-        {
-            $query->where('bravo_events.is_featured',1);
+        if (!empty($request['is_featured'])) {
+            $query->where('bravo_events.is_featured', 1);
         }
-        if (!empty($request['custom_ids']) and !empty( $ids = array_filter($request['custom_ids']) )) {
+        if (!empty($request['custom_ids']) and !empty($ids = array_filter($request['custom_ids']))) {
             $query->whereIn("bravo_events.id", $ids);
             $query->orderByRaw('FIELD (id, ' . implode(', ', $ids) . ') ASC');
         }
         $orderby = $request["orderby"] ?? "";
-        switch ($orderby){
+        switch ($orderby) {
             case "price_low_high":
                 $raw_sql = "CASE WHEN IFNULL( bravo_events.sale_price, 0 ) > 0 THEN bravo_events.sale_price ELSE bravo_events.price END AS tmp_min_price";
                 $query->selectRaw($raw_sql);
@@ -1010,9 +1036,9 @@ class Event extends Bookable
                 $query->orderBy("review_score", "desc");
                 break;
             default:
-                if(!empty($request['order']) and !empty($request['order_by'])){
-                    $query->orderBy("bravo_events.".$request['order'], $request['order_by']);
-                }else{
+                if (!empty($request['order']) and !empty($request['order_by'])) {
+                    $query->orderBy("bravo_events." . $request['order'], $request['order_by']);
+                } else {
                     $query->orderBy("is_featured", "desc");
                     $query->orderBy("id", "desc");
                 }
@@ -1020,23 +1046,24 @@ class Event extends Bookable
 
         $query->groupBy("bravo_events.id");
 
-        $max_guests = (int)( ($request['adults'] ?? 0) + ($request['children'] ?? 0));
-        if($max_guests){
-            $query->where('max_guests','>=',$max_guests);
+        $max_guests = (int)(($request['adults'] ?? 0) + ($request['children'] ?? 0));
+        if ($max_guests) {
+            $query->where('max_guests', '>=', $max_guests);
         }
-        return $query->with(['location','hasWishList','translation']);
+        return $query->with(['location', 'hasWishList', 'translation']);
     }
 
     public function getNumberWishlistInService($status = false)
     {
-        return $this->hasOne($this->userWishListClass, 'object_id','id')->where('object_model' , $this->type)->count();
+        return $this->hasOne($this->userWishListClass, 'object_id', 'id')->where('object_model', $this->type)->count();
     }
 
-    public function dataForApi($forSingle = false){
+    public function dataForApi($forSingle = false)
+    {
         $data = parent::dataForApi($forSingle);
-        $data['duration'] = duration_format($this->duration,true);
+        $data['duration'] = duration_format($this->duration, true);
         $data['start_time'] = $this->start_time;
-        if($forSingle){
+        if ($forSingle) {
             $data['review_score'] = $this->getReviewDataAttribute();
             $data['review_stats'] = $this->getReviewStats();
             $data['review_lists'] = $this->getReviewList();
@@ -1046,13 +1073,13 @@ class Event extends Bookable
             $data['default_state'] = $this->default_state;
             $data['booking_fee'] = setting_item_array('event_booking_buyer_fees');
             if (!empty($location_id = $this->location_id)) {
-                $related =  parent::query()->where('location_id', $location_id)->where("status", "publish")->take(4)->whereNotIn('id', [$this->id])->with(['location','translation','hasWishList'])->get();
+                $related =  parent::query()->where('location_id', $location_id)->where("status", "publish")->take(4)->whereNotIn('id', [$this->id])->with(['location', 'translation', 'hasWishList'])->get();
                 $data['related'] = $related->map(function ($related) {
-                        return $related->dataForApi();
-                    }) ?? null;
+                    return $related->dataForApi();
+                }) ?? null;
             }
             $data['terms'] = Terms::getTermsByIdForAPI($this->terms->pluck('term_id'));
-        }else{
+        } else {
             $data['review_score'] = $this->getScoreReview();
         }
         return $data;
@@ -1071,8 +1098,8 @@ class Event extends Bookable
                 "title"    => __("Filter Price"),
                 "field"    => "price_range",
                 "position" => "1",
-                "min_price" => floor ( Currency::convertPrice($min_max_price[0]) ),
-                "max_price" => ceil (Currency::convertPrice($min_max_price[1]) ),
+                "min_price" => floor(Currency::convertPrice($min_max_price[0])),
+                "max_price" => ceil(Currency::convertPrice($min_max_price[1])),
             ],
             [
                 "title"    => __("Review Score"),
@@ -1090,8 +1117,9 @@ class Event extends Bookable
         ];
     }
 
-    public static function getBookingType(){
-        return setting_item('event_booking_type','ticket');
+    public static function getBookingType()
+    {
+        return setting_item('event_booking_type', 'ticket');
     }
 
     public function getBookingTimeSlot()
@@ -1117,12 +1145,11 @@ class Event extends Bookable
         $search_fields = array_values(\Illuminate\Support\Arr::sort($search_fields, function ($value) {
             return $value['position'] ?? 0;
         }));
-        foreach ( $search_fields as &$item){
-            if($item['field'] == 'attr' and !empty($item['attr']) ){
+        foreach ($search_fields as &$item) {
+            if ($item['field'] == 'attr' and !empty($item['attr'])) {
                 $attr = Attributes::find($item['attr']);
                 $item['attr_title'] = $attr->translate()->name;
-                foreach($attr->terms as $term)
-                {
+                foreach ($attr->terms as $term) {
                     $translate = $term->translate();
                     $item['terms'][] =  [
                         'id' => $term->id,
@@ -1136,8 +1163,7 @@ class Event extends Bookable
 
     public function isFixedDate(): bool
     {
-        if(!empty($this->enable_fixed_date) and $this->last_booking_date >= Carbon::today()) return    true;
+        if (!empty($this->enable_fixed_date) and $this->last_booking_date >= Carbon::today()) return    true;
         return false;
-
     }
 }

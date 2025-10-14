@@ -1,7 +1,9 @@
 <?php
+
 namespace Modules\News\Models;
 
 use App\BaseModel;
+use App\Scopes\CreatedByUserScope;
 use App\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Core\Models\SEO;
@@ -25,6 +27,10 @@ class News extends BaseModel
     public $type = 'news';
 
     protected $sitemap_type = 'page';
+    protected static function booted()
+    {
+        static::addGlobalScope(new CreatedByUserScope);
+    }
 
     public function getDetailUrlAttribute()
     {
@@ -33,7 +39,7 @@ class News extends BaseModel
 
     public function geCategorylink()
     {
-        return route('news.category.index',['slug'=>$this->slug]);
+        return route('news.category.index', ['slug' => $this->slug]);
     }
 
     public function cat()
@@ -54,7 +60,7 @@ class News extends BaseModel
 
     public function getDetailUrl($locale = false)
     {
-        return url(app_get_locale(false,false,'/'). config('news.news_route_prefix')."/".$this->slug);
+        return url(app_get_locale(false, false, '/') . config('news.news_route_prefix') . "/" . $this->slug);
     }
 
     public function category()
@@ -75,7 +81,8 @@ class News extends BaseModel
         return Tag::whereIn('id', $tag_ids)->with('translation')->get();
     }
 
-    public function tags(){
+    public function tags()
+    {
         return $this->belongsToMany(Tag::class, NewsTag::class, 'news_id', 'tag_id')->with('translation');
     }
 
@@ -105,7 +112,7 @@ class News extends BaseModel
 
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = setting_item_with_lang("news_page_list_seo_title", false,null) ?? setting_item_with_lang("news_page_list_title",false, null) ?? __("News");
+        $meta['seo_title'] = setting_item_with_lang("news_page_list_seo_title", false, null) ?? setting_item_with_lang("news_page_list_title", false, null) ?? __("News");
         $meta['seo_desc'] = setting_item_with_lang("news_page_list_seo_desc");
         $meta['seo_image'] = setting_item("news_page_list_seo_image", null) ?? setting_item("news_page_list_banner", null);
         $meta['seo_share'] = setting_item_with_lang("news_page_list_seo_share");
@@ -116,34 +123,37 @@ class News extends BaseModel
     public function getEditUrl()
     {
         $lang = $this->lang ?? setting_item("site_locale");
-        return route('news.admin.edit',['id'=>$this->id , "lang"=> $lang]);
+        return route('news.admin.edit', ['id' => $this->id, "lang" => $lang]);
     }
 
-    public function dataForApi($forSingle = false){
+    public function dataForApi($forSingle = false)
+    {
         $translation = $this->translate();
         $data = [
-            'id'=>$this->id,
-            'slug'=>$this->slug,
-            'title'=>$translation->title,
-            'content'=>$translation->content,
-            'image_id'=>$this->image_id,
-            'image_url'=>get_file_url($this->image_id,'full'),
-            'category'=>NewsCategory::selectRaw("id,name,slug")->find($this->cat_id) ?? null,
-            'created_at'=>display_date($this->created_at),
-            'author'=>[
-                'display_name'=>$this->author->getDisplayName(),
-                'avatar_url'=>$this->author->getAvatarUrl()
+            'id' => $this->id,
+            'slug' => $this->slug,
+            'title' => $translation->title,
+            'content' => $translation->content,
+            'image_id' => $this->image_id,
+            'image_url' => get_file_url($this->image_id, 'full'),
+            'category' => NewsCategory::selectRaw("id,name,slug")->find($this->cat_id) ?? null,
+            'created_at' => display_date($this->created_at),
+            'author' => [
+                'display_name' => $this->author->getDisplayName(),
+                'avatar_url' => $this->author->getAvatarUrl()
             ],
-            'url'=>$this->getDetailUrl()
+            'url' => $this->getDetailUrl()
         ];
         return $data;
     }
 
-    public function getNextPost(){
-        return News::where('id', '>', $this->id)->where('status','publish')->first();
+    public function getNextPost()
+    {
+        return News::where('id', '>', $this->id)->where('status', 'publish')->first();
     }
-    public function getPrevPost(){
-        return News::where('id', '<', $this->id)->where('status','publish')->orderByDesc('id')->first();
+    public function getPrevPost()
+    {
+        return News::where('id', '<', $this->id)->where('status', 'publish')->orderByDesc('id')->first();
     }
 
     public static function getModelName()
@@ -161,11 +171,13 @@ class News extends BaseModel
         return setting_item("news_review_approved", 0);
     }
 
-    public function update_service_rate(){
+    public function update_service_rate()
+    {
         // No action
     }
 
-    public function getReviewData(){
+    public function getReviewData()
+    {
         $review = app(Review::class);
         $reviewData = $review::getTotalViewAndRateAvg($this->id, $this->type);
         return $reviewData;
@@ -175,5 +187,4 @@ class News extends BaseModel
     {
         return [];
     }
-
 }

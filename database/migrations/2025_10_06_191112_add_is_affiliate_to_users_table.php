@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_affiliate')
-                  ->default(false)
+                  ->default(true)
                   ->after('status')
                   ->comment('Indica se o usuário é afiliado');
         });

@@ -46,10 +46,6 @@ trait Checkout
         date_default_timezone_set('America/Sao_Paulo');
         $host = env('APP_URL');
 
-        // 📌 Define o ciclo e próxima data
-        $subscriptionCycle = 'MONTHLY'; // ou 'ANNUAL' se o plano for anual
-        $nextDueDate = now()->addMonth()->format('Y-m-d'); // ou addYear()
-
         if (!isset($options['callback']))
             $options['callback'] =  [
                 "cancelUrl" =>  "$host/plan",
@@ -59,13 +55,9 @@ trait Checkout
 
         $payload = [
             "billingTypes" => ["CREDIT_CARD", "PIX"],
-            "chargeTypes" => ["RECURRENT"], // 📌 troquei para RECURRENT (assinatura)
+            "chargeTypes" => ["DETACHED"], 
             "minutesToExpire" => 120,
             "callback" => $options['callback'],
-            "subscription" => [
-                "cycle" => $subscriptionCycle,
-                "nextDueDate" => $nextDueDate
-            ],
             "items" => [
                 [
                     "name" => "Plano " . $plan->title,

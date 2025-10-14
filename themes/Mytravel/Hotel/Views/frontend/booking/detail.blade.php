@@ -5,7 +5,7 @@
 <div class="shadow-soft bg-white rounded-sm booking-review">
     <div class="pt-5 pb-3 px-4 border-bottom">
         <a href="#" class="d-block mb-3">
-            <img class="img-fluid rounded-sm" src="{{$service->image_url}}" alt="{!! clean($service_translation->title) !!}">
+            <img class="img-fluid rounded-sm" style="object-fit: contain; width: 100px;" src="{{$service->image_url}}" alt="{!! clean($service_translation->title) !!}">
         </a>
         <a href="{{$service->getDetailUrl()}}" class="text-dark font-weight-bold mb-2 d-block">
             {!! clean($service_translation->title) !!}
@@ -163,7 +163,6 @@
                                 </li>
                             @endif
                         @endif
-                        @include ('Booking::frontend/booking/checkout-deposit-amount')
                     </ul>
                 </div>
             </div>
