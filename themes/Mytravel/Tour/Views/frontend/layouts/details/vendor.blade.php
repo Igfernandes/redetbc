@@ -17,8 +17,8 @@ $vendor = $row->author;
                 @endif
             </h4>
             <p>{{ __("Member Since :time",["time"=> date("M Y",strtotime($vendor->created_at))]) }}</p>
-            @if((!Auth::id() or Auth::id() != $row->author_id ) and setting_item('inbox_enable'))
-                <a class="btn btn-sm btn-primary" href="{{route('user.chat',['user_id'=>$row->author_id])}}" ><i class="icon ion-ios-chatboxes"></i> {{__('Message host')}}</a>
+            @if((!Auth::id() or Auth::id() != $row->author_id ) and setting_item('inbox_enable') and false)
+                <a class="btn btn-sm btn-primary" href="{{route('user.chat',['user_id'=>$row->author_id])}}" ><i class="icon ion-ios-chatboxes"></i> {{__('Reservas host')}}</a>
             @endif
         </div>
     </div>

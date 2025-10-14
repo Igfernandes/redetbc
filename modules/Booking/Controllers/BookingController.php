@@ -459,28 +459,30 @@ class BookingController extends \App\Http\Controllers\Controller
      */
     public function addToCart(Request $request)
     {
-        if (!is_enable_guest_checkout() and !Auth::check()) {
+        if (!Auth::check()) {
             return $this->sendError(__("You have to login in to do this"))->setStatusCode(401);
-        }
-        if (auth()->user() && !auth()->user()->hasVerifiedEmail() && setting_item('enable_verify_email_register_user') == 1) {
-            return $this->sendError(__("You have to verify email first"), ['url' => url('/email/verify')]);
         }
 
         $validator = Validator::make($request->all(), [
             'service_id'   => 'required|integer',
             'service_type' => 'required'
         ]);
+
         if ($validator->fails()) {
             return $this->sendError('', ['errors' => $validator->errors()]);
         }
         $service_type = $request->input('service_type');
         $service_id = $request->input('service_id');
+
         $allServices = get_bookable_services();
+
         if (empty($allServices[$service_type])) {
             return $this->sendError(__('Service type not found'));
         }
+
         $module = $allServices[$service_type];
         $service = $module::find($service_id);
+
         if (empty($service) or !is_subclass_of($service, '\\Modules\\Booking\\Models\\Bookable')) {
             return $this->sendError(__('Service not found'));
         }

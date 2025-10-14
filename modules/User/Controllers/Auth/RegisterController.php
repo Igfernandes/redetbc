@@ -98,7 +98,8 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
                 'email'      => $request->input('email'),
                 'password'   => Hash::make($request->input('password')),
                 'status'    => $request->input('publish', 'publish'),
-                'phone'    => $request->input('phone')
+                'phone'    => $request->input('phone'),
+                'is_affiliate' => true
             ];
 
             $relationKey = session('relationKey');

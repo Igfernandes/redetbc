@@ -30,9 +30,10 @@
                           
                             @foreach($types as $type=>$moduleClass)
                                 @php
+                                $i=0;
                                 $tb_name = $moduleClass::getTableName();
                                 $location_tb = \Modules\Location\Models\Location::getTableName();
-                                    if(!$moduleClass::isEnable() or in_array($type,$not_in)==true) continue;
+                                    if(!$moduleClass::isEnable() or (isset($not_in) && in_array($type,$not_in)==true)) continue;
                                     $moduleInst = new $moduleClass();
                                     $data[$type] = $moduleInst->select($tb_name.'.*')
                                     ->join($location_tb, function ($join) use ($row,$moduleInst,$location_tb,$tb_name) {
@@ -41,7 +42,7 @@
                                             ->where($location_tb.'._rgt', '<=', $row->_rgt);
                                     })
                                     ->where($tb_name.'.status','publish')->with('location')->take(8)->get();
-                                @endphp
+                                @endphp  
                                 @if($data[$type]->count()>0)
                                     <li class="nav-item">
                                         <a class="nav-link font-weight-medium {{$i==0?'active':""}}" id="#module-{{$type}}-tab" data-toggle="pill" href="#module-{{$type}}" role="tab" aria-controls="#module-{{$type}}" aria-selected="true">
@@ -56,9 +57,9 @@
                         </ul>
                         <!-- End Nav Classic -->
                         <div class="tab-content">
-                            @php $i=0 @endphp
+                         
                             @foreach($types as $type=>$moduleClass)
-                                @php  if(!$moduleClass::isEnable() or in_array($type,$not_in)==true) continue;@endphp
+                                @php  if(!$moduleClass::isEnable() or (isset($not_in) && in_array($type,$not_in)==true)) continue;@endphp
                                 @php $view = ucfirst($type).'::frontend.blocks.list-'.$type.'.style_1' @endphp
                                 @if(view()->exists($view))
                                     @if($data[$type]->count()>0)

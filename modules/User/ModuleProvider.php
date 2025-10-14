@@ -157,7 +157,7 @@ class ModuleProvider extends ModuleServiceProvider
                 'position' => 90,
                 'icon' => 'fa fa-comments',
                 'url' => route('user.chat'),
-                'title' => __("Messages :count", ['count' => $count ? sprintf('<span class="badge badge-danger">%d</span>', $count) : '']),
+                'title' => __("Reservas :count", ['count' => $count ? sprintf('<span class="badge badge-danger">%d</span>', $count) : '']),
             ];
         }
         if (setting_item('user_enable_2fa')) {

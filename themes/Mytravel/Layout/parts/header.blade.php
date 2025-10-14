@@ -147,7 +147,7 @@
 
                                     @if(setting_item('inbox_enable'))
 
-                                    <li class="menu-hr"><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Messages")}}</a></li>
+                                    <li class="menu-hr"><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Reservas")}}</a></li>
 
                                     @endif
 

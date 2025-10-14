@@ -62,12 +62,8 @@
                             <th width="80px"><input type="checkbox" class="check-all"></th>
                             <th>{{__('Service')}}</th>
                             <th>{{__('Customer')}}</th>
-
-                            <th>{{__('Payment Information')}}</th>
-                            <th  width="80px" >{{__('Commission')}}</th>
-                            <th width="80px">{{__('Status')}}</th>
-                            <th width="150px">{{__('Payment Method')}}</th>
-                            <th width="120px">{{__('Created At')}}</th>
+                            <th width="120px">{{__('Status')}}</th>
+                            <th width="220px">{{__('Created At')}}</th>
                             <th width="80px">{{__('Actions')}}</th>
                         </tr>
                         </thead>
@@ -99,18 +95,8 @@
                                         <li>{{__("Custom Requirement:")}} {{$row->customer_notes}}</li>
                                     </ul>
                                 </td>
-                                <td>{{__("Total")}} : {{format_money_main($row->total)}}<br/>
-                                    {{__("Paid")}} : {{format_money_main($row->paid)}}<br/>
-                                    {{__("Remain")}} : {{format_money_main($booking->total - $booking->paid)}}<br/>
-                                </td>
-                                <td>
-                                    {{format_money_main($booking->commission)}}
-                                </td>
                                 <td>
                                     <span class="label label-{{$row->status}}">{{$row->statusName}}</span>
-                                </td>
-                                <td>
-                                    {{$row->gatewayObj ? $row->gatewayObj->getDisplayName() : ''}}
                                 </td>
                                 <td>{{display_datetime($row->updated_at)}}</td>
                                 <td>

@@ -56,8 +56,6 @@
                                 <tr>
                                     <th width="60px">#</th>
                                     <th>{{__('Item')}}</th>
-                                    <th width="100px">{{__("Total")}}</th>
-                                    <th width="100px">{{__("Paid")}}</th>
                                     <th width="100px">{{__("Status")}}</th>
                                     <th width="100px">{{__("Created At")}}</th>
                                 </tr>
@@ -74,8 +72,6 @@
                                                     {{__("[Deleted]")}}
                                                 @endif
                                             </td>
-                                            <td>{{format_money_main($booking->total)}}</td>
-                                            <td>{{format_money_main($booking->paid)}}</td>
                                             <td>
                                                 <span class="badge badge-{{$booking->status_class}}">{{$booking->status_name}}</span>
                                             </td>

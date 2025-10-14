@@ -3,6 +3,7 @@
 use App\Http\Controllers\AsaasController;
 use \Illuminate\Support\Facades\Route;
 use Modules\User\Controllers\UpgradeController;
+use Modules\User\Controllers\UserBookingController;
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verified']], function () {
     Route::match(['get'], '/dashboard', 'UserController@dashboard')->name("vendor.dashboard");
@@ -14,7 +15,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verified']], functio
     Route::post('/preferences', 'UserController@preferences')->name("user.profile.preferences");
     Route::get('/profile/change-password', 'PasswordController@changePassword')->name("user.change_password");
     Route::post('/profile/change-password', 'PasswordController@changePasswordUpdate')->name("user.change_password.update");
-    Route::get('/booking-history', 'UserController@bookingHistory')->name("user.booking_history");
+    Route::get('/booking-history', [UserBookingController::class, "history"])->name("user.booking_history");
+    Route::get('/booking-history/preview', [UserBookingController::class, "preview"])->name("user.booking_history.request");
+    // Route::get('/booking-history', 'UserBookingController@Register')->name("user.booking_history");
+
 
     Route::get('/network', 'NetworkController@index')->name("user.network");
     Route::get('/network/wallet', 'NetworkController@wallet')->name("user.network.wallet");
@@ -42,7 +46,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verified']], functio
         Route::get('{code}/ticket', 'BookingController@ticket')->name('user.booking.ticket');
     });
 
-    Route::match(['get'], '/upgrade-vendor', 'UserController@upgradeVendor')->name("user.upgrade_vendor");
     Route::match(['get'], '/upgrade-vendor-plan', 'UserController@upgradeVendorPlans')->name("user.upgrade_vendor_plans");
 
     Route::get('wallet', 'WalletController@wallet')->name('user.wallet');
@@ -50,6 +53,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verified']], functio
     Route::post('wallet/buyProcess', 'WalletController@buyProcess')->name('user.wallet.buyProcess');
 
     Route::get('chat', 'ChatController@index')->name('user.chat');
+    Route::get('/chat', 'ChatController@index')->name('user.chat');
+    Route::get('/chat/messages/{booking}', 'ChatController@getMessages');
+    Route::post('/chat/send', 'ChatController@sendMessage');
 
     Route::group(['prefix' => '/2fa'], function () {
         Route::get('/', 'TwoFactorController@index')->name('user.2fa');

@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Booking\Models;
 
 use App\BaseModel;
@@ -41,9 +42,15 @@ class Booking extends BaseModel
     ];
 
     public static $notAcceptedStatus = [
-        'draft','cancelled','unpaid'
+        'draft',
+        'cancelled',
+        'unpaid'
     ];
 
+    public function customer()
+    {
+        return $this->belongsTo(User::class, 'customer_id');
+    }
     public function getGatewayObjAttribute()
     {
         return $this->gateway ? get_payment_gateway_obj($this->gateway) : false;
@@ -84,7 +91,7 @@ class Booking extends BaseModel
         if ($this->object_model and !empty($all[$this->object_model])) {
             return $this->hasOne($all[$this->object_model], 'id', 'object_id');
         }
-        return null;
+        return $this->belongsTo(Service::class);
     }
 
     public function payment()
@@ -95,24 +102,24 @@ class Booking extends BaseModel
     public function getCheckoutUrl()
     {
         $is_api = request()->segment(1) == 'api';
-        return url(($is_api ? 'api/' : '').app_get_locale(false,false , "/").config('booking.booking_route_prefix') . '/' . $this->code . '/checkout');
+        return url(($is_api ? 'api/' : '') . app_get_locale(false, false, "/") . config('booking.booking_route_prefix') . '/' . $this->code . '/checkout');
     }
 
     public function getDetailUrl($full = true)
     {
         $is_api = request()->segment(1) == 'api';
         if (!$full) {
-            return ($is_api ? 'api/' : '').app_get_locale(false,false , "/").config('booking.booking_route_prefix') . '/' . $this->code;
+            return ($is_api ? 'api/' : '') . app_get_locale(false, false, "/") . config('booking.booking_route_prefix') . '/' . $this->code;
         }
-        if($is_api){
-            return route('booking.thankyou',['code'=>$this->code,'token'=>request()->input('token')]);
+        if ($is_api) {
+            return route('booking.thankyou', ['code' => $this->code, 'token' => request()->input('token')]);
         }
-        return url(($is_api ? 'api/' : '').app_get_locale(false,false , "/").config('booking.booking_route_prefix') . '/' . $this->code);
+        return url(($is_api ? 'api/' : '') . app_get_locale(false, false, "/") . config('booking.booking_route_prefix') . '/' . $this->code);
     }
 
     public function getAllMeta()
     {
-        $meta = DB::table('bravo_booking_meta')->select(['name','val'])->where([
+        $meta = DB::table('bravo_booking_meta')->select(['name', 'val'])->where([
             'booking_id' => $this->id,
         ])->get();
         if (!empty($meta)) {
@@ -138,7 +145,7 @@ class Booking extends BaseModel
     public function getJsonMeta($key, $default = [])
     {
         $meta = $this->getMeta($key, $default);
-        if(empty($meta)) return false;
+        if (empty($meta)) return false;
         return json_decode($meta, true);
     }
 
@@ -163,7 +170,6 @@ class Booking extends BaseModel
                 return DB::table('bravo_booking_meta')->where('id', $old->id)->update([
                     'val' => $val
                 ]);
-
             } else {
                 return DB::table('bravo_booking_meta')->insert([
                     'name'       => $key,
@@ -206,9 +212,9 @@ class Booking extends BaseModel
 
     public function markAsPaid()
     {
-        if($this->paid < $this->total){
+        if ($this->paid < $this->total) {
             $this->status = static::PARTIAL_PAYMENT;
-        }else{
+        } else {
             $this->status = static::PAID;
         }
 
@@ -216,13 +222,13 @@ class Booking extends BaseModel
         event(new BookingUpdatedEvent($this));
     }
 
-    public function markAsPaymentFailed(){
+    public function markAsPaymentFailed()
+    {
 
         $this->status = static::UNPAID;
         $this->tryRefundToWallet();
         $this->save();
         event(new BookingUpdatedEvent($this));
-
     }
 
     public function sendNewBookingEmails()
@@ -236,38 +242,36 @@ class Booking extends BaseModel
 
             // To Customer
             Mail::to($this->email)->send(new NewBookingEmail($this, 'customer'));
+        } catch (\Exception | \Swift_TransportException $exception) {
 
-        }catch (\Exception | \Swift_TransportException $exception){
-
-            Log::warning('sendNewBookingEmails: '.$exception->getMessage());
+            Log::warning('sendNewBookingEmails: ' . $exception->getMessage());
         }
     }
 
-    public function sendStatusUpdatedEmails(){
+    public function sendStatusUpdatedEmails()
+    {
         // Try to update locale
         $old = app()->getLocale();
 
         $bookingLocale = $this->getMeta('locale');
-        if($bookingLocale){
+        if ($bookingLocale) {
             app()->setLocale($bookingLocale);
         }
-        try{
+        try {
             // To Admin
-            Mail::to(setting_item('admin_email'))->send(new StatusUpdatedEmail($this,'admin'));
+            Mail::to(setting_item('admin_email'))->send(new StatusUpdatedEmail($this, 'admin'));
 
             // to Vendor
-            Mail::to(User::find($this->vendor_id))->send(new StatusUpdatedEmail($this,'vendor'));
+            Mail::to(User::find($this->vendor_id))->send(new StatusUpdatedEmail($this, 'vendor'));
 
             // To Customer
-            Mail::to($this->email)->send(new StatusUpdatedEmail($this,'customer'));
+            Mail::to($this->email)->send(new StatusUpdatedEmail($this, 'customer'));
 
 
             app()->setLocale($old);
+        } catch (\Exception $e) {
 
-        } catch(\Exception $e){
-
-            Log::warning('sendStatusUpdatedEmails: '.$e->getMessage());
-
+            Log::warning('sendStatusUpdatedEmails: ' . $e->getMessage());
         }
 
         app()->setLocale($old);
@@ -283,10 +287,10 @@ class Booking extends BaseModel
         return $this->hasOne(User::class, "id", 'vendor_id');
     }
 
-    public static function getRecentBookings($limit = 10,$vendor_id = false)
+    public static function getRecentBookings($limit = 10, $vendor_id = false)
     {
-        $q = parent::where('status', '!=', 'draft');
-        if(!empty($vendor_id)){
+        $q = parent::where('status', 'draft');
+        if (!empty($vendor_id)) {
             $q->where('vendor_id', $vendor_id);
         }
         return $q->orderBy('id', 'desc')->limit($limit)->get();
@@ -296,19 +300,18 @@ class Booking extends BaseModel
     {
 
         $res = [];
-        $total_data = parent::selectRaw('sum(`total`) as total_price , sum( `total` - `total_before_fees` + `commission` - `vendor_service_fee_amount` ) AS total_earning ')->whereNotIn('status',static::$notAcceptedStatus)->first();
-        $total_booking = parent::whereNotIn('status',static::$notAcceptedStatus)->count('id');
+        $total_data = parent::selectRaw('sum(`total`) as total_price , sum( `total` - `total_before_fees` + `commission` - `vendor_service_fee_amount` ) AS total_earning ')->whereNotIn('status', static::$notAcceptedStatus)->first();
+        $total_booking = parent::whereNotIn('status', static::$notAcceptedStatus)->count('id');
         $total_service = 0;
         $services = get_bookable_services();
-        if(!empty($services))
-        {
-            foreach ($services as $service){
+        if (!empty($services)) {
+            foreach ($services as $service) {
                 $total_service += $service::where('status', 'publish')->count('id');
             }
         }
         $res[] = [
             'size'   => 6,
-            'size_md'=>3,
+            'size_md' => 3,
             'title'  => __("Revenue"),
             'amount' => format_money_main($total_data->total_price),
             'desc'   => __("Total revenue"),
@@ -317,7 +320,7 @@ class Booking extends BaseModel
         ];
         $res[] = [
             'size'   => 6,
-            'size_md'=>3,
+            'size_md' => 3,
             'title'  => __("Earning"),
             'amount' => format_money_main($total_data->total_earning),
             'desc'   => __("Total Earning"),
@@ -327,7 +330,7 @@ class Booking extends BaseModel
         $res[] = [
 
             'size'   => 6,
-            'size_md'=>3,
+            'size_md' => 3,
             'title'  => __("Bookings"),
             'amount' => $total_booking,
             'desc'   => __("Total bookings"),
@@ -337,7 +340,7 @@ class Booking extends BaseModel
         $res[] = [
 
             'size'   => 6,
-            'size_md'=>3,
+            'size_md' => 3,
             'title'  => __("Services"),
             'amount' => $total_service,
             'desc'   => __("Total bookable services"),
@@ -376,7 +379,7 @@ class Booking extends BaseModel
                 $dataBooking = parent::selectRaw(implode(",", $sql_raw))->whereBetween('created_at', [
                     $year . '-' . $month . '-01 00:00:00',
                     $year . '-' . $month . '-' . $day_last_month . ' 23:59:59'
-                ])->whereNotIn('status',static::$notAcceptedStatus);
+                ])->whereNotIn('status', static::$notAcceptedStatus);
                 if (!empty($customer_id)) {
                     $dataBooking = $dataBooking->where('customer_id', $customer_id);
                 }
@@ -395,7 +398,7 @@ class Booking extends BaseModel
                 $dataBooking = parent::selectRaw(implode(",", $sql_raw))->whereBetween('created_at', [
                     date('Y-m-d H:i:s', $i),
                     date('Y-m-d H:i:s', $i + HOUR_IN_SECONDS - 1),
-                ])->whereNotIn('status',static::$notAcceptedStatus);
+                ])->whereNotIn('status', static::$notAcceptedStatus);
                 if (!empty($customer_id)) {
                     $dataBooking = $dataBooking->where('customer_id', $customer_id);
                 }
@@ -409,12 +412,12 @@ class Booking extends BaseModel
             }
         } else {
             // Report By Day
-            $period = periodDate(date('Y-m-d', $from),date('Y-m-d 23:59:59', $to));
-            foreach ($period as $dt){
+            $period = periodDate(date('Y-m-d', $from), date('Y-m-d 23:59:59', $to));
+            foreach ($period as $dt) {
                 $dataBooking = parent::selectRaw(implode(",", $sql_raw))->whereBetween('created_at', [
                     $dt->format('Y-m-d 00:00:00'),
                     $dt->format('Y-m-d 23:59:59'),
-                ])->whereNotIn('status',static::$notAcceptedStatus);
+                ])->whereNotIn('status', static::$notAcceptedStatus);
                 if (!empty($customer_id)) {
                     $dataBooking = $dataBooking->where('customer_id', $customer_id);
                 }
@@ -430,17 +433,17 @@ class Booking extends BaseModel
         return $data;
     }
 
-    public static function getBookingHistory($booking_status = false, $customer_id_or_name = false , $vendor_id = false , $service = false , $from = false ,  $to = false )
+    public static function getBookingHistory($booking_status = false, $customer_id_or_name = false, $vendor_id = false, $service = false, $from = false,  $to = false)
     {
         $list_booking = parent::query()->orderBy('id', 'desc');
         if (!empty($booking_status)) {
             $list_booking->where("status", $booking_status);
-        }else{
-            $list_booking->where('status','!=','draft');
+        } else {
+            $list_booking->where('status', '!=', 'draft');
         }
         if (!empty($customer_id_or_name)) {
-            $list_booking->where(function($q) use($customer_id_or_name){
-                $q->orWhere('customer_id',$customer_id_or_name)->orWhere('first_name','like',"%$customer_id_or_name%")->orWhere('last_name','like',"%$customer_id_or_name%");
+            $list_booking->where(function ($q) use ($customer_id_or_name) {
+                $q->orWhere('customer_id', $customer_id_or_name)->orWhere('first_name', 'like', "%$customer_id_or_name%")->orWhere('last_name', 'like', "%$customer_id_or_name%");
             });
         }
         if (!empty($vendor_id)) {
@@ -449,10 +452,10 @@ class Booking extends BaseModel
         if (!empty($service)) {
             $list_booking->where("object_model", $service);
         }
-        if(!empty($from) and !empty($to)){
+        if (!empty($from) and !empty($to)) {
             $list_booking->whereBetween('created_at', [
-                $from." 00:00",
-                $to." 23:59",
+                $from . " 00:00",
+                $to . " 23:59",
             ]);
         }
 
@@ -464,13 +467,12 @@ class Booking extends BaseModel
     {
 
         $res = [];
-        $total_money = parent::selectRaw('sum( `total_before_fees` - `commission` + `vendor_service_fee_amount` ) AS total_price , sum( CASE WHEN `status` = "completed" THEN `total_before_fees` - `commission` + `vendor_service_fee_amount` ELSE NULL END ) AS total_earning')->whereNotIn('status',static::$notAcceptedStatus)->where("vendor_id", $user_id)->first();
-        $total_booking = parent::whereNotIn('status',static::$notAcceptedStatus)->where("vendor_id", $user_id)->count('id');
+        $total_money = parent::selectRaw('sum( `total_before_fees` - `commission` + `vendor_service_fee_amount` ) AS total_price , sum( CASE WHEN `status` = "completed" THEN `total_before_fees` - `commission` + `vendor_service_fee_amount` ELSE NULL END ) AS total_earning')->whereNotIn('status', static::$notAcceptedStatus)->where("vendor_id", $user_id)->first();
+        $total_booking = parent::whereNotIn('status', static::$notAcceptedStatus)->where("vendor_id", $user_id)->count('id');
         $total_service = 0;
         $services = get_bookable_services();
-        if(!empty($services))
-        {
-            foreach ($services as $service){
+        if (!empty($services)) {
+            foreach ($services as $service) {
                 $total_service += $service::where('status', 'publish')->where("create_user", $user_id)->count('id');
             }
         }
@@ -533,7 +535,7 @@ class Booking extends BaseModel
                 $dataBooking = parent::selectRaw(implode(",", $sql_raw))->where("vendor_id", $user_id)->whereBetween('created_at', [
                     $year . '-' . $month . '-01 00:00:00',
                     $year . '-' . $month . '-' . $day_last_month . ' 23:59:59'
-                ])->whereNotIn('status',static::$notAcceptedStatus);
+                ])->whereNotIn('status', static::$notAcceptedStatus);
                 $dataBooking = $dataBooking->first();
                 $data['datasets'][1]['data'][] = $dataBooking->total_price - $dataBooking->total_earning;
                 $data['datasets'][0]['data'][] = $dataBooking->total_earning ?? 0;
@@ -545,7 +547,7 @@ class Booking extends BaseModel
                 $dataBooking = parent::selectRaw(implode(",", $sql_raw))->where("vendor_id", $user_id)->whereBetween('created_at', [
                     date('Y-m-d H:i:s', $i),
                     date('Y-m-d H:i:s', $i + HOUR_IN_SECONDS - 1),
-                ])->whereNotIn('status',static::$notAcceptedStatus);
+                ])->whereNotIn('status', static::$notAcceptedStatus);
                 $dataBooking = $dataBooking->first();
                 $data['datasets'][1]['data'][] = $dataBooking->total_price - $dataBooking->total_earning;
                 $data['datasets'][0]['data'][] = $dataBooking->total_earning ?? 0;
@@ -557,7 +559,7 @@ class Booking extends BaseModel
                 $dataBooking = parent::selectRaw(implode(",", $sql_raw))->where("vendor_id", $user_id)->whereBetween('created_at', [
                     date('Y-m-d 00:00:00', $i),
                     date('Y-m-d 23:59:59', $i),
-                ])->whereNotIn('status',static::$notAcceptedStatus);
+                ])->whereNotIn('status', static::$notAcceptedStatus);
                 $dataBooking = $dataBooking->first();
                 $data['datasets'][1]['data'][] = $dataBooking->total_price - $dataBooking->total_earning;
                 $data['datasets'][0]['data'][] = $dataBooking->total_earning ?? 0;
@@ -573,9 +575,9 @@ class Booking extends BaseModel
         $count = parent::query()->where("object_id", $service_id);
 
         if (!empty($status)) {
-            if(is_array($status)){
+            if (is_array($status)) {
                 $count->whereIn("status", $status);
-            }else{
+            } else {
                 $count->where("status", $status);
             }
         }
@@ -586,15 +588,15 @@ class Booking extends BaseModel
         return $count->count("id");
     }
 
-    public static function getAcceptedBookingQuery($service_id,$object_type){
+    public static function getAcceptedBookingQuery($service_id, $object_type)
+    {
 
         $q = static::query();
 
         return $q->where([
-            ['object_id','=',$service_id],
-            ['object_model','=',$object_type],
-        ])->whereNotIn('status',static::$notAcceptedStatus);
-
+            ['object_id', '=', $service_id],
+            ['object_model', '=', $object_type],
+        ])->whereNotIn('status', static::$notAcceptedStatus);
     }
 
     public static function clearDraftBookings($day = 2)
@@ -608,7 +610,7 @@ class Booking extends BaseModel
         if ($statuses) {
             $list_statuses = [];
             foreach ($statuses as $status) {
-                if(!in_array($status , static::$notAcceptedStatus) ){
+                if (!in_array($status, static::$notAcceptedStatus)) {
                     $list_statuses[] = $status;
                 }
             }
@@ -667,7 +669,7 @@ class Booking extends BaseModel
         if ($statuses) {
             $sql_raw[] = "count( CASE WHEN `status` != 'draft' THEN id ELSE NULL END ) AS total_booking";
             foreach ($statuses as $status) {
-                if(!in_array($status , static::$notAcceptedStatus) ){
+                if (!in_array($status, static::$notAcceptedStatus)) {
                     $sql_raw[] = "count( CASE WHEN `status` = '{$status}' THEN id ELSE NULL END ) AS {$status}";
                 }
             }
@@ -680,7 +682,7 @@ class Booking extends BaseModel
                 $dataBooking = parent::selectRaw(implode(",", $sql_raw))->whereBetween('created_at', [
                     $year . '-' . $month . '-01 00:00:00',
                     $year . '-' . $month . '-' . $day_last_month . ' 23:59:59'
-                ])->whereNotIn('status',static::$notAcceptedStatus);
+                ])->whereNotIn('status', static::$notAcceptedStatus);
                 if (!empty($customer_id)) {
                     $dataBooking = $dataBooking->where('customer_id', $customer_id);
                 }
@@ -696,7 +698,7 @@ class Booking extends BaseModel
                 $data['detail']['total_booking']['val'] += $dataBooking->total_booking ?? 0;
                 $data['detail']['total_commission']['val'] += $dataBooking->total_commission ?? 0;
                 $data['detail']['total_fees']['val'] += $dataBooking->total_fees ?? 0;
-                $data['detail']['total_earning']['val'] += ( $dataBooking->total_fees + $dataBooking->total_commission );
+                $data['detail']['total_earning']['val'] += ($dataBooking->total_fees + $dataBooking->total_commission);
                 if ($statuses) {
                     foreach ($statuses as $status) {
                         $data['detail'][$status]['title'] = booking_status_to_text($status);
@@ -710,7 +712,7 @@ class Booking extends BaseModel
                 $dataBooking = parent::selectRaw(implode(",", $sql_raw))->whereBetween('created_at', [
                     date('Y-m-d H:i:s', $i),
                     date('Y-m-d H:i:s', $i + HOUR_IN_SECONDS - 1),
-                ])->whereNotIn('status',static::$notAcceptedStatus);
+                ])->whereNotIn('status', static::$notAcceptedStatus);
                 if (!empty($customer_id)) {
                     $dataBooking = $dataBooking->where('customer_id', $customer_id);
                 }
@@ -726,7 +728,7 @@ class Booking extends BaseModel
                 $data['detail']['total_booking']['val'] += $dataBooking->total_booking ?? 0;
                 $data['detail']['total_commission']['val'] += $dataBooking->total_commission ?? 0;
                 $data['detail']['total_fees']['val'] += $dataBooking->total_fees ?? 0;
-                $data['detail']['total_earning']['val'] += ( $dataBooking->total_fees + $dataBooking->total_commission );
+                $data['detail']['total_earning']['val'] += ($dataBooking->total_fees + $dataBooking->total_commission);
                 if ($statuses) {
                     foreach ($statuses as $status) {
                         $data['detail'][$status]['title'] = booking_status_to_text($status);
@@ -740,7 +742,7 @@ class Booking extends BaseModel
                 $dataBooking = parent::selectRaw(implode(",", $sql_raw))->whereBetween('created_at', [
                     date('Y-m-d 00:00:00', $i),
                     date('Y-m-d 23:59:59', $i),
-                ])->whereNotIn('status',static::$notAcceptedStatus);
+                ])->whereNotIn('status', static::$notAcceptedStatus);
                 if (!empty($customer_id)) {
                     $dataBooking = $dataBooking->where('customer_id', $customer_id);
                 }
@@ -756,7 +758,7 @@ class Booking extends BaseModel
                 $data['detail']['total_booking']['val'] += $dataBooking->total_booking ?? 0;
                 $data['detail']['total_commission']['val'] += $dataBooking->total_commission ?? 0;
                 $data['detail']['total_fees']['val'] += $dataBooking->total_fees ?? 0;
-                $data['detail']['total_earning']['val'] += ( $dataBooking->total_fees + $dataBooking->total_commission );
+                $data['detail']['total_earning']['val'] += ($dataBooking->total_fees + $dataBooking->total_commission);
                 if ($statuses) {
                     foreach ($statuses as $status) {
                         $data['detail'][$status]['title'] = booking_status_to_text($status);
@@ -772,61 +774,65 @@ class Booking extends BaseModel
         return $data;
     }
 
-    public function getDurationNightsAttribute(){
+    public function getDurationNightsAttribute()
+    {
 
-        $days = max(1,floor((strtotime($this->end_date) - strtotime($this->start_date)) / DAY_IN_SECONDS));
+        $days = max(1, floor((strtotime($this->end_date) - strtotime($this->start_date)) / DAY_IN_SECONDS));
 
         return $days;
     }
-    public function getDurationDaysAttribute(){
+    public function getDurationDaysAttribute()
+    {
 
-        $days = max(1,floor((strtotime($this->end_date) - strtotime($this->start_date)) / DAY_IN_SECONDS) + 1 );
+        $days = max(1, floor((strtotime($this->end_date) - strtotime($this->start_date)) / DAY_IN_SECONDS) + 1);
         return $days;
     }
-    public function getDurationHoursAttribute(){
+    public function getDurationHoursAttribute()
+    {
 
-        $days = max(1,floor((strtotime($this->end_date) - strtotime($this->start_date)) / HOUR_IN_SECONDS) );
+        $days = max(1, floor((strtotime($this->end_date) - strtotime($this->start_date)) / HOUR_IN_SECONDS));
         return $days;
     }
 
-    public function  checkMaximumBooking($date){
+    public function  checkMaximumBooking($date) {}
 
-    }
-
-    public static function getBookingInRanges($object_id,$object_model,$from,$to,$object_child_id = false){
+    public static function getBookingInRanges($object_id, $object_model, $from, $to, $object_child_id = false)
+    {
 
         $query = parent::selectRaw(" * , SUM( total_guests ) as total_guests ")->where([
-            'object_id'=>$object_id,
-            'object_model'=>$object_model,
-        ])->whereNotIn('status',static::$notAcceptedStatus)
-            ->where('end_date','>=',$from)
-            ->where('start_date','<=',$to)
+            'object_id' => $object_id,
+            'object_model' => $object_model,
+        ])->whereNotIn('status', static::$notAcceptedStatus)
+            ->where('end_date', '>=', $from)
+            ->where('start_date', '<=', $to)
             ->groupBy('start_date')
             ->take(200);
 
-        if($object_child_id){
-            $query->where('object_child_id',$object_child_id);
+        if ($object_child_id) {
+            $query->where('object_child_id', $object_child_id);
         }
 
         return $query->get();
     }
-    public static function getAllBookingInRanges($object_id,$object_model,$from,$to){
+    public static function getAllBookingInRanges($object_id, $object_model, $from, $to)
+    {
 
         $query = parent::selectRaw("*")->where([
-            'object_id'=>$object_id,
-            'object_model'=>$object_model,
-        ])->whereNotIn('status',static::$notAcceptedStatus)
-            ->where('end_date','>=',$from)
-            ->where('start_date','<=',$to)
+            'object_id' => $object_id,
+            'object_model' => $object_model,
+        ])->whereNotIn('status', static::$notAcceptedStatus)
+            ->where('end_date', '>=', $from)
+            ->where('start_date', '<=', $to)
             ->take(200);
         return $query->get();
     }
-    public function getCommissionVendor(){
+    public function getCommissionVendor()
+    {
         $vendorId = $this->vendor_id;
         $total = $this->total_before_fees;
-        $returnArray=[
-            'commission'=>0,
-            'commission_type'=>'',
+        $returnArray = [
+            'commission' => 0,
+            'commission_type' => '',
         ];
         if (setting_item('vendor_enable') == 1) {
             $vendor = User::find($vendorId);
@@ -835,21 +841,21 @@ class Booking extends BaseModel
                 $commission['amount'] = setting_item('vendor_commission_amount', 10);
                 $commission['type'] = setting_item('vendor_commission_type', 'percent');
 
-                if($vendor->vendor_commission_type){
+                if ($vendor->vendor_commission_type) {
                     $commission['type'] = $vendor->vendor_commission_type;
                 }
-                if($vendor->vendor_commission_amount){
+                if ($vendor->vendor_commission_amount) {
                     $commission['amount'] = $vendor->vendor_commission_amount;
                 }
 
-                if($commission['type'] == 'disable'){
+                if ($commission['type'] == 'disable') {
                     return $returnArray;
                 }
 
                 if ($commission['type'] == 'percent') {
                     $returnArray['commission'] = (float)($total / 100) * $commission['amount'];
                 } else {
-                    $returnArray['commission']= (float)min($total,$commission['amount']);
+                    $returnArray['commission'] = (float)min($total, $commission['amount']);
                 }
                 $returnArray['commission_type'] = json_encode($commission);
             }
@@ -857,124 +863,125 @@ class Booking extends BaseModel
         return $returnArray;
     }
 
-    public function calculateCommission(){
+    public function calculateCommission()
+    {
         $data = $this->getCommissionVendor();
 
         $this->commission = $data['commission'];
         $this->commission_type = $data['commission_type'];
     }
 
-	public static function getContentCalendarIcal($service_type,$id,$module){
-		$proid = config('app.name') . ' ' . $_SERVER['SERVER_NAME'];
-		$calendar = new Calendar($proid);
-		$data  = app()->make($module)::find($id);
-		if (!empty($data)) {
-            $availabilityData = $data->availabilityClass::where(['target_id'=>$id,'active'=>0])->get();
-            if(!empty($availabilityData)){
-                foreach ($availabilityData as $availabilityDatum){
+    public static function getContentCalendarIcal($service_type, $id, $module)
+    {
+        $proid = config('app.name') . ' ' . $_SERVER['SERVER_NAME'];
+        $calendar = new Calendar($proid);
+        $data  = app()->make($module)::find($id);
+        if (!empty($data)) {
+            $availabilityData = $data->availabilityClass::where(['target_id' => $id, 'active' => 0])->get();
+            if (!empty($availabilityData)) {
+                foreach ($availabilityData as $availabilityDatum) {
                     $eventCalendar = new Event();
                     $eventCalendar
-                        ->setUniqueId($data->id.time())
+                        ->setUniqueId($data->id . time())
                         ->setCategories(ucfirst($service_type))
                         ->setDtStart(new \DateTime($availabilityDatum->start_date))
                         ->setDtEnd(new \DateTime($availabilityDatum->end_date))
-                        ->setSummary($data->title . '#'.$id.' Blocked')
+                        ->setSummary($data->title . '#' . $id . ' Blocked')
                         ->setNoTime(false);
                     $calendar->addComponent($eventCalendar);
                 }
             }
-			$bookingData = self::where('object_id', $id)->where('object_model', $service_type)
-				->whereNotIn('status', self::$notAcceptedStatus)
-				->where('start_date','>=',now())
-				->get();
-			if($service_type=='room'){
-				$bookingData = HotelRoomBooking::where('room_id',$id)->whereHas('booking',function (Builder $query){
-					$query->whereNotIn('status', self::$notAcceptedStatus)
-						->where('start_date','>=',now());
-				})->get();
-			}
-			if (!empty($bookingData)) {
-				foreach ($bookingData as $item => $value) {
-					if($service_type=='room'){
-						$customerName = $value->fist_name . ' ' . $value->last_name;
-						$description = '<p>Name:' . $customerName . '</p>
+            $bookingData = self::where('object_id', $id)->where('object_model', $service_type)
+                ->whereNotIn('status', self::$notAcceptedStatus)
+                ->where('start_date', '>=', now())
+                ->get();
+            if ($service_type == 'room') {
+                $bookingData = HotelRoomBooking::where('room_id', $id)->whereHas('booking', function (Builder $query) {
+                    $query->whereNotIn('status', self::$notAcceptedStatus)
+                        ->where('start_date', '>=', now());
+                })->get();
+            }
+            if (!empty($bookingData)) {
+                foreach ($bookingData as $item => $value) {
+                    if ($service_type == 'room') {
+                        $customerName = $value->fist_name . ' ' . $value->last_name;
+                        $description = '<p>Name:' . $customerName . '</p>
                                 <p>Email:' . $value->email . '</p>
                                 <p>Phone:' . $value->phone . '</p>
                                 <p>Address:' . $value->address . '</p>
                                 <p>Customer notes:' . $value->customer_notes . '</p>
                                 <p>Total guest:' . $value->number . '</p>';
-						$eventCalendar = new Event();
-						$eventCalendar
-							->setUniqueId($value->id.time())
-							->setCategories(ucfirst($service_type))
-							->setDtStart(new \DateTime($value->start_date))
-							->setDtEnd(new \DateTime($value->end_date))
-							->setSummary($customerName . ' Booking ' . ucfirst($service_type) . ' ' . $data->title)
-							->setNoTime(false)
-							->setDescriptionHTML($description);
-						$calendar->addComponent($eventCalendar);
-					}else{
+                        $eventCalendar = new Event();
+                        $eventCalendar
+                            ->setUniqueId($value->id . time())
+                            ->setCategories(ucfirst($service_type))
+                            ->setDtStart(new \DateTime($value->start_date))
+                            ->setDtEnd(new \DateTime($value->end_date))
+                            ->setSummary($customerName . ' Booking ' . ucfirst($service_type) . ' ' . $data->title)
+                            ->setNoTime(false)
+                            ->setDescriptionHTML($description);
+                        $calendar->addComponent($eventCalendar);
+                    } else {
 
 
-					$customerName = $value->fist_name . ' ' . $value->last_name;
-					$description = '<p>Name:' . $customerName . '</p>
+                        $customerName = $value->fist_name . ' ' . $value->last_name;
+                        $description = '<p>Name:' . $customerName . '</p>
                                 <p>Email:' . $value->email . '</p>
                                 <p>Phone:' . $value->phone . '</p>
                                 <p>Address:' . $value->address . '</p>
                                 <p>Customer notes:' . $value->customer_notes . '</p>
                                 <p>Total guest:' . $value->total_guests . '</p>';
-					$eventCalendar = new Event();
-                    if($service_type=='space'){
-                        $byNight = $value->getMeta('booking_type');
-                        if($byNight=='by_night'){
-                            $value->end_date =  date("Y-m-d H:i:s",strtotime($value->end_date." -1day"));
+                        $eventCalendar = new Event();
+                        if ($service_type == 'space') {
+                            $byNight = $value->getMeta('booking_type');
+                            if ($byNight == 'by_night') {
+                                $value->end_date =  date("Y-m-d H:i:s", strtotime($value->end_date . " -1day"));
+                            }
                         }
+
+                        $endDate = new \DateTime($value->end_date);
+
+                        $eventCalendar
+                            ->setUniqueId($value->code)
+                            ->setCategories(ucfirst($service_type))
+                            ->setDtStart(new \DateTime($value->start_date))
+                            ->setDtEnd($endDate)
+                            ->setSummary($customerName . ' Booking ' . ucfirst($service_type) . ' ' . $data->title)
+                            ->setNoTime(false)
+                            ->setDescriptionHTML($description);
+                        $calendar->addComponent($eventCalendar);
                     }
+                }
+            }
+        }
+        return $calendar->render();
+    }
 
-                    $endDate = new \DateTime($value->end_date);
+    public function getTotalBeforeExtraPriceAttribute()
+    {
+        $extra_price = $this->getJsonMeta('extra_price');
 
-					$eventCalendar
-						->setUniqueId($value->code)
-						->setCategories(ucfirst($service_type))
-						->setDtStart(new \DateTime($value->start_date))
-						->setDtEnd($endDate)
-						->setSummary($customerName . ' Booking ' . ucfirst($service_type) . ' ' . $data->title)
-						->setNoTime(false)
-						->setDescriptionHTML($description);
-					$calendar->addComponent($eventCalendar);
-					}
-
-				}
-			}
-
-
-
-		}
-		return $calendar->render();
-	}
-
-	public function getTotalBeforeExtraPriceAttribute(){
-		$extra_price = $this->getJsonMeta('extra_price');
-
-        if(empty($extra_price) or !is_array($extra_price)) return $this->total_before_discount;
+        if (empty($extra_price) or !is_array($extra_price)) return $this->total_before_discount;
 
         $extra_price_collection = collect($extra_price);
 
         return $this->total_before_discount - $extra_price_collection->sum('total');
-	}
-
-	public function wallet_transaction(){
-        return $this->belongsTo(Transaction::class,'wallet_transaction_id')->withDefault();
     }
 
-    public function tryRefundToWallet($checkStatus = true){
-        if($checkStatus and in_array($this->status,[self::CANCELLED]) ){
+    public function wallet_transaction()
+    {
+        return $this->belongsTo(Transaction::class, 'wallet_transaction_id')->withDefault();
+    }
+
+    public function tryRefundToWallet($checkStatus = true)
+    {
+        if ($checkStatus and in_array($this->status, [self::CANCELLED])) {
             return;
         }
 
-        if( $this->customer_id and $this->wallet_transaction_id && !$this->is_refund_wallet){
+        if ($this->customer_id and $this->wallet_transaction_id && !$this->is_refund_wallet) {
             $user = User::find($this->customer_id);
-            if($user) {
+            if ($user) {
                 $transaction = $this->wallet_transaction;
                 if ($transaction->amount) {
                     $user->deposit($transaction->amount, ['type' => 'booking_refund_wallet'], $this->id);
@@ -988,15 +995,16 @@ class Booking extends BaseModel
 
     public function time_slots()
     {
-        return $this->hasMany( BookingTimeSlots::class, 'booking_id');
+        return $this->hasMany(BookingTimeSlots::class, 'booking_id');
     }
 
-    public function reloadCalculateTotalBooking(){
+    public function reloadCalculateTotalBooking()
+    {
         // Get amount before discount
         $total_booking = $this->total_before_discount;
 
         // Calculate total booking
-        if($total_booking < 0 ){
+        if ($total_booking < 0) {
             $total_booking = 0;
         }
         // Set amount before fees after deducting coupon
@@ -1004,15 +1012,15 @@ class Booking extends BaseModel
 
         //reload calculate buyer fees for admin
         $total_buyer_fee = 0;
-        if(!empty($list_fees = $this->buyer_fees)){
-            $list_fees = json_decode($list_fees,true);
-            $total_buyer_fee = $this->service->calculateServiceFees($list_fees , $this->total_before_fees , $this->total_guests);
+        if (!empty($list_fees = $this->buyer_fees)) {
+            $list_fees = json_decode($list_fees, true);
+            $total_buyer_fee = $this->service->calculateServiceFees($list_fees, $this->total_before_fees, $this->total_guests);
             $total_booking += $total_buyer_fee;
         }
         //reload calculate service fees for vendor
         $total_service_fee = 0;
-        if(!empty($list_fees = $this->vendor_service_fee)){
-            $total_service_fee = $this->service->calculateServiceFees($list_fees , $this->total_before_fees , $this->total_guests);
+        if (!empty($list_fees = $this->vendor_service_fee)) {
+            $total_service_fee = $this->service->calculateServiceFees($list_fees, $this->total_before_fees, $this->total_guests);
             $total_booking += $total_service_fee;
         }
         $this->vendor_service_fee_amount = $total_service_fee;
@@ -1023,13 +1031,13 @@ class Booking extends BaseModel
 
         // reload calculate deposit
         if (!empty($deposit_info = $this->getMeta("deposit_info"))) {
-            $deposit_info = json_decode($deposit_info , true);
+            $deposit_info = json_decode($deposit_info, true);
             $booking_deposit_fomular = $deposit_info['fomular'];
             $tmp_price_total = $this->total;
             if ($booking_deposit_fomular == "deposit_and_fee") {
                 $tmp_price_total = $this->total_before_fees;
             }
-            switch ( $deposit_info['type'] ) {
+            switch ($deposit_info['type']) {
                 case "percent":
                     $this->deposit = $tmp_price_total * $deposit_info['amount'] / 100;
                     break;
@@ -1043,18 +1051,18 @@ class Booking extends BaseModel
         }
         $this->save();
     }
-    
-    public function calTotalPassenger(){
-        if(empty( setting_item('booking_enable_ticket_guest_info',0))){
+
+    public function calTotalPassenger()
+    {
+        if (empty(setting_item('booking_enable_ticket_guest_info', 0))) {
             return 0;
         }
-        switch ($this->object_model){
+        switch ($this->object_model) {
             case "boat":
                 return 0;
             case "tour":
             default:
                 return $this->total_guests;
-
         }
     }
 }

@@ -193,17 +193,6 @@ foreach ($menus as $k => $menuItem) {
             <p>{{ __("Member Since :time",["time"=> date("M Y",strtotime($userAuthData->created_at))]) }}</p>
         </div>
     </div>
-    @if($userAuthData->is_verified && !Auth::user()->is_affiliate)
-    @if(!hasRequestAffiliate())
-    <div class="user-profile-plan">
-        <a href=" {{ route('user.upgrade_vendor') }}">{{ __("Become a affiliate") }}</a>
-    </div>
-    @elseif(hasRequestAffiliate())
-    <div class="user-profile-plan ">
-        <a class="bg-secondary">{{ __("Awaiting approve") }}</a>
-    </div>
-    @endif
-    @endif
 
     <div class="sidebar-menu">
         <ul class="main-menu">
