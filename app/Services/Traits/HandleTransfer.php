@@ -24,7 +24,7 @@ trait HandleTransfer
             $planPayment->save();
         }
 
-        \Log::info("Webhook Asaas transfer processed", $notification);
+        \Log::info("Transferência de Webhook Asaas processada", $notification);
 
         return response()->json(['status' => 'ok']);
     }

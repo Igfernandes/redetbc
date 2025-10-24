@@ -93,7 +93,7 @@ trait Subscribe
         $plan_page = route('plan');
 
         if (empty($data) || !isset($data['id']))
-            redirect()->to($plan_page)->with("warning", __("We are experiencing technical issues to proceed with the payment. Please try again later."));
+            redirect()->to($plan_page)->with("warning", __("Estamos com problemas técnicos para prosseguir com o pagamento. Tente novamente mais tarde."));
 
         $userPlan = new UserPlan();
         $userPlan->store($plan, [

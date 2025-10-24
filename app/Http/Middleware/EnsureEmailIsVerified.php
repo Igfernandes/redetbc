@@ -23,7 +23,7 @@
                         ! $request->user()->hasVerifiedEmail())) {
                     if(!$request->user()->hasPermission('dashboard_access')){
                     return $request->expectsJson()
-                        ? abort(403, 'Your email address is not verified.')
+                        ? abort(403, 'Seu endereço de e-mail não foi verificado.')
                         : Redirect::route('verification.notice');
                     }
 

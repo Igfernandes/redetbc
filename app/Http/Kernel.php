@@ -19,12 +19,14 @@ class Kernel extends HttpKernel
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
-        \App\Http\Middleware\RedirectToInstaller::class,
         \Illuminate\Http\Middleware\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+ 
+ 
+
     ];
 
     /**
@@ -46,6 +48,10 @@ class Kernel extends HttpKernel
             SetLanguageForAdmin::class,
             RequireChangePassword::class,
             \App\Http\Middleware\CheckVerification::class,
+
+ 
+            
+
         ],
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
@@ -78,5 +84,9 @@ class Kernel extends HttpKernel
         "system_log_view" => \App\Http\Middleware\CheckForLogPermission::class,
         "set_language_for_api" => \App\Http\Middleware\SetLanguageForApi::class,
         "pro_plan" => \App\Pro\Middlewares\ProPlan::class,
+    
+    
+ 
+
     ];
 }

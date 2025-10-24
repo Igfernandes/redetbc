@@ -22,12 +22,12 @@ class UserStatus
                 case "blocked":
                     Auth::guard()->logout();
                     $request->session()->invalidate();
-                    return redirect('login')->with('error', 'Your account has been blocked');
+                    return redirect('login')->with('error', 'Sua conta foi bloqueada');
                     break;
                 case "deleted":
                     Auth::guard()->logout();
                     $request->session()->invalidate();
-                    return redirect('login')->with('error', 'Your account has been blocked');
+                    return redirect('login')->with('error', 'Sua conta foi bloqueada');
             }
         }
         return $next($request);

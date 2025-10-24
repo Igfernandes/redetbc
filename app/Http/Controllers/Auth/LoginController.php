@@ -97,7 +97,7 @@ class LoginController extends Controller
 
 
             if (empty($user)) {
-                return redirect()->to('login')->with('error', __('Can not authorize'));
+                return redirect()->to('login')->with('error', __('Não é possível autorizar'));
             }
 
             $existUser = User::getUserBySocialId($provider, $user->getId());
@@ -115,7 +115,7 @@ class LoginController extends Controller
 
                 $userByEmail = User::query()->where('email', $email)->first();
                 if (!empty($userByEmail)) {
-                    return redirect()->route('login')->with('error', __('Email :email exists. Can not register new account with your social email', ['email' => $email]));
+                    return redirect()->route('login')->with('error', __('E-mail: e-mail existente. Não é possível registrar uma nova conta com seu e-mail social.', ['email' => $email]));
                 }
 
                 // Create New User
@@ -151,10 +151,10 @@ class LoginController extends Controller
             } else {
 
                 if ($existUser->deleted == 1) {
-                    return redirect()->route('login')->with('error', __('User blocked'));
+                    return redirect()->route('login')->with('error', __('Usuário bloqueado'));
                 }
                 if (in_array($existUser->status, ['blocked'])) {
-                    return redirect()->route('login')->with('error', __('Your account has been blocked'));
+                    return redirect()->route('login')->with('error', __('Sua conta foi bloqueada'));
                 }
 
                 Auth::login($existUser);

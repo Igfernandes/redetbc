@@ -208,8 +208,7 @@ return [
         Custom\ServiceProvider::class,
         App\Providers\AdminRouteServiceProvider::class,
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
-
-
+ 
 
     ],
 

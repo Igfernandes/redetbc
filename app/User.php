@@ -179,10 +179,10 @@
         {
             switch ($this->status) {
                 case "publish":
-                    return __("Publish");
+                    return __("Publicar");
                     break;
                 case "blocked":
-                    return __("Blocked");
+                    return __("Bloqueado");
                     break;
             }
         }

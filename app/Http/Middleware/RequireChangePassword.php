@@ -32,11 +32,11 @@ class RequireChangePassword
             if($request->expectsJson()){
                 return response()->json([
                     'status'=>0,
-                    'message'=>__("For security, please change your password to continue"),
+                    'message'=>__("Por segurança, altere sua senha para continuar"),
                     'code'=>"need_update_pw"
                 ]);
             }
-            return redirect(route('user.change_password',['need_update_pw'=>1]))->with('warning',__("For security, please change your password to continue"));
+            return redirect(route('user.change_password',['need_update_pw'=>1]))->with('warning',__("Por segurança, altere sua senha para continuar"));
         }
         return $next($request);
     }
