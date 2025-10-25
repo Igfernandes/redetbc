@@ -71,7 +71,7 @@ class AssistanceController extends AdminController
             'assistance_manage_others' => $this->hasPermission('assistance_manage_others'),
             'breadcrumbs'       => [
                 [
-                    'name' => __('Services'),
+                    'name' => __('Serviços'),
                     'url'  => route('assistance.admin.index')
                 ],
                 [
@@ -106,7 +106,7 @@ class AssistanceController extends AdminController
             'recovery'          => 1,
             'breadcrumbs'       => [
                 [
-                    'name' => __('Services'),
+                    'name' => __('Serviços'),
                     'url'  => route('assistance.admin.index')
                 ],
                 [
@@ -133,7 +133,7 @@ class AssistanceController extends AdminController
             'translation'  => new $this->assistance_translation(),
             'breadcrumbs'  => [
                 [
-                    'name' => __('Services'),
+                    'name' => __('Serviços'),
                     'url'  => route('assistance.admin.index')
                 ],
                 [
@@ -168,7 +168,7 @@ class AssistanceController extends AdminController
             'enable_multi_lang' => true,
             'breadcrumbs'       => [
                 [
-                    'name' => __('Services'),
+                    'name' => __('Serviços'),
                     'url'  => route('assistance.admin.index')
                 ],
                 [

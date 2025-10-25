@@ -39,7 +39,7 @@ class ModuleProvider extends ModuleServiceProvider
             'assistance'=>[
                 "position"=>45,
                 'url'        => route('assistance.admin.index'),
-                'title'      => __('Services'),
+                'title'      => __('Serviços'),
                 'icon'       => 'ion-ios-bookmarks',
                 'permission' => 'assistance_view',
                 'children'   => [

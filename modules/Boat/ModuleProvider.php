@@ -39,7 +39,7 @@ class ModuleProvider extends ModuleServiceProvider
             'boat'=>[
                 "position"=>45,
                 'url'        => route('boat.admin.index'),
-                'title'      => __('Services'),
+                'title'      => __('Serviços'),
                 'icon'       => 'ion-md-boat',
                 'permission' => 'boat_view',
                 'children'   => [

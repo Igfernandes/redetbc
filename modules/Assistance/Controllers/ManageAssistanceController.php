@@ -238,7 +238,7 @@ class ManageAssistanceController extends FrontendController
         $row = $this->assistanceClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('assistance.vendor.index'))->with('warning', __('Services not found!'));
+            return redirect(route('assistance.vendor.index'))->with('warning', __('Serviços not found!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [

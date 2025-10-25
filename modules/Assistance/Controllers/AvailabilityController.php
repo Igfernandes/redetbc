@@ -94,7 +94,7 @@ class AvailabilityController extends FrontendController{
         $is_single = $request->query('for_single');
         $assistance = $this->assistanceClass::find($request->query('id'));
         if(empty($assistance)){
-            return $this->sendError(__('Services not found'));
+            return $this->sendError(__('Serviços not found'));
         }
         $query = $this->assistanceDateClass::query();
         $query->where('target_id',$request->query('id'));
@@ -237,7 +237,7 @@ class AvailabilityController extends FrontendController{
 
         $assistance = $this->assistanceClass::find($request->input('id'));
         if(empty($assistance)){
-            return $this->sendError(__('Services not found'));
+            return $this->sendError(__('Serviços not found'));
         }
 
         $hour = $request->input('hour',0);
@@ -273,7 +273,7 @@ class AvailabilityController extends FrontendController{
         $target_id = $request->input('target_id');
 
         if(empty($assistance)){
-            return $this->sendError(__('Services not found'));
+            return $this->sendError(__('Serviços not found'));
         }
 
         if(!$this->hasPermission('assistance_manage_others')){
