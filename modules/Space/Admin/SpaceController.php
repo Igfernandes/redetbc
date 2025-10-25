@@ -219,6 +219,7 @@ class SpaceController extends AdminController
             'is_instant',
             'status',
             'video',
+            'religion',
             'faqs',
             'image_id',
             'banner_image_id',

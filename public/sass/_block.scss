@@ -2285,8 +2285,8 @@
             }
         }
 
-        //Home Boat
-        .bravo-form-search-boat {
+        //Home Services
+        .bravo-form-search-service {
             padding: 150px 0;
             background-position: center !important;
             background-repeat: no-repeat !important;
@@ -2326,7 +2326,7 @@
             }
         }
 
-        .bravo-list-boat {
+        .bravo-list-service {
             margin: 50px 0;
 
             .title {
@@ -2344,7 +2344,7 @@
                 margin-bottom: 15px;
             }
 
-            @import "../module/boat/scss/loop";
+            @import "../module/assistance/scss/loop";
 
             &.layout_normal {
                 margin: 30px 0;

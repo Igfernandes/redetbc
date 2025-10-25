@@ -166,6 +166,7 @@ class ManageSpaceController extends FrontendController
             'is_instant',
             'video',
             'faqs',
+            'religion',
             'image_id',
             'banner_image_id',
             'gallery',

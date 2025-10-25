@@ -738,10 +738,10 @@ class RunUpdater
 
         // Vendor
         $vendor = Role::firstOrCreate(['name' => 'vendor']);
-        $vendor->givePermission('boat_create');
-        $vendor->givePermission('boat_view');
-        $vendor->givePermission('boat_update');
-        $vendor->givePermission('boat_delete');
+        $vendor->givePermission('assistance_create');
+        $vendor->givePermission('assistance_view');
+        $vendor->givePermission('assistance_update');
+        $vendor->givePermission('assistance_delete');
 
         Schema::table('users', function (Blueprint $table) {
             if (!Schema::hasColumn('users', 'gateway_customer_id')) {
@@ -749,19 +749,19 @@ class RunUpdater
             }
         });
 
-        Schema::table('bravo_boats', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_boats', 'include')) {
+        Schema::table('bravo_assistance', function (Blueprint $table) {
+            if (!Schema::hasColumn('bravo_assistance', 'include')) {
                 $table->text('include')->nullable();
             }
-            if (!Schema::hasColumn('bravo_boats', 'exclude')) {
+            if (!Schema::hasColumn('bravo_assistance', 'exclude')) {
                 $table->text('exclude')->nullable();
             }
         });
-        Schema::table('bravo_boat_translations', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_boat_translations', 'include')) {
+        Schema::table('bravo_assistance_translations', function (Blueprint $table) {
+            if (!Schema::hasColumn('bravo_assistance_translations', 'include')) {
                 $table->text('include')->nullable();
             }
-            if (!Schema::hasColumn('bravo_boat_translations', 'exclude')) {
+            if (!Schema::hasColumn('bravo_assistance_translations', 'exclude')) {
                 $table->text('exclude')->nullable();
             }
         });

@@ -986,94 +986,94 @@ body.has-search-map{ direction: rtl; }
  }
 
 
-//Boat
-.bravo_wrap .bravo_search_boat .bravo-list-item .list-item .item-tour .service-review .list-star .booking-item-rating-stars-active {
+//Services
+.bravo_wrap .bravo_search_service .bravo-list-item .list-item .item-tour .service-review .list-star .booking-item-rating-stars-active {
     right: 0;
     left: auto;
 }
-.bravo_wrap .bravo_search_boat .bravo-list-item .list-item .item-tour .service-review .review {
+.bravo_wrap .bravo_search_service .bravo-list-item .list-item .item-tour .service-review .review {
     margin-right: 10px;
     margin-left: 0;
 }
-.bravo_wrap .bravo_search_boat .bravo-list-item .list-item .item-tour .info .duration {
+.bravo_wrap .bravo_search_service .bravo-list-item .list-item .item-tour .info .duration {
     text-align: right;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-header .review-score .head .score {
+.bravo_wrap .bravo_detail_service .bravo_content .g-header .review-score .head .score {
     margin-left: 0;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-header .review-score .foot {
+.bravo_wrap .bravo_detail_service .bravo_content .g-header .review-score .foot {
     text-align: left;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-include-exclude .item .icon-exclude {
+.bravo_wrap .bravo_detail_service .bravo_content .g-include-exclude .item .icon-exclude {
     top: 0;
     float: right;
     margin-left: 5px;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-include-exclude .item .icon-include {
+.bravo_wrap .bravo_detail_service .bravo_content .g-include-exclude .item .icon-include {
     top: 0;
     float: right;
     margin-left: 5px;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-itinerary {
+.bravo_wrap .bravo_detail_service .bravo_content .g-itinerary {
     direction: ltr;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-attributes .list-attributes .item i {
+.bravo_wrap .bravo_detail_service .bravo_content .g-attributes .list-attributes .item i {
     float: right;
     top: 3px;
     margin-left: 5px;
 }
-.bravo_wrap .bravo_detail_boat .bravo-list-tour-related .item-tour .info .duration {
+.bravo_wrap .bravo_detail_service .bravo-list-tour-related .item-tour .info .duration {
     text-align: left;
 }
-.bravo_wrap .bravo_detail_boat .bravo-list-tour-related .item-tour .service-review .list-star .booking-item-rating-stars-active {
+.bravo_wrap .bravo_detail_service .bravo-list-tour-related .item-tour .service-review .list-star .booking-item-rating-stars-active {
     right: 0;
     left: auto;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-overview {
+.bravo_wrap .bravo_detail_service .bravo_content .g-overview {
     text-align: right;
 }
 
-.bravo_wrap .bravo_detail_boat .bravo_content .g-overview ul li:before {
+.bravo_wrap .bravo_detail_service .bravo_content .g-overview ul li:before {
     margin-right: 0;
     margin-left: 20px;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-specs {
+.bravo_wrap .bravo_detail_service .bravo_content .g-specs {
     text-align: right;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-attributes {
+.bravo_wrap .bravo_detail_service .bravo_content .g-attributes {
     text-align: right;
 }
 
-.bravo_wrap .bravo_detail_boat .bravo_content .g-faq .item .header h5
+.bravo_wrap .bravo_detail_service .bravo_content .g-faq .item .header h5
 {
     margin-left: 20px;
 }
 
-.bravo_wrap .bravo_detail_boat .bravo_content .g-faq .item .header .arrow
+.bravo_wrap .bravo_detail_service .bravo_content .g-faq .item .header .arrow
 {
     float: left;
 }
 
-.bravo_wrap .bravo_detail_boat .bravo_content .g-faq .item .header h5,
-.bravo_wrap .bravo_detail_boat .bravo_content .g-faq .item .header .field-icon{
+.bravo_wrap .bravo_detail_service .bravo_content .g-faq .item .header h5,
+.bravo_wrap .bravo_detail_service .bravo_content .g-faq .item .header .field-icon{
     float: right;
     margin-left: 10px;
 }
 
-.bravo_wrap .bravo_detail_boat .bravo_content .g-faq
+.bravo_wrap .bravo_detail_service .bravo_content .g-faq
 {
     text-align: right;
 }
 
-.bravo_wrap .bravo_detail_boat .bravo-list-boat-related {
+.bravo_wrap .bravo_detail_service .bravo-list-assistance-related {
     text-align: right;
 }
 
-.bravo_wrap .bravo_detail_boat .bravo_content .g-gallery .social .social-share .share-wrapper {
+.bravo_wrap .bravo_detail_service .bravo_content .g-gallery .social .social-share .share-wrapper {
     left:0;
     right: 10px;
 }
-.bravo_wrap .bravo_detail_boat .bravo_content .g-gallery .social .social-share {
+.bravo_wrap .bravo_detail_service .bravo_content .g-gallery .social .social-share {
     position: relative;
 }
 .bravo_wrap .bravo-list-item .topbar-search .control a {

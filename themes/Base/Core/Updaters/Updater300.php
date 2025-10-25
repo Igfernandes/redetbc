@@ -2,11 +2,10 @@
 
 namespace Themes\Base\Core\Updaters;
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Modules\Boat\Models\Boat;
+use Modules\Assistance\Models\Assistance;
 use Modules\Booking\Models\Service;
 use Modules\Event\Models\Event;
 use Modules\Hotel\Models\Hotel;
@@ -19,7 +18,8 @@ use Modules\User\Models\User;
 class Updater300
 {
 
-    public static function run(){
+    public static function run()
+    {
         $version = '1.4';
         if (version_compare(setting_item('update_to_300'), $version, '>=')) return;
 
@@ -27,34 +27,33 @@ class Updater300
             '--force' => true,
         ]);
 
-        $admin = Role::query()->where('name','administrator')->first();
-        if($admin){
+        $admin = Role::query()->where('name', 'administrator')->first();
+        if ($admin) {
             $admin->givePermission(PermissionHelper::all());
         }
         static::initVendor();
 
         // Update User Roles
-        if(Schema::hasTable('core_model_has_roles'))
-        {
+        if (Schema::hasTable('core_model_has_roles')) {
             $data = DB::table('core_model_has_roles')->get();
-            foreach ($data as $item){
-                if($item){
-                    User::query()->where('id',$item->model_id)->whereNull('role_id')->update(['role_id'=>$item->role_id]);
+            foreach ($data as $item) {
+                if ($item) {
+                    User::query()->where('id', $item->model_id)->whereNull('role_id')->update(['role_id' => $item->role_id]);
                 }
             }
         }
 
         // Update bc_services
-        foreach ([Hotel::class,Tour::class,Space::class,Event::class,Boat::class] as $class){
+        foreach ([Hotel::class, Tour::class, Space::class, Event::class, Assistance::class] as $class) {
 
             $tbName = (new $class)->getTable();
             $type = (new $class)->type;
 
-            Service::query()->join($tbName,function($join) use ($tbName,$type){
-                $join->on($tbName.'.id','=','bravo_services.object_id');
-                $join->where('bravo_services.object_model','=',$type);
+            Service::query()->join($tbName, function ($join) use ($tbName, $type) {
+                $join->on($tbName . '.id', '=', 'bravo_services.object_id');
+                $join->where('bravo_services.object_model', '=', $type);
             })->update([
-                'bravo_services.author_id'=>DB::raw($tbName.'.author_id')
+                'bravo_services.author_id' => DB::raw($tbName . '.author_id')
             ]);
         }
 
@@ -64,7 +63,7 @@ class Updater300
             'bravo_tours',
             'bravo_events',
             'bravo_spaces',
-            'bravo_boats',
+            'bravo_assistance',
             'bravo_seat_type',
             'media_files',
             'bravo_review',
@@ -72,7 +71,7 @@ class Updater300
             'core_pages',
             'bravo_services',
         ];
-        foreach ($tableAddAuthorId as $tbName){
+        foreach ($tableAddAuthorId as $tbName) {
             \Illuminate\Support\Facades\DB::update("update {$tbName} set author_id = create_user where author_id is null");
         }
 
@@ -82,19 +81,20 @@ class Updater300
             'bravo_user_plan',
             'bravo_booking_payments'
         ];
-        foreach ($tableAddUserId as $tbName){
+        foreach ($tableAddUserId as $tbName) {
             \Illuminate\Support\Facades\DB::update("update {$tbName} set user_id = create_user where user_id is null");
         }
 
 
         Artisan::call('cache:clear');
 
-        setting_update_item('update_to_300',$version);
+        setting_update_item('update_to_300', $version);
     }
 
-    public static function initVendor(){
-        $vendor = Role::query()->where('name','vendor')->first();
-        if(!$vendor){
+    public static function initVendor()
+    {
+        $vendor = Role::query()->where('name', 'vendor')->first();
+        if (!$vendor) {
             return;
         }
 
@@ -114,7 +114,7 @@ class Updater300
         $vendor->givePermission('hotel_create');
         $vendor->givePermission('hotel_update');
         $vendor->givePermission('hotel_delete');
-        
+
         $vendor->givePermission('event_view');
         $vendor->givePermission('event_create');
         $vendor->givePermission('event_update');
@@ -126,12 +126,12 @@ class Updater300
         $vendor->givePermission('news_delete');
 
         $vendor->givePermission([
-            'boat_view',
-            'boat_create',
-            'boat_update',
-            'boat_delete',
-            'boat_manage_others',
-            'boat_manage_attributes',
+            'assistance_view',
+            'assistance_create',
+            'assistance_update',
+            'assistance_delete',
+            'assistance_manage_others',
+            'assistance_manage_attributes',
         ]);
     }
 }

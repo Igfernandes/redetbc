@@ -144,11 +144,11 @@ class SearchController extends Controller
         return $classAvailability->loadDates($request);
     }
 
-    public function checkBoatAvailability(Request $request ,$id = ''){
+    public function checkAssistanceAvailability(Request $request ,$id = ''){
         if(empty($id)){
-            return $this->sendError(__("Boat ID is not available"));
+            return $this->sendError(__("Service ID is not available"));
         }
-        $class = get_bookable_service_by_id('boat');
+        $class = get_bookable_service_by_id('assistance');
         $classAvailability = $class::getClassAvailability();
         $classAvailability = app()->make($classAvailability);
         $request->merge(['id' => $id]);

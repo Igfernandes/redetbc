@@ -1,6 +1,6 @@
 (function ($) {
     new Vue({
-        el:'#bravo_boat_book_app',
+        el:'#bravo_assistance_book_app',
         data:{
             id:'',
             extra_price:[],
@@ -375,7 +375,7 @@
                     url:bookingCore.url+'/booking/addToCart',
                     data:{
                         service_id:this.id,
-                        service_type:"boat",
+                        service_type:"assistance",
                         start_date:this.start_date,
                         hour:this.hour,
                         day:this.day,
@@ -568,7 +568,7 @@
         $('.bravo_single_book_wrap').modal('show');
     });
 
-    $(".bravo_detail_boat .g-faq .item .header").click(function () {
+    $(".bravo_detail_service .g-faq .item .header").click(function () {
         $(this).parent().toggleClass("active");
     });
 

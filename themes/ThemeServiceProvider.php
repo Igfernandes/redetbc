@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Modules\Theme\ThemeManager;
-use Themes\Base\ThemeProvider;
 
 class ThemeServiceProvider extends ServiceProvider
 {
