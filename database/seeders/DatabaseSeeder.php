@@ -35,6 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SocialSeeder::class);
         $this->call(CoreSettingsSeeder::class);
         $this->call(DemoSeeder::class);
-        $this->call(BoatSeeder::class);
+        $this->call(AssistanceSeeder::class);
     }
 }

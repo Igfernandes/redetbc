@@ -54,7 +54,7 @@ class Tour extends Bookable
         'map_zoom',
         'is_featured',
         'gallery',
-        'video',
+        'religion',
         'price',
         'sale_price',
         //Tour type

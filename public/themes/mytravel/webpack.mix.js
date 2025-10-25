@@ -26,4 +26,4 @@ mix.sass('module/location/scss/location.scss','module/location/css');
 mix.sass('module/car/scss/car.scss','module/car/css');
 mix.sass('module/event/scss/event.scss','module/event/css');
 mix.sass('module/social/scss/social.scss','module/social/css');
-mix.sass('module/boat/scss/boat.scss','module/boat/css');
+mix.sass('module/assistance/scss/assistance.scss','module/assistance/css');

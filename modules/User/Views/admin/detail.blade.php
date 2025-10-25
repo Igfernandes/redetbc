@@ -53,13 +53,13 @@
                                     <label>{{ __("Religion")  }}</label>
                                     <select name="religion" class="form-control">
                                         <option value="">{{ __("Select religion") }}</option>
-                                        <option value="CATHOLIC" {{ old('religion', $row->religion ?? '') == 'CATHOLIC' ? 'selected' : '' }}>
+                                        <option value="CATHOLIC" {{ old('religion', $booking_data->religion ?? '') == 'CATHOLIC' ? 'selected' : '' }}>
                                             {{ __("Catholic") }}
                                         </option>
-                                        <option value="EVANGELICAL" {{ old('religion', $row->religion ?? '') == 'EVANGELICAL' ? 'selected' : '' }}>
+                                        <option value="EVANGELICAL" {{ old('religion', $booking_data->religion ?? '') == 'EVANGELICAL' ? 'selected' : '' }}>
                                             {{ __("Evangelical") }}
                                         </option>
-                                        <option value="BOTH" {{ old('religion', $row->religion ?? '') == 'BOTH' ? 'selected' : '' }}>
+                                        <option value="BOTH" {{ old('religion', $booking_data->religion ?? '') == 'BOTH' ? 'selected' : '' }}>
                                             {{ __("Both") }}
                                         </option>
                                     </select>

@@ -1,9 +1,9 @@
 <?php
-if(!$user->hasPermission('boat_create')) return;
+if(!$user->hasPermission('assistance_create')) return;
 ?>
 @if(!empty($services) and $services->total())
     <div class="bravo-profile-list-services">
-        @include('Boat::frontend.blocks.list-boat.index', ['rows'=>$services,'style_list'=>'normal','desc'=>' ','title'=>!empty($view_all) ? __('Boat by :name',['name'=>$user->first_name]) :'','col'=>4])
+        @include('Assistance::frontend.blocks.list-assistance.index', ['rows'=>$services,'style_list'=>'normal','desc'=>' ','title'=>!empty($view_all) ? __('assistance by :name',['name'=>$user->first_name]) :'','col'=>4])
 
         <div class="container">
             @if(!empty($view_all))
@@ -16,7 +16,7 @@ if(!$user->hasPermission('boat_create')) return;
                     </div>
                 </div>
             @else
-                <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.services',['id'=>$user->user_name ?? $user->id,'type'=>'boat'])}}">{{__('View all (:total)',['total'=>$services->total()])}}</a></div>
+                <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.services',['id'=>$user->user_name ?? $user->id,'type'=>'assistance'])}}">{{__('View all (:total)',['total'=>$services->total()])}}</a></div>
             @endif
         </div>
     </div>

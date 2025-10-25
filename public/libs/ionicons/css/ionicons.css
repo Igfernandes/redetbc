@@ -63,7 +63,7 @@
 .ion-ios-beer:before,
 .ion-ios-bicycle:before,
 .ion-ios-bluetooth:before,
-.ion-ios-boat:before,
+.ion-ios-assistance:before,
 .ion-ios-body:before,
 .ion-ios-bonfire:before,
 .ion-ios-book:before,
@@ -442,7 +442,7 @@
 .ion-md-beer:before,
 .ion-md-bicycle:before,
 .ion-md-bluetooth:before,
-.ion-md-boat:before,
+.ion-md-assistance:before,
 .ion-md-body:before,
 .ion-md-bonfire:before,
 .ion-md-book:before,
@@ -904,7 +904,7 @@
   content: "\f128";
 }
 
-.ion-ios-boat:before {
+.ion-ios-assistance:before {
   content: "\f12a";
 }
 
@@ -2420,7 +2420,7 @@
   content: "\f29a";
 }
 
-.ion-md-boat:before {
+.ion-md-assistance:before {
   content: "\f29b";
 }
 

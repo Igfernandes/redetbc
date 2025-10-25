@@ -3,28 +3,23 @@
 namespace Modules\User\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 use Matrix\Exception;
-use Modules\Boat\Models\Boat;
+use Modules\Assistance\Models\Assistance;
 use Modules\Booking\Models\Service;
 use Modules\Event\Models\Event;
 use Modules\FrontendController;
 use Modules\Hotel\Models\Hotel;
 use Modules\Space\Models\Space;
 use Modules\Tour\Models\Tour;
-use Modules\User\Events\NewVendorRegistered;
 use Modules\User\Events\UserSubscriberSubmit;
 use Modules\User\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Modules\Vendor\Models\VendorRequest;
-use Validator;
 use Modules\Booking\Models\Booking;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Modules\Booking\Models\Enquiry;
 use Illuminate\Support\Str;
-use Modules\User\Models\Plan;
 
 class UserController extends FrontendController
 {
@@ -205,7 +200,7 @@ class UserController extends FrontendController
                 Space::where('author_id', $user->id)->delete();
                 Hotel::where('author_id', $user->id)->delete();
                 Event::where('author_id', $user->id)->delete();
-                Boat::where('author_id', $user->id)->delete();
+                Assistance::where('author_id', $user->id)->delete();
                 $user->sendEmailPermanentlyDelete();
                 $user->delete();
                 \DB::commit();

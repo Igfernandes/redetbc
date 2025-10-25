@@ -29,7 +29,7 @@ class ThemeProvider extends AbstractThemeProvider
         'space'=>\Modules\Space\ModuleProvider::class,
         'event'=>\Modules\Event\ModuleProvider::class,
         'tour'=>\Modules\Tour\ModuleProvider::class,
-        'boat'=>\Modules\Boat\ModuleProvider::class,
+        'assistance'=>\Modules\Assistance\ModuleProvider::class,
         'contact'=>\Modules\Contact\ModuleProvider::class,
         'dashboard'=>\Modules\Dashboard\ModuleProvider::class,
         'email'=>\Modules\Email\ModuleProvider::class,

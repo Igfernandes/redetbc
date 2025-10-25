@@ -55,6 +55,15 @@
                     </div>
                 </li>
                 @endif
+                @if(isset($roles['assistance']))
+                <li>
+                    <input type="radio" name="role" value="{{$roles['assistance']}}">
+                    <div class="text">
+                        <i class="icofont-building-alt"></i>
+                        <span>{{_('Services')}}</span>
+                    </div>
+                </li>
+                @endif
             </ul>
         </div>
 

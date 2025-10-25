@@ -129,9 +129,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 
-/***/ "../../module/boat/scss/boat.scss":
+/***/ "../../module/assistance/scss/assistance.scss":
 /*!****************************************!*\
-  !*** ../../module/boat/scss/boat.scss ***!
+  !*** ../../module/assistance/scss/assistance.scss ***!
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -327,7 +327,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			"css/contact": 0,
 /******/ 			"css/app": 0,
 /******/ 			"module/support/css/support": 0,
-/******/ 			"module/boat/css/boat": 0,
+/******/ 			"module/assistance/css/assistance": 0,
 /******/ 			"module/social/css/social": 0,
 /******/ 			"module/event/css/event": 0,
 /******/ 			"module/location/css/location": 0,

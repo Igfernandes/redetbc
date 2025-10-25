@@ -4,8 +4,8 @@ namespace Modules\Core\Models;
 use App\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
-use Modules\Boat\Models\Boat;
-use Modules\Boat\Models\BoatTerm;
+use Modules\Assistance\Models\Assistance;
+use Modules\Assistance\Models\AssistanceTerm;
 use Modules\Event\Models\Event;
 use Modules\Event\Models\EventTerm;
 use Modules\Hotel\Models\Hotel;
@@ -128,7 +128,7 @@ class Terms extends BaseModel
     public function event(){
         return $this->belongsToMany(Event::class,EventTerm::getTableName(),'term_id','target_id');
     }
-    public function boat(){
-        return $this->belongsToMany(Boat::class,BoatTerm::getTableName(),'term_id','target_id');
+    public function service(){
+        return $this->belongsToMany(Assistance::class,AssistanceTerm::getTableName(),'term_id','target_id');
     }
 }

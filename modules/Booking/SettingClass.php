@@ -87,13 +87,13 @@ class SettingClass extends BaseSettingsClass
                     'booking_enquiry_for_tour',
                     'booking_enquiry_for_space',
                     'booking_enquiry_for_event',
-                    'booking_enquiry_for_boat',
+                    'booking_enquiry_for_assistance',
 
                     'booking_enquiry_type_hotel',
                     'booking_enquiry_type_tour',
                     'booking_enquiry_type_space',
                     'booking_enquiry_type_event',
-                    'booking_enquiry_type_boat',
+                    'booking_enquiry_type_assistance',
 
                     'booking_enquiry_enable_mail_to_vendor',
                     'booking_enquiry_mail_to_vendor_content',

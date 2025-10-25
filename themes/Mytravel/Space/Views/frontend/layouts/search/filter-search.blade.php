@@ -16,12 +16,21 @@
         </div>
         <form action="{{url(app_get_locale(false,false,'/').config('space.space_route_prefix'))}}" class="bravo_form_filter">
             @if( !empty(Request::query('location_id')) )
-                <input type="hidden" name="location_id" value="{{Request::query('location_id')}}">
+            <input type="hidden" name="location_id" value="{{Request::query('location_id')}}">
             @endif
+            <div class="form-group">
+                <label class="control-label">{{__("Religion")}}</label>
+                <select name="religion" class="form-control">
+                    <option value="">Selecione a religião</option>
+                    <option value="CATHOLIC" @if(Request::query('location_id')=="CATHOLIC" ) selected @endif> {{__("Evangelical")}}</option>
+                    <option value="EVANGELICAL" @if(Request::query('location_id')=="EVANGELICAL" ) selected @endif> {{__("Catholic")}}</option>
+                    <option value="BOTH" @if(Request::query('location_id')=="BOTH" ) selected @endif> {{__("Both")}}</option>
+                </select>
+            </div>
             @if( !empty(Request::query('start')) and !empty(Request::query('end')) )
-                <input type="hidden" value="{{Request::query('start',date("d/m/Y",strtotime("today")))}}" name="start">
-                <input type="hidden" value="{{Request::query('end',date("d/m/Y",strtotime("+1 day")))}}" name="end">
-                <input type="hidden" name="date" value="{{Request::query('date')}}">
+            <input type="hidden" value="{{Request::query('start',date("d/m/Y",strtotime("today")))}}" name="start">
+            <input type="hidden" value="{{Request::query('end',date("d/m/Y",strtotime("+1 day")))}}" name="end">
+            <input type="hidden" name="date" value="{{Request::query('date')}}">
             @endif
             {{--Filter--}}
             <div class="sidenav border border-color-8 rounded-xs">
@@ -62,17 +71,17 @@
                                     <span id="rangeSliderMaxResult"></span>
                                 </div>
                                 <input class="filter-price" type="text" name="price_range"
-                                       data-extra-classes="u-range-slider height-35"
-                                       data-type="double"
-                                       data-grid="false"
-                                       data-hide-from-to="true"
-                                       data-min="{{$price_min}}"
-                                       data-max="{{$price_max}}"
-                                       data-from="{{$pri_from}}"
-                                       data-to="{{$pri_to}}"
-                                       data-prefix="{{$currency['symbol'] ?? ''}}"
-                                       data-result-min="#rangeSliderMinResult"
-                                       data-result-max="#rangeSliderMaxResult">
+                                    data-extra-classes="u-range-slider height-35"
+                                    data-type="double"
+                                    data-grid="false"
+                                    data-hide-from-to="true"
+                                    data-min="{{$price_min}}"
+                                    data-max="{{$price_max}}"
+                                    data-from="{{$pri_from}}"
+                                    data-to="{{$pri_to}}"
+                                    data-prefix="{{$currency['symbol'] ?? ''}}"
+                                    data-result-min="#rangeSliderMinResult"
+                                    data-result-max="#rangeSliderMaxResult">
                             </div>
                         </div>
                     </div>
@@ -98,89 +107,89 @@
                         <div id="review_score" class="collapse show">
                             <div class="card-body pt-0 mt-1 ">
                                 @for ($number = 5 ;$number >= 2 ; $number--)
-                                    <div class="form-group font-size-14 text-lh-md text-secondary mb-3">
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" id="review_score{{$number}}" name="review_score[]" type="checkbox" value="{{$number}}" @if(  in_array($number , request()->query('review_score',[])) )  checked @endif>
-                                            <label class="custom-control-label text-lh-inherit text-color-1" for="review_score{{$number}}">
-                                                <div class="d-inline-flex align-items-center font-size-13 text-lh-1 text-primary">
-                                                    <div class="green-lighter ml-1 letter-spacing-2">
-                                                        @for ($review_score = 1 ;$review_score <= $number ; $review_score++)
-                                                            <i class="fa fa-star"></i>
+                                <div class="form-group font-size-14 text-lh-md text-secondary mb-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="review_score{{$number}}" name="review_score[]" type="checkbox" value="{{$number}}" @if( in_array($number , request()->query('review_score',[])) ) checked @endif>
+                                        <label class="custom-control-label text-lh-inherit text-color-1" for="review_score{{$number}}">
+                                            <div class="d-inline-flex align-items-center font-size-13 text-lh-1 text-primary">
+                                                <div class="green-lighter ml-1 letter-spacing-2">
+                                                    @for ($review_score = 1 ;$review_score <= $number ; $review_score++)
+                                                        <i class="fa fa-star"></i>
                                                         @endfor
-                                                    </div>
                                                 </div>
-                                            </label>
-                                        </div>
+                                            </div>
+                                        </label>
                                     </div>
+                                </div>
                                 @endfor
                             </div>
                         </div>
                     </div>
                 </div>
                 @php
-                    $selected = (array) Request::query('terms');
+                $selected = (array) Request::query('terms');
                 @endphp
                 @foreach ($attributes as $item)
-                    @if(empty($item['hide_in_filter_search']))
-                        @php
-                            $translate = $item->translate();
-                        @endphp
-                        {{--Term--}}
-                        <div id="attr_{{$item->id}}" class="accordion rounded-0 shadow-none border-top">
-                            <div class="border-0">
-                                <div class="card-collapse" id="cityCategoryHeadingOne">
-                                    <h3 class="mb-0">
-                                        <button type="button" class="btn btn-link btn-block card-btn py-2 text-lh-3 collapsed" data-toggle="collapse" data-target="#attr_more_{{$item->id}}" aria-expanded="false" aria-controls="attr_more_{{$item->id}}">
-                                            <span class="row align-items-center">
-                                                <span class="col-9">
-                                                    <span class="font-weight-bold font-size-17 text-dark mb-3">{{$translate->name}}</span>
-                                                </span>
-                                                <span class="col-3 text-right">
-                                                    <span class="card-btn-arrow">
-                                                        <span class="fa fa-chevron-down small"></span>
-                                                    </span>
-                                                </span>
+                @if(empty($item['hide_in_filter_search']))
+                @php
+                $translate = $item->translate();
+                @endphp
+                {{--Term--}}
+                <div id="attr_{{$item->id}}" class="accordion rounded-0 shadow-none border-top">
+                    <div class="border-0">
+                        <div class="card-collapse" id="cityCategoryHeadingOne">
+                            <h3 class="mb-0">
+                                <button type="button" class="btn btn-link btn-block card-btn py-2 text-lh-3 collapsed" data-toggle="collapse" data-target="#attr_more_{{$item->id}}" aria-expanded="false" aria-controls="attr_more_{{$item->id}}">
+                                    <span class="row align-items-center">
+                                        <span class="col-9">
+                                            <span class="font-weight-bold font-size-17 text-dark mb-3">{{$translate->name}}</span>
+                                        </span>
+                                        <span class="col-3 text-right">
+                                            <span class="card-btn-arrow">
+                                                <span class="fa fa-chevron-down small"></span>
                                             </span>
-                                        </button>
-                                    </h3>
-                                </div>
-                                <div id="attr_more_{{$item->id}}" class="collapse show" aria-labelledby="cityCategoryHeadingOne" data-parent="#attr_{{$item->id}}">
-                                    <div class="card-body pt-0 mt-1  pb-4">
-                                        @foreach($item->terms as $key => $term)
-                                            @if($key <= 2)
-                                                @php $translate = $term->translate(); @endphp
-                                                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input id="term_{{$term->id}}" class="custom-control-input" @if(in_array($term->id,$selected)) checked @endif type="checkbox" name="terms[]" value="{{$term->id}}">
-                                                        <label class="custom-control-label" for="term_{{$term->id}}">{!! $translate->name !!}</label>
-                                                    </div>
-                                                    <span>{{$term->space_count??0}}</span>
-                                                </div>
-                                            @endif
-                                        @endforeach
-                                        <div class="collapse" id="more_term_{{$item->id}}">
-                                            @foreach($item->terms as $key => $term)
-                                                @if($key > 2 )
-                                                    @php $translate = $term->translate(); @endphp
-                                                    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input id="term_{{$term->id}}" class="custom-control-input" @if(in_array($term->id,$selected)) checked @endif type="checkbox" name="terms[]" value="{{$term->id}}">
-                                                            <label class="custom-control-label" for="term_{{$term->id}}">{!! $translate->name !!}</label>
-                                                        </div>
-                                                        <span>{{$term->space_count??0}}</span>
-                                                    </div>
-                                                @endif
-                                            @endforeach
+                                        </span>
+                                    </span>
+                                </button>
+                            </h3>
+                        </div>
+                        <div id="attr_more_{{$item->id}}" class="collapse show" aria-labelledby="cityCategoryHeadingOne" data-parent="#attr_{{$item->id}}">
+                            <div class="card-body pt-0 mt-1  pb-4">
+                                @foreach($item->terms as $key => $term)
+                                @if($key <= 2)
+                                    @php $translate=$term->translate(); @endphp
+                                    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input id="term_{{$term->id}}" class="custom-control-input" @if(in_array($term->id,$selected)) checked @endif type="checkbox" name="terms[]" value="{{$term->id}}">
+                                            <label class="custom-control-label" for="term_{{$term->id}}">{!! $translate->name !!}</label>
                                         </div>
-                                        <a class="link link-collapse small font-size-1 mt-2" data-toggle="collapse" href="#more_term_{{$item->id}}" role="button" aria-expanded="false" aria-controls="more_term_{{$item->id}}">
-                                            <span class="link-collapse__default font-size-14">{{ __("Show all") }}</span>
-                                            <span class="link-collapse__active font-size-14">{{ __("Show less") }}</span>
-                                        </a>
+                                        <span>{{$term->space_count??0}}</span>
                                     </div>
-                                </div>
+                                    @endif
+                                    @endforeach
+                                    <div class="collapse" id="more_term_{{$item->id}}">
+                                        @foreach($item->terms as $key => $term)
+                                        @if($key > 2 )
+                                        @php $translate = $term->translate(); @endphp
+                                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+                                            <div class="custom-control custom-checkbox">
+                                                <input id="term_{{$term->id}}" class="custom-control-input" @if(in_array($term->id,$selected)) checked @endif type="checkbox" name="terms[]" value="{{$term->id}}">
+                                                <label class="custom-control-label" for="term_{{$term->id}}">{!! $translate->name !!}</label>
+                                            </div>
+                                            <span>{{$term->space_count??0}}</span>
+                                        </div>
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                    <a class="link link-collapse small font-size-1 mt-2" data-toggle="collapse" href="#more_term_{{$item->id}}" role="button" aria-expanded="false" aria-controls="more_term_{{$item->id}}">
+                                        <span class="link-collapse__default font-size-14">{{ __("Show all") }}</span>
+                                        <span class="link-collapse__active font-size-14">{{ __("Show less") }}</span>
+                                    </a>
                             </div>
                         </div>
-                    @endif
+                    </div>
+                </div>
+                @endif
                 @endforeach
             </div>
         </form>
