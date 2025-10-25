@@ -88,7 +88,7 @@
                                         </label>
                                     </div>
                                     <div class="form-group d-none">
-                                        <label>{{__('Is Instant Booking?')}}</label>
+                                        <label>{{__('O que é Reserva Instantânea?')}}</label>
                                         <br>
                                         <label>
                                             <input type="checkbox" name="is_instant" @if($row->is_instant) checked @endif value="1"> {{__("Enable instant booking")}}

@@ -40,7 +40,7 @@ class BookingController extends \App\Http\Controllers\Controller
     {
 
         if (!is_enable_guest_checkout() and !Auth::check()) {
-            $error = __("You have to login in to do this");
+            $error = __("Você precisa fazer login para fazer isso");
             if (\request()->isJson()) {
                 return $this->sendError($error)->setStatusCode(401);
             }
@@ -118,11 +118,11 @@ class BookingController extends \App\Http\Controllers\Controller
 
         $request = \request();
         if (!is_enable_guest_checkout() and !Auth::check()) {
-            return $this->sendError(__("You have to login in to do this"))->setStatusCode(401);
+            return $this->sendError(__("Você precisa fazer login para realizar esta ação"))->setStatusCode(401);
         }
 
         if (auth()->user() && !auth()->user()->hasVerifiedEmail() && setting_item('enable_verify_email_register_user') == 1) {
-            return $this->sendError(__("You have to verify email first"), ['url' => url('/email/verify')]);
+            return $this->sendError(__("Você tem que verificar o e-mail primeiro"), ['url' => url('/email/verify')]);
         }
         /**
          * @param Booking $booking
@@ -166,7 +166,7 @@ class BookingController extends \App\Http\Controllers\Controller
         }
         $service = $booking->service;
         if (empty($service)) {
-            return $this->sendError(__("Service not found"));
+            return $this->sendError(__("Serviço não encontrado"));
         }
 
         $is_api = request()->segment(1) == 'api';
@@ -177,7 +177,7 @@ class BookingController extends \App\Http\Controllers\Controller
         if (!$is_api and ReCaptchaEngine::isEnable() and setting_item("booking_enable_recaptcha")) {
             $codeCapcha = $request->input('g-recaptcha-response');
             if (!$codeCapcha or !ReCaptchaEngine::verify($codeCapcha)) {
-                return $this->sendError(__("Please verify the captcha"));
+                return $this->sendError(__("Por favor, verifique o captcha"));
             }
         }
 
@@ -196,8 +196,8 @@ class BookingController extends \App\Http\Controllers\Controller
         if (!empty($confirmRegister)) {
             $rules['password'] = 'required|string|confirmed|min:6|max:255';
             $rules['email'] = ['required', 'email', 'max:255', Rule::unique('users')];
-            $messages['password.confirmed'] = __('The password confirmation does not match');
-            $messages['password.min'] = __('The password must be at least 6 characters');
+            $messages['password.confirmed'] = __('A confirmação da senha não corresponde');
+            $messages['password.min'] = __('A senha deve ter pelo menos 6 caracteres');
         }
 
         $how_to_pay = $request->input('how_to_pay', '');
@@ -211,7 +211,7 @@ class BookingController extends \App\Http\Controllers\Controller
 
         if (auth()->check()) {
             if ($credit > $user->balance) {
-                return $this->sendError(__("Your credit balance is :amount", ['amount' => $user->balance]));
+                return $this->sendError(__("Seu saldo de crédito é :amount", ['amount' => $user->balance]));
             }
         } else {
             // force credit to 0 if not login
@@ -221,8 +221,8 @@ class BookingController extends \App\Http\Controllers\Controller
         $rules = $service->filterCheckoutValidate($request, $rules);
         if (!empty($rules)) {
 
-            $messages['term_conditions.required'] = __('Term conditions is required field');
-            $messages['payment_gateway.required'] = __('Payment gateway is required field');
+            $messages['term_conditions.required'] = __('O campo Condições do termo é obrigatório');
+            $messages['payment_gateway.required'] = __('O campo Gateway de pagamento é obrigatório');
 
             $validator = Validator::make($request->all(), $rules, $messages);
             if ($validator->fails()) {
@@ -294,10 +294,10 @@ class BookingController extends \App\Http\Controllers\Controller
             $gatewayObj = new $gateways[$payment_gateway]($payment_gateway);
             if (!empty($rules['payment_gateway'])) {
                 if (empty($gateways[$payment_gateway]) or !class_exists($gateways[$payment_gateway])) {
-                    return $this->sendError(__("Payment gateway not found"));
+                    return $this->sendError(__("Gateway de pagamento não encontrado"));
                 }
                 if (!$gatewayObj->isAvailable()) {
-                    return $this->sendError(__("Payment gateway is not available"));
+                    return $this->sendError(__("O gateway de pagamento não está disponível"));
                 }
             }
         }
@@ -383,7 +383,7 @@ class BookingController extends \App\Http\Controllers\Controller
             event(new BookingCreatedEvent($booking));
             return $this->sendSuccess([
                 'url' => $booking->getDetailUrl()
-            ], __("You payment has been processed successfully"));
+            ], __("Seu pagamento foi processado com sucesso"));
         }
     }
 
@@ -412,11 +412,11 @@ class BookingController extends \App\Http\Controllers\Controller
 
         $gateways = get_payment_gateways();
         if (empty($gateways[$gateway]) or !class_exists($gateways[$gateway])) {
-            return $this->sendError(__("Payment gateway not found"));
+            return $this->sendError(__("Gateway de pagamento não encontrado"));
         }
         $gatewayObj = new $gateways[$gateway]($gateway);
         if (!$gatewayObj->isAvailable()) {
-            return $this->sendError(__("Payment gateway is not available"));
+            return $this->sendError(__("O gateway de pagamento não está disponível"));
         }
         return $gatewayObj->confirmPayment($request);
     }
@@ -425,11 +425,11 @@ class BookingController extends \App\Http\Controllers\Controller
     {
         $gateways = get_payment_gateways();
         if (empty($gateways[$gateway]) or !class_exists($gateways[$gateway])) {
-            return $this->sendError(__("Payment gateway not found"));
+            return $this->sendError(__("Gateway de pagamento não encontrado"));
         }
         $gatewayObj = new $gateways[$gateway]($gateway);
         if (!$gatewayObj->isAvailable()) {
-            return $this->sendError(__("Payment gateway is not available"));
+            return $this->sendError(__("O gateway de pagamento não está disponível"));
         }
         if (!empty($request->input('is_normal'))) {
             return $gatewayObj->callbackNormalPayment();
@@ -442,11 +442,11 @@ class BookingController extends \App\Http\Controllers\Controller
 
         $gateways = get_payment_gateways();
         if (empty($gateways[$gateway]) or !class_exists($gateways[$gateway])) {
-            return $this->sendError(__("Payment gateway not found"));
+            return $this->sendError(__("Gateway de pagamento não encontrado"));
         }
         $gatewayObj = new $gateways[$gateway]($gateway);
         if (!$gatewayObj->isAvailable()) {
-            return $this->sendError(__("Payment gateway is not available"));
+            return $this->sendError(__("O gateway de pagamento não está disponível"));
         }
         return $gatewayObj->cancelPayment($request);
     }
@@ -460,7 +460,7 @@ class BookingController extends \App\Http\Controllers\Controller
     public function addToCart(Request $request)
     {
         if (!Auth::check()) {
-            return $this->sendError(__("You have to login in to do this"))->setStatusCode(401);
+            return $this->sendError(__("Você precisa fazer login para fazer isso"))->setStatusCode(401);
         }
 
         $validator = Validator::make($request->all(), [
@@ -477,21 +477,21 @@ class BookingController extends \App\Http\Controllers\Controller
         $allServices = get_bookable_services();
 
         if (empty($allServices[$service_type])) {
-            return $this->sendError(__('Service type not found'));
+            return $this->sendError(__('Tipo de serviço não encontrado'));
         }
 
         $module = $allServices[$service_type];
         $service = $module::find($service_id);
 
         if (empty($service) or !is_subclass_of($service, '\\Modules\\Booking\\Models\\Bookable')) {
-            return $this->sendError(__('Service not found'));
+            return $this->sendError(__('Serviço não encontrado'));
         }
         if (!$service->isBookable()) {
-            return $this->sendError(__('Service is not bookable'));
+            return $this->sendError(__('O serviço não pode ser reservado'));
         }
 
         if (\auth()->user() && Auth::id() == $service->author_id) {
-            return $this->sendError(__('You cannot book your own service'));
+            return $this->sendError(__('Você não pode reservar seu próprio serviço'));
         }
 
         return $service->addToCart($request);
@@ -500,7 +500,7 @@ class BookingController extends \App\Http\Controllers\Controller
     public function detail(Request $request, $code)
     {
         if (!is_enable_guest_checkout() and !Auth::check()) {
-            return $this->sendError(__("You have to login in to do this"))->setStatusCode(401);
+            return $this->sendError(__("Você precisa fazer login para fazer isso"))->setStatusCode(401);
         }
 
         $booking = $this->booking::where('code', $code)->first();
@@ -515,7 +515,7 @@ class BookingController extends \App\Http\Controllers\Controller
             abort(404);
         }
         $data = [
-            'page_title' => __('Booking Details'),
+            'page_title' => __('Detalhes da reserva'),
             'booking'    => $booking,
             'service'    => $booking->service,
         ];
@@ -528,13 +528,13 @@ class BookingController extends \App\Http\Controllers\Controller
     public function exportIcal($type, $id = false)
     {
         if (empty($type) or empty($id)) {
-            return $this->sendError(__('Service not found'));
+            return $this->sendError(__('Serviço não encontrado'));
         }
 
         $allServices = get_bookable_services();
         $allServices['room'] = 'Modules\Hotel\Models\HotelRoom';
         if (empty($allServices[$type])) {
-            return $this->sendError(__('Service type not found'));
+            return $this->sendError(__('Tipo de serviço não encontrado'));
         }
         $module = $allServices[$type];
 
@@ -574,7 +574,7 @@ class BookingController extends \App\Http\Controllers\Controller
         if (setting_item('booking_enquiry_enable_recaptcha')) {
             $codeCapcha = trim($request->input('g-recaptcha-response'));
             if (empty($codeCapcha) or !ReCaptchaEngine::verify($codeCapcha)) {
-                return $this->sendError(__("Please verify the captcha"));
+                return $this->sendError(__("Por favor, verifique o captcha"));
             }
         }
 
@@ -582,12 +582,12 @@ class BookingController extends \App\Http\Controllers\Controller
         $service_id = $request->input('service_id');
         $allServices = get_bookable_services();
         if (empty($allServices[$service_type])) {
-            return $this->sendError(__('Service type not found'));
+            return $this->sendError(__('Tipo de serviço não encontrado'));
         }
         $module = $allServices[$service_type];
         $service = $module::find($service_id);
         if (empty($service) or !is_subclass_of($service, '\\Modules\\Booking\\Models\\Bookable')) {
-            return $this->sendError(__('Service not found'));
+            return $this->sendError(__('Serviço não encontrado'));
         }
         $row = new $this->enquiryClass();
         $row->fill([
@@ -603,7 +603,7 @@ class BookingController extends \App\Http\Controllers\Controller
         $row->save();
         event(new EnquirySendEvent($row));
         return $this->sendSuccess([
-            'message' => __("Thank you for contacting us! We will be in contact shortly.")
+            'message' => __("Obrigado por entrar em contato conosco! Entraremos em contato em breve.")
         ]);
     }
 
@@ -628,17 +628,17 @@ class BookingController extends \App\Http\Controllers\Controller
         $remain = floatval($request->input('remain'));
 
         if ($remain < 0) {
-            return $this->sendError(__('Remain can not smaller than 0'));
+            return $this->sendError(__('Permanecer não pode ser menor que 0'));
         }
 
         $booking = Booking::where('id', $id)->first();
         if (empty($booking)) {
-            return $this->sendError(__('Booking not found'));
+            return $this->sendError(__('Reserva não encontrada'));
         }
 
         if (!Auth::user()->hasPermission('dashboard_vendor_access')) {
             if ($booking->vendor_id != Auth()->id()) {
-                return $this->sendError(__("You don't have access."));
+                return $this->sendError(__("Você não tem acesso."));
             }
         }
 
@@ -654,7 +654,7 @@ class BookingController extends \App\Http\Controllers\Controller
         $booking->save();
 
         return $this->sendSuccess([
-            'message' => __("You booking has been changed successfully")
+            'message' => __("Sua reserva foi alterada com sucesso")
         ]);
     }
 

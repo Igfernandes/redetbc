@@ -126,18 +126,18 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{__("Enable enquiry for Boat")}}</label>
+                                <label>{{__("Enable enquiry for Service")}}</label>
                                 <div class="form-controls">
-                                    <label><input type="checkbox" name="booking_enquiry_for_boat" value="1" @if(!empty($settings['booking_enquiry_for_boat'])) checked @endif /> {{__("Enable enquiry form")}} </label>
+                                    <label><input type="checkbox" name="booking_enquiry_for_assistance" value="1" @if(!empty($settings['booking_enquiry_for_assistance'])) checked @endif /> {{__("Enable enquiry form")}} </label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label>{{__("Enquiry Type")}}</label>
                             <div class="form-controls">
-                                <select name="booking_enquiry_type_boat" class="form-control">
-                                    <option {{ ($settings['booking_enquiry_type_boat'] ?? '') == 'booking_and_enquiry' ? 'selected' : '' }} value="booking_and_enquiry">{{__("Booking & Enquiry")}}</option>
-                                    <option {{ ($settings['booking_enquiry_type_boat'] ?? '') == 'only_enquiry' ? 'selected' : '' }} value="only_enquiry">{{__("Only Enquiry")}}</option>
+                                <select name="booking_enquiry_type_assistance" class="form-control">
+                                    <option {{ ($settings['booking_enquiry_type_assistance'] ?? '') == 'booking_and_enquiry' ? 'selected' : '' }} value="booking_and_enquiry">{{__("Booking & Enquiry")}}</option>
+                                    <option {{ ($settings['booking_enquiry_type_assistance'] ?? '') == 'only_enquiry' ? 'selected' : '' }} value="only_enquiry">{{__("Only Enquiry")}}</option>
                                 </select>
                             </div>
                         </div>

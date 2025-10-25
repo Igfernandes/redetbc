@@ -22,8 +22,8 @@
                                 {!! \App\Helpers\AdminForm::select('currency_format',[
                                     ['id'=>'right','name'=>__('Right (100$)')],
                                     ['id'=>'right_space','name'=>__('Right with space (100 $)')],
-                                    ['id'=>'left','name'=>__('Left ($100)')],
-                                    ['id'=>'left_space','name'=>__('Left with space ($ 100)')],
+                                    ['id'=>'left','name'=>__('esquerda ($100)')],
+                                    ['id'=>'left_space','name'=>__('esquerda with space ($ 100)')],
                                 ],$settings['currency_format'] ?? 'right') !!}
                             </div>
                         </div>
@@ -90,8 +90,8 @@
                                                                 {!! \App\Helpers\AdminForm::select('extra_currency['.$key.'][currency_format]',[
                                                                     ['id'=>'right','name'=>__('Right (100$)')],
                                                                     ['id'=>'right_space','name'=>__('Right with space (100 $)')],
-                                                                    ['id'=>'left','name'=>__('Left ($100)')],
-                                                                    ['id'=>'left_space','name'=>__('Left with space ($ 100)')],
+                                                                    ['id'=>'left','name'=>__('esquerda ($100)')],
+                                                                    ['id'=>'left_space','name'=>__('esquerda with space ($ 100)')],
                                                                 ],$item['currency_format'] ?? '') !!}
                                                             </div>
                                                         </div>
@@ -157,8 +157,8 @@
                                                             {!! \App\Helpers\AdminForm::select('extra_currency[__number__][currency_format]',[
                                                                 ['id'=>'right','name'=>__('Right (100$)')],
                                                                 ['id'=>'right_space','name'=>__('Right with space (100 $)')],
-                                                                ['id'=>'left','name'=>__('Left ($100)')],
-                                                                ['id'=>'left_space','name'=>__('Left with space ($ 100)')],
+                                                                ['id'=>'left','name'=>__('esquerda ($100)')],
+                                                                ['id'=>'left_space','name'=>__('esquerda with space ($ 100)')],
                                                             ],'right','',true) !!}
                                                         </div>
                                                     </div>

@@ -4338,26 +4338,26 @@ window.tinymce.emoticons_plugin_database = {
     fitzpatrick_scale: false,
     category: "travel_and_places"
   },
-  sailboat: {
+  sailassistance: {
     keywords: [ "ship", "summer", "transportation", "water", "sailing" ],
     "char": "\u26f5",
     fitzpatrick_scale: false,
     category: "travel_and_places"
   },
-  motor_boat: {
+  motor_assistance: {
     keywords: [ "ship" ],
     "char": "\ud83d\udee5",
     fitzpatrick_scale: false,
     category: "travel_and_places"
   },
-  speedboat: {
+  speedassistance: {
     keywords: [ "ship", "transportation", "vehicle", "summer" ],
     "char": "\ud83d\udea4",
     fitzpatrick_scale: false,
     category: "travel_and_places"
   },
   ferry: {
-    keywords: [ "boat", "ship", "yacht" ],
+    keywords: [ "assistance", "ship", "yacht" ],
     "char": "\u26f4",
     fitzpatrick_scale: false,
     category: "travel_and_places"
@@ -4387,13 +4387,13 @@ window.tinymce.emoticons_plugin_database = {
     category: "travel_and_places"
   },
   canoe: {
-    keywords: [ "boat", "paddle", "water", "ship" ],
+    keywords: [ "assistance", "paddle", "water", "ship" ],
     "char": "\ud83d\udef6",
     fitzpatrick_scale: false,
     category: "travel_and_places"
   },
   anchor: {
-    keywords: [ "ship", "ferry", "sea", "boat" ],
+    keywords: [ "ship", "ferry", "sea", "assistance" ],
     "char": "\u2693",
     fitzpatrick_scale: false,
     category: "travel_and_places"

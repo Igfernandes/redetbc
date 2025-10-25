@@ -45,7 +45,7 @@
                 <thead>
                 <tr>
                     <th>{{__('Enable?')}}</th>
-                    <th>{{__('Day of Week')}}</th>
+                    <th>{{__('Dia of Week')}}</th>
                     <th>{{__('Open')}}</th>
                     <th>{{__('Close')}}</th>
                 </tr>

@@ -394,7 +394,7 @@ class HotelSeeder extends Seeder
             'service'=>'hotel'
         ]);
         $property_type->save();
-        foreach (['Apartments','Hotels','Homestays','Villas','Boats','Motels','Resorts','Lodges','Holiday homes','Cruises'] as $key=>$term){
+        foreach (['Apartments','Hotels','Homestays','Villas','Services','Motels','Resorts','Lodges','Holiday homes','Cruises'] as $key=>$term){
             $term = new Terms([
                 'name'=>$term,
                 'attr_id'=>$property_type->id,

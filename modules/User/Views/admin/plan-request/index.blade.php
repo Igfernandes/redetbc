@@ -85,7 +85,7 @@
                                             @if($row->getMeta('annual')!=1)
                                                 <p>{{__('Duration:  :duration_text',['duration_text'=>$row->plan->duration_text])}}</p>
                                                 @else
-                                                <p>{{__('Year')}}</p>
+                                                <p>{{__('Ano')}}</p>
                                             @endif
                                         @endif
                                     </td>

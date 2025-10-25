@@ -54,7 +54,7 @@
                             @if($booking->getMeta('type_date') == 'per_hour')
                                 {{$booking->duration_hours}} {{ Str::plural(__('hour'),$booking->duration_hours) }}
                             @else
-                                {{$booking->duration_nights}} {{ Str::plural(__('day'),$booking->duration_nights) }}
+                                {{$booking->duration_nights}} {{ Str::plural(__('dia'),$booking->duration_nights) }}
                             @endif
                         </div>
                     </li>
@@ -162,7 +162,7 @@ $dateDetail = $service->detailBookingEachDate($booking);
                     <li class="mb-3 pb-1 border-bottom">
                         <h6 class="label text-center font-weight-bold mb-1"></h6>
                         <div>
-                            @includeIf("Boat::frontend.booking.detail-date",['rows'=>$dateDetail,'number'=>$booking->number])
+                            @includeIf("Assistance::frontend.booking.detail-date",['rows'=>$dateDetail,'number'=>$booking->number])
                         </div>
                         <div class="d-flex justify-content-between font-weight-bold px-2">
                             <span>{{__("Total:")}}</span>

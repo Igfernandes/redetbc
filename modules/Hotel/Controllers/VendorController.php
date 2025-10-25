@@ -157,6 +157,7 @@ class VendorController extends FrontendController
             'video',
             'image_id',
             'banner_image_id',
+            'religion',
             'gallery',
             'is_featured',
             'policy',

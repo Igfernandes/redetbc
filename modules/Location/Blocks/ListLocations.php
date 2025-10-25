@@ -27,7 +27,7 @@ class ListLocations extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'desc',
@@ -39,7 +39,7 @@ class ListLocations extends BaseBlock
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Number Item')
+                    'label'     => __('Item numérico')
                 ],
                 [
                     'id'            => 'layout',

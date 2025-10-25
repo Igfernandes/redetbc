@@ -15,11 +15,11 @@ class NormalCheckoutController extends BookingController
     {
         $gateways = get_payment_gateways();
         if (empty($gateways[$gateway]) or !class_exists($gateways[$gateway])) {
-            return $this->sendError(__("Payment gateway not found"));
+            return $this->sendError(__("Gateway de pagamento não encontrado"));
         }
         $gatewayObj = new $gateways[$gateway]($gateway);
         if (!$gatewayObj->isAvailable()) {
-            return $this->sendError(__("Payment gateway is not available"));
+            return $this->sendError(__("O gateway de pagamento não está disponível"));
         }
         $res = $gatewayObj->confirmNormalPayment($request);
         $status = $res[0] ?? null;
@@ -42,11 +42,11 @@ class NormalCheckoutController extends BookingController
 
         $gateways = get_payment_gateways();
         if (empty($gateways[$gateway]) or !class_exists($gateways[$gateway])) {
-            return $this->sendError(__("Payment gateway not found"));
+            return $this->sendError(__("Gateway de pagamento não encontrado"));
         }
         $gatewayObj = new $gateways[$gateway]($gateway);
         if (!$gatewayObj->isAvailable()) {
-            return $this->sendError(__("Payment gateway is not available"));
+            return $this->sendError(__("O gateway de pagamento não está disponível"));
         }
         $res =  $gatewayObj->cancelNormalPayment($request);
         $status = $res[0] ?? null;

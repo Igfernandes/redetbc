@@ -24,16 +24,16 @@ class NewBookingEmail extends Mailable
         $subject = '';
         switch ($this->email_type){
             case "admin":
-                $subject = __('[:site_name] New booking has been made',['site_name'=>setting_item('site_title')]);
+                $subject = __('[:site_name] Nova reserva foi feita',['site_name'=>setting_item('site_title')]);
             break;
 
             case "vendor":
-                $subject = __('[:site_name] Your service got new booking',['site_name'=>setting_item('site_title')]);
+                $subject = __('[:site_name] Seu serviço recebeu uma nova reserva',['site_name'=>setting_item('site_title')]);
 
             break;
 
             case "customer":
-                $subject = __('Thank you for booking with us',['site_name'=>setting_item('site_title')]);
+                $subject = __('Obrigado por reservar conosco',['site_name'=>setting_item('site_title')]);
             break;
 
         }

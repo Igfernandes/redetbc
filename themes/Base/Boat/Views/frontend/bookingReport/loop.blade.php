@@ -28,7 +28,7 @@
         {{__("Start date")}} : {{display_datetime($booking->start_date)}} <br>
         {{__("End date")}} : {{display_datetime($booking->end_date)}} <br>
         @if($booking->getMeta('type_date') == 'per_day')
-            {{__("Durations")}}: {{ $booking->duration_nights }} {{ Str::plural(__('day'),$booking->duration_nights) }}
+            {{__("Durations")}}: {{ $booking->duration_nights }} {{ Str::plural(__('dia'),$booking->duration_nights) }}
         @else
             {{__("Durations")}}: {{ $booking->duration_hours }} {{ Str::plural(__('hour'),$booking->duration_hours) }}
         @endif
@@ -51,7 +51,7 @@
         <a href="{{route('user.booking.invoice',['code'=>$booking->code])}}" class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1" onclick="window.open(this.href); return false;">
             <i class="fa fa-print"></i>{{__("Invoice")}}
         </a>
-        @if(!empty(setting_item("boat_allow_vendor_can_change_their_booking_status")))
+        @if(!empty(setting_item("assistance_allow_vendor_can_change_their_booking_status")))
             <a class="btn btn-xs btn-info btn-make-as" data-toggle="dropdown">
                 <i class="icofont-ui-settings"></i>
                 {{__("Action")}}
@@ -59,14 +59,14 @@
             <div class="dropdown-menu">
                 @if(!empty($statues))
                     @foreach($statues as $status)
-                        <a href="{{ route("boat.vendor.booking_report.bulk_edit" , ['id'=>$booking->id , 'status'=>$status]) }}">
+                        <a href="{{ route("assistance.vendor.booking_report.bulk_edit" , ['id'=>$booking->id , 'status'=>$status]) }}">
                             <i class="icofont-long-arrow-right"></i> {{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}
                         </a>
                     @endforeach
                 @endif
             </div>
         @endif
-            @if(!empty(setting_item("boat_allow_vendor_can_change_paid_amount")))
+            @if(!empty(setting_item("assistance_allow_vendor_can_change_paid_amount")))
                 <a class="btn btn-xs btn-info btn-info-booking mt-1" data-toggle="modal" data-target="#modal-paid-{{$booking->id}}">
                     <i class="fa fa-dollar"></i>{{__("Set Paid")}}
                 </a>

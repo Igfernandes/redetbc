@@ -26,19 +26,19 @@ class StripeCheckoutGateway extends BaseGateway
             [
                 'type'  => 'checkbox',
                 'id'    => 'enable',
-                'label' => __('Enable Stripe Checkout V2?')
+                'label' => __('Habilitar Stripe Checkout V2?')
             ],
             [
                 'type'  => 'input',
                 'id'    => 'name',
-                'label' => __('Custom Name'),
+                'label' => __('Nome personalizado'),
                 'std'   => __("Stripe"),
                 'multi_lang' => "1"
             ],
             [
                 'type'  => 'upload',
                 'id'    => 'logo_id',
-                'label' => __('Custom Logo'),
+                'label' => __('Logotipo Personalizado'),
             ],
             [
                 'type'  => 'editor',

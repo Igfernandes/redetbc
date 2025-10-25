@@ -28,24 +28,24 @@ class PaystackGateway extends BaseGateway
             [
                 'type'  => 'checkbox',
                 'id'    => 'enable',
-                'label' => __('Enable Paystack gateway?')
+                'label' => __('Habilitar gateway Paystack?')
             ],
             [
                 'type'       => 'input',
                 'id'         => 'name',
-                'label'      => __('Custom Name'),
+                'label'      => __('Nome personalizado'),
                 'std'        => __("Paystack"),
                 'multi_lang' => "1"
             ],
             [
                 'type'  => 'upload',
                 'id'    => 'logo_id',
-                'label' => __('Custom Logo'),
+                'label' => __('Logotipo Personalizado'),
             ],
             [
                 'type'       => 'editor',
                 'id'         => 'html',
-                'label'      => __('Custom HTML Description'),
+                'label'      => __('Descrição HTML personalizada'),
                 'multi_lang' => "1"
             ],
             [
@@ -61,13 +61,13 @@ class PaystackGateway extends BaseGateway
             [
                 'type'  => 'input',
                 'id'    => 'payment_url',
-                'label' => __('Payment Url'),
+                'label' => __('URL de pagamento'),
                 'std'   => "https://api.paystack.co"
             ],
             [
                 'type'  => 'input',
                 'id'    => 'merchant_email',
-                'label' => __('Merchant Email'),
+                'label' => __('E-mail do comerciante'),
                 'desc'  => "Url Callback: <b>" . route('booking.confirm-payment', ['gateway' => $this->id]) . "</b> <br>Url Webhook: <b>" . route('gateway.webhook', ['gateway' => $this->id]) . "</b> <br>",
 
             ],
@@ -83,10 +83,10 @@ class PaystackGateway extends BaseGateway
             $booking::CANCELLED
         ])) {
 
-            throw new Exception(__("Booking status does need to be paid"));
+            throw new Exception(__("O status da reserva precisa ser pago"));
         }
         if (!$booking->pay_now) {
-            throw new Exception(__("Booking total is zero. Can not process payment gateway!"));
+            throw new Exception(__("O total da reserva é zero. Não é possível processar o gateway de pagamento!"));
         }
 
         $this->getGateway();
@@ -146,7 +146,7 @@ class PaystackGateway extends BaseGateway
                         } catch (\Exception $e) {
                             Log::warning($e->getMessage());
                         }
-                        return redirect($booking->getDetailUrl())->with("success", __("You payment has been processed successfully"));
+                        return redirect($booking->getDetailUrl())->with("success", __("Seu pagamento foi processado com sucesso"));
                     }
                     else {
                         $payment = $booking->payment;
@@ -161,7 +161,7 @@ class PaystackGateway extends BaseGateway
                         } catch (\Exception $e) {
                             Log::warning($e->getMessage());
                         }
-                        return redirect($booking->getDetailUrl())->with("error", __("Payment Failed"));
+                        return redirect($booking->getDetailUrl())->with("error", __("Falha no pagamento"));
                     }
                 }
                 if (!empty($booking)) {
@@ -195,7 +195,7 @@ class PaystackGateway extends BaseGateway
                 }
                 else {
                     if ($payment->status == 'cancel') {
-                        return [false, __("Your payment has been canceled")];
+                        return [false, __("Nosso pagamento foi cancelado")];
                     }
                 }
             }
@@ -235,7 +235,7 @@ class PaystackGateway extends BaseGateway
             // Refund without check status
             $booking->tryRefundToWallet(false);
 
-            return redirect($booking->getDetailUrl())->with("error", __("You cancelled the payment"));
+            return redirect($booking->getDetailUrl())->with("error", __("Você cancelou o pagamento"));
         }
         if (!empty($booking)) {
             return redirect($booking->getDetailUrl());
@@ -275,14 +275,14 @@ class PaystackGateway extends BaseGateway
                                 return response()->json(['status' => 'error', "message" => $e->getMessage()]);
                             }
 
-                            return response()->json(['status' => 'success', "message" => __("You payment has been processed successfully before")]);
+                            return response()->json(['status' => 'success', "message" => __("Seu pagamento foi processado com sucesso antes")]);
                         }
                     }
                     if (!empty($booking)) {
-                        return response()->json(['status' => 'success', "message" => __("not update status " . $response['event'])]);
+                        return response()->json(['status' => 'success', "message" => __("não atualizar status " . $response['event'])]);
                     }
                     else {
-                        return response()->json(['status' => 'error', "message" => __("No information found")]);
+                        return response()->json(['status' => 'error', "message" => __("Nenhuma informação encontrada")]);
                     }
                 }
                 else {
@@ -295,13 +295,13 @@ class PaystackGateway extends BaseGateway
                         if (in_array($response['event'], ['charge.success', 'paymentrequest.success'])) {
                             try {
                                 $payment->markAsCompleted(\GuzzleHttp\json_encode($response));
-                                return response()->json(['status' => 'success', "message" => __("You payment has been processed successfully")]);
+                                return response()->json(['status' => 'success', "message" => __("Seu pagamento foi processado com sucesso")]);
                             } catch (\Exception $e) {
                                 return response()->json(['status' => 'error', "message" => $e->getMessage()]);
                             }
                         }
                         else {
-                            return response()->json(['status' => 'success', "message" => __("You payment has been processed successfully before")]);
+                            return response()->json(['status' => 'success', "message" => __("Seu pagamento foi processado com sucesso antes")]);
                         }
                     }
 

@@ -43,7 +43,7 @@ class OfflinePaymentGateway extends BaseGateway
         $payment->status = 'processing';
         $payment->save();
 
-        return [true,__("Thank you, we will contact you shortly")];
+        return [true,__("Obrigado, entraremos em contato em breve")];
     }
 
     public function getOptionsConfigs()
@@ -52,30 +52,30 @@ class OfflinePaymentGateway extends BaseGateway
             [
                 'type'  => 'checkbox',
                 'id'    => 'enable',
-                'label' => __('Enable Offline Payment?')
+                'label' => __('Habilitar pagamento offline?')
             ],
             [
                 'type'  => 'input',
                 'id'    => 'name',
                 'label' => __('Custom Name'),
-                'std'   => __("Offline Payment"),
+                'std'   => __("Pagamento off-line"),
                 'multi_lang' => "1"
             ],
             [
                 'type'  => 'upload',
                 'id'    => 'logo_id',
-                'label' => __('Custom Logo'),
+                'label' => __('Logotipo personalizado'),
             ],
             [
                 'type'  => 'textarea',
                 'id'    => 'payment_note',
-                'label' => __('Payment Note'),
+                'label' => __('Nota de pagamento'),
                 'multi_lang' => "1"
             ],
             [
                 'type'  => 'editor',
                 'id'    => 'html',
-                'label' => __('Custom HTML Description'),
+                'label' => __('Descrição HTML personalizada'),
                 'multi_lang' => "1"
             ],
         ];

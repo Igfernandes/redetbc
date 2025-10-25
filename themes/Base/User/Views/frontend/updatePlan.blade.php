@@ -7,7 +7,7 @@ $price = $plan->price;
 $duration_text = $plan->duration_type_text;
 }else{
 $price = $plan->annual_price;
-$duration_text = __('Year');
+$duration_text = __('Ano');
 }
 $term_conditions = setting_item('booking_term_conditions');
 

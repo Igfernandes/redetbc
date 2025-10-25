@@ -25,11 +25,11 @@ class StatusUpdatedEmail extends Mailable
         switch ($this->email_type){
             case "admin":
             case "vendor":
-                $subject = __('[:site_name] The booking status has been updated',['site_name'=>setting_item('site_title')]);
+                $subject = __('[:site_name] O status da reserva foi atualizado',['site_name'=>setting_item('site_title')]);
                 break;
 
             case "customer":
-                $subject = __('Your booking status has been updated',['site_name'=>setting_item('site_title')]);
+                $subject = __('O status da sua reserva foi atualizado',['site_name'=>setting_item('site_title')]);
                 break;
 
         }

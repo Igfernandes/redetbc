@@ -144,7 +144,7 @@
                                     <div class="item" data-number="{{$key}}">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <input type="text" name="news_sidebar[{{$key}}][title]" class="form-control" placeholder="{{__('Title: About Us')}}" value="{{$item->title}}">
+                                                <input type="text" name="news_sidebar[{{$key}}][title]" class="form-control" placeholder="{{__('Título: About Us')}}" value="{{$item->title}}">
                                                 <textarea name="news_sidebar[{{$key}}][content]" rows="2" class="form-control" placeholder="{{__("Content")}}">{{$item->content}}</textarea>
                                             </div>
                                             <div class="col-md-3">
@@ -172,7 +172,7 @@
                                 <div class="item" data-number="__number__">
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <input type="text" __name__="news_sidebar[__number__][title]" class="form-control" placeholder="{{__('Title: About Us')}}">
+                                            <input type="text" __name__="news_sidebar[__number__][title]" class="form-control" placeholder="{{__('Título: About Us')}}">
                                             <textarea __name__="news_sidebar[__number__][content]" rows="3" class="form-control" placeholder="{{__("Content")}}"></textarea>
                                         </div>
                                         <div class="col-md-3">

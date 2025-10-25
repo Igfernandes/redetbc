@@ -1,6 +1,15 @@
 <div class="form-group magic-field" data-id="title" data-type="title">
-    <label class="control-label">{{ __('Title')}}</label>
+    <label class="control-label">{{ __('Título')}}</label>
     <input type="text" value="{{ $translation->title ?? 'New Post' }}" placeholder="News title" name="title" class="form-control">
+</div>
+<div class="form-group">
+    <label class="control-label">{{__("Target Religion")}}</label>
+    <select name="religion" class="form-control">
+        <option value="">Selecione a religião</option>
+        <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangelical")}}</option>
+        <option value="EVANGELICAL" @if($row->religion == "EVANGELICAL") selected @endif > {{__("Catholic")}}</option>
+        <option value="BOTH" @if($row->religion == "BOTH") selected @endif > {{__("Both")}}</option>
+    </select>
 </div>
 <div class="form-group magic-field" data-id="content" data-type="content" data-editor="1">
     <label class="control-label">{{ __('Content')}} </label>

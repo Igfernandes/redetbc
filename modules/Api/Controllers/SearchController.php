@@ -128,7 +128,7 @@ class SearchController extends Controller
             return $this->sendError(__("O recurso não está disponível"));
         }
         if(empty($id)){
-            return $this->sendError(__("Resource ID is not available"));
+            return $this->sendError(__("O ID do recurso não está disponível"));
         }
         $class = get_bookable_service_by_id($type);
         if(empty($class) or !class_exists($class)){
@@ -144,11 +144,12 @@ class SearchController extends Controller
         return $classAvailability->loadDates($request);
     }
 
-    public function checkBoatAvailability(Request $request ,$id = ''){
+    public function checkAssistanceAvailability(Request $request ,$id = ''){
         if(empty($id)){
-            return $this->sendError(__("A identificação do barco não está disponível"));
+            return $this->sendError(__("A identificação do serviço não está disponível"));
+            return $this->sendError(__("O ID do serviço não está disponível"));
         }
-        $class = get_bookable_service_by_id('boat');
+        $class = get_bookable_service_by_id('assistance');
         $classAvailability = $class::getClassAvailability();
         $classAvailability = app()->make($classAvailability);
         $request->merge(['id' => $id]);

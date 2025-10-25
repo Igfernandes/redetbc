@@ -19,7 +19,7 @@ class HowItWork extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'          => 'list_item',
@@ -31,7 +31,7 @@ class HowItWork extends BaseBlock
                             'id'        => 'title',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Title')
+                            'label'     => __('Título')
                         ],
                         [
                             'id'        => 'sub_title',

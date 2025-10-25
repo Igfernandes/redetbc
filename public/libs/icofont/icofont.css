@@ -7943,17 +7943,17 @@ url("./fonts/icofont.woff") format("woff");
   content: "\ee2d";
 }
 
-.icofont-sail-boat-alt-1:before
+.icofont-sail-assistance-alt-1:before
 {
   content: "\ee2e";
 }
 
-.icofont-sail-boat-alt-2:before
+.icofont-sail-assistance-alt-2:before
 {
   content: "\ee2f";
 }
 
-.icofont-sail-boat:before
+.icofont-sail-assistance:before
 {
   content: "\ee30";
 }
@@ -7978,7 +7978,7 @@ url("./fonts/icofont.woff") format("woff");
   content: "\ee34";
 }
 
-.icofont-speed-boat:before
+.icofont-speed-assistance:before
 {
   content: "\ee35";
 }

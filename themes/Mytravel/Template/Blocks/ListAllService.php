@@ -17,7 +17,7 @@ class ListAllService extends BaseBlock
                 'id'        => 'title_for_'.$key,
                 'type'      => 'input',
                 'inputType' => 'text',
-                'label'     => __('Title for :service',['service'=>ucwords($key)])
+                'label'     => __('Título for :service',['service'=>ucwords($key)])
             ];
         }
         $arg[] = [
@@ -32,7 +32,7 @@ class ListAllService extends BaseBlock
             'id'        => 'title',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Title')
+            'label'     => __('Título')
         ];
 
         $arg[] =  [
@@ -51,7 +51,7 @@ class ListAllService extends BaseBlock
             'id'        => 'number',
             'type'      => 'input',
             'inputType' => 'number',
-            'label'     => __('Number Item')
+            'label'     => __('Item numérico')
         ];
 
         $arg[] =  [

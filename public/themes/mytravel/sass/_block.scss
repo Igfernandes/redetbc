@@ -190,8 +190,8 @@
                            }
                        }
                    }
-                   .service-boat{
-                       @import "../../../module/boat/scss/loop";
+                   .service-assistance{
+                       @import "../../../module/assistance/scss/loop";
                    }
                }
            }
@@ -618,8 +618,8 @@
                .bravo_event{
                    @import "../../../module/event/scss/loop";
                }
-               .bravo_boat {
-                   @import "../../../module/boat/scss/loop";
+               .bravo_service {
+                   @import "../../../module/assistance/scss/loop";
                }
            }
 
@@ -721,8 +721,8 @@
                }
            }
 
-           //Home Boat
-           .bravo-form-search-boat {
+           //Home Services
+           .bravo-form-search-service {
                padding: 150px 0;
                background-position: center !important;
                background-repeat: no-repeat !important;
@@ -762,7 +762,7 @@
                }
            }
 
-           .bravo-list-boat {
+           .bravo-list-service {
                margin: 50px 0;
 
                .title {
@@ -780,7 +780,7 @@
                    margin-bottom: 15px;
                }
 
-               @import "../../../module/boat/scss/loop";
+               @import "../../../module/assistance/scss/loop";
 
                &.layout_normal {
                    margin: 30px 0;

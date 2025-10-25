@@ -54,7 +54,7 @@ class Tour extends Bookable
         'map_zoom',
         'is_featured',
         'gallery',
-        'video',
+        'religion',
         'price',
         'sale_price',
         //Tour type
@@ -647,7 +647,7 @@ class Tour extends Bookable
                         $type['price_type'] = '';
                         switch ($type['type']) {
                             case "per_day":
-                                $type['price_type'] .= '/' . __('day');
+                                $type['price_type'] .= '/' . __('dia');
                                 break;
                             case "per_hour":
                                 $type['price_type'] .= '/' . __('hour');

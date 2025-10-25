@@ -24,11 +24,11 @@ class Updater250
             setting_update_item('user_role',3);
         }
 
-        Schema::table('bravo_boats', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_boats', 'start_time_booking')) {
+        Schema::table('bravo_assistance', function (Blueprint $table) {
+            if (!Schema::hasColumn('bravo_assistance', 'start_time_booking')) {
                 $table->string('start_time_booking')->nullable();
             }
-            if (!Schema::hasColumn('bravo_boats', 'end_time_booking')) {
+            if (!Schema::hasColumn('bravo_assistance', 'end_time_booking')) {
                 $table->string('end_time_booking')->nullable();
             }
         });
@@ -113,8 +113,8 @@ class Updater250
         setting_update_item('booking_enquiry_type_space','booking_and_enquiry');
         setting_update_item('booking_enquiry_for_event','1');
         setting_update_item('booking_enquiry_type_event','booking_and_enquiry');
-        setting_update_item('booking_enquiry_for_boat','1');
-        setting_update_item('booking_enquiry_type_boat','booking_and_enquiry');
+        setting_update_item('booking_enquiry_for_assistance','1');
+        setting_update_item('booking_enquiry_type_assistance','booking_and_enquiry');
 
         Artisan::call('cache:clear');
 

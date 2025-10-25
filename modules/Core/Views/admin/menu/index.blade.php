@@ -33,7 +33,7 @@
                         <thead>
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th>{{__('Title')}}</th>
+                            <th>{{__('Título')}}</th>
                             <th>{{__("Use for")}}</th>
                             <th>{{__('Date')}}</th>
                         </tr>

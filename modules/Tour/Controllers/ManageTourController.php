@@ -205,6 +205,7 @@ class ManageTourController extends FrontendController
             'map_zoom',
             'gallery',
             'video',
+            'religion',
             'default_state',
             'price',
             'sale_price',

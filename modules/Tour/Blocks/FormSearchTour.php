@@ -15,7 +15,7 @@ class  FormSearchTour extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'sub_title',
@@ -57,7 +57,7 @@ class  FormSearchTour extends BaseBlock
                             'id'        => 'title',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Title (using for slider ver 2)')
+                            'label'     => __('Título (using for slider ver 2)')
                         ],
                         [
                             'id'        => 'desc',

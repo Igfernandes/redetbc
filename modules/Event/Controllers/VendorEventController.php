@@ -162,6 +162,7 @@ class VendorEventController extends FrontendController
             'price',
             'is_instant',
             'video',
+            'religion',
             'faqs',
             'image_id',
             'banner_image_id',

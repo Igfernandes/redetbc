@@ -5,6 +5,15 @@
             <label class="control-label">{{__("Title")}}</label>
             <input type="text" value="{{$translation->title}}" placeholder="{{__("Title")}}" name="title" class="form-control">
         </div>
+        <div class="form-group">
+            <label class="control-label">{{__("Target Religion")}}</label>
+            <select name="religion" class="form-control">
+                <option value="">Selecione a religião</option>
+                <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangelical")}}</option>
+                <option value="EVANGELICAL" @if($row->religion == "EVANGELICAL") selected @endif > {{__("Catholic")}}</option>
+                <option value="BOTH" @if($row->religion == "BOTH") selected @endif > {{__("Both")}}</option>
+            </select>
+        </div>
         <div class="form-group magic-field" data-id="content" data-type="content">
             <label class="control-label">{{__("Content")}}</label>
             <div class="">
@@ -12,10 +21,10 @@
             </div>
         </div>
         @if(is_default_lang())
-            <div class="form-group">
-                <label class="control-label">{{__("Youtube Video")}}</label>
-                <input type="text" name="video" class="form-control" value="{{$row->video}}" placeholder="{{__("Youtube link video")}}">
-            </div>
+        <div class="form-group">
+            <label class="control-label">{{__("Youtube Video")}}</label>
+            <input type="text" name="video" class="form-control" value="{{$row->video}}" placeholder="{{__("Youtube link video")}}">
+        </div>
         @endif
         <div class="form-group-item">
             <label class="control-label">{{__('FAQs')}}</label>
@@ -28,26 +37,26 @@
             </div>
             <div class="g-items">
                 @if(!empty($translation->faqs))
-                    @php if(!is_array($translation->faqs)) $translation->faqs = json_decode($translation->faqs); @endphp
-                    @foreach($translation->faqs as $key=>$faq)
-                        <div class="item" data-number="{{$key}}">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <input type="text" name="faqs[{{$key}}][title]" class="form-control" value="{{$faq['title']}}" placeholder="{{__('Eg: When and where does the tour end?')}}">
-                                </div>
-                                <div class="col-md-6">
-                                    <textarea name="faqs[{{$key}}][content]" class="form-control" placeholder="...">{{$faq['content']}}</textarea>
-                                </div>
-                                <div class="col-md-1">
-                                        <span class="btn btn-danger btn-sm btn-remove-item"><i class="fa fa-trash"></i></span>
-                                </div>
-                            </div>
+                @php if(!is_array($translation->faqs)) $translation->faqs = json_decode($translation->faqs); @endphp
+                @foreach($translation->faqs as $key=>$faq)
+                <div class="item" data-number="{{$key}}">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text" name="faqs[{{$key}}][title]" class="form-control" value="{{$faq['title']}}" placeholder="{{__('Eg: When and where does the tour end?')}}">
                         </div>
-                    @endforeach
+                        <div class="col-md-6">
+                            <textarea name="faqs[{{$key}}][content]" class="form-control" placeholder="...">{{$faq['content']}}</textarea>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="btn btn-danger btn-sm btn-remove-item"><i class="fa fa-trash"></i></span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
                 @endif
             </div>
             <div class="text-right">
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
             </div>
             <div class="g-more hide">
                 <div class="item" data-number="__number__">
@@ -66,16 +75,16 @@
             </div>
         </div>
         @if(is_default_lang())
-            <div class="form-group">
-                <label class="control-label">{{__("Banner Image")}}</label>
-                <div class="form-group-image">
-                    {!! \Modules\Media\Helpers\FileHelper::fieldUpload('banner_image_id',$row->banner_image_id) !!}
-                </div>
+        <div class="form-group">
+            <label class="control-label">{{__("Banner Image")}}</label>
+            <div class="form-group-image">
+                {!! \Modules\Media\Helpers\FileHelper::fieldUpload('banner_image_id',$row->banner_image_id) !!}
             </div>
-            <div class="form-group">
-                <label class="control-label">{{__("Gallery")}}</label>
-                {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
-            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">{{__("Gallery")}}</label>
+            {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
+        </div>
         @endif
     </div>
 </div>
@@ -104,22 +113,22 @@
             </div>
         </div>
         @if(is_default_lang())
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="control-label">{{__("Minimum advance reservations")}}</label>
-                        <input type="number" name="min_day_before_booking" class="form-control" value="{{$row->min_day_before_booking}}" placeholder="{{__("Ex: 3")}}">
-                        <i>{{ __("Leave blank if you dont need to use the min day option") }}</i>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label class="control-label">{{__("Minimum day stay requirements")}}</label>
-                        <input type="number" name="min_day_stays" class="form-control" value="{{$row->min_day_stays}}" placeholder="{{__("Ex: 2")}}">
-                        <i>{{ __("Leave blank if you dont need to set minimum day stay option") }}</i>
-                    </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">{{__("Minimum advance reservations")}}</label>
+                    <input type="number" name="min_day_before_booking" class="form-control" value="{{$row->min_day_before_booking}}" placeholder="{{__("Ex: 3")}}">
+                    <i>{{ __("Leave blank if you dont need to use the min day option") }}</i>
                 </div>
             </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">{{__("Minimum day stay requirements")}}</label>
+                    <input type="number" name="min_day_stays" class="form-control" value="{{$row->min_day_stays}}" placeholder="{{__("Ex: 2")}}">
+                    <i>{{ __("Leave blank if you dont need to set minimum day stay option") }}</i>
+                </div>
+            </div>
+        </div>
         @endif
     </div>
 </div>

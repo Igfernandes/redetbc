@@ -12,7 +12,7 @@ class UnmissableDestinations extends BaseBlock
             'id'        => 'title',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Title')
+            'label'     => __('Título')
         ];
         $arg[] = [
             'id'        => 'location_name',
@@ -42,7 +42,7 @@ class UnmissableDestinations extends BaseBlock
             'id'            => 'number_item',
             'type'          => 'input',
             'inputType'     => 'text',
-            'label'         => __('Number Item (Default: 4)')
+            'label'         => __('Item numérico (Default: 4)')
         ];
 
         $list_service = [];

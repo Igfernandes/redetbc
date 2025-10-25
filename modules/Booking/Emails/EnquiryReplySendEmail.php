@@ -25,7 +25,7 @@ class EnquiryReplySendEmail extends Mailable
 
     public function build()
     {
-        $subject = __('You got reply from :name',['name'=>$this->enquiry_reply->author->display_name ?? '']);
+        $subject = __('Você recebeu resposta de :name',['name'=>$this->enquiry_reply->author->display_name ?? '']);
         return $this->subject($subject)->view('Booking::emails.enquiry_reply')->with([
             'enquiry' => $this->enquiry,
             'enquiry_reply' => $this->enquiry_reply,

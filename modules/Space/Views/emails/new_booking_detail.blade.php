@@ -53,7 +53,7 @@ $lang_local = app()->getLocale();
             </tr>
             @if($booking->getMeta("booking_type") == "by_day")
                 <tr>
-                    <td class="label">{{__('Days:')}}</td>
+                    <td class="label">{{__('Dias:')}}</td>
                     <td class="val">
                         {{$booking->duration_days}}
                     </td>

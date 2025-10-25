@@ -43,7 +43,7 @@ class SettingClass extends BaseSettingsClass
         $configs = [
             'booking'=>[
                 'id'   => 'booking',
-                'title' => __("Booking Settings"),
+                'title' => __("Configurações de reserva"),
                 'position'=>40,
                 'view'=>"Booking::admin.settings.booking",
                 "keys"=>[
@@ -69,7 +69,7 @@ class SettingClass extends BaseSettingsClass
             ],
             'payment'=>[
                 'id'   => 'payment',
-                'title' => __("Payment Settings"),
+                'title' => __("Configurações de pagamento"),
                 'position'=>60,
                 'view'=>"Booking::admin.settings.payment",
                 "keys"=>$keys,
@@ -79,7 +79,7 @@ class SettingClass extends BaseSettingsClass
             ],
             'enquiry'=>[
                 'id'   => 'enquiry',
-                'title' => __("Enquiry Settings"),
+                'title' => __("Configurações de consulta"),
                 'position'=>41,
                 'view'=>"Booking::admin.settings.enquiry",
                 "keys"=>[
@@ -87,13 +87,13 @@ class SettingClass extends BaseSettingsClass
                     'booking_enquiry_for_tour',
                     'booking_enquiry_for_space',
                     'booking_enquiry_for_event',
-                    'booking_enquiry_for_boat',
+                    'booking_enquiry_for_assistance',
 
                     'booking_enquiry_type_hotel',
                     'booking_enquiry_type_tour',
                     'booking_enquiry_type_space',
                     'booking_enquiry_type_event',
-                    'booking_enquiry_type_boat',
+                    'booking_enquiry_type_assistance',
 
                     'booking_enquiry_enable_mail_to_vendor',
                     'booking_enquiry_mail_to_vendor_content',

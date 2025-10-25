@@ -1,14 +1,14 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar no-border-bottom">
-        {{$row->id ? __('Edit: ').$row->title : __('Add new boat')}}
+        {{$row->id ? __('Edit: ').$row->title : __('Add new service')}}
     </h2>
     @include('admin.message')
     @if($row->id)
         @include('Language::admin.navigation')
     @endif
     <div class="lang-content-box">
-        <form action="{{route('boat.vendor.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
+        <form action="{{route('assistance.vendor.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
             @csrf
             <div class="form-add-service">
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-tour-content">
-                        @include('Boat::admin/boat/content')
+                        @include('Assistance::admin/assistance/content')
                         @if(is_default_lang())
                             <div class="form-group">
                                 <label>{{__("Featured Image")}}</label>
@@ -30,7 +30,7 @@
                         @endif
                     </div>
                     <div class="tab-pane fade" id="nav-tour-location">
-                        @include('Boat::admin/boat/location',["is_smart_search"=>"1"])
+                        @include('Assistance::admin/assistance/location',["is_smart_search"=>"1"])
                     </div>
                     <div class="tab-pane fade" id="nav-tour-pricing">
                         <div class="panel">
@@ -49,11 +49,11 @@
                                 </div>
                             </div>
                         </div>
-                        @include('Boat::admin/boat/pricing')
+                        @include('Assistance::admin/assistance/pricing')
                     </div>
                     @if(is_default_lang())
                         <div class="tab-pane fade" id="nav-attribute">
-                            @include('Boat::admin/boat/attributes')
+                            @include('Assistance::admin/assistance/attributes')
                         </div>
                     @endif
                 </div>

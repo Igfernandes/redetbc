@@ -19,7 +19,7 @@ class FormSearchAllService extends BaseBlock
                 'id'        => 'title_for_'.$key,
                 'type'      => 'input',
                 'inputType' => 'text',
-                'label'     => __('Title for :service',['service'=>ucwords($key)])
+                'label'     => __('Título for :service',['service'=>ucwords($key)])
             ];
         }
         $arg[] = [
@@ -34,7 +34,7 @@ class FormSearchAllService extends BaseBlock
             'id'        => 'title',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Title')
+            'label'     => __('Título')
         ];
         $arg[] = [
             'id'        => 'sub_title',
@@ -83,7 +83,7 @@ class FormSearchAllService extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'desc',

@@ -45,7 +45,7 @@
                         @endif
                         @if($booking->getMeta("booking_type") == "by_day")
                             <li class="d-flex justify-content-between py-2">
-                                <div class="label">{{__('Days:')}}</div>
+                                <div class="label">{{__('Dias:')}}</div>
                                 <div class="val">
                                     {{$booking->duration_days}}
                                 </div>

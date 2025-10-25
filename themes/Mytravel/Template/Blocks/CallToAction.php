@@ -15,7 +15,7 @@ class CallToAction extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'sub_title',
@@ -27,7 +27,7 @@ class CallToAction extends BaseBlock
                     'id'        => 'link_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title Link More')
+                    'label'     => __('Título Link More')
                 ],
                 [
                     'id'        => 'link_more',

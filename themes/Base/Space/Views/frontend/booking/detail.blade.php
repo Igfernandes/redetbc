@@ -50,7 +50,7 @@
                     </li>
                     @if($booking->getMeta("booking_type") == "by_day")
                         <li>
-                            <div class="label">{{__('Days:')}}</div>
+                            <div class="label">{{__('Dias:')}}</div>
                             <div class="val">
                                 {{$booking->duration_days}}
                             </div>
