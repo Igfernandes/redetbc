@@ -73,7 +73,7 @@ class NewsController extends Controller
     {
         $row = News::find($id);
         if(empty($row)){
-            return $this->sendError(__("News not found"));
+            return $this->sendError(__("Notícias não encontradas"));
         }
         return $this->sendSuccess([
             'data'=>$row->dataForApi(true)

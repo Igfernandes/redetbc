@@ -17,9 +17,9 @@ trait HasStatus
     }
     public function getStatusTextAttribute(){
         switch ($this->status){
-            case "publish": return __("Publish");
-            case "draft":  return __("Draft");
-            case "pending":  return __("Pending");
+            case "publish": return __("Publicado");
+            case "draft":  return __("Rascunho");
+            case "pending":  return __("Pendente");
         }
     }
 }

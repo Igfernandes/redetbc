@@ -285,9 +285,9 @@ function human_time_diff($from, $to = false)
         }
         /* translators: Time difference between two dates, in minutes (min=minute). %s: Number of minutes */
         if ($mins) {
-            $since = __(':num mins', ['num' => $mins]);
+            $since = __(':num mínimos', ['num' => $mins]);
         } else {
-            $since = __(':num min', ['num' => $mins]);
+            $since = __(':num mínimo', ['num' => $mins]);
         }
     } elseif ($diff < DAY_IN_SECONDS && $diff >= HOUR_IN_SECONDS) {
         $hours = round($diff / HOUR_IN_SECONDS);
@@ -296,9 +296,9 @@ function human_time_diff($from, $to = false)
         }
         /* translators: Time difference between two dates, in hours. %s: Number of hours */
         if ($hours) {
-            $since = __(':num hours', ['num' => $hours]);
+            $since = __(':num horas', ['num' => $hours]);
         } else {
-            $since = __(':num hour', ['num' => $hours]);
+            $since = __(':num hora', ['num' => $hours]);
         }
     } elseif ($diff < WEEK_IN_SECONDS && $diff >= DAY_IN_SECONDS) {
         $days = round($diff / DAY_IN_SECONDS);
@@ -307,9 +307,9 @@ function human_time_diff($from, $to = false)
         }
         /* translators: Time difference between two dates, in days. %s: Number of days */
         if ($days) {
-            $since = __(':num days', ['num' => $days]);
+            $since = __(':num dias', ['num' => $days]);
         } else {
-            $since = __(':num day', ['num' => $days]);
+            $since = __(':num dia', ['num' => $days]);
         }
     } elseif ($diff < MONTH_IN_SECONDS && $diff >= WEEK_IN_SECONDS) {
         $weeks = round($diff / WEEK_IN_SECONDS);
@@ -318,9 +318,9 @@ function human_time_diff($from, $to = false)
         }
         /* translators: Time difference between two dates, in weeks. %s: Number of weeks */
         if ($weeks) {
-            $since = __(':num weeks', ['num' => $weeks]);
+            $since = __(':num semanas', ['num' => $weeks]);
         } else {
-            $since = __(':num week', ['num' => $weeks]);
+            $since = __(':num semana', ['num' => $weeks]);
         }
     } elseif ($diff < YEAR_IN_SECONDS && $diff >= MONTH_IN_SECONDS) {
         $months = round($diff / MONTH_IN_SECONDS);
@@ -330,9 +330,9 @@ function human_time_diff($from, $to = false)
         /* translators: Time difference between two dates, in months. %s: Number of months */
 
         if ($months) {
-            $since = __(':num months', ['num' => $months]);
+            $since = __(':num meses', ['num' => $months]);
         } else {
-            $since = __(':num month', ['num' => $months]);
+            $since = __(':num mês', ['num' => $months]);
         }
     } elseif ($diff >= YEAR_IN_SECONDS) {
         $years = round($diff / YEAR_IN_SECONDS);
@@ -341,9 +341,9 @@ function human_time_diff($from, $to = false)
         }
         /* translators: Time difference between two dates, in years. %s: Number of years */
         if ($years) {
-            $since = __(':num years', ['num' => $years]);
+            $since = __(':num anos', ['num' => $years]);
         } else {
-            $since = __(':num year', ['num' => $years]);
+            $since = __(':num ano', ['num' => $years]);
         }
     }
 
@@ -910,37 +910,37 @@ function booking_status_to_text($status)
 {
     switch ($status) {
         case "draft":
-            return __('Draft');
+            return __('Rascunho');
             break;
         case "unpaid":
-            return __('Unpaid');
+            return __('Não pago');
             break;
         case "paid":
-            return __('Paid');
+            return __('Pago');
             break;
         case "processing":
-            return __('Processing');
+            return __('Processando');
             break;
         case "completed":
-            return __('Completed');
+            return __('Completo');
             break;
         case "confirmed":
-            return __('Confirmed');
+            return __('Confirmado');
             break;
         case "cancelled":
-            return __('Cancelled');
+            return __('Cancelado');
             break;
         case "cancel":
-            return __('Cancel');
+            return __('Cancelar');
             break;
         case "pending":
-            return __('Pending');
+            return __('Pendente');
             break;
         case "partial_payment":
-            return __('Partial Payment');
+            return __('Pagamento Parcial');
             break;
         case "fail":
-            return __('Failed');
+            return __('Falhou');
             break;
         default:
             return ucfirst($status ?? '');
@@ -951,23 +951,23 @@ function verify_type_to($type, $need = 'name')
 {
     switch ($type) {
         case "phone":
-            return __("Phone");
+            return __("Telefone");
             break;
         case "number":
-            return __("Number");
+            return __("Numero");
             break;
         case "email":
             return __("Email");
             break;
         case "file":
-            return __("Attachment");
+            return __("Arquivo");
             break;
         case "multi_files":
-            return __("Multi Attachments");
+            return __("Múltiplos arquivos");
             break;
         case "text":
         default:
-            return __("Text");
+            return __("Texto");
             break;
     }
 }
@@ -1022,16 +1022,16 @@ function duration_format($hour, $is_full = false)
         $tmp = [];
         if ($day) {
             if ($day > 1) {
-                $tmp[] = __(':count Days', ['count' => $day]);
+                $tmp[] = __(':count Dias', ['count' => $day]);
             } else {
-                $tmp[] = __(':count Day', ['count' => $day]);
+                $tmp[] = __(':count dia', ['count' => $day]);
             }
         }
         if ($hour) {
             if ($hour > 1) {
-                $tmp[] = __(':count Hours', ['count' => $hour]);
+                $tmp[] = __(':count Horas', ['count' => $hour]);
             } else {
-                $tmp[] = __(':count Hour', ['count' => $hour]);
+                $tmp[] = __(':count Hora', ['count' => $hour]);
             }
         }
 
@@ -1125,7 +1125,7 @@ function periodDate($startDate, $endDate, $day = true, $interval = '1 day')
 
 function _fixTextScanTranslations()
 {
-    return __("Show on the map");
+    return __("Mostrar no mapa");
 }
 
 

@@ -24,7 +24,7 @@ class TextController extends FrontendController
             'type'    => 'required'
         ]);
 
-        $content = __("Write a ") . $request->input("type") . ' about ' . $request->input('message');
+        $content = __("Escreva um ") . $request->input("type") . ' sobre ' . $request->input('message');
 
         $options = config('ai.data_types')[$request->input('type')] ?? [];
         $newContent = $this->aiDriver->generate($content, $options);

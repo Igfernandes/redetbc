@@ -39,6 +39,6 @@ class ValidCaptcha implements Rule
      */
     public function message()
     {
-        return __('Please verify captcha.');
+        return __('Por favor, verifique o captcha.');
     }
 }

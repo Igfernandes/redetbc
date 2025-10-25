@@ -82,7 +82,7 @@ class AdminForm{
                             <label class="" ><?php echo e($option['label']) ?></label>
                             <div class="form-controls">
                                 <select name="<?php echo e($option['id']) ?>" class="form-control">
-                                    <option value=""><?php echo __('-- Select --') ?></option>
+                                    <option value=""><?php echo __('-- Selecione --') ?></option>
                                     <?php if(!empty($option['options'])){
                                         foreach ($option['options'] as $val=>$label)
                                         {

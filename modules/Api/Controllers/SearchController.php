@@ -11,12 +11,12 @@ class SearchController extends Controller
         $type = $type ? $type : request()->get('type');
         if(empty($type))
         {
-            return $this->sendError(__("Type is required"));
+            return $this->sendError(__("O tipo é obrigatório"));
         }
 
         $class = get_bookable_service_by_id($type);
         if(empty($class) or !class_exists($class)){
-            return $this->sendError(__("Type does not exists"));
+            return $this->sendError(__("O tipo não existe"));
         }
 
         if(!empty(request()->query('limit'))){
@@ -65,11 +65,11 @@ class SearchController extends Controller
         $type = $type ? $type : request()->get('type');
         if(empty($type))
         {
-            return $this->sendError(__("Type is required"));
+            return $this->sendError(__("O tipo é obrigatório"));
         }
         $class = get_bookable_service_by_id($type);
         if(empty($class) or !class_exists($class)){
-            return $this->sendError(__("Type does not exists"));
+            return $this->sendError(__("O tipo não existe"));
         }
         $data = call_user_func([$class,'getFiltersSearch'],request());
         return $this->sendSuccess(
@@ -83,11 +83,11 @@ class SearchController extends Controller
         $type = $type ? $type : request()->get('type');
         if(empty($type))
         {
-            return $this->sendError(__("Type is required"));
+            return $this->sendError(__("O tipo é obrigatório"));
         }
         $class = get_bookable_service_by_id($type);
         if(empty($class) or !class_exists($class)){
-            return $this->sendError(__("Type does not exists"));
+            return $this->sendError(__("O tipo não existe"));
         }
         $data = call_user_func([$class,'getFormSearch'],request());
         return $this->sendSuccess(
@@ -100,21 +100,21 @@ class SearchController extends Controller
     public function detail($type = '',$id = '')
     {
         if(empty($type)){
-            return $this->sendError(__("Resource is not available"));
+            return $this->sendError(__("O recurso não está disponível"));
         }
         if(empty($id)){
-            return $this->sendError(__("Resource ID is not available"));
+            return $this->sendError(__("O ID do recurso não está disponível"));
         }
 
         $class = get_bookable_service_by_id($type);
         if(empty($class) or !class_exists($class)){
-            return $this->sendError(__("Type does not exists"));
+            return $this->sendError(__("O tipo não existe"));
         }
 
         $row = $class::find($id);
         if(empty($row))
         {
-            return $this->sendError(__("Resource not found"));
+            return $this->sendError(__("Recurso não encontrado"));
         }
 
         return $this->sendSuccess([
@@ -125,14 +125,14 @@ class SearchController extends Controller
 
     public function checkAvailability(Request $request , $type = '',$id = ''){
         if(empty($type)){
-            return $this->sendError(__("Resource is not available"));
+            return $this->sendError(__("O recurso não está disponível"));
         }
         if(empty($id)){
             return $this->sendError(__("Resource ID is not available"));
         }
         $class = get_bookable_service_by_id($type);
         if(empty($class) or !class_exists($class)){
-            return $this->sendError(__("Type does not exists"));
+            return $this->sendError(__("O tipo não existe"));
         }
         $classAvailability = $class::getClassAvailability();
         $classAvailability = app()->make($classAvailability);
@@ -146,7 +146,7 @@ class SearchController extends Controller
 
     public function checkBoatAvailability(Request $request ,$id = ''){
         if(empty($id)){
-            return $this->sendError(__("Boat ID is not available"));
+            return $this->sendError(__("A identificação do barco não está disponível"));
         }
         $class = get_bookable_service_by_id('boat');
         $classAvailability = $class::getClassAvailability();
