@@ -22,7 +22,7 @@
                                 'service_name'=>__("Service name"),
                                 'location'=>__("Location"),
                                 'attr'=>__("Attribute"),
-                                'date'=>__("Date"),
+                                'date'=>__("Data"),
                                 'guests'=>__("Guests"),
                             ];
                             $attrs = \Modules\Core\Models\Attributes::where('service', 'space')->get();

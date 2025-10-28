@@ -51,7 +51,7 @@
         <div class="border-bottom py-4">
             @if($review_list->total() > 0)
                 <h5 class="font-size-21 font-weight-bold text-dark mb-5 mt-3">
-                    {{ __("Showing :from - :to of :total total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
+                    {{ __("Mostrando :from - :to of :total total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
                 </h5>
             @else
                 <h5 class="font-size-21 font-weight-bold text-dark mb-8">
@@ -144,7 +144,7 @@
                             </div>
                             <div class="col-sm-12 mb-5">
                                 <div class="js-form-message">
-                                    <input type="text" class="form-control" name="review_title" placeholder="{{__("Title")}}" required data-error-class="u-has-error" data-msg="{{__('Review title is required')}}" data-success-class="u-has-success">
+                                    <input type="text" class="form-control" name="review_title" placeholder="{{__("Título")}}" required data-error-class="u-has-error" data-msg="{{__('Review title is required')}}" data-success-class="u-has-success">
                                     <div class="invalid-feedback">{{__('Review title is required')}}</div>
                                 </div>
                             </div>

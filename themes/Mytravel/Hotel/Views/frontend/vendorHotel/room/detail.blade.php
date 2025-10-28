@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar no-border-bottom">
-        {{$row->id ? __('Edit: ').$row->title : __('Add new room')}}
+        {{$row->id ? __('Editar: ').$row->title : __('Add new room')}}
         <div class="title-action">
             <a class="btn btn-info" href="{{route('hotel.vendor.room.index',['hotel_id'=>$hotel->id])}}">
                 <i class="fa fa-hand-o-right"></i> {{__("Manage Rooms")}}
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between">
-                <button class="btn btn-primary btn_submit" type="submit"><i class="fa fa-save"></i> {{__('Save Changes')}}</button>
+                <button class="btn btn-primary btn_submit" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
             </div>
         </form>
     </div>

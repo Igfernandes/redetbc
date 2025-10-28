@@ -66,8 +66,8 @@
             <label class="control-label">{{__('Extra Price')}}</label>
             <div class="g-items-header">
                 <div class="row">
-                    <div class="col-md-5">{{__("Name")}}</div>
-                    <div class="col-md-3">{{__('Price')}}</div>
+                    <div class="col-md-5">{{__("Nome")}}</div>
+                    <div class="col-md-3">{{__('Preço')}}</div>
                     <div class="col-md-3">{{__('Type')}}</div>
                     <div class="col-md-1"></div>
                 </div>
@@ -155,8 +155,8 @@
                 <label class="control-label">{{__('Buyer Fees')}}</label>
                 <div class="g-items-header">
                     <div class="row">
-                        <div class="col-md-7">{{__("Name")}}</div>
-                        <div class="col-md-4">{{__('Price')}}</div>
+                        <div class="col-md-7">{{__("Nome")}}</div>
+                        <div class="col-md-4">{{__('Preço')}}</div>
                         <div class="col-md-3 d-none">{{__('Type')}}</div>
                         <div class="col-md-1"></div>
                     </div>

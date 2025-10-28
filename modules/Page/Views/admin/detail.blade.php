@@ -7,7 +7,7 @@
     <div class="container">
         <div class="d-flex justify-content-between mb20">
             <div class="">
-                <h1 class="title-bar">{{$row->id ? __('Edit: ') .$translation->title :  __('Add new page') }}</h1>
+                <h1 class="title-bar">{{$row->id ? __('Editar: ') .$translation->title :  __('Add new page') }}</h1>
                 @if($row->slug)
                 <p class="item-url-demo">{{ __('Permalink: ')}} {{ url((request()->query('lang') ? request()->query('lang').'/' : ''). config('page.page_route_prefix') )}}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                 </p>
@@ -35,11 +35,11 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-group magic-field" data-id="title" data-type="title">
-                                <label class="control-label">{{__("Title")}}</label>
+                                <label class="control-label">{{__("Título")}}</label>
                                 <input
                                     type="text"
                                     value="{{$translation->title}}"
-                                    placeholder="{{__("Title")}}"
+                                    placeholder="{{__("Título")}}"
                                     name="title"
                                     class="form-control">
                             </div>
@@ -69,20 +69,20 @@
                 </div>
                 <div class="col-md-3">
                     <div class="panel">
-                        <div class="panel-title"><strong>{{__('Publish')}}</strong></div>
+                        <div class="panel-title"><strong>{{__('Publicar')}}</strong></div>
                         <div class="panel-body">
                             @if(is_default_lang())
                             <div>
-                                <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publish")}}
+                                <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publicar")}}
                                 </label>
                             </div>
                             <div>
-                                <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Draft")}}
+                                <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Rascunho")}}
                                 </label>
                             </div>
                             @endif
                             <div class="text-right">
-                                <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Save Changes')}}</button>
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="panel">
                         <div class="panel-body">
-                            <h3 class="panel-body-title">{{ __('Feature Image')}}</h3>
+                            <h3 class="panel-body-title">{{ __('Imagem em destaque')}}</h3>
                             <div class="form-group">
                                 {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
                             </div>

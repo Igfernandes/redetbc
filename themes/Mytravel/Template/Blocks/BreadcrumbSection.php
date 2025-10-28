@@ -20,12 +20,12 @@ class BreadcrumbSection extends BaseBlock
                     'id'        => 'sub_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Sub Title')
+                    'label'     => __('Subtítulo')
                 ],
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Background Image Uploader')
+                    'label' => __('Carregador de Imagem de Fundo')
                 ],
             ],
             'category'=>__("Other Block")

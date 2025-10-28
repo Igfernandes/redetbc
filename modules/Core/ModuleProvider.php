@@ -56,31 +56,31 @@ class ModuleProvider extends ModuleServiceProvider
             'tools'=>[
                 "position"=>90,
                 'url'      => route('core.admin.tool.index'),
-                'title'    => __("Tools"),
+                'title'    => __("Ferramentas"),
                 'icon'     => 'icon ion-ios-hammer',
                 'group' => 'system',
                 'children' => [
                     'module'=>[
-                        'title'=>__("Modules"),
+                        'title'=>__("Módulos"),
                         'url'=>route('core.admin.module.index'),
                         'icon'=>'icon ion-md-color-wand',
                         'permission'=>'setting_update'
                     ],
                     'language'=>[
                         'url'        => route('language.admin.index'),
-                        'title'      => __('Languages'),
+                        'title'      => __('Idiomas'),
                         'icon'       => 'icon ion-ios-globe',
                         'permission' => 'language_manage',
                     ],
                     'translation'=>[
                         'url'        => route('language.admin.translations.index'),
-                        'title'      => __("Translation Manager"),
+                        'title'      => __("Gerente de Tradução"),
                         'icon'       => 'icon ion-ios-globe',
                         'permission' => 'language_translation',
                     ],
                     'logs'=>[
                         'url'        => route('admin.logs'),
-                        'title'      => __("System Logs"),
+                        'title'      => __("Registros do sistema"),
                         'icon'       => 'icon ion-ios-nuclear',
                         'permission' => 'system_log_view',
                     ],
@@ -93,7 +93,7 @@ class ModuleProvider extends ModuleServiceProvider
     {
         return [
             'system' => [
-                'name'     => __("System"),
+                'name'     => __("Sistema"),
                 'position' => 200
             ]
         ];

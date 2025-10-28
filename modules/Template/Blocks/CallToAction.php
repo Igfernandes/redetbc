@@ -18,7 +18,7 @@ class CallToAction extends BaseBlock
                     'id'        => 'sub_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Sub Title')
+                    'label'     => __('Subtítulo')
                 ],
                 [
                     'id'        => 'link_title',
@@ -35,7 +35,7 @@ class CallToAction extends BaseBlock
                 [
                     'id'            => 'style',
                     'type'          => 'radios',
-                    'label'         => __('Style'),
+                    'label'         => __('Estilo'),
                     'values'        => [
                         [
                             'value'   => '',

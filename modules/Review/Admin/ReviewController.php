@@ -59,10 +59,10 @@ class ReviewController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('No items selected!'));
+            return redirect()->back()->with('error', __('Nenhum item selecionado!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         $allServices = get_bookable_services();
         if ($action == "delete") {
@@ -96,6 +96,6 @@ class ReviewController extends AdminController
                 }
             }
         }
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
     }
 }

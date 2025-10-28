@@ -34,7 +34,7 @@ class PaystackGateway extends BaseGateway
                 'type'       => 'input',
                 'id'         => 'name',
                 'label'      => __('Nome personalizado'),
-                'std'        => __("Paystack"),
+                'std'        => __("Pilha de pagamento"),
                 'multi_lang' => "1"
             ],
             [
@@ -51,12 +51,12 @@ class PaystackGateway extends BaseGateway
             [
                 'type'  => 'input',
                 'id'    => 'public_key',
-                'label' => __('Public key')
+                'label' => __('Chave pública')
             ],
             [
                 'type'  => 'input',
                 'id'    => 'secret_key',
-                'label' => __('Secret key')
+                'label' => __('Chave secreta')
             ],
             [
                 'type'  => 'input',

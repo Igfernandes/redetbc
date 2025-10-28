@@ -304,7 +304,7 @@ class PaypalGateway extends BaseGateway
         $data['cancelUrl'] = $this->getCancelUrl(true) . '?pid=' . $payment->code;
         if (!array_key_exists($main_currency, $supported)) {
             if (!$convert_to) {
-                throw new Exception(__("PayPal não suporta currency: :name", ['name' => $main_currency]));
+                throw new Exception(__("PayPal não suporta moeda: :name", ['name' => $main_currency]));
             }
             if (!$exchange_rate = $this->getOption('exchange_rate')) {
                 throw new Exception(__("Taxa de câmbio para :name deve ser específico. Entre em contato com o proprietário do site", ['name' => $convert_to]));
@@ -330,10 +330,10 @@ class PaypalGateway extends BaseGateway
         $data['cancelUrl'] = $this->getCancelUrl() . '?c=' . $booking->code;
         if (!array_key_exists($main_currency, $supported)) {
             if (!$convert_to) {
-                throw new Exception(__("PayPal does not support currency: :name", ['name' => $main_currency]));
+                throw new Exception(__("O PayPal não aceita moeda: :name", ['name' => $main_currency]));
             }
             if (!$exchange_rate = $this->getOption('exchange_rate')) {
-                throw new Exception(__("Exchange rate to :name must be specific. Please contact site owner", ['name' => $convert_to]));
+                throw new Exception(__("A taxa de câmbio para :name deve ser específica. Entre em contato com o proprietário do site.", ['name' => $convert_to]));
             }
             if ($payment) {
                 $payment->converted_currency = $convert_to;

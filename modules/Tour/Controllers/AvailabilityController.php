@@ -65,7 +65,7 @@ class AvailabilityController extends FrontendController
                 'url'  => route('tour.vendor.index')
             ],
             [
-                'name'  => __('Availability'),
+                'name'  => __('Disponibilidade'),
                 'class' => 'active'
             ],
         ];
@@ -118,7 +118,7 @@ class AvailabilityController extends FrontendController
             if ($tour->default_state) {
                 $date['active'] = 1;
             } else {
-                $date['title'] = $date['event'] = __('Blocked');
+                $date['title'] = $date['event'] = __('Bloqueado');
                 $date['backgroundColor'] = 'orange';
                 $date['borderColor'] = '#fe2727';
                 $date['classNames'] = ['blocked-event'];
@@ -212,7 +212,7 @@ class AvailabilityController extends FrontendController
                 }
                 $row->person_types = $list_person_types;
                 if (!$row->active) {
-                    $row->title = $row->event = __('Blocked');
+                    $row->title = $row->event = __('Bloqueado');
                     $row->backgroundColor = '#fe2727';
                     $row->classNames = ['blocked-event'];
                     $row->textColor = '#fe2727';
@@ -243,8 +243,8 @@ class AvailabilityController extends FrontendController
                         $max_guests = $allDates[date('Y-m-d', $i)]['max_guests'];
                         if ($total_guests_booking >= $max_guests) {
                             $allDates[date('Y-m-d', $i)]['active'] = 0;
-                            $allDates[date('Y-m-d', $i)]['event'] = __('Full Book');
-                            $allDates[date('Y-m-d', $i)]['title'] = __('Full Book');
+                            $allDates[date('Y-m-d', $i)]['event'] = __('Livro Completo');
+                            $allDates[date('Y-m-d', $i)]['title'] = __('Livro Completo');
                             $allDates[date('Y-m-d', $i)]['classNames'] = ['full-book-event'];
                         } else {
                             if ($is_single) {
@@ -271,8 +271,8 @@ class AvailabilityController extends FrontendController
                             $max_guests = $allDates[date('Y-m-d', $date)]['max_guests'] - 1;
                             if ($max_guests == 0) {
                                 $allDates[date('Y-m-d', $date)]['active'] = 0;
-                                $allDates[date('Y-m-d', $date)]['event'] = __('Full Book');
-                                $allDates[date('Y-m-d', $date)]['title'] = __('Full Book');
+                                $allDates[date('Y-m-d', $date)]['event'] = __('Livro Completo');
+                                $allDates[date('Y-m-d', $date)]['title'] = __('Livro Completo');
                                 $allDates[date('Y-m-d', $date)]['classNames'] = ['full-book-event'];
                             }
                             if ($is_single) {
@@ -337,6 +337,6 @@ class AvailabilityController extends FrontendController
             ], $postData);
             $date->save();
         }
-        return $this->sendSuccess([], __("Update Success"));
+        return $this->sendSuccess([], __("Atualização bem-sucedida"));
     }
 }

@@ -36,9 +36,9 @@
                                     <option value="draft">{{__(" Move to Draft ")}}</option>
                                     <option value="pending">{{__("Move to Pending")}}</option>
                                     {{--<option value="clone">{{__(" Clone ")}}</option>--}}
-                                    <option value="delete">{{__(" Delete ")}}</option>
+                                    <option value="delete">{{__("Excluir")}}</option>
                                 </select>
-                                <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                                <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                             </form>
                         @endif
                     </div>
@@ -55,8 +55,8 @@
                                     <tr>
                                         <th width="45px"><input type="checkbox" class="check-all"></th>
                                         <th> {{ __('Room name')}}</th>
-                                        <th width="100px"> {{ __('Number')}}</th>
-                                        <th width="100px"> {{ __('Price')}}</th>
+                                        <th width="100px"> {{ __('Número')}}</th>
+                                        <th width="100px"> {{ __('Preço')}}</th>
                                         <th width="100px"> {{ __('Status')}}</th>
                                         <th width="100px"></th>
                                     </tr>
@@ -74,7 +74,7 @@
                                                 <td>{{format_money($row->price)}}</td>
                                                 <td><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>
                                                 <td>
-                                                    <a href="{{route('hotel.admin.room.edit',['id'=>$row->id,'hotel_id'=>$hotel->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}
+                                                    <a href="{{route('hotel.admin.room.edit',['id'=>$row->id,'hotel_id'=>$hotel->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Editar')}}
                                                     </a>
                                                 </td>
                                             </tr>

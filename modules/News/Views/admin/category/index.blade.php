@@ -28,10 +28,10 @@
                                   class="filter-form filter-form-left d-flex justify-content-start">
                                 {{csrf_field()}}
                                 <select name="action" class="form-control">
-                                    <option value="">{{__(" Bulk Action ")}}</option>
-                                    <option value="delete">{{__(" Delete ")}}</option>
+                                    <option value="">{{__("Ação em massa")}}</option>
+                                    <option value="delete">{{__("Excluir")}}</option>
                                 </select>
-                                <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                                <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                             </form>
                         @endif
                     </div>
@@ -79,7 +79,7 @@
                                     ?>
                                 @else
                                     <tr>
-                                        <td colspan="4">{{__("No data")}}</td>
+                                        <td colspan="4">{{__("Sem dados")}}</td>
                                     </tr>
                                 @endif
                                 </tbody>

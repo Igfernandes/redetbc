@@ -92,9 +92,9 @@ class HomeController extends Controller
                 return $this->sendSuccess(false, __("Acesso negado ao usuário! Verifique sua configuração."));
             }
             if (DB::connection()->getDatabaseName()) {
-                return $this->sendSuccess(false, __("Yes! Successfully connected to the DB: " . DB::connection()->getDatabaseName()));
+                return $this->sendSuccess(false, __("Sim! Conectado com sucesso ao banco de dados: " . DB::connection()->getDatabaseName()));
             } else {
-                return $this->sendSuccess(false, __("Could not find the database. Please check your configuration."));
+                return $this->sendSuccess(false, __("Não foi possível encontrar o banco de dados. Verifique sua configuração."));
             }
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage());

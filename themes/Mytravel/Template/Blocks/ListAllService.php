@@ -38,7 +38,7 @@ class ListAllService extends BaseBlock
         $arg[] =  [
             'id'            => 'style',
             'type'          => 'radios',
-            'label'         => __('Style Background'),
+            'label'         => __('Estilo de fundo'),
             'values'        => [
                 [
                     'value'   => '',
@@ -57,15 +57,15 @@ class ListAllService extends BaseBlock
         $arg[] =  [
             'id'            => 'order',
             'type'          => 'radios',
-            'label'         => __('Order'),
+            'label'         => __('Ordem'),
             'values'        => [
                 [
                     'value'   => 'id',
-                    'name' => __("Date Create")
+                    'name' => __("Data de Criação")
                 ],
                 [
                     'value'   => 'title',
-                    'name' => __("Title")
+                    'name' => __("Título")
                 ],
             ]
         ];
@@ -73,7 +73,7 @@ class ListAllService extends BaseBlock
         $arg[] =  [
             'id'            => 'order_by',
             'type'          => 'radios',
-            'label'         => __('Order By'),
+            'label'         => __('Ordenar por'),
             'values'        => [
                 [
                     'value'   => 'asc',

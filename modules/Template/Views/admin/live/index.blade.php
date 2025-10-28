@@ -62,7 +62,7 @@
         var current_menu_lang = '{{request()->query('lang',app()->getLocale())}}';
         var template_i18n = {
             cancel: '{{__('Cancel')}}',
-            save_changes: '{{__('Save changes')}}',
+            save_changes: '{{__('Salvar alterações')}}',
             delete_confirm: '{{__('Are you want to delete?')}}',
             add_new: '{{__('Add New')}}',
             save_block: '{{__('Save Block')}}',

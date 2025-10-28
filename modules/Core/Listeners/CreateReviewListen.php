@@ -23,7 +23,7 @@
                 'avatar'  => Auth::user()->avatar_url,
                 'link'    => route('review.admin.index'),
                 'type'    => $services->type,
-                'message' => __(':name has created a Review :review on :title', ['name' => Auth::user()->display_name, 'review' => $review->title, 'title' => $services->title])
+                'message' => __(':name criou uma revisão :review no :title', ['name' => Auth::user()->display_name, 'review' => $review->title, 'title' => $services->title])
             ];
             // notify admin
             Auth::user()->notify(new AdminChannelServices($data));

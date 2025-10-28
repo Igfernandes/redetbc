@@ -116,7 +116,7 @@ class VendorRoomController extends FrontendController
                     'url'  => route("hotel.vendor.room.index",['hotel_id'=>$this->currentHotel->id])
                 ],
                 [
-                    'name'  => __('Create'),
+                    'name'  => __('Criar'),
                     'class' => 'active'
                 ],
             ],
@@ -166,7 +166,7 @@ class VendorRoomController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Edit: :name",['name'=>$row->title]),
+            'page_title'=>__("Editar: :name",['name'=>$row->title]),
             'hotel'=>$this->currentHotel
         ];
         return view('Hotel::frontend.vendorHotel.room.detail', $data);
@@ -175,7 +175,7 @@ class VendorRoomController extends FrontendController
     public function store( Request $request, $hotel_id,$id ){
 
         if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("DEMO MODE: can not add data"));
+            return redirect()->back()->with('danger',__("MODO DEMO: não é possível adicionar dados"));
         }
         if(!$this->hasHotelPermission($hotel_id))
         {
@@ -267,13 +267,13 @@ class VendorRoomController extends FrontendController
         $user_id = Auth::id();
         $query = $this->roomClass::where("parent_id", $hotel_id)->where("id", $id)->first();
         if (empty($id)) {
-            return redirect()->back()->with('error', __('No item!'));
+            return redirect()->back()->with('error', __('Nenhum item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if(empty($query)){
-            return redirect()->back()->with('error', __('Not Found'));
+            return redirect()->back()->with('error', __('Não encontrado'));
         }
         switch ($action){
             case "make-hide":
@@ -284,6 +284,6 @@ class VendorRoomController extends FrontendController
                 break;
         }
         $query->save();
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
     }
 }

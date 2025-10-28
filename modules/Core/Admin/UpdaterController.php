@@ -35,7 +35,7 @@ class UpdaterController extends  AdminController
 
         if(!setting_item('envato_license_key') or !setting_item('envato_username'))
         {
-            return redirect()->back()->with('danger',__("Please enter license key"));
+            return redirect()->back()->with('danger',__("Por favor insira a chave de licença"));
         }
 
         $url = config('app.updater_url');
@@ -52,7 +52,7 @@ class UpdaterController extends  AdminController
 
         if(!$data or empty($data_json))
         {
-            return redirect()->back()->with('danger',__("Can not connect to update server. Please check again"));
+            return redirect()->back()->with('danger',__("Não é possível conectar ao servidor de atualização. Verifique novamente."));
         }
 
         Settings::store('last_check_update',time());
@@ -64,7 +64,7 @@ class UpdaterController extends  AdminController
 
         if(!empty($data_json['message']))
         {
-            return redirect()->back()->with($data_json['status'] ? 'success' : 'danger',__("Can not connect to update server. Please check again"));
+            return redirect()->back()->with($data_json['status'] ? 'success' : 'danger',__("Não é possível conectar ao servidor de atualização. Verifique novamente."));
         }
 
         return redirect()->back();
@@ -79,12 +79,12 @@ class UpdaterController extends  AdminController
 
         $updater_latest_version = setting_item('updater_latest_version');
         if(empty($updater_latest_version) or version_compare(config('app.version'),$updater_latest_version,'>=')){
-            return $this->sendError(__("You are using latest version of Booking Core"));
+            return $this->sendError(__("Você está usando a versão mais recente do Booking Core"));
         }
 
         if(!class_exists('\ZipArchive'))
         {
-            return $this->sendError("Your server does not support ZipArchive libraries. Please contact your hosting to install it or do update manually");
+            return $this->sendError("Seu servidor não suporta bibliotecas ZipArchive. Entre em contato com a sua empresa de hospedagem para instalá-las ou atualizá-las manualmente.");
         }
 
         // Try to set folder permission
@@ -92,7 +92,7 @@ class UpdaterController extends  AdminController
 
         if(!is_writable(base_path()))
         {
-            return $this->sendError("The root folder is not able to write");
+            return $this->sendError("A pasta raiz não consegue gravar");
         }
 
         $url = config('app.updater_url');
@@ -113,7 +113,7 @@ class UpdaterController extends  AdminController
 
         if(empty($data_json['file']))
         {
-            return $this->sendError(__("Can not get update file from server"));
+            return $this->sendError(__("Não é possível obter o arquivo de atualização do servidor"));
         }
 
         $zip_file_tmp = storage_path('tmp-update.zip');
@@ -126,7 +126,7 @@ class UpdaterController extends  AdminController
 
         if(!file_exists($zip_file_tmp))
         {
-            return $this->sendError(__("Can not download update file to folder storage"));
+            return $this->sendError(__("Não é possível baixar o arquivo de atualização para a pasta de armazenamento"));
         }
 
         $check = $this->unzipFile($zip_file_tmp,base_path());
@@ -134,10 +134,10 @@ class UpdaterController extends  AdminController
         if($check){
 
             Settings::store('updater_last_success',time());
-            return $this->sendSuccess([],__("Update Success"));
+            return $this->sendSuccess([],__("Sucesso na atualização"));
 
         }else{
-            return $this->sendError(__("Can not un-zip the package"));
+            return $this->sendError(__("Não é possível descompactar o pacote"));
         }
 
     }
@@ -187,7 +187,7 @@ class UpdaterController extends  AdminController
         Settings::store('envato_license_key',trim(\request()->input('envato_license_key')));
         Settings::store('envato_username',trim(\request()->input('envato_username')));
 
-        return redirect()->back()->withInput()->with('success',__("License information has been saved"));
+        return redirect()->back()->withInput()->with('success',__("As informações da licença foram salvas"));
     }
 
 

@@ -32,7 +32,7 @@
                 'avatar'  => $avatar,
                 'link'    => route('report.admin.booking'),
                 'type'    => $booking->object_model,
-                'message' => __(':name has created new Booking', ['name' => $name])
+                'message' => __(':name criou nova reserva', ['name' => $name])
             ];
 
             $vendor = $booking->vendor()->where('status', 'publish')->first();

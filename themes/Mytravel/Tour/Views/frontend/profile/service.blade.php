@@ -11,7 +11,7 @@ if(!$user->hasPermission('tour_create')) return;
                     {{$services->appends(request()->query())->links()}}
                 </div>
                 <div class="review-pag-text text-center">
-                    {{ __("Showing :from - :to of :total total",["from"=>$services->firstItem(),"to"=>$services->lastItem(),"total"=>$services->total()]) }}
+                    {{ __("Mostrando :from - :to of :total total",["from"=>$services->firstItem(),"to"=>$services->lastItem(),"total"=>$services->total()]) }}
                 </div>
             </div>
             @else

@@ -1,35 +1,35 @@
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("General Style")}}</h3>
-        <p class="form-group-desc">{{__('Change main color, typo ...')}}</p>
+        <h3 class="form-group-title">{{__("Estilo Geral")}}</h3>
+        <p class="form-group-desc">{{__('Alterar cor principal, erro de digitação...')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__('General Options')}}</strong></div>
+            <div class="panel-title"><strong>{{__('Opções Gerais')}}</strong></div>
             <div class="panel-body">
                 @if(is_default_lang())
                 <div class="form-group">
-                    <label>{{__("Main color")}}</label>
+                    <label>{{__("Cor principal")}}</label>
                     <div class="form-controls">
                         <input type="text" name="style_main_color" value="{{setting_item('style_main_color','#5191FA')}}" class="has-colorpicker d-none">
                     </div>
                 </div>
                 @endif
                 <div class="form-group">
-                    <label><strong>{{__("Typography")}}</strong></label>
+                    <label><strong>{{__("Tipografia")}}</strong></label>
                     <div class="form-controls">
                         @php
                             $typo = json_decode(setting_item_with_lang('style_typo',request()->query('lang')),true) @endphp
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>{{__("Font Family")}}</label>
+                                    <label>{{__("Família de fontes")}}</label>
                                     <input type="text" name="style_typo[font_family]" class="form-control"  value="{{$typo['font_family'] ?? ''}}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>{{__("Color")}}</label>
+                                    <label>{{__("Cor")}}</label>
                                     <div class="form-controls">
                                         <input type="text" name="style_typo[color]" class="has-colorpicker"  value="{{$typo['color'] ?? ''}}">
                                     </div>
@@ -37,20 +37,20 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>{{__("Font Size")}}</label>
+                                    <label>{{__("Tamanho da fonte")}}</label>
                                     <input type="text" name="style_typo[font_size]" class="form-control" min="0" max="60" value="{{$typo['font_size'] ?? ''}}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>{{__("Line Height")}}</label>
+                                    <label>{{__("Altura da linha")}}</label>
                                     <input type="text" name="style_typo[line_height]" class="form-control" min="0" max="60" value="{{$typo['line_height'] ?? ''}}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>{{__("Font Weight")}}</label>
-                                    <input type="text" placeholder="{{__('bold or 400')}}" name="style_typo[font_weight]" class="form-control"  value="{{$typo['font_weight'] ?? ''}}">
+                                    <label>{{__("Peso da fonte")}}</label>
+                                    <input type="text" placeholder="{{__('negrito ou 400')}}" name="style_typo[font_weight]" class="form-control"  value="{{$typo['font_weight'] ?? ''}}">
                                 </div>
                             </div>
                         </div>
@@ -60,22 +60,22 @@
         </div>
 
         <div class="panel">
-            <div class="panel-title"><strong>{{__('H1,H2,H3 Options')}}</strong></div>
+            <div class="panel-title"><strong>{{__('Opções H1, H2, H3')}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label>{{__("H1 Font Family")}}</label>
+                    <label>{{__("Família de fontes H1")}}</label>
                     <div class="form-controls">
                         <input placeholder='"Poppins"' type="text" name="style_h1_font_family" value="{{ setting_item_with_lang('style_h1_font_family',request()->query('lang')) }}" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>{{__("H2 Font Family")}}</label>
+                    <label>{{__("Família de fontes H2")}}</label>
                     <div class="form-controls">
                         <input placeholder='"Poppins"' type="text" name="style_h2_font_family" value="{{ setting_item_with_lang('style_h2_font_family',request()->query('lang')) }}" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>{{__("H3 Font Family")}}</label>
+                    <label>{{__("Família de fontes H3")}}</label>
                     <div class="form-controls">
                         <input placeholder='"Poppins"' type="text" name="style_h3_font_family" value="{{ setting_item_with_lang('style_h3_font_family',request()->query('lang')) }}" class="form-control">
                     </div>
@@ -88,15 +88,15 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__("Custom CSS for all languages")}}</h3>
-            <p class="form-group-desc">{{__('Write your own custom css code')}}</p>
+            <h3 class="form-group-title">{{__("CSS personalizado para todos os idiomas")}}</h3>
+            <p class="form-group-desc">{{__('Escreva seu próprio código CSS personalizado')}}</p>
         </div>
         <div class="col-sm-8">
             <div class="panel">
-                <div class="panel-title"><strong>{{__('Custom CSS')}}</strong></div>
+                <div class="panel-title"><strong>{{__('CSS personalizado')}}</strong></div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label>{{__("Custom CSS")}}</label>
+                        <label>{{__("CSS personalizado")}}</label>
                         <div class="form-controls">
                             <div id="custom_css_editor" class="ace-editor" style="height: 400px" data-theme="monokai" data-mod="css">{{setting_item('style_custom_css')}}</div>
                             <textarea class="d-none" name="style_custom_css" > {{ setting_item('style_custom_css') }} </textarea>
@@ -110,15 +110,15 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__("Custom CSS for :name",['name'=>request('lang')])}}</h3>
-            <p class="form-group-desc">{{__('Write your own custom css code')}}</p>
+            <h3 class="form-group-title">{{__("CSS personalizado para :name",['name'=>request('lang')])}}</h3>
+            <p class="form-group-desc">{{__('Escreva seu próprio código CSS personalizado')}}</p>
         </div>
         <div class="col-sm-8">
             <div class="panel">
-                <div class="panel-title"><strong>{{__('Custom CSS')}}</strong></div>
+                <div class="panel-title"><strong>{{__('CSS personalizado')}}</strong></div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label>{{__("Custom CSS")}}</label>
+                        <label>{{__("CSS personalizado")}}</label>
                         <div class="form-controls">
                             <div id="custom_css_editor" class="ace-editor" style="height: 400px" data-theme="monokai" data-mod="css">{{setting_item_with_lang('style_custom_css',request()->query('lang'))}}</div>
                             <textarea class="d-none" name="style_custom_css" > {{ setting_item_with_lang_raw('style_custom_css',request()->query('lang')) }} </textarea>

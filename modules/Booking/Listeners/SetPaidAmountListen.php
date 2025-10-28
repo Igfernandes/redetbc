@@ -24,7 +24,7 @@
                 'avatar'  => Auth::user()->avatar_url,
                 'link'    => route('report.admin.booking'),
                 'type'    => $booking->object_model,
-                'message' => __(':name has updated the PAID amount on :title', ['name' => $vendor->display_name, 'title' => $booking->service->title]),
+                'message' => __(':name atualizou o valor PAGO em :title', ['name' => $vendor->display_name, 'title' => $booking->service->title]),
             ];
 
             Auth::user()->notify(new AdminChannelServices($data));
@@ -34,7 +34,7 @@
                     $data['to'] = 'vendor';
                     $data['link'] = route("vendor.bookingReport");
 //                    $data['link'] = get_link_vendor_detail_services($booking->object_model, $booking->id);
-                    $data['message'] = __('Administrator has updated the PAID amount on :title', ['title' => $booking->service->title]);
+                    $data['message'] = __('O administrador atualizou o valor PAGO em :title', ['title' => $booking->service->title]);
                     $vendor->notify(new PrivateChannelServices($data));
                 }
             }

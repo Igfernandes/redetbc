@@ -73,7 +73,7 @@ class AvailabilityController extends FrontendController{
                 'url'  => route('space.vendor.index')
             ],
             [
-                'name'  => __('Availability'),
+                'name'  => __('Disponibilidade'),
                 'class' => 'active'
             ],
         ];
@@ -126,7 +126,7 @@ class AvailabilityController extends FrontendController{
             if($space->default_state){
                 $date['active'] = 1;
             }else{
-                $date['title'] = $date['event'] = __('Blocked');
+                $date['title'] = $date['event'] = __('Bloqueado');
                 $date['backgroundColor'] = 'orange';
                 $date['borderColor'] = '#fe2727';
                 $date['classNames'] = ['blocked-event'];
@@ -154,7 +154,7 @@ class AvailabilityController extends FrontendController{
                 $row->price = $price;
                 if(!$row->active)
                 {
-                    $row->title = $row->event = __('Blocked');
+                    $row->title = $row->event = __('Bloqueado');
                     $row->backgroundColor = '#fe2727';
                     $row->classNames = ['blocked-event'];
                     $row->textColor = '#fe2727';
@@ -204,8 +204,8 @@ class AvailabilityController extends FrontendController{
                             }
                         }
                         if($allDates[date('Y-m-d',$i)]['active'] == 0){
-                            $allDates[date('Y-m-d',$i)]['event'] = __('Full Book');
-                            $allDates[date('Y-m-d',$i)]['title'] = __('Full Book');
+                            $allDates[date('Y-m-d',$i)]['event'] = __('Livro Completo');
+                            $allDates[date('Y-m-d',$i)]['title'] = __('Livro Completo');
                             $allDates[date('Y-m-d',$i)]['classNames'] = ['full-book-event'];
                         }
                     }
@@ -227,8 +227,8 @@ class AvailabilityController extends FrontendController{
 						    for($i = $eventStart; $i <= $eventEnd; $i+= DAY_IN_SECONDS){
 							    if(isset($allDates[date('Y-m-d',$i)])){
 								    $allDates[date('Y-m-d',$i)]['active'] = 0;
-								    $allDates[date('Y-m-d',$i)]['event'] = __('Full Book');
-								    $allDates[date('Y-m-d',$i)]['title'] = __('Full Book');
+								    $allDates[date('Y-m-d',$i)]['event'] = __('Livro Completo');
+								    $allDates[date('Y-m-d',$i)]['title'] = __('Livro Completo');
 								    $allDates[date('Y-m-d',$i)]['classNames'] = ['full-book-event'];
 							    }
 						    }
@@ -289,7 +289,7 @@ class AvailabilityController extends FrontendController{
             $date->save();
         }
 
-        return $this->sendSuccess([],__("Update Success"));
+        return $this->sendSuccess([],__("Atualização bem-sucedida"));
 
     }
 }

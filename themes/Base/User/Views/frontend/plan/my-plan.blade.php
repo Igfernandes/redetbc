@@ -22,7 +22,7 @@
                                 <th>{{__("Plan Name")}}</th>
                                 <th>{{__("Expiry")}}</th>
                                 <th>{{__("Total")}}</th>
-                                <th>{{__("Price")}}</th>
+                                <th>{{__("Preço")}}</th>
                                 <th>{{__("Status")}}</th>
                             </tr>
                             </thead>

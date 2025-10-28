@@ -35,7 +35,7 @@ class ListAssistance extends BaseBlock
                 [
                     'id'            => 'style',
                     'type'          => 'radios',
-                    'label'         => __('Style'),
+                    'label'         => __('Estilo'),
                     'values'        => [
                         [
                             'value'   => 'normal',
@@ -43,14 +43,14 @@ class ListAssistance extends BaseBlock
                         ],
                         [
                             'value'   => 'carousel',
-                            'name' => __("Slider Carousel")
+                            'name' => __("Carrossel deslizante")
                         ]
                     ]
                 ],
                 [
                     'id'      => 'location_id',
                     'type'    => 'select2',
-                    'label'   => __('Filter by Location'),
+                    'label'   => __('Filtrar por localização'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => route('location.admin.getForSelect2'),
@@ -58,29 +58,29 @@ class ListAssistance extends BaseBlock
                         ],
                         'width' => '100%',
                         'allowClear' => 'true',
-                        'placeholder' => __('-- Select --')
+                        'placeholder' => __('-- Selecione --')
                     ],
                     'pre_selected'=>route('location.admin.getForSelect2',['pre_selected'=>1])
                 ],
                 [
                     'id'            => 'order',
                     'type'          => 'radios',
-                    'label'         => __('Order'),
+                    'label'         => __('Ordem'),
                     'values'        => [
                         [
                             'value'   => 'id',
-                            'name' => __("Date Create")
+                            'name' => __("Data de Criação")
                         ],
                         [
                             'value'   => 'title',
-                            'name' => __("Title")
+                            'name' => __("Título")
                         ],
                     ]
                 ],
                 [
                     'id'            => 'order_by',
                     'type'          => 'radios',
-                    'label'         => __('Order By'),
+                    'label'         => __('Ordenar por'),
                     'values'        => [
                         [
                             'value'   => 'asc',
@@ -94,14 +94,14 @@ class ListAssistance extends BaseBlock
                 ],
                 [
                     'type'=> "checkbox",
-                    'label'=>__("Only featured items?"),
+                    'label'=>__("Somente itens em destaque?"),
                     'id'=> "is_featured",
                     'default'=>true
                 ],
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('List by IDs'),
+                    'label'        => __('Listar por IDs'),
                     'select2'      => [
                         'ajax'        => [
                             'url'      => route('assistance.admin.getForSelect2'),
@@ -109,20 +109,20 @@ class ListAssistance extends BaseBlock
                         ],
                         'width'       => '100%',
                         'multiple'    => "true",
-                        'placeholder' => __('-- Select --')
+                        'placeholder' => __('-- Selecione --')
                     ],
                     'pre_selected' => route('assistance.admin.getForSelect2', [
                         'pre_selected' => 1
                     ])
                 ],
             ],
-            'category'=>__("Service Service")
+            'category'=>__("Serviço Serviço")
         ];
     }
 
     public function getName()
     {
-        return __('Service: List Items');
+        return __('Serviço: Listar Itens');
     }
 
     public function content($model = [])

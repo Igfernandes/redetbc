@@ -5,9 +5,9 @@
         <div class="d-flex justify-content-between mb20">
             <h1 class="title-bar">
                 @if(!empty($row->id))
-                    {{__("Edit Menu:")}} @{{name}}
+                    {{__("Editar menu:")}} @{{name}}
                 @else
-                    {{__('Create new menu')}}
+                    {{__('Criar novo menu')}}
                 @endif
             </h1>
         </div>
@@ -15,7 +15,7 @@
             @{{message.content}}
         </div>
         <input type="text" class="form-control" value="{{$row->name ?? ''}}" v-model="name"
-               placeholder="{{__('Menu name')}}">
+               placeholder="{{__('Nome do menu')}}">
         <br>
         <br>
         <div class="row">
@@ -25,20 +25,20 @@
                         <i class="icon ion-md-arrow-dropdown"></i>
                     </div>
                     <div class="panel-body" v-show="type.open">
-                        <input type="text" placeholder="{{__('Search...')}}" class="form-control input-sm menu-search"
+                        <input type="text" placeholder="{{__('Procurar...')}}" class="form-control input-sm menu-search"
                                @keyup="searchItems(type)" v-model="type.q">
                         <div class="list-scrollable" v-show="type.items.length">
                             <div v-for="item in type.items"><label><input v-model="type.selected" type="checkbox"
                                                                           :value="item.id"> @{{item.name}}</label></div>
                         </div>
-                        <div class="alert-text danger mt10" v-show="!type.items.length">{{__("No items found")}}</div>
+                        <div class="alert-text danger mt10" v-show="!type.items.length">{{__("Nenhum item encontrado")}}</div>
                         <div class="text-right">
-                            <span class="btn btn-sm btn-primary" @click="addToMenu(type)">{{__('Add to Menu')}}</span>
+                            <span class="btn btn-sm btn-primary" @click="addToMenu(type)">{{__('Adicionar ao cardápio')}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-toggle-able">
-                    <div class="panel-title" @click="custom_show = custom_show ? false : true">{{__('Custom Url')}}
+                    <div class="panel-title" @click="custom_show = custom_show ? false : true">{{__('URL personalizado')}}
                         <i class="icon ion-md-arrow-dropdown"></i>
                     </div>
                     <div class="panel-body" v-show="custom_show">
@@ -47,11 +47,11 @@
                             <input type="text" v-model="custom_url" class="form-control input-sm">
                         </div>
                         <div class="form-group">
-                            <label>{{__('Link Text')}}</label>
+                            <label>{{__('Texto do link')}}</label>
                             <input type="text" v-model="custom_name" class="form-control input-sm">
                         </div>
                         <div class="text-right">
-                            <span class="btn btn-sm btn-primary" @click="addCustomUrl">{{__('Add to Menu')}}</span>
+                            <span class="btn btn-sm btn-primary" @click="addCustomUrl">{{__('Adicionar ao Menu')}}</span>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                 @include('Language::admin.navigation')
                 <div class="lang-content-box">
                     <div class="panel">
-                    <div class="panel-title">{{__('Menu items')}}</div>
+                    <div class="panel-title">{{__('Itens do menu')}}</div>
                     <div class="panel-body">
                         <div class="menu-items-zone">
                             <Draggable-Tree :value="items" draggable cross-tree :triggerClass="triggerClass">
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="menu-info" v-show="node._open">
                                         <div class="form-group">
-                                            <label>{{__('Label')}}</label>
+                                            <label>{{__('Rótulo')}}</label>
                                             <input type="text" v-model="node.name" class="form-control input-sm">
                                         </div>
                                         <div class="form-group" v-show="node.item_model=='custom'">
@@ -83,17 +83,17 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>{{__('Class')}}</label>
+                                                    <label>{{__('Aula')}}</label>
                                                     <input type="text" v-model="node.class"
                                                            class="form-control input-sm">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>{{__('Target')}}</label>
+                                                    <label>{{__('Alvo')}}</label>
                                                     <select v-model="node.target" class="input-sm form-control">
                                                         <option value="">{{__('Normal')}}</option>
-                                                        <option value="_blank">{{__('Open new tab')}}</option>
+                                                        <option value="_blank">{{__('Abrir nova aba')}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -101,18 +101,18 @@
 
                                         <div class="mega-group">
                                             <div class="form-group">
-                                                <input type="checkbox" v-model="node.mega_menu" :id="'mega-menu-' + path"> <label :for="'mega-menu-' + path">{{__('Enable mega menu')}}</label>
+                                                <input type="checkbox" v-model="node.mega_menu" :id="'mega-menu-' + path"> <label :for="'mega-menu-' + path">{{__('Ativar megamenu')}}</label>
                                             </div>
                                             <div class="form-group" v-show="node.mega_menu">
-                                                <label>{{__('Columns')}}</label>
+                                                <label>{{__('Colunas')}}</label>
                                                 <select v-model="node.mega_columns" class="input-sm form-control">
-                                                    <option value="2">{{__('2 columns')}}</option>
-                                                    <option value="3">{{__('3 columns')}}</option>
-                                                    <option value="4">{{__('4 columns')}}</option>
+                                                    <option value="2">{{__('2 colunas')}}</option>
+                                                    <option value="3">{{__('3 colunas')}}</option>
+                                                    <option value="4">{{__('4 colunas')}}</option>
                                                 </select>
                                             </div>
                                             <div class="form-group" v-show="node.mega_menu">
-                                                <label>{{__('Mega image url')}}</label>
+                                                <label>{{__('URL da mega imagem')}}</label>
                                                 <input type="text" v-model="node.mega_image_url" class="form-control input-sm">
                                             </div>
                                         </div>
@@ -122,7 +122,7 @@
                                         <div class="d-flex justify-content-between">
                                             <a href='#' @click="deleteMenuItem($event,node,tree,path)"
                                                class="alert-text danger delete-menu-item">{{__('Delete')}}</a>
-                                            <span v-show="node.origin_name">{{__('Origin: ')}} <a
+                                            <span v-show="node.origin_name">{{__('Origem: ')}} <a
                                                         :href="node.origin_edit_url" target="_blank">@{{node.origin_name}}</a></span>
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@
                         </div>
                         <br>
                         <br>
-                        <h3 class="panel-body-title">{{__('Menu Configs')}}</h3>
+                        <h3 class="panel-body-title">{{__('Configurações de menu')}}</h3>
                         <div class="menu-locations">
                             @foreach($locations as $location=>$name)
                                 <div>
@@ -143,7 +143,7 @@
                     </div>
                     <div class="panel-footer text-right">
                         <span class="alert-text" v-show="message.content" :class="message.type ? 'success' : 'danger'">@{{message.content}} &nbsp;</span>
-                        <span class="btn btn-success" @click="saveMenu">{{__("Save Menu")}}</span>
+                        <span class="btn btn-success" @click="saveMenu">{{__("Salvar Menu")}}</span>
                     </div>
                 </div>
                 </div>

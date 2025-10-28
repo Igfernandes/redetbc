@@ -68,15 +68,15 @@ class AvailabilityController extends FrontendController{
         }
         $breadcrumbs = [
             [
-                'name' => __('Service'),
+                'name' => __('Serviço'),
                 'url'  => route('assistance.vendor.index')
             ],
             [
-                'name'  => __('Availability'),
+                'name'  => __('Disponibilidade'),
                 'class' => 'active'
             ],
         ];
-        $page_title = __('Service Availability');
+        $page_title = __('Disponibilidade do Serviço');
 
         return view($this->indexView,compact('rows','breadcrumbs','current_month','page_title','request'));
     }
@@ -94,7 +94,7 @@ class AvailabilityController extends FrontendController{
         $is_single = $request->query('for_single');
         $assistance = $this->assistanceClass::find($request->query('id'));
         if(empty($assistance)){
-            return $this->sendError(__('Serviços not found'));
+            return $this->sendError(__('Serviços não encontrados'));
         }
         $query = $this->assistanceDateClass::query();
         $query->where('target_id',$request->query('id'));
@@ -114,11 +114,11 @@ class AvailabilityController extends FrontendController{
                 'is_default'=>true,
                 'textColor'=>'#2791fe'
             ];
-            $date['price_html'] = __("per Hour: ").format_money($assistance->price_per_hour);
+            $date['price_html'] = __("por hora: ").format_money($assistance->price_per_hour);
             $date['price_html'] .= "<br>".__("per Day: ").format_money($assistance->price_per_day);
             if(!$is_single) {
-                $date['price_html'] = __("Hour: ").format_money_main($assistance->price_per_hour);
-                $date['price_html'] .= "<br>".__("Day: ").format_money_main($assistance->price_per_day);
+                $date['price_html'] = __("Hora: ").format_money_main($assistance->price_per_hour);
+                $date['price_html'] .= "<br>".__("Dia: ").format_money_main($assistance->price_per_day);
             }
             $date['title'] = $date['event']  = $date['price_html'];
             $date['start'] = $date['end'] = date('Y-m-d',$i);
@@ -126,7 +126,7 @@ class AvailabilityController extends FrontendController{
             if($assistance->default_state){
                 $date['active'] = 1;
             }else{
-                $date['title'] = $date['event'] = __('Blocked');
+                $date['title'] = $date['event'] = __('Bloqueado');
                 $date['backgroundColor'] = 'orange';
                 $date['borderColor'] = '#fe2727';
                 $date['classNames'] = ['blocked-event'];
@@ -141,16 +141,16 @@ class AvailabilityController extends FrontendController{
                 $row->start = date('Y-m-d',strtotime($row->start_date));
                 $row->end = date('Y-m-d',strtotime($row->start_date));
                 $row->textColor = '#2791fe';
-                $row->price_html = __("per Hour: ").format_money($row->price_per_hour);
+                $row->price_html = __("por hora: ").format_money($row->price_per_hour);
                 $row->price_html .= "<br>".__("per Day: ").format_money($row->price_per_day);
                 if(!$is_single) {
-                    $row->price_html = __("Hour: ").format_money_main($row->price_per_hour);
-                    $row->price_html .= "<br>".__("Day: ").format_money_main($row->price_per_day);
+                    $row->price_html = __("Hora: ").format_money_main($row->price_per_hour);
+                    $row->price_html .= "<br>".__("Dia: ").format_money_main($row->price_per_day);
                 }
                 $row->title = $row->event = $row->price_html;
                 if(!$row->active)
                 {
-                    $row->title = $row->event = __('Blocked');
+                    $row->title = $row->event = __('Bloqueado');
                     $row->backgroundColor = '#fe2727';
                     $row->classNames = ['blocked-event'];
                     $row->textColor = '#fe2727';
@@ -213,8 +213,8 @@ class AvailabilityController extends FrontendController{
                         }
                         if($is_book){
                             $allDates[date('Y-m-d',$i)]['active'] = 0;
-                            $allDates[date('Y-m-d',$i)]['event'] = __('Full Book');
-                            $allDates[date('Y-m-d',$i)]['title'] = __('Full Book');
+                            $allDates[date('Y-m-d',$i)]['event'] = __('Livro Completo');
+                            $allDates[date('Y-m-d',$i)]['title'] = __('Livro Completo');
                             $allDates[date('Y-m-d',$i)]['classNames'] = ['full-book-event'];
                         }
                     }
@@ -237,7 +237,7 @@ class AvailabilityController extends FrontendController{
 
         $assistance = $this->assistanceClass::find($request->input('id'));
         if(empty($assistance)){
-            return $this->sendError(__('Serviços not found'));
+            return $this->sendError(__('Serviços não encontrados'));
         }
 
         $hour = $request->input('hour',0);
@@ -249,14 +249,14 @@ class AvailabilityController extends FrontendController{
         if($type == 'per_hour'){
             $end_date_time = date('Y-m-d H:i' , strtotime($start_date_time ." +".$hour."hours"));
             if( strtotime($end_date_time) > strtotime($start_date ." +1day")){
-                return $this->sendError(__("You need to return the assistance on the same-day"));
+                return $this->sendError(__("Você precisa devolver a assistência no mesmo dia"));
             }
         }
         if($type == 'per_day'){
             $end_date_time = date('Y-m-d H:i' , strtotime($start_date_time ." +".$day."days"));
         }
         if(!$assistance->isAvailableInRanges($start_date_time,$end_date_time,$type,$hour,1)){
-            return $this->sendError(__("This services is not available at selected dates"));
+            return $this->sendError(__("Este serviço não está disponível nas datas selecionadas"));
         }
         return $this->sendSuccess();
     }
@@ -273,7 +273,7 @@ class AvailabilityController extends FrontendController{
         $target_id = $request->input('target_id');
 
         if(empty($assistance)){
-            return $this->sendError(__('Serviços not found'));
+            return $this->sendError(__('Serviços não encontrados'));
         }
 
         if(!$this->hasPermission('assistance_manage_others')){
@@ -300,7 +300,7 @@ class AvailabilityController extends FrontendController{
             $date->save();
         }
 
-        return $this->sendSuccess([],__("Update Success"));
+        return $this->sendSuccess([],__("Atualização bem-sucedida"));
 
     }
 }

@@ -14,9 +14,9 @@
                         <select name="action" class="form-control">
                             <option value="">{{__(" Bulk Actions ")}}</option>
                             <option value="approved">{{__(" Approved ")}}</option>
-                            <option value="delete">{{__(" Delete ")}}</option>
+                            <option value="delete">{{__("Excluir")}}</option>
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
@@ -72,7 +72,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="8">{{__("No data")}}</td>
+                                <td colspan="8">{{__("Sem dados")}}</td>
                             </tr>
                         @endif
                         </tbody>

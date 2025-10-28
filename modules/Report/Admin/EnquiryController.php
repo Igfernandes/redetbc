@@ -42,7 +42,7 @@ class EnquiryController extends AdminController
                     'url'  => route('report.admin.enquiry.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ],
@@ -91,7 +91,7 @@ class EnquiryController extends AdminController
                 }
             }
         }
-        return redirect()->back()->with('success', __('Update success'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida'));
     }
 
     public function reply(Enquiry $enquiry,Request  $request){

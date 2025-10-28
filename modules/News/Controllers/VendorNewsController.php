@@ -43,7 +43,7 @@ class VendorNewsController extends FrontendController
                     'url'  => route('news.vendor.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ],
@@ -101,7 +101,7 @@ class VendorNewsController extends FrontendController
                     'url'  => route('news.vendor.index')
                 ],
                 [
-                    'name'  => __('Edit: :name',['name'=>$row->title]),
+                    'name'  => __('Editar: :name',['name'=>$row->title]),
                     'class' => 'active'
                 ],
             ],
@@ -163,7 +163,7 @@ class VendorNewsController extends FrontendController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('No items selected!'));
+            return redirect()->back()->with('error', __('Nenhum item selecionado!'));
         }
         $allowedActions = ['delete','draft','pending'];
         if(!setting_item('news_vendor_need_approve'))
@@ -171,7 +171,7 @@ class VendorNewsController extends FrontendController
             $allowedActions[] = 'publish';
         }
         if (!in_array($action,$allowedActions)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if ($action == "delete") {
             $this->checkPermission('news_delete');
@@ -193,6 +193,6 @@ class VendorNewsController extends FrontendController
                 $query->update(['status' => $action]);
             }
         }
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
     }
 }

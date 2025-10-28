@@ -19,7 +19,7 @@
                             @endif
                             <option value="delete">{{__("DELETE booking")}}</option>
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
@@ -60,7 +60,7 @@
                         <thead>
                         <tr>
                             <th width="80px"><input type="checkbox" class="check-all"></th>
-                            <th>{{__('Service')}}</th>
+                            <th>{{__('Serviço')}}</th>
                             <th>{{__('Customer')}}</th>
                             <th width="120px">{{__('Status')}}</th>
                             <th width="220px">{{__('Created At')}}</th>
@@ -132,7 +132,7 @@
                                 <div class="d-flex justify-content-center">{{__("Loading...")}}</div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
                             </div>
                         </div>
                     </div>

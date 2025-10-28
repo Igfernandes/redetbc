@@ -56,15 +56,15 @@ class ManageAssistanceController extends FrontendController
             'rows' => $list_tour->paginate(5),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Services'),
+                    'name' => __('Gerenciar Serviços'),
                     'url'  => route('assistance.vendor.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Manage Services"),
+            'page_title'         => __("Gerenciar Serviços"),
         ];
         return view('Assistance::frontend.manageAssistance.index', $data);
     }
@@ -79,15 +79,15 @@ class ManageAssistanceController extends FrontendController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Services'),
+                    'name' => __('Gerenciar Serviços'),
                     'url'  => route('assistance.vendor.index')
                 ],
                 [
-                    'name'  => __('Recovery'),
+                    'name'  => __('Recuperação'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Recovery Services"),
+            'page_title'         => __("Serviços de Recuperação"),
         ];
         return view('Assistance::frontend.manageAssistance.index', $data);
     }
@@ -102,7 +102,7 @@ class ManageAssistanceController extends FrontendController
             event(new UpdatedServiceEvent($query));
 
         }
-        return redirect(route('assistance.vendor.recovery'))->with('success', __('Restore assistance success!'));
+        return redirect(route('assistance.vendor.recovery'))->with('success', __('Assistência de restauração realizada com sucesso!'));
     }
 
     public function createAssistance(Request $request)
@@ -119,15 +119,15 @@ class ManageAssistanceController extends FrontendController
             'attributes'    => $this->attributesClass::where('service', 'assistance')->get(),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Services'),
+                    'name' => __('Gerenciar Serviços'),
                     'url'  => route('assistance.vendor.index')
                 ],
                 [
-                    'name'  => __('Create'),
+                    'name'  => __('Criar'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Create Services"),
+            'page_title'         => __("Criar Serviços"),
         ];
         return view('Assistance::frontend.manageAssistance.detail', $data);
     }
@@ -135,7 +135,7 @@ class ManageAssistanceController extends FrontendController
 
     public function store( Request $request, $id ){
         if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("DEMO MODE: can not add data"));
+            return redirect()->back()->with('danger',__("MODO DEMO: não é possível adicionar dados"));
         }
         if($id>0){
             $this->checkPermission('assistance_update');
@@ -207,10 +207,10 @@ class ManageAssistanceController extends FrontendController
 
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
-                return back()->with('success',  __('Service updated') );
+                return back()->with('success',  __('Serviço atualizado') );
             }else{
                 event(new CreatedServicesEvent($row));
-                return redirect(route('assistance.vendor.edit',['id'=>$row->id]))->with('success', __('Service created') );
+                return redirect(route('assistance.vendor.edit',['id'=>$row->id]))->with('success', __('Serviço criado') );
             }
         }
     }
@@ -238,7 +238,7 @@ class ManageAssistanceController extends FrontendController
         $row = $this->assistanceClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('assistance.vendor.index'))->with('warning', __('Serviços not found!'));
+            return redirect(route('assistance.vendor.index'))->with('warning', __('Serviços não encontrados!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [
@@ -249,15 +249,15 @@ class ManageAssistanceController extends FrontendController
             "selected_terms" => $row->terms->pluck('term_id'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Services'),
+                    'name' => __('Gerenciar Serviços'),
                     'url'  => route('assistance.vendor.index')
                 ],
                 [
-                    'name'  => __('Edit'),
+                    'name'  => __('Editar'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Edit Services"),
+            'page_title'         => __("Editar Serviços"),
         ];
         return view('Assistance::frontend.manageAssistance.detail', $data);
     }
@@ -278,7 +278,7 @@ class ManageAssistanceController extends FrontendController
                 event(new UpdatedServiceEvent($query));
             }
         }
-        return redirect(route('assistance.vendor.index'))->with('success', __('Delete Services success!'));
+        return redirect(route('assistance.vendor.index'))->with('success', __('Exclusão de serviços realizada com sucesso!'));
     }
 
     public function bulkEditAssistance($id , Request $request){
@@ -287,13 +287,13 @@ class ManageAssistanceController extends FrontendController
         $user_id = Auth::id();
         $query = $this->assistanceClass::where("author_id", $user_id)->where("id", $id)->first();
         if (empty($id)) {
-            return redirect()->back()->with('error', __('No item!'));
+            return redirect()->back()->with('error', __('Nenhum item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if(empty($query)){
-            return redirect()->back()->with('error', __('Not Found'));
+            return redirect()->back()->with('error', __('Não encontrado'));
         }
         switch ($action){
             case "make-hide":
@@ -309,7 +309,7 @@ class ManageAssistanceController extends FrontendController
         $query->save();
         event(new UpdatedServiceEvent($query));
 
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
     }
 
     public function bookingReportBulkEdit($booking_id , Request $request){
@@ -324,10 +324,10 @@ class ManageAssistanceController extends FrontendController
 
                 if($status == $this->bookingClass::CANCELLED) $item->tryRefundToWallet();
                 event(new BookingUpdatedEvent($item));
-                return redirect()->back()->with('success', __('Update success'));
+                return redirect()->back()->with('success', __('Atualização bem-sucedida'));
             }
-            return redirect()->back()->with('error', __('Booking not found!'));
+            return redirect()->back()->with('error', __('Reserva não encontrada!'));
         }
-        return redirect()->back()->with('error', __('Update fail!'));
+        return redirect()->back()->with('error', __('Falha na atualização!'));
     }
 }

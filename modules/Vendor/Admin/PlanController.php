@@ -29,7 +29,7 @@ class PlanController extends AdminController
                     'url'  => route('vendor.admin.plan.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ]
@@ -157,6 +157,6 @@ class PlanController extends AdminController
                 $query->update(['status' => $action]);
             }
         }
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
     }
 }

@@ -30,7 +30,7 @@
                 'avatar'  => $avatar,
                 'link' => route('report.admin.booking'),
                 'type' => $booking->object_model,
-                'message' => __(':name has changed to :status', ['name' => $booking->service->title, 'status' => $booking->status])
+                'message' => __(':name mudou para :status', ['name' => $booking->service->title, 'status' => $booking->status])
             ];
 
             // notify vendor

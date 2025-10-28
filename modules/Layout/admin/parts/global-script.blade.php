@@ -21,7 +21,7 @@
     var i18n = {
         warning: "{{__("Warning")}}",
         success: "{{__("Success")}}",
-        confirm_delete: "{{__("Do you want to delete?")}}",
+        confirm_delete: "{{__("Você quer apagar?")}}",
         confirm_recovery: "{{__("Do you want to restore?")}}",
         confirm: "{{__("Confirm")}}",
         cancel: "{{__("Cancel")}}",
@@ -29,7 +29,7 @@
         apply: "{{ __("Apply") }}"
     };
     var daterangepickerLocale = {
-        "applyLabel": "{{__('Apply')}}",
+        "applyLabel": "{{__('Aplicar')}}",
         "cancelLabel": "{{__('Cancel')}}",
         "fromLabel": "{{__('From')}}",
         "toLabel": "{{__('To')}}",
@@ -67,11 +67,11 @@
             {{ app()->getLocale() }}: {
                 'header.image_editor_title': '{{ __('Image Editor') }}',
                 'header.toggle_fullscreen': '{{ __('Toggle fullscreen') }}',
-                'header.close': '{{ __('Close') }}',
+                'header.close': '{{ __('Fechar') }}',
                 'header.close_modal': '{{ __('Close window') }}',
                 'toolbar.download': '{{ __('Save Change') }}',
                 'toolbar.save': '{{ __('Save') }}',
-                'toolbar.apply': '{{ __('Apply') }}',
+                'toolbar.apply': '{{ __('Aplicar') }}',
                 'toolbar.saveAsNewImage': '{{ __('Save As New Image') }}',
                 'toolbar.cancel': '{{ __('Cancel') }}',
                 'toolbar.go_back': '{{ __('Go Back') }}',

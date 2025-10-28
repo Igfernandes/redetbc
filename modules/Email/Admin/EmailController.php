@@ -13,7 +13,7 @@
         public function testEmail(Request $request)
         {
             if(is_demo_mode()){
-                return response()->json(['error' => __("DEMO MODE: Disable update")], 200);
+                return response()->json(['error' => __("MODO DEMO: Desativar atualização")], 200);
             }
             $to = $request->to;
             try {

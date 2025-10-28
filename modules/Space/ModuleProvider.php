@@ -59,17 +59,17 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'attribute'=>[
                         'url'        => route('space.admin.attribute.index'),
-                        'title'      => __('Attributes'),
+                        'title'      => __('Atributos'),
                         'permission' => 'space_manage_attributes',
                     ],
                     'availability'=>[
                         'url'        => route('space.admin.availability.index'),
-                        'title'      => __('Availability'),
+                        'title'      => __('Disponibilidade'),
                         'permission' => 'space_create',
                     ],
                     'recovery'=>[
                         'url'        => route('space.admin.recovery'),
-                        'title'      => __('Recovery'),
+                        'title'      => __('Recuperação'),
                         'permission' => 'space_view',
                     ],
 
@@ -121,7 +121,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     [
                         'url'        => route('space.vendor.availability.index'),
-                        'title'      => __("Availability"),
+                        'title'      => __("Disponibilidade"),
                         'permission' => 'space_create',
                     ],
                     [

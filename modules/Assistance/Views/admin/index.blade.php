@@ -2,10 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{!empty($recovery) ? __('Recovery') : __("All Services")}}</h1>
+            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("All Services")}}</h1>
             <div class="title-actions">
                 @if(empty($recovery))
-                <a href="{{route('assistance.admin.create')}}" class="btn btn-primary">{{__("Add new service")}}</a>
+                <a href="{{route('assistance.admin.create')}}" class="btn btn-primary">{{__("Adicionar novo serviço")}}</a>
                 @endif
             </div>
         </div>
@@ -26,17 +26,17 @@
                                 <option value="draft">{{__(" Move to Draft ")}}</option>
                                 <option value="pending">{{__("Move to Pending")}}</option>
                                 <option value="clone">{{__(" Clone ")}}</option>
-                                <option value="delete">{{__(" Delete ")}}</option>
+                                <option value="delete">{{__("Excluir")}}</option>
                             @endif
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
             <div class="col-left dropdown">
                 <form method="get" action="{{ !empty($recovery) ? route('assistance.admin.recovery') : route('assistance.admin.index')}}" class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
                     @if(!empty($rows) and $assistance_manage_others)
-                        <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}" class="form-control">
+                        <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
                         <div class="ml-3 position-relative">
                             <button class="btn btn-secondary dropdown-toggle bc-dropdown-toggle-filter" type="button" id="dropdown_filters">
                                 {{ __("Advanced") }}
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     @endif
-                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search')}}</button>
+                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Procurar')}}</button>
                 </form>
             </div>
         </div>
@@ -99,7 +99,7 @@
                                     <td>{{ display_date($row->updated_at)}}</td>
                                     <td>
                                         @if(empty($recovery))
-                                            <a href="{{route('assistance.admin.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}</a>
+                                            <a href="{{route('assistance.admin.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Editar')}}</a>
                                         @endif
                                     </td>
                                 </tr>

@@ -20,8 +20,8 @@
                             $types = [
                                 'location'=>__("Location"),
                                 'attr'=>__("Attribute"),
-                                'date'=>__("Date"),
-                                'price'=>__("Price"),
+                                'date'=>__("Data"),
+                                'price'=>__("Preço"),
                                 'advance'=>__("Advance"),
                             ];
                             $attrs = \Modules\Core\Models\Attributes::where('service', 'hotel')->get();

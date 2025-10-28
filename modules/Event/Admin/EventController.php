@@ -74,15 +74,15 @@ class EventController extends AdminController
             'event_manage_others' => $this->hasPermission('event_manage_others'),
             'breadcrumbs'         => [
                 [
-                    'name' => __('Events'),
+                    'name' => __('Eventos'),
                     'url'  => route('event.admin.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'          => __("Event Management")
+            'page_title'          => __("Gestão de Eventos")
         ];
         return view('Event::admin.index', $data);
     }
@@ -109,15 +109,15 @@ class EventController extends AdminController
             'recovery'            => 1,
             'breadcrumbs'         => [
                 [
-                    'name' => __('Events'),
+                    'name' => __('Eventos'),
                     'url'  => route('event.admin.index')
                 ],
                 [
-                    'name'  => __('Recovery'),
+                    'name'  => __('Recuperação'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'          => __("Recovery Event Management")
+            'page_title'          => __("Gerenciamento de eventos de recuperação")
         ];
         return view('Event::admin.index', $data);
     }
@@ -137,15 +137,15 @@ class EventController extends AdminController
             'translation'       => new $this->event_translation(),
             'breadcrumbs'       => [
                 [
-                    'name' => __('Events'),
+                    'name' => __('Eventos'),
                     'url'  => route('event.admin.index')
                 ],
                 [
-                    'name'  => __('Add Event'),
+                    'name'  => __('Adicionar Evento'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Add new Event")
+            'page_title'        => __("Adicionar novo evento")
         ];
         return view('Event::admin.detail', $data);
     }
@@ -173,15 +173,15 @@ class EventController extends AdminController
             'enable_multi_lang' => true,
             'breadcrumbs'       => [
                 [
-                    'name' => __('Events'),
+                    'name' => __('Eventos'),
                     'url'  => route('event.admin.index')
                 ],
                 [
-                    'name'  => __('Edit Event'),
+                    'name'  => __('Editar evento'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Edit: :name", ['name' => $row->title])
+            'page_title'        => __("Editar: :name", ['name' => $row->title])
         ];
         return view('Event::admin.detail', $data);
     }
@@ -190,7 +190,7 @@ class EventController extends AdminController
     {
 
         if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("DEMO MODE: can not add data"));
+            return redirect()->back()->with('danger',__("MODO DEMO: não é possível adicionar dados"));
         }
         if ($id > 0) {
             $this->checkPermission('event_update');
@@ -252,10 +252,10 @@ class EventController extends AdminController
             }
             if ($id > 0) {
                 event(new UpdatedServiceEvent($row));
-                return back()->with('success', __('Event updated'));
+                return back()->with('success', __('Evento atualizado'));
             } else {
                 event(new CreatedServicesEvent($row));
-                return redirect(route('event.admin.edit', $row->id))->with('success', __('Event created'));
+                return redirect(route('event.admin.edit', $row->id))->with('success', __('Evento criado'));
             }
         }
     }
@@ -283,10 +283,10 @@ class EventController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('No items selected!'));
+            return redirect()->back()->with('error', __('Nenhum item selecionado!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         switch ($action) {
             case "delete":
@@ -302,7 +302,7 @@ class EventController extends AdminController
                         event(new UpdatedServiceEvent($row));
                     }
                 }
-                return redirect()->back()->with('success', __('Deleted success!'));
+                return redirect()->back()->with('success', __('Sucesso excluído!'));
                 break;
             case "permanently_delete":
                 foreach ($ids as $id) {
@@ -316,7 +316,7 @@ class EventController extends AdminController
                         $row->forceDelete();
                     }
                 }
-                return redirect()->back()->with('success', __('Permanently delete success!'));
+                return redirect()->back()->with('success', __('Excluir permanentemente com sucesso!'));
                 break;
             case "recovery":
                 foreach ($ids as $id) {
@@ -331,14 +331,14 @@ class EventController extends AdminController
                         event(new UpdatedServiceEvent($row));
                     }
                 }
-                return redirect()->back()->with('success', __('Recovery success!'));
+                return redirect()->back()->with('success', __('Sucesso na recuperação!'));
                 break;
             case "clone":
                 $this->checkPermission('event_create');
                 foreach ($ids as $id) {
                     (new $this->event())->saveCloneByID($id);
                 }
-                return redirect()->back()->with('success', __('Clone success!'));
+                return redirect()->back()->with('success', __('Clonado com sucesso!'));
                 break;
             default:
                 // Change status
@@ -353,7 +353,7 @@ class EventController extends AdminController
                     $row->save();
                     event(new UpdatedServiceEvent($row));
                 }
-                return redirect()->back()->with('success', __('Update success!'));
+                return redirect()->back()->with('success', __('Atualização com sucesso!'));
                 break;
         }
     }

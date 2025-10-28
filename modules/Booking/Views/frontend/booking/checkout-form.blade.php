@@ -8,21 +8,21 @@
                     <div class="form-group">
                         <label for="confirmRegister">
                             <input type="checkbox" name="confirmRegister" id="confirmRegister" value="1">
-                            {{__('Create a new account?')}}
+                            {{__('Criar uma nova conta?')}}
                         </label>
                     </div>
                 </div>
             @endif
             <div class="col-md-6">
                 <div class="form-group">
-                    <label >{{__("First Name")}} <span class="required">*</span></label>
-                    <input type="text" placeholder="{{__("First Name")}}" class="form-control" value="{{$user->first_name ?? ''}}" name="first_name">
+                    <label >{{__("Primeiro nome")}} <span class="required">*</span></label>
+                    <input type="text" placeholder="{{__("Primeiro nome")}}" class="form-control" value="{{$user->first_name ?? ''}}" name="first_name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label >{{__("Last Name")}} <span class="required">*</span></label>
-                    <input type="text" placeholder="{{__("Last Name")}}" class="form-control" value="{{$user->last_name ?? ''}}" name="last_name">
+                    <label >{{__("Sobrenome")}} <span class="required">*</span></label>
+                    <input type="text" placeholder="{{__("Sobrenome")}}" class="form-control" value="{{$user->last_name ?? ''}}" name="last_name">
                 </div>
             </div>
             <div class="col-md-6 field-email">
@@ -33,8 +33,8 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label >{{__("Phone")}} <span class="required">*</span></label>
-                    <input type="text" placeholder="{{__("Your Phone")}}" class="form-control" value="{{$user->phone ?? ''}}" name="phone">
+                    <label >{{__("Telefone")}} <span class="required">*</span></label>
+                    <input type="text" placeholder="{{__("Telefone")}}" class="form-control" value="{{$user->phone ?? ''}}" name="phone">
                 </div>
             </div>
 
@@ -43,13 +43,13 @@
                 <div class="row">
                     <div class="col-md-6" >
                         <div class="form-group">
-                            <label >{{__("Password")}} <span class="required">*</span></label>
+                            <label >{{__("Senha")}} <span class="required">*</span></label>
                             <input type="password" class="form-control" name="password" autocomplete="off" >
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="">{{__('Password confirmation')}} <span class="required">*</span></label>
+                            <label for="">{{__('Confirmação de senha')}} <span class="required">*</span></label>
                             <input type="password" class="form-control" name="password_confirmation" autocomplete="off">
                         </div>
                     </div>
@@ -58,39 +58,39 @@
             @endif
             <div class="col-md-6 field-address-line-1">
                 <div class="form-group">
-                    <label >{{__("Address line 1")}} </label>
-                    <input type="text" placeholder="{{__("Address line 1")}}" class="form-control" value="{{$user->address ?? ''}}" name="address_line_1">
+                    <label >{{__("Endereço 1")}} </label>
+                    <input type="text" placeholder="{{__("Endereço 1")}}" class="form-control" value="{{$user->address ?? ''}}" name="address_line_1">
                 </div>
             </div>
             <div class="col-md-6 field-address-line-2">
                 <div class="form-group">
-                    <label >{{__("Address line 2")}} </label>
-                    <input type="text" placeholder="{{__("Address line 2")}}" class="form-control" value="{{$user->address2 ?? ''}}" name="address_line_2">
+                    <label >{{__("Endereço 2")}} </label>
+                    <input type="text" placeholder="{{__("Endereço 2")}}" class="form-control" value="{{$user->address2 ?? ''}}" name="address_line_2">
                 </div>
             </div>
             <div class="col-md-6 field-city">
                 <div class="form-group">
-                    <label >{{__("City")}} </label>
-                    <input type="text" class="form-control" value="{{$user->city ?? ''}}" name="city" placeholder="{{__("Your City")}}">
+                    <label >{{__("Cidade")}} </label>
+                    <input type="text" class="form-control" value="{{$user->city ?? ''}}" name="city" placeholder="{{__("Cidade")}}">
                 </div>
             </div>
             <div class="col-md-6 field-state">
                 <div class="form-group">
-                    <label >{{__("State/Province/Region")}} </label>
-                    <input type="text" class="form-control" value="{{$user->state ?? ''}}" name="state" placeholder="{{__("State/Province/Region")}}">
+                    <label >{{__("Estado/Província/Região")}} </label>
+                    <input type="text" class="form-control" value="{{$user->state ?? ''}}" name="state" placeholder="{{__("Estado/Província/Região")}}">
                 </div>
             </div>
             <div class="col-md-6 field-zip-code">
                 <div class="form-group">
-                    <label >{{__("ZIP code/Postal code")}} </label>
-                    <input type="text" class="form-control" value="{{$user->zip_code ?? ''}}" name="zip_code" placeholder="{{__("ZIP code/Postal code")}}">
+                    <label >{{__("Código postal/CEP")}} </label>
+                    <input type="text" class="form-control" value="{{$user->zip_code ?? ''}}" name="zip_code" placeholder="{{__("Código postal/CEP")}}">
                 </div>
             </div>
             <div class="col-md-6 field-country">
                 <div class="form-group">
-                    <label >{{__("Country")}} <span class="required">*</span> </label>
+                    <label >{{__("País")}} <span class="required">*</span> </label>
                     <select name="country" class="form-control">
-                        <option value="">{{__('-- Select --')}}</option>
+                        <option value="">{{__('-- Selecione --')}}</option>
                         @foreach(get_country_lists() as $id=>$name)
                             <option @if(($user->country ?? '') == $id) selected @endif value="{{$id}}">{{$name}}</option>
                         @endforeach
@@ -98,8 +98,8 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <label >{{__("Special Requirements")}} </label>
-                <textarea name="customer_notes" cols="30" rows="6" class="form-control" placeholder="{{__('Special Requirements')}}"></textarea>
+                <label >{{__("Requisitos Especiais")}} </label>
+                <textarea name="customer_notes" cols="30" rows="6" class="form-control" placeholder="{{__('Requisitos Especiais')}}"></textarea>
             </div>
         </div>
     </div>
@@ -114,7 +114,7 @@
 
     <div class="form-group">
         <label class="term-conditions-checkbox">
-            <input type="checkbox" name="term_conditions"> {{__('I have read and accept the')}}  <a target="_blank" href="{{get_page_url($term_conditions)}}">{{__('terms and conditions')}}</a>
+            <input type="checkbox" name="term_conditions"> {{__('Li e aceito o')}}  <a target="_blank" href="{{get_page_url($term_conditions)}}">{{__('termos e Condições')}}</a>
         </label>
     </div>
     @if(setting_item("booking_enable_recaptcha"))
@@ -127,7 +127,7 @@
     <p class="alert-text mt10" v-show=" message.content" v-html="message.content" :class="{'danger':!message.type,'success':message.type}"></p>
 
     <div class="form-actions">
-        <button class="btn btn-danger" @click="doCheckout">{{__('Submit')}}
+        <button class="btn btn-danger" @click="doCheckout">{{__('Enviar')}}
             <i class="fa fa-spin fa-spinner" v-show="onSubmit"></i>
         </button>
     </div>

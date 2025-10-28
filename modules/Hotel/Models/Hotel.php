@@ -331,7 +331,7 @@ class Hotel extends Bookable
             ]);
         }
 
-        return $this->sendError(__("Can not check availability"));
+        return $this->sendError(__("Não é possível verificar a disponibilidade"));
     }
 
 
@@ -361,10 +361,10 @@ class Hotel extends Bookable
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
         if (strtotime($start_date) < strtotime(date('Y-m-d 00:00:00')) or strtotime($end_date) - strtotime($start_date) < DAY_IN_SECONDS) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
         if (!$this->checkBusyDate($start_date, $end_date)) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
         // Validate Date and Booking
         $rooms = $this->getRoomsAvailability(request()->input());

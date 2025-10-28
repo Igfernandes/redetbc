@@ -1,26 +1,26 @@
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Site Information")}}</h3>
-        <p class="form-group-desc">{{__('Information of your website for customer and goole')}}</p>
+        <h3 class="form-group-title">{{__("Informações do local")}}</h3>
+        <p class="form-group-desc">{{__('Informações do seu site para o cliente e goole')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="">{{__("Site title")}}</label>
+                    <label class="">{{__("Título do site")}}</label>
                     <div class="form-controls">
                         <input type="text" class="form-control" name="site_title" value="{{setting_item_with_lang('site_title',request()->query('lang'))}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>{{__("Site Desc")}}</label>
+                    <label>{{__("Descrição do site")}}</label>
                     <div class="form-controls">
                         <textarea name="site_desc" class="form-control" cols="30" rows="7">{{setting_item_with_lang('site_desc',request()->query('lang'))}}</textarea>
                     </div>
                 </div>
                 @if(is_default_lang())
                 <div class="form-group">
-                    <label>{{__("Date format")}}</label>
+                    <label>{{__("Formato de data")}}</label>
                     <div class="form-controls">
                         <input type="text" class="form-control" name="date_format" value="{{setting_item('date_format','m/d/Y') }}">
                     </div>
@@ -28,10 +28,10 @@
                 @endif
                 @if(is_default_lang())
                 <div class="form-group">
-                    <label>{{__("Timezone")}}</label>
+                    <label>{{__("Fuso horário")}}</label>
                     <div class="form-controls">
                         <select name="site_timezone" class="form-control">
-                            <option value="UTC">{{__("-- Default --")}}</option>
+                            <option value="UTC">{{__("-- Padrão --")}}</option>
                             @if(!empty($timezones = generate_timezone_list()))
                                 @foreach($timezones as $item=>$value)
                                     <option @if($item == setting_item('site_timezone') ) selected @endif value="{{$item}}">{{$value}}</option>
@@ -41,11 +41,11 @@
                     </div>
                 </div>
                  <div class="form-group">
-                    <label>{{__("Change the first day of week for the calendars")}}</label>
+                    <label>{{__("Alterar o primeiro dia da semana para os calendários")}}</label>
                     <div class="form-controls">
                         <select name="site_first_day_of_the_weekin_calendar" class="form-control">
-                            <option @if("1" == (setting_item('site_first_day_of_the_weekin_calendar')) ) selected @endif value="1">{{__("Monday")}}</option>
-                            <option @if("0" == (setting_item('site_first_day_of_the_weekin_calendar')) ) selected @endif value="0">{{__("Sunday")}}</option>
+                            <option @if("1" == (setting_item('site_first_day_of_the_weekin_calendar')) ) selected @endif value="1">{{__("Segunda-feira")}}</option>
+                            <option @if("0" == (setting_item('site_first_day_of_the_weekin_calendar')) ) selected @endif value="0">{{__("Domingo")}}</option>
                         </select>
                     </div>
                 </div>
@@ -58,18 +58,18 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__('Language')}}</h3>
-        <p class="form-group-desc">{{__('Change language of your websites')}}</p>
+        <h3 class="form-group-title">{{__('Linguagem')}}</h3>
+        <p class="form-group-desc">{{__('Alterar o idioma dos seus sites')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
             <div class="panel-body">
                 @if(is_default_lang())
                     <div class="form-group">
-                        <label>{{__("Select default language")}}</label>
+                        <label>{{__("Selecione o idioma padrão")}}</label>
                         <div class="form-controls">
                             <select name="site_locale" class="form-control">
-                                <option value="">{{__("-- Default --")}}</option>
+                                <option value="">{{__("-- Padrão --")}}</option>
                                 @php
                                     $langs = \Modules\Language\Models\Language::getActive();
                                 @endphp
@@ -78,20 +78,20 @@
                                     <option @if($lang->locale == setting_item('site_locale') ) selected @endif value="{{$lang->locale}}">{{$lang->name}} - ({{$lang->locale}})</option>
                                 @endforeach
                             </select>
-                            <p><i><a href="{{route('language.admin.index')}}">{{__("Manage languages here")}}</a></i></p>
+                            <p><i><a href="{{route('language.admin.index')}}">{{__("Gerencie idiomas aqui")}}</a></i></p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>{{__("Enable Multi Languages")}}</label>
+                        <label>{{__("Ativar vários idiomas")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" @if(setting_item('site_enable_multi_lang') == 1) checked @endif name="site_enable_multi_lang" value="1">{{__('Enable')}}</label>
+                            <label><input type="checkbox" @if(setting_item('site_enable_multi_lang') == 1) checked @endif name="site_enable_multi_lang" value="1">{{__('Habilitar')}}</label>
                         </div>
                     </div>
                 @endif
                 <div class="form-group">
-                    <label>{{__("Enable RTL")}}</label>
+                    <label>{{__("Habilitar RTL")}}</label>
                     <div class="form-controls">
-                        <label><input type="checkbox" @if(setting_item_with_lang('enable_rtl',request()->query('lang')) ?? '' == 1) checked @endif name="enable_rtl" value="1">{{__('Enable')}}</label>
+                        <label><input type="checkbox" @if(setting_item_with_lang('enable_rtl',request()->query('lang')) ?? '' == 1) checked @endif name="enable_rtl" value="1">{{__('Habilitar')}}</label>
                     </div>
                 </div>
             </div>
@@ -103,14 +103,14 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__('Homepage')}}</h3>
-            <p class="form-group-desc">{{__('Change your homepage content')}}</p>
+            <h3 class="form-group-title">{{__(' Página inicial')}}</h3>
+            <p class="form-group-desc">{{__('Altere o conteúdo da sua página inicial')}}</p>
         </div>
         <div class="col-sm-8">
             <div class="panel">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label>{{__("Page for Homepage")}}</label>
+                        <label>{{__("Página para página inicial")}}</label>
                         <div class="form-controls">
                             <?php
                             $template = setting_item('home_page_id') ? \Modules\Page\Models\Page::find(setting_item('home_page_id')) : false;
@@ -137,8 +137,8 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__('Header & Footer Settings')}}</h3>
-        <p class="form-group-desc">{{__('Change your options')}}</p>
+        <h3 class="form-group-title">{{__('Configurações de cabeçalho e rodapé')}}</h3>
+        <p class="form-group-desc">{{__('Mude suas opções')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
@@ -161,22 +161,22 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label>{{__("Topbar Left Text")}}</label>
+                    <label>{{__("Texto esquerdo da barra superior")}}</label>
                     <div class="form-controls">
                         <div id="topbar_left_text_editor" class="ace-editor" style="height: 400px" data-theme="textmate" data-mod="html">{{setting_item_with_lang('topbar_left_text',request()->query('lang'))}}</div>
                         <textarea class="d-none" name="topbar_left_text" > {{ setting_item_with_lang('topbar_left_text',request()->query('lang')) }} </textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>{{__("Footer List Widget")}}</label>
+                    <label>{{__("Widget de lista de rodapé")}}</label>
                     <div class="form-controls">
                         <div class="form-group-item">
                             <div class="form-group-item">
                                 <div class="g-items-header">
                                     <div class="row">
-                                        <div class="col-md-3">{{__("Title")}}</div>
-                                        <div class="col-md-2">{{__('Size')}}</div>
-                                        <div class="col-md-6">{{__('Content')}}</div>
+                                        <div class="col-md-3">{{__("Título")}}</div>
+                                        <div class="col-md-2">{{__('Tamanho')}}</div>
+                                        <div class="col-md-6">{{__('Conteudo')}}</div>
                                         <div class="col-md-1"></div>
                                     </div>
                                 </div>
@@ -211,7 +211,7 @@
                                     @endforeach
                                 </div>
                                 <div class="text-right">
-                                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                                 </div>
                                 <div class="g-more hide">
                                     <div class="item" data-number="__number__">
@@ -240,13 +240,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>{{__("Footer Text Left")}}</label>
+                    <label>{{__("Texto do rodapé à esquerda")}}</label>
                     <div class="form-controls">
                         <textarea name="footer_text_left" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('footer_text_left',request()->query('lang')) }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>{{__("Footer Text Right")}}</label>
+                    <label>{{__("Texto do rodapé à direita")}}</label>
                     <div class="form-controls">
                         <textarea name="footer_text_right" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('footer_text_right',request()->query('lang')) }}</textarea>
                     </div>
@@ -259,33 +259,33 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Page contact settings")}}</h3>
-        <p class="form-group-desc">{{__('Settings for contact page')}}</p>
+        <h3 class="form-group-title">{{__("Configurações de contato da página")}}</h3>
+        <p class="form-group-desc">{{__('Configurações da página de contato')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="">{{__("Contact title")}}</label>
+                    <label class="">{{__("Título do contato")}}</label>
                     <div class="form-controls">
                         <input type="text" class="form-control" name="page_contact_title" value="{{setting_item_with_lang('page_contact_title',request()->query('lang'),"We'd love to hear from you")}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>{{__("Contact sub title")}}</label>
+                    <label>{{__("Subtítulo do contato")}}</label>
                     <div class="form-controls">
                         <input type="text" class="form-control" name="page_contact_sub_title" value="{{setting_item_with_lang('page_contact_sub_title',request()->query('lang'),"Send us a message and we'll respond as soon as possible")}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>{{__("Contact Desc")}}</label>
+                    <label>{{__("Descrição do contato")}}</label>
                     <div class="form-controls">
                         <textarea name="page_contact_desc" class="d-none has-ckeditor" cols="30" rows="7">{{setting_item_with_lang('page_contact_desc',request()->query('lang')) }}</textarea>
                     </div>
                 </div>
                 @if(is_default_lang())
                     <div class="form-group">
-                        <label>{{__("Contact Featured Image")}}</label>
+                        <label>{{__("Imagem em destaque do contato")}}</label>
                         <div class="form-controls form-group-image">
                             {!! \Modules\Media\Helpers\FileHelper::fieldUpload('page_contact_image',setting_item('page_contact_image')) !!}
                         </div>

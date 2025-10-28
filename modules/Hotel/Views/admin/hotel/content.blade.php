@@ -2,7 +2,7 @@
     <div class="panel-title"><strong>{{__("Hotel Content")}}</strong></div>
     <div class="panel-body">
         <div class="form-group magic-field" data-id="title" data-type="title">
-            <label class="control-label">{{__("Title")}}</label>
+            <label class="control-label">{{__("Título")}}</label>
             <input type="text" value="{!! clean($translation->title) !!}" placeholder="{{__("Name of the hotel")}}" name="title" class="form-control">
         </div>
         <div class="form-group">
@@ -58,7 +58,7 @@
             <label class="control-label">{{__('Policy')}}</label>
             <div class="g-items-header">
                 <div class="row">
-                    <div class="col-md-5">{{__("Title")}}</div>
+                    <div class="col-md-5">{{__("Título")}}</div>
                     <div class="col-md-5">{{__('Content')}}</div>
                     <div class="col-md-1"></div>
                 </div>

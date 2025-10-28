@@ -34,7 +34,7 @@
             </div>
             <div class="location">
                 <i class="icofont-money"></i>
-                {{__("Price")}}: <span class="sale-price">{{ $row->display_sale_price_admin }}</span> <span class="price">{{ $row->display_price_admin }}</span>
+                {{__("Preço")}}: <span class="sale-price">{{ $row->display_sale_price_admin }}</span> <span class="price">{{ $row->display_price_admin }}</span>
             </div>
             <div class="location">
                 <i class="icofont-ui-settings"></i>
@@ -57,7 +57,7 @@
                         <a href="{{ route("space.vendor.edit",[$row->id]) }}" class="btn btn-warning">{{__("Edit")}}</a>
                     @endif
                     @if(Auth::user()->hasPermission('space_delete'))
-                        <a href="{{ route("space.vendor.delete",[$row->id]) }}" class="btn btn-danger" data-confirm="<?php echo e(__("Do you want to delete?")); ?>">{{__("Del")}}</a>
+                        <a href="{{ route("space.vendor.delete",[$row->id]) }}" class="btn btn-danger" data-confirm="<?php echo e(__("Você quer apagar?")); ?>">{{__("Del")}}</a>
                     @endif
                     @if($row->status == 'publish')
                         <a href="{{ route("space.vendor.bulk_edit",[$row->id,'action' => "make-hide"]) }}" class="btn btn-secondary">{{__("Make hide")}}</a>

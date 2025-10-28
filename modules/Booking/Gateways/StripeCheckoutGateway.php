@@ -43,38 +43,38 @@ class StripeCheckoutGateway extends BaseGateway
             [
                 'type'  => 'editor',
                 'id'    => 'html',
-                'label' => __('Custom HTML Description'),
+                'label' => __('Descrição HTML personalizada'),
                 'multi_lang' => "1"
             ],
             [
                 'type'       => 'input',
                 'id'        => 'stripe_secret_key',
-                'label'     => __('Secret Key'),
+                'label'     => __('Chave secreta'),
             ],
             [
                 'type'       => 'input',
                 'id'        => 'stripe_publishable_key',
-                'label'     => __('Publishable Key'),
+                'label'     => __('Chave publicável'),
             ],
             [
                 'type'       => 'checkbox',
                 'id'        => 'stripe_enable_sandbox',
-                'label'     => __('Enable Sandbox Mode'),
+                'label'     => __('Ativar modo sandbox'),
             ],
             [
                 'type'       => 'input',
                 'id'        => 'stripe_test_secret_key',
-                'label'     => __('Test Secret Key'),
+                'label'     => __('Testar chave secreta'),
             ],
             [
                 'type'       => 'input',
                 'id'        => 'stripe_test_publishable_key',
-                'label'     => __('Test Publishable Key'),
+                'label'     => __('Teste a chave publicável'),
             ],
             [
                 'type'       => 'input',
                 'id'        => 'endpoint_secret',
-                'label'     => __('Webhook Secret'),
+                'label'     => __('Segredo do webhook'),
                 'desc'     => __('Webhook url: <code>:code</code>',['code'=>$this->getWebhookUrl()]),
             ]
         ];
@@ -91,10 +91,10 @@ class StripeCheckoutGateway extends BaseGateway
             $booking::CANCELLED
         ])) {
 
-            throw new Exception(__("Booking status does need to be paid"));
+            throw new Exception(__("O status da reserva precisa ser pago"));
         }
         if (!$booking->pay_now) {
-            throw new Exception(__("Booking total is zero. Can not process payment gateway!"));
+            throw new Exception(__("O total da reserva é zero. Não é possível processar o gateway de pagamento!"));
         }
         $payment = new Payment();
         $payment->booking_id = $booking->id;
@@ -195,7 +195,7 @@ class StripeCheckoutGateway extends BaseGateway
             // Refund without check status
             $booking->tryRefundToWallet(false);
 
-            return redirect($booking->getDetailUrl())->with("error", __("You cancelled the payment"));
+            return redirect($booking->getDetailUrl())->with("error", __("Você cancelou o pagamento"));
         }
         if (!empty($booking)) {
             return redirect($booking->getDetailUrl());
@@ -290,7 +290,7 @@ class StripeCheckoutGateway extends BaseGateway
                     $payload, $sig_header, $endpoint_secret
                 );
             } catch (\Stripe\Exception\SignatureVerificationException $e) {
-                return response()->json(['message' => __('Webhook error while validating signature.')], 400);
+                return response()->json(['message' => __('Erro de webhook ao validar assinatura.')], 400);
             }
         }
 
@@ -301,7 +301,7 @@ class StripeCheckoutGateway extends BaseGateway
                     $query->where('stripe_intent_id',$paymentIntent->id);
                 })->first();
                 if (!$payment) {
-                    return response()->json(['message' => __('Payment not found')], 400);
+                    return response()->json(['message' => __('Pagamento não encontrado')], 400);
                 }
                 $booking = $payment->booking;
                 if ($booking) {
@@ -325,7 +325,7 @@ class StripeCheckoutGateway extends BaseGateway
                 $payment->save();
                 break;
             default:
-                return response()->json(['message' => __('Received unknown event type')], 400);
+                return response()->json(['message' => __('Tipo de evento desconhecido recebido')], 400);
         }
     }
 
@@ -342,7 +342,7 @@ class StripeCheckoutGateway extends BaseGateway
                         'currency'    => setting_item('currency_main'),
                         'unit_amount' => (float) $payment->amount * 100,
                         'product_data'=>[
-                            'name'=>__("Buy credits"),
+                            'name'=>__("Comprar créditos"),
                         ],
                     ],
 
@@ -384,7 +384,7 @@ class StripeCheckoutGateway extends BaseGateway
         }
         if ($payment) {
             if ($payment->status == 'cancel') {
-                return [false, __("Your payment has been canceled")];
+                return [false, __("Seu pagamento foi cancelado")];
             }
         }
         return [false];

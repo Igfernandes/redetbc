@@ -64,7 +64,7 @@ class SubscriberController extends AdminController
                     'url'  => route('user.admin.subscriber.index')
                 ],
                 [
-                    'name'  => __('Edit: :email', ['email' => $row->email]),
+                    'name'  => __('Editar: :email', ['email' => $row->email]),
                     'class' => 'active'
                 ],
             ]
@@ -101,10 +101,10 @@ class SubscriberController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('Select at least 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         switch ($action) {
             case "delete":

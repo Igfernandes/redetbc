@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label>{{__("Name")}}</label>
+    <label>{{__("Nome")}}</label>
     <input type="text" value="{{$row->name}}" placeholder="{{__("Display Name")}}" name="name" class="form-control" required>
     <div class="invalid-feedback">
         {{__('Please input language name')}}
@@ -33,7 +33,7 @@
     <label>{{__("Status")}}</label>
     <div class="">
         <label>
-            <input type="radio" @if(!$row->status or $row->status == 'publish') checked @endif name="status" value="publish"> {{__('Publish')}}
+            <input type="radio" @if(!$row->status or $row->status == 'publish') checked @endif name="status" value="publish"> {{__('Publicar')}}
         </label>
     </div>
     <div>

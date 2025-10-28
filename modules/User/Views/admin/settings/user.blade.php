@@ -17,7 +17,7 @@
                         <label class="" >{{__("User Register Default Role")}}</label>
                         <div class="form-controls">
                             <select name="user_role" class="form-control">
-                                <option value="">{{__('-- Please select --')}}</option>
+                                <option value="">{{__('-- Selecione --')}}</option>
                                 @foreach(\Modules\User\Models\Role::all() as $role)
                                     <option value="{{$role->id}}" {{setting_item('user_role') == $role->id ? 'selected': ''  }}>{{ucfirst($role->name)}}</option>
                                 @endforeach

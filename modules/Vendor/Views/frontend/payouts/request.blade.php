@@ -39,7 +39,7 @@
                         <label class="col-sm-3 col-form-label">{{__("Method")}} <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
                             <select required class="form-control" name="payout_method">
-                                <option value="">{{__('-- Please select --')}}</option>
+                                <option value="">{{__('-- Selecione --')}}</option>
                                 @foreach($currentUser->available_payout_methods as $id=>$method)
                                     <option value="{{$id}}">{{$method->name}} @if(!empty($method->min)) ({{__('Minimum: :amount',['amount'=>format_money($method->min)])}}) @endif</option>
                                 @endforeach
@@ -56,7 +56,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
                 <button type="button" class="btn btn-success " onclick="vendorPayout.sendRequest(this)">{{__('Send request')}}
                     <i class="fa fa-spinner fa-spin fa-fw"></i>
                 </button>

@@ -96,7 +96,7 @@ class TagController extends AdminController
             return redirect()->back()->with('error', __('Please select at least 1 item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if ($action == 'delete') {
             foreach ($ids as $id) {
@@ -107,6 +107,6 @@ class TagController extends AdminController
                 NewsTag::where('tag_id', $id)->delete();
             }
         }
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
     }
 }

@@ -27,12 +27,12 @@ class FormSearchSpace extends BaseBlock
                     'id'        => 'sub_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Sub Title')
+                    'label'     => __('Subtítulo')
                 ],
                 [
                     'id'            => 'style',
                     'type'          => 'radios',
-                    'label'         => __('Style Background'),
+                    'label'         => __('Estilo de fundo'),
                     'values'        => [
                         [
                             'value'   => '',
@@ -40,25 +40,25 @@ class FormSearchSpace extends BaseBlock
                         ],
                         [
                             'value'   => 'carousel',
-                            'name' => __("Slider Carousel")
+                            'name' => __("Carrossel deslizante")
                         ]
                     ]
                 ],
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('- Layout Normal: Background Image Uploader')
+                    'label' => __('- Layout Normal: Carregador de Imagem de Fundo')
                 ],
                 [
                     'id'          => 'list_slider',
                     'type'        => 'listItem',
-                    'label'       => __('- Layout Slider: List Item(s)'),
+                    'label'       => __('- Controle deslizante de layout: Listar item(ns)'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
                             'id'    => 'bg_image',
                             'type'  => 'uploader',
-                            'label' => __('Background Image Uploader')
+                            'label' => __('Carregador de Imagem de Fundo')
                         ]
                     ]
                 ]

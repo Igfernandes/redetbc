@@ -93,7 +93,7 @@ class BookingController extends AdminController
                 }
             }
         }
-        return redirect()->back()->with('success', __('Update success'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida'));
     }
 
     public function email_preview(Request $request, $id)

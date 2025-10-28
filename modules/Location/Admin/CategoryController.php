@@ -98,10 +98,10 @@ class CategoryController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('Select at least 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {
@@ -125,7 +125,7 @@ class CategoryController extends AdminController
                 $query->update(['status' => $action]);
             }
         }
-        return redirect()->back()->with('success', __('Updated success!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
 
     public function getForSelect2(Request $request)

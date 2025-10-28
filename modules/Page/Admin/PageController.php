@@ -36,7 +36,7 @@ class PageController extends AdminController
                     'url' => route('page.admin.index')
                 ],
                 [
-                    'name' => __('All'),
+                    'name' => __('Todos'),
                     'class' => 'active'
                 ],
             ]
@@ -183,7 +183,7 @@ class PageController extends AdminController
                 $query->update(['status' => $action]);
             }
         }
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
     }
 
 

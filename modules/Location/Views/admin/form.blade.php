@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label>{{__("Name")}}</label>
+    <label>{{__("Nome")}}</label>
     <input type="text" value="{{$translation->name}}" placeholder="{{__("Location name")}}" name="name" class="form-control">
 </div>
 @if(is_default_lang())

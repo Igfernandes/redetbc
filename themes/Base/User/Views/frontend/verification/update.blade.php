@@ -59,7 +59,7 @@
                 <input type="hidden" name="verified_phone" class="form-control" id="verified_phone">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
                 <button type="button" onclick="verifyPhone()" class="btn btn-primary">{{__('Verify')}}</button>
             </div>
         </div>

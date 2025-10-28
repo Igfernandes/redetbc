@@ -55,22 +55,22 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'create'=>[
                         'url'        => route('event.admin.create'),
-                        'title'      => __('Add new Event'),
+                        'title'      => __('Adicionar novo evento'),
                         'permission' => 'event_create',
                     ],
                     'attribute'=>[
                         'url'        => route('event.admin.attribute.index'),
-                        'title'      => __('Attributes'),
+                        'title'      => __('Atributos'),
                         'permission' => 'event_manage_attributes',
                     ],
                     'availability'=>[
                         'url'        => route('event.admin.availability.index'),
-                        'title'      => __('Availability'),
+                        'title'      => __('Disponibilidade'),
                         'permission' => 'event_create',
                     ],
                     'recovery'=>[
                         'url'        => route('event.admin.recovery'),
-                        'title'      => __('Recovery'),
+                        'title'      => __('Recuperação'),
                         'permission' => 'event_view',
                     ],
                 ]
@@ -121,7 +121,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'availability'=>[
                         'url'        => route('event.vendor.availability.index'),
-                        'title'      => __('Availability'),
+                        'title'      => __('Disponibilidade'),
                         'permission' => 'event_create',
                     ],
                     [

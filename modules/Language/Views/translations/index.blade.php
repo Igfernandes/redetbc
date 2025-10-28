@@ -18,7 +18,7 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>{{__("Name")}}</th>
+                                <th>{{__("Nome")}}</th>
                                 <th>{{__("Percent")}}</th>
                                 <th>{{__("Translated")}}</th>
                                 <th>{{__("Last build at")}}</th>
@@ -53,7 +53,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="5">{{__("No data")}}</td>
+                                    <td colspan="5">{{__("Sem dados")}}</td>
                                 </tr>
                             @endif
                             </tbody>

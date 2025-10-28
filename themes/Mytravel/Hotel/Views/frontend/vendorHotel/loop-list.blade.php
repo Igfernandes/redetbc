@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\URL;
             </div>
             <div class="location">
                 <i class="icofont-money"></i>
-                {{__("Price")}}: <span class="sale-price">{{ $row->display_sale_price_admin }}</span> <span class="price">{{ $row->display_price_admin }}</span>
+                {{__("Preço")}}: <span class="sale-price">{{ $row->display_sale_price_admin }}</span> <span class="price">{{ $row->display_price_admin }}</span>
             </div>
             <div class="location">
                 <i class="icofont-ui-settings"></i>

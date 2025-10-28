@@ -18,7 +18,7 @@ class FaqList extends BaseBlock
                 [
                     'id'            => 'style',
                     'type'          => 'radios',
-                    'label'         => __('Style'),
+                    'label'         => __('Estilo'),
                     'values'        => [
                         [
                             'value'   => '',

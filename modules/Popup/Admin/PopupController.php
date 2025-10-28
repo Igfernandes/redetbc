@@ -47,7 +47,7 @@ class PopupController extends AdminController
                     'url'  => route('popup.admin.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ],
@@ -75,7 +75,7 @@ class PopupController extends AdminController
                     'url'  => route('popup.admin.index')
                 ],
                 [
-                    'name'  => __('Recovery'),
+                    'name'  => __('Recuperação'),
                     'class' => 'active'
                 ],
             ],
@@ -131,7 +131,7 @@ class PopupController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Edit: :name", ['name' => $row->title])
+            'page_title'        => __("Editar: :name", ['name' => $row->title])
         ];
         return view('Popup::admin.detail', $data);
     }
@@ -181,10 +181,10 @@ class PopupController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('No items selected!'));
+            return redirect()->back()->with('error', __('Nenhum item selecionado!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         switch ($action) {
             case "delete":
@@ -196,7 +196,7 @@ class PopupController extends AdminController
                         $row->delete();
                     }
                 }
-                return redirect()->back()->with('success', __('Deleted success!'));
+                return redirect()->back()->with('success', __('Excluído com sucesso!'));
                 break;
             case "permanently_delete":
                 foreach ($ids as $id) {
@@ -207,7 +207,7 @@ class PopupController extends AdminController
                         $row->forceDelete();
                     }
                 }
-                return redirect()->back()->with('success', __('Permanently delete success!'));
+                return redirect()->back()->with('success', __('Excluir permanentemente com sucesso!'));
                 break;
             case "recovery":
                 foreach ($ids as $id) {
@@ -217,14 +217,14 @@ class PopupController extends AdminController
                         $row->restore();
                     }
                 }
-                return redirect()->back()->with('success', __('Recovery success!'));
+                return redirect()->back()->with('success', __('Recuperação bem-sucedida!'));
                 break;
             case "clone":
                 $this->checkPermission('popup_create');
                 foreach ($ids as $id) {
                     (new $this->popup())->saveCloneByID($id);
                 }
-                return redirect()->back()->with('success', __('Clone success!'));
+                return redirect()->back()->with('success', __('Clone realizado com sucesso!'));
                 break;
             default:
                 // Change status
@@ -235,7 +235,7 @@ class PopupController extends AdminController
                     $row->status = $action;
                     $row->save();
                 }
-                return redirect()->back()->with('success', __('Update success!'));
+                return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
                 break;
         }
     }

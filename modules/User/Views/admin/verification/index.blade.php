@@ -12,20 +12,20 @@
                     {{csrf_field()}}
                     <select name="action" class="form-control">
                         <option value="">{{__(" Bulk Actions ")}}</option>
-                        <option value="delete">{{__(" Delete ")}}</option>
+                        <option value="delete">{{__("Excluir")}}</option>
                     </select>
-                    <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                    <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                 </form>
             </div>
             <div class="col-left">
                 <form method="get" class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
                     <select class="form-control" name="role">
-                        <option value="">{{ __('-- Select --')}}</option>
+                        <option value="">{{ __('-- Selecione --')}}</option>
                         @foreach($roles as $role)
                             <option value="{{$role->name}}" @if(Request()->role == $role->name) selected @endif >{{ucfirst($role->name)}}</option>
                         @endforeach
                     </select>
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}" class="form-control">
+                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
                     <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search User')}}</button>
                 </form>
             </div>
@@ -84,7 +84,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="8">{{__("No data")}}</td>
+                                    <td colspan="8">{{__("Sem dados")}}</td>
                                 </tr>
                             @endif
                             </tbody>

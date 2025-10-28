@@ -438,10 +438,10 @@
         public function getStatusTextAttribute(){
             switch ($this->status){
                 case "publish":
-                    return __("Publish");
+                    return __("Publicar");
                     break;
                 case "draft":
-                    return __("Draft");
+                    return __("Rascunho");
                     break;
                 default:
                     return ucfirst($this->status ?? '');

@@ -14,7 +14,7 @@
                             @csrf
                             @include('Tour::admin/category/form',['parents'=>$rows])
                             <div class="">
-                                <button class="btn btn-primary" type="submit">{{__("Add new")}}</button>
+                                <button class="btn btn-primary" type="submit">{{__("Adicionar novo")}}</button>
                             </div>
                         </form>
                     </div>
@@ -27,19 +27,19 @@
                             <form method="post" action="{{route('tour.admin.category.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                                 {{csrf_field()}}
                                 <select name="action" class="form-control">
-                                    <option value="">{{__(" Bulk Action ")}}</option>
+                                    <option value="">{{__("Ação em massa")}}</option>
                                     <option value="publish">{{__(" Publish ")}}</option>
                                     <option value="draft">{{__(" Move to Draft ")}}</option>
-                                    <option value="delete">{{__(" Delete ")}}</option>
+                                    <option value="delete">{{__("Excluir")}}</option>
                                 </select>
-                                <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                                <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                             </form>
                         @endif
                     </div>
                     <div class="col-left">
                         <form method="get" action="{{route('tour.admin.category.index')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
-                            <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Search by name")}}">
-                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search')}}</button>
+                            <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Pesquisar por nome")}}">
+                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Procurar')}}</button>
                         </form>
                     </div>
                 </div>
@@ -50,10 +50,10 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th>{{__("Name")}}</th>
+                                    <th>{{__("Nome")}}</th>
                                     <th class="slug d-none d-md-block">{{__("Slug")}}</th>
                                     <th class="status">{{__("Status")}}</th>
-                                    <th class="date d-none d-md-block">{{__("Date")}}</th>
+                                    <th class="date d-none d-md-block">{{__("Data")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -79,7 +79,7 @@
                                     ?>
                                 @else
                                     <tr>
-                                        <td colspan="5">{{__("No data")}}</td>
+                                        <td colspan="5">{{__("Sem dados")}}</td>
                                     </tr>
                                 @endif
                                 </tbody>

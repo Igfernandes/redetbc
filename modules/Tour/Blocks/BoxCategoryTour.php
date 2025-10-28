@@ -41,7 +41,7 @@ class BoxCategoryTour extends BaseBlock
                                 ],
                                 'width' => '100%',
                                 'allowClear' => 'true',
-                                'placeholder' => __('-- Select --')
+                                'placeholder' => __('-- Selecione --')
                             ],
                             'pre_selected'=>route('tour.admin.category.category.getForSelect2',['pre_selected'=>1])
                         ],

@@ -100,7 +100,7 @@ class AvailabilityController extends FrontendController{
                 'url'  => route('hotel.vendor.edit',[$this->currentHotel->id])
             ],
             [
-                'name'  => __('Availability'),
+                'name'  => __('Disponibilidade'),
                 'class' => 'active'
             ],
         ];
@@ -180,7 +180,7 @@ class AvailabilityController extends FrontendController{
 
                 if(!$row->active)
                 {
-                    $row->title = $row->event = __('Blocked');
+                    $row->title = $row->event = __('Bloqueado');
                     $row->backgroundColor = '#fe2727';
                     $row->classNames = ['blocked-event'];
                     $row->textColor = '#fe2727';
@@ -209,8 +209,8 @@ class AvailabilityController extends FrontendController{
                         $allDates[$date]['event'] = $allDates[$date]['title'] = format_money_main($allDates[$date]['price'] ). ' x '.$allDates[$date]['number'];
                         if($allDates[$date]['number'] <=0 ){
                             $allDates[$date]['active'] = 0;
-                            $allDates[$date]['event'] = __('Full Book');
-                            $allDates[$date]['title'] = __('Full Book');
+                            $allDates[$date]['event'] = __('Livro Completo');
+                            $allDates[$date]['title'] = __('Livro Completo');
                             $allDates[$date]['classNames'] = ['full-book-event'];
                         }
                     }
@@ -272,7 +272,7 @@ class AvailabilityController extends FrontendController{
             $date->save();
         }
 
-        return $this->sendSuccess([],__("Update Success"));
+        return $this->sendSuccess([],__("Atualização bem-sucedida"));
 
     }
 }

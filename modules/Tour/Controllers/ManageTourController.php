@@ -65,7 +65,7 @@ class ManageTourController extends FrontendController
                     'url'  => route('tour.vendor.index'),
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ],
@@ -88,7 +88,7 @@ class ManageTourController extends FrontendController
                     'url'  => route('tour.vendor.index'),
                 ],
                 [
-                    'name'  => __('Recovery'),
+                    'name'  => __('Recuperação'),
                     'class' => 'active'
                 ],
             ],
@@ -126,7 +126,7 @@ class ManageTourController extends FrontendController
                     'url'  => route('tour.vendor.index'),
                 ],
                 [
-                    'name'  => __('Create'),
+                    'name'  => __('Criar'),
                     'class' => 'active'
                 ],
             ],
@@ -159,7 +159,7 @@ class ManageTourController extends FrontendController
                     'url'  => route('tour.vendor.index'),
                 ],
                 [
-                    'name'  => __('Edit'),
+                    'name'  => __('Editar'),
                     'class' => 'active'
                 ],
             ],
@@ -171,7 +171,7 @@ class ManageTourController extends FrontendController
     public function store(Request $request, $id)
     {
         if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("DEMO MODE: can not add data"));
+            return redirect()->back()->with('danger',__("MODO DEMO: não é possível adicionar dados"));
         }
         if ($id > 0) {
             $this->checkPermission('tour_update');
@@ -288,13 +288,13 @@ class ManageTourController extends FrontendController
         $user_id = Auth::id();
         $query = $this->tourClass::where("author_id", $user_id)->where("id", $id)->first();
         if (empty($id)) {
-            return redirect()->back()->with('error', __('No item!'));
+            return redirect()->back()->with('error', __('Nenhum item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if (empty($query)) {
-            return redirect()->back()->with('error', __('Not Found'));
+            return redirect()->back()->with('error', __('Não encontrado'));
         }
         switch ($action) {
             case "make-hide":
@@ -308,7 +308,7 @@ class ManageTourController extends FrontendController
                 break;
         }
         $query->save();
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
     }
 
     public function bookingReportBulkEdit($booking_id, Request $request)
@@ -325,11 +325,11 @@ class ManageTourController extends FrontendController
                 if($status == Booking::CANCELLED) $item->tryRefundToWallet();
 
                 event(new BookingUpdatedEvent($item));
-                return redirect()->back()->with('success', __('Update success'));
+                return redirect()->back()->with('success', __('Atualização bem-sucedida'));
             }
-            return redirect()->back()->with('error', __('Booking not found!'));
+            return redirect()->back()->with('error', __('Reserva não encontrada!'));
         }
-        return redirect()->back()->with('error', __('Update fail!'));
+        return redirect()->back()->with('error', __('Falha na atualização!'));
     }
 
     public function cloneTour(Request $request, $id)
