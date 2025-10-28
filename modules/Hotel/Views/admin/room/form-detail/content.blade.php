@@ -8,7 +8,7 @@
 </div>
 @if(is_default_lang())
     <div class="form-group">
-        <label >{{__('Feature Image')}} </label>
+        <label >{{__('Imagem em destaque')}} </label>
         {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
     </div>
 

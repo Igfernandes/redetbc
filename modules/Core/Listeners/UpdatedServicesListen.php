@@ -18,13 +18,13 @@
                 $updatedBy = User::where('id',$services->update_user)->first();
 
                 if(!empty($services->deleted_at)){
-                    $message = __(':title has been deleted by :by', [
+                    $message = __(':title foi deletado por :by', [
                         'title' => $services->title,
                         'status' => $services->status,
                         'by' => !empty($updatedBy) ? $updatedBy->display_name : Auth::user()->display_name
                     ]);
                 }else{
-                    $message = __(':title was updated to :status by :by', [
+                    $message = __(':title foi atualizado para :status por :by', [
                         'title' => $services->title,
                         'status' => $services->status_text,
                         'by' => !empty($updatedBy) ? $updatedBy->display_name : Auth::user()->display_name

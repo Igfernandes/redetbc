@@ -2,12 +2,12 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__('Config Broadcast')}}</h3>
-            <p class="form-group-desc">{{__('Change your config broadcast site')}}</p>
+            <h3 class="form-group-title">{{__('Transmissão de configuração')}}</h3>
+            <p class="form-group-desc">{{__('Alterar a configuração do seu site de transmissão')}}</p>
         </div>
         <div class="col-sm-8">
             <div class="panel">
-                <div class="panel-title"><strong>{{__("Broadcast Driver")}}</strong></div>
+                <div class="panel-title"><strong>{{__("Driver de transmissão")}}</strong></div>
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="form-controls">
@@ -25,36 +25,36 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__('Pusher API')}}</h3>
-            <p class="form-group-desc">{{__('Change your API for pusher here. It will use for chat plugin and notification')}}</p>
+            <h3 class="form-group-title">{{__('API empurrador')}}</h3>
+            <p class="form-group-desc">{{__('Altere sua API para o pusher aqui. Ela será usada para plugins de bate-papo e notificações.')}}</p>
         </div>
         <div class="col-sm-8">
             <div class="panel">
-                <div class="panel-title"><strong>{{__("Pusher API Information")}}</strong></div>
+                <div class="panel-title"><strong>{{__("Informações da API Pusher")}}</strong></div>
                 <div class="panel-body">
                     <div class="form-group" >
-                        <label>{{__('API KEY')}}</label>
+                        <label>{{__('CHAVE DE API')}}</label>
                         <div class="form-controls">
                             <input type="text" name="pusher_api_key" value="{{setting_item('pusher_api_key')}}" class="form-control">
 
                         </div>
                     </div>
                     <div class="form-group" >
-                        <label>{{__('API Secret')}}</label>
+                        <label>{{__('Segredo da API')}}</label>
                         <div class="form-controls">
                             <input type="text" name="pusher_api_secret" value="{{setting_item('pusher_api_secret')}}" class="form-control">
 
                         </div>
                     </div>
                     <div class="form-group" >
-                        <label>{{__('APP ID')}}</label>
+                        <label>{{__('ID do aplicativo')}}</label>
                         <div class="form-controls">
                             <input type="text" name="pusher_app_id" value="{{setting_item('pusher_app_id')}}" class="form-control">
 
                         </div>
                     </div>
                     <div class="form-group" >
-                        <label>{{__('Cluster')}}</label>
+                        <label>{{__('Conjunto')}}</label>
                         <div class="form-controls">
                             <input type="text" name="pusher_cluster" value="{{setting_item('pusher_cluster')}}" class="form-control">
 

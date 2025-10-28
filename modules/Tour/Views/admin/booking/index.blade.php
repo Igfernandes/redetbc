@@ -13,7 +13,7 @@
                 <div class="filter-div d-flex justify-content-between ">
                     <div class="col-left">
                         <form method="get" action="" class="filter-form filter-form-left d-flex flex-column flex-sm-row" role="search">
-                            <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}" class="form-control">
+                            <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
                             <select name="cat_id" class="form-control">
                                 <option value="">{{ __('--All Category --')}} </option>
                                 <?php
@@ -24,7 +24,7 @@
                                 }
                                 ?>
                             </select>
-                            <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search')}}</button>
+                            <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Procurar')}}</button>
                         </form>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         <div class="booking-calendar vec-wrap panel" id="booking-calendar" >
             <div class="panel-body">
                 <div class="vec-header-toolbar d-flex justify-content-between align-items-center">
-                    <div class=""><i><span class="count-string">{{ __("Showing :from - :to of :total Tour(s)",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span></i></div>
+                    <div class=""><i><span class="count-string">{{ __("Mostrando :from - :to of :total Tour(s)",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span></i></div>
                     <div class="current-month">{{date('M-Y',$current_month)}}</div>
                     <div class="btn-group" role="group">
                         <a href="{{$prev_url}}" type="button" class="btn btn-secondary"><i class="icon ion-ios-arrow-back"></i></a>

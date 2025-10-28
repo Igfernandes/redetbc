@@ -1,7 +1,7 @@
 <?php
 return [
     'layouts'=>[
-        'normal'=>__("Normal Layout"),
-        'map'=>__("Map Layout"),
+        'normal'=>__("Layout normal"),
+        'map'=>__("Layout do Mapa"),
     ]
 ];

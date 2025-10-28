@@ -325,9 +325,9 @@ class UserController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids))
-            return redirect()->back()->with('error', __('Select at least 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
         if (empty($action))
-            return redirect()->back()->with('error', __('Select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         if ($action == 'delete') {
             foreach ($ids as $id) {
                 if ($id == Auth::id()) continue;
@@ -365,7 +365,7 @@ class UserController extends AdminController
         if (empty($ids))
             return redirect()->back()->with('error', __('Select at leas 1 item!'));
         if (empty($action))
-            return redirect()->back()->with('error', __('Select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
 
         switch ($action) {
             case "delete":
@@ -375,7 +375,7 @@ class UserController extends AdminController
                         $query->delete();
                     }
                 }
-                return redirect()->back()->with('success', __('Deleted success!'));
+                return redirect()->back()->with('success', __('Excluído com sucesso!'));
                 break;
             default:
                 foreach ($ids as $id) {
@@ -398,7 +398,7 @@ class UserController extends AdminController
     {
         $this->checkPermission('user_create');
         if (empty($id))
-            return redirect()->back()->with('error', __('Select at least 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
 
         $vendorRequest = VendorRequest::find($id);
         if (!empty($vendorRequest)) {

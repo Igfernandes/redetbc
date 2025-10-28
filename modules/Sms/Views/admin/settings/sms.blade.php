@@ -117,7 +117,7 @@
                 <div class="form-group">
                     <label class="">{{__("Country")}}</label>
                     <select name="admin_country_has_booking" class="form-control">
-                        <option value="">{{__('-- Select --')}}</option>
+                        <option value="">{{__('-- Selecione --')}}</option>
                         @foreach(get_country_lists() as $id=>$name)
                             <option @if(setting_item_with_lang('admin_country_has_booking',request()->query('lang')) ==$id) selected @endif value="{{$id}}">{{$name}}</option>
                         @endforeach
@@ -308,7 +308,7 @@
                     <div class="form-controls">
                         <label class="">{{__("Country")}}</label>
                         <select name="country" class="form-control" id="country-sms-testing">
-                            <option value="">{{__('-- Select --')}}</option>
+                            <option value="">{{__('-- Selecione --')}}</option>
                             @foreach(get_country_lists() as $id=>$name)
                                 <option value="{{$id}}">{{$name}}</option>
                             @endforeach

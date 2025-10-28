@@ -39,7 +39,7 @@ $service = $row->service;
                 </div>
                 <div class="location">
                     <i class="icofont-money"></i>
-                    {{__("Price")}}: <span class="sale-price">{{ $service->display_sale_price }}</span> <span class="price">{{ $service->display_price }}</span>
+                    {{__("Preço")}}: <span class="sale-price">{{ $service->display_sale_price }}</span> <span class="price">{{ $service->display_price }}</span>
                 </div>
                 @if($service->getReviewEnable())
                     <div class="rate">

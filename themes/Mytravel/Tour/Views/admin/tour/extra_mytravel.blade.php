@@ -26,7 +26,7 @@ if(!is_default_lang()) return;
     <div class="col-lg-6">
         <div class="form-group">
             <label class="control-label">{{__("Wifi available")}}</label> <br>
-            <input type="checkbox" name="wifi_available" @if($row->wifi_available) checked @endif value="1"> {{__("Enable featured")}}
+            <input type="checkbox" name="wifi_available" @if($row->wifi_available) checked @endif value="1"> {{__("Habilitar destaque")}}
         </div>
     </div>
 </div>

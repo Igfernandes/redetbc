@@ -1,7 +1,7 @@
 @foreach ($attributes as $attribute)
     @php $translate = $attribute->translate(app_get_locale()); @endphp
     <div class="panel">
-        <div class="panel-title"><strong>{{__('Attribute: :name',['name'=>$translate->name])}}</strong></div>
+        <div class="panel-title"><strong>{{__('Atributo: :name',['name'=>$translate->name])}}</strong></div>
         <div class="panel-body">
             <div class="terms-scrollable">
                 @foreach($attribute->terms as $term)

@@ -19,7 +19,7 @@
                             @endif
                             <option value="delete">{{__("DELETE Enquiry")}}</option>
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
@@ -41,7 +41,7 @@
                         <thead>
                         <tr>
                             <th width="80px"><input type="checkbox" class="check-all"></th>
-                            <th>{{__('Service')}}</th>
+                            <th>{{__('Serviço')}}</th>
                             <th>{{__('Customer')}}</th>
                             <th width="80px">{{__('Status')}}</th>
                             <th width="80px">{{__('Replies')}}</th>
@@ -94,7 +94,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="6">{{__("No data")}}</td>
+                                    <td colspan="6">{{__("Sem dados")}}</td>
                                 </tr>
                             @endif
                         </tbody>

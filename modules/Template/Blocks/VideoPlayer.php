@@ -31,7 +31,7 @@ class VideoPlayer extends BaseBlock
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Background Image Uploader')
+                    'label' => __('Carregador de Imagem de Fundo')
                 ],
             ],
             'category'=>__("Other Block")

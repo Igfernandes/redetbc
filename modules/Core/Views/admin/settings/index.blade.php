@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
                         <strong>
-                            <i class="fa fa-cogs"></i> {{ __("Main Settings") }}</strong>
+                            <i class="fa fa-cogs"></i> {{ __("Configurações principais") }}</strong>
                     </div>
                     <div class="list-group list-group-flush">
                         @foreach($groups as $id=>$setting)
@@ -47,7 +47,7 @@
                     <hr>
                     <div class="d-flex justify-content-between">
                         <span></span>
-                        <button class="btn btn-primary" type="submit">{{__('Save settings')}}</button>
+                        <button class="btn btn-primary" type="submit">{{__('Salvar configurações')}}</button>
                     </div>
                 </form>
             </div>

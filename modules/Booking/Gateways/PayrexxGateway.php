@@ -30,7 +30,7 @@ class PayrexxGateway extends BaseGateway
                 'type'       => 'input',
                 'id'         => 'name',
                 'label'      => __('Nome personalizado'),
-                'std'        => __("Payrexx Checkout"),
+                'std'        => __("Pagamento Payrexx"),
                 'multi_lang' => "1"
             ],
             [
@@ -52,8 +52,8 @@ class PayrexxGateway extends BaseGateway
             [
                 'type'  => 'input',
                 'id'    => 'api_secret_key',
-                'label' => __('Api secret key'),
-                'desc'=>__('Url callback: ')."<b>".route('gateway.webhook',['gateway'=>$this->id])."</b>",
+                'label' => __('Chave secreta da API'),
+                'desc'=>__('Retorno de chamada de URL: ')."<b>".route('gateway.webhook',['gateway'=>$this->id])."</b>",
             ]
         ];
     }

@@ -26,7 +26,7 @@
                             <thead>
                             <tr>
                                 <th width="2%">{{__("Type")}}</th>
-                                <th>{{__("Title")}}</th>
+                                <th>{{__("Título")}}</th>
                                 <th class="a-hidden">{{__("Order Date")}}</th>
                                 <th class="a-hidden">{{__("Execution Time")}}</th>
                                 <th>{{__("Total")}}</th>
@@ -64,7 +64,7 @@
                         <div class="d-flex justify-content-center">{{__("Loading...")}}</div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
                     </div>
                 </div>
             </div>

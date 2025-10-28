@@ -17,11 +17,11 @@
             </div>
             <div class="location">
                 <i class="icofont-ui-settings"></i>
-                {{__("Number")}}: {{$row->number}}
+                {{__("Número")}}: {{$row->number}}
             </div>
             <div class="location">
                 <i class="icofont-money"></i>
-                {{__("Price")}}: <span class="price">{{ $row->display_price }}</span>
+                {{__("Preço")}}: <span class="price">{{ $row->display_price }}</span>
             </div>
             <div class="location">
                 <i class="icofont-ui-settings"></i>
@@ -36,7 +36,7 @@
                     <a href="{{route('hotel.vendor.room.edit',['hotel_id'=>$hotel->id,'id'=>$row->id])}}" class="btn btn-warning">{{__("Edit")}}</a>
                 @endif
                 @if(Auth::user()->hasPermission('hotel_update'))
-                    <a href="{{route('hotel.vendor.room.delete',['hotel_id'=>$hotel->id,'id'=>$row->id])}}" class="btn btn-danger" data-confirm="<?php echo e(__("Do you want to delete?")); ?>">{{__("Del")}}</a>
+                    <a href="{{route('hotel.vendor.room.delete',['hotel_id'=>$hotel->id,'id'=>$row->id])}}" class="btn btn-danger" data-confirm="<?php echo e(__("Você quer apagar?")); ?>">{{__("Del")}}</a>
                 @endif
                 @if($row->status == 'publish')
                     <a href="{{route('hotel.vendor.room.bulk_edit',['hotel_id'=>$hotel->id,'id'=>$row->id,'action' => "make-hide"])}}" class="btn btn-secondary">{{__("Make hide")}}</a>

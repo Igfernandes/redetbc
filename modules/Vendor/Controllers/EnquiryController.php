@@ -50,11 +50,11 @@ class EnquiryController extends FrontendController
             if (!empty($item)) {
                 $item->status = $status;
                 $item->save();
-                return redirect()->back()->with('success', __('Update success'));
+                return redirect()->back()->with('success', __('Atualização bem-sucedida'));
             }
             return redirect()->back()->with('error', __('Enquiry not found!'));
         }
-        return redirect()->back()->with('error', __('Update fail!'));
+        return redirect()->back()->with('error', __('Falha na atualização!'));
     }
 
     public function reply(Enquiry $enquiry,Request  $request){

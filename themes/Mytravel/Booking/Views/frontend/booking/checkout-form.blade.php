@@ -90,7 +90,7 @@
                         {{ __("Country") }}
                     </label>
                     <select name="country" class="form-control">
-                        <option value="">{{__('-- Select --')}}</option>
+                        <option value="">{{__('-- Selecione --')}}</option>
                         @foreach(get_country_lists() as $id=>$name)
                             <option @if(($user->country ?? '') == $id) selected @endif value="{{$id}}">{{$name}}</option>
                         @endforeach

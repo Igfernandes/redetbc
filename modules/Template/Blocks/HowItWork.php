@@ -37,7 +37,7 @@ class HowItWork extends BaseBlock
                             'id'        => 'sub_title',
                             'type'      => 'input',
                             'inputType' => 'textArea',
-                            'label'     => __('Sub Title')
+                            'label'     => __('Subtítulo')
                         ],
                         [
                             'id'    => 'icon_image',
@@ -48,7 +48,7 @@ class HowItWork extends BaseBlock
                             'id'        => 'order',
                             'type'      => 'input',
                             'inputType' => 'number',
-                            'label'     => __('Order')
+                            'label'     => __('Ordem')
                         ],
                     ]
                 ],

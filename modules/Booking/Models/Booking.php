@@ -312,18 +312,18 @@ class Booking extends BaseModel
         $res[] = [
             'size'   => 6,
             'size_md' => 3,
-            'title'  => __("Revenue"),
+            'title'  => __("Receita"),
             'amount' => format_money_main($total_data->total_price),
-            'desc'   => __("Total revenue"),
+            'desc'   => __("Receita total"),
             'class'  => 'purple',
             'icon'   => 'icon ion-ios-cart'
         ];
         $res[] = [
             'size'   => 6,
             'size_md' => 3,
-            'title'  => __("Earning"),
+            'title'  => __("Ganhando"),
             'amount' => format_money_main($total_data->total_earning),
-            'desc'   => __("Total Earning"),
+            'desc'   => __("Ganhos totais"),
             'class'  => 'pink',
             'icon'   => 'icon ion-ios-gift'
         ];
@@ -331,9 +331,9 @@ class Booking extends BaseModel
 
             'size'   => 6,
             'size_md' => 3,
-            'title'  => __("Bookings"),
+            'title'  => __("Reservas"),
             'amount' => $total_booking,
-            'desc'   => __("Total bookings"),
+            'desc'   => __("Total de reservas"),
             'class'  => 'info',
             'icon'   => 'icon ion-ios-pricetags'
         ];
@@ -341,9 +341,9 @@ class Booking extends BaseModel
 
             'size'   => 6,
             'size_md' => 3,
-            'title'  => __("Services"),
+            'title'  => __("Serviços"),
             'amount' => $total_service,
-            'desc'   => __("Total bookable services"),
+            'desc'   => __("Total de serviços reserváveis"),
             'class'  => 'success',
             'icon'   => 'icon ion-ios-flash'
         ];
@@ -356,13 +356,13 @@ class Booking extends BaseModel
             'labels'   => [],
             'datasets' => [
                 [
-                    'label'           => __("Total Revenue"),
+                    'label'           => __("Receita total"),
                     'data'            => [],
                     'backgroundColor' => '#8892d6',
                     'stack'           => 'group-total',
                 ],
                 [
-                    'label'           => __("Total Earning"),
+                    'label'           => __("Ganhos totais"),
                     'data'            => [],
                     'backgroundColor' => '#F06292',
                     'stack'           => 'group-extra',
@@ -477,30 +477,30 @@ class Booking extends BaseModel
             }
         }
         $res[] = [
-            'title'  => __("Pending"),
+            'title'  => __("Pendente"),
             'amount' => format_money_main($total_money->total_price - $total_money->total_earning),
-            'desc'   => __("Total pending"),
+            'desc'   => __("Total pendente"),
             'class'  => 'purple',
             'icon'   => 'icon ion-ios-cart'
         ];
         $res[] = [
-            'title'  => __("Earnings"),
+            'title'  => __("Ganhos"),
             'amount' => format_money_main($total_money->total_earning ?? 0),
-            'desc'   => __("Total earnings"),
+            'desc'   => __("Ganhos totais"),
             'class'  => 'info',
             'icon'   => 'icon ion-ios-gift'
         ];
         $res[] = [
-            'title'  => __("Bookings"),
+            'title'  => __("Reservas"),
             'amount' => $total_booking,
-            'desc'   => __("Total bookings"),
+            'desc'   => __("Total de reservas"),
             'class'  => 'pink',
             'icon'   => 'icon ion-ios-pricetags'
         ];
         $res[] = [
-            'title'  => __("Services"),
+            'title'  => __("Serviços"),
             'amount' => $total_service,
-            'desc'   => __("Total bookable services"),
+            'desc'   => __("Total de serviços reserváveis"),
             'class'  => 'success',
             'icon'   => 'icon ion-ios-flash'
         ];
@@ -513,12 +513,12 @@ class Booking extends BaseModel
             'labels'   => [],
             'datasets' => [
                 [
-                    'label'           => __("Total Earning"),
+                    'label'           => __("Ganhos totais"),
                     'data'            => [],
                     'backgroundColor' => '#F06292'
                 ],
                 [
-                    'label'           => __("Total Pending"),
+                    'label'           => __("Total Pendente"),
                     'data'            => [],
                     'backgroundColor' => '#8892d6'
                 ]
@@ -621,19 +621,19 @@ class Booking extends BaseModel
                 'labels'   => [],
                 'datasets' => [
                     [
-                        'label'           => __("Total Revenue"),
+                        'label'           => __("Receita total"),
                         'data'            => [],
                         'backgroundColor' => '#8892d6',
                         'stack'           => 'group-total',
                     ],
                     [
-                        'label'           => __("Total Fees"),
+                        'label'           => __("Taxas totais"),
                         'data'            => [],
                         'backgroundColor' => '#45bbe0',
                         'stack'           => 'group-extra',
                     ],
                     [
-                        'label'           => __("Total Commission"),
+                        'label'           => __("Comissão Total"),
                         'data'            => [],
                         'backgroundColor' => '#F06292',
                         'stack'           => 'group-extra',
@@ -642,23 +642,23 @@ class Booking extends BaseModel
             ],
             "detail" => [
                 "total_booking" => [
-                    "title" => __("Total Booking"),
+                    "title" => __("Reserva total"),
                     "val"   => 0,
                 ],
                 "total_price" => [
-                    "title" => __("Total Revenue"),
+                    "title" => __("Receita total"),
                     "val"   => 0,
                 ],
                 "total_commission" => [
-                    "title" => __("Total Commission"),
+                    "title" => __("Comissão Total"),
                     "val"   => 0,
                 ],
                 "total_fees" => [
-                    "title" => __("Total Fees"),
+                    "title" => __("Taxas totais"),
                     "val"   => 0,
                 ],
                 "total_earning" => [
-                    "title" => __("Total Earning"),
+                    "title" => __("Ganhos totais"),
                     "val"   => 0,
                 ],
             ]

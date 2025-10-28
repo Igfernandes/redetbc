@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="col-sm-4 mb-5">
                             <div class="js-form-message">
-                                <input type="text" class="form-control" name="name" placeholder="{{ __("Name") }}" >
+                                <input type="text" class="form-control" name="name" placeholder="{{ __("Nome") }}" >
                             </div>
                         </div>
                         <div class="col-sm-4 mb-5">

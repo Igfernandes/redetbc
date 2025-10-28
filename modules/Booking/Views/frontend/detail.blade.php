@@ -11,9 +11,9 @@
                         <img src="{{url('images/ico_success.svg')}}" alt="Payment Success">
                         <div class="notice-success">
                             <p class="line1"><span>{{$booking->first_name}},</span>
-                                {{__('your booking was submitted successfully!')}}
+                                {{__('sua reserva foi enviada com sucesso!')}}
                             </p>
-                            <p class="line2">{{__('Booking details has been sent to:')}} <span>{{$booking->email}}</span></p>
+                            <p class="line2">{{__('Os detalhes da reserva foram enviados para:')}} <span>{{$booking->email}}</span></p>
                             @if($note = $gateway->getOption("payment_note"))
                                 <div class="line2">{!! clean($note) !!}</div>
                             @endif
@@ -22,12 +22,12 @@
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <ul class="booking-info-detail">
-                        <li><span>{{__('Booking Number')}}:</span> {{$booking->id}}</li>
-                        <li><span>{{__('Booking Date')}}:</span> {{display_date($booking->created_at)}}</li>
+                        <li><span>{{__('Número de reserva')}}:</span> {{$booking->id}}</li>
+                        <li><span>{{__('Data da reserva')}}:</span> {{display_date($booking->created_at)}}</li>
                         @if(!empty($gateway))
-                        <li><span>{{__('Payment Method')}}:</span> {{$gateway->name}}</li>
+                        <li><span>{{__('Método de pagamento')}}:</span> {{$gateway->name}}</li>
                         @endif
-                        <li><span>{{__('Booking Status')}}:</span> {{ $booking->status_name }}</li>
+                        <li><span>{{__('Estado da reserva')}}:</span> {{ $booking->status_name }}</li>
                     </ul>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-8">
                     @include ($service->booking_customer_info_file ?? 'Booking::frontend/booking/booking-customer-info')
                     <div class="text-center">
-                        <a href="{{route('user.booking_history')}}" class="btn btn-primary">{{__('Booking History')}}</a>
+                        <a href="{{route('user.booking_history')}}" class="btn btn-primary">{{__('Histórico de reservas')}}</a>
                     </div>
                 </div>
                 <div class="col-md-4">

@@ -49,7 +49,7 @@
 
                     <div class="border-top border-left mb-3 px-3" v-if="viewType == 'list'">
                         <div class="row font-weight-bold " style="font-size: 16px">
-                            <div class="col-sm-6 py-2 border-bottom border-right">{{__("Name")}}</div>
+                            <div class="col-sm-6 py-2 border-bottom border-right">{{__("Nome")}}</div>
                             <div class="col-sm-2 py-2 border-bottom border-right">{{__("Type")}}</div>
                             <div class="col-sm-2 py-2 border-bottom border-right">{{__("Created At")}}</div>
                             <div class="col-sm-2 py-2 border-bottom border-right">{{__("Size")}}</div>

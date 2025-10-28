@@ -39,33 +39,33 @@ class ModuleProvider extends ModuleServiceProvider
             'boat'=>[
                 "position"=>45,
                 'url'        => route('boat.admin.index'),
-                'title'      => __('Services'),
+                'title'      => __('Serviços'),
                 'icon'       => 'ion-md-boat',
                 'permission' => 'boat_view',
                 'children'   => [
                     'add'=>[
                         'url'        => route('boat.admin.index'),
-                        'title'      => __('Todos serviços'),
+                        'title'      => __('Todos os serviços'),
                         'permission' => 'boat_view',
                     ],
                     'create'=>[
                         'url'        => route('boat.admin.create'),
-                        'title'      => __('Add new Boat'),
+                        'title'      => __('Adicionar novo barco'),
                         'permission' => 'boat_create',
                     ],
                     'attribute'=>[
                         'url'        => route('boat.admin.attribute.index'),
-                        'title'      => __('Attributes'),
+                        'title'      => __('Atributos'),
                         'permission' => 'boat_manage_attributes',
                     ],
                     'availability'=>[
                         'url'        => route('boat.admin.availability.index'),
-                        'title'      => __('Availability'),
+                        'title'      => __('Disponibilidade'),
                         'permission' => 'boat_create',
                     ],
                     'recovery'=>[
                         'url'        => route('boat.admin.recovery'),
-                        'title'      => __('Recovery'),
+                        'title'      => __('Recuperação'),
                         'permission' => 'boat_view',
                     ],
                 ]
@@ -87,7 +87,7 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             'boat'=>[
                 'class' => Boat::class,
-                'name'  => __("Boat"),
+                'name'  => __("Barco"),
                 'items' => Boat::searchForMenu(),
                 'position'=>51
             ]
@@ -100,28 +100,28 @@ class ModuleProvider extends ModuleServiceProvider
         if(Boat::isEnable()){
             $res['boat'] = [
                 'url'   => route('boat.vendor.index'),
-                'title'      => __("Manage Boat"),
+                'title'      => __("Gerenciar barco"),
                 'icon'       => Boat::getServiceIconFeatured(),
                 'position'   => 70,
                 'permission' => 'boat_view',
                 'children' => [
                     [
                         'url'   => route('boat.vendor.index'),
-                        'title'  => __("All Boats"),
+                        'title'  => __("Todos os barcos"),
                     ],
                     [
                         'url'   => route('boat.vendor.create'),
-                        'title'      => __("Add Boat"),
+                        'title'      => __("Adicionar barco"),
                         'permission' => 'boat_create',
                     ],
                     [
                         'url'        => route('boat.vendor.availability.index'),
-                        'title'      => __("Availability"),
+                        'title'      => __("Disponibilidade"),
                         'permission' => 'boat_create',
                     ],
                     [
                         'url'   => route('boat.vendor.recovery'),
-                        'title'      => __("Recovery"),
+                        'title'      => __("Recuperação"),
                         'permission' => 'boat_create',
                     ],
                 ]

@@ -23,8 +23,8 @@
                                 'location'=>__("Location"),
                                 'category'=>__("Category"),
                                 'attr'=>__("Attribute"),
-                                'date'=>__("Date"),
-                                'price'=>__("Price"),
+                                'date'=>__("Data"),
+                                'price'=>__("Preço"),
                             ];
                              $attrs = \Modules\Core\Models\Attributes::where('service', 'tour')->get();
                             @endphp

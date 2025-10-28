@@ -2,19 +2,19 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Attribute: :name",['name'=>$attr->name])}}</h1>
+            <h1 class="title-bar">{{__("Atributo: :name",['name'=>$attr->name])}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Term")}}</div>
+                    <div class="panel-title">{{__("Adicionar termo")}}</div>
                     <div class="panel-body">
                         <form action="{{route('assistance.admin.attribute.term.store')}}" method="post">
                             @csrf
                             @include('Assistance::admin/terms/form')
                             <div class="">
-                                <button class="btn btn-primary" type="submit">{{__("Add new")}}</button>
+                                <button class="btn btn-primary" type="submit">{{__("Adicionar novo")}}</button>
                             </div>
                         </form>
                     </div>
@@ -27,30 +27,30 @@
                             <form method="post" action="{{route('assistance.admin.attribute.term.editTermBulk')}}" class="filter-form filter-form-left d-flex justify-content-start">
                                 {{csrf_field()}}
                                 <select name="action" class="form-control">
-                                    <option value="">{{__(" Bulk Action ")}}</option>
-                                    <option value="delete">{{__(" Delete ")}}</option>
+                                    <option value="">{{__("Ação em massa")}}</option>
+                                    <option value="delete">{{__("Excluir")}}</option>
                                 </select>
-                                <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                                <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                             </form>
                         @endif
                     </div>
                     <div class="col-left">
                         <form method="get" action="{{ route('assistance.admin.attribute.term.index',['id'=>$attr->id])}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
-                            <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Search by name")}}">
-                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search')}}</button>
+                            <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Pesquisar por nome")}}">
+                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Procurar')}}</button>
                         </form>
                     </div>
                 </div>
                 <div class="panel">
-                    <div class="panel-title">{{__("All Terms")}}</div>
+                    <div class="panel-title">{{__("Todos os Termos")}}</div>
                     <div class="panel-body">
                         <form class="bravo-form-item">
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th>{{__("Name")}}</th>
-                                    <th class="date">{{__("Date")}}</th>
+                                    <th>{{__("Nome")}}</th>
+                                    <th class="date">{{__("Data")}}</th>
                                     <th class="date"></th>
                                 </tr>
                                 </thead>
@@ -63,12 +63,12 @@
                                                 <a href="{{route('assistance.admin.attribute.term.edit',['id'=>$row->id])}}">{{$row->name}}</a>
                                             </td>
                                             <td>{{ display_date($row->updated_at)}}</td>
-                                            <td><a class="btn btn-primary btn-sm" href="{{route('assistance.admin.attribute.term.edit',['id'=>$row->id])}}"><i class="fa fa-edit"></i> {{__('Edit')}}</a></td>
+                                            <td><a class="btn btn-primary btn-sm" href="{{route('assistance.admin.attribute.term.edit',['id'=>$row->id])}}"><i class="fa fa-edit"></i> {{__('Editar')}}</a></td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="4">{{__("No data")}}</td>
+                                        <td colspan="4">{{__("Sem dados")}}</td>
                                     </tr>
                                 @endif
                                 </tbody>

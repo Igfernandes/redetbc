@@ -79,7 +79,7 @@ class TourController extends AdminController
                     'url'  => route('tour.admin.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ]
@@ -121,7 +121,7 @@ class TourController extends AdminController
                     'url'  => route('tour.admin.index')
                 ],
                 [
-                    'name'  => __('Recovery'),
+                    'name'  => __('Recuperação'),
                     'class' => 'active'
                 ],
             ]
@@ -198,7 +198,7 @@ class TourController extends AdminController
     {
 
         if (is_demo_mode()) {
-            return redirect()->back()->with('danger', __("DEMO MODE: can not add data"));
+            return redirect()->back()->with('danger', __("MODO DEMO: não é possível adicionar dados"));
         }
         if ($id > 0) {
             $this->checkPermission('tour_update');
@@ -274,10 +274,10 @@ class TourController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('No items selected!'));
+            return redirect()->back()->with('error', __('Nenhum item selecionado!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         switch ($action) {
             case "delete":
@@ -293,7 +293,7 @@ class TourController extends AdminController
                         event(new UpdatedServiceEvent($row));
                     }
                 }
-                return redirect()->back()->with('success', __('Deleted success!'));
+                return redirect()->back()->with('success', __('Excluído com sucesso!'));
                 break;
             case "permanently_delete":
                 foreach ($ids as $id) {
@@ -307,7 +307,7 @@ class TourController extends AdminController
                         $row->forceDelete();
                     }
                 }
-                return redirect()->back()->with('success', __('Permanently delete success!'));
+                return redirect()->back()->with('success', __('Excluir permanentemente com sucesso!'));
                 break;
             case "recovery":
                 foreach ($ids as $id) {
@@ -322,14 +322,14 @@ class TourController extends AdminController
                         event(new UpdatedServiceEvent($row));
                     }
                 }
-                return redirect()->back()->with('success', __('Recovery success!'));
+                return redirect()->back()->with('success', __('Recuperação bem-sucedida!'));
                 break;
             case "clone":
                 $this->checkPermission('tour_create');
                 foreach ($ids as $id) {
                     (new $this->tourClass())->saveCloneByID($id);
                 }
-                return redirect()->back()->with('success', __('Clone success!'));
+                return redirect()->back()->with('success', __('Clone realizado com sucesso!'));
                 break;
             default:
                 // Change status
@@ -344,7 +344,7 @@ class TourController extends AdminController
                     $row->save();
                     event(new UpdatedServiceEvent($row));
                 }
-                return redirect()->back()->with('success', __('Update success!'));
+                return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
                 break;
         }
     }

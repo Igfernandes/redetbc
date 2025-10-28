@@ -5,7 +5,7 @@
             <div class="form-group-item">
                 <div class="g-items-header">
                     <div class="row">
-                        <div class="col-md-4">{{__("Title")}}</div>
+                        <div class="col-md-4">{{__("Título")}}</div>
                         <div class="col-md-7">{{__('Info Contact')}}</div>
                         <div class="col-md-1"></div>
                     </div>

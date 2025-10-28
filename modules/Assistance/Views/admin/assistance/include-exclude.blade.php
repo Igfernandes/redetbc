@@ -2,7 +2,7 @@
     <label class="control-label">{{__('Include')}}</label>
     <div class="g-items-header">
         <div class="row">
-            <div class="col-md-11 text-left">{{__("Title")}}</div>
+            <div class="col-md-11 text-left">{{__("Título")}}</div>
             <div class="col-md-1"></div>
         </div>
     </div>
@@ -43,7 +43,7 @@
     <label class="control-label">{{__('Exclude')}}</label>
     <div class="g-items-header">
         <div class="row">
-            <div class="col-md-11 text-left">{{__("Title")}}</div>
+            <div class="col-md-11 text-left">{{__("Título")}}</div>
             <div class="col-md-1"></div>
         </div>
     </div>

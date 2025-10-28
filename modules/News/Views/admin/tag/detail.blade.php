@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{__("Publish")}}</strong></div>
+                            <div class="panel-title"><strong>{{__("Publicar")}}</strong></div>
                             <div class="panel-body">
                                 <button class="btn btn-success" type="submit"> <i class="fa fa-save"></i> {{ __('Save Change')}}</button>
                             </div>

@@ -37,7 +37,7 @@ class OfferBlock extends BaseBlock
                         [
                             'id'    => 'background_image',
                             'type'  => 'uploader',
-                            'label' => __('Background Image Uploader')
+                            'label' => __('Carregador de Imagem de Fundo')
                         ],
                         [
                             'id'        => 'link_title',

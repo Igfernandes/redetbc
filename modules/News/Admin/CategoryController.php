@@ -99,7 +99,7 @@ class CategoryController extends AdminController
             return redirect()->back()->with('error', __('Please select at least 1 item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if ($action == 'delete') {
             foreach ($ids as $id) {
@@ -109,7 +109,7 @@ class CategoryController extends AdminController
                 }
             }
         }
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
     }
 
     public function getForSelect2(Request $request)

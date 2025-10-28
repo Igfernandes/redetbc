@@ -9,7 +9,7 @@
                 <div class="col-md-8">
                     <div class="d-flex justify-content-between mb20">
                         <div class="">
-                            <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->name : __('Add new term')}}</h1>
+                            <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->name : __('Adicionar novo termo')}}</h1>
                         </div>
                     </div>
                     @include('admin.message')
@@ -18,7 +18,7 @@
                     @endif
                     <div class="lang-content-box">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{__("Term Content")}}</strong></div>
+                            <div class="panel-title"><strong>{{__("Conteúdo do termo")}}</strong></div>
                             <div class="panel-body">
                                 @include('Space::admin.terms.form')
                             </div>
@@ -26,7 +26,7 @@
                     </div>
                     <hr>
                     <div class="text-right">
-                        <button class="btn btn-primary" type="submit">{{__("Save Change")}}</button>
+                        <button class="btn btn-primary" type="submit">{{__("Salvar alteração")}}</button>
                     </div>
                 </div>
             </div>

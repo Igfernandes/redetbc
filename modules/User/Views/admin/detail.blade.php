@@ -123,7 +123,7 @@
                                 <div class="form-group">
                                     <label class="">{{__("Country")}}</label>
                                     <select name="country" class="form-control" id="country-sms-testing" required>
-                                        <option value="">{{__('-- Select --')}}</option>
+                                        <option value="">{{__('-- Selecione --')}}</option>
                                         @foreach(get_country_lists() as $id=>$name)
                                         <option @if($row->country==$id) selected @endif value="{{$id}}">{{$name}}</option>
                                         @endforeach
@@ -149,13 +149,13 @@
             </div>
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-title"><strong>{{ __('Publish')}}</strong></div>
+                    <div class="panel-title"><strong>{{ __('Publicar')}}</strong></div>
                     <div class="panel-body">
                         <div class="form-group">
                             <label>{{__('Status')}}</label>
                             <select required class="custom-select" name="status">
-                                <option @if(old('status',$row->status) =='publish') selected @endif value="publish">{{ __('Publish')}}</option>
-                                <option @if(old('status',$row->status) =='blocked') selected @endif value="blocked">{{ __('Blocked')}}</option>
+                                <option @if(old('status',$row->status) =='publish') selected @endif value="publish">{{ __('Publicar')}}</option>
+                                <option @if(old('status',$row->status) =='blocked') selected @endif value="blocked">{{ __('Bloqueado')}}</option>
                             </select>
                         </div>
                         @if(is_admin())
@@ -163,7 +163,7 @@
                         <div class="form-group">
                             <label>{{__('Role')}} <span class="text-danger">*</span></label>
                             <select required class="form-control" name="role_id">
-                                <option value="">{{ __('-- Select --')}}</option>
+                                <option value="">{{ __('-- Selecione --')}}</option>
                                 @foreach($roles as $role)
                                 <option value="{{$role->id}}" @if(old('role_id',$row->role_id) == $role->id) selected @elseif(old('role_id') == $role->id ) selected @elseif(request()->input("user_type") == strtolower($role->name) ) selected @endif >{{ucfirst($role->name)}}</option>
                                 @endforeach

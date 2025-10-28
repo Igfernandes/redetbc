@@ -46,17 +46,17 @@ class Payment extends BaseModel
             case "wallet_deposit":
                 if($this->status != 'completed'){
                     $url = route('user.wallet');
-                    return [false,__("Payment fail"),$url];
+                    return [false,__("Falha no pagamento"),$url];
                 }
 
                 $wallet_transaction_id = $this->wallet_transaction_id;
                 $trans = Transaction::find($wallet_transaction_id);
                 if (!$trans) {
-                    return [false, __("Transaction not found"), '/'];
+                    return [false, __("Transação não encontrada"), '/'];
                 }
                 $trans->confirm();
                 $url = route('user.wallet');
-                return [true, __("Payment updated"), $url];
+                return [true, __("Pagamento atualizado"), $url];
 
                 break;
             case "plan":
@@ -68,7 +68,7 @@ class Payment extends BaseModel
                 }
                 if($this->status != 'completed' && $this->status != 'cancel'){
                     $url = route('user.plan');
-                    return [false,__("Plan fail"),$url];
+                    return [false,__("Falha no plano"),$url];
                 }
 
                 if(!empty($user)){
@@ -84,7 +84,7 @@ class Payment extends BaseModel
                     }
 
                     $url = route('user.plan');
-                    return [true,__("Plan updated"),$url];
+                    return [true,__("Plano atualizado"),$url];
                 }
             break;
 

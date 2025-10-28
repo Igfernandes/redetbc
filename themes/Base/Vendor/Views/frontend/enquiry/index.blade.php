@@ -75,7 +75,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="6">{{__("No data")}}</td>
+                                    <td colspan="6">{{__("Sem dados")}}</td>
                                 </tr>
                             @endif
                             </tbody>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
             @else
-                {{__("No data")}}
+                {{__("Sem dados")}}
             @endif
         </div>
     </div>

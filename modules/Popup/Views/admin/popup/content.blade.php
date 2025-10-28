@@ -2,7 +2,7 @@
     <div class="panel-title"><strong>{{__("Content")}}</strong></div>
     <div class="panel-body">
         <div class="form-group">
-            <label>{{__("Title")}} <span class="text-danger">*</span></label>
+            <label>{{__("Título")}} <span class="text-danger">*</span></label>
             <input type="text" value="{{old('title',$translation->title)}}" required placeholder="{{__("Popup name")}}" name="title" class="form-control">
         </div>
         <div class="form-group">

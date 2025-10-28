@@ -21,7 +21,7 @@ class ContactController extends Controller
     public function index(Request $request)
     {
         $data = [
-            'page_title' => __("Contact Page"),
+            'page_title' => __("Página de contato"),
             'header_transparent'=>true,
             'breadcrumbs'       => [
                 [
@@ -54,7 +54,7 @@ class ContactController extends Controller
             if(!$codeCapcha or !ReCaptchaEngine::verify($codeCapcha)){
                 $data = [
                     'status'    => 0,
-                    'message'    => __('Please verify the captcha'),
+                    'message'    => __('Por favor verifique o captcha'),
                 ];
                 return response()->json($data, 200);
             }
@@ -65,7 +65,7 @@ class ContactController extends Controller
             $this->sendEmail($row);
             $data = [
                 'status'    => 1,
-                'message'    => __('Thank you for contacting us! We will get back to you soon'),
+                'message'    => __('Obrigado por entrar em contato conosco! Entraremos em contato com você em breve.'),
             ];
             return response()->json($data, 200);
         }

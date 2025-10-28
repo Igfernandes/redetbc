@@ -59,7 +59,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'attribute'=>[
                         'url'        => route('hotel.admin.attribute.index'),
-                        'title'      => __('Attributes'),
+                        'title'      => __('Atributos'),
                         'permission' => 'hotel_manage_attributes',
                     ],
                     'room_attribute'=>[
@@ -69,7 +69,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'recovery'=>[
                         'url'        => route('hotel.admin.recovery'),
-                        'title'      => __('Recovery'),
+                        'title'      => __('Recuperação'),
                         'permission' => 'hotel_view',
                     ],
                 ]

@@ -8,7 +8,7 @@
                         <label class="control-label">{{$category->name}}</label>
                         <div class="g-items-header">
                             <div class="row">
-                                <div class="col-md-3">{{__("Name")}}</div>
+                                <div class="col-md-3">{{__("Nome")}}</div>
                                 <div class="col-md-3">{{__('Content')}}</div>
                                 <div class="col-md-3">{{__('Distance')}}</div>
                                 <div class="col-md-2"></div>

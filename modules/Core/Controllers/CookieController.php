@@ -22,7 +22,7 @@
 			    Cookie::queue(Cookie::forever($name,1));
 				return $this->sendSuccess([], 'done')->withCookie(cookie($name,1,999999));
 			} else {
-				return $this->sendError(__('You cant save cookie'));
+				return $this->sendError(__('Você não pode salvar cookies'));
 			}
 		}
 	}

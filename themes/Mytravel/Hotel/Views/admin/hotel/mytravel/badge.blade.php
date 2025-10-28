@@ -3,7 +3,7 @@
     <label class="control-label">{{__('Badge tag')}}</label>
     <div class="g-items-header">
         <div class="row">
-            <div class="col-md-5">{{__("Title")}}</div>
+            <div class="col-md-5">{{__("Título")}}</div>
             <div class="col-md-5">{{__('Color')}}</div>
             <div class="col-md-1"></div>
         </div>

@@ -16,21 +16,21 @@
                             @include('admin.message')
                             <div class="contact-form">
                                 <div class="form-group">
-                                    <input type="text" value="" placeholder=" {{ __('Name') }} " name="name" class="form-control">
+                                    <input type="text" value="" placeholder=" {{ __('Nome') }} " name="name" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" value="" placeholder="{{ __('Email') }}" name="email" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea name="message" cols="40" rows="10" class="form-control textarea" placeholder="{{ __('Message') }}"></textarea>
+                                    <textarea name="message" cols="40" rows="10" class="form-control textarea" placeholder="{{ __('Mensagem') }}"></textarea>
                                 </div>
                                 <div class="form-group">
                                     {{recaptcha_field('contact')}}
                                 </div>
                                 <p>
                                     <button class="submit btn btn-primary " type="submit">
-                                        {{ __('SEND MESSAGE') }}
+                                        {{ __('ENVIAR MENSAGEM') }}
                                         <i class="fa fa-spinner fa-pulse fa-fw"></i>
                                     </button>
                                 </p>

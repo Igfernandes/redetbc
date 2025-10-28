@@ -27,7 +27,7 @@
                             <thead>
                             <tr>
                                 <th width="2%">{{__("Type")}}</th>
-                                <th>{{__("Title")}}</th>
+                                <th>{{__("Título")}}</th>
                                 <th class="a-hidden">{{__("Order Date")}}</th>
                                 <th class="a-hidden">{{__("Execution Time")}}</th>
                                 <th width="15%">{{__("Payment Detail")}}</th>

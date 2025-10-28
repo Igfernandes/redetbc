@@ -63,7 +63,7 @@
                                     <div class="form-group-item">
                                         <div class="g-items-header">
                                             <div class="row">
-                                                <div class="col-md-5">{{__("Name")}}</div>
+                                                <div class="col-md-5">{{__("Nome")}}</div>
                                                 <div class="col-md-3">{{__('Amount')}}</div>
                                                 <div class="col-md-3">{{__('Earn credit')}}</div>
                                                 <div class="col-md-1"></div>

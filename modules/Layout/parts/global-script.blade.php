@@ -47,12 +47,12 @@
     var i18n = {
         warning:"{{__("Warning")}}",
         success:"{{__("Success")}}",
-        confirm_delete:"{{__("Do you want to delete?")}}",
+        confirm_delete:"{{__("Você quer apagar?")}}",
         confirm:"{{__("Confirm")}}",
         cancel:"{{__("Cancel")}}",
     };
     var daterangepickerLocale = {
-        "applyLabel": "{{__('Apply')}}",
+        "applyLabel": "{{__('Aplicar')}}",
         "cancelLabel": "{{__('Cancel')}}",
         "fromLabel": "{{__('From')}}",
         "toLabel": "{{__('To')}}",

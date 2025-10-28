@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="dashboard-page">
-            <h4 class="welcome-title text-uppercase">{{__('Welcome :name!',['name'=>Auth::user()->nameOrEmail])}}</h4>
+            <h4 class="welcome-title text-uppercase">{{__('Bem-vindo :name!',['name'=>Auth::user()->nameOrEmail])}}</h4>
         </div>
         <br>
         <div class="row">
@@ -28,7 +28,7 @@
             <div class="col-md-12 col-lg-6 mb-3">
                 <div class="panel">
                     <div class="panel-title d-flex justify-content-between align-items-center">
-                        <strong>{{__('Earning statistics')}}</strong>
+                        <strong>{{__('Estatísticas de ganhos')}}</strong>
                         <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
                             <i class="fa fa-calendar"></i>&nbsp;
                             <span></span> <i class="fa fa-caret-down"></i>
@@ -45,8 +45,8 @@
             <div class="col-md-12 col-lg-6 ">
                 <div class="panel">
                     <div class="panel-title d-flex justify-content-between">
-                        <strong>{{__('Recent Bookings')}}</strong>
-                        <a href="{{route('report.admin.booking')}}" class="btn-link">{{__("More")}}
+                        <strong>{{__('Reservas recentes')}}</strong>
+                        <a href="{{route('report.admin.booking')}}" class="btn-link">{{__("Mais")}}
                             <i class="icon ion-ios-arrow-forward"></i></a>
                     </div>
                     <div class="panel-body">
@@ -57,7 +57,7 @@
                                     <th width="60px">#</th>
                                     <th>{{__('Item')}}</th>
                                     <th width="100px">{{__("Status")}}</th>
-                                    <th width="100px">{{__("Created At")}}</th>
+                                    <th width="100px">{{__("Criado em")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -80,7 +80,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="5">{{__("No data")}}</td>
+                                        <td colspan="5">{{__("Sem dados")}}</td>
                                     </tr>
                                 @endif
                                 </tbody>
@@ -116,7 +116,7 @@
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: '{{__("Timeline")}}'
+                            labelString: '{{__("Linha do tempo")}}'
                         }
                     }],
                     yAxes: [{
@@ -124,7 +124,7 @@
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: '{{__("Currency: :currency_main",['currency_main'=>setting_item('currency_main')])}}'
+                            labelString: '{{__("Moeda: :currency_main",['currency_main'=>setting_item('currency_main')])}}'
                         },
                         ticks: {
                             beginAtZero: true,
@@ -158,14 +158,14 @@
             "opens": "left",
             "showDropdowns": true,
             ranges: {
-                '{{__("Today")}}': [moment(), moment()],
-                '{{__("Yesterday")}}': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                '{{__("Last 7 Days")}}': [moment().subtract(6, 'days'), moment()],
-                '{{__("Last 30 Days")}}': [moment().subtract(29, 'days'), moment()],
-                '{{__("This Month")}}': [moment().startOf('month'), moment().endOf('month')],
-                '{{__("Last Month")}}': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                '{{__("This Year")}}': [moment().startOf('year'), moment().endOf('year')],
-                '{{__('This Week')}}': [moment().startOf('week'), end]
+                '{{__("Hoje")}}': [moment(), moment()],
+                '{{__("Ontem")}}': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                '{{__("Últimos 7 dias")}}': [moment().subtract(6, 'days'), moment()],
+                '{{__("Últimos 30 dias")}}': [moment().subtract(29, 'days'), moment()],
+                '{{__("Este mês")}}': [moment().startOf('month'), moment().endOf('month')],
+                '{{__("Mês passado")}}': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                '{{__("Este ano")}}': [moment().startOf('year'), moment().endOf('year')],
+                '{{__('Essa semana')}}': [moment().startOf('week'), end]
             }
         }, cb).on('apply.daterangepicker', function (ev, picker) {
             // Reload Earning JS

@@ -127,7 +127,7 @@
                         <div class="form-group-item">
                             <div class="g-items-header">
                                 <div class="row">
-                                    <div class="col-md-8">{{__("Title")}}</div>
+                                    <div class="col-md-8">{{__("Título")}}</div>
                                     <div class="col-md-3">{{__('Type')}}</div>
                                     <div class="col-md-1"></div>
                                 </div>

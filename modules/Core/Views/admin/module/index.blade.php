@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("All Modules")}}</h1>
+            <h1 class="title-bar">{{__("Todos os Módulos")}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between ">
@@ -11,18 +11,18 @@
                     <form method="post" action="{{route('core.admin.module.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
-                            {{--<option value="active">{{__("Active")}}</option>
-                            <option value="deactivate">{{__("Deactivate")}}</option>--}}
+                            <option value="">{{__(" Ações em massa ")}}</option>
+                            {{--<option value="active">{{__("Ativo")}}</option>
+                            <option value="deactivate">{{__("Desativar")}}</option>--}}
                         </select>
-                        <button class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
             {{--<div class="col-left">
                 <form method="get" action="{{route('core.admin.plugins.index')}} " class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}" class="form-control">
-                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search')}}</button>
+                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
+                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Procurar')}}</button>
                 </form>
             </div>--}}
         </div>
@@ -34,12 +34,12 @@
                             <thead>
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
-                                <th width="200px"> {{ __('Module name')}}</th>
+                                <th width="200px"> {{ __('Nome do módulo')}}</th>
                                 <th > {{ __('Description')}}</th>
-                                <th width="130px"> {{ __('Author')}}</th>
-                                <th width="100px"> {{ __('Version')}}</th>
+                                <th width="130px"> {{ __('Autor')}}</th>
+                                <th width="100px"> {{ __('Versão')}}</th>
                                 <th width="100px"> {{ __('Status')}}</th>
-                                <th width="100px"> {{ __('Actions')}}</th>
+                                <th width="100px"> {{ __('Ações')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -75,7 +75,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="7">{{__("No Module found")}}</td>
+                                    <td colspan="7">{{__("Nenhum módulo encontrado")}}</td>
                                 </tr>
                             @endif
                             </tbody>

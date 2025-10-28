@@ -173,8 +173,8 @@
                                 <div class="g-items-header">
                                     <div class="row">
                                         <div class="col-md-1">{{__('ID')}}</div>
-                                        <div class="col-md-8">{{__("Name")}}</div>
-                                        <div class="col-md-2">{{__('Order')}}</div>
+                                        <div class="col-md-8">{{__("Nome")}}</div>
+                                        <div class="col-md-2">{{__('Ordem')}}</div>
                                         <div class="col-md-1"></div>
                                     </div>
                                 </div>
@@ -191,7 +191,7 @@
                                                     <input placeholder="{{__('Eg: bank_transfer')}}" type="text" name="vendor_payout_methods[{{$key}}][id]" class="form-control" value="{{$item->id}}" >
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label >{{__("Name")}}</label>
+                                                    <label >{{__("Nome")}}</label>
                                                     <input type="text" name="vendor_payout_methods[{{$key}}][name]" class="form-control" value="{{$item->name}}">
                                                     <label >{{__("Description")}}</label>
                                                     <textarea  name="vendor_payout_methods[{{$key}}][desc]" class="form-control" cols="30" rows="4">{{$item->desc}}</textarea>
@@ -219,7 +219,7 @@
                                                 <input placeholder="{{__('Eg: bank_transfer')}}" type="text" __name__="vendor_payout_methods[__number__][id]" class="form-control" value="" >
                                             </div>
                                             <div class="col-md-6">
-                                                <label >{{__("Name")}}</label>
+                                                <label >{{__("Nome")}}</label>
                                                 <input type="text" __name__="vendor_payout_methods[__number__][name]" class="form-control" value="">
                                                 <label >{{__("Description")}}</label>
                                                 <textarea  __name__="vendor_payout_methods[__number__][desc]" class="form-control" cols="30" rows="4"></textarea>

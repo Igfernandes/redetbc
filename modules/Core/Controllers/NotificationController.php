@@ -81,7 +81,7 @@ class NotificationController extends Controller
         $query->orderBy('created_at','desc');
         $data = [
             'rows'                  => $query->paginate(20),
-            'page_title'            => __("All Notifications"),
+            'page_title'            => __("Todas as notificações"),
             'type'                  => $type
         ];
         return view('Core::frontend.notification.index', $data);

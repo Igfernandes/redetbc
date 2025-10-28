@@ -32,7 +32,7 @@ class ListFeaturedItem extends BaseBlock
                             'id'        => 'sub_title',
                             'type'      => 'input',
                             'inputType' => 'textArea',
-                            'label'     => __('Sub Title')
+                            'label'     => __('Subtítulo')
                         ],
                         [
                             'id'        => 'link',
@@ -55,14 +55,14 @@ class ListFeaturedItem extends BaseBlock
                             'id'        => 'order',
                             'type'      => 'input',
                             'inputType' => 'number',
-                            'label'     => __('Order')
+                            'label'     => __('Ordem')
                         ],
                     ]
                 ],
                 [
                     'id'            => 'style',
                     'type'          => 'radios',
-                    'label'         => __('Style'),
+                    'label'         => __('Estilo'),
                     'values'        => [
                         [
                             'value'   => '',

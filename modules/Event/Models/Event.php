@@ -90,7 +90,7 @@ class Event extends Bookable
 
     public static function getModelName()
     {
-        return __("Event");
+        return __("Evento");
     }
 
     public static function getTableName()
@@ -105,7 +105,7 @@ class Event extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Search for Events");
+        $meta['seo_title'] = __("Pesquisar eventos");
         if (!empty($title = setting_item_with_lang("event_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("event_page_search_title"))) {
@@ -247,14 +247,14 @@ class Event extends Bookable
 
         $start_date = new \DateTime($request->input('start_date'));
         if (empty($start_date)) {
-            return $this->sendError(__("Start date is not a valid date"));
+            return $this->sendError(__("A data de início não é uma data válida"));
         }
 
         if (!$this->checkBusyDate($start_date)) {
-            return $this->sendError(__("Start date is not a valid date"));
+            return $this->sendError(__("A data de início não é uma data válida"));
         }
         if (empty($total_tickets)) {
-            return $this->sendError(__("Please select ticket!"));
+            return $this->sendError(__("Selecione o ingresso!"));
         }
 
         //Buyer Fees for Admin
@@ -366,7 +366,7 @@ class Event extends Bookable
             ]);
         }
 
-        return $this->sendError(__("Can not check availability"));
+        return $this->sendError(__("Não é possível verificar a disponibilidade"));
     }
 
 
@@ -454,7 +454,7 @@ class Event extends Bookable
             }
         }
         if (strtotime($request->input("start_date")) < strtotime(date('Y-m-d 00:00:00'))) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
         if ($this->getBookingType() == "ticket") {
@@ -467,7 +467,7 @@ class Event extends Bookable
                         if ($ticketBook["number"] < $currentNumberUserBook) {
                             $lang_local = app()->getLocale();
                             $title = $ticketBook['name_' . $lang_local] ?? $ticketBook["name"];
-                            return $this->sendError(__("There are :numberTicket :titleTicket available for your selected date", ["numberTicket" => $ticketBook["number"], "titleTicket" => $title]));
+                            return $this->sendError(__("Existem :numberTicket :titleTicket disponíveis para a data selecionada", ["numberTicket" => $ticketBook["number"], "titleTicket" => $title]));
                         }
                     }
                 }
@@ -476,12 +476,12 @@ class Event extends Bookable
         if ($this->getBookingType() == "time_slot") {
             $time_slot_select = $request->input("select_start_time");
             if (empty($time_slot_select)) {
-                return $this->sendError(__("Please select start time!"));
+                return $this->sendError(__("Selecione a hora de início!"));
             }
             $time_slots_availableBook = $this->getDataTimeSlotsAvailableBooking($request->input("start_date"));
             foreach ($time_slot_select as $itemSelect) {
                 if (!in_array($itemSelect, $time_slots_availableBook)) {
-                    return $this->sendError(__(":slot not available for your selected ", ["slot" => $itemSelect]));
+                    return $this->sendError(__(":slot não disponível para o seu selecionado ", ["slot" => $itemSelect]));
                 }
             }
         }
@@ -503,7 +503,7 @@ class Event extends Bookable
                             if ($ticketBook["number"] < $currentNumberUserBook) {
                                 $lang_local = app()->getLocale();
                                 $title = $ticketBook['name_' . $lang_local] ?? $ticketBook["name"];
-                                return $this->sendError(__("There are :numberTicket :titleTicket available for your selected date", ["numberTicket" => $ticketBook["number"], "titleTicket" => $title]));
+                                return $this->sendError(__("Há :numberTicket :titleTicket disponível para a data selecionada", ["numberTicket" => $ticketBook["number"], "titleTicket" => $title]));
                             }
                         }
                     }
@@ -517,7 +517,7 @@ class Event extends Bookable
                 $time_slots_availableBook = $this->getDataTimeSlotsAvailableBooking($booking->start_date);
                 foreach ($time_slot_select as $itemSelect) {
                     if (!in_array($itemSelect, $time_slots_availableBook)) {
-                        return $this->sendError(__(":slot not available for your selected ", ["slot" => $itemSelect]));
+                        return $this->sendError(__(":slot não disponível para o seu selecionado ", ["slot" => $itemSelect]));
                     }
                 }
             }
@@ -536,7 +536,7 @@ class Event extends Bookable
             'duration'        => $this->duration,
             'buyer_fees'      => [],
             'start_date'      => request()->input('start') ?? "",
-            'start_date_html' => request()->input('start') ? display_date(request()->input('start')) : __('Please select date!'),
+            'start_date_html' => request()->input('start') ? display_date(request()->input('start')) : __('Por favor selecione a data!'),
             'end_date'        => request()->input('end') ?? "",
             'end_date_html'   => request()->input('end') ? display_date(request()->input('end')) : "",
             'deposit' => $this->isDepositEnable(),
@@ -584,7 +584,7 @@ class Event extends Bookable
                             $type['price_type'] .= '/' . __('dia');
                             break;
                         case "per_hour":
-                            $type['price_type'] .= '/' . __('hour');
+                            $type['price_type'] .= '/' . __('hora');
                             break;
                     }
                     if (!empty($type['per_ticket'])) {
@@ -705,7 +705,7 @@ class Event extends Bookable
     {
         $list_score = [
             'score_total'  => 0,
-            'score_text'   => __("Not rated"),
+            'score_text'   => __("Não classificado"),
             'total_review' => 0,
             'rate_score'   => [],
         ];
@@ -748,7 +748,7 @@ class Event extends Bookable
                 'total_review' => !empty($dataReview->total_review) ? $dataReview->total_review : 0,
             ];
         });
-        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Not rated");
+        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Não classificado");
         return $list_score;
     }
 
@@ -772,9 +772,9 @@ class Event extends Bookable
         }
         if (empty($number)) return false;
         if ($number > 1) {
-            return __(":number Events", ['number' => $number]);
+            return __(":number Eventos", ['number' => $number]);
         }
-        return __(":number Event", ['number' => $number]);
+        return __(":number Evento", ['number' => $number]);
     }
 
     public function getBookingsInRange($from, $to)
@@ -1095,21 +1095,21 @@ class Event extends Bookable
         $min_max_price = self::getMinMaxPrice();
         return [
             [
-                "title"    => __("Filter Price"),
+                "title"    => __("Preço do filtro"),
                 "field"    => "price_range",
                 "position" => "1",
                 "min_price" => floor(Currency::convertPrice($min_max_price[0])),
                 "max_price" => ceil(Currency::convertPrice($min_max_price[1])),
             ],
             [
-                "title"    => __("Review Score"),
+                "title"    => __("Pontuação da revisão"),
                 "field"    => "review_score",
                 "position" => "2",
                 "min" => "1",
                 "max" => "5",
             ],
             [
-                "title"    => __("Attributes"),
+                "title"    => __("Atributos"),
                 "field"    => "terms",
                 "position" => "3",
                 "data" => Attributes::getAllAttributesForApi("event")

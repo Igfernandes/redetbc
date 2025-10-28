@@ -20,7 +20,7 @@ class VideoPlayer extends BaseBlock
                     'id'        => 'sub_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Sub title')
+                    'label'     => __('Subtítulo')
                 ],
                 [
                     'id'        => 'youtube',
@@ -37,7 +37,7 @@ class VideoPlayer extends BaseBlock
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Background Image Uploader')
+                    'label' => __('Carregador de Imagem de Fundo')
                 ],
                 [
                     'id'    => 'bg_gradient',

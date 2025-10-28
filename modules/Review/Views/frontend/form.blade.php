@@ -117,7 +117,7 @@
                     {{$review_list->appends(request()->query())->fragment('review-list')->links()}}
                 </div>
                 <div class="review-pag-text">
-                    {{ __("Showing :from - :to of :total total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
+                    {{ __("Mostrando :from - :to of :total total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
                 </div>
             @else
                 <div class="review-pag-text">{{__("No Review")}}</div>
@@ -135,7 +135,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" required class="form-control" name="review_title" placeholder="{{__("Title")}}">
+                                    <input type="text" required class="form-control" name="review_title" placeholder="{{__("Título")}}">
                                     <div class="invalid-feedback">{{__('Review title is required')}}</div>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <div class="d-flex justify-content-between mb20">
-                    <h1 class="title-bar">{{__('Tools')}}</h1>
+                    <h1 class="title-bar">{{__('Ferramentas')}}</h1>
                 </div>
                 @include('admin.message')
                 <div class="panel">
@@ -24,8 +24,8 @@
                                             <i class="icon ion-md-color-wand"></i>
                                         </span>
                                             <span class="setting-item-info">
-                                            <span class="setting-item-title">{{__("Modules")}}</span>
-                                            <span class="setting-item-desc">{{__("Modules for Booking Core")}}</span>
+                                            <span class="setting-item-title">{{__("Módulos")}}</span>
+                                            <span class="setting-item-desc">{{__("Módulos para o Booking Core")}}</span>
                                         </span>
                                         </a>
                                     </div>
@@ -40,8 +40,8 @@
                                                 <i class="icon ion-ios-globe"></i>
                                             </span>
                                             <span class="setting-item-info">
-                                                <span class="setting-item-title">{{__("Languages")}}</span>
-                                                <span class="setting-item-desc">{{__("Manage languages of your website")}}</span>
+                                                <span class="setting-item-title">{{__("Idiomas")}}</span>
+                                                <span class="setting-item-desc">{{__("Gerenciar idiomas do seu site")}}</span>
                                             </span>
                                         </a>
                                     </div>
@@ -56,8 +56,8 @@
                                                 <i class="icon ion-ios-globe"></i>
                                             </span>
                                             <span class="setting-item-info">
-                                                <span class="setting-item-title">{{__("Translations")}}</span>
-                                                <span class="setting-item-desc">{{__("Translation manager of your website")}}</span>
+                                                <span class="setting-item-title">{{__("Traduções")}}</span>
+                                                <span class="setting-item-desc">{{__("Gerente de tradução do seu site")}}</span>
                                             </span>
                                         </a>
                                     </div>
@@ -72,8 +72,8 @@
                                                     <i class="icon ion-ios-nuclear"></i>
                                                 </span>
                                             <span class="setting-item-info">
-                                                <span class="setting-item-title">{{__("System Log Viewer")}}</span>
-                                                <span class="setting-item-desc">{{__("Views and manage system log of your website")}}</span>
+                                                <span class="setting-item-title">{{__("Visualizador de log do sistema")}}</span>
+                                                <span class="setting-item-desc">{{__("Visualiza e gerencia o log do sistema do seu site")}}</span>
                                             </span>
                                         </a>
                                     </div>
@@ -88,8 +88,8 @@
                                             <i class="icon ion-ios-nuclear"></i>
                                         </span>
                                             <span class="setting-item-info">
-                                            <span class="setting-item-title">{{__("Updater")}}</span>
-                                            <span class="setting-item-desc">{{__("Updater Booking Core")}}</span>
+                                            <span class="setting-item-title">{{__("Atualizador")}}</span>
+                                            <span class="setting-item-desc">{{__("Atualizador de Reservas Core")}}</span>
                                         </span>
                                         </a>
                                     </div>
@@ -102,15 +102,15 @@
                                             <i class="icon ion-ios-hammer"></i>
                                         </span>
                                             <span class="setting-item-info">
-                                            <span class="setting-item-title">{{__("Clear Cache")}}</span>
-                                            <span class="setting-item-desc">{{__("Clear Cache for Booking Core")}}</span>
+                                            <span class="setting-item-title">{{__("Limpar Cache")}}</span>
+                                            <span class="setting-item-desc">{{__("Limpar cache para o núcleo de reservas")}}</span>
                                         </span>
                                         </a>
                                     </div>
                                 </div>
                             @if(!$hasAvailableTools)
                                 <div class="col-md-12">
-                                    {{__("No tools available")}}
+                                    {{__("Nenhuma ferramenta disponível")}}
                                 </div>
                             @endif
                         </div>

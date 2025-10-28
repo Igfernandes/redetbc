@@ -41,7 +41,7 @@
                                                 'dataType' => 'json'
                                             ],
                                             'allowClear'  => true,
-                                            'placeholder' => __('-- Select User --')
+                                            'placeholder' => __('-- Selecione Usuário --')
                                         ]
                                     ], !empty($user->id) ? [
                                         $user->id,
