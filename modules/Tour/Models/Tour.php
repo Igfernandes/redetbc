@@ -15,10 +15,10 @@ use Modules\Booking\Traits\CapturesService;
 use Modules\Core\Models\Terms;
 use Modules\Location\Models\Location;
 use Modules\Review\Models\Review;
-use Modules\Media\Helpers\FileHelper;
 use Illuminate\Support\Facades\Cache;
 use Validator;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Booking\Events\BookingSendEvent;
 use Modules\Booking\Models\BookingMessage;
 use Modules\Core\Models\SEO;
 use Modules\User\Models\UserWishList;
@@ -387,24 +387,6 @@ class Tour extends Bookable
         }
 
         $booking->calculateCommission();
-        if ($this->isDepositEnable()) {
-            $booking_deposit_fomular = $this->getDepositFomular();
-            $tmp_price_total = $booking->total;
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $tmp_price_total = $booking->total_before_fees;
-            }
-            switch ($this->getDepositType()) {
-                case "percent":
-                    $booking->deposit = $tmp_price_total * $this->getDepositAmount() / 100;
-                    break;
-                default:
-                    $booking->deposit = $this->getDepositAmount();
-                    break;
-            }
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $booking->deposit = $booking->deposit + $total_buyer_fee + $total_service_fee;
-            }
-        }
 
         $check = $booking->save();
         if ($check) {
@@ -425,25 +407,13 @@ class Tour extends Bookable
                 ]);
             }
 
-            if ($this->isDepositEnable()) {
-                $booking->addMeta('deposit_info', [
-                    'type'    => $this->getDepositType(),
-                    'amount'  => $this->getDepositAmount(),
-                    'fomular' => $this->getDepositFomular(),
-                ]);
-            }
-
-            BookingMessage::create([
-                'booking_id' => $booking->id,
-                'sender_id' => Auth::id(),
-                'message' => "Olá! Acabei de solicitar a reserva. Aguardando confirmação do proprietário.",
-            ]);
-
+            event(new BookingSendEvent($booking));
             return $this->sendSuccess([
-                'url'          => "/user/chat", // redireciona para o chat
+                'url'          => "user/booking-history", // redireciona para o chat
                 'booking_code' => $booking->code,
             ]);
         }
+
 
         return $this->sendError(__("Can not check availability"));
     }

@@ -7,7 +7,7 @@
 	class SettingClass extends BaseSettingsClass
 	{
 		const SMS_DRIVER = [
-			"log", "nexmo", "twilio"
+			"smtp", "nexmo", "twilio"
 		];
 
 		public static function getSettingPages()

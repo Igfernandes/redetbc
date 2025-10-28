@@ -251,26 +251,6 @@ class Assistance extends Bookable
         $booking->calculateCommission();
         $booking->number = $number;
 
-        if ($this->isDepositEnable()) {
-            $booking_deposit_fomular = $this->getDepositFomular();
-            $tmp_price_total = $booking->total;
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $tmp_price_total = $booking->total_before_fees;
-            }
-
-            switch ($this->getDepositType()) {
-                case "percent":
-                    $booking->deposit = $tmp_price_total * $this->getDepositAmount() / 100;
-                    break;
-                default:
-                    $booking->deposit = $this->getDepositAmount();
-                    break;
-            }
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $booking->deposit = $booking->deposit + $total_buyer_fee + $total_service_fee;
-            }
-        }
-
         $check = $booking->save();
         if ($check) {
 
@@ -284,16 +264,8 @@ class Assistance extends Bookable
             $booking->addMeta('day', $request->input('day'));
             $booking->addMeta('hour', $request->input('hour'));
 
-            if ($this->isDepositEnable()) {
-                $booking->addMeta('deposit_info', [
-                    'type' => $this->getDepositType(),
-                    'amount' => $this->getDepositAmount(),
-                    'fomular' => $this->getDepositFomular(),
-                ]);
-            }
-
             return $this->sendSuccess([
-                'url' => $booking->getCheckoutUrl(),
+                'url'          => "user/booking-history", // redireciona para o chat
                 'booking_code' => $booking->code,
             ]);
         }

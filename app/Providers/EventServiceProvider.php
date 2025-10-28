@@ -5,7 +5,13 @@ namespace App\Providers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Modules\Booking\Events\BookingConfirmEvent;
+use Modules\Booking\Events\BookingReplySendEvent;
+use Modules\Booking\Events\BookingSendEvent;
 use Modules\Booking\Events\EnquirySendEvent;
+use Modules\Booking\Listeners\BookingConfirmListen;
+use Modules\Booking\Listeners\BookingReplySendListen;
+use Modules\Booking\Listeners\BookingSendListen;
 use Modules\Booking\Listeners\EnquiryNotifyListen;
 use Modules\Booking\Listeners\EnquirySendListen;
 use Modules\User\Events\NewVendorRegistered;
@@ -36,24 +42,30 @@ class EventServiceProvider extends ServiceProvider
             SendMailUserRegisteredListen::class,
             SendNotifyRegisteredListen::class
         ],
-        VendorApproved::class=>[
+        VendorApproved::class => [
             SendVendorApprovedMail::class,
             SendNotifyApproved::class
         ],
-        NewVendorRegistered::class=>[
+        NewVendorRegistered::class => [
             SendVendorRegisterdEmail::class,
             SendNotifyRegistered::class
         ],
-//        VendorLogPayment::class =>[
-//            VendorLogPaymentListen::class
-//        ]
-        PayoutRequestEvent::class=>[
+        PayoutRequestEvent::class => [
             PayoutRequestNotificationListener::class,
             PayoutNotifyListener::class
         ],
-        EnquirySendEvent::class=>[
+        EnquirySendEvent::class => [
             EnquirySendListen::class,
             EnquiryNotifyListen::class
+        ],
+        BookingSendEvent::class => [
+            BookingSendListen::class
+        ],
+        BookingConfirmEvent::class => [
+            BookingConfirmListen::class
+        ],
+        BookingReplySendEvent::class => [
+            BookingReplySendListen::class
         ]
     ];
 
