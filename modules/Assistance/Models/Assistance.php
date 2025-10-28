@@ -100,7 +100,7 @@ class Assistance extends Bookable
 
     public static function getModelName()
     {
-        return __("Services");
+        return __("Serviços");
     }
 
     public static function getTableName()
@@ -116,7 +116,7 @@ class Assistance extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Search for Assistances");
+        $meta['seo_title'] = __("Buscar Assistências");
         if (!empty($title = setting_item_with_lang("assistance_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("assistance_page_search_title"))) {
@@ -297,7 +297,7 @@ class Assistance extends Bookable
                 'booking_code' => $booking->code,
             ]);
         }
-        return $this->sendError(__("Can not check availability"));
+        return $this->sendError(__("Não é possível verificar a disponibilidade"));
     }
 
     public function addToCartValidate(Request $request)
@@ -317,13 +317,13 @@ class Assistance extends Bookable
 
         $start_date = $request->input('start_date');
         if (strtotime($start_date) < strtotime(date('Y-m-d 00:00:00'))) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
         if (!empty($this->min_day_before_booking)) {
             $minday_before = strtotime("today +" . $this->min_day_before_booking . " days");
             if (strtotime($start_date) < $minday_before) {
-                return $this->sendError(__("You must book the service for :number days in advance", ["number" => $this->min_day_before_booking]));
+                return $this->sendError(__("Você deve reservar o serviço com :number dias de antecedência", ["number" => $this->min_day_before_booking]));
             }
         }
 
@@ -332,17 +332,17 @@ class Assistance extends Bookable
         $start_time = $request->input('start_time');
 
         if (empty($hour) and empty($day)) {
-            return $this->sendError(__("You haven't selected return day or hours"));
+            return $this->sendError(__("Você não selecionou o dia ou horário de retorno"));
         }
 
         if (!empty($this->start_time_booking)) {
             if (strtotime($start_time) < strtotime($this->start_time_booking)) {
-                return $this->sendError(__("Start time booking: :time", ['time' => $this->start_time_booking]));
+                return $this->sendError(__("Horário de início da reserva: :time", ['time' => $this->start_time_booking]));
             }
         }
         if (!empty($this->end_time_booking)) {
             if (strtotime($start_time) > strtotime($this->end_time_booking)) {
-                return $this->sendError(__("End time booking: :time", ['time' => $this->end_time_booking]));
+                return $this->sendError(__("Horário de término da reserva: :time", ['time' => $this->end_time_booking]));
             }
         }
         $type = empty($day) ? "per_hour" : "per_day";
@@ -350,7 +350,7 @@ class Assistance extends Bookable
         if ($type == 'per_hour') {
             $end_date_time = date('Y-m-d H:i', strtotime($start_date_time . " +" . $hour . "hours"));
             if (strtotime($end_date_time) > strtotime($start_date . " +1day")) {
-                return $this->sendError(__("You need return assistance on same-day"));
+                return $this->sendError(__("Você precisa de assistência para devolução no mesmo dia"));
             }
         }
         if ($type == 'per_day') {

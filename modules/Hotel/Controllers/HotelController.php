@@ -182,7 +182,7 @@ class HotelController extends Controller
             if(!empty($hotel->min_day_before_booking)){
                 $minday_before = strtotime("today +".$hotel->min_day_before_booking." days");
                 if(  strtotime(\request('start_date')) < $minday_before){
-                    return $this->sendError(__("You must book the service for :number days in advance",["number"=>$hotel->min_day_before_booking]));
+                    return $this->sendError(__("Você deve reservar o serviço com :number dias de antecedência",["number"=>$hotel->min_day_before_booking]));
                 }
             }
         }

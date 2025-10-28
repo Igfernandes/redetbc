@@ -262,7 +262,7 @@ class Space extends Bookable
         }
 
         if (empty($start_date) || empty($end_date)) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
         $booking = new $this->bookingClass();
@@ -340,7 +340,7 @@ class Space extends Bookable
             ]);
         }
 
-        return $this->sendError(__("Can not check availability"));
+        return $this->sendError(__("Não é possível verificar a disponibilidade"));
     }
 
 
@@ -412,11 +412,11 @@ class Space extends Bookable
         $end_date = $request->input('end_date');
 
         if (strtotime($start_date) < strtotime(date('Y-m-d 00:00:00')) or strtotime($start_date) > strtotime($end_date)) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
         if ($this->getBookingType() == 'by_night' and strtotime($start_date) == strtotime($end_date)) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
         // Validate Date and Booking
@@ -444,7 +444,7 @@ class Space extends Bookable
         if (!empty($this->min_day_before_booking)) {
             $minday_before = strtotime("today +" . $this->min_day_before_booking . " days");
             if (strtotime($start_date) < $minday_before) {
-                return $this->sendError(__("You must book the service for :number days in advance", ["number" => $this->min_day_before_booking]));
+                return $this->sendError(__("Você deve reservar o serviço com :number dias de antecedência", ["number" => $this->min_day_before_booking]));
             }
         }
 
