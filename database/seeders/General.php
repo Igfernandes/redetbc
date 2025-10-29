@@ -531,7 +531,7 @@ class General extends Seeder
             ],
             [
                 'name'  => "email_driver",
-                'val'   => "log",
+                'val'   => "smtp",
                 'group' => "email",
             ],
             [

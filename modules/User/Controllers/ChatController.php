@@ -6,6 +6,7 @@ use Modules\FrontendController;
 use Modules\Booking\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Modules\Booking\Events\BookingReplySendEvent;
 use Modules\Booking\Models\BookingMessage;
 
 class ChatController extends FrontendController
@@ -55,6 +56,9 @@ class ChatController extends FrontendController
             'sender_id'  => Auth::id(),
             'message'    => $request->message,
         ]);
+
+        $booking = Booking::find($request->booking_id);
+        event(new BookingReplySendEvent($booking));
 
         return response()->json([
             'status' => 'success',

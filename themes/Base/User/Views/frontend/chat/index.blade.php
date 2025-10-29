@@ -6,7 +6,7 @@
         {{-- Sidebar --}}
         <div class="col-12 col-md-4" style="height: 80vh; overflow-y: auto;">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-info text-white">
                     <div>
                         <h5 class="mb-0">{{ __('Minhas Solicitações') }}</h5>
                     </div>
@@ -97,10 +97,10 @@
             const mine = msg.sender_id == @json($userId);
             chatBox.innerHTML += `
                 <div class="d-flex mb-2 ${mine ? 'justify-content-end' : ''}">
-                    <div class="p-2 rounded ${mine ? 'bg-primary text-white' : 'bg-light'}" style="max-width:70%;">
+                    <div class="p-2 rounded ${mine ? 'bg-info text-white' : 'bg-light'}" style="max-width:70%;">
                         <small>${msg.sender.name}</small><br>
                         ${msg.message}
-                        <div class="text-end"><small class="text-muted">${new Date(msg.created_at).toLocaleString()}</small></div>
+                        <div class="text-right"><small class="text-white"><i>${new Date(msg.created_at).toLocaleString()}</i></small></div>
                     </div>
                 </div>
             `;
@@ -146,7 +146,7 @@
         const data = await res.json();
         if (data.status === 'success') {
             document.getElementById('messageInput').value = '';
-            document.querySelector(`.booking-item[data-booking-id="${booking_id}"]`).click();
+            document.querySelector(`[data-booking-id="${booking_id}"]`).click();
         }
     });
 </script>

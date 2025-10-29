@@ -20,7 +20,7 @@ use Modules\Review\Models\Review;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\User\Models\UserWishList;
 use Illuminate\Notifications\Notifiable;
-use Modules\Booking\Models\BookingMessage;
+use Modules\Booking\Events\BookingSendEvent;
 
 class Hotel extends Bookable
 {
@@ -282,27 +282,6 @@ class Hotel extends Bookable
 
         $booking->calculateCommission();
 
-        if ($this->isDepositEnable()) {
-            $booking_deposit_fomular = $this->getDepositFomular();
-            $tmp_price_total = $booking->total;
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $tmp_price_total = $booking->total_before_fees;
-            }
-
-            switch ($this->getDepositType()) {
-                case "percent":
-                    $booking->deposit = $tmp_price_total * $this->getDepositAmount() / 100;
-                    break;
-                default:
-                    $booking->deposit = $this->getDepositAmount();
-                    break;
-            }
-
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $booking->deposit += $total_buyer_fee + $total_service_fee;
-            }
-        }
-
         $check = $booking->save();
 
         if ($check) {
@@ -317,14 +296,6 @@ class Hotel extends Bookable
             $booking->addMeta('adults', $request->input('adults'));
             $booking->addMeta('children', $request->input('children'));
             $booking->addMeta('extra_price', $extra_price);
-
-            if ($this->isDepositEnable()) {
-                $booking->addMeta('deposit_info', [
-                    'type' => $this->getDepositType(),
-                    'amount' => $this->getDepositAmount(),
-                    'fomular' => $this->getDepositFomular(),
-                ]);
-            }
 
             // Adiciona reservas de quartos
             if (!empty($this->tmp_selected_rooms)) {
@@ -352,18 +323,10 @@ class Hotel extends Bookable
                     }
                 }
             }
-
-            // === Nova lógica: criar mensagem inicial no chat ===
-
-            // Mensagem inicial do cliente
-            BookingMessage::create([
-                'booking_id' => $booking->id,
-                'sender_id'  => Auth::id(),
-                'message'    => "Olá! Acabei de solicitar a reserva. Aguardando confirmação do proprietário.",
-            ]);
-
+            
+            event(new BookingSendEvent($booking));
             return $this->sendSuccess([
-                'url' => "/user/chat",
+                'url'          => "user/booking-history", // redireciona para o chat
                 'booking_code' => $booking->code,
             ]);
         }

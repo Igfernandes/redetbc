@@ -593,7 +593,7 @@ class General extends Seeder
         DB::table('core_settings')->insert([
                 [
                     'name'  => "email_driver",
-                    'val'   => "log",
+                    'val'   => "smtp",
                     'group' => "email",
                 ],
                 [
