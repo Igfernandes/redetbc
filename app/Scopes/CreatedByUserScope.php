@@ -7,40 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class CreatedByUserScope implements Scope
 {
     public function apply(Builder $builder, Model $model)
     {
-        if (!Auth::check()) {
+
+        $religion = session('FILTER_RELIGION');
+        $modelTable = $model->getTable();
+
+        // ⚠️ Não aplica o filtro se o valor for vazio ou nulo
+        if (empty($religion)) {
             return;
         }
 
-        // $user = Auth::user();
-
-        // // Ignora se for administrador
-        // if (
-        //     isset($user->role) &&
-        //     isset($user->role->name) &&
-        //     $user->role->name === 'administrator'
-        // ) {
-        //     return;
-        // }
-
-        // // Ignora models de tradução
-        // if (str_contains($model->getTable(), '_translations')) {
-        //     return;
-        // }
-
-        // $userReligion = $user->religion;
-        // $modelTable = $model->getTable();
-
-        // // 🚀 Subquery evita ambiguidade de colunas
-        // $builder->whereExists(function ($query) use ($modelTable, $userReligion) {
-        //     $query->select(DB::raw(1))
-        //         ->from('users as u_creator')
-        //         ->whereColumn("{$modelTable}.create_user", 'u_creator.id')
-        //         ->where('u_creator.religion', $userReligion);
-        // });
+        // ✅ Só aplica se a tabela tiver a coluna 'religion'
+        if (Schema::hasColumn($modelTable, 'religion')) {
+            $builder->where("{$modelTable}.religion", $religion);
+        }
     }
 }

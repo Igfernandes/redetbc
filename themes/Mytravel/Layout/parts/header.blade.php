@@ -1,5 +1,29 @@
-<header id="header"
+<style>
+    .filter-key span {
+        color: #fff;
+    }
 
+    .js-header-fix-moment {
+        box-shadow: 1px 1px 4px #dddddd;
+    }
+
+    .js-header-fix-moment .filter-key span {
+        color: black;
+    }
+
+    .js-header-fix-moment .filter-key i {
+        color: #003583;
+    }
+</style>
+<?php
+$religion = null;
+
+if (isset($_GET['religion'])) {
+    session(['FILTER_RELIGION' => $_GET['religion']]);
+    $religion = session('FILTER_RELIGION');
+}
+?>
+<header id="header"
     class="@if(!empty($is_home) or !empty($header_transparent))
 
             u-header u-header--abs-top u-header--white-nav-links-xl u-header--bg-transparent u-header--show-hide border-bottom border-xl-bottom-0 border-color-white
@@ -50,30 +74,46 @@
 
                     <div class="header-left">
 
-                        <a href="{{url(app_get_locale(false,'/'))}}" class="bravo-logo navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white mr-0 mr-xl-5">
+                        <div class="d-flex align-items-center" style="cursor: pointer;">
+                            <a href="{{url(app_get_locale(false,'/'))}}" class="bravo-logo navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white mr-0 mr-xl-5">
 
-                            @if($logo_id = setting_item("logo_id"))
+                                @if($logo_id = setting_item("logo_id"))
 
-                            <?php $logo = get_file_url($logo_id, 'full') ?>
+                                <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                            <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
+                                <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
 
-                            @endif
+                                @endif
 
-                        </a>
+                            </a>
 
-                        <a class="bravo-logo navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll" href="{{url(app_get_locale(false,'/'))}}">
+                            <a class="bravo-logo navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll" href="{{url(app_get_locale(false,'/'))}}">
 
-                            @if($logo_id = setting_item("logo_id_2"))
+                                @if($logo_id = setting_item("logo_id_2"))
 
-                            <?php $logo = get_file_url($logo_id, 'full') ?>
+                                <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                            <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
+                                <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
 
-                            @endif
+                                @endif
 
 
-                        </a>
+                            </a>
+
+                            <div class="filter-key text-white">
+                                <a href="./?religion=CATHOLIC">
+                                    <span class="text" @if($religion==="CATHOLIC" ) style="color: #ffa636;" @endif>
+                                        {{ __('Católico') }}
+                                    </span>
+                                </a>
+                                <i class="icofont-key"></i>
+                                <a href="./?religion=EVANGELIC">
+                                    <span class="text" @if($religion==="EVANGELIC" ) style="color: #ffa636;" @endif>
+                                        {{ __('Evangélico') }}
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
 
                         <div class="bravo-menu">
 
