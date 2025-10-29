@@ -619,11 +619,11 @@ class Tour extends Bookable
                                 $type['price_type'] .= '/' . __('dia');
                                 break;
                             case "per_hour":
-                                $type['price_type'] .= '/' . __('hour');
+                                $type['price_type'] .= '/' . __('hora');
                                 break;
                         }
                         if (!empty($type['per_person'])) {
-                            $type['price_type'] .= '/' . __('guest');
+                            $type['price_type'] .= '/' . __('convidado');
                         }
                     }
                 }
@@ -640,7 +640,7 @@ class Tour extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -651,7 +651,7 @@ class Tour extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -743,7 +743,7 @@ class Tour extends Bookable
     {
         $list_score = [
             'score_total'  => 0,
-            'score_text'   => __("Not Rated"),
+            'score_text'   => __("Não classificado"),
             'total_review' => 0,
             'rate_score'   => [],
         ];
@@ -1133,14 +1133,14 @@ class Tour extends Bookable
         $category = TourCategory::selectRaw("id,name,slug")->where('status', 'publish')->with(['translation'])->get()->toTree();
         return [
             [
-                "title"    => __("Filter Price"),
+                "title"    => __("Filtrar Preço"),
                 "field"    => "price_range",
                 "position" => "1",
                 "min_price" => floor(Currency::convertPrice($min_max_price[0])),
                 "max_price" => ceil(Currency::convertPrice($min_max_price[1])),
             ],
             [
-                "title"    => __("Review Score"),
+                "title"    => __("Pontuação da avaliação"),
                 "field"    => "review_score",
                 "position" => "2",
                 "min" => "1",
@@ -1155,7 +1155,7 @@ class Tour extends Bookable
                 })
             ],
             [
-                "title"    => __("Attributes"),
+                "title"    => __("Atributos"),
                 "field"    => "terms",
                 "position" => "4",
                 "data" => Attributes::getAllAttributesForApi("tour")

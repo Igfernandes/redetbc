@@ -305,7 +305,7 @@
                                     <?php } ?>
                                 </div>
                                 <div class="text-right">
-                                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                                 </div>
                                 <div class="g-more hide">
                                     <div class="item" data-number="__number__">
@@ -396,7 +396,7 @@
                             @endif
                         </div>
                         <div class="text-right">
-                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                         </div>
                         <div class="g-more hide">
                             <div class="item" data-number="__number__">
