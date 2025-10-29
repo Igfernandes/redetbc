@@ -358,7 +358,7 @@ class Assistance extends Bookable
         }
 
         if (!$this->isAvailableInRanges($start_date_time, $end_date_time, $type, $hour, $total_number)) {
-            return $this->sendError(__("This assistance is not available at selected dates"));
+            return $this->sendError(__("Esta assistência não está disponível nas datas selecionadas"));
         }
         return true;
     }
@@ -366,7 +366,7 @@ class Assistance extends Bookable
     public function beforeCheckout(Request $request, $booking)
     {
         if (!$this->isAvailableInRanges($booking->start_date, $booking->end_date, $booking->getMeta("type_date"), $booking->getMeta("hour"), $booking->number)) {
-            return $this->sendError(__("This assistance is not available at selected dates"));
+            return $this->sendError(__("Esta assistência não está disponível nas datas selecionadas"));
         }
     }
 
@@ -459,7 +459,7 @@ class Assistance extends Bookable
             'max_number'      => $this->number ?? 1,
             'buyer_fees'      => [],
             'start_date'      => $start ?? "",
-            'start_date_html' => request()->input('start') ? display_date(request()->input('start')) : __('Please select'),
+            'start_date_html' => request()->input('start') ? display_date(request()->input('start')) : __('Por favor selecione'),
             'deposit' => $this->isDepositEnable(),
             'deposit_type' => $this->getDepositType(),
             'deposit_amount' => $this->getDepositAmount(),
@@ -485,11 +485,11 @@ class Assistance extends Bookable
                             $type['price_type'] .= '/' . __('dia');
                             break;
                         case "per_hour":
-                            $type['price_type'] .= '/' . __('hour');
+                            $type['price_type'] .= '/' . __('hora');
                             break;
                     }
                     if (!empty($type['per_person'])) {
-                        $type['price_type'] .= '/' . __('guest');
+                        $type['price_type'] .= '/' . __('convidado');
                     }
                 }
             }
@@ -504,7 +504,7 @@ class Assistance extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -515,7 +515,7 @@ class Assistance extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -595,7 +595,7 @@ class Assistance extends Bookable
     {
         $list_score = [
             'score_total'  => 0,
-            'score_text'   => __("Not rated"),
+            'score_text'   => __("Não classificado"),
             'total_review' => 0,
             'rate_score'   => [],
         ];
@@ -643,7 +643,7 @@ class Assistance extends Bookable
                 'total_review' => !empty($dataReview->total_review) ? $dataReview->total_review : 0,
             ];
         });
-        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Not rated");
+        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Não classificado");
         return $list_score;
     }
 
@@ -667,9 +667,9 @@ class Assistance extends Bookable
         }
         if (empty($number)) return false;
         if ($number > 1) {
-            return __(":number Assistances", ['number' => $number]);
+            return __(":number Assistências", ['number' => $number]);
         }
-        return __(":number Assistance", ['number' => $number]);
+        return __(":number Assistência", ['number' => $number]);
     }
 
     /**
@@ -982,21 +982,21 @@ class Assistance extends Bookable
         $min_max_price = self::getMinMaxPrice();
         return [
             [
-                "title"    => __("Filter Price"),
+                "title"    => __("Filtrar Preço"),
                 "field"    => "price_range",
                 "position" => "1",
                 "min_price" => floor(Currency::convertPrice($min_max_price[0])),
                 "max_price" => ceil(Currency::convertPrice($min_max_price[1])),
             ],
             [
-                "title"    => __("Review Score"),
+                "title"    => __("Pontuação da avaliação"),
                 "field"    => "review_score",
                 "position" => "2",
                 "min" => "1",
                 "max" => "5",
             ],
             [
-                "title"    => __("Attributes"),
+                "title"    => __("Atributos"),
                 "field"    => "terms",
                 "position" => "3",
                 "data" => Attributes::getAllAttributesForApi("assistance")

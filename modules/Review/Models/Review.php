@@ -44,7 +44,7 @@ class Review extends BaseModel
                 return __("Terrible");
                 break;
             default:
-                return __("Not rated");
+                return __("Não classificado");
                 break;
         }
     }

@@ -543,7 +543,7 @@ class Hotel extends Bookable
                 "room"          => __('room'),
             ],
             'start_date'      => request()->input('start') ?? "",
-            'start_date_html' => $date_html ?? __('Please select'),
+            'start_date_html' => $date_html ?? __('Por favor selecione'),
             'end_date'        => request()->input('end') ?? "",
             'deposit' => $this->isDepositEnable(),
             'deposit_type' => $this->getDepositType(),
@@ -579,7 +579,7 @@ class Hotel extends Bookable
                             break;
                     }
                     if (!empty($type['per_person'])) {
-                        $type['price_type'] .= '/' . __('guest');
+                        $type['price_type'] .= '/' . __('convidado');
                     }
                 }
             }
@@ -592,7 +592,7 @@ class Hotel extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -603,7 +603,7 @@ class Hotel extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -683,7 +683,7 @@ class Hotel extends Bookable
     {
         $list_score = [
             'score_total'  => 0,
-            'score_text'   => __("Not rated"),
+            'score_text'   => __("Não classificado"),
             'total_review' => 0,
             'rate_score'   => [],
         ];
@@ -731,7 +731,7 @@ class Hotel extends Bookable
                 'total_review' => !empty($dataReview->total_review) ? $dataReview->total_review : 0,
             ];
         });
-        $list_score['review_text'] = $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Not rated");
+        $list_score['review_text'] = $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Não classificado");
         return $list_score;
     }
 
@@ -1132,7 +1132,7 @@ class Hotel extends Bookable
         $min_max_price = self::getMinMaxPrice();
         return [
             [
-                "title"    => __("Filter Price"),
+                "title"    => __("Filtrar Preço"),
                 "field"    => "price_range",
                 "position" => "1",
                 "min_price" => floor(Currency::convertPrice($min_max_price[0])),
@@ -1146,14 +1146,14 @@ class Hotel extends Bookable
                 "max" => "5",
             ],
             [
-                "title"    => __("Review Score"),
+                "title"    => __("Pontuação da avaliação"),
                 "field"    => "review_score",
                 "position" => "3",
                 "min" => "1",
                 "max" => "5",
             ],
             [
-                "title"    => __("Attributes"),
+                "title"    => __("Atributos"),
                 "field"    => "terms",
                 "position" => "4",
                 "data" => Attributes::getAllAttributesForApi("hotel")
