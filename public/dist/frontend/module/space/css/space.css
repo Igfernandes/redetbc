@@ -1234,7 +1234,7 @@
   display: block;
   text-decoration: line-through;
   font-size: 17px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
   line-height: 20px;
 }
@@ -1429,7 +1429,7 @@
 .bravo_wrap .bravo_detail_space .bravo-more-book-mobile .left .g-price .price .onsale {
   text-decoration: line-through;
   font-size: 16px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
 }
 .bravo_wrap .bravo_detail_space .bravo-more-book-mobile .left .g-price i {

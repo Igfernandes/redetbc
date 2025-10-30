@@ -4,7 +4,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #cf9343;
+            background-color: #ffa636;
             font-weight: 500;
             padding: 10px;
             p {
@@ -75,7 +75,7 @@
 
         .socials a {
             padding-right: 18px;
-            color: #fff;
+            color: #003583;
             font-size: 14px;
             text-decoration: none;
         }
@@ -104,7 +104,7 @@
         }
         .topbar_left_text {
             a {
-                color: #fff;
+                color: #003583;
             }
         }
         .dropdown-nav-link {
@@ -166,7 +166,7 @@
                                 font-size: 14px;
                                 font-weight: 600;
                                 text-transform: uppercase;
-                                color: #fff;
+                                color: #003583;
                                 transition: all 0.3s;
                                 @media (max-width: 1366px) {
                                     padding: 25px 15px;
@@ -239,11 +239,11 @@
                                 }
 
                                 > a {
-                                    color: #5191fa;
+                                    color: #3266b4;
                                 }
 
                                 > .fa {
-                                    color: #5191fa;
+                                    color: #003583;
                                 }
                             }
                         }
@@ -583,7 +583,7 @@
         &.js-header-fix-moment,
         &.header-white {
             .bravo-more-menu {
-                color: #297cbb !important;
+                color: #003583 !important;
             }
             .bravo_header {
                 ul {
@@ -602,11 +602,11 @@
                             }
 
                             > a {
-                                color: #297cbb !important;
+                                color: #003583 !important;
                             }
 
                             > .fa {
-                                color: #297cbb !important;
+                                color: #003583 !important;
                             }
                         }
                     }

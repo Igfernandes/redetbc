@@ -1,7 +1,4 @@
 <style>
-    .filter-key span {
-        color: #fff;
-    }
 
     .js-header-fix-moment {
         box-shadow: 1px 1px 4px #dddddd;
@@ -100,7 +97,7 @@ if (isset($_GET['religion'])) {
 
                             </a>
 
-                            <div class="filter-key text-white">
+                            <div class="filter-key ">
                                 <a href="./?religion=CATHOLIC">
                                     <span class="text" @if($religion==="CATHOLIC" ) style="color: #ffa636;" @endif>
                                         {{ __('Católico') }}

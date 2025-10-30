@@ -17,7 +17,7 @@
         bottom: 10px;
         color: #fff;
         font-size: 14px;
-        background-color: #d42681;
+        background-color: #ffa636;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -26,7 +26,7 @@
     }
     .featured {
         .badge{
-            background: #d42681;
+            background: #ffa636;
             color: #fff;
             border-radius: 5px;
             z-index: 1;
@@ -69,7 +69,7 @@
             }
             &.active{
                 i{
-                    color: #d42681;
+                    color: #c47a1d;
                     &:before {
                         content: "\f004";
                     }
@@ -79,7 +79,7 @@
     }
     .location {
         font-size: 13px;
-        color: #d42681;
+        color: #c47a1d;
         margin: 15px 15px 0px 15px;
         i {
             position: relative;
@@ -88,7 +88,7 @@
     }
     .service-review {
         .rate {
-            color: #d42681;
+            color: #c47a1d;
         }
         margin: 0 15px 0;
         .review {
@@ -163,7 +163,7 @@
                 .onsale {
                     text-decoration: line-through;
                     font-size: 14px;
-                    color: #cc0033 !important;
+                    color: #c47a1d;
                     font-weight: 400;
                 }
                 .unit{

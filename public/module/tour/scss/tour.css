@@ -383,7 +383,7 @@
             top: -15px;
             text-decoration: line-through;
             font-size: 14px;
-            color: #cc0033 !important;
+            color: #c47a1d;
             font-weight: 400; }
     .bravo_wrap .bravo_search_tour .bravo-list-item .list-item .item-tour.infobox-item {
       position: relative; }
@@ -887,7 +887,7 @@
             display: block;
             text-decoration: line-through;
             font-size: 17px;
-            color: #cc0033 !important;
+            color: #c47a1d;
             font-weight: 400;
             line-height: 20px; }
     .bravo_wrap .bravo_detail_tour .bravo_content .bravo_tour_book .form-content .form-group {
@@ -1068,7 +1068,7 @@
             top: -15px;
             text-decoration: line-through;
             font-size: 14px;
-            color: #cc0033 !important;
+            color: #c47a1d;
             font-weight: 400; }
     .bravo_wrap .bravo_detail_tour .bravo-list-tour-related .item-tour .service-review {
       padding: 10px 15px 15px; }
@@ -1146,7 +1146,7 @@
     .bravo_wrap .bravo_detail_tour .bravo-more-book-mobile .left .g-price .price .onsale {
       text-decoration: line-through;
       font-size: 16px;
-      color: #cc0033 !important;
+      color: #c47a1d;
       font-weight: 400; }
   .bravo_wrap .bravo_detail_tour .bravo-more-book-mobile .left .g-price i {
     font-size: 18px; }
@@ -1294,7 +1294,7 @@
             top: -15px;
             text-decoration: line-through;
             font-size: 14px;
-            color: #cc0033 !important;
+            color: #c47a1d;
             font-weight: 400; }
 
 .cart-total-group {
@@ -1629,7 +1629,7 @@
                 top: -15px;
                 text-decoration: line-through;
                 font-size: 14px;
-                color: #cc0033 !important;
+                color: #c47a1d;
                 font-weight: 400; }
         .has-search-map .bravo_search_map .results_map .item-tour.infobox-item {
           position: relative; }

@@ -2,8 +2,8 @@
     <div class="container space-2 space-top-xl-4">
         <div class="row justify-content-center pb-xl-8">
             <div class="py-8 py-xl-10 pb-5">
-                <h1 class="font-size-60 font-size-xs-30 text-white font-weight-bold">{{$title ?? ''}}</h1>
-                <p class="font-size-20 font-weight-normal text-white">{{$sub_title ?? ''}}</p>
+                <h1 class="font-size-60 font-size-xs-30 font-weight-bold">{{$title ?? ''}}</h1>
+                <p class="font-size-20 font-weight-normal ">{{$sub_title ?? ''}}</p>
             </div>
         </div>
         @if(empty($hide_form_search))
@@ -41,15 +41,17 @@
                         href="#bravo_{{$service_type}}" role="tab"
                         aria-controls="bravo_{{$service_type}}" aria-selected="true">
 
-                        <div class="text-center position-relative text-white align-items-center">
+                        <div class="text-center position-relative align-items-center">
                             <figure
                                 style="height: 60px;
                                    width: 60px;
                                    padding-top: 8px;
                                    border: 7px solid #fff;
+                                   box-shadow: 1px 1px 5px black;
                                    border-radius: 100%;
                                    background: #003583;
-                                   margin: 0 auto;"
+                                   margin: 0 auto;
+                                   color: #fff;"
                                 class="ie-height-40 d-md-block">
                                 <i class="icon {{ $module->getServiceIconFeatured() }} font-size-3"></i>
                             </figure>

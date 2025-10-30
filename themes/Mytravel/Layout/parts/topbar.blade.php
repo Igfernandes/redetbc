@@ -9,7 +9,7 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
             </div>
             <div class="ml-auto d-flex align-items-center">
                 @if(!empty($phone_contact = setting_item("phone_contact")))
-                <div class="d-flex align-items-center text-white px-3">
+                <div class="d-flex align-items-center  px-3" style="color:#003583;">
                     <i class="flaticon-phone-call mr-2 ml-1 font-size-18"></i>
                     <span class="d-inline-block font-size-14 mr-1">{{ $phone_contact }}</span>
                 </div>
@@ -19,13 +19,13 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                 @include('Layout::parts.notification')
                 <div class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider">
                     @if(!Auth::id() || null === Auth::user())
-                    <a href="javascript:;" class="d-flex align-items-center text-white py-3"
+                    <a href="javascript:;" class="d-flex align-items-center  py-3"
                         data-toggle="modal" data-target="#login">
                         <i class="flaticon-user mr-2 ml-1 font-size-18"></i>
                         <span class="d-inline-block font-size-14 mr-1">{{ __("Sign in or Register") }}</span>
                     </a>
                     @else
-                    <div class="d-flex align-items-center text-white py-3 dropdown">
+                    <div class="d-flex align-items-center  py-3 dropdown">
                         <i class="flaticon-user mr-2 ml-1 font-size-18"></i>
                         <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link" data-toggle="dropdown">
                             {{__("Hi, :name",['name'=>Auth::user()->getDisplayName()])}}
