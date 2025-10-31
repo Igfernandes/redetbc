@@ -44316,7 +44316,7 @@ label.btn {
 }
 
 .green-lighter {
-  color: #b0d12b;
+  color: #ffa636;
 }
 
 .text-blue-lighter-1 {
@@ -45343,13 +45343,28 @@ ol {
   font-weight: 500;
   padding: 10px;
 }
+@media (max-width: 768px) {
+  .bravo_wrap .subscribe-plan .content {
+    flex-wrap: wrap;
+  }
+}
 .bravo_wrap .subscribe-plan .content p {
   color: #fff;
   margin: 0;
 }
+@media (max-width: 768px) {
+  .bravo_wrap .subscribe-plan .content p {
+    width: 100%;
+  }
+}
 .bravo_wrap .subscribe-plan .content a {
   text-decoration: underline;
   margin-left: 4px;
+}
+@media (max-width: 768px) {
+  .bravo_wrap .subscribe-plan .content a {
+    width: 100%;
+  }
 }
 @media (max-width: 768px) {
   .bravo_wrap .bravo_topbar {
@@ -45456,6 +45471,11 @@ ol {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .bravo_wrap .bravo_header .content {
+    flex-wrap: wrap;
+  }
 }
 .bravo_wrap .bravo_header .content .header-left {
   position: relative;

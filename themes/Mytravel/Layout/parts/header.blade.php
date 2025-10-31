@@ -97,7 +97,7 @@ if (isset($_GET['religion'])) {
 
                             </a>
 
-                            <div class="filter-key ">
+                            <div class="filter-key  ml-2">
                                 <a href="./?religion=CATHOLIC">
                                     <span class="text" @if($religion==="CATHOLIC" ) style="color: #ffa636;" @endif>
                                         {{ __('Católico') }}

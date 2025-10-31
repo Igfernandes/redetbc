@@ -8,7 +8,7 @@
         </div>
         @if(empty($hide_form_search))
         <div class="mb-lg-n1">
-            <ul class="nav tab-nav flex-nowrap tab-nav-shadow justify-content-start @if(!empty($single_form_search)) d-none @endif" role="tablist">
+            <ul class="nav tab-nav flex-nowrap mt-3 tab-nav-shadow justify-content-start @if(!empty($single_form_search)) d-none @endif" role="tablist">
                 @if(!empty($service_types))
                 @php
                 $number = 0;
