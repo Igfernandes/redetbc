@@ -37,11 +37,11 @@
                 {{ app()->getLocale() }}: {
                 'header.image_editor_title': '{{ __('Image Editor') }}',
                     'header.toggle_fullscreen': '{{ __('Toggle fullscreen') }}',
-                    'header.close': '{{ __('Close') }}',
+                    'header.close': '{{ __('Fechar') }}',
                     'header.close_modal': '{{ __('Close window') }}',
                     'toolbar.download': '{{ __('Save Change') }}',
                     'toolbar.save': '{{ __('Save') }}',
-                    'toolbar.apply': '{{ __('Apply') }}',
+                    'toolbar.apply': '{{ __('Aplicar') }}',
                     'toolbar.saveAsNewImage': '{{ __('Save As New Image') }}',
                     'toolbar.cancel': '{{ __('Cancel') }}',
                     'toolbar.go_back': '{{ __('Go Back') }}',

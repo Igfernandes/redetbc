@@ -13,7 +13,7 @@ class SettingClass extends BaseSettingsClass
         return [
             [
                 'id'   => 'email',
-                'title' => __("Email Settings"),
+                'title' => __("Configurações de e-mail"),
                 'position'=>90,
                 'view'=>"Email::admin.settings.email",
                 "keys"=>[

@@ -14,7 +14,7 @@ class VendorRegisterForm extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'desc',
@@ -31,7 +31,7 @@ class VendorRegisterForm extends BaseBlock
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Background Image Uploader')
+                    'label' => __('Carregador de Imagem de Fundo')
                 ],
             ],
             'category'=>__("Other Block")

@@ -25,7 +25,7 @@ class Menu extends BaseModel
                 $item['model_name'] = '';
                 $item['open'] = false;
                 if ($class == 'custom') {
-                    $item['model_name'] = __('Custom');
+                    $item['model_name'] = __('Personalizado');
                 }
                 if (method_exists($class, 'getAsMenuItem') and !empty($item['id'])) {
                     $origin = call_user_func([

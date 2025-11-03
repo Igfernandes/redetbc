@@ -5,7 +5,7 @@ $user = auth()->user();
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content enquiry_form_modal_form">
             <div class="modal-header">
-                <h5 class="modal-title">{{__("Enquiry")}}</h5>
+                <h5 class="modal-title">{{__("Investigação")}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -20,7 +20,7 @@ $user = auth()->user();
                     <input type="text" class="form-control" value="{{$user->email ?? ''}}" name="enquiry_email" placeholder="{{ __("Email *") }}">
                 </div>
                 <div class="form-group" v-if="!enquiry_is_submit">
-                    <input type="text" class="form-control" value="{{$user->phone ?? ''}}" name="enquiry_phone" placeholder="{{ __("Phone") }}">
+                    <input type="text" class="form-control" value="{{$user->phone ?? ''}}" name="enquiry_phone" placeholder="{{ __("Telefone") }}">
                 </div>
                 <div class="form-group" v-if="!enquiry_is_submit">
                     <textarea class="form-control" placeholder="{{ __("Note") }}" name="enquiry_note"></textarea>
@@ -33,8 +33,8 @@ $user = auth()->user();
                 <div class="message_box"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                <button type="button" class="btn btn-primary btn-submit-enquiry">{{__("Send now")}}
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
+                <button type="button" class="btn btn-primary btn-submit-enquiry">{{__("Enviar agora")}}
                 <i class="fa icon-loading fa-spinner fa-spin fa-fw" style="display: none"></i>
                 </button>
             </div>

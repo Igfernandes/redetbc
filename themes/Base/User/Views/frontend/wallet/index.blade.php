@@ -52,7 +52,7 @@
                             <th scope="col">{{__('Gateway')}}</th>
                             <th scope="col">{{__('Status')}}</th>
                             <th scope="col">{{__("Description")}}</th>
-                            <th scope="col">{{__("Date")}}</th>
+                            <th scope="col">{{__("Data")}}</th>
                         </tr>
                         </thead>
                         <tbody>

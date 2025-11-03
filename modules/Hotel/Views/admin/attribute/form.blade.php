@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label>{{__("Name")}}</label>
+    <label>{{__("Nome")}}</label>
     <input type="text" value="{{$translation->name}}" placeholder="{{__("Attribute name")}}" name="name" class="form-control">
 </div>
 @if(is_default_lang())
@@ -18,7 +18,7 @@
         </label>
     </div>
     <div class="form-group">
-        <label>{{__('Hide in filter search')}}</label>
+        <label>{{__('Ocultar na pesquisa de filtro')}}</label>
         <br>
         <label>
             <input type="checkbox" name="hide_in_filter_search" @if($row->hide_in_filter_search) checked @endif value="1"> {{__("Enable hide")}}

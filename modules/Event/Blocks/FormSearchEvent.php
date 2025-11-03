@@ -16,18 +16,18 @@ class FormSearchEvent extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'sub_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Sub Title')
+                    'label'     => __('Sub Título')
                 ],
                 [
                     'id'            => 'style',
                     'type'          => 'radios',
-                    'label'         => __('Style Background'),
+                    'label'         => __('Fundo de estilo'),
                     'values'        => [
                         [
                             'value'   => '',
@@ -35,36 +35,36 @@ class FormSearchEvent extends BaseBlock
                         ],
                         [
                             'value'   => 'carousel',
-                            'name' => __("Slider Carousel")
+                            'name' => __("Carrossel deslizante")
                         ]
                     ]
                 ],
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('- Layout Normal: Background Image Uploader')
+                    'label' => __('- Layout Normal: Carregador de Imagem de Fundo')
                 ],
                 [
                     'id'          => 'list_slider',
                     'type'        => 'listItem',
-                    'label'       => __('- Layout Slider: List Item(s)'),
+                    'label'       => __('- Controle deslizante de layout: listar itens'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
                             'id'    => 'bg_image',
                             'type'  => 'uploader',
-                            'label' => __('Background Image Uploader')
+                            'label' => __('Carregador de imagem de fundo')
                         ]
                     ]
                 ]
             ],
-            'category'=>__("Service Event")
+            'category'=>__("Evento de serviço")
         ];
     }
 
     public function getName()
     {
-        return __('Event: Form Search');
+        return __('Evento: Pesquisa de formulário');
     }
 
     public function content($model = [])

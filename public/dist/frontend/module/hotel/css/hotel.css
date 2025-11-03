@@ -807,7 +807,7 @@
 .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop .info .g-price .price .onsale {
   text-decoration: line-through;
   font-size: 14px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
 }
 .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop .info .g-price .price .unit {
@@ -1290,7 +1290,7 @@
 .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop-list .g-rate-price .g-price .price .onsale {
   text-decoration: line-through;
   font-size: 14px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
 }
 .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop-list .g-rate-price .g-price .price .unit {
@@ -2259,7 +2259,7 @@
 .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop .info .g-price .price .onsale {
   text-decoration: line-through;
   font-size: 14px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
 }
 .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop .info .g-price .price .unit {
@@ -2742,7 +2742,7 @@
 .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop-list .g-rate-price .g-price .price .onsale {
   text-decoration: line-through;
   font-size: 14px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
 }
 .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop-list .g-rate-price .g-price .price .unit {
@@ -2963,7 +2963,7 @@
   display: block;
   text-decoration: line-through;
   font-size: 17px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
   line-height: 20px;
 }
@@ -3158,7 +3158,7 @@
 .bravo_wrap .bravo_detail_hotel .bravo-more-book-mobile .left .g-price .price .onsale {
   text-decoration: line-through;
   font-size: 16px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
 }
 .bravo_wrap .bravo_detail_hotel .bravo-more-book-mobile .left .g-price i {
@@ -3935,7 +3935,7 @@
 .has-search-map .bravo_search_map .results_map .item-loop .info .g-price .price .onsale {
   text-decoration: line-through;
   font-size: 14px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
 }
 .has-search-map .bravo_search_map .results_map .item-loop .info .g-price .price .unit {
@@ -4418,7 +4418,7 @@
 .has-search-map .bravo_search_map .results_map .item-loop-list .g-rate-price .g-price .price .onsale {
   text-decoration: line-through;
   font-size: 14px;
-  color: #cc0033 !important;
+  color: #c47a1d;
   font-weight: 400;
 }
 .has-search-map .bravo_search_map .results_map .item-loop-list .g-rate-price .g-price .price .unit {

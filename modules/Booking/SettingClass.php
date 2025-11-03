@@ -43,7 +43,7 @@ class SettingClass extends BaseSettingsClass
         $configs = [
             'booking'=>[
                 'id'   => 'booking',
-                'title' => __("Booking Settings"),
+                'title' => __("Configurações de reserva"),
                 'position'=>40,
                 'view'=>"Booking::admin.settings.booking",
                 "keys"=>[
@@ -69,7 +69,7 @@ class SettingClass extends BaseSettingsClass
             ],
             'payment'=>[
                 'id'   => 'payment',
-                'title' => __("Payment Settings"),
+                'title' => __("Configurações de pagamento"),
                 'position'=>60,
                 'view'=>"Booking::admin.settings.payment",
                 "keys"=>$keys,
@@ -79,7 +79,7 @@ class SettingClass extends BaseSettingsClass
             ],
             'enquiry'=>[
                 'id'   => 'enquiry',
-                'title' => __("Enquiry Settings"),
+                'title' => __("Configurações de consulta"),
                 'position'=>41,
                 'view'=>"Booking::admin.settings.enquiry",
                 "keys"=>[

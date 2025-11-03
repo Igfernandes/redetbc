@@ -2,8 +2,8 @@
     <div class="panel-title"><strong>{{__("Tour Content")}}</strong></div>
     <div class="panel-body">
         <div class="form-group magic-field" data-id="title" data-type="title">
-            <label class="control-label">{{__("Title")}}</label>
-            <input type="text" value="{{old('title',$translation->title)}}" placeholder="{{__("Title")}}" name="title" class="form-control">
+            <label class="control-label">{{__("Título")}}</label>
+            <input type="text" value="{{old('title',$translation->title)}}" placeholder="{{__("Título")}}" name="title" class="form-control">
         </div>
         <div class="form-group">
             <label class="control-label">{{__("Target Religion")}}</label>
@@ -97,7 +97,7 @@
             <label class="control-label">{{__('FAQs')}}</label>
             <div class="g-items-header">
                 <div class="row">
-                    <div class="col-md-5">{{__("Title")}}</div>
+                    <div class="col-md-5">{{__("Título")}}</div>
                     <div class="col-md-5">{{__('Content')}}</div>
                     <div class="col-md-1"></div>
                 </div>
@@ -123,7 +123,7 @@
                 @endif
             </div>
             <div class="text-right">
-                <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
             </div>
             <div class="g-more hide">
                 <div class="item" data-number="__number__">

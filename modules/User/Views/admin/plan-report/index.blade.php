@@ -18,7 +18,7 @@
 {{--                                    <option value="publish">{{__(" Publish ")}}</option>--}}
 {{--                                    <option value="draft">{{__(" Move to Draft ")}}</option>--}}
 {{--                                </select>--}}
-{{--                                <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>--}}
+{{--                                <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>--}}
 {{--                            </form>--}}
 {{--                        @endif--}}
                     </div>
@@ -48,7 +48,7 @@
                                        <option @if(Request()->plan_id == $plan->id) selected @endif value="{{ $plan->id }}">{{ $plan->title }}</option>
                                     @endforeach
                                 </select>
-                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search')}}</button>
+                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Procurar')}}</button>
                         </form>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                                     <th>{{__("Plan Name")}}</th>
                                     <th>{{__("Expiry")}}</th>
                                     <th>{{__("Used/Total")}}</th>
-                                    <th>{{__("Price")}}</th>
+                                    <th>{{__("Preço")}}</th>
                                     <th>{{__("Status")}}</th>
                                     <th width="100px"></th>
                                 </tr>
@@ -98,7 +98,7 @@
                                     @endforeach
                                 @else
                                     <tr class="text-center">
-                                        <td colspan="6">{{__("No data")}}</td>
+                                        <td colspan="6">{{__("Sem dados")}}</td>
                                     </tr>
                                 @endif
                                 </tbody>

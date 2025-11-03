@@ -58,10 +58,10 @@ class PayoutController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return $this->sendError(__('No items selected!'));
+            return $this->sendError(__('Nenhum item selecionado!'));
         }
         if (empty($action)) {
-            return $this->sendError(__('Please select an action!'));
+            return $this->sendError(__('Selecione uma ação!'));
         }
 
         $all_statuses = $this->vendorPayoutClass::getAllStatuses();
@@ -75,7 +75,7 @@ class PayoutController extends AdminController
                         $query->delete();
                     }
                 }
-                return $this->sendSuccess(__('Deleted success!'));
+                return $this->sendSuccess(__('Excluído com sucesso!'));
                 break;
             default:
                 // Change status
@@ -104,7 +104,7 @@ class PayoutController extends AdminController
                         }
                     }
                 }
-                return $this->sendSuccess( __('Update success!'));
+                return $this->sendSuccess( __('Atualização bem-sucedida!'));
                 break;
         }
     }

@@ -19,7 +19,7 @@ class HowItWork extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'          => 'list_item',
@@ -31,13 +31,13 @@ class HowItWork extends BaseBlock
                             'id'        => 'title',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Title')
+                            'label'     => __('Título')
                         ],
                         [
                             'id'        => 'sub_title',
                             'type'      => 'input',
                             'inputType' => 'textArea',
-                            'label'     => __('Sub Title')
+                            'label'     => __('Subtítulo')
                         ],
                         [
                             'id'    => 'icon_image',
@@ -48,7 +48,7 @@ class HowItWork extends BaseBlock
                             'id'        => 'order',
                             'type'      => 'input',
                             'inputType' => 'number',
-                            'label'     => __('Order')
+                            'label'     => __('Ordem')
                         ],
                     ]
                 ],

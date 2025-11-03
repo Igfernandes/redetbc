@@ -24,7 +24,7 @@ class Contact extends BaseBlock
 
     public function getName()
     {
-        return __('Contact Block');
+        return __('Bloco de contato');
     }
 
     public function content($model = [])

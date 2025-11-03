@@ -4,31 +4,32 @@
     </div>
     <div class="col-md-6">
         <div class="py-3 pr-3 h-100">
-            <form method="post" action="{{route('pro.buy')}}" class=" h-100 d-flex flex-column "> @csrf
-                <h5 class="mb-3">Upgrade to PRO to unlock unlimited access to all of our features, including:</h5>
+            <form method="post" action="{{route('pro.buy')}}" class="h-100 d-flex flex-column"> 
+                @csrf
+                <h5 class="mb-3">Faça o upgrade para o PRO e tenha acesso ilimitado a todos os nossos recursos, incluindo:</h5>
                 <div class="mb-5">
                     <div class="mb-1">
                         <i class="fa fa-check text-success"></i>
-                        New modern template
+                        Novo template moderno
                     </div>
                     <div class="mb-1">
                         <i class="fa fa-check text-success"></i>
-                        Support Center plugin
+                        Plugin de Central de Suporte
                     </div>
                     <div class="mb-1">
                         <i class="fa fa-check text-success"></i>
-                        More Payment gateways
+                        Mais gateways de pagamento
                     </div>
                     <div class="mb-1">
-                        ... new features coming soon
+                        ... novos recursos chegando em breve
                     </div>
                 </div>
                 <button class="btn btn-info btn-block btn-md mb-3">
                     <img width="32px" class="mr-3" src="{{asset('/images/premium.png')}}" alt="Upgrade">
-                    <strong>{{__("Upgrade for :price",['price'=>'$'.config('pro.price_yearly')])}}</strong>
+                    <strong>{{__("Atualize por :price", ['price' => '$'.config('pro.price_yearly')])}}</strong>
                 </button>
                 <p class="text-center">
-                    <i>* After purchasing, you can download the PRO version</i>
+                    <i>* Após a compra, você poderá baixar a versão PRO</i>
                 </p>
             </form>
         </div>

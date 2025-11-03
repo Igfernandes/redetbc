@@ -5,7 +5,7 @@
         <div class="container">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->name : __('Add new category')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->name : __('Add new category')}}</h1>
                     @if($row->slug)
                         <p class="item-url-demo"> {{ __('Permalink:')}}
                             {{ url((request()->query('lang') ? request()->query('lang').'/' : '').config('news.news_route_prefix')."/".config('news.news_category_route_prefix')) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
@@ -34,12 +34,12 @@
                     </div>
                     <div class="col-md-3">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{ __('Publish')}}</strong></div>
+                            <div class="panel-title"><strong>{{ __('Publicar')}}</strong></div>
                             <div class="panel-body">
                                 @if(is_default_lang())
                                     <div class="form-group">
                                         <div>
-                                            <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{ __('Publish')}}
+                                            <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{ __('Publicar')}}
                                             </label>
                                         </div>
                                         <div>

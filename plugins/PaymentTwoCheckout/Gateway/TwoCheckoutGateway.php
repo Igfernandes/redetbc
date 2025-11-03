@@ -32,7 +32,7 @@ class TwoCheckoutGateway extends \Modules\Booking\Gateways\BaseGateway
             [
                 'type'  => 'upload',
                 'id'    => 'logo_id',
-                'label' => __('Custom Logo'),
+                'label' => __('Logotipo Personalizado'),
             ],
             [
                 'type'  => 'editor',

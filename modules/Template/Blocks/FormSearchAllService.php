@@ -23,7 +23,7 @@ class FormSearchAllService extends BaseBlock
                 'id'        => 'title_for_'.$key,
                 'type'      => 'input',
                 'inputType' => 'text',
-                'label'     => __('Title for :service',['service'=>ucwords($key)])
+                'label'     => __('Título for :service',['service'=>ucwords($key)])
             ];
         }
         $arg[] = [
@@ -38,19 +38,19 @@ class FormSearchAllService extends BaseBlock
             'id'        => 'title',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Title')
+            'label'     => __('Título')
         ];
         $arg[] = [
             'id'        => 'sub_title',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Sub Title')
+            'label'     => __('Subtítulo')
         ];
 
         $arg[] =  [
             'id'            => 'style',
             'type'          => 'radios',
-            'label'         => __('Style Background'),
+            'label'         => __('Estilo de fundo'),
             'values'        => [
                 [
                     'value'   => '',
@@ -58,7 +58,7 @@ class FormSearchAllService extends BaseBlock
                 ],
                 [
                     'value'   => 'carousel',
-                    'name' => __("Slider Carousel")
+                    'name' => __("Carrossel deslizante")
                 ],
                 [
                     'value'   => 'carousel_v2',
@@ -74,7 +74,7 @@ class FormSearchAllService extends BaseBlock
         $arg[] = [
             'id'    => 'bg_image',
             'type'  => 'uploader',
-            'label' => __('- Layout Normal: Background Image Uploader')
+            'label' => __('- Layout Normal: Carregador de Imagem de Fundo')
         ];
 
         $arg[] = [
@@ -87,14 +87,14 @@ class FormSearchAllService extends BaseBlock
         $arg[] = [
             'id'          => 'list_slider',
             'type'        => 'listItem',
-            'label'       => __('- Layout Slider: List Item(s)'),
+            'label'       => __('- Controle deslizante de layout: Listar item(ns)'),
             'title_field' => 'title',
             'settings'    => [
                 [
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title (using for slider ver 2)')
+                    'label'     => __('Título (using for slider ver 2)')
                 ],
                 [
                     'id'        => 'desc',
@@ -105,7 +105,7 @@ class FormSearchAllService extends BaseBlock
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Background Image Uploader')
+                    'label' => __('Carregador de Imagem de Fundo')
                 ]
             ]
         ];

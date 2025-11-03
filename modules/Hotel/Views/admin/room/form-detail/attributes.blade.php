@@ -4,7 +4,7 @@
             @php $translate = $attribute->translate(app_get_locale()); @endphp
             <div class="col-md-12">
                 <div class="form-group">
-                    <label class="control-label"><strong>{{__('Attribute: :name',['name'=>$translate->name])}}</strong></label>
+                    <label class="control-label"><strong>{{__('Atributo: :name',['name'=>$translate->name])}}</strong></label>
                     <div class="terms-scrollable">
                         @foreach($attribute->terms as $term)
                             @php $term_translate = $term->translate(app_get_locale()); @endphp

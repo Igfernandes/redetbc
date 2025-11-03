@@ -1,5 +1,5 @@
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Availability")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Disponibilidade")}}</strong></div>
     <div class="panel-body">
 
         <h3 class="panel-body-title">{{__('Fixed dates')}}</h3>
@@ -45,9 +45,9 @@
                 <thead>
                 <tr>
                     <th>{{__('Enable?')}}</th>
-                    <th>{{__('Day of Week')}}</th>
+                    <th>{{__('Dia of Week')}}</th>
                     <th>{{__('Open')}}</th>
-                    <th>{{__('Close')}}</th>
+                    <th>{{__('Fechar')}}</th>
                 </tr>
                 </thead>
                 @for($i = 1 ; $i <=7 ; $i++)

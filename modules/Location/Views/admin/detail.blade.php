@@ -8,7 +8,7 @@
                 <div class="">
                     <h1 class="title-bar">{{$row->id ? 'Edit: '.$row->name : __("Add new location")}}</h1>
                     @if($row->slug)
-                        <p class="item-url-demo">{{__("Permalink")}}: {{ url( (request()->query('lang') ? request()->query('lang').'/' : '').config('location.location_route_prefix'))  }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a></p>
+                        <p class="item-url-demo">{{__("Link permanente")}}: {{ url( (request()->query('lang') ? request()->query('lang').'/' : '').config('location.location_route_prefix'))  }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a></p>
                     @endif
                 </div>
                 <div class="">
@@ -95,7 +95,7 @@
                                         @endif
                                     </div>
                                     <div class="text-right">
-                                        <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                                        <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                                     </div>
                                     <div class="g-more hide">
                                         <div class="item" data-number="__number__">
@@ -124,24 +124,24 @@
                     </div>
                     <div class="col-md-3">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{__('Publish')}}</strong></div>
+                            <div class="panel-title"><strong>{{__('Publicar')}}</strong></div>
                             <div class="panel-body">
                                 @if(is_default_lang())
                                     <div>
-                                        <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publish")}}
+                                        <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publicar")}}
                                         </label></div>
                                     <div>
-                                        <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Draft")}}
+                                        <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Rascunho")}}
                                         </label></div>
                                 @endif
                                 <div class="text-right">
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Save Changes')}}</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
                                 </div>
                             </div>
                         </div>
                         @if(is_default_lang())
                             <div class="panel">
-                                <div class="panel-title"><strong>{{__('Feature Image')}}</strong></div>
+                                <div class="panel-title"><strong>{{__('Imagem em destaque')}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
                                         {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->title : __('Add Plan')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Add Plan')}}</h1>
                 </div>
             </div>
             @include('admin.message')
@@ -24,11 +24,11 @@
                     </div>
                     <div class="col-md-3">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{__('Publish')}}</strong></div>
+                            <div class="panel-title"><strong>{{__('Publicar')}}</strong></div>
                             <div class="panel-body">
                                 <div class="text-right">
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-save"></i> {{__('Save Changes')}}</button>
+                                        <i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
                                 </div>
                             </div>
                         </div>

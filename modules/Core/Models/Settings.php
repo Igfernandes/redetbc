@@ -56,7 +56,7 @@ class Settings extends BaseModel
         $allSettings = [
             'general'=>[
                 'id'=>'general',
-                'title' => __("General Settings"),
+                'title' => __("Configurações Gerais"),
                 'position'=>10
             ],
         ];

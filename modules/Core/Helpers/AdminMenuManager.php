@@ -46,14 +46,14 @@ class AdminMenuManager
         $menus = [
             'admin'   => [
                 'url'      => route('admin.index'),
-                'title'    => __("Dashboard"),
+                'title'    => __("Painel"),
                 'icon'     => 'icon ion-ios-desktop',
                 "position" => 0
             ],
             'general' => [
                 "position"   => 80,
                 'url'        => route('core.admin.settings.index', ['group' => 'general']),
-                'title'      => __('Setting'),
+                'title'      => __('Contexto'),
                 'icon'       => 'icon ion-ios-cog',
                 'permission' => 'setting_update',
                 'group' => 'system',

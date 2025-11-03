@@ -27,7 +27,7 @@ class ListLocations extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'desc',
@@ -39,12 +39,12 @@ class ListLocations extends BaseBlock
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Number Item')
+                    'label'     => __('Item numérico')
                 ],
                 [
                     'id'            => 'layout',
                     'type'          => 'radios',
-                    'label'         => __('Style'),
+                    'label'         => __('Estilo'),
                     'values'        => [
                         [
                             'value'   => 'style_1',
@@ -67,22 +67,22 @@ class ListLocations extends BaseBlock
                 [
                     'id'            => 'order',
                     'type'          => 'radios',
-                    'label'         => __('Order'),
+                    'label'         => __('Ordem'),
                     'values'        => [
                         [
                             'value'   => 'id',
-                            'name' => __("Date Create")
+                            'name' => __("Data de Criação")
                         ],
                         [
                             'value'   => 'name',
-                            'name' => __("Title")
+                            'name' => __("Título")
                         ],
                     ],
                 ],
                 [
                     'id'            => 'order_by',
                     'type'          => 'radios',
-                    'label'         => __('Order By'),
+                    'label'         => __('Ordenar por'),
                     'values'        => [
                         [
                             'value'   => 'asc',

@@ -50,7 +50,7 @@
                                     <div class="border-bottom border-width-2 border-color-1 pb-3">
                                         <div class="flex-center-between mb-1 text-dark font-weight-bold">
                                             <span class="d-block">
-                                                {{__('Days')}} <br>
+                                                {{__('Dias')}} <br>
                                             </span>
                                             <div class="flex-horizontal-center">
                                                 <a class="font-size-10 text-dark" href="javascript:;" @click="minusDay()">

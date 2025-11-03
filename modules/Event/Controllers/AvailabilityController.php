@@ -69,15 +69,15 @@ class AvailabilityController extends FrontendController{
         }
         $breadcrumbs = [
             [
-                'name' => __('Events'),
+                'name' => __('Eventos'),
                 'url'  => route('event.vendor.index')
             ],
             [
-                'name'  => __('Availability'),
+                'name'  => __('Disponibilidade'),
                 'class' => 'active'
             ],
         ];
-        $page_title = __('Events Availability');
+        $page_title = __('Disponibilidade de eventos');
 
         return view($this->indexView,compact('rows','breadcrumbs','current_month','page_title','request'));
     }
@@ -94,7 +94,7 @@ class AvailabilityController extends FrontendController{
         }
         $event = $this->eventClass::find($request->query('id'));
         if(empty($event)){
-            return $this->sendError(__('Event not found'));
+            return $this->sendError(__('Evento não encontrado'));
         }
         $lang = app()->getLocale();
         $is_single = $request->query('for_single');
@@ -116,7 +116,7 @@ class AvailabilityController extends FrontendController{
             if($event->default_state){
                 $date['active'] = 1;
             }else{
-                $date['title'] = $date['event'] = __('Blocked');
+                $date['title'] = $date['event'] = __('Bloqueado');
                 $date['backgroundColor'] = 'orange';
                 $date['borderColor'] = '#fe2727';
                 $date['classNames'] = ['blocked-event'];
@@ -196,7 +196,7 @@ class AvailabilityController extends FrontendController{
                 }
                 if(!$row->active)
                 {
-                    $ticketData['title'] = $row->event = __('Blocked');
+                    $ticketData['title'] = $row->event = __('Bloqueado');
                     $ticketData['backgroundColor'] = '#fe2727';
                     $ticketData['classNames'] = ['blocked-event'];
                     $ticketData['textColor'] = '#fe2727';
@@ -258,8 +258,8 @@ class AvailabilityController extends FrontendController{
 
                         if($isBook == false){
                             $allDates[$date]['active'] = 0;
-                            $allDates[$date]['event'] = __('Full Book');
-                            $allDates[$date]['title'] = __('Full Book');
+                            $allDates[$date]['event'] = __('Livro Completo');
+                            $allDates[$date]['title'] = __('Livro Completo');
                             $allDates[$date]['classNames'] = ['full-book-event'];
                         }
                     }
@@ -280,7 +280,7 @@ class AvailabilityController extends FrontendController{
         $event = $this->eventClass::find($request->input('target_id'));
         $target_id = $request->input('target_id');
         if(empty($event)){
-            return $this->sendError(__('Event not found'));
+            return $this->sendError(__('Evento não encontrado'));
         }
         if(!$this->hasPermission('event_manage_others')){
             if($event->author_id != Auth::id()){
@@ -313,6 +313,6 @@ class AvailabilityController extends FrontendController{
             $date->ticket_types = $ticket_types;
             $date->save();
         }
-        return $this->sendSuccess([],__("Update Success"));
+        return $this->sendSuccess([],__("Sucesso na atualização"));
     }
 }

@@ -12,7 +12,7 @@
                 <div class="filter-div d-flex justify-content-between ">
                     <div class="col-right">
                         @if($rows->total() > 0)
-                            <span class="count-string">{{ __("Showing :from - :to of :total rooms",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                            <span class="count-string">{{ __("Mostrando :from - :to of :total rooms",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                         @endif
                     </div>
                 </div>
@@ -20,7 +20,7 @@
         </div>
         @if(count($rows))
         <div class="panel">
-            <div class="panel-title"><strong>{{__('Availability')}}</strong></div>
+            <div class="panel-title"><strong>{{__('Disponibilidade')}}</strong></div>
             <div class="panel-body no-padding" style="background: #f4f6f8;padding: 0px 15px;">
                 <div class="row">
                     <div class="col-md-3" style="border-right: 1px solid #dee2e6;">
@@ -49,7 +49,7 @@
         <div class="modal-dialog modal-lg  modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{__('Date Information')}}</h5>
+                    <h5 class="modal-title">{{__('Informações de data')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -58,7 +58,7 @@
                     <form class="row form_modal_calendar form-horizontal" novalidate onsubmit="return false">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label >{{__('Date Ranges')}}</label>
+                                <label >{{__('Intervalos de datas')}}</label>
                                 <input readonly type="text" class="form-control has-daterangepicker">
                             </div>
                         </div>
@@ -66,12 +66,12 @@
                             <div class="form-group">
                                 <label >{{__('Status')}}</label>
                                 <br>
-                                <label ><input true-value=1 false-value=0 type="checkbox" v-model="form.active"> {{__('Available for booking?')}}</label>
+                                <label ><input true-value=1 false-value=0 type="checkbox" v-model="form.active"> {{__('Disponível para reserva?')}}</label>
                             </div>
                         </div>
                         <div class="col-md-6" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Price')}}</label>
+                                <label >{{__('Preço')}}</label>
                                 <input type="number"  v-model="form.price" class="form-control">
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                             <div class="form-group">
                                 <label >{{__('Instant Booking?')}}</label>
                                 <br>
-                                <label><input true-value=1 false-value=0  type="checkbox"  v-model="form.is_instant" > {{__("Enable instant booking")}}</label>
+                                <label><input true-value=1 false-value=0  type="checkbox"  v-model="form.is_instant" > {{__("Habilitar reserva instantânea")}}</label>
                             </div>
                         </div>
                     </form>
@@ -95,8 +95,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                    <button type="button" class="btn btn-primary" @click="saveForm">{{__('Save changes')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
+                    <button type="button" class="btn btn-primary" @click="saveForm">{{__('Salvar alterações')}}</button>
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
             }
 			calendar = new FullCalendar.Calendar(calendarEl, {
                 buttonText:{
-                    today:  '{{ __('Today') }}',
+                    today:  '{{ __('Hoje') }}',
                 },
 				plugins: [ 'dayGrid' ,'interaction'],
 				header: {},

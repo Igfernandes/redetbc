@@ -22,7 +22,7 @@
                                 'service_name'=>__("Service name"),
                                 'location'=>__("Location"),
                                 'attr'=>__("Attribute"),
-                                'date'=>__("Date"),
+                                'date'=>__("Data"),
                                 'guests'=>__("Guests"),
                             ];
                             $attrs = \Modules\Core\Models\Attributes::where('service', 'space')->get();
@@ -75,7 +75,7 @@
                             @endforeach
                         </div>
                         <div class="text-right">
-                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                         </div>
                         <div class="g-more hide">
                             <div class="item" data-number="__number__">

@@ -17,7 +17,7 @@ class ListVendor extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'desc',
@@ -29,23 +29,23 @@ class ListVendor extends BaseBlock
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Number Item')
+                    'label'     => __('Item numérico')
                 ],
                 [
                     'id'            => 'order',
                     'type'          => 'radios',
-                    'label'         => __('Order'),
+                    'label'         => __('Ordem'),
                     'values'        => [
                         [
                             'value'   => 'id',
-                            'name' => __("Date Create")
+                            'name' => __("Data de Criação")
                         ],
                     ]
                 ],
                 [
                     'id'            => 'order_by',
                     'type'          => 'radios',
-                    'label'         => __('Order By'),
+                    'label'         => __('Ordenar por'),
                     'values'        => [
                         [
                             'value'   => 'asc',
@@ -60,7 +60,7 @@ class ListVendor extends BaseBlock
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('List by IDs'),
+                    'label'        => __('Listar por IDs'),
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('user.admin.getForSelect2',['user_type'=>'vendor']),
@@ -68,7 +68,7 @@ class ListVendor extends BaseBlock
                         ],
                         'width'    => '100%',
                         'multiple' => "true",
-                        'placeholder' => __('-- Select --')
+                        'placeholder' => __('-- Selecione --')
                     ],
                     'pre_selected' => route('user.admin.getForSelect2', [
                         'pre_selected' => 1

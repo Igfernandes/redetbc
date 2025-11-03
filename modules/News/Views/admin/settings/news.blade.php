@@ -127,7 +127,7 @@
                         <div class="form-group-item">
                             <div class="g-items-header">
                                 <div class="row">
-                                    <div class="col-md-8">{{__("Title")}}</div>
+                                    <div class="col-md-8">{{__("Título")}}</div>
                                     <div class="col-md-3">{{__('Type')}}</div>
                                     <div class="col-md-1"></div>
                                 </div>
@@ -144,7 +144,7 @@
                                     <div class="item" data-number="{{$key}}">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <input type="text" name="news_sidebar[{{$key}}][title]" class="form-control" placeholder="{{__('Title: About Us')}}" value="{{$item->title}}">
+                                                <input type="text" name="news_sidebar[{{$key}}][title]" class="form-control" placeholder="{{__('Título: About Us')}}" value="{{$item->title}}">
                                                 <textarea name="news_sidebar[{{$key}}][content]" rows="2" class="form-control" placeholder="{{__("Content")}}">{{$item->content}}</textarea>
                                             </div>
                                             <div class="col-md-3">
@@ -166,13 +166,13 @@
                                 <?php } ?>
                             </div>
                             <div class="text-right">
-                                <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                                <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                             </div>
                             <div class="g-more hide">
                                 <div class="item" data-number="__number__">
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <input type="text" __name__="news_sidebar[__number__][title]" class="form-control" placeholder="{{__('Title: About Us')}}">
+                                            <input type="text" __name__="news_sidebar[__number__][title]" class="form-control" placeholder="{{__('Título: About Us')}}">
                                             <textarea __name__="news_sidebar[__number__][content]" rows="3" class="form-control" placeholder="{{__("Content")}}"></textarea>
                                         </div>
                                         <div class="col-md-3">

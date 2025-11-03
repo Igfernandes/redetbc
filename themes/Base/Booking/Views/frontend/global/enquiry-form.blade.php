@@ -33,7 +33,7 @@ $user = auth()->user();
                 <div class="message_box"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
                 <button type="button" class="btn btn-primary btn-submit-enquiry">{{__("Send now")}}
                 <i class="fa icon-loading fa-spinner fa-spin fa-fw" style="display: none"></i>
                 </button>

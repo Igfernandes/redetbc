@@ -81,7 +81,7 @@ class HotelController extends Controller
                 'fragments'=>[
                     '.ajax-search-result'=>view('Hotel::frontend.ajax.search-result'.($for_map ? '-map' : ''), $data)->render(),
                     '.result-count'=>$list->total() > 1 ? __(":count hotels found",['count'=>$list->total()]) : __(":count hotel found",['count'=>$list->total()]),
-                    '.count-string'=> $list->total() ? __("Showing :from - :to of :total Hotels",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
+                    '.count-string'=> $list->total() ? __("Mostrando :from - :to of :total Hotels",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
                 ]
             ]);
         }
@@ -182,7 +182,7 @@ class HotelController extends Controller
             if(!empty($hotel->min_day_before_booking)){
                 $minday_before = strtotime("today +".$hotel->min_day_before_booking." days");
                 if(  strtotime(\request('start_date')) < $minday_before){
-                    return $this->sendError(__("You must book the service for :number days in advance",["number"=>$hotel->min_day_before_booking]));
+                    return $this->sendError(__("Você deve reservar o serviço com :number dias de antecedência",["number"=>$hotel->min_day_before_booking]));
                 }
             }
         }

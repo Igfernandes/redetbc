@@ -141,7 +141,7 @@
             <div class="form-group">
                 <label>{{__("Country")}}</label>
                 <select name="country" class="form-control">
-                    <option value="">{{__('-- Select --')}}</option>
+                    <option value="">{{__('-- Selecione --')}}</option>
                     @foreach(get_country_lists() as $id=>$name)
                     <option @if((old('country',$dataUser->country ?? '')) == $id) selected @endif value="{{$id}}">{{$name}}</option>
                     @endforeach
@@ -156,7 +156,7 @@
         </div>
         <div class="col-md-12">
             <hr>
-            <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Save Changes')}}</button>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
         </div>
     </div>
 </form>
@@ -189,7 +189,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
                     <a href="{{route('user.permanently.delete')}}" class="btn btn-danger">{{__('Confirm')}}</a>
                 </div>
 

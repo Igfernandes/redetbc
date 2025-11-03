@@ -58,7 +58,7 @@ class HomeController extends Controller
             'model_tag'         => Tag::query(),
             'model_news'        => News::where("status", "publish"),
             'breadcrumbs' => [
-                ['name' => __('News'), 'url' => url("/news"), 'class' => 'active'],
+                ['name' => __('Novidades'), 'url' => url("/news"), 'class' => 'active'],
             ],
             "seo_meta" => News::getSeoMetaForPageList(),
             'roles' => $roles
@@ -89,12 +89,12 @@ class HomeController extends Controller
             DB::connection()->getPdo();
             $check = DB::table('information_schema.tables')->where("table_schema", "performance_schema")->get();
             if (empty($check) and $check->count() == 0) {
-                return $this->sendSuccess(false, __("Access denied for user!. Please check your configuration."));
+                return $this->sendSuccess(false, __("Acesso negado ao usuário! Verifique sua configuração."));
             }
             if (DB::connection()->getDatabaseName()) {
-                return $this->sendSuccess(false, __("Yes! Successfully connected to the DB: " . DB::connection()->getDatabaseName()));
+                return $this->sendSuccess(false, __("Sim! Conectado com sucesso ao banco de dados: " . DB::connection()->getDatabaseName()));
             } else {
-                return $this->sendSuccess(false, __("Could not find the database. Please check your configuration."));
+                return $this->sendSuccess(false, __("Não foi possível encontrar o banco de dados. Verifique sua configuração."));
             }
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage());

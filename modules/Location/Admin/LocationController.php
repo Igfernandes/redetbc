@@ -35,7 +35,7 @@ class LocationController extends AdminController
                     'url'  => route('location.admin.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ]
@@ -62,7 +62,7 @@ class LocationController extends AdminController
                     'url'  => route('location.admin.index')
                 ],
                 [
-                    'name'  => __('Edit'),
+                    'name'  => __('Editar'),
                     'class' => 'active'
                 ],
             ]
@@ -72,7 +72,7 @@ class LocationController extends AdminController
 
     public function store( Request $request, $id ){
         if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("DEMO MODE: can not add data"));
+            return redirect()->back()->with('danger',__("MODO DEMO: não é possível adicionar dados"));
         }
         $this->checkPermission('location_update');
 
@@ -142,7 +142,7 @@ class LocationController extends AdminController
             return redirect()->back()->with('error', __("Select at least 1 item!"));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {
@@ -175,6 +175,6 @@ class LocationController extends AdminController
                 $query->update(['status' => $action]);
             }
         }
-        return redirect()->back()->with('success', __('Updated success!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
 }

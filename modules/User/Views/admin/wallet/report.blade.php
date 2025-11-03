@@ -14,7 +14,7 @@
                             <option value="">{{__(" Bulk Actions ")}}</option>
                             <option value="completed">{{__("Mark as completed")}}</option>
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>

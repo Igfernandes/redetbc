@@ -24,7 +24,7 @@
                         <label class="" >{{__("Layout Search")}}</label>
                         <div class="form-controls">
                             <select name="assistance_layout_search" class="form-control" >
-                                @foreach(config('assistance.layouts',['normal'=>__("Normal Layout"),'map'=>__("Map Layout")]) as $id=>$name))
+                                @foreach(config('assistance.layouts',['normal'=>__("Layout normal"),'map'=>__("Layout do Mapa")]) as $id=>$name))
                                     <option value="{{$id}}" {{ setting_item('assistance_layout_search','normal') == $id ? 'selected' : ''  }}>{{$name}}</option>
                                 @endforeach
                             </select>
@@ -246,7 +246,7 @@
                             <div class="form-group-item">
                                 <div class="g-items-header">
                                     <div class="row">
-                                        <div class="col-md-5">{{__("Title")}}</div>
+                                        <div class="col-md-5">{{__("Título")}}</div>
                                         <div class="col-md-1"></div>
                                     </div>
                                 </div>
@@ -270,7 +270,7 @@
                                     <?php } ?>
                                 </div>
                                 <div class="text-right">
-                                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                                 </div>
                                 <div class="g-more hide">
                                     <div class="item" data-number="__number__">
@@ -307,8 +307,8 @@
                         <label class="control-label">{{__('Buyer Fees')}}</label>
                         <div class="g-items-header">
                             <div class="row">
-                                <div class="col-md-7">{{__("Name")}}</div>
-                                <div class="col-md-4">{{__('Price')}}</div>
+                                <div class="col-md-7">{{__("Nome")}}</div>
+                                <div class="col-md-4">{{__('Preço')}}</div>
                                 <div class="col-md-3 d-none">{{__('Type')}}</div>
                                 <div class="col-md-1"></div>
                             </div>
@@ -357,7 +357,7 @@
                             @endif
                         </div>
                         <div class="text-right">
-                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                         </div>
                         <div class="g-more hide">
                             <div class="item" data-number="__number__">

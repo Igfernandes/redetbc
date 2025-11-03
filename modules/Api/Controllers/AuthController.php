@@ -45,7 +45,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
-            return $this->sendError(__("Password is not correct"),['code'=>'invalid_credentials']);
+            return $this->sendError(__("A senha não está correta"),['code'=>'invalid_credentials']);
         }
 
         return [
@@ -58,7 +58,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         if(!is_enable_registration()){
-            return $this->sendError(__("You are not allowed to register"));
+            return $this->sendError(__("Você não tem permissão para se registrar"));
         }
         $rules = [
             'first_name' => [
@@ -85,12 +85,12 @@ class AuthController extends Controller
             'term'       => ['required'],
         ];
         $messages = [
-            'email.required'      => __('Email is required field'),
-            'email.email'         => __('Email invalidate'),
-            'password.required'   => __('Password is required field'),
-            'first_name.required' => __('The first name is required field'),
-            'last_name.required'  => __('The last name is required field'),
-            'term.required'       => __('The terms and conditions field is required'),
+            'email.required'      => __('E-mail é campo obrigatório'),
+            'email.email'         => __('E-mail invalidado'),
+            'password.required'   => __('A senha é um campo obrigatório'),
+            'first_name.required' => __('O primeiro nome é um campo obrigatório'),
+            'last_name.required'  => __('O último nome é um campo obrigatório'),
+            'term.required'       => __('O campo termos e condições é obrigatório'),
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
@@ -112,7 +112,7 @@ class AuthController extends Controller
                 Log::warning("SendMailUserRegistered: " . $exception->getMessage());
             }
             $user->assignRole(setting_item('user_role'));
-            return $this->sendSuccess(__('Register successfully'));
+            return $this->sendSuccess(__('Cadastre-se com sucesso'));
         }
     }
 
@@ -148,9 +148,9 @@ class AuthController extends Controller
             ],
         ];
         $messages = [
-            'first_name.required' => __('The first name is required field'),
-            'last_name.required'  => __('The last name is required field'),
-            'email.required'       => __('The email field is required'),
+            'first_name.required' => __('O primeiro nome é um campo obrigatório'),
+            'last_name.required'  => __('O último nome é um campo obrigatório'),
+            'email.required'       => __('O campo de e-mail é obrigatório'),
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
@@ -159,7 +159,7 @@ class AuthController extends Controller
         $user->fill($request->input());
         $user->birthday = date("Y-m-d", strtotime($user->birthday));
         $user->save();
-        return $this->sendSuccess(__('Update successfully'));
+        return $this->sendSuccess(__('Atualização com sucesso'));
     }
 
     /**
@@ -171,7 +171,7 @@ class AuthController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
 
-        return $this->sendSuccess(__('Successfully logged out'));
+        return $this->sendSuccess(__('Desconectado com sucesso'));
     }
 
     public function changePassword(Request $request){
@@ -187,7 +187,7 @@ class AuthController extends Controller
         $user = auth()->user();
 
         if (!Hash::check($request->current_password, $user->password)) {
-            return $this->sendError(__("Current password is not correct"),['code'=>'invalid_current_password']);
+            return $this->sendError(__("A senha atual não está correta"),['code'=>'invalid_current_password']);
         }
 
         $user->password = Hash::make($request->new_password);
@@ -196,6 +196,6 @@ class AuthController extends Controller
         // Invalidate all Tokens
         $user->tokens()->delete();
 
-        return $this->sendSuccess(['message'=>__("Password updated. Please re-login"),'code'=>"need_relogin"]);
+        return $this->sendSuccess(['message'=>__("Senha atualizada. Por favor, faça login novamente."),'code'=>"need_relogin"]);
     }
 }

@@ -5,7 +5,7 @@
             <div class="form-group-item">
                 <div class="g-items-header">
                     <div class="row">
-                        <div class="col-md-4">{{__("Title")}}</div>
+                        <div class="col-md-4">{{__("Título")}}</div>
                         <div class="col-md-7">{{__('Info Contact')}}</div>
                         <div class="col-md-1"></div>
                     </div>
@@ -41,7 +41,7 @@
                     @endforeach
                 </div>
                 <div class="text-right">
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                 </div>
                 <div class="g-more hide">
                     <div class="item" data-number="__number__">

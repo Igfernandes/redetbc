@@ -1,13 +1,13 @@
 @if(is_default_lang())
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__('Mobile Layout')}}</h3>
+            <h3 class="form-group-title">{{__('Layout móvel')}}</h3>
         </div>
         <div class="col-sm-8">
             <div class="panel">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label >{{__("Choose Layout for Mobile app")}}</label>
+                        <label >{{__("Escolha o layout para o aplicativo móvel")}}</label>
                         <div class="form-controls">
                             <?php
                             $template = \Modules\Template\Models\Template::find(setting_item('api_app_layout'));

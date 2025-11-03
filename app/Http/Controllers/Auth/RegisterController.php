@@ -57,7 +57,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register',['page_title'=> __("Sign Up")]);
+        return view('auth.register',['page_title'=> __("Cadastrar-se")]);
     }
 
     /**

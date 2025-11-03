@@ -13,7 +13,7 @@ class ReviewController extends \Modules\Review\Controllers\ReviewController
     }
     public function writeReview(Request $request , $type = '',$id = ''){
         if(!Auth::check()){
-            return $this->sendError(__("You have to login in to do this"))->setStatusCode(401);
+            return $this->sendError(__("Você precisa fazer login para fazer isso"))->setStatusCode(401);
         }
          $request->merge(['review_service_type' => $type]);
          $request->merge(['review_service_id' => $id]);

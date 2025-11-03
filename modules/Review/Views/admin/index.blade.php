@@ -16,9 +16,9 @@
                             <option value="pending">{{__(" Pending ")}}</option>
                             <option value="spam">{{__(" Spam ")}}</option>
                             <option value="trash">{{__(" Move to Trash ")}}</option>
-                            <option value="delete">{{__(" Delete ")}}</option>
+                            <option value="delete">{{__("Excluir")}}</option>
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
@@ -44,7 +44,7 @@
                         ?>
                     @endif
                     <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by title')}}" class="form-control">
-                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search')}}</button>
+                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Procurar')}}</button>
                 </form>
             </div>
         </div>
@@ -74,7 +74,7 @@
                             <th width="150px"> {{ __('Author')}}</th>
                             <th> {{ __('Review Content')}}</th>
                             <th width="250px"> {{ __('In Response To')}}</th>
-                            <th width="80px"> {{ __('Service')}}</th>
+                            <th width="80px"> {{ __('Serviço')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
                             <th width="140px"> {{ __('Submitted On')}}</th>
                         </tr>
@@ -181,7 +181,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="6">{{__("No data")}}</td>
+                                <td colspan="6">{{__("Sem dados")}}</td>
                             </tr>
                         @endif
                         </tbody>

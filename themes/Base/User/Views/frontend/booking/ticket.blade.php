@@ -99,10 +99,10 @@
             <div class="ticket-body">
                 <table width="100%" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td width="50%"><div class="label"><i class="fa fa-calendar"></i> {{__("Date")}}</div>
+                        <td width="50%"><div class="label"><i class="fa fa-calendar"></i> {{__("Data")}}</div>
                         <div class="val">{{display_date($booking->start_date)}}</div>
                         </td>
-                        <td><div class="label"><i class="fa fa-money"></i> {{__("Price")}}</div>
+                        <td><div class="label"><i class="fa fa-money"></i> {{__("Preço")}}</div>
                         <div class="val">{{format_money($booking->total)}}</div>
                         </td>
                     </tr>

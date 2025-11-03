@@ -100,7 +100,7 @@ class Assistance extends Bookable
 
     public static function getModelName()
     {
-        return __("Services");
+        return __("Serviços");
     }
 
     public static function getTableName()
@@ -116,7 +116,7 @@ class Assistance extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Search for Assistances");
+        $meta['seo_title'] = __("Buscar Assistências");
         if (!empty($title = setting_item_with_lang("assistance_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("assistance_page_search_title"))) {
@@ -251,26 +251,6 @@ class Assistance extends Bookable
         $booking->calculateCommission();
         $booking->number = $number;
 
-        if ($this->isDepositEnable()) {
-            $booking_deposit_fomular = $this->getDepositFomular();
-            $tmp_price_total = $booking->total;
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $tmp_price_total = $booking->total_before_fees;
-            }
-
-            switch ($this->getDepositType()) {
-                case "percent":
-                    $booking->deposit = $tmp_price_total * $this->getDepositAmount() / 100;
-                    break;
-                default:
-                    $booking->deposit = $this->getDepositAmount();
-                    break;
-            }
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $booking->deposit = $booking->deposit + $total_buyer_fee + $total_service_fee;
-            }
-        }
-
         $check = $booking->save();
         if ($check) {
 
@@ -284,20 +264,12 @@ class Assistance extends Bookable
             $booking->addMeta('day', $request->input('day'));
             $booking->addMeta('hour', $request->input('hour'));
 
-            if ($this->isDepositEnable()) {
-                $booking->addMeta('deposit_info', [
-                    'type' => $this->getDepositType(),
-                    'amount' => $this->getDepositAmount(),
-                    'fomular' => $this->getDepositFomular(),
-                ]);
-            }
-
             return $this->sendSuccess([
-                'url' => $booking->getCheckoutUrl(),
+                'url'          => "user/booking-history", // redireciona para o chat
                 'booking_code' => $booking->code,
             ]);
         }
-        return $this->sendError(__("Can not check availability"));
+        return $this->sendError(__("Não é possível verificar a disponibilidade"));
     }
 
     public function addToCartValidate(Request $request)
@@ -317,13 +289,13 @@ class Assistance extends Bookable
 
         $start_date = $request->input('start_date');
         if (strtotime($start_date) < strtotime(date('Y-m-d 00:00:00'))) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
         if (!empty($this->min_day_before_booking)) {
             $minday_before = strtotime("today +" . $this->min_day_before_booking . " days");
             if (strtotime($start_date) < $minday_before) {
-                return $this->sendError(__("You must book the service for :number days in advance", ["number" => $this->min_day_before_booking]));
+                return $this->sendError(__("Você deve reservar o serviço com :number dias de antecedência", ["number" => $this->min_day_before_booking]));
             }
         }
 
@@ -332,17 +304,17 @@ class Assistance extends Bookable
         $start_time = $request->input('start_time');
 
         if (empty($hour) and empty($day)) {
-            return $this->sendError(__("You haven't selected return day or hours"));
+            return $this->sendError(__("Você não selecionou o dia ou horário de retorno"));
         }
 
         if (!empty($this->start_time_booking)) {
             if (strtotime($start_time) < strtotime($this->start_time_booking)) {
-                return $this->sendError(__("Start time booking: :time", ['time' => $this->start_time_booking]));
+                return $this->sendError(__("Horário de início da reserva: :time", ['time' => $this->start_time_booking]));
             }
         }
         if (!empty($this->end_time_booking)) {
             if (strtotime($start_time) > strtotime($this->end_time_booking)) {
-                return $this->sendError(__("End time booking: :time", ['time' => $this->end_time_booking]));
+                return $this->sendError(__("Horário de término da reserva: :time", ['time' => $this->end_time_booking]));
             }
         }
         $type = empty($day) ? "per_hour" : "per_day";
@@ -350,7 +322,7 @@ class Assistance extends Bookable
         if ($type == 'per_hour') {
             $end_date_time = date('Y-m-d H:i', strtotime($start_date_time . " +" . $hour . "hours"));
             if (strtotime($end_date_time) > strtotime($start_date . " +1day")) {
-                return $this->sendError(__("You need return assistance on same-day"));
+                return $this->sendError(__("Você precisa de assistência para devolução no mesmo dia"));
             }
         }
         if ($type == 'per_day') {
@@ -358,7 +330,7 @@ class Assistance extends Bookable
         }
 
         if (!$this->isAvailableInRanges($start_date_time, $end_date_time, $type, $hour, $total_number)) {
-            return $this->sendError(__("This assistance is not available at selected dates"));
+            return $this->sendError(__("Esta assistência não está disponível nas datas selecionadas"));
         }
         return true;
     }
@@ -366,7 +338,7 @@ class Assistance extends Bookable
     public function beforeCheckout(Request $request, $booking)
     {
         if (!$this->isAvailableInRanges($booking->start_date, $booking->end_date, $booking->getMeta("type_date"), $booking->getMeta("hour"), $booking->number)) {
-            return $this->sendError(__("This assistance is not available at selected dates"));
+            return $this->sendError(__("Esta assistência não está disponível nas datas selecionadas"));
         }
     }
 
@@ -459,7 +431,7 @@ class Assistance extends Bookable
             'max_number'      => $this->number ?? 1,
             'buyer_fees'      => [],
             'start_date'      => $start ?? "",
-            'start_date_html' => request()->input('start') ? display_date(request()->input('start')) : __('Please select'),
+            'start_date_html' => request()->input('start') ? display_date(request()->input('start')) : __('Por favor selecione'),
             'deposit' => $this->isDepositEnable(),
             'deposit_type' => $this->getDepositType(),
             'deposit_amount' => $this->getDepositAmount(),
@@ -482,14 +454,14 @@ class Assistance extends Bookable
                     $type['price_type'] = '';
                     switch ($type['type']) {
                         case "per_day":
-                            $type['price_type'] .= '/' . __('day');
+                            $type['price_type'] .= '/' . __('dia');
                             break;
                         case "per_hour":
-                            $type['price_type'] .= '/' . __('hour');
+                            $type['price_type'] .= '/' . __('hora');
                             break;
                     }
                     if (!empty($type['per_person'])) {
-                        $type['price_type'] .= '/' . __('guest');
+                        $type['price_type'] .= '/' . __('convidado');
                     }
                 }
             }
@@ -504,7 +476,7 @@ class Assistance extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -515,7 +487,7 @@ class Assistance extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -595,7 +567,7 @@ class Assistance extends Bookable
     {
         $list_score = [
             'score_total'  => 0,
-            'score_text'   => __("Not rated"),
+            'score_text'   => __("Não classificado"),
             'total_review' => 0,
             'rate_score'   => [],
         ];
@@ -643,7 +615,7 @@ class Assistance extends Bookable
                 'total_review' => !empty($dataReview->total_review) ? $dataReview->total_review : 0,
             ];
         });
-        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Not rated");
+        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Não classificado");
         return $list_score;
     }
 
@@ -667,9 +639,9 @@ class Assistance extends Bookable
         }
         if (empty($number)) return false;
         if ($number > 1) {
-            return __(":number Assistances", ['number' => $number]);
+            return __(":number Assistências", ['number' => $number]);
         }
-        return __(":number Assistance", ['number' => $number]);
+        return __(":number Assistência", ['number' => $number]);
     }
 
     /**
@@ -982,21 +954,21 @@ class Assistance extends Bookable
         $min_max_price = self::getMinMaxPrice();
         return [
             [
-                "title"    => __("Filter Price"),
+                "title"    => __("Filtrar Preço"),
                 "field"    => "price_range",
                 "position" => "1",
                 "min_price" => floor(Currency::convertPrice($min_max_price[0])),
                 "max_price" => ceil(Currency::convertPrice($min_max_price[1])),
             ],
             [
-                "title"    => __("Review Score"),
+                "title"    => __("Pontuação da avaliação"),
                 "field"    => "review_score",
                 "position" => "2",
                 "min" => "1",
                 "max" => "5",
             ],
             [
-                "title"    => __("Attributes"),
+                "title"    => __("Atributos"),
                 "field"    => "terms",
                 "position" => "3",
                 "data" => Attributes::getAllAttributesForApi("assistance")

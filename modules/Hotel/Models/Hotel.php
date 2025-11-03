@@ -20,7 +20,7 @@ use Modules\Review\Models\Review;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\User\Models\UserWishList;
 use Illuminate\Notifications\Notifiable;
-use Modules\Booking\Models\BookingMessage;
+use Modules\Booking\Events\BookingSendEvent;
 
 class Hotel extends Bookable
 {
@@ -282,27 +282,6 @@ class Hotel extends Bookable
 
         $booking->calculateCommission();
 
-        if ($this->isDepositEnable()) {
-            $booking_deposit_fomular = $this->getDepositFomular();
-            $tmp_price_total = $booking->total;
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $tmp_price_total = $booking->total_before_fees;
-            }
-
-            switch ($this->getDepositType()) {
-                case "percent":
-                    $booking->deposit = $tmp_price_total * $this->getDepositAmount() / 100;
-                    break;
-                default:
-                    $booking->deposit = $this->getDepositAmount();
-                    break;
-            }
-
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $booking->deposit += $total_buyer_fee + $total_service_fee;
-            }
-        }
-
         $check = $booking->save();
 
         if ($check) {
@@ -317,14 +296,6 @@ class Hotel extends Bookable
             $booking->addMeta('adults', $request->input('adults'));
             $booking->addMeta('children', $request->input('children'));
             $booking->addMeta('extra_price', $extra_price);
-
-            if ($this->isDepositEnable()) {
-                $booking->addMeta('deposit_info', [
-                    'type' => $this->getDepositType(),
-                    'amount' => $this->getDepositAmount(),
-                    'fomular' => $this->getDepositFomular(),
-                ]);
-            }
 
             // Adiciona reservas de quartos
             if (!empty($this->tmp_selected_rooms)) {
@@ -352,23 +323,15 @@ class Hotel extends Bookable
                     }
                 }
             }
-
-            // === Nova lógica: criar mensagem inicial no chat ===
-
-            // Mensagem inicial do cliente
-            BookingMessage::create([
-                'booking_id' => $booking->id,
-                'sender_id'  => Auth::id(),
-                'message'    => "Olá! Acabei de solicitar a reserva. Aguardando confirmação do proprietário.",
-            ]);
-
+            
+            event(new BookingSendEvent($booking));
             return $this->sendSuccess([
-                'url' => "/user/chat",
+                'url'          => "user/booking-history", // redireciona para o chat
                 'booking_code' => $booking->code,
             ]);
         }
 
-        return $this->sendError(__("Can not check availability"));
+        return $this->sendError(__("Não é possível verificar a disponibilidade"));
     }
 
 
@@ -398,10 +361,10 @@ class Hotel extends Bookable
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
         if (strtotime($start_date) < strtotime(date('Y-m-d 00:00:00')) or strtotime($end_date) - strtotime($start_date) < DAY_IN_SECONDS) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
         if (!$this->checkBusyDate($start_date, $end_date)) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
         // Validate Date and Booking
         $rooms = $this->getRoomsAvailability(request()->input());
@@ -543,7 +506,7 @@ class Hotel extends Bookable
                 "room"          => __('room'),
             ],
             'start_date'      => request()->input('start') ?? "",
-            'start_date_html' => $date_html ?? __('Please select'),
+            'start_date_html' => $date_html ?? __('Por favor selecione'),
             'end_date'        => request()->input('end') ?? "",
             'deposit' => $this->isDepositEnable(),
             'deposit_type' => $this->getDepositType(),
@@ -575,11 +538,11 @@ class Hotel extends Bookable
                     $type['price_type'] = '';
                     switch ($type['type']) {
                         case "per_day":
-                            $type['price_type'] .= '/' . __('day');
+                            $type['price_type'] .= '/' . __('dia');
                             break;
                     }
                     if (!empty($type['per_person'])) {
-                        $type['price_type'] .= '/' . __('guest');
+                        $type['price_type'] .= '/' . __('convidado');
                     }
                 }
             }
@@ -592,7 +555,7 @@ class Hotel extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -603,7 +566,7 @@ class Hotel extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -683,7 +646,7 @@ class Hotel extends Bookable
     {
         $list_score = [
             'score_total'  => 0,
-            'score_text'   => __("Not rated"),
+            'score_text'   => __("Não classificado"),
             'total_review' => 0,
             'rate_score'   => [],
         ];
@@ -731,7 +694,7 @@ class Hotel extends Bookable
                 'total_review' => !empty($dataReview->total_review) ? $dataReview->total_review : 0,
             ];
         });
-        $list_score['review_text'] = $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Not rated");
+        $list_score['review_text'] = $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Não classificado");
         return $list_score;
     }
 
@@ -1132,7 +1095,7 @@ class Hotel extends Bookable
         $min_max_price = self::getMinMaxPrice();
         return [
             [
-                "title"    => __("Filter Price"),
+                "title"    => __("Filtrar Preço"),
                 "field"    => "price_range",
                 "position" => "1",
                 "min_price" => floor(Currency::convertPrice($min_max_price[0])),
@@ -1146,14 +1109,14 @@ class Hotel extends Bookable
                 "max" => "5",
             ],
             [
-                "title"    => __("Review Score"),
+                "title"    => __("Pontuação da avaliação"),
                 "field"    => "review_score",
                 "position" => "3",
                 "min" => "1",
                 "max" => "5",
             ],
             [
-                "title"    => __("Attributes"),
+                "title"    => __("Atributos"),
                 "field"    => "terms",
                 "position" => "4",
                 "data" => Attributes::getAllAttributesForApi("hotel")

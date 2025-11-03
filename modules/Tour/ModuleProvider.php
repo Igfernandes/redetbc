@@ -74,12 +74,12 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'tour_attribute'=>[
                         'url'        => route('tour.admin.attribute.index'),
-                        'title'      => __('Attributes'),
+                        'title'      => __('Atributos'),
                         'permission' => 'tour_manage_attributes',
                     ],
                     'tour_availability'=>[
                         'url'        => route('tour.admin.availability.index'),
-                        'title'      => __('Availability'),
+                        'title'      => __('Disponibilidade'),
                         'permission' => 'tour_create',
                     ],
                     'tour_booking'=>[
@@ -89,7 +89,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'recovery'=>[
                         'url'        => route('tour.admin.recovery'),
-                        'title'      => __('Recovery'),
+                        'title'      => __('Recuperação'),
                         'permission' => 'tour_view',
                     ],
                 ]
@@ -121,7 +121,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     [
                         'url'        => route('tour.vendor.availability.index'),
-                        'title'      => __("Availability"),
+                        'title'      => __("Disponibilidade"),
                         'permission' => 'tour_create',
                     ],
                     [

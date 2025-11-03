@@ -20,15 +20,15 @@
                             <option value="publish">{{__(" Publish ")}}</option>
                             <option value="pending">{{__(" Move to Pending ")}}</option>
                             <option value="draft">{{__(" Move to Draft ")}}</option>
-                            <option value="delete">{{__(" Delete ")}}</option>
+                            <option value="delete">{{__("Excluir")}}</option>
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
             <div class="col-left">
                 <form method="get" action="{{route('news.admin.index')}} " class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}"
+                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}"
                            class="form-control">
                     <select name="cate_id" class="form-control">
                         <option value="">{{ __('--All Category --')}} </option>
@@ -86,13 +86,13 @@
                                             <td> {{ display_date($row->updated_at)}}</td>
                                             <td><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>
                                             <td>
-                                                <a href="{{route('news.admin.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}</a>
+                                                <a href="{{route('news.admin.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Editar')}}</a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="6">{{__("No data")}}</td>
+                                        <td colspan="6">{{__("Sem dados")}}</td>
                                     </tr>
                                 @endif
                                 </tbody>

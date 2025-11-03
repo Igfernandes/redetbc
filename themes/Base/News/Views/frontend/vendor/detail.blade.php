@@ -33,7 +33,7 @@
                                         <option @if($row->status=='draft') selected @endif value="draft">{{ __('Draft')}} </option>
                                         <option @if($row->status=='pending') selected @endif value="pending">{{ __('Pending')}} </option>
                                         @if(!setting_item('news_vendor_need_approve') or $row->status == 'publish')
-                                            <option @if(setting_item('news_vendor_need_approve')) disabled @endif @if($row->status=='publish') selected @endif value="publish">{{ __('Publish')}} </option>
+                                            <option @if(setting_item('news_vendor_need_approve')) disabled @endif @if($row->status=='publish') selected @endif value="publish">{{ __('Publicar')}} </option>
                                         @endif
                                     </select>
                                 @endif
@@ -41,7 +41,7 @@
                             <div class="panel-footer">
 
                                 <div class="text-right">
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Save Changes')}}</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                         @if(is_default_lang())
                             <div class="panel">
                                 <div class="panel-body">
-                                    <h3 class="panel-body-title"> {{ __('Feature Image')}}</h3>
+                                    <h3 class="panel-body-title"> {{ __('Imagem em destaque')}}</h3>
                                     <div class="form-group">
                                         {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
                                     </div>

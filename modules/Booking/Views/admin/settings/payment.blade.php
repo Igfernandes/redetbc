@@ -1,13 +1,13 @@
 @if(is_default_lang())
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Currency")}}</h3>
-        <p class="form-group-desc">{{__('Currency Format')}}</p>
+        <h3 class="form-group-title">{{__("Moeda")}}</h3>
+        <p class="form-group-desc">{{__('Formato de moeda')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
             <div class="panel-title"><strong>
-                    {{__("Main Currency")}}</strong></div>
+                    {{__("Moeda Principal")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
                     <div class="form-controls">
@@ -17,20 +17,20 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label >{{__("Format")}}</label>
+                            <label >{{__("Formatar")}}</label>
                             <div class="form-controls">
                                 {!! \App\Helpers\AdminForm::select('currency_format',[
                                     ['id'=>'right','name'=>__('Right (100$)')],
                                     ['id'=>'right_space','name'=>__('Right with space (100 $)')],
-                                    ['id'=>'left','name'=>__('Left ($100)')],
-                                    ['id'=>'left_space','name'=>__('Left with space ($ 100)')],
+                                    ['id'=>'left','name'=>__('esquerda ($100)')],
+                                    ['id'=>'left_space','name'=>__('esquerda with space ($ 100)')],
                                 ],$settings['currency_format'] ?? 'right') !!}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label >{{__("Thousand Separator")}}</label>
+                            <label >{{__("Separador de Mil")}}</label>
                             <div>
                                 <input type="text" name="currency_thousand" class="form-control" value="{{$settings['currency_thousand'] ?? '.'}}">
                             </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label >{{__("Decimal Separator")}}</label>
+                            <label >{{__("Separador Decimal")}}</label>
                             <div>
                                 <input type="text" name="currency_decimal" class="form-control" value="{{$settings['currency_decimal'] ?? ','}}">
                             </div>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label >{{__("No. of Decimals")}}</label>
+                            <label >{{__("Número de decimais")}}</label>
                             <div>
                                 <input type="number" name="currency_no_decimal" min=0 max = 6 class="form-control" value="{{$settings['currency_no_decimal'] ?? 2}}">
                             </div>
@@ -57,15 +57,15 @@
         </div>
         <div class="panel">
             <div class="panel-title"><strong>
-                   {{__("Extra Currency")}}</strong></div>
+                   {{__("Moeda Extra")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
                     <div class="form-group-item">
                         <div class="form-group-item">
                             <div class="g-items-header">
                                 <div class="row">
-                                    <div class="col-md-3">{{__("Currency")}}</div>
-                                    <div class="col-md-8">{{__('Format')}}</div>
+                                    <div class="col-md-3">{{__("Moeda")}}</div>
+                                    <div class="col-md-8">{{__('Formatar')}}</div>
                                     <div class="col-md-1"></div>
                                 </div>
                             </div>
@@ -78,27 +78,27 @@
                                         <div class="row">
                                             <div class="col-md-11">
                                                 <div class="form-group">
-                                                    <label class="" >{{__("Sub Currency")}}</label>
+                                                    <label class="" >{{__("Submoeda")}}</label>
                                                 {!! \App\Helpers\AdminForm::select('extra_currency['.$key.'][currency_main]',\App\Currency::getAll(),$item['currency_main'] ?? '','dungdt-select2-field') !!}
                                                 </div>
 
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label >{{__("Format")}}</label>
+                                                            <label >{{__("Formatar")}}</label>
                                                             <div class="form-controls">
                                                                 {!! \App\Helpers\AdminForm::select('extra_currency['.$key.'][currency_format]',[
                                                                     ['id'=>'right','name'=>__('Right (100$)')],
                                                                     ['id'=>'right_space','name'=>__('Right with space (100 $)')],
-                                                                    ['id'=>'left','name'=>__('Left ($100)')],
-                                                                    ['id'=>'left_space','name'=>__('Left with space ($ 100)')],
+                                                                    ['id'=>'left','name'=>__('esquerda ($100)')],
+                                                                    ['id'=>'left_space','name'=>__('esquerda with space ($ 100)')],
                                                                 ],$item['currency_format'] ?? '') !!}
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label >{{__("Thousand Separator")}}</label>
+                                                            <label >{{__("Separador de Mil")}}</label>
                                                             <div>
                                                                 <input type="text" name="extra_currency[{{$key}}][currency_thousand]" class="form-control" value="{{$item['currency_thousand'] ?? '.'}}">
                                                             </div>
@@ -106,7 +106,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label >{{__("Decimal Separator")}}</label>
+                                                            <label >{{__("Separador Decimal")}}</label>
                                                             <div>
                                                                 <input type="text" name="extra_currency[{{$key}}][currency_decimal]" class="form-control" value="{{$item['currency_decimal'] ?? ','}}">
                                                             </div>
@@ -114,7 +114,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label >{{__("No. of Decimals")}}</label>
+                                                            <label >{{__("Número de decimais")}}</label>
                                                             <div>
                                                                 <input type="number" name="extra_currency[{{$key}}][currency_no_decimal]" min=0 max = 6 class="form-control" value="{{$item['currency_no_decimal'] ?? 2}}">
                                                             </div>
@@ -125,7 +125,7 @@
                                                     <label >{{__("Exchange rate")}}</label>
                                                     <div>
                                                         <input step=any type="text" name="extra_currency[{{$key}}][rate]" min=0 class="form-control" value="{{$item['rate'] ?? 0}}">
-                                                        <p><i>{{__('Example: Main currency is VND, and the extra currency is USD, so the exchange rate must be 23400 (1 USD ~ 23400 VND)')}}</i></p>
+                                                        <p><i>{{__('Exemplo: a moeda principal é VND e a moeda extra é USD, então a taxa de câmbio deve ser 23400 (1 USD ~ 23400 VND)')}}</i></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,14 +137,14 @@
                                 @endforeach
                             </div>
                             <div class="text-right">
-                                <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                                <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                             </div>
                             <div class="g-more hide">
                                 <div class="item" data-number="__number__">
                                     <div class="row">
                                         <div class="col-md-11">
                                             <div class="form-group">
-                                                <label class="" >{{__("Sub Currency")}}</label>
+                                                <label class="" >{{__("Submoeda")}}</label>
                                                 <div class="form-controls">
                                             {!! \App\Helpers\AdminForm::select('extra_currency[__number__][currency_main]',\App\Currency::getAll(),'','dungdt-select2-field-lazy',true) !!}
                                                 </div>
@@ -152,20 +152,20 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label >{{__("Format")}}</label>
+                                                        <label >{{__("Formatar")}}</label>
                                                         <div class="form-controls">
                                                             {!! \App\Helpers\AdminForm::select('extra_currency[__number__][currency_format]',[
                                                                 ['id'=>'right','name'=>__('Right (100$)')],
                                                                 ['id'=>'right_space','name'=>__('Right with space (100 $)')],
-                                                                ['id'=>'left','name'=>__('Left ($100)')],
-                                                                ['id'=>'left_space','name'=>__('Left with space ($ 100)')],
+                                                                ['id'=>'left','name'=>__('esquerda ($100)')],
+                                                                ['id'=>'left_space','name'=>__('esquerda with space ($ 100)')],
                                                             ],'right','',true) !!}
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label >{{__("Thousand Separator")}}</label>
+                                                        <label >{{__("Separador de Mil")}}</label>
                                                         <div>
                                                             <input type="text" __name__="extra_currency[__number__][currency_thousand]" class="form-control" value=".">
                                                         </div>
@@ -173,7 +173,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label >{{__("Decimal Separator")}}</label>
+                                                        <label >{{__("Separador Decimal")}}</label>
                                                         <div>
                                                             <input type="text" __name__="extra_currency[__number__][currency_decimal]" class="form-control" value=",">
                                                         </div>
@@ -181,7 +181,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label >{{__("No. of Decimals")}}</label>
+                                                        <label >{{__("Número de decimais")}}</label>
                                                         <div>
                                                             <input type="number" __name__="extra_currency[__number__][currency_no_decimal]" min=0 max = 6 class="form-control" value="2">
                                                         </div>
@@ -190,10 +190,10 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label >{{__("Exchange rate")}}</label>
+                                                <label >{{__("Taxa de câmbio")}}</label>
                                                 <div>
                                                     <input step=any type="text" __name__="extra_currency[__number__][rate]" min=0 class="form-control" value="">
-                                                    <p><i>{{__('Example: Main currency is VND, and the extra currency is USD, so the exchange rate must be 23400 (1 USD ~ 23400 VND)')}}</i></p>
+                                                    <p><i>{{__('Exemplo: a moeda principal é VND e a moeda extra é USD, então a taxa de câmbio deve ser 23400 (1 USD ~ 23400 VND)')}}</i></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -216,8 +216,8 @@
 <hr>
 <div class="row">
     <div class="col-md-4">
-        <h3 class="form-group-title">{{__("Payment Gateways")}}</h3>
-        <p class="form-group-desc">{{__('You can enable and disable your payment gateways here')}}</p>
+        <h3 class="form-group-title">{{__("Gateways de pagamento")}}</h3>
+        <p class="form-group-desc">{{__('Você pode habilitar e desabilitar seus gateways de pagamento aqui')}}</p>
     </div>
     <div class="col-md-8">
         @php

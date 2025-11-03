@@ -12,7 +12,7 @@ class SettingClass extends BaseSettingsClass
         return [
             [
                 'id'   => 'api',
-                'title' => __("Mobile App Settings"),
+                'title' => __("Configurações de aplicativos móveis"),
                 'position'=>130,
                 'view'=>"Api::admin.settings.api",
                 "keys"=>[

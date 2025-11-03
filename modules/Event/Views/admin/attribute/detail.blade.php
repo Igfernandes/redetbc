@@ -9,7 +9,7 @@
                 <div class="col-md-6">
                     <div class="d-flex justify-content-between mb20">
                         <div class="">
-                            <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->name : __('Add new attribute')}}</h1>
+                            <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->name : __('Adicionar novo atributo')}}</h1>
                         </div>
                     </div>
                     @include('admin.message')
@@ -19,7 +19,7 @@
                     <div class="lang-content-box">
                         <div class="panel">
                             <div class="panel-title">
-                                <strong>{{__("Attribute Content")}}</strong>
+                                <strong>{{__("Atribuir Conteúdo")}}</strong>
                             </div>
                             <div class="panel-body">
                                 @include('Event::admin/attribute/form')
@@ -29,7 +29,7 @@
                     <hr>
                     <div class="d-flex justify-content-between">
                         <span></span>
-                        <button class="btn btn-primary" type="submit">{{__("Save Change")}}</button>
+                        <button class="btn btn-primary" type="submit">{{__("Salvar alteração")}}</button>
                     </div>
                 </div>
             </div>

@@ -26,80 +26,80 @@ class PaypalGateway extends BaseGateway
             [
                 'type'  => 'checkbox',
                 'id'    => 'enable',
-                'label' => __('Enable Paypal Standard?')
+                'label' => __('Habilitar o Paypal Standard?')
             ],
             [
                 'type'       => 'input',
                 'id'         => 'name',
-                'label'      => __('Custom Name'),
+                'label'      => __('Nome personalizado'),
                 'std'        => __("Paypal"),
                 'multi_lang' => "1"
             ],
             [
                 'type'  => 'upload',
                 'id'    => 'logo_id',
-                'label' => __('Custom Logo'),
+                'label' => __('Logotipo personalizado'),
             ],
             [
                 'type'  => 'editor',
                 'id'    => 'html',
-                'label' => __('Custom HTML Description'),
+                'label' => __('Descrição HTML personalizada'),
                 'multi_lang' => "1"
             ],
             [
                 'type'  => 'checkbox',
                 'id'    => 'test',
-                'label' => __('Enable Sandbox Mod?')
+                'label' => __('Habilitar Sandbox Mod?')
             ],
             [
                 'type'    => 'select',
                 'id'      => 'convert_to',
                 'label'   => __('Convert To'),
-                'desc'    => __('In case of main currency does not support by PayPal. You must select currency and input exchange_rate to currency that PayPal support'),
+                'desc'    => __('Caso a moeda principal não seja suportada pelo PayPal, você deve selecionar a moeda e inserir a taxa de câmbio correspondente à moeda suportada pelo PayPal.'),
                 'options' => $this->supportedCurrency()
             ],
             [
                 'type'       => 'input',
                 'input_type' => 'number',
                 'id'         => 'exchange_rate',
-                'label'      => __('Exchange Rate'),
-                'desc'       => __('Example: Main currency is VND (which does not support by PayPal), you may want to convert it to USD when customer checkout, so the exchange rate must be 23400 (1 USD ~ 23400 VND)'),
+                'label'      => __('Taxa de câmbio'),
+                'desc'       => __('Example: A moeda principal é VND (que não é aceita pelo PayPal). Você pode convertê-la para USD quando o cliente finalizar a compra, então a taxa de câmbio deve ser 23400 (1 USD ~ 23400 VND)'),
             ],
             [
                 'type'      => 'input',
                 'id'        => 'test_account',
-                'label'     => __('Sandbox API Username'),
+                'label'     => __('Nome de usuário da API do Sandbox'),
                 'condition' => 'g_paypal_test:is(1)'
             ],
             [
                 'type'      => 'input',
                 'id'        => 'test_client_id',
-                'label'     => __('Sandbox API Password'),
+                'label'     => __('Senha da API Sandbox'),
                 'condition' => 'g_paypal_test:is(1)'
             ],
             [
                 'type'      => 'input',
                 'id'        => 'test_client_secret',
-                'label'     => __('Sandbox Signature'),
+                'label'     => __('Assinatura da caixa de areia'),
                 'std'       => '',
                 'condition' => 'g_paypal_test:is(1)'
             ],
             [
                 'type'      => 'input',
                 'id'        => 'account',
-                'label'     => __('API Username'),
+                'label'     => __('Nome de usuário da API'),
                 'condition' => 'g_paypal_test:is()'
             ],
             [
                 'type'      => 'input',
                 'id'        => 'client_id',
-                'label'     => __('API Password'),
+                'label'     => __('Senha da API'),
                 'condition' => 'g_paypal_test:is()'
             ],
             [
                 'type'      => 'input',
                 'id'        => 'client_secret',
-                'label'     => __('Signature'),
+                'label'     => __('Assinatura'),
                 'std'       => '',
                 'condition' => 'g_paypal_test:is()'
             ],
@@ -114,10 +114,10 @@ class PaypalGateway extends BaseGateway
             $booking::CANCELLED
         ])) {
 
-            throw new Exception(__("Booking status does need to be paid"));
+            throw new Exception(__("O status da reserva precisa ser pago"));
         }
         if (!$booking->pay_now) {
-            throw new Exception(__("Booking total is zero. Can not process payment gateway!"));
+            throw new Exception(__("O total da reserva é zero. Não é possível processar o gateway de pagamento!"));
         }
         $this->getGateway();
         $payment = new Payment();
@@ -175,7 +175,7 @@ class PaypalGateway extends BaseGateway
                 } catch(\Swift_TransportException $e){
                     Log::warning($e->getMessage());
                 }
-                return redirect($booking->getDetailUrl())->with("success", __("You payment has been processed successfully"));
+                return redirect($booking->getDetailUrl())->with("success", __("Seu pagamento foi processado com sucesso"));
             } else {
 
                 $payment = $booking->payment;
@@ -190,7 +190,7 @@ class PaypalGateway extends BaseGateway
                 } catch(\Swift_TransportException $e){
                     Log::warning($e->getMessage());
                 }
-                return redirect($booking->getDetailUrl())->with("error", __("Payment Failed"));
+                return redirect($booking->getDetailUrl())->with("error", __("Falha no pagamento"));
             }
         }
         if (!empty($booking)) {
@@ -225,7 +225,7 @@ class PaypalGateway extends BaseGateway
         }
         if($payment){
             if($payment->status == 'cancel'){
-                return [false,__("Your payment has been canceled")];
+                return [false,__("Seu pagamento foi cancelado")];
             }
         }
         return [false];
@@ -269,7 +269,7 @@ class PaypalGateway extends BaseGateway
             // Refund without check status
             $booking->tryRefundToWallet(false);
 
-            return redirect($booking->getDetailUrl())->with("error", __("You cancelled the payment"));
+            return redirect($booking->getDetailUrl())->with("error", __("Você cancelou o pagamento"));
         }
         if (!empty($booking)) {
             return redirect($booking->getDetailUrl());
@@ -304,10 +304,10 @@ class PaypalGateway extends BaseGateway
         $data['cancelUrl'] = $this->getCancelUrl(true) . '?pid=' . $payment->code;
         if (!array_key_exists($main_currency, $supported)) {
             if (!$convert_to) {
-                throw new Exception(__("PayPal does not support currency: :name", ['name' => $main_currency]));
+                throw new Exception(__("PayPal não suporta moeda: :name", ['name' => $main_currency]));
             }
             if (!$exchange_rate = $this->getOption('exchange_rate')) {
-                throw new Exception(__("Exchange rate to :name must be specific. Please contact site owner", ['name' => $convert_to]));
+                throw new Exception(__("Taxa de câmbio para :name deve ser específico. Entre em contato com o proprietário do site", ['name' => $convert_to]));
             }
             if ($payment) {
                 $payment->converted_currency = $convert_to;
@@ -330,10 +330,10 @@ class PaypalGateway extends BaseGateway
         $data['cancelUrl'] = $this->getCancelUrl() . '?c=' . $booking->code;
         if (!array_key_exists($main_currency, $supported)) {
             if (!$convert_to) {
-                throw new Exception(__("PayPal does not support currency: :name", ['name' => $main_currency]));
+                throw new Exception(__("O PayPal não aceita moeda: :name", ['name' => $main_currency]));
             }
             if (!$exchange_rate = $this->getOption('exchange_rate')) {
-                throw new Exception(__("Exchange rate to :name must be specific. Please contact site owner", ['name' => $convert_to]));
+                throw new Exception(__("A taxa de câmbio para :name deve ser específica. Entre em contato com o proprietário do site.", ['name' => $convert_to]));
             }
             if ($payment) {
                 $payment->converted_currency = $convert_to;

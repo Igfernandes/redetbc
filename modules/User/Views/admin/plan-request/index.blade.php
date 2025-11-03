@@ -15,7 +15,7 @@
                             <option value="completed">{{__("Mark as completed")}}</option>
                             <option value="cancelled">{{__("Mark as cancelled")}}</option>
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
@@ -85,7 +85,7 @@
                                             @if($row->getMeta('annual')!=1)
                                                 <p>{{__('Duration:  :duration_text',['duration_text'=>$row->plan->duration_text])}}</p>
                                                 @else
-                                                <p>{{__('Year')}}</p>
+                                                <p>{{__('Ano')}}</p>
                                             @endif
                                         @endif
                                     </td>
@@ -101,7 +101,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7" class="text-center"><b>{{ __("No data") }}</b></td>
+                                <td colspan="7" class="text-center"><b>{{ __("Sem dados") }}</b></td>
                             </tr>
                         @endif
                         </tbody>

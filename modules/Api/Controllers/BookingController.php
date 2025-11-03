@@ -89,11 +89,11 @@ class BookingController extends \Modules\Booking\Controllers\BookingController
 
         $booking = Booking::where('code', $code)->first();
         if (empty($booking)) {
-            return $this->sendError(__("Booking not found!"))->setStatusCode(404);
+            return $this->sendError(__("Reserva não encontrada!"))->setStatusCode(404);
         }
 
         if ($booking->status == 'draft') {
-            return $this->sendError(__("You do not have permission to access"))->setStatusCode(404);
+            return $this->sendError(__("Você não tem permissão para acessar"))->setStatusCode(404);
         }
         $data = [
             'booking'    => $booking,
@@ -187,7 +187,7 @@ class BookingController extends \Modules\Booking\Controllers\BookingController
         }
 
         $data = [
-            'page_title' => __('Booking Details'),
+            'page_title' => __('Detalhes da reserva'),
             'booking'    => $booking,
             'service'    => $booking->service,
         ];

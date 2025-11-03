@@ -19,7 +19,7 @@ class BrandsList extends BaseBlock
                             'id'        => 'title',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Title')
+                            'label'     => __('Título')
                         ],
                         [
                             'id'    => 'image_id',

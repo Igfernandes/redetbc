@@ -17,7 +17,7 @@ class ListAllService extends BaseBlock
                 'id'        => 'title_for_'.$key,
                 'type'      => 'input',
                 'inputType' => 'text',
-                'label'     => __('Title for :service',['service'=>ucwords($key)])
+                'label'     => __('Título for :service',['service'=>ucwords($key)])
             ];
         }
         $arg[] = [
@@ -32,13 +32,13 @@ class ListAllService extends BaseBlock
             'id'        => 'title',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Title')
+            'label'     => __('Título')
         ];
 
         $arg[] =  [
             'id'            => 'style',
             'type'          => 'radios',
-            'label'         => __('Style Background'),
+            'label'         => __('Estilo de fundo'),
             'values'        => [
                 [
                     'value'   => '',
@@ -51,21 +51,21 @@ class ListAllService extends BaseBlock
             'id'        => 'number',
             'type'      => 'input',
             'inputType' => 'number',
-            'label'     => __('Number Item')
+            'label'     => __('Item numérico')
         ];
 
         $arg[] =  [
             'id'            => 'order',
             'type'          => 'radios',
-            'label'         => __('Order'),
+            'label'         => __('Ordem'),
             'values'        => [
                 [
                     'value'   => 'id',
-                    'name' => __("Date Create")
+                    'name' => __("Data de Criação")
                 ],
                 [
                     'value'   => 'title',
-                    'name' => __("Title")
+                    'name' => __("Título")
                 ],
             ]
         ];
@@ -73,7 +73,7 @@ class ListAllService extends BaseBlock
         $arg[] =  [
             'id'            => 'order_by',
             'type'          => 'radios',
-            'label'         => __('Order By'),
+            'label'         => __('Ordenar por'),
             'values'        => [
                 [
                     'value'   => 'asc',

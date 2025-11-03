@@ -14,7 +14,7 @@ class Testimonial extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'          => 'list_item',
@@ -49,7 +49,7 @@ class Testimonial extends BaseBlock
                 [
                     'id'    => 'style',
                     'type'  => 'radios',
-                    'label' => __('Style'),
+                    'label' => __('Estilo'),
                     'values' => [
                         [
                             'value'   => 'index',

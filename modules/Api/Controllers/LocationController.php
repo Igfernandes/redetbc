@@ -23,12 +23,12 @@ class LocationController extends Controller
 
     public function detail($id = '')    {
         if(empty($id)){
-            return $this->sendError(__("Location ID is not available"));
+            return $this->sendError(__("O ID do local não está disponível"));
         }
         $row = Location::find($id);
         if(empty($row))
         {
-            return $this->sendError(__("Location not found"));
+            return $this->sendError(__("Local não encontrado"));
         }
 
         return $this->sendSuccess([

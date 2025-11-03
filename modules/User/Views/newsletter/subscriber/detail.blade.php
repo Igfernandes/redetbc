@@ -10,7 +10,7 @@
                     @include('admin.message')
                     <div class="d-flex justify-content-between mb20">
                         <div class="">
-                            <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->email : __('Add new subscriber')}}</h1>
+                            <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->email : __('Add new subscriber')}}</h1>
                         </div>
                     </div>
                     <div class="panel">

@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label>{{__("Price")}} <span class="text-danger">*</span></label>
-                <input type="number" required value="{{$row->price}}" min="1" placeholder="{{__("Price")}}" name="price" class="form-control">
+                <label>{{__("Preço")}} <span class="text-danger">*</span></label>
+                <input type="number" required value="{{$row->price}}" min="1" placeholder="{{__("Preço")}}" name="price" class="form-control">
             </div>
         </div>
         <div class="col-md-6">

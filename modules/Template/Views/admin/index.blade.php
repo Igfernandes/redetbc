@@ -16,16 +16,16 @@
                         {{csrf_field()}}
                         <select name="action" class="form-control">
                             <option value="">{{__(" Bulk Actions ")}}</option>
-                            <option value="delete">{{__(" Delete ")}}</option>
+                            <option value="delete">{{__("Excluir")}}</option>
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
             <div class="col-left">
                 <form method="get" action="{{route('template.admin.index')}} " class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}" class="form-control">
-                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search')}}</button>
+                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
+                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Procurar')}}</button>
                 </form>
             </div>
         </div>
@@ -39,7 +39,7 @@
                             <thead>
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
-                                <th>{{__('Title')}}</th>
+                                <th>{{__('Título')}}</th>
                                 <th>{{__('Date')}}</th>
                                 <th>{{__('Actions')}}</th>
                             </tr>
@@ -59,7 +59,7 @@
                                                     {{__('Actions')}}
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="{{route('template.admin.edit',[$row->id])}}"> <i class="fa fa-edit" aria-hidden="true"></i> {{__('Edit')}}</a>
+                                                    <a class="dropdown-item" href="{{route('template.admin.edit',[$row->id])}}"> <i class="fa fa-edit" aria-hidden="true"></i> {{__('Editar')}}</a>
                                                     <a class="dropdown-item" href="{{route('template.admin.exportTemplate',[$row->id])}}"> <i class="fa fa-download" aria-hidden="true"></i> {{__('Export')}}</a>
                                                     <a class="dropdown-item" href="{{\Illuminate\Support\Facades\URL::signedRoute('template.admin.clone',[$row->id])}}"> <i class="fa fa-copy" aria-hidden="true"></i> {{__('Clone')}}</a>
                                                 </div>
@@ -70,7 +70,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="3">{{__("No data")}}</td>
+                                    <td colspan="3">{{__("Sem dados")}}</td>
                                 </tr>
                             @endif
                             </tbody>

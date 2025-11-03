@@ -66,8 +66,8 @@
             <label class="control-label">{{__('Extra Price')}}</label>
             <div class="g-items-header">
                 <div class="row">
-                    <div class="col-md-5">{{__("Name")}}</div>
-                    <div class="col-md-3">{{__('Price')}}</div>
+                    <div class="col-md-5">{{__("Nome")}}</div>
+                    <div class="col-md-3">{{__('Preço')}}</div>
                     <div class="col-md-3">{{__('Type')}}</div>
                     <div class="col-md-1"></div>
                 </div>
@@ -110,7 +110,7 @@
             </div>
             <div class="text-right">
                 @if(is_default_lang())
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                 @endif
             </div>
             <div class="g-more hide">
@@ -155,8 +155,8 @@
                 <label class="control-label">{{__('Buyer Fees')}}</label>
                 <div class="g-items-header">
                     <div class="row">
-                        <div class="col-md-7">{{__("Name")}}</div>
-                        <div class="col-md-4">{{__('Price')}}</div>
+                        <div class="col-md-7">{{__("Nome")}}</div>
+                        <div class="col-md-4">{{__('Preço')}}</div>
                         <div class="col-md-3 d-none">{{__('Type')}}</div>
                         <div class="col-md-1"></div>
                     </div>
@@ -208,7 +208,7 @@
                     @endif
                 </div>
                 <div class="text-right">
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                 </div>
                 <div class="g-more hide">
                     <div class="item" data-number="__number__">

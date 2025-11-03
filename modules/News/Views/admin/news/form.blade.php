@@ -1,5 +1,5 @@
 <div class="form-group magic-field" data-id="title" data-type="title">
-    <label class="control-label">{{ __('Title')}}</label>
+    <label class="control-label">{{ __('Título')}}</label>
     <input type="text" value="{{ $translation->title ?? 'New Post' }}" placeholder="News title" name="title" class="form-control">
 </div>
 <div class="form-group">

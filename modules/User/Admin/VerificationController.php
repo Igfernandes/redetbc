@@ -141,7 +141,7 @@ class VerificationController extends AdminController
         if (empty($ids))
             return redirect()->back()->with('error', __('Select at leas 1 item!'));
         if (empty($action))
-            return redirect()->back()->with('error', __('Select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
 
         switch ($action) {
             case "delete":
@@ -152,7 +152,7 @@ class VerificationController extends AdminController
                     }
                     $query->save();
                 }
-                return redirect()->back()->with('success', __('Deleted success!'));
+                return redirect()->back()->with('success', __('Excluído com sucesso!'));
                 break;
             default:
                 break;

@@ -50,7 +50,7 @@
             <span class="badge badge-pill bg-white text-primary px-4 mr-3 py-2 font-size-14 font-weight-normal">{{ __("Featured") }}</span>
         @endif
         @if($row->discount_percent)
-            <span class="badge badge-pill bg-white text-danger px-3  py-2 font-size-14 font-weight-normal">{{$row->discount_percent}}</span>
+            <span class="badge badge-pill bg-white px-3  py-2 font-size-14 font-weight-normal " style="color:#c47a1d;">{{$row->discount_percent}}</span>
         @endif
     </div>
 

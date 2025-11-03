@@ -121,14 +121,14 @@
   font-size: 14px; }
 
 .cdn-browser .clear-selected {
-  color: red;
+  color: #003583;
   font-size: 14px;
   cursor: pointer; }
 
 .cdn-browser .no-files-text {
   padding: 20px;
   font-size: 20px;
-  color: red; }
+  color: #003583; }
 
 .cdn-browser .upload-new .filepond--root {
   margin-bottom: 0px;

@@ -6,9 +6,9 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->title : __('Add new hotel')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Add new hotel')}}</h1>
                     @if($row->slug)
-                        <p class="item-url-demo">{{__("Permalink")}}: {{ url( config('hotel.hotel_route_prefix') ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
+                        <p class="item-url-demo">{{__("Link permanente")}}: {{ url( config('hotel.hotel_route_prefix') ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                         </p>
                     @endif
                 </div>
@@ -36,24 +36,24 @@
                     </div>
                     <div class="col-md-3">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{__('Publish')}}</strong></div>
+                            <div class="panel-title"><strong>{{__('Publicar')}}</strong></div>
                             <div class="panel-body">
                                 @if(is_default_lang())
                                     <div>
-                                        <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publish")}}
+                                        <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publicar")}}
                                         </label></div>
                                     <div>
-                                        <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Draft")}}
+                                        <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Rascunho")}}
                                         </label></div>
                                 @endif
                                 <div class="text-right">
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Save Changes')}}</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
                                 </div>
                             </div>
                         </div>
                         @if(is_default_lang())
                         <div class="panel">
-                            <div class="panel-title"><strong>{{__("Author Setting")}}</strong></div>
+                            <div class="panel-title"><strong>{{__("Configuração do Autor")}}</strong></div>
                             <div class="panel-body">
                                 <div class="form-group">
                                     <?php $user = !empty($row->author_id) ? App\User::find($row->author_id) : false;
@@ -64,7 +64,7 @@
                                                 'dataType' => 'json'
                                             ],
                                             'allowClear'  => true,
-                                            'placeholder' => __('-- Select User --')
+                                            'placeholder' => __('-- Selecione Usuário --')
                                         ]
                                     ], !empty($user->id) ? [
                                         $user->id,
@@ -77,13 +77,13 @@
                         @endif
                         @if(is_default_lang())
                             <div class="panel">
-                                <div class="panel-title"><strong>{{__("Availability")}}</strong></div>
+                                <div class="panel-title"><strong>{{__("Disponibilidade")}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label>{{__('Hotel Featured')}}</label>
                                         <br>
                                         <label>
-                                            <input type="checkbox" name="is_featured" @if($row->is_featured) checked @endif value="1"> {{__("Enable featured")}}
+                                            <input type="checkbox" name="is_featured" @if($row->is_featured) checked @endif value="1"> {{__("Habilitar destaque")}}
                                         </label>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                             @include('Hotel::admin.hotel.attributes')
 
                             <div class="panel">
-                                <div class="panel-title"><strong>{{__('Feature Image')}}</strong></div>
+                                <div class="panel-title"><strong>{{__('Imagem em destaque')}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
                                         {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}

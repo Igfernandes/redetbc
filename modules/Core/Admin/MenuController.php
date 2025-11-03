@@ -30,8 +30,8 @@ class MenuController extends AdminController
     public function getLocations()
     {
         return [
-            'primary' => __("Primary"),
-//            'footer'  => __("Footer"),
+            'primary' => __("Primário"),
+//            'footer'  => __("Rodapé"),
         ];
     }
 
@@ -49,7 +49,7 @@ class MenuController extends AdminController
                     'url'  => route('core.admin.menu.index')
                 ],
                 [
-                    'name'  => __('Create new menu'),
+                    'name'  => __('Criar novo menu'),
                     'class' => 'active'
                 ],
             ],
@@ -88,7 +88,7 @@ class MenuController extends AdminController
                     'url'  => route('core.admin.menu.index')
                 ],
                 [
-                    'name'  => __('Edit: ') . $row->name,
+                    'name'  => __('Editar: ') . $row->name,
                     'class' => 'active'
                 ],
             ],
@@ -133,25 +133,25 @@ class MenuController extends AdminController
         $menuModels = [
             [
                 'class' => \Modules\Page\Models\Page::class,
-                'name'  => __("Page"),
+                'name'  => __("Página"),
                 'items' => \Modules\Page\Models\Page::searchForMenu(),
                 'position'=>10
             ],
             [
                 'class' => \Modules\Location\Models\Location::class,
-                'name'  => __("Location"),
+                'name'  => __("Localização"),
                 'items' => \Modules\Location\Models\Location::searchForMenu(),
                 'position'=>40
             ],
             [
                 'class' => \Modules\News\Models\News::class,
-                'name'  => __("News"),
+                'name'  => __("Notícias"),
                 'items' => \Modules\News\Models\News::searchForMenu(),
                 'position'=>50
             ],
             [
                 'class' => NewsCategory::class,
-                'name'  => __("News Category"),
+                'name'  => __("Categoria de notícias"),
                 'items' => NewsCategory::searchForMenu(),
                 'position'=>60
             ],
@@ -215,14 +215,14 @@ class MenuController extends AdminController
 
         $menu = Menu::find($request->input('id'));
         if (empty($menu))
-            return $this->sendError(__("Menu not found"));
+            return $this->sendError(__("Menu não encontrado"));
         return $this->sendSuccess(['data' => json_decode($menu->items, true)]);
     }
 
     public function store(Request $request)
     {
         if(is_demo_mode()){
-            return $this->sendError(__("You can not edit menu in demo mode"));
+            return $this->sendError(__("Você não pode editar o menu no modo de demonstração"));
         }
         $request->validate([
             'items' => 'required',
@@ -238,7 +238,7 @@ class MenuController extends AdminController
             $menu = new Menu();
         }
         if (empty($menu))
-            return $this->sendError(__('Menu not found'));
+            return $this->sendError(__('Menu não encontrado'));
 
         $items = json_decode($request->input('items'),true);
         $newItems = clean_by_key($items, 'name');
@@ -267,7 +267,7 @@ class MenuController extends AdminController
         setting_update_item('menu_locations', json_encode($setting));
         return $this->sendSuccess([
             'url' => $request->input('id') ? '' : route('core.admin.menu.edit',['id'=>$menu->id])
-        ], __('Your menu has been saved'));
+        ], __('Seu menu foi salvo'));
     }
 
     public function bulkEdit(Request $request)
@@ -275,10 +275,10 @@ class MenuController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('No items selected!'));
+            return redirect()->back()->with('error', __('Nenhum item selecionado!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
 
         switch ($action) {
@@ -294,7 +294,7 @@ class MenuController extends AdminController
                         $row->delete();
                     }
                 }
-                return redirect()->back()->with('success', __('Deleted success!'));
+                return redirect()->back()->with('success', __('Excluído com sucesso !'));
             break;
         }
     }

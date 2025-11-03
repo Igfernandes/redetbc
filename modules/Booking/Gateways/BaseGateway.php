@@ -168,7 +168,7 @@ abstract class BaseGateway
         $payment = Payment::where('code', $c)->first();
         if ($payment) {
             if($payment->status == 'cancel'){
-                return [false,__("Your payment has been canceled")];
+                return [false,__("Seu pagamento foi cancelado")];
             }
             return $payment->markAsCancel();
         }

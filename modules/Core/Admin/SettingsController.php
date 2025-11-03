@@ -60,7 +60,7 @@ class SettingsController extends AdminController
     public function store(Request $request, $group)
     {
         if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("DEMO MODE: Disable setting update"));
+            return redirect()->back()->with('danger',__("MODO DEMO: Desativar atualização de configurações"));
         }
         if(empty($this->groups)){
             $this->setGroups();
@@ -119,7 +119,7 @@ class SettingsController extends AdminController
             do_action(Hook::AFTER_SETTING_SAVED, $group_data);
             //Clear Cache for currency
             Session::put('bc_current_currency',"");
-            return redirect()->back()->with('success', __('Settings Saved'));
+            return redirect()->back()->with('success', __('Configurações salvas'));
         }
     }
 

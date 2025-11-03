@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label">{{__("Price")}}</label>
+                        <label class="control-label">{{__("Preço")}}</label>
                         <input type="number" step="any" min="0" name="price" class="form-control" value="{{$row->price}}" placeholder="{{__("Space Price")}}">
                     </div>
                 </div>
@@ -34,8 +34,8 @@
             <label class="control-label">{{__('Extra Price')}}</label>
             <div class="g-items-header">
                 <div class="row">
-                    <div class="col-md-5">{{__("Name")}}</div>
-                    <div class="col-md-3">{{__('Price')}}</div>
+                    <div class="col-md-5">{{__("Nome")}}</div>
+                    <div class="col-md-3">{{__('Preço')}}</div>
                     <div class="col-md-3">{{__('Type')}}</div>
                     <div class="col-md-1"></div>
                 </div>
@@ -85,7 +85,7 @@
             </div>
             <div class="text-right">
                 @if(is_default_lang())
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                 @endif
             </div>
             <div class="g-more hide">
@@ -167,7 +167,7 @@
                     @endif
                 </div>
                 <div class="text-right">
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                 </div>
                 <div class="g-more hide">
                     <div class="item" data-number="__number__">
@@ -206,8 +206,8 @@
                 <label class="control-label">{{__('Buyer Fees')}}</label>
                 <div class="g-items-header">
                     <div class="row">
-                        <div class="col-md-5">{{__("Name")}}</div>
-                        <div class="col-md-3">{{__('Price')}}</div>
+                        <div class="col-md-5">{{__("Nome")}}</div>
+                        <div class="col-md-3">{{__('Preço')}}</div>
                         <div class="col-md-3">{{__('Type')}}</div>
                         <div class="col-md-1"></div>
                     </div>
@@ -259,7 +259,7 @@
                     @endif
                 </div>
                 <div class="text-right">
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                 </div>
                 <div class="g-more hide">
                     <div class="item" data-number="__number__">

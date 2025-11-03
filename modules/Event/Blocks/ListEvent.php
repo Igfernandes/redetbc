@@ -16,7 +16,7 @@ class ListEvent extends BaseBlock
 
     public function getName()
     {
-        return __('Event: List Items');
+        return __('Evento: Listar itens');
     }
     public function getOptions(): array
     {
@@ -26,7 +26,7 @@ class ListEvent extends BaseBlock
                 'id'        => 'title',
                 'type'      => 'input',
                 'inputType' => 'text',
-                'label'     => __('Title')
+                'label'     => __('Título')
             ],
             [
                 'id'        => 'desc',
@@ -38,12 +38,12 @@ class ListEvent extends BaseBlock
                 'id'        => 'number',
                 'type'      => 'input',
                 'inputType' => 'number',
-                'label'     => __('Number Item')
+                'label'     => __('Item numérico')
             ],
             [
                 'id'            => 'style',
                 'type'          => 'radios',
-                'label'         => __('Style'),
+                'label'         => __('Estilo'),
                 'values'        => [
                     [
                         'value'   => 'normal',
@@ -51,14 +51,14 @@ class ListEvent extends BaseBlock
                     ],
                     [
                         'value'   => 'carousel',
-                        'name' => __("Slider Carousel")
+                        'name' => __("Carrossel deslizante")
                     ]
                 ]
             ],
             [
                 'id'      => 'location_id',
                 'type'    => 'select2',
-                'label'   => __('Filter by Location'),
+                'label'   => __('Filtrar por localização'),
                 'select2' => [
                     'ajax'  => [
                         'url'      => route('location.admin.getForSelect2'),
@@ -66,29 +66,29 @@ class ListEvent extends BaseBlock
                     ],
                     'width' => '100%',
                     'allowClear' => 'true',
-                    'placeholder' => __('-- Select --')
+                    'placeholder' => __('-- Selecione --')
                 ],
                 'pre_selected'=>route('location.admin.getForSelect2',['pre_selected'=>1])
             ],
             [
                 'id'            => 'order',
                 'type'          => 'radios',
-                'label'         => __('Order'),
+                'label'         => __('Ordem'),
                 'values'        => [
                     [
                         'value'   => 'id',
-                        'name' => __("Date Create")
+                        'name' => __("Data de criação")
                     ],
                     [
                         'value'   => 'title',
-                        'name' => __("Title")
+                        'name' => __("Título")
                     ],
                 ]
             ],
             [
                 'id'            => 'order_by',
                 'type'          => 'radios',
-                'label'         => __('Order By'),
+                'label'         => __('Ordenar por'),
                 'values'        => [
                     [
                         'value'   => 'asc',
@@ -102,14 +102,14 @@ class ListEvent extends BaseBlock
             ],
             [
                 'type'=> "checkbox",
-                'label'=>__("Only featured items?"),
+                'label'=>__("Apenas itens em destaque?"),
                 'id'=> "is_featured",
                 'default'=>true
             ],
             [
                 'id'           => 'custom_ids',
                 'type'         => 'select2',
-                'label'        => __('List by IDs'),
+                'label'        => __('Listar por IDs'),
                 'select2'      => [
                     'ajax'        => [
                         'url'      => route('event.admin.getForSelect2'),
@@ -117,14 +117,14 @@ class ListEvent extends BaseBlock
                     ],
                     'width'       => '100%',
                     'multiple'    => "true",
-                    'placeholder' => __('-- Select --')
+                    'placeholder' => __('-- Selecione --')
                 ],
                 'pre_selected' => route('event.admin.getForSelect2', [
                     'pre_selected' => 1
                 ])
             ],
         ],
-            'category'=>__("Service Event")
+            'category'=>__("Evento de serviço")
         ];
     }
 

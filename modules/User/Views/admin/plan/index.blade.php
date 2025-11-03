@@ -14,7 +14,7 @@
                             @csrf
                             @include('User::admin.plan.form',['parents'=>$rows])
                             <div class="">
-                                <button class="btn btn-primary" type="submit">{{__("Add new")}}</button>
+                                <button class="btn btn-primary" type="submit">{{__("Adicionar novo")}}</button>
                             </div>
                         </form>
                     </div>
@@ -27,19 +27,19 @@
                             <form method="post" action="{{route('user.admin.plan.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                                 {{csrf_field()}}
                                 <select name="action" class="form-control">
-                                    <option value="">{{__(" Bulk Action ")}}</option>
+                                    <option value="">{{__("Ação em massa")}}</option>
                                     <option value="publish">{{__(" Publish ")}}</option>
                                     <option value="draft">{{__(" Move to Draft ")}}</option>
-                                    <option value="delete">{{__(" Delete ")}}</option>
+                                    <option value="delete">{{__("Excluir")}}</option>
                                 </select>
-                                <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                                <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                             </form>
                         @endif
                     </div>
                     <div class="col-left">
                         <form method="get" action="" class="filter-form filter-form-right d-flex justify-content-end" role="search">
-                            <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Search by name")}}">
-                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search')}}</button>
+                            <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Pesquisar por nome")}}">
+                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Procurar')}}</button>
                         </form>
                     </div>
                 </div>
@@ -51,14 +51,14 @@
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
                                     <th width="60px">{{__("ID")}}</th>
-                                    <th>{{__("Name")}}</th>
+                                    <th>{{__("Nome")}}</th>
                                     <th>{{__("For Role")}}</th>
-                                    <th width="60px">{{__("Price")}}</th>
+                                    <th width="60px">{{__("Preço")}}</th>
                                     <th width="60px">{{__("Annual Price")}}</th>
                                     <th width="60px">{{__("Duration")}}</th>
                                     <th width="60px">{{__("Max Services")}}</th>
                                     <th width="60px">{{__("Status")}}</th>
-                                    <th width="60px">{{__("Date")}}</th>
+                                    <th width="60px">{{__("Data")}}</th>
                                     <th width="100px"></th>
                                 </tr>
                                 </thead>

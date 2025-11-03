@@ -13,7 +13,7 @@
             $configs = [
                 'general'=>[
                     'id'   => 'general',
-                    'title' => __("General Settings"),
+                    'title' => __("Configurações Gerais"),
                     'position'=>0,
 					'view'      => "Core::admin.settings.groups.general",
 					"keys"      => [
@@ -56,7 +56,7 @@
                 ],
                 'advance'=>[
                     'id'   => 'advance',
-                    'title' => __("Advanced Settings"),
+                    'title' => __("Configurações avançadas"),
                     'position'=>80,
 					'view'      => "Core::admin.settings.groups.advance",
 					"keys"      => [
@@ -122,7 +122,7 @@
                 ],
                 'style' => [
                     'id'               => 'style',
-                    'title'            => __("Style Settings"),
+                    'title'            => __("Configurações de estilo"),
                     'position'         => 70,
                     'keys'             => [
                         'style_main_color',

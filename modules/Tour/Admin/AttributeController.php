@@ -37,7 +37,7 @@ class AttributeController extends AdminController
                     'url'  => route('tour.admin.index')
                 ],
                 [
-                    'name'  => __('Attributes'),
+                    'name'  => __('Atributos'),
                     'class' => 'active'
                 ],
             ]
@@ -49,7 +49,7 @@ class AttributeController extends AdminController
     {
         $row = $this->attributesClass::find($id);
         if (empty($row)) {
-            return redirect()->back()->with('error', __('Attributes not found!'));
+            return redirect()->back()->with('error', __('Atributos não encontrados!'));
         }
         $translation = $row->translate($request->query('lang',get_main_lang()));
         $this->checkPermission('tour_manage_attributes');
@@ -64,7 +64,7 @@ class AttributeController extends AdminController
                     'url'  => route('tour.admin.index')
                 ],
                 [
-                    'name' => __('Attributes'),
+                    'name' => __('Atributos'),
                     'url'  => route('tour.admin.attribute.index')
                 ],
                 [
@@ -86,7 +86,7 @@ class AttributeController extends AdminController
         if ($id) {
             $row = $this->attributesClass::find($id);
             if (empty($row)) {
-                return redirect()->back()->with('error', __('Attributes not found!'));
+                return redirect()->back()->with('error', __('Atributos não encontrados!'));
             }
         } else {
             $row = new $this->attributesClass($request->input());
@@ -95,7 +95,7 @@ class AttributeController extends AdminController
         $row->fill($request->input());
         $res = $row->saveOriginOrTranslation($request->input('lang'));
         if ($res) {
-            return redirect()->back()->with('success', __('Attribute saved'));
+            return redirect()->back()->with('success', __('Atributo salvo'));
         }
     }
 
@@ -105,10 +105,10 @@ class AttributeController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('Select at least 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {
@@ -119,7 +119,7 @@ class AttributeController extends AdminController
                 }
             }
         }
-        return redirect()->back()->with('success', __('Updated success!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
 
     public function terms(Request $request, $attr_id)
@@ -145,11 +145,11 @@ class AttributeController extends AdminController
                     'url'  => route('tour.admin.index')
                 ],
                 [
-                    'name' => __('Attributes'),
+                    'name' => __('Atributos'),
                     'url'  => route('tour.admin.attribute.index')
                 ],
                 [
-                    'name'  => __('Attribute: :name', ['name' => $row->name]),
+                    'name'  => __('Atributo: :name', ['name' => $row->name]),
                     'class' => 'active'
                 ],
             ]
@@ -162,7 +162,7 @@ class AttributeController extends AdminController
         $this->checkPermission('tour_manage_attributes');
         $row = $this->termsClass::find($id);
         if (empty($row)) {
-            return redirect()->back()->with('error', __('Term not found'));
+            return redirect()->back()->with('error', __('Termo não encontrado'));
         }
         $translation = $row->translate($request->query('lang',get_main_lang()));
         $attr = $this->attributesClass::find($row->attr_id);
@@ -176,7 +176,7 @@ class AttributeController extends AdminController
                     'url'  => route('tour.admin.index')
                 ],
                 [
-                    'name' => __('Attributes'),
+                    'name' => __('Atributos'),
                     'url'  => route('tour.admin.attribute.index')
                 ],
                 [
@@ -184,7 +184,7 @@ class AttributeController extends AdminController
                     'url'  => route('tour.admin.attribute.term.index',['attr_id'=>$row->attr_id])
                 ],
                 [
-                    'name'  => __('Term: :name', ['name' => $row->name]),
+                    'name'  => __('Termo: :name', ['name' => $row->name]),
                     'class' => 'active'
                 ],
             ]
@@ -211,7 +211,7 @@ class AttributeController extends AdminController
         $row->fill($request->input());
         $res = $row->saveOriginOrTranslation($request->input('lang'));
         if ($res) {
-            return redirect()->back()->with('success', __('Term saved'));
+            return redirect()->back()->with('success', __('Termo salvo'));
         }
     }
 
@@ -221,10 +221,10 @@ class AttributeController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('Select at least 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {
@@ -235,7 +235,7 @@ class AttributeController extends AdminController
                 }
             }
         }
-        return redirect()->back()->with('success', __('Updated success!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
 
 

@@ -15,19 +15,19 @@ class CallToAction extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'sub_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Sub Title')
+                    'label'     => __('Subtítulo')
                 ],
                 [
                     'id'        => 'link_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title Link More')
+                    'label'     => __('Título Link More')
                 ],
                 [
                     'id'        => 'link_more',
@@ -38,7 +38,7 @@ class CallToAction extends BaseBlock
                 [
                     'id'            => 'style',
                     'type'          => 'radios',
-                    'label'         => __('Style'),
+                    'label'         => __('Estilo'),
                     'values'        => [
                         [
                             'value'   => '',
@@ -49,7 +49,7 @@ class CallToAction extends BaseBlock
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Background Image Uploader')
+                    'label' => __('Carregador de Imagem de Fundo')
                 ],
                 [
                     'id'    => 'bg_gradient',

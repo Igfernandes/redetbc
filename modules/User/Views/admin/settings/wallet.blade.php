@@ -63,7 +63,7 @@
                                     <div class="form-group-item">
                                         <div class="g-items-header">
                                             <div class="row">
-                                                <div class="col-md-5">{{__("Name")}}</div>
+                                                <div class="col-md-5">{{__("Nome")}}</div>
                                                 <div class="col-md-3">{{__('Amount')}}</div>
                                                 <div class="col-md-3">{{__('Earn credit')}}</div>
                                                 <div class="col-md-1"></div>
@@ -96,7 +96,7 @@
                                         </div>
                                         <p><i>{{__("All amount will be in main currency")}}</i></p>
                                         <div class="text-right">
-                                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                                         </div>
                                         <div class="g-more hide">
                                             <div class="item" data-number="__number__">

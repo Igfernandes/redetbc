@@ -44,7 +44,7 @@
                     </li>
                 @endforeach
             @else
-                <li class="notification">{{__("You don't have any notifications")}}</li>
+                <li class="notification">{{__("Você não tem nenhuma notificação")}}</li>
             @endif
         </ul>
 

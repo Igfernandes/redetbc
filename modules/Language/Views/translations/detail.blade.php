@@ -56,7 +56,7 @@
                                 </tbody>
                             </table>
                             <div class="text-center">
-                                <button class="btn btn-primary"><i class="fa fa-save"></i> {{__('Save changes')}}</button>
+                                <button class="btn btn-primary"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
                             </div>
                         </form>
                     </div>

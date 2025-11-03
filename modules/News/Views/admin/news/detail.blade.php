@@ -7,7 +7,7 @@
                 <div class="">
                     <h1 class="title-bar">{{$row->id ? __('Edit post: ').$row->title : __('Add new Post')}}</h1>
                     @if($row->slug)
-                        <p class="item-url-demo">{{__("Permalink")}}: {{ url( (request()->query('lang') ? request()->query('lang').'/' : '').config('news.news_route_prefix'))  }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
+                        <p class="item-url-demo">{{__("Link permanente")}}: {{ url( (request()->query('lang') ? request()->query('lang').'/' : '').config('news.news_route_prefix'))  }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                         </p>
                     @endif
                 </div>
@@ -37,24 +37,24 @@
                     </div>
                     <div class="col-md-3">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{__('Publish')}}</strong></div>
+                            <div class="panel-title"><strong>{{__('Publicar')}}</strong></div>
                             <div class="panel-body">
                                 @if(is_default_lang())
                                 <div>
-                                    <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publish")}}
+                                    <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publicar")}}
                                     </label></div>
                                 <div>
-                                    <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Draft")}}
+                                    <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Rascunho")}}
                                     </label></div>
                                 @endif
                                 <div class="text-right">
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Save Changes')}}</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
                                 </div>
                             </div>
                         </div>
                         @if(is_default_lang())
                             <div class="panel">
-                                <div class="panel-title"><strong>{{__("Author Setting")}}</strong></div>
+                                <div class="panel-title"><strong>{{__("Configuração do Autor")}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
                                             <?php
@@ -66,7 +66,7 @@
                                                         'dataType' => 'json'
                                                     ],
                                                     'allowClear'  => true,
-                                                    'placeholder' => __('-- Select User --')
+                                                    'placeholder' => __('-- Selecione Usuário --')
                                                 ]
                                             ], !empty($user->id) ? [
                                                 $user->id,
@@ -121,7 +121,7 @@
                         @if(is_default_lang())
                             <div class="panel">
                                 <div class="panel-body">
-                                    <h3 class="panel-body-title"> {{ __('Feature Image')}}</h3>
+                                    <h3 class="panel-body-title"> {{ __('Imagem em destaque')}}</h3>
                                     <div class="form-group">
                                         {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
                                     </div>

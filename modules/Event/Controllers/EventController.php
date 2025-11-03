@@ -80,7 +80,7 @@ class EventController extends Controller
                 'fragments'=>[
                     '.ajax-search-result'=>view('Event::frontend.ajax.search-result'.($for_map ? '-map' : ''), $data)->render(),
                     '.result-count'=>$list->total() ? ($list->total() > 1 ? __(":count events found",['count'=>$list->total()]) : __(":count event found",['count'=>$list->total()])) : '',
-                    '.count-string'=> $list->total() ? __("Showing :from - :to of :total Events",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
+                    '.count-string'=> $list->total() ? __("Mostrando :from - :to of :total Events",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
                 ]
             ]);
         }
@@ -129,7 +129,7 @@ class EventController extends Controller
             'body_class'=>'is_single',
             'breadcrumbs'       => [
                 [
-                    'name'  => __('Event'),
+                    'name'  => __('Evento'),
                     'url'  => route('event.search'),
                 ],
             ],

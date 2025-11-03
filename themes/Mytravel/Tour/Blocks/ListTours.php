@@ -16,7 +16,7 @@ class ListTours extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'desc',
@@ -28,12 +28,12 @@ class ListTours extends BaseBlock
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Number Item')
+                    'label'     => __('Item numérico')
                 ],
                 [
                     'id'            => 'style',
                     'type'          => 'radios',
-                    'label'         => __('Style'),
+                    'label'         => __('Estilo'),
                     'values'        => [
                         [
                             'value'   => '',
@@ -56,14 +56,14 @@ class ListTours extends BaseBlock
                         ],
                         'width' => '100%',
                         'allowClear' => 'true',
-                        'placeholder' => __('-- Select --')
+                        'placeholder' => __('-- Selecione --')
                     ],
                     'pre_selected'=>url('/admin/module/tour/category/getForSelect2?pre_selected=1')
                 ],
                 [
                     'id'      => 'location_id',
                     'type'    => 'select2',
-                    'label'   => __('Filter by Location'),
+                    'label'   => __('Filtrar por localização'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => url('/admin/module/location/getForSelect2'),
@@ -71,29 +71,29 @@ class ListTours extends BaseBlock
                         ],
                         'width' => '100%',
                         'allowClear' => 'true',
-                        'placeholder' => __('-- Select --')
+                        'placeholder' => __('-- Selecione --')
                     ],
                     'pre_selected'=>url('/admin/module/location/getForSelect2?pre_selected=1')
                 ],
                 [
                     'id'            => 'order',
                     'type'          => 'radios',
-                    'label'         => __('Order'),
+                    'label'         => __('Ordem'),
                     'values'        => [
                         [
                             'value'   => 'id',
-                            'name' => __("Date Create")
+                            'name' => __("Data de Criação")
                         ],
                         [
                             'value'   => 'title',
-                            'name' => __("Title")
+                            'name' => __("Título")
                         ],
                     ]
                 ],
                 [
                     'id'            => 'order_by',
                     'type'          => 'radios',
-                    'label'         => __('Order By'),
+                    'label'         => __('Ordenar por'),
                     'values'        => [
                         [
                             'value'   => 'asc',
@@ -107,7 +107,7 @@ class ListTours extends BaseBlock
                 ],
                 [
                     'type'=> "checkbox",
-                    'label'=>__("Only featured items?"),
+                    'label'=>__("Somente itens em destaque?"),
                     'id'=> "is_featured",
                     'default'=>true
                 ],

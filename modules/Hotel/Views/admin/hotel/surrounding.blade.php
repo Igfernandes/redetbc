@@ -8,7 +8,7 @@
                         <label class="control-label">{{$category->name}}</label>
                         <div class="g-items-header">
                             <div class="row">
-                                <div class="col-md-3">{{__("Name")}}</div>
+                                <div class="col-md-3">{{__("Nome")}}</div>
                                 <div class="col-md-3">{{__('Content')}}</div>
                                 <div class="col-md-3">{{__('Distance')}}</div>
                                 <div class="col-md-2"></div>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="text-right">
                             <span class="btn btn-info btn-sm btn-add-item"><i
-                                    class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                                    class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                         </div>
                         <div class="g-more hide">
                             <div class="item" data-number="__number__">

@@ -14,9 +14,9 @@
                             <option value="">{{__(" Bulk Actions ")}}</option>
                             {{--<option value="publish">{{__(" Publish ")}}</option>--}}
                             {{--<option value="draft">{{__(" Move to Draft ")}}</option>--}}
-                            <option value="delete">{{__(" Delete ")}}</option>
+                            <option value="delete">{{__("Excluir")}}</option>
                         </select>
-                        <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
@@ -52,7 +52,7 @@
                                 <th>{{ __('Name')}}</th>
                                 <th>{{ __('Type')}}</th>
                                 <th>{{ __('For roles')}}</th>
-                                <th>{{ __('Order')}}</th>
+                                <th>{{ __('Ordem')}}</th>
                                 <th>{{ __('Required')}}</th>
                                 <th></th>
                             </tr>
@@ -77,7 +77,7 @@
                                     </td>
                                     <th>{{$row['order'] ?? 0}}</th>
                                     <td>{{$row['required'] ? __("Yes") : 'No'}}</td>
-                                    <th><a href="{{route('user.admin.role.verifyFieldsEdit',['id'=>$id])}}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i>  {{__('Edit')}}</a></th>
+                                    <th><a href="{{route('user.admin.role.verifyFieldsEdit',['id'=>$id])}}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i>  {{__('Editar')}}</a></th>
                                 </tr>
                             @endforeach
                             </tbody>

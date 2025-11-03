@@ -59,15 +59,15 @@ class VendorEventController extends FrontendController
             'rows' => $list_tour->paginate(5),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Events'),
+                    'name' => __('Gerenciar eventos'),
                     'url'  => route('event.vendor.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Manage Events"),
+            'page_title'         => __("Gerenciar eventos"),
         ];
         return view('Event::frontend.vendorEvent.index', $data);
     }
@@ -82,15 +82,15 @@ class VendorEventController extends FrontendController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Events'),
+                    'name' => __('Gerenciar eventos'),
                     'url'  => route('event.vendor.index')
                 ],
                 [
-                    'name'  => __('Recovery'),
+                    'name'  => __('Recuperação'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Recovery Events"),
+            'page_title'         => __("Eventos de recuperação"),
         ];
         return view('Event::frontend.vendorEvent.index', $data);
     }
@@ -103,7 +103,7 @@ class VendorEventController extends FrontendController
         if(!empty($query)){
             $query->restore();
         }
-        return redirect(route('event.vendor.recovery'))->with('success', __('Restore event success!'));
+        return redirect(route('event.vendor.recovery'))->with('success', __('Restaure o sucesso do evento!'));
     }
 
     public function createEvent(Request $request)
@@ -118,15 +118,15 @@ class VendorEventController extends FrontendController
             'attributes'    => $this->attributesClass::where('service', 'event')->get(),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Events'),
+                    'name' => __('Gerenciar eventos'),
                     'url'  => route('event.vendor.index')
                 ],
                 [
-                    'name'  => __('Create'),
+                    'name'  => __('Criar'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Create Events"),
+            'page_title'         => __("Criar eventos"),
         ];
         return view('Event::frontend.vendorEvent.detail', $data);
     }
@@ -134,7 +134,7 @@ class VendorEventController extends FrontendController
 
     public function store( Request $request, $id ){
         if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("DEMO MODE: can not add data"));
+            return redirect()->back()->with('danger',__("MODO DEMO: não é possível adicionar dados"));
         }
         if($id>0){
             $this->checkPermission('event_update');
@@ -202,10 +202,10 @@ class VendorEventController extends FrontendController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Event updated') );
+                return back()->with('success',  __('Evento atualizado') );
             }else{
                 event(new CreatedServicesEvent($row));
-                return redirect(route('event.vendor.edit',['id'=>$row->id]))->with('success', __('Event created') );
+                return redirect(route('event.vendor.edit',['id'=>$row->id]))->with('success', __('Evento criado') );
             }
         }
     }
@@ -233,7 +233,7 @@ class VendorEventController extends FrontendController
         $row = $this->eventClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('event.vendor.index'))->with('warning', __('Event not found!'));
+            return redirect(route('event.vendor.index'))->with('warning', __('Evento não encontrado!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [
@@ -245,15 +245,15 @@ class VendorEventController extends FrontendController
             "selected_terms" => $row->terms->pluck('term_id'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Events'),
+                    'name' => __('Gerenciar eventos'),
                     'url'  => route('event.vendor.index')
                 ],
                 [
-                    'name'  => __('Edit'),
+                    'name'  => __('Editar'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Edit Events"),
+            'page_title'         => __("Editar eventos"),
         ];
         return view('Event::frontend.vendorEvent.detail', $data);
     }
@@ -274,7 +274,7 @@ class VendorEventController extends FrontendController
                 event(new UpdatedServiceEvent($query));
             }
         }
-        return redirect(route('event.vendor.index'))->with('success', __('Delete event success!'));
+        return redirect(route('event.vendor.index'))->with('success', __('Excluir evento com sucesso!'));
     }
 
     public function bulkEditEvent($id , Request $request){
@@ -283,13 +283,13 @@ class VendorEventController extends FrontendController
         $user_id = Auth::id();
         $query = $this->eventClass::where("author_id", $user_id)->where("id", $id)->first();
         if (empty($id)) {
-            return redirect()->back()->with('error', __('No item!'));
+            return redirect()->back()->with('error', __('Nenhum item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if(empty($query)){
-            return redirect()->back()->with('error', __('Not Found'));
+            return redirect()->back()->with('error', __('Não encontrado'));
         }
         switch ($action){
             case "make-hide":
@@ -305,7 +305,7 @@ class VendorEventController extends FrontendController
         $query->save();
         event(new UpdatedServiceEvent($query));
 
-        return redirect()->back()->with('success', __('Update success!'));
+        return redirect()->back()->with('success', __('Atualização com sucesso!'));
     }
 
     public function bookingReportBulkEdit($booking_id , Request $request){
@@ -321,10 +321,10 @@ class VendorEventController extends FrontendController
                 if($status == Booking::CANCELLED) $item->tryRefundToWallet();
 
                 event(new BookingUpdatedEvent($item));
-                return redirect()->back()->with('success', __('Update success'));
+                return redirect()->back()->with('success', __('Sucesso na atualização'));
             }
-            return redirect()->back()->with('error', __('Booking not found!'));
+            return redirect()->back()->with('error', __('Reserva não encontrada!'));
         }
-        return redirect()->back()->with('error', __('Update fail!'));
+        return redirect()->back()->with('error', __('Falha na atualização!'));
     }
 }

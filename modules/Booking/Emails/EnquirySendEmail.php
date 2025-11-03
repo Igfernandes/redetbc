@@ -27,10 +27,10 @@ class EnquirySendEmail extends Mailable
         $subject = '';
         switch ($this->email_type){
             case "admin":
-                $subject = __('[:site_name] New inquiry has been made',['site_name'=>setting_item('site_title')]);
+                $subject = __('[:site_name] Nova investigação foi feita',['site_name'=>setting_item('site_title')]);
             break;
             case "vendor":
-                $subject = __('[:site_name] You get new inquiry request',['site_name'=>setting_item('site_title')]);
+                $subject = __('[:site_name] Você recebe uma nova solicitação de consulta',['site_name'=>setting_item('site_title')]);
             break;
         }
         return $this->subject($subject)->view('Booking::emails.enquiry')->with([

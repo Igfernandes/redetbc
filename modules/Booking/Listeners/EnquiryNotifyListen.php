@@ -30,7 +30,7 @@ class EnquiryNotifyListen
             'avatar' => '',
             'link' => route('vendor.enquiry_report'),
             'type' => 'enquiry',
-            'message' => __(':name has sent a Enquiry for :title', ['name' =>$enquiry->name, 'title' => $service->title])
+            'message' => __(':name enviou uma consulta para :title', ['name' =>$enquiry->name, 'title' => $service->title])
         ];
 
         $vendor = User::where('id', $enquiry->vendor_id)->where('status', 'publish')->first();

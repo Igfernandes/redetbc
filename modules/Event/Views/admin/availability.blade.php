@@ -4,7 +4,7 @@
     @php $services  = []; @endphp
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Events Availability Calendar")}}</h1>
+            <h1 class="title-bar">{{__("Calendário de Disponibilidade de Eventos")}}</h1>
         </div>
         @include('admin.message')
         <div class="panel">
@@ -12,13 +12,13 @@
                 <div class="filter-div d-flex justify-content-between ">
                     <div class="col-left">
                         <form method="get" action="" class="filter-form filter-form-left d-flex flex-column flex-sm-row" role="search">
-                            <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}" class="form-control">
-                            <button class="btn-info btn btn-icon btn_search " type="submit">{{__('Search')}}</button>
+                            <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
+                            <button class="btn-info btn btn-icon btn_search " type="submit">{{__('Procurar')}}</button>
                         </form>
                     </div>
                     <div class="col-right">
                         @if($rows->total() > 0)
-                            <span class="count-string">{{ __("Showing :from - :to of :total events",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                            <span class="count-string">{{ __("Mostrando :from - :to of :total events",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                         @endif
                     </div>
                 </div>
@@ -26,7 +26,7 @@
         </div>
         @if(count($rows))
             <div class="panel">
-                <div class="panel-title"><strong>{{__('Availability')}}</strong></div>
+                <div class="panel-title"><strong>{{__('Disponibilidade')}}</strong></div>
                 <div class="panel-body no-padding" style="background: #f4f6f8;padding: 0px 15px;">
                     <div class="row">
                         <div class="col-md-3" style="border-right: 1px solid #dee2e6;">
@@ -45,7 +45,7 @@
                 </div>
             </div>
         @else
-            <div class="alert alert-warning">{{__("No events found")}}</div>
+            <div class="alert alert-warning">{{__("Nenhum evento encontrado")}}</div>
         @endif
         <div class="d-flex justify-content-center">
             {{$rows->appends($request->query())->links()}}
@@ -55,7 +55,7 @@
         <div class="modal-dialog modal-lg  modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{__('Date Information')}}</h5>
+                    <h5 class="modal-title">{{__('Informações de data')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -64,7 +64,7 @@
                     <form class="row form_modal_calendar form-horizontal" novalidate onsubmit="return false">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{__('Date Ranges')}}</label>
+                                <label>{{__('Intervalos de datas')}}</label>
                                 <input readonly type="text" class="form-control has-daterangepicker">
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <label>{{__('Status')}}</label>
                                 <br>
-                                <label><input true-value=1 false-value=0 type="checkbox" v-model="form.active"> {{__('Available for booking?')}}</label>
+                                <label><input true-value=1 false-value=0 type="checkbox" v-model="form.active"> {{__('Disponível para reserva?')}}</label>
                             </div>
                         </div>
                         <div class="col-md-12" v-if="ticket_types">
@@ -80,15 +80,15 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <label>{{__("Name")}}</label>
+                                            <label>{{__("Nome")}}</label>
                                             <input type="text" readonly class="form-control" v-model="ticket_types[index].name">
                                         </div>
                                         <div class="col-md-3">
-                                            <label>{{__("Number")}}</label>
+                                            <label>{{__("Número")}}</label>
                                             <input type="text" v-model="ticket_types[index].number" class="form-control">
                                         </div>
                                         <div class="col-md-4">
-                                            <label>{{__("Price")}}</label>
+                                            <label>{{__("Preço")}}</label>
                                             <input type="text" v-model="ticket_types[index].price" class="form-control">
                                         </div>
                                     </div>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="col-md-12" v-else>
                             <div class="form-group">
-                                <label >{{__('Price')}}</label>
+                                <label >{{__('Preço')}}</label>
                                 <input type="text" v-model="form.price" class="form-control">
                             </div>
                         </div>
@@ -108,8 +108,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                    <button type="button" class="btn btn-primary" @click="saveForm">{{__('Save changes')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
+                    <button type="button" class="btn btn-primary" @click="saveForm">{{__('Salvar alterações')}}</button>
                 </div>
             </div>
         </div>
@@ -150,7 +150,7 @@
             }
             calendar = new FullCalendar.Calendar(calendarEl, {
                 buttonText:{
-                    today:  '{{ __('Today') }}',
+                    today:  '{{ __('Hoje') }}',
                 },
                 plugins: [ 'dayGrid' ,'interaction'],
                 header: {},

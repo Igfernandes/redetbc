@@ -17,7 +17,7 @@
                         @include('User::admin.role.verifyFieldsForm')
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" class="btn btn-success">{{__('Save Changes')}}</button>
+                        <button type="submit" class="btn btn-success">{{__('Salvar alterações')}}</button>
                     </div>
                 </div>
                 </form>

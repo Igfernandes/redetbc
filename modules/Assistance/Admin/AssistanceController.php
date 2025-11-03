@@ -71,15 +71,15 @@ class AssistanceController extends AdminController
             'assistance_manage_others' => $this->hasPermission('assistance_manage_others'),
             'breadcrumbs'       => [
                 [
-                    'name' => __('Services'),
+                    'name' => __('Serviços'),
                     'url'  => route('assistance.admin.index')
                 ],
                 [
-                    'name'  => __('All'),
+                    'name'  => __('Todos'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Assistance Management")
+            'page_title'        => __("Gestão de Assistência")
         ];
         return view('Assistance::admin.index', $data);
     }
@@ -106,15 +106,15 @@ class AssistanceController extends AdminController
             'recovery'          => 1,
             'breadcrumbs'       => [
                 [
-                    'name' => __('Services'),
+                    'name' => __('Serviços'),
                     'url'  => route('assistance.admin.index')
                 ],
                 [
-                    'name'  => __('Recovery'),
+                    'name'  => __('Recuperação'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Recovery Assistance Management")
+            'page_title'        => __("Gestão de Assistência à Recuperação")
         ];
         return view('Assistance::admin.index', $data);
     }
@@ -133,15 +133,15 @@ class AssistanceController extends AdminController
             'translation'  => new $this->assistance_translation(),
             'breadcrumbs'  => [
                 [
-                    'name' => __('Services'),
+                    'name' => __('Serviços'),
                     'url'  => route('assistance.admin.index')
                 ],
                 [
-                    'name'  => __('Add Service'),
+                    'name'  => __('Adicionar serviço'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'   => __("Add new Service")
+            'page_title'   => __("Adicionar novo serviço")
         ];
         return view('Assistance::admin.detail', $data);
     }
@@ -168,15 +168,15 @@ class AssistanceController extends AdminController
             'enable_multi_lang' => true,
             'breadcrumbs'       => [
                 [
-                    'name' => __('Services'),
+                    'name' => __('Serviços'),
                     'url'  => route('assistance.admin.index')
                 ],
                 [
-                    'name'  => __('Edit Service'),
+                    'name'  => __('Editar Serviço'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Edit: :name", ['name' => $row->title])
+            'page_title'        => __("Editar: :name", ['name' => $row->title])
         ];
         return view('Assistance::admin.detail', $data);
     }
@@ -184,7 +184,7 @@ class AssistanceController extends AdminController
     public function store(Request $request, $id)
     {
         if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("DEMO MODE: can not add data"));
+            return redirect()->back()->with('danger',__("MODO DEMO: não é possível adicionar dados"));
         }
 
         if ($id > 0) {
@@ -255,10 +255,10 @@ class AssistanceController extends AdminController
             }
             if ($id > 0) {
                 event(new UpdatedServiceEvent($row));
-                return back()->with('success', __('Service updated'));
+                return back()->with('success', __('Serviço atualizado'));
             } else {
                 event(new CreatedServicesEvent($row));
-                return redirect(route('assistance.admin.edit', $row->id))->with('success', __('Service created'));
+                return redirect(route('assistance.admin.edit', $row->id))->with('success', __('Serviço criado'));
             }
         }
     }
@@ -286,10 +286,10 @@ class AssistanceController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('No items selected!'));
+            return redirect()->back()->with('error', __('Nenhum item selecionado!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select an action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         switch ($action) {
             case "delete":
@@ -305,7 +305,7 @@ class AssistanceController extends AdminController
                         event(new UpdatedServiceEvent($row));
                     }
                 }
-                return redirect()->back()->with('success', __('Deleted success!'));
+                return redirect()->back()->with('success', __('Excluído com sucesso!'));
                 break;
             case "permanently_delete":
                 foreach ($ids as $id) {
@@ -319,7 +319,7 @@ class AssistanceController extends AdminController
                         $row->forceDelete();
                     }
                 }
-                return redirect()->back()->with('success', __('Permanently delete success!'));
+                return redirect()->back()->with('success', __('Excluir permanentemente com sucesso!'));
                 break;
             case "recovery":
                 foreach ($ids as $id) {
@@ -334,14 +334,14 @@ class AssistanceController extends AdminController
                         event(new UpdatedServiceEvent($row));
                     }
                 }
-                return redirect()->back()->with('success', __('Recovery success!'));
+                return redirect()->back()->with('success', __('Recuperação bem-sucedida!'));
                 break;
             case "clone":
                 $this->checkPermission('assistance_create');
                 foreach ($ids as $id) {
                     (new $this->assistance())->saveCloneByID($id);
                 }
-                return redirect()->back()->with('success', __('Clone success!'));
+                return redirect()->back()->with('success', __('Clone realizado com sucesso!'));
                 break;
             default:
                 // Change status
@@ -356,7 +356,7 @@ class AssistanceController extends AdminController
                     $row->save();
                     event(new UpdatedServiceEvent($row));
                 }
-                return redirect()->back()->with('success', __('Update success!'));
+                return redirect()->back()->with('success', __('Atualização bem-sucedida!'));
                 break;
         }
     }

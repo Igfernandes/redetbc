@@ -31,13 +31,13 @@ class ClientFeedBack extends BaseBlock
                             'id'        => 'title',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Title')
+                            'label'     => __('Título')
                         ],
                         [
                             'id'        => 'sub_title',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Sub Title')
+                            'label'     => __('Subtítulo')
                         ],
                         [
                             'id'    => 'desc',

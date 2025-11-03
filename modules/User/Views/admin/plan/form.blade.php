@@ -1,6 +1,6 @@
 <div class="form-group">
-    <label>{{__("Name")}} <span class="text-danger">*</span></label>
-    <input type="text" required value="{{old('title',$translation->title)}}" placeholder="{{__("name")}}" name="title"
+    <label>{{__("Nome")}} <span class="text-danger">*</span></label>
+    <input type="text" required value="{{old('title',$translation->title)}}" placeholder="{{__("Nome")}}" name="title"
         class="form-control">
 </div>
 <div class="form-group">
@@ -19,7 +19,7 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label">{{__("Price")}} </label>
+    <label class="control-label">{{__("Preço")}} </label>
     <input type="number" step="any" placeholder="{{__("Free")}}" value="{{old('price',$row->price)}}" name="price"
         class="form-control">
 </div>
@@ -67,8 +67,8 @@
 <div class="form-group">
     <label class="control-label">{{__("Status")}}</label>
     <select name="status" class="form-control">
-        <option value="publish">{{__("Publish")}}</option>
-        <option @if(old('status',$row->status) == 'draft') selected @endif value="draft">{{__("Draft")}}</option>
+        <option value="publish">{{__("Publicar")}}</option>
+        <option @if(old('status',$row->status) == 'draft') selected @endif value="draft">{{__("Rascunho")}}</option>
     </select>
 </div>
 @php do_action(\Modules\User\Hook::PLAN_FORM_AFTER_STATUS,$row) @endphp

@@ -19,6 +19,7 @@ use Modules\Core\Models\Terms;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Review\Models\Review;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Booking\Events\BookingSendEvent;
 use Modules\Booking\Models\BookingMessage;
 use Modules\User\Models\UserWishList;
 use Modules\Location\Models\Location;
@@ -262,7 +263,7 @@ class Space extends Bookable
         }
 
         if (empty($start_date) || empty($end_date)) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
         $booking = new $this->bookingClass();
@@ -284,26 +285,6 @@ class Space extends Bookable
 
         $booking->calculateCommission();
 
-        if ($this->isDepositEnable()) {
-            $booking_deposit_fomular = $this->getDepositFomular();
-            $tmp_price_total = $booking->total;
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $tmp_price_total = $booking->total_before_fees;
-            }
-
-            switch ($this->getDepositType()) {
-                case "percent":
-                    $booking->deposit = $tmp_price_total * $this->getDepositAmount() / 100;
-                    break;
-                default:
-                    $booking->deposit = $this->getDepositAmount();
-                    break;
-            }
-            if ($booking_deposit_fomular == "deposit_and_fee") {
-                $booking->deposit += $total_buyer_fee + $total_service_fee;
-            }
-        }
-
         $check = $booking->save();
 
         if ($check) {
@@ -319,28 +300,15 @@ class Space extends Bookable
             $booking->addMeta('extra_price', $extra_price);
             $booking->addMeta('tmp_dates', $this->tmp_dates);
             $booking->addMeta('booking_type', $this->getBookingType());
-
-            if ($this->isDepositEnable()) {
-                $booking->addMeta('deposit_info', [
-                    'type' => $this->getDepositType(),
-                    'amount' => $this->getDepositAmount(),
-                    'fomular' => $this->getDepositFomular(),
-                ]);
-            }
-
-            BookingMessage::create([
-                'booking_id' => $booking->id,
-                'sender_id' => Auth::id(),
-                'message' => "Olá! Acabei de solicitar a reserva. Aguardando confirmação do proprietário.",
-            ]);
-
+            
+            event(new BookingSendEvent($booking));
             return $this->sendSuccess([
-                'url' => "/user/chat", // redireciona para o chat
+                'url'          => "user/booking-history", // redireciona para o chat
                 'booking_code' => $booking->code,
             ]);
         }
 
-        return $this->sendError(__("Can not check availability"));
+        return $this->sendError(__("Não é possível verificar a disponibilidade"));
     }
 
 
@@ -412,11 +380,11 @@ class Space extends Bookable
         $end_date = $request->input('end_date');
 
         if (strtotime($start_date) < strtotime(date('Y-m-d 00:00:00')) or strtotime($start_date) > strtotime($end_date)) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
         if ($this->getBookingType() == 'by_night' and strtotime($start_date) == strtotime($end_date)) {
-            return $this->sendError(__("Your selected dates are not valid"));
+            return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
         // Validate Date and Booking
@@ -444,7 +412,7 @@ class Space extends Bookable
         if (!empty($this->min_day_before_booking)) {
             $minday_before = strtotime("today +" . $this->min_day_before_booking . " days");
             if (strtotime($start_date) < $minday_before) {
-                return $this->sendError(__("You must book the service for :number days in advance", ["number" => $this->min_day_before_booking]));
+                return $this->sendError(__("Você deve reservar o serviço com :number dias de antecedência", ["number" => $this->min_day_before_booking]));
             }
         }
 
@@ -517,7 +485,7 @@ class Space extends Bookable
             'max_guests'      => $this->max_guests ?? 1,
             'buyer_fees'      => [],
             'start_date'      => request()->input('start') ?? "",
-            'start_date_html' => $date_html ?? __('Please select'),
+            'start_date_html' => $date_html ?? __('Por favor selecione'),
             'end_date'        => request()->input('end') ?? "",
             'deposit' => $this->isDepositEnable(),
             'deposit_type' => $this->getDepositType(),
@@ -547,14 +515,14 @@ class Space extends Bookable
                     $type['price_type'] = '';
                     switch ($type['type']) {
                         case "per_day":
-                            $type['price_type'] .= '/' . __('day');
+                            $type['price_type'] .= '/' . __('dia');
                             break;
                         case "per_hour":
-                            $type['price_type'] .= '/' . __('hour');
+                            $type['price_type'] .= '/' . __('hora');
                             break;
                     }
                     if (!empty($type['per_person'])) {
-                        $type['price_type'] .= '/' . __('guest');
+                        $type['price_type'] .= '/' . __('convidado');
                     }
                 }
             }
@@ -569,7 +537,7 @@ class Space extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -580,7 +548,7 @@ class Space extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                    $item['price_type'] .= '/' . __('convidado');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -660,7 +628,7 @@ class Space extends Bookable
     {
         $list_score = [
             'score_total'  => 0,
-            'score_text'   => __("Not rated"),
+            'score_text'   => __("Não classificado"),
             'total_review' => 0,
             'rate_score'   => [],
         ];
@@ -708,7 +676,7 @@ class Space extends Bookable
                 'total_review' => !empty($dataReview->total_review) ? $dataReview->total_review : 0,
             ];
         });
-        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Not rated");
+        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Não classificado");
         return $list_score;
     }
 
@@ -1051,21 +1019,21 @@ class Space extends Bookable
         $min_max_price = self::getMinMaxPrice();
         return [
             [
-                "title"    => __("Filter Price"),
+                "title"    => __("Filtrar Preço"),
                 "field"    => "price_range",
                 "position" => "1",
                 "min_price" => floor(Currency::convertPrice($min_max_price[0])),
                 "max_price" => ceil(Currency::convertPrice($min_max_price[1])),
             ],
             [
-                "title"    => __("Review Score"),
+                "title"    => __("Pontuação da avaliação"),
                 "field"    => "review_score",
                 "position" => "2",
                 "min" => "1",
                 "max" => "5",
             ],
             [
-                "title"    => __("Attributes"),
+                "title"    => __("Atributos"),
                 "field"    => "terms",
                 "position" => "3",
                 "data" => Attributes::getAllAttributesForApi("space")

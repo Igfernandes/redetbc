@@ -39,33 +39,33 @@ class ModuleProvider extends ModuleServiceProvider
             'assistance'=>[
                 "position"=>45,
                 'url'        => route('assistance.admin.index'),
-                'title'      => __('Services'),
+                'title'      => __('Serviços'),
                 'icon'       => 'ion-ios-bookmarks',
                 'permission' => 'assistance_view',
                 'children'   => [
                     'add'=>[
                         'url'        => route('assistance.admin.index'),
-                        'title'      => __('All services'),
+                        'title'      => __('Todos os Serviços'),
                         'permission' => 'assistance_view',
                     ],
                     'create'=>[
                         'url'        => route('assistance.admin.create'),
-                        'title'      => __('Add new service'),
+                        'title'      => __('Todos os Novos serviços'),
                         'permission' => 'assistance_create',
                     ],
                     'attribute'=>[
                         'url'        => route('assistance.admin.attribute.index'),
-                        'title'      => __('Attributes'),
+                        'title'      => __('Atributos'),
                         'permission' => 'assistance_manage_attributes',
                     ],
                     'availability'=>[
                         'url'        => route('assistance.admin.availability.index'),
-                        'title'      => __('Availability'),
+                        'title'      => __('Disponibilidade'),
                         'permission' => 'assistance_create',
                     ],
                     'recovery'=>[
                         'url'        => route('assistance.admin.recovery'),
-                        'title'      => __('Recovery'),
+                        'title'      => __('Recuperação'),
                         'permission' => 'assistance_view',
                     ],
                 ]
@@ -87,7 +87,7 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             'assistance'=>[
                 'class' => Assistance::class,
-                'name'  => __("Services"),
+                'name'  => __("Serviços"),
                 'items' => Assistance::searchForMenu(),
                 'position'=>51
             ]
@@ -100,28 +100,28 @@ class ModuleProvider extends ModuleServiceProvider
         if(Assistance::isEnable()){
             $res['assistance'] = [
                 'url'   => route('assistance.vendor.index'),
-                'title'      => __("Manage Assistance"),
+                'title'      => __("Gerenciar serviços"),
                 'icon'       => Assistance::getServiceIconFeatured(),
                 'position'   => 70,
                 'permission' => 'assistance_view',
                 'children' => [
                     [
                         'url'   => route('assistance.vendor.index'),
-                        'title'  => __("All Assistances"),
+                        'title'  => __("Todos os serviços"),
                     ],
                     [
                         'url'   => route('assistance.vendor.create'),
-                        'title'      => __("Add Assistance"),
+                        'title'      => __("Adicionar serviços"),
                         'permission' => 'assistance_create',
                     ],
                     [
                         'url'        => route('assistance.vendor.availability.index'),
-                        'title'      => __("Availability"),
+                        'title'      => __("Disponibilidade"),
                         'permission' => 'assistance_create',
                     ],
                     [
                         'url'   => route('assistance.vendor.recovery'),
-                        'title'      => __("Recovery"),
+                        'title'      => __("Recuperação"),
                         'permission' => 'assistance_create',
                     ],
                 ]

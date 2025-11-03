@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label">{{__("Price")}}</label>
+                        <label class="control-label">{{__("Preço")}}</label>
                         <input type="text" name="price" class="form-control" value="{{old('price',$row->price)}}" placeholder="{{__("Tour Price")}}">
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                         <div class="col-md-5">{{__("Person Type")}}</div>
                         <div class="col-md-2">{{__('Min')}}</div>
                         <div class="col-md-2">{{__('Max')}}</div>
-                        <div class="col-md-2">{{__('Price')}}</div>
+                        <div class="col-md-2">{{__('Preço')}}</div>
                         <div class="col-md-1"></div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                     @endif
                 </div>
                 <div class="text-right">
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                 </div>
                 <div class="g-more hide">
                     <div class="item" data-number="__number__">
@@ -129,8 +129,8 @@
                 <label class="control-label">{{__('Extra Price')}}</label>
                 <div class="g-items-header">
                     <div class="row">
-                        <div class="col-md-5">{{__("Name")}}</div>
-                        <div class="col-md-3">{{__('Price')}}</div>
+                        <div class="col-md-5">{{__("Nome")}}</div>
+                        <div class="col-md-3">{{__('Preço')}}</div>
                         <div class="col-md-3">{{__('Type')}}</div>
                         <div class="col-md-1"></div>
                     </div>
@@ -177,7 +177,7 @@
                     @endif
                 </div>
                 <div class="text-right">
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                 </div>
                 <div class="g-more hide">
                     <div class="item" data-number="__number__">
@@ -260,7 +260,7 @@
                         @endif
                     </div>
                     <div class="text-right">
-                        <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                        <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                     </div>
                     <div class="g-more hide">
                         <div class="item" data-number="__number__">
@@ -300,8 +300,8 @@
                 <label class="control-label">{{__('Buyer Fees')}}</label>
                 <div class="g-items-header">
                     <div class="row">
-                        <div class="col-md-5">{{__("Name")}}</div>
-                        <div class="col-md-3">{{__('Price')}}</div>
+                        <div class="col-md-5">{{__("Nome")}}</div>
+                        <div class="col-md-3">{{__('Preço')}}</div>
                         <div class="col-md-3">{{__('Type')}}</div>
                         <div class="col-md-1"></div>
                     </div>
@@ -353,7 +353,7 @@
                     @endif
                 </div>
                 <div class="text-right">
-                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                    <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                 </div>
                 <div class="g-more hide">
                     <div class="item" data-number="__number__">

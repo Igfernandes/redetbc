@@ -241,7 +241,7 @@ class RoleController extends AdminController
 		if (empty($ids))
 			return redirect()->back()->with('error', __('Select at leas 1 item!'));
 		if (empty($action))
-			return redirect()->back()->with('error', __('Select an Action!'));
+			return redirect()->back()->with('error', __('Selecione uma ação!'));
 		if ($action == 'delete') {
 			$all = setting_item_array('role_verify_fields',[]);
 			$new = Arr::except($all,$ids);

@@ -15,7 +15,7 @@ class ListNews extends BaseBlock
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Title')
+                    'label'     => __('Título')
                 ],
                 [
                     'id'        => 'desc',
@@ -27,7 +27,7 @@ class ListNews extends BaseBlock
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Number Item')
+                    'label'     => __('Item numérico')
                 ],
                 [
                     'id'      => 'category_id',
@@ -40,29 +40,29 @@ class ListNews extends BaseBlock
                         ],
                         'width' => '100%',
                         'allowClear' => 'true',
-                        'placeholder' => __('-- Select --')
+                        'placeholder' => __('-- Selecione --')
                     ],
                     'pre_selected'=>route('news.admin.category.getForSelect2',['pre_selected'=>1])
                 ],
                 [
                     'id'            => 'order',
                     'type'          => 'radios',
-                    'label'         => __('Order'),
+                    'label'         => __('Ordem'),
                     'values'        => [
                         [
                             'value'   => 'id',
-                            'name' => __("Date Create")
+                            'name' => __("Data de Criação")
                         ],
                         [
                             'value'   => 'title',
-                            'name' => __("Title")
+                            'name' => __("Título")
                         ],
                     ]
                 ],
                 [
                     'id'            => 'order_by',
                     'type'          => 'radios',
-                    'label'         => __('Order By'),
+                    'label'         => __('Ordenar por'),
                     'values'        => [
                         [
                             'value'   => 'asc',

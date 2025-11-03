@@ -55,9 +55,9 @@ $lang_local = app()->getLocale();
                 <td class="label">{{__('Durations:')}}</td>
                 <td class="val">
                     @if($booking->getMeta('type_date') == 'per_hour')
-                        {{$booking->duration_hours}} {{ Str::plural(__('hour'),$booking->duration_hours) }}
+                        {{$booking->duration_hours}} {{ Str::plural(__('hora'),$booking->duration_hours) }}
                     @else
-                        {{$booking->duration_nights}} {{ Str::plural(__('day'),$booking->duration_nights) }}
+                        {{$booking->duration_nights}} {{ Str::plural(__('dia'),$booking->duration_nights) }}
                     @endif
                 </td>
             </tr>

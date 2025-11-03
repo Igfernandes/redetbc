@@ -38,7 +38,7 @@
                         ?>
                     @endif
                     <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by payout id')}}" class="form-control">
-                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search')}}</button>
+                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Procurar')}}</button>
                 </form>
             </div>
         </div>
@@ -97,7 +97,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="7">{{__("No data")}}</td>
+                                    <td colspan="7">{{__("Sem dados")}}</td>
                                 </tr>
                             @endif
                             </tbody>
@@ -142,8 +142,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                    <button type="button" class="btn btn-success dungdt-form-payout-save">{{__('Save changes')}}
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
+                    <button type="button" class="btn btn-success dungdt-form-payout-save">{{__('Salvar alterações')}}
                         <i class="fa fa-spinner fa-spin fa-fw"></i>
                     </button>
                 </div>

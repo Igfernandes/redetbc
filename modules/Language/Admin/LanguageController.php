@@ -93,7 +93,7 @@ class LanguageController extends AdminController
                     'url'  => route('language.admin.index')
                 ],
                 [
-                    'name'  => __('Edit: :name', ['name' => $row->name]),
+                    'name'  => __('Editar: :name', ['name' => $row->name]),
                     'class' => 'active'
                 ],
             ]
@@ -112,7 +112,7 @@ class LanguageController extends AdminController
             return redirect()->back()->with('error', __("Select at least 1 item!"));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Select an Action!'));
+            return redirect()->back()->with('error', __('Selecione uma ação!'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {
@@ -129,6 +129,6 @@ class LanguageController extends AdminController
         }
         Cache::forget('locale_active_0');
         Cache::forget('locale_active_1');
-        return redirect()->back()->with('success', __('Updated success!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
 }

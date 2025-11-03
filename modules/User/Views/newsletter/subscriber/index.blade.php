@@ -14,7 +14,7 @@
                             @csrf
                             @include('User::newsletter/subscriber/form')
                             <div class="">
-                                <button class="btn btn-primary" type="submit">{{__("Add new")}}</button>
+                                <button class="btn btn-primary" type="submit">{{__("Adicionar novo")}}</button>
                             </div>
                         </form>
                     </div>
@@ -27,10 +27,10 @@
                             <form method="post" action="{{route('user.admin.subscriber.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                                 {{csrf_field()}}
                                 <select name="action" class="form-control">
-                                    <option value="">{{__(" Bulk Action ")}}</option>
-                                    <option value="delete">{{__(" Delete ")}}</option>
+                                    <option value="">{{__("Ação em massa")}}</option>
+                                    <option value="delete">{{__("Excluir")}}</option>
                                 </select>
-                                <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                                <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                             </form>
                         @endif
                     </div>
@@ -40,7 +40,7 @@
                             ('Export')}}
                             </a>
                             <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Search by name or email")}}">
-                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search')}}</button>
+                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Procurar')}}</button>
                         </form>
                     </div>
                 </div>
@@ -51,10 +51,10 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th>{{__("Name")}}</th>
+                                    <th>{{__("Nome")}}</th>
                                     <th>{{__("First name")}}</th>
                                     <th>{{__("Last name")}}</th>
-                                    <th class="date">{{__("Date")}}</th>
+                                    <th class="date">{{__("Data")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

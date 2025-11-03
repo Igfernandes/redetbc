@@ -73,7 +73,7 @@ class AssistanceController extends Controller
                 'fragments'=>[
                     '.ajax-search-result'=>view('Assistance::frontend.ajax.search-result'.($for_map ? '-map' : ''), $data)->render(),
                     '.result-count'=>$list->total() ? ($list->total() > 1 ? __(":count services found",['count'=>$list->total()]) : __(":count assistance found",['count'=>$list->total()])) : '',
-                    '.count-string'=> $list->total() ? __("Showing :from - :to of :total services",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
+                    '.count-string'=> $list->total() ? __("Mostrando :from - :to of :total services",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
                 ],
             ]);
         }
@@ -121,7 +121,7 @@ class AssistanceController extends Controller
             'body_class'=>'is_single',
             'breadcrumbs'       => [
                 [
-                    'name'  => __('Service'),
+                    'name'  => __('Serviço'),
                     'url'  => route('assistance.search'),
                 ],
             ],

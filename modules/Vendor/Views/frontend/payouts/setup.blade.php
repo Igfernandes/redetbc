@@ -52,8 +52,8 @@ $payout_accounts = $currentUser->payout_accounts;
                 <div class="message_box alert d-none"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                <button type="button" class="btn btn-success " onclick="vendorPayout.saveAccounts(this)">{{__('Save changes')}}
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
+                <button type="button" class="btn btn-success " onclick="vendorPayout.saveAccounts(this)">{{__('Salvar alterações')}}
                     <i class="fa fa-spinner"></i>
                 </button>
             </div>

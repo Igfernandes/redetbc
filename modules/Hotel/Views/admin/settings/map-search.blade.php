@@ -20,8 +20,8 @@
                             $types = [
                                 'location'=>__("Location"),
                                 'attr'=>__("Attribute"),
-                                'date'=>__("Date"),
-                                'price'=>__("Price"),
+                                'date'=>__("Data"),
+                                'price'=>__("Preço"),
                                 'advance'=>__("Advance"),
                             ];
                             $attrs = \Modules\Core\Models\Attributes::where('service', 'hotel')->get();
@@ -57,7 +57,7 @@
                             @endforeach
                         </div>
                         <div class="text-right">
-                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                            <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                         </div>
                         <div class="g-more hide">
                             <div class="item" data-number="__number__">

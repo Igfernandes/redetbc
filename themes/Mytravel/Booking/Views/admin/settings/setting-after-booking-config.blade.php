@@ -13,8 +13,8 @@
                         <div class="form-group-item">
                             <div class="g-items-header">
                                 <div class="row">
-                                    <div class="col-md-3">{{__("Title")}}</div>
-                                    <div class="col-md-8">{{__('Class icon')}}</div>
+                                    <div class="col-md-3">{{__("Título")}}</div>
+                                    <div class="col-md-8">{{__('Ícone de classe')}}</div>
                                     <div class="col-md-1"></div>
                                 </div>
                             </div>
@@ -24,7 +24,7 @@
                                     <div class="item" data-number="{{$key}}">
                                         <div class="row">
                                             <div class="col-md-7">
-                                                <label>{{__("Title")}}</label>
+                                                <label>{{__("Título")}}</label>
                                                 <div>
                                                     <input type="text" name="booking_why_book_with_us[{{$key}}][title]" placeholder="{{ __("Customer care available 24/7") }}" class="form-control" value="{{$item['title'] ?? ""}}">
                                                     <input type="text" name="booking_why_book_with_us[{{$key}}][link]" placeholder="{{ __("#") }}" class="form-control" value="{{$item['link'] ?? ""}}">
@@ -44,7 +44,7 @@
                                 @endforeach
                             </div>
                             <div class="text-right">
-                                <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span>
+                                <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                             </div>
                             <div class="g-more hide">
                                 <div class="item" data-number="__number__">

@@ -14,7 +14,7 @@ class ModuleController extends AdminController
 
     public function index(){
         $data = [
-            'page_title'=>__("Module Management"),
+            'page_title'=>__("Gerenciamento de Módulo"),
             'rows'=>ServiceProvider::getManageableModules()
         ];
 
