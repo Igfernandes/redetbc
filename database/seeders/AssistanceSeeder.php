@@ -44,7 +44,7 @@ class AssistanceSeeder extends Seeder
         }
 
         $IDs_vendor[] = $create_user =   '1';
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Cruising Yacht',
                 'slug' => Str::slug('Cruising Yacht', '-'),
@@ -81,7 +81,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   '1';
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Summer Breeze',
                 'slug' => Str::slug('Summer Breeze', '-'),
@@ -118,7 +118,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   '1';
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Blue Moon Cruising',
                 'slug' => Str::slug('Blue Moon Cruising', '-'),
@@ -155,7 +155,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   '1';
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'SERVICE 1992 ALISON',
                 'slug' => Str::slug('SERVICE 1992 ALISON', '-'),
@@ -192,7 +192,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   '1';
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Andiamo MX-3',
                 'slug' => Str::slug('Andiamo MX-3', '-'),
@@ -229,7 +229,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   rand(4, 6);
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Blue Dream TC-20',
                 'slug' => Str::slug('Blue Dream TC-20', '-'),
@@ -266,7 +266,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   rand(4, 6);
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Blue Moon YC-300',
                 'slug' => Str::slug('Blue Moon YC-300', '-'),
@@ -303,7 +303,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   rand(4, 6);
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Carpe Diem LA',
                 'slug' => Str::slug('Carpe Diem LA', '-'),
@@ -340,7 +340,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   rand(4, 6);
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Destiny 6',
                 'slug' => Str::slug('Destiny 6', '-'),
@@ -377,7 +377,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   rand(4, 6);
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Endless Summer W-10',
                 'slug' => Str::slug('Endless Summer W-10', '-'),
@@ -414,7 +414,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   rand(4, 6);
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Freedom M2',
                 'slug' => Str::slug('Freedom M2', '-'),
@@ -451,7 +451,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   rand(4, 6);
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'Ohana 3X',
                 'slug' => Str::slug('Ohana 3X', '-'),
@@ -488,7 +488,7 @@ class AssistanceSeeder extends Seeder
             ]
         );
         $IDs_vendor[] = $create_user =   rand(4, 6);
-        $IDs[] = DB::table('bravo_assistance')->insertGetId(
+        $IDs[] = DB::table('bravo_assistances')->insertGetId(
             [
                 'title' => 'My Way 100',
                 'slug' => Str::slug('My Way 100', '-'),

@@ -14,7 +14,7 @@ class CreateAssistanceTable extends Migration
     public function up()
     {
 
-        Schema::create('bravo_assistance', function (Blueprint $table) {
+        Schema::create('bravo_assistances', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             //Info
@@ -67,7 +67,7 @@ class CreateAssistanceTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('bravo_assistance_translations', function (Blueprint $table) {
+        Schema::create('bravo_assistances_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('origin_id')->unsigned();
             $table->string('locale')->index();
@@ -88,7 +88,7 @@ class CreateAssistanceTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('bravo_assistance_term', function (Blueprint $table) {
+        Schema::create('bravo_assistances_term', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->integer('term_id')->nullable();
@@ -100,7 +100,7 @@ class CreateAssistanceTable extends Migration
 
         });
 
-        Schema::create('bravo_assistance_dates', function (Blueprint $table) {
+        Schema::create('bravo_assistances_dates', function (Blueprint $table) {
 
             $table->bigIncrements('id');
             $table->bigInteger('target_id')->nullable();
@@ -129,9 +129,9 @@ class CreateAssistanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bravo_assistance');
-        Schema::dropIfExists('bravo_assistance_translations');
-        Schema::dropIfExists('bravo_assistance_term');
-        Schema::dropIfExists('bravo_assistance_dates');
+        Schema::dropIfExists('bravo_assistances');
+        Schema::dropIfExists('bravo_assistances_translations');
+        Schema::dropIfExists('bravo_assistances_term');
+        Schema::dropIfExists('bravo_assistances_dates');
     }
 }

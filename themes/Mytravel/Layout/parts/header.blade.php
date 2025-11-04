@@ -36,13 +36,13 @@ if (isset($_GET['religion'])) {
     <div class="subscribe-plan">
         <div class="content">
             <p>
-                {{ __("Join the club: choose your plan and get full access to the platform.") }}
+                {{ __("Junte-se ao clube: escolha seu plano e tenha acesso completo à plataforma.") }}
             </p> &nbsp;
 
             @if(Auth::user() == null)
-            <a data-target="#register" data-toggle="modal">{{ __("Subscribe now") }}</a>
+            <a data-target="#register" data-toggle="modal">{{ __("Cadastra-se agora") }}</a>
             @else
-            <a href="/plan">{{ __("Subscribe now") }}</a>
+            <a href="/plan">{{ __("Cadastra-se agora") }}</a>
             @endif
         </div>
     </div>

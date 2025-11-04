@@ -35,7 +35,6 @@ class CreateBravoSpacesTable extends Migration
                 $table->tinyInteger('is_instant')->default(0);
                 $table->tinyInteger('allow_children')->default(0);
                 $table->tinyInteger('allow_infant')->default(0);
-                $table->integer('max_guests')->nullable();
                 $table->integer('bed')->nullable();
                 $table->integer('bathroom')->nullable();
                 $table->integer('square')->nullable();

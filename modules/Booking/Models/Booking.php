@@ -19,6 +19,7 @@ use App\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\User\Models\Wallet\Transaction;
 use Modules\Booking\Models\BookingTimeSlots;
+use Modules\User\Models\Plan;
 
 class Booking extends BaseModel
 {
@@ -300,53 +301,98 @@ class Booking extends BaseModel
     {
 
         $res = [];
-        $total_data = parent::selectRaw('sum(`total`) as total_price , sum( `total` - `total_before_fees` + `commission` - `vendor_service_fee_amount` ) AS total_earning ')->whereNotIn('status', static::$notAcceptedStatus)->first();
-        $total_booking = parent::whereNotIn('status', static::$notAcceptedStatus)->count('id');
         $total_service = 0;
         $services = get_bookable_services();
-        if (!empty($services)) {
-            foreach ($services as $service) {
-                $total_service += $service::where('status', 'publish')->count('id');
-            }
+        $affiliates = User::where("is_affiliate", 1)->get();
+
+        $services = Booking::get();
+
+        $servicesAmount = [];
+
+        foreach ($services as $service) {
+            if (!isset($servicesAmount[$service->object_model]))
+                $servicesAmount[$service->object_model] = 0;
+
+            $servicesAmount[$service->object_model] += 1;
         }
+
+        $total = Payment::where([
+            'object_model' => 'plan',
+            'status' => 'publish'
+        ])->selectRaw('SUM(amount) AS total_amount')
+            ->first();
+
+
+        $totalPayed = Payment::where([
+            'object_model' => 'wallet_deposit',
+            'status' => 'draft'
+        ])->whereMonth('created_at', now()->month)   // mês atual
+            ->whereYear('created_at', now()->year)     // ano atual
+            ->selectRaw('SUM(amount) AS total_amount')
+            ->first();
+
+        $totalClientsPendents = User::where("is_verified", 0)->count();
+
+        $res[] = [
+            'size'   => 6,
+            'size_md' => 3,
+            'title'  => __("Afiliados"),
+            'amount' => $affiliates->count(),
+            'desc'   => __("Total de afiliados"),
+            'class'  => 'info',
+            'icon'   => 'icon ion-ios-person'
+        ];
         $res[] = [
             'size'   => 6,
             'size_md' => 3,
             'title'  => __("Receita"),
-            'amount' => format_money_main($total_data->total_price),
+            'amount' => format_money_main($total->total_amount),
             'desc'   => __("Receita total"),
-            'class'  => 'purple',
+            'class'  => 'success',
             'icon'   => 'icon ion-ios-cart'
         ];
         $res[] = [
             'size'   => 6,
             'size_md' => 3,
-            'title'  => __("Ganhando"),
-            'amount' => format_money_main($total_data->total_earning),
-            'desc'   => __("Ganhos totais"),
+            'title'  => __("Pagamentos"),
+            'amount' => format_money_main($totalPayed->total_amount),
+            'desc'   => __("Pagamentos Mensal Atuais"),
             'class'  => 'pink',
-            'icon'   => 'icon ion-ios-gift'
+            'icon'   => 'icon ion-ios-cart'
         ];
         $res[] = [
 
             'size'   => 6,
             'size_md' => 3,
-            'title'  => __("Reservas"),
-            'amount' => $total_booking,
-            'desc'   => __("Total de reservas"),
+            'title'  => __("Pendentes"),
+            'amount' => $totalClientsPendents,
+            'desc'   => __("Total de clientes pendentes"),
             'class'  => 'info',
-            'icon'   => 'icon ion-ios-pricetags'
+            'icon'   => 'icon ion-ios-person'
         ];
-        $res[] = [
 
-            'size'   => 6,
-            'size_md' => 3,
-            'title'  => __("Serviços"),
-            'amount' => $total_service,
-            'desc'   => __("Total de serviços reserváveis"),
-            'class'  => 'success',
-            'icon'   => 'icon ion-ios-flash'
+        $translates = [
+            "tour" => "Passeios",
+            "hotel" => "Hotéis",
+            "assistance" => "Serviços",
+            "space" => "Espaços",
+            "event" => "Eventos"
         ];
+
+        foreach ($servicesAmount as $title => $serviceAmount) {
+            if (!isset($translates[$title]))
+                continue;
+
+            $res[] = [
+                'size'   => 6,
+                'size_md' => 3,
+                'title'  => __($translates[$title]),
+                'amount' => $serviceAmount,
+                'desc'   => __("Total de {$translates[$title]}"),
+                'class'  => 'purple',
+                'icon'   => 'icon ion-ios-flash'
+            ];
+        }
         return $res;
     }
 

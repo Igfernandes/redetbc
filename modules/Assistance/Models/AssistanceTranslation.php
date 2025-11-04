@@ -6,7 +6,7 @@ use Modules\Assistance\Models\Assistance;
 
 class AssistanceTranslation extends Assistance
 {
-    protected $table = 'bravo_assistance_translations';
+    protected $table = 'bravo_assistances_translations';
 
     protected $fillable = [
         'title',

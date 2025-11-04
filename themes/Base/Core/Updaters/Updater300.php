@@ -63,7 +63,7 @@ class Updater300
             'bravo_tours',
             'bravo_events',
             'bravo_spaces',
-            'bravo_assistance',
+            'bravo_assistances',
             'bravo_seat_type',
             'media_files',
             'bravo_review',

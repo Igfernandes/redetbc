@@ -20,6 +20,8 @@ use Modules\Media\Helpers\FileHelper;
 use Modules\Review\Models\Review;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Assistance\Models\AssistanceTranslation;
+use Modules\Booking\Events\BookingConfirmEvent;
+use Modules\Booking\Models\BookingMessage;
 use Modules\User\Models\UserWishList;
 use Modules\Location\Models\Location;
 
@@ -29,7 +31,7 @@ class Assistance extends Bookable
     use SoftDeletes;
     use CapturesService;
 
-    protected $table = 'bravo_assistance';
+    protected $table = 'bravo_assistances';
     public $type = 'assistance';
     public $checkout_booking_detail_file       = 'Assistance::frontend/booking/detail';
     public $checkout_booking_detail_modal_file = 'Assistance::frontend/booking/detail-modal';
@@ -264,9 +266,22 @@ class Assistance extends Bookable
             $booking->addMeta('day', $request->input('day'));
             $booking->addMeta('hour', $request->input('hour'));
 
+            $bookingId = $request->input('bk');
+
+            $booking = Booking::where('id', $bookingId)->first();
+            $booking->status = 'draft';
+            $booking->save();
+
+            BookingMessage::create([
+                'booking_id' => $bookingId,
+                'sender_id' => Auth::id(),
+                'message' => "Olá! Acabei de solicitar a reserva. Aguardando confirmação do proprietário.",
+            ]);
+
+            event(new BookingConfirmEvent($booking));
+
             return $this->sendSuccess([
-                'url'          => "user/booking-history", // redireciona para o chat
-                'booking_code' => $booking->code,
+                'url' => "user/chat?bk=$bookingId",
             ]);
         }
         return $this->sendError(__("Não é possível verificar a disponibilidade"));
@@ -846,7 +861,7 @@ class Assistance extends Bookable
 
 
         if (!empty($request['attrs'])) {
-            $this->filterAttrs($query, $request['attrs'], 'bravo_assistance_term');
+            $this->filterAttrs($query, $request['attrs'], 'bravo_assistances_term');
         }
 
         $review_scores = $request['review_score'] ?? "";
@@ -857,10 +872,10 @@ class Assistance extends Bookable
 
         if (!empty($service_name = $request["service_name"] ?? "")) {
             if (setting_item('site_enable_multi_lang') && setting_item('site_locale') != app()->getLocale()) {
-                $query->leftJoin('bravo_assistance_translations', function ($join) {
-                    $join->on('bravo_assistances.id', '=', 'bravo_assistance_translations.origin_id');
+                $query->leftJoin('bravo_assistances_translations', function ($join) {
+                    $join->on('bravo_assistances.id', '=', 'bravo_assistances_translations.origin_id');
                 });
-                $query->where('bravo_assistance_translations.title', 'LIKE', '%' . $service_name . '%');
+                $query->where('bravo_assistances_translations.title', 'LIKE', '%' . $service_name . '%');
             } else {
                 $query->where('bravo_assistances.title', 'LIKE', '%' . $service_name . '%');
             }
@@ -896,11 +911,6 @@ class Assistance extends Bookable
         }
 
         $query->groupBy("bravo_assistances.id");
-
-        $max_guests = (int)($request["adults"] ?? 0) + (int)($request["children"] ?? 0);
-        if ($max_guests) {
-            $query->where('max_guests', '>=', $max_guests);
-        }
 
 
         return $query->with(['location', 'hasWishList', 'translation']);

@@ -81,7 +81,6 @@ class UpdateCore190 extends Migration
                 //Tour type
                 $table->integer('min_people')->nullable();
                 $table->integer('max_people')->nullable();
-                $table->integer('max_guests')->nullable();
                 $table->integer('review_score')->nullable();
                 $table->integer('min_day_before_booking')->nullable();
                 $table->integer('min_day_stays')->nullable();

@@ -85,7 +85,7 @@ class AssistanceController extends Controller
             "blank" => setting_item('search_open_tab') == "current_tab" ? 0 : 1 ,
             "seo_meta"           => $this->assistanceClass::getSeoMetaForPageList()
         ];
-        $data['attributes'] = Attributes::where('service', 'assistance')->orderBy("position","desc")->with(['terms'=>function($query){
+        $data['attributes'] = Attributes::where('service', 'assistances')->orderBy("position","desc")->with(['terms'=>function($query){
             $query->withCount('assistance');
         },'translation'])->get();
 

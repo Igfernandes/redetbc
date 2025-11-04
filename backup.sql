@@ -74,10 +74,10 @@ INSERT INTO `bravo_assistances` (`id`, `title`, `slug`, `content`, `image_id`, `
 
 -- --------------------------------------------------------
 --
--- Dumping data for table `bravo_assistance_term`
+-- Dumping data for table `bravo_assistances_term`
 --
 
-INSERT INTO `bravo_assistance_term` (`id`, `term_id`, `target_id`, `create_user`, `update_user`, `created_at`, `updated_at`) VALUES
+INSERT INTO `bravo_assistances_term` (`id`, `term_id`, `target_id`, `create_user`, `update_user`, `created_at`, `updated_at`) VALUES
 (1, 91, 1, NULL, NULL, '2025-04-10 23:45:26', '2025-04-10 23:45:26'),
 (2, 93, 1, NULL, NULL, '2025-04-10 23:45:26', '2025-04-10 23:45:26'),
 (3, 94, 1, NULL, NULL, '2025-04-10 23:45:26', '2025-04-10 23:45:26'),

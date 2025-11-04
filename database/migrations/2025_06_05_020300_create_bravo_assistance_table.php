@@ -13,8 +13,8 @@ class CreateBravoAssistanceTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('bravo_assistance')) {
-            Schema::create('bravo_assistance', function (Blueprint $table) {
+        if (!Schema::hasTable('bravo_assistances')) {
+            Schema::create('bravo_assistances', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('title')->nullable();
                 $table->string('slug')->charset('utf8')->collation('utf8_general_ci');
@@ -69,6 +69,6 @@ class CreateBravoAssistanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bravo_assistance');
+        Schema::dropIfExists('bravo_assistances');
     }
 }

@@ -39,7 +39,6 @@ class CreateHotelTable extends Migration
             //$table->tinyInteger('is_instant')->default(0)->nullable();
             //$table->tinyInteger('allow_children')->default(0)->nullable();
             //$table->tinyInteger('allow_infant')->default(0)->nullable();
-            //$table->tinyInteger('max_guests')->default(0)->nullable();
             //$table->tinyInteger('bed')->default(0)->nullable();
             //$table->tinyInteger('bathroom')->default(0)->nullable();
             //$table->tinyInteger('square')->default(0)->nullable();

@@ -5,7 +5,7 @@ use App\BaseModel;
 
 class AssistanceDate extends BaseModel
 {
-    protected $table = 'bravo_assistance_dates';
+    protected $table = 'bravo_assistances_dates';
 
     protected $casts = [
         'person_types'=>'array',
