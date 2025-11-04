@@ -54,7 +54,7 @@ class PaypalGateway extends BaseGateway
             [
                 'type'    => 'select',
                 'id'      => 'convert_to',
-                'label'   => __('Convert To'),
+                'label'   => __('Converter para'),
                 'desc'    => __('Caso a moeda principal não seja suportada pelo PayPal, você deve selecionar a moeda e inserir a taxa de câmbio correspondente à moeda suportada pelo PayPal.'),
                 'options' => $this->supportedCurrency()
             ],

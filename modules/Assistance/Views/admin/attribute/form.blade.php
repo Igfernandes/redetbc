@@ -1,34 +1,34 @@
 <div class="form-group">
     <label>{{__("Nome")}}</label>
-    <input type="text" value="{{$translation->name}}" placeholder="{{__("Attribute name")}}" name="name" class="form-control">
+    <input type="text" value="{{$translation->name}}" placeholder="{{__("Nome do atributo")}}" name="name" class="form-control">
 </div>
 @if(is_default_lang())
     <div class="form-group">
-        <label>{{__("Position Order")}}</label>
+        <label>{{__("Ordem de posição")}}</label>
         <input type="number" min="0" value="{{$row->position}}" placeholder="{{__("Ex: 1")}}" name="position" class="form-control">
         <small>
-            {{ __("The position will be used to order in the Filter page search. The greater number is priority") }}
+            {{ __("A posição será usada para ordenar a pesquisa na página de filtros. O número maior indica a prioridade.") }}
         </small>
     </div>
     <div class="form-group">
-        <label>{{__("Display Type in detail service")}}</label>
+        <label>{{__("Exibir o tipo no serviço detalhado")}}</label>
         <select name="display_type" class="form-control">
-            <option  @if($row->display_type == "icon_left") selected @endif value="icon_left">{{__("Display Left Icon")}}</option>
-            <option  @if($row->display_type == "icon_center") selected @endif value="icon_center">{{__("Display Center Icon")}}</option>
+            <option  @if($row->display_type == "icon_left") selected @endif value="icon_left">{{__("Exibir ícone à esquerda")}}</option>
+            <option  @if($row->display_type == "icon_center") selected @endif value="icon_center">{{__("Ícone do centro de exibição")}}</option>
         </select>
     </div>
     <div class="form-group">
-        <label>{{__('Hide in detail service')}}</label>
+        <label>{{__('Ocultar em detalhes o serviço')}}</label>
         <br>
         <label>
-            <input type="checkbox" name="hide_in_single" @if($row->hide_in_single) checked @endif value="1"> {{__("Enable hide")}}
+            <input type="checkbox" name="hide_in_single" @if($row->hide_in_single) checked @endif value="1"> {{__("Ativar ocultar")}}
         </label>
     </div>
     <div class="form-group">
         <label>{{__('Ocultar na pesquisa de filtro')}}</label>
         <br>
         <label>
-            <input type="checkbox" name="hide_in_filter_search" @if($row->hide_in_filter_search) checked @endif value="1"> {{__("Enable hide")}}
+            <input type="checkbox" name="hide_in_filter_search" @if($row->hide_in_filter_search) checked @endif value="1"> {{__("Ativar ocultar")}}
         </label>
     </div>
 @endif

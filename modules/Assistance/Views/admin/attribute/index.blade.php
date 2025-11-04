@@ -2,13 +2,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Service Attributes")}}</h1>
+            <h1 class="title-bar">{{__("Atributos de serviço")}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Attributes")}}</div>
+                    <div class="panel-title">{{__("Adicionar atributos")}}</div>
                     <div class="panel-body">
                         <form action="{{route('assistance.admin.attribute.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <div class="panel-title">{{__("All Attributes")}}</div>
+                    <div class="panel-title">{{__("Todos os atributos")}}</div>
                     <div class="panel-body">
                         <form class="bravo-form-item">
                             <table class="table table-hover">
@@ -50,8 +50,8 @@
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
                                     <th>{{__("Nome")}}</th>
-                                    <th>{{__("Position Order")}}</th>
-                                    <th class="">{{__("Actions")}}</th>
+                                    <th>{{__("Ordem de posição")}}</th>
+                                    <th class="">{{__("Ações")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -69,7 +69,7 @@
                                             <td>
                                                 <a href="{{route('assistance.admin.attribute.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Editar')}}
                                                 </a>
-                                                <a href="{{route('assistance.admin.attribute.term.index',['id'=>$row->id])}}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Manage Terms")}}
+                                                <a href="{{route('assistance.admin.attribute.term.index',['id'=>$row->id])}}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Gerenciar Termos")}}
                                                 </a>
 
                                             </td>

@@ -15,10 +15,10 @@ class Contact extends BaseBlock
                     'id'        => 'class',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Class Block')
+                    'label'     => __('Bloco de Class')
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro bloco")
         ]);
     }
 

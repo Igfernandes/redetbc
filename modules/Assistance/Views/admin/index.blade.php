@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("All Services")}}</h1>
+            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("Todos os serviços")}}</h1>
             <div class="title-actions">
                 @if(empty($recovery))
                 <a href="{{route('assistance.admin.create')}}" class="btn btn-primary">{{__("Adicionar novo serviço")}}</a>
@@ -16,16 +16,16 @@
                     <form method="post" action="{{route('assistance.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em massa ")}}</option>
 
                             @if(!empty($recovery))
-                                <option value="recovery">{{__(" Recovery ")}}</option>
-                                <option value="permanently_delete">{{__("Permanently delete")}}</option>
+                                <option value="recovery">{{__(" Recuperação ")}}</option>
+                                <option value="permanently_delete">{{__("Excluir permanentemente")}}</option>
                             @else
-                                <option value="publish">{{__(" Publish ")}}</option>
-                                <option value="draft">{{__(" Move to Draft ")}}</option>
-                                <option value="pending">{{__("Move to Pending")}}</option>
-                                <option value="clone">{{__(" Clone ")}}</option>
+                                <option value="publish">{{__(" Publicar ")}}</option>
+                                <option value="draft">{{__(" Mover para rascunho ")}}</option>
+                                <option value="pending">{{__("Mover para Pendente")}}</option>
+                                <option value="clone">{{__(" Clonar ")}}</option>
                                 <option value="delete">{{__("Excluir")}}</option>
                             @endif
                         </select>
@@ -39,7 +39,7 @@
                         <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
                         <div class="ml-3 position-relative">
                             <button class="btn btn-secondary dropdown-toggle bc-dropdown-toggle-filter" type="button" id="dropdown_filters">
-                                {{ __("Advanced") }}
+                                {{ __("Avançado") }}
                             </button>
                             <div class="dropdown-menu px-3 py-3 dropdown-menu-right" aria-labelledby="dropdown_filters">
                                 @include("Core::admin.global.advanced-filter")
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -62,11 +62,11 @@
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
                             <th> {{ __('Name')}}</th>
-                            <th width="200px"> {{ __('Location')}}</th>
-                            <th width="130px"> {{ __('Author')}}</th>
+                            <th width="200px"> {{ __('Localização')}}</th>
+                            <th width="130px"> {{ __('Autor')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
-                            <th width="100px"> {{ __('Reviews')}}</th>
-                            <th width="100px"> {{ __('Date')}}</th>
+                            <th width="100px"> {{ __('Avaliações')}}</th>
+                            <th width="100px"> {{ __('Data')}}</th>
                             <th width="100px"></th>
                         </tr>
                         </thead>
@@ -78,7 +78,7 @@
                                     </td>
                                     <td class="title">
                                         @if($row->is_featured)
-                                            <span class="badge badge-primary">{{ __("Featured") }}</span>
+                                            <span class="badge badge-primary">{{ __("Apresentou") }}</span>
                                         @endif
                                         <a href="{{route('assistance.admin.edit',['id'=>$row->id])}}">{{$row->title}}</a>
                                     </td>
@@ -106,7 +106,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7">{{__("No assistance found")}}</td>
+                                <td colspan="7">{{__("Nenhuma assistência encontrada")}}</td>
                             </tr>
                         @endif
                         </tbody>
