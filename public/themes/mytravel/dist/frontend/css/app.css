@@ -39943,10 +39943,11 @@ label.btn {
   width: 100%;
   height: 100%;
   content: "";
-  background-color: #ffffff;
-  opacity: 0.15;
+  background-color: #fff;
+  opacity: 1;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7882352941);
 }
 
 .tab-nav-inner .nav-link {
@@ -40096,8 +40097,8 @@ label.btn {
   width: 100%;
   height: 100%;
   content: "";
-  background-color: #ffffff;
-  opacity: 0.15;
+  background-color: #fff;
+  opacity: 1;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
@@ -42575,7 +42576,7 @@ label.btn {
 
 .gradient-overlay-half-white-gradient::before {
   background-color: #ffffff;
-  opacity: 0.15;
+  box-shadow: 0px 6px 7px rgba(0, 0, 0, 0.2196078431);
 }
 
 .gradient-overlay-half-bg-catalina-blue:before {
@@ -43381,10 +43382,6 @@ label.btn {
 }
 .shadow-hover-2.tab-card:hover {
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
-}
-
-.tab-shadow {
-  box-shadow: 0px 14px 50px 0px rgba(32, 32, 32, 0.15);
 }
 
 .shadow-hover-3:hover,
@@ -44239,6 +44236,11 @@ label.btn {
   color: #fff !important;
 }
 
+@media (min-width: 1100.98px) {
+  .banner-home-page {
+    max-height: 0.5rem;
+  }
+}
 .text-underline {
   text-decoration: underline;
 }

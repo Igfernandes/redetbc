@@ -1,6 +1,6 @@
 <div class="bravo-form-search-all hero-block hero-v1 bg-img-hero-bottom gradient-overlay-half-black-gradient text-center z-index-2">
     <div class="container space-2 space-top-xl-4">
-        <div class="row justify-content-center pb-xl-8">
+        <div class="row justify-content-center pb-xl-8 banner-home-page">
             <div class="py-8 py-xl-10 pb-5">
                 <h1 class="font-size-60 font-size-xs-30 font-weight-bold">{{$title ?? ''}}</h1>
                 <p class="font-size-20 font-weight-normal ">{{$sub_title ?? ''}}</p>
@@ -79,7 +79,7 @@
                 if(empty($allServices[$service_type])) continue;
                 @endphp
                 <div class="tab-pane fade @if($number == 0) active show @endif" id="bravo_{{$service_type}}" role="tabpanel" aria-labelledby="bravo_{{$service_type}}-tab">
-                    <div class="p-3 gradient-overlay-half-white-gradient">
+                    <div class="pt-0 pl-3 pr-3 pb-3 gradient-overlay-half-white-gradient">
                         <div class="card border-0 tab-shadow">
                             <div class="card-body">
                                 @include(ucfirst($service_type).'::frontend.layouts.search.form-search')

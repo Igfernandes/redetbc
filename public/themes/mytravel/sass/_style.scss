@@ -20767,10 +20767,11 @@ label.btn {
             width: 100%;
             height: 100%;
             content: "";
-            background-color: #ffffff;
-            opacity: 0.15;
+            background-color: #fff;
+            opacity: 1;
             border-top-right-radius: 3px;
             border-top-left-radius: 3px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7882352941);
         }
     }
 }
@@ -20945,8 +20946,8 @@ label.btn {
             width: 100%;
             height: 100%;
             content: "";
-            background-color: #ffffff;
-            opacity: 0.15;
+            background-color: #fff;
+            opacity: 1;
             border-top-right-radius: 3px;
             border-top-left-radius: 3px;
         }
@@ -24065,7 +24066,7 @@ screen and (-ms-high-contrast: none) {
 
 .gradient-overlay-half-white-gradient::before {
     background-color: #ffffff;
-    opacity: 0.15;
+    box-shadow: 0px 6px 7px #00000038;
 }
 
 .gradient-overlay-half-bg-catalina-blue:before {
@@ -24982,9 +24983,7 @@ screen and (-ms-high-contrast: none) {
     }
 }
 
-.tab-shadow {
-    box-shadow: 0px 14px 50px 0px rgba(32, 32, 32, 0.15);
-}
+
 
 .shadow-hover-3:hover,
 .slick-shadow {
@@ -25892,6 +25891,12 @@ screen and (-ms-high-contrast: none) {
     h6,
     span {
         color: #fff !important;
+    }
+}
+
+@media (min-width: 1100.98px) {
+    .banner-home-page {
+        max-height: 0.5rem;
     }
 }
 

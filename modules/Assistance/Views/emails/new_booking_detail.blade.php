@@ -2,31 +2,31 @@
 $translation = $service->translate();
 $lang_local = app()->getLocale();
 ?>
-<div class="b-panel-title">{{__('Service information')}}</div>
+<div class="b-panel-title">{{__('Informações de serviço')}}</div>
 <div class="b-table-wrap">
     <table class="b-table" cellspacing="0" cellpadding="0">
         <tr>
-            <td class="label">{{__('Booking Number')}}</td>
+            <td class="label">{{__('Número de reserva')}}</td>
             <td class="val">#{{$booking->id}}</td>
         </tr>
         <tr>
-            <td class="label">{{__('Booking Status')}}</td>
+            <td class="label">{{__('Estado da reserva')}}</td>
             <td class="val">{{$booking->statusName}}</td>
         </tr>
         @if($booking->gatewayObj)
             <tr>
-                <td class="label">{{__('Payment method')}}</td>
+                <td class="label">{{__('Método de pagamento')}}</td>
                 <td class="val">{{$booking->gatewayObj->getOption('name')}}</td>
             </tr>
         @endif
         @if($booking->gatewayObj and $note = $booking->gatewayObj->getOption('payment_note'))
             <tr>
-                <td class="label">{{__('Payment Note')}}</td>
+                <td class="label">{{__('Nota de pagamento')}}</td>
                 <td class="val">{!! clean($note) !!}</td>
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Service name')}}</td>
+            <td class="label">{{__('Nome do serviço')}}</td>
             <td class="val">
                 <a href="{{$service->getDetailUrl()}}">{!! clean($translation->title) !!}</a>
             </td>
@@ -34,7 +34,7 @@ $lang_local = app()->getLocale();
         </tr>
         <tr>
             @if($translation->address)
-                <td class="label">{{__('Address')}}</td>
+                <td class="label">{{__('Endereço')}}</td>
                 <td class="val">
                     {{$translation->address}}
                 </td>
@@ -42,17 +42,17 @@ $lang_local = app()->getLocale();
         </tr>
         @if($booking->start_date && $booking->end_date)
             <tr>
-                <td class="label">{{__('Start date')}}</td>
+                <td class="label">{{__('Data de início')}}</td>
                 <td class="val">{{display_datetime($booking->start_date)}}</td>
             </tr>
             <tr>
-                <td class="label">{{__('End date:')}}</td>
+                <td class="label">{{__('Data de término:')}}</td>
                 <td class="val">
                     {{display_datetime($booking->end_date)}}
                 </td>
             </tr>
             <tr>
-                <td class="label">{{__('Durations:')}}</td>
+                <td class="label">{{__('Durações:')}}</td>
                 <td class="val">
                     @if($booking->getMeta('type_date') == 'per_hour')
                         {{$booking->duration_hours}} {{ Str::plural(__('hora'),$booking->duration_hours) }}
@@ -64,11 +64,11 @@ $lang_local = app()->getLocale();
         @endif
 
         <tr>
-            <td class="label">{{__('Pricing')}}</td>
+            <td class="label">{{__('Preços')}}</td>
             <td class="val">
                 <table class="pricing-list" width="100%">
                     <tr>
-                        <td class="label">{{ __("Rental price:") }}</td>
+                        <td class="label">{{ __("Preço de aluguel:") }}</td>
                         <td class="val no-r-padding">
                             <strong>{{format_money($booking->total_before_fees)}}</strong>
                         </td>
@@ -77,7 +77,7 @@ $lang_local = app()->getLocale();
 
                     @if(!empty($extra_price))
                         <tr>
-                            <td colspan="2" class="label-title"><strong>{{__("Extra Prices:")}}</strong></td>
+                            <td colspan="2" class="label-title"><strong>{{__("Preços Extras:")}}</strong></td>
                         </tr>
                         <tr class="">
                             <td colspan="2" class="no-r-padding no-b-border">
@@ -140,17 +140,17 @@ $lang_local = app()->getLocale();
             <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total)}}</strong></td>
         </tr>
         <tr>
-            <td class="label fsz21">{{__('Paid')}}</td>
+            <td class="label fsz21">{{__('Pago')}}</td>
             <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->paid)}}</strong></td>
         </tr>
         @if($booking->total > $booking->paid)
         <tr>
-            <td class="label fsz21">{{__('Remain')}}</td>
+            <td class="label fsz21">{{__('Permanecer')}}</td>
             <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
         </tr>
         @endif
     </table>
 </div>
 <div class="text-center mt20">
-    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn btn-primary manage-booking-btn">{{__('Manage Bookings')}}</a>
+    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn btn-primary manage-booking-btn">{{__('Gerenciar reservas')}}</a>
 </div>

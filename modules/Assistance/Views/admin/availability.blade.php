@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-right">
                         @if($rows->total() > 0)
-                            <span class="count-string">{{ __("Mostrando :from - :to de :total services",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                            <span class="count-string">{{ __("Mostrando :from - :to de :total serviços",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                         @endif
                     </div>
                 </div>

@@ -213,9 +213,9 @@ class AvailabilityController extends FrontendController{
                         }
                         if($is_book){
                             $allDates[date('Y-m-d',$i)]['active'] = 0;
-                            $allDates[date('Y-m-d',$i)]['event'] = __('Livro Completo');
-                            $allDates[date('Y-m-d',$i)]['title'] = __('Livro Completo');
-                            $allDates[date('Y-m-d',$i)]['classNames'] = ['full-book-event'];
+                            $allDates[date('Y-m-d',$i)]['event'] = __('Calendário Completo');
+                            $allDates[date('Y-m-d',$i)]['title'] = __('Calendário Completo');
+                            $allDates[date('Y-m-d',$i)]['classNames'] = ['Calendário completo do evento'];
                         }
                     }
                 }

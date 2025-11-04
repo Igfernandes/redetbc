@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label class="" >{{__("Habilitar formulário de reserva do reCapcha")}}</label>
                     <div class="form-controls">
-                        <label><input type="checkbox" name="booking_enable_recaptcha" value="1" @if(!empty($settings['booking_enable_recaptcha'])) checked @endif /> {{__("No ReCaptcha")}} </label>
+                        <label><input type="checkbox" name="booking_enable_recaptcha" value="1" @if(!empty($settings['booking_enable_recaptcha'])) checked @endif /> {{__("Sem ReCaptcha")}} </label>
                         <br>
                         <small class="form-text text-muted">{{__("Ative o modo para formulário de reserva")}}</small>
                     </div>
