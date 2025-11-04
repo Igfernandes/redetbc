@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('bravo_assistance', function (Blueprint $table) {
+        Schema::table('bravo_assistances', function (Blueprint $table) {
             $table->text('include')->nullable()->collation('utf8mb4_unicode_ci');
             $table->text('exclude')->nullable()->collation('utf8mb4_unicode_ci');
             $table->string('start_time_booking', 191)->nullable()->collation('utf8mb4_unicode_ci');

@@ -56,18 +56,7 @@
     {{-- Global Scripts --}}
     @include('Layout::parts.global-script')
 
-    {{-- Google Translate - versão limpa --}}
-    <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'pt,en,es',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
-
+   
     <style>
         /* Oculta apenas o banner, mantendo conformidade */
         .goog-te-banner-frame.skiptranslate,
@@ -91,8 +80,6 @@
 </head>
 
 <body class="{{ $body_class ?? '' }}">
-    {{-- Botão ou seletor manual de idioma --}}
-    <div id="google_translate_element" style="display:none;"></div>
     <script>
         function setLanguage(lang) {
             const combo = document.querySelector(".goog-te-combo");

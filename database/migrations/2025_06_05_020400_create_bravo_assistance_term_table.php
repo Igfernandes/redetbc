@@ -13,8 +13,8 @@ class CreateBravoAssistanceTermTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('bravo_assistance_term')) {
-            Schema::create('bravo_assistance_term', function (Blueprint $table) {
+        if (!Schema::hasTable('bravo_assistances_term')) {
+            Schema::create('bravo_assistances_term', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->integer('term_id')->nullable();
                 $table->integer('target_id')->nullable();
@@ -32,6 +32,6 @@ class CreateBravoAssistanceTermTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bravo_assistance_term');
+        Schema::dropIfExists('bravo_assistances_term');
     }
 }

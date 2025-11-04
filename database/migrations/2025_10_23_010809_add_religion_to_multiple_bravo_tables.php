@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         $tables = [
             'bravo_bookings',
-            'bravo_assistance',
+            'bravo_assistances',
             'bravo_events',
             'bravo_hotels',
             'bravo_locations',
@@ -33,7 +33,7 @@ return new class extends Migration {
     {
         $tables = [
             'bravo_bookings',
-            'bravo_assistance',
+            'bravo_assistances',
             'bravo_events',
             'bravo_hotels',
             'bravo_locations',

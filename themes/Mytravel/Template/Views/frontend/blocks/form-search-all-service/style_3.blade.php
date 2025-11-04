@@ -68,6 +68,34 @@
                 @php $number++; @endphp
                 @endforeach
                 @endif
+
+                <li class="nav-item" role="bravo_assistances">
+                    <a class="nav-link font-weight-medium  pl-md-5 pl-3"
+                        id="bravo_assistances-tab"
+                        href="/assistance" >
+
+                        <div class="text-center position-relative align-items-center">
+                            <figure
+                                style="height: 60px;
+                                   width: 60px;
+                                   padding-top: 8px;
+                                   border: 7px solid #fff;
+                                   box-shadow: 1px 1px 5px black;
+                                   border-radius: 100%;
+                                   background: #003583;
+                                   margin: 0 auto;
+                                   color: #fff;"
+                                class="ie-height-40 d-md-block">
+                                <i class="icon icofont-briefcase font-size-3"></i>
+                            </figure>
+
+                            <span class="tabtext mt-2 mt-md-0 font-weight-semi-bold">
+                                {{__('Serviços')}}
+                            </span>
+                        </div>
+                    </a>
+                </li>
+
             </ul>
 
             <div class="tab-content hero-tab-pane">

@@ -264,7 +264,6 @@ class AvailabilityController extends FrontendController{
 
             $date->fillByAttr([
                 'start_date','end_date','price',
-//                'max_guests','min_guests',
                 'is_instant','active',
                 'number'
             ],$postData);

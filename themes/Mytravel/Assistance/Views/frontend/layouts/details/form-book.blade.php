@@ -1,6 +1,6 @@
 <div class="mb-4">
     <div class="bravo_single_book_wrap mt-0">
-        <div id="bravo_assistance_book_app" class="bravo_single_book " v-cloak>
+        <div id="bravo_assistances_book_app" class="bravo_single_book " v-cloak>
             <div class="border border-color-7 rounded mb-5">
                 <div class="border-bottom">
                     <div class="price flex-wrap p-4">

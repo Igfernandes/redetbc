@@ -18,6 +18,7 @@ use Modules\Review\Models\Review;
 use Illuminate\Support\Facades\Cache;
 use Validator;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Booking\Events\BookingConfirmEvent;
 use Modules\Booking\Events\BookingSendEvent;
 use Modules\Booking\Models\BookingMessage;
 use Modules\Core\Models\SEO;
@@ -407,10 +408,21 @@ class Tour extends Bookable
                 ]);
             }
 
-            event(new BookingSendEvent($booking));
+
+            $booking = Booking::where('id', $booking->id)->first();
+            $booking->status = 'draft';
+            $booking->save();
+
+            BookingMessage::create([
+                'booking_id' =>  $booking->id,
+                'sender_id' => Auth::id(),
+                'message' => "Olá! Acabei de solicitar a reserva. Aguardando confirmação do proprietário.",
+            ]);
+
+            event(new BookingConfirmEvent($booking));
+
             return $this->sendSuccess([
-                'url'          => "user/booking-history", // redireciona para o chat
-                'booking_code' => $booking->code,
+                'url' => "user/chat?bk=$booking->id",
             ]);
         }
 

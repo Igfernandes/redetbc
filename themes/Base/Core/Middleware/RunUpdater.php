@@ -749,19 +749,19 @@ class RunUpdater
             }
         });
 
-        Schema::table('bravo_assistance', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_assistance', 'include')) {
+        Schema::table('bravo_assistances', function (Blueprint $table) {
+            if (!Schema::hasColumn('bravo_assistances', 'include')) {
                 $table->text('include')->nullable();
             }
-            if (!Schema::hasColumn('bravo_assistance', 'exclude')) {
+            if (!Schema::hasColumn('bravo_assistances', 'exclude')) {
                 $table->text('exclude')->nullable();
             }
         });
-        Schema::table('bravo_assistance_translations', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_assistance_translations', 'include')) {
+        Schema::table('bravo_assistances_translations', function (Blueprint $table) {
+            if (!Schema::hasColumn('bravo_assistances_translations', 'include')) {
                 $table->text('include')->nullable();
             }
-            if (!Schema::hasColumn('bravo_assistance_translations', 'exclude')) {
+            if (!Schema::hasColumn('bravo_assistances_translations', 'exclude')) {
                 $table->text('exclude')->nullable();
             }
         });

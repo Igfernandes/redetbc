@@ -24,11 +24,11 @@ class Updater250
             setting_update_item('user_role',3);
         }
 
-        Schema::table('bravo_assistance', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_assistance', 'start_time_booking')) {
+        Schema::table('bravo_assistances', function (Blueprint $table) {
+            if (!Schema::hasColumn('bravo_assistances', 'start_time_booking')) {
                 $table->string('start_time_booking')->nullable();
             }
-            if (!Schema::hasColumn('bravo_assistance', 'end_time_booking')) {
+            if (!Schema::hasColumn('bravo_assistances', 'end_time_booking')) {
                 $table->string('end_time_booking')->nullable();
             }
         });

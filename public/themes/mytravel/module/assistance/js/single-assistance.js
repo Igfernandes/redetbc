@@ -1,6 +1,6 @@
 (function ($) {
     new Vue({
-        el:'#bravo_assistance_book_app',
+        el:'#bravo_assistances_book_app',
         data:{
             id:'',
             extra_price:[],

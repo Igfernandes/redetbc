@@ -193,7 +193,11 @@ foreach ($menus as $k => $menuItem) {
             <p>{{ __("Member Since :time",["time"=> date("M Y",strtotime($userAuthData->created_at))]) }}</p>
         </div>
     </div>
-
+    <div class="user-profile-plan">
+        @if( !Auth::user()->role_id < 2)
+            <a href=" {{ route('user.upgrade')}}">{{ __("Seja Anfitrião") }}</a>
+            @endif
+    </div>
     <div class="sidebar-menu">
         <ul class="main-menu">
             @foreach($menus as $menuItem)

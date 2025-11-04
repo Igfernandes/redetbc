@@ -2,7 +2,7 @@
 
 $user = Auth::user();
 
-[$notifications,$countUnread] = getNotify();
+[$notifications, $countUnread] = getNotify();
 
 
 
@@ -20,7 +20,7 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
     <h3 class="logo-text">
 
-<img border="0" src="https://www.agencianaweb.com.br/www.agencianaweb.com.br-painel-white.png"  width="50%">
+        <img border="0" src="https://www.agencianaweb.com.br/www.agencianaweb.com.br-painel-white.png" width="50%">
 
     </h3>
 
@@ -40,7 +40,7 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
             {{--<input type="text" class="input-search form-control">--}}
 
-            <a href="{{url('/')}}" class="btn btn-link" target="_blank"><i class="fa fa-eye"></i>  <span translate="no">{{__('Home')}} </span>
+            <a href="{{url('/')}}" class="btn btn-link" target="_blank"><i class="fa fa-eye"></i> <span translate="no">{{__('Home')}} </span>
 
             </a>
 
@@ -59,21 +59,21 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
                 @foreach($languages as $language)
 
-                    @if($locale == $language->locale)
+                @if($locale == $language->locale)
 
-                        <div class="user-info flex-grow-1 d-flex">
+                <div class="user-info flex-grow-1 d-flex">
 
-                            @if($language->flag)
+                    @if($language->flag)
 
-                                <span class="flag-icon mr-2 flag-icon-{{$language->flag}}"></span>
-
-                            @endif
-
-                            {{$language->name}}
-
-                        </div>
+                    <span class="flag-icon mr-2 flag-icon-{{$language->flag}}"></span>
 
                     @endif
+
+                    {{$language->name}}
+
+                </div>
+
+                @endif
 
                 @endforeach
 
@@ -85,21 +85,21 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
                 @foreach($languages as $language)
 
-                    @php if($language->locale == $locale) continue; @endphp
+                @php if($language->locale == $locale) continue; @endphp
 
 
 
-                    <a class="dropdown-item" href="{{route('language.set-admin-lang',['locale'=>$language->locale])}}">
+                <a class="dropdown-item" href="{{route('language.set-admin-lang',['locale'=>$language->locale])}}">
 
-                        @if($language->flag)
+                    @if($language->flag)
 
-                            <span class="flag-icon flag-icon-{{$language->flag}}"></span>
+                    <span class="flag-icon flag-icon-{{$language->flag}}"></span>
 
-                        @endif
+                    @endif
 
-                        {{$language->name}}
+                    {{$language->name}}
 
-                    </a>
+                </a>
 
                 @endforeach
 
@@ -115,7 +115,7 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
                 <i class="fa fa-lg fa-bell m-1 p-1"></i>
 
-                <span class="badge badge-danger notification-icon">{{$countUnread}}</span>
+                <span class="badge badge-danger notification-icon">{{$countUnread > 10 ? "+9" : $countUnread}}</span>
 
             </div>
 
@@ -137,93 +137,93 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
                     @if(count($notifications)> 0)
 
-                        @foreach($notifications as $oneNotification)
+                    @foreach($notifications as $oneNotification)
 
-                            @php
+                    @php
 
-                                $active = $class = '';
+                    $active = $class = '';
 
-                                $data = json_decode($oneNotification['data']);
-
-
-
-                                $idNotification = @$data->id;
-
-                                $forAdmin = @$data->for_admin;
-
-                                $usingData = @$data->notification;
+                    $data = json_decode($oneNotification['data']);
 
 
 
-                                $services = @$usingData->type;
+                    $idNotification = @$data->id;
 
-                                $idServices = @$usingData->id;
+                    $forAdmin = @$data->for_admin;
 
-                                $title = @$usingData->message;
-
-                                $name = @$usingData->name;
-
-                                $avatar = @$usingData->avatar;
-
-                                $link = @$usingData->link;
+                    $usingData = @$data->notification;
 
 
 
-                                if(empty($oneNotification->read_at)){
+                    $services = @$usingData->type;
 
-                                    $class = 'markAsRead';
+                    $idServices = @$usingData->id;
 
-                                    $active = 'active';
+                    $title = @$usingData->message;
 
-                                }
+                    $name = @$usingData->name;
+
+                    $avatar = @$usingData->avatar;
+
+                    $link = @$usingData->link;
 
 
 
-                            @endphp
+                    if(empty($oneNotification->read_at)){
 
-                            <li class="notification {{$active}}">
+                    $class = 'markAsRead';
 
-                                <a class="{{$class}}" data-id="{{$idNotification}}" href="{{$link}}">
+                    $active = 'active';
 
-                                    <div class="media">
+                    }
 
-                                        <div class="media-left">
 
-                                              <div class="media-object">
 
-                                                  @if($avatar)
+                    @endphp
 
-                                                    <img class="image-responsive" src="{{$avatar}}" alt="{{$name}}">
+                    <li class="notification {{$active}}">
 
-                                                  @else
+                        <a class="{{$class}}" data-id="{{$idNotification}}" href="{{$link}}">
 
-                                                      <span class="avatar-text">{{ucfirst($name[0])}}</span>
+                            <div class="media">
 
-                                                  @endif
+                                <div class="media-left">
 
-                                              </div>
+                                    <div class="media-object">
 
-                                            </div>
+                                        @if($avatar)
 
-                                        <div class="media-body">
+                                        <img class="image-responsive" src="{{$avatar}}" alt="{{$name}}">
 
-                                            {!! $title !!}
+                                        @else
 
-                                              <div class="notification-meta">
+                                        <span class="avatar-text">{{ucfirst($name[0])}}</span>
 
-                                                    <small class="timestamp">{{format_interval($oneNotification->created_at)}}</small>
-
-                                                  </div>
-
-                                        </div>
+                                        @endif
 
                                     </div>
 
-                                </a>
+                                </div>
 
-                            </li>
+                                <div class="media-body">
 
-                        @endforeach
+                                    {!! $title !!}
+
+                                    <div class="notification-meta">
+
+                                        <small class="timestamp">{{format_interval($oneNotification->created_at)}}</small>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    </li>
+
+                    @endforeach
 
                     @endif
 
@@ -245,13 +245,13 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
                 <span class="user-avatar flex-shrink-0">
 
-                     @if($avatar_url = $user->getAvatarUrl())
+                    @if($avatar_url = $user->getAvatarUrl())
 
-                        <div class="avatar avatar-cover" style="background-image: url('{{$user->getAvatarUrl()}}')"></div>
+                    <div class="avatar avatar-cover" style="background-image: url('{{$user->getAvatarUrl()}}')"></div>
 
                     @else
 
-                        <span class="avatar-text">{{ucfirst($user->getDisplayName()[0])}}</span>
+                    <span class="avatar-text">{{ucfirst($user->getDisplayName()[0])}}</span>
 
                     @endif
 

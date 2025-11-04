@@ -572,8 +572,8 @@ input.form-control {
 }
 @media (max-width: 990px) {
   .bravo-form-login .bravo-recaptcha > div,
-  .bravo-form-register .bravo-recaptcha > div,
-  .bc-form .bravo-recaptcha > div {
+.bravo-form-register .bravo-recaptcha > div,
+.bc-form .bravo-recaptcha > div {
     margin: 0;
   }
 }
@@ -1602,7 +1602,7 @@ Pricing Section
 }
 @media (max-width: 766px) {
   .bravo-reviews .review-form .form-wrapper .row .col-md-8,
-  .bravo-reviews .review-form .form-wrapper .row .col-md-4 {
+.bravo-reviews .review-form .form-wrapper .row .col-md-4 {
     flex: 0 0 100%;
     max-width: 100%;
   }
@@ -2179,7 +2179,7 @@ Pricing Section
 }
 @media (max-width: 460px) {
   .bravo_wrap .page-template-content .bravo-list-tour.carousel_simple .owl-nav .owl-prev,
-  .bravo_wrap .page-template-content .bravo-list-tour.carousel_simple .owl-nav .owl-next {
+.bravo_wrap .page-template-content .bravo-list-tour.carousel_simple .owl-nav .owl-next {
     display: none;
   }
 }
@@ -2358,14 +2358,12 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-featured-item .featured-item .content {
   margin-left: 85px;
+  padding: 15px;
 }
 @media (max-width: 990px) {
   .bravo_wrap .page-template-content .bravo-featured-item .featured-item .content {
     margin-left: 60px;
   }
-}
-.bravo_wrap .page-template-content .bravo-featured-item .featured-item .content {
-  padding: 15px;
 }
 .bravo_wrap .page-template-content .bravo-featured-item .featured-item .content .title {
   font-size: 18px;
@@ -2928,14 +2926,12 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-how-it-works .featured-item .content {
   margin-left: 85px;
+  padding: 18px 15px 15px;
 }
 @media (max-width: 990px) {
   .bravo_wrap .page-template-content .bravo-how-it-works .featured-item .content {
     margin-left: 60px;
   }
-}
-.bravo_wrap .page-template-content .bravo-how-it-works .featured-item .content {
-  padding: 18px 15px 15px;
 }
 .bravo_wrap .page-template-content .bravo-how-it-works .featured-item .content .sub-title {
   font-size: 22px;
@@ -3220,11 +3216,11 @@ Pricing Section
   color: #687882;
   opacity: 0.6;
 }
-.bravo_wrap .page-template-content .bravo-list-space .item-loop .service-review .rate {
-  color: #5191FA;
-}
 .bravo_wrap .page-template-content .bravo-list-space .item-loop .service-review {
   margin: 10px 15px 0;
+}
+.bravo_wrap .page-template-content .bravo-list-space .item-loop .service-review .rate {
+  color: #5191FA;
 }
 .bravo_wrap .page-template-content .bravo-list-space .item-loop .service-review .review {
   margin-left: 30px;
@@ -4046,11 +4042,11 @@ Pricing Section
   position: relative;
   font-size: 16px;
 }
-.bravo_wrap .page-template-content .bravo-list-event .item-loop .service-review .rate {
-  color: #c47a1d;
-}
 .bravo_wrap .page-template-content .bravo-list-event .item-loop .service-review {
   margin: 0 15px 0;
+}
+.bravo_wrap .page-template-content .bravo-list-event .item-loop .service-review .rate {
+  color: #c47a1d;
 }
 .bravo_wrap .page-template-content .bravo-list-event .item-loop .service-review .review {
   margin-left: 30px;
@@ -4481,12 +4477,12 @@ Pricing Section
   color: #687882;
   opacity: 0.6;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .service-review .rate {
-  color: #5191FA;
-}
 .bravo_wrap .page-template-content .bravo-list-service .item-loop .service-review {
   margin: 0 15px 0;
   font-size: 13px;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-loop .service-review .rate {
+  color: #5191FA;
 }
 .bravo_wrap .page-template-content .bravo-list-service .item-loop .service-review .review {
   margin-left: 15px;
@@ -4916,10 +4912,6 @@ Pricing Section
 .bravo_wrap .bravo_form .smart-search:not(.normal-control) .parent_text[readonly], .bravo_wrap .bravo_form .smart-search:not(.normal-control) .form-control[readonly], .bravo_wrap .bravo_form .input-search:not(.normal-control) .parent_text[readonly], .bravo_wrap .bravo_form .input-search:not(.normal-control) .form-control[readonly] {
   cursor: pointer;
 }
-.bravo_wrap .bravo_form .smart-search .bravo-autocomplete.show, .bravo_wrap .bravo_form .input-search .bravo-autocomplete.show {
-  opacity: 1;
-  visibility: visible;
-}
 .bravo_wrap .bravo_form .smart-search .bravo-autocomplete, .bravo_wrap .bravo_form .input-search .bravo-autocomplete {
   opacity: 0;
   visibility: hidden;
@@ -4939,6 +4931,10 @@ Pricing Section
   max-height: 300px;
   overflow-y: auto;
   right: -15px;
+}
+.bravo_wrap .bravo_form .smart-search .bravo-autocomplete.show, .bravo_wrap .bravo_form .input-search .bravo-autocomplete.show {
+  opacity: 1;
+  visibility: visible;
 }
 @media (max-width: 1023px) {
   .bravo_wrap .bravo_form .smart-search .bravo-autocomplete, .bravo_wrap .bravo_form .input-search .bravo-autocomplete {
@@ -5142,11 +5138,11 @@ Pricing Section
   color: #687882;
   opacity: 0.6;
 }
-.bravo_wrap .bravo-list-hotel .item-loop .service-review .rate {
-  color: #5191FA;
-}
 .bravo_wrap .bravo-list-hotel .item-loop .service-review {
   margin: 10px 15px 0;
+}
+.bravo_wrap .bravo-list-hotel .item-loop .service-review .rate {
+  color: #5191FA;
 }
 .bravo_wrap .bravo-list-hotel .item-loop .service-review .review {
   margin-left: 30px;
@@ -5400,11 +5396,12 @@ Pricing Section
 .bravo_wrap .bravo-list-hotel .item-loop-list .thumb-image .service-wishlist.active i {
   color: #ff0000;
 }
-.bravo_wrap .bravo-list-hotel .item-loop-list .service-review .rate {
-  color: #5191FA;
-}
 .bravo_wrap .bravo-list-hotel .item-loop-list .service-review {
   padding: 10px 0px 0;
+  display: none;
+}
+.bravo_wrap .bravo-list-hotel .item-loop-list .service-review .rate {
+  color: #5191FA;
 }
 .bravo_wrap .bravo-list-hotel .item-loop-list .service-review .review {
   margin-left: 30px;
@@ -5420,9 +5417,6 @@ Pricing Section
   border-radius: 50%;
   left: -18px;
   top: 8px;
-}
-.bravo_wrap .bravo-list-hotel .item-loop-list .service-review {
-  display: none;
 }
 @media (max-width: 766px) {
   .bravo_wrap .bravo-list-hotel .item-loop-list .service-review {
@@ -5770,7 +5764,7 @@ Pricing Section
 }
 @media (max-width: 1023px) {
   .bravo_wrap .select-guests-dropdown,
-  .bravo_wrap .select-seat-type-dropdown {
+.bravo_wrap .select-seat-type-dropdown {
     transform: translate(0px, -1px) !important;
   }
 }
@@ -6749,6 +6743,7 @@ ol {
 }
 .bravo_wrap .bravo_footer .copy-right .context {
   position: relative;
+  padding: 40px 15px;
 }
 .bravo_wrap .bravo_footer .copy-right .context .f-visa {
   position: absolute;
@@ -6762,9 +6757,6 @@ ol {
     margin-top: 10px;
     transform: translate(0);
   }
-}
-.bravo_wrap .bravo_footer .copy-right .context {
-  padding: 40px 15px;
 }
 @media (max-width: 766px) {
   .bravo_wrap .bravo_footer .copy-right .context {
