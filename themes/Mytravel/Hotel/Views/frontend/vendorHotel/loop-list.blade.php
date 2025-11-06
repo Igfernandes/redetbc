@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\URL;
         <div class="col-md-3">
             @if($row->is_featured == "1")
                 <div class="featured">
-                    {{__("Featured")}}
+                    {{__("Apresentou")}}
                 </div>
             @endif
             <div class="thumb-image">
@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\URL;
             <div class="location">
                 @if(!empty($row->location->name))
                     <i class="icofont-paper-plane"></i>
-                    {{__("Location")}}: <span>{{$row->location->name ?? ''}}</span>
+                    {{__("Localização")}}: <span>{{$row->location->name ?? ''}}</span>
                 @endif
             </div>
             <div class="location">
@@ -47,26 +47,26 @@ use Illuminate\Support\Facades\URL;
             </div>
             <div class="location">
                 <i class="icofont-wall-clock"></i>
-                {{__("Last Updated")}}: <span>{{ display_datetime($row->updated_at ?? $row->created_at) }}</span>
+                {{__("Última atualização")}}: <span>{{ display_datetime($row->updated_at ?? $row->created_at) }}</span>
             </div>
             <div class="control-action">
                 @if(!empty($recovery))
                     <a
                             href="{{  Url::signedRoute("hotel.vendor.restore",[$row->id]) }}"
                             class="btn btn-recovery btn-primary"
-                            data-confirm="{{__('"Do you want to recovery?"')}}"
-                    >{{__("Recovery")}}</a>
+                            data-confirm="{{__('"Você quer recuperar?"')}}"
+                    >{{__("Recuperação")}}</a>
                     @if(Auth::user()->hasPermission('hotel_delete'))
                         <a
                                 href="{{  Url::signedRoute("hotel.vendor.delete",['id'=>$row->id,'permanently_delete'=>1]) }}"
                                 class="btn btn-danger"
                                 data-confirm="{{__('"Do you want to permanently delete?"')}}"
-                        >{{__("Del")}}</a>
+                        >{{__("Excluir")}}</a>
                     @endif
                 @else
-                    <a href="{{$row->getDetailUrl()}}" target="_blank" class="btn btn-info">{{__("View")}}</a>
+                    <a href="{{$row->getDetailUrl()}}" target="_blank" class="btn btn-info">{{__("Visualizar")}}</a>
                     @if(Auth::user()->hasPermission('hotel_update'))
-                        <a href="{{ route("hotel.vendor.edit",[$row->id]) }}" class="btn btn-warning">{{__("Edit")}}</a>
+                        <a href="{{ route("hotel.vendor.edit",[$row->id]) }}" class="btn btn-warning">{{__("Editar")}}</a>
                     @endif
                     @if(Auth::user()->hasPermission('hotel_create'))
                         <a
@@ -79,17 +79,17 @@ use Illuminate\Support\Facades\URL;
                                 href="{{ Url::signedRoute("hotel.vendor.delete",[$row->id]) }}"
                                 class="btn btn-danger"
                                 data-confirm="{{__('"Do you want to delete?"')}}"
-                        >{{__("Del")}}</a>
+                        >{{__("Excluir")}}</a>
                     @endif
                     @if($row->status == 'publish')
                         <a
                                 href="{{ Url::signedRoute("hotel.vendor.bulk_edit",[$row->id,'action' => "make-hide"]) }}" class="btn btn-secondary"
-                        >{{__("Make hide")}}</a>
+                        >{{__("Faça esconder")}}</a>
                     @endif
                     @if($row->status == 'draft')
                         <a
                                 href="{{ Url::signedRoute("hotel.vendor.bulk_edit",[$row->id,'action' => "make-publish"]) }}" class="btn btn-success"
-                        >{{__("Make publish")}}</a>
+                        >{{__("Faça a publicação")}}</a>
                     @endif
                 @endif
             </div>

@@ -43,7 +43,7 @@ class ProfileController extends FrontendController
         $data['page_title'] = __(':name - reviews from guests',['name'=>$user->getDisplayName()]);
         $data['breadcrumbs'] = [
             ['name'=>$user->getDisplayName(),'url'=>route('user.profile',['id'=>$user->user_name ?? $user->id])],
-            ['name'=>__('Reviews from guests'),'url'=>''],
+            ['name'=>__('Comentários dos hóspedes'),'url'=>''],
         ];
         $this->registerCss('dist/frontend/module/user/css/profile.css');
         return view('User::frontend.profile.all-reviews',$data);

@@ -4,7 +4,7 @@
         <div class="left">
             <div class="g-price">
                 <div class="prefix">
-                    <span class="fr_text">{{__("from")}}</span>
+                    <span class="fr_text">{{__("de")}}</span>
                 </div>
                 <div class="price">
                     <span class="onsale">{{ $row->display_sale_price }}</span>
@@ -46,7 +46,7 @@
             @endif
         </div>
         <div class="right">
-            <a class="btn btn-primary" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contact Now")}}</a>
+            <a class="btn btn-primary" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contacte-nos agora")}}</a>
         </div>
     </div>
 </div>

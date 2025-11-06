@@ -79,7 +79,7 @@ class PopupController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Recovery Popup Management")
+            'page_title'        => __("Recuperação Popup Management")
         ];
         return view('Popup::admin.index', $data);
     }
@@ -127,11 +127,11 @@ class PopupController extends AdminController
                     'url'  => route('popup.admin.index')
                 ],
                 [
-                    'name'  => __('Edit Popup'),
+                    'name'  => __('Editar Popup'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Editar: :name", ['name' => $row->title])
+            'page_title'        => __("Editarar: :name", ['name' => $row->title])
         ];
         return view('Popup::admin.detail', $data);
     }

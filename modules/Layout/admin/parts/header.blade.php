@@ -271,13 +271,13 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                <a class="dropdown-item" href="{{route('user.admin.detail',['id'=>$user->id])}}">{{__('Edit Profile')}}</a>
+                <a class="dropdown-item" href="{{route('user.admin.detail',['id'=>$user->id])}}">{{__('Editar Profile')}}</a>
 
                 <a class="dropdown-item" href="{{route('user.admin.password',['id'=>$user->id])}}">{{__('Change Password')}}</a>
 
                 <div class="dropdown-divider"></div>
 
-                <h6 class="dropdown-header">{{__("Vendor Dashboard")}}</h6>
+                <h6 class="dropdown-header">{{__("Fornecedor Dashboard")}}</h6>
 
                 <a href="{{route('vendor.dashboard')}}" class="dropdown-item">{{__("Dashboard")}}</a>
 

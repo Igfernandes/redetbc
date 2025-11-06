@@ -159,7 +159,7 @@
                                             </a>
                                             <p>
                                                 <a target="_blank" href="{{$service->getDetailUrl()}}">
-                                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i> {{ __("View :name",["name"=>$service->getModelName() ])}}
+                                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i> {{ __("Visualizar :name",["name"=>$service->getModelName() ])}}
                                                 </a>
                                             </p>
                                         @else

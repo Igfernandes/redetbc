@@ -67,7 +67,7 @@
                             </div>
                             @if(is_default_lang())
                             <div class="form-group form-group-image">
-                                <label class="control-label">{{__("Featured Image")}}</label>
+                                <label class="control-label">{{__("Apresentou Image")}}</label>
                                 {!! \Modules\Media\Helpers\FileHelper::fieldUpload('news_page_list_seo_image', $settings['news_page_list_seo_image'] ?? "" ) !!}
                             </div>
                             @endif
@@ -149,9 +149,9 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <select class="form-control" name="news_sidebar[{{$key}}][type]">
-                                                    <option @if(!empty($item->type) && $item->type=='search_form') selected @endif value="search_form">{{__("Search Form")}}</option>
+                                                    <option @if(!empty($item->type) && $item->type=='search_form') selected @endif value="search_form">{{__("Procurar Form")}}</option>
                                                     <option @if(!empty($item->type) && $item->type=='recent_news') selected @endif value="recent_news">{{__("Recent News")}}</option>
-                                                    <option @if(!empty($item->type) && $item->type=='featured_listings') selected @endif value="featured_listings">{{__("Featured Listings")}}</option>
+                                                    <option @if(!empty($item->type) && $item->type=='featured_listings') selected @endif value="featured_listings">{{__("Apresentou Listings")}}</option>
                                                     <option @if(!empty($item->type) && $item->type=='category') selected @endif value="category">{{__("Category")}}</option>
                                                     <option @if(!empty($item->type) && $item->type=='tag') selected @endif value="tag">{{__("Tags")}}</option>
                                                     <option @if(!empty($item->type) && $item->type=='content_text') selected @endif value="content_text">{{__("Content Text")}}</option>
@@ -177,7 +177,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <select class="form-control" __name__="news_sidebar[__number__][type]">
-                                                <option value="search_form">{{__("Search Form")}}</option>
+                                                <option value="search_form">{{__("Procurar Form")}}</option>
                                                 <option value="recent_news">{{__("Recent News")}}</option>
                                                 <option value="category">{{__("Category")}}</option>
                                                 <option value="tag">{{__("Tags")}}</option>
@@ -200,12 +200,12 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Vendor News")}}</h3>
+        <h3 class="form-group-title">{{__("Fornecedor News")}}</h3>
         <p class="form-group-desc">{{__('Config for vendor')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Vendor News")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Fornecedor News")}}</strong></div>
             <div class="panel-body">
                 <div>
                     <label ><input type="checkbox" name="news_vendor_need_approve" value="1" @if(setting_item('news_vendor_need_approve')) checked @endif> {{__("Admin need approve news to be publish")}}</label>

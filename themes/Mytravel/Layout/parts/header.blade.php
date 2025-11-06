@@ -172,7 +172,7 @@ if (isset($_GET['religion'])) {
 
                                     @if(Auth::user()->hasPermission('dashboard_vendor_access'))
 
-                                    <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}</a></li>
+                                    <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
 
                                     @endif
 
@@ -284,7 +284,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="{{route('vendor.dashboard')}}">
 
-                                <i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}
+                                <i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}
 
                             </a>
 

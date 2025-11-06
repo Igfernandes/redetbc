@@ -16,7 +16,7 @@ if(!$user->hasPermission('space_create')) return;
                     </div>
                 </div>
             @else
-                <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.services',['id'=>$user->user_name ?? $user->id,'type'=>'space'])}}">{{__('View all (:total)',['total'=>$services->total()])}}</a></div>
+                <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.services',['id'=>$user->user_name ?? $user->id,'type'=>'space'])}}">{{__('Ver tudo (:total)',['total'=>$services->total()])}}</a></div>
             @endif
         </div>
     </div>

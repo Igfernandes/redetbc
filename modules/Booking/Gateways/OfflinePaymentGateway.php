@@ -57,7 +57,7 @@ class OfflinePaymentGateway extends BaseGateway
             [
                 'type'  => 'input',
                 'id'    => 'name',
-                'label' => __('Custom Name'),
+                'label' => __('Nome personalizado'),
                 'std'   => __("Pagamento off-line"),
                 'multi_lang' => "1"
             ],

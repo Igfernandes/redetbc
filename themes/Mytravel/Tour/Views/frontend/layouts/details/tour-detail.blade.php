@@ -10,7 +10,7 @@
                 @endif
                 @if($row->map_lat && $row->map_lng)
                     <a target="_blank" href="https://www.google.com/maps/place/{{$row->map_lat}},{{$row->map_lng}}/@<?php echo $row->map_lat ?>,{{$row->map_lng}},{{!empty($row->map_zoom) ? $row->map_zoom : 12}}z" class="ml-1 d-block d-md-inline">
-                        - {{__('View on map')}}
+                        - {{__('Ver no mapa')}}
                     </a>
                 @endif
             </div>
@@ -84,13 +84,13 @@
         @if($row->duration)
             <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2 border-0">
                 <i class="flaticon-social text-primary font-size-22 mr-2 d-block"></i>
-                <div class="ml-1 text-gray-1">{{ __("Max People") }} : {{ $row->max_people }}</div>
+                <div class="ml-1 text-gray-1">{{ __("Máximo de pessoas") }} : {{ $row->max_people }}</div>
             </li>
         @endif
         @if($row->wifi_available)
             <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2 border-0">
                 <i class="flaticon-wifi-signal text-primary font-size-22 mr-2 d-block"></i>
-                <div class="ml-1 text-gray-1">{{ __("Wifi Available") }}</div>
+                <div class="ml-1 text-gray-1">{{ __("Wi-Fi disponível") }}</div>
             </li>
         @endif
         @if($row->date_form_to)
@@ -102,20 +102,20 @@
         @if($row->min_age)
             <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2 border-0">
                 <i class="flaticon-user-2 text-primary font-size-22 mr-2 d-block"></i>
-                <div class="ml-1 text-gray-1">{{ __('Min Age:') }} {{ $row->min_age }}</div>
+                <div class="ml-1 text-gray-1">{{ __('Idade mínima:') }} {{ $row->min_age }}</div>
             </li>
         @endif
         @if($row->pickup)
             <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2 border-0">
                 <i class="flaticon-pin text-primary font-size-22 mr-2 d-block"></i>
-                <div class="ml-1 text-gray-1">{{ __("Pickup:") }} {{ __("$row->pickup") }}</div>
+                <div class="ml-1 text-gray-1">{{ __("Escolher:") }} {{ __("$row->pickup") }}</div>
             </li>
         @endif
     </ul>
 </div>
 <div class="position-relative">
     <h5 class="font-size-21 font-weight-bold text-dark mb-3">
-        {{ __("Description") }}
+        {{ __("Descrição") }}
     </h5>
     <div class="description">
         <?php echo $translation->content ?>
@@ -127,7 +127,7 @@
 @if($row->map_lat && $row->map_lng)
     <div class="border-bottom py-4">
         <h5 class="font-size-21 font-weight-bold text-dark mb-4">
-            {{ __("Location") }}
+            {{ __("Localização") }}
         </h5>
         <div class="location-map">
             <div id="map_content"></div>

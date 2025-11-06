@@ -75,7 +75,7 @@
 
                 <ul>
                     <li><strong>{{__("Payout ID:")}}</strong> <strong>#{{$payout_request->id}}</strong></li>
-                    <li><strong>{{__('Vendor: ')}}</strong> <strong><a target="_blank" href="{{route('user.profile',['id'=>$payout_request->vendor_id])}}">{{$payout_request->vendor->getDisplayName()}}</a></strong></li>
+                    <li><strong>{{__('Fornecedor: ')}}</strong> <strong><a target="_blank" href="{{route('user.profile',['id'=>$payout_request->vendor_id])}}">{{$payout_request->vendor->getDisplayName()}}</a></strong></li>
                     <li><strong>{{__('Amount: ')}}</strong> <strong>{{format_money($payout_request->amount)}}</strong></li>
                     <li><strong>{{__('Payout method: ')}}</strong>
                         {{__(':name to :info',['name'=>$payout_request->payout_method_name,'info'=>$payout_request->account_info])}}

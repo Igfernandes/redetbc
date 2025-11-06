@@ -33,7 +33,7 @@
                                 </div>
                                 <a class="d-inline-block" href="{{ $item['link_map'] }}">
                                     <div class="border-bottom border-primary font-weight-normal font-size-14 text-primary">
-                                        {{ __("View On Map") }}
+                                        {{ __("Visualizar On Map") }}
                                     </div>
                                 </a>
                             </div>

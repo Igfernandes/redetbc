@@ -17,7 +17,7 @@ $services = \Modules\Hotel\Models\Hotel::getVendorServicesQuery($user->id)->orde
                     </div>
                 </div>
             @else
-                <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.services',['id'=>$user->id,'type'=>'hotel'])}}">{{__('View all (:total)',['total'=>$services->total()])}}</a></div>
+                <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.services',['id'=>$user->id,'type'=>'hotel'])}}">{{__('Ver tudo (:total)',['total'=>$services->total()])}}</a></div>
             @endif
         </div>
     </div>

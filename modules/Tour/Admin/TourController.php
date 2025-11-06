@@ -113,7 +113,7 @@ class TourController extends AdminController
             ])->paginate(20),
             'tour_categories'    => $this->tourCategoryClass::where('status', 'publish')->get()->toTree(),
             'tour_manage_others' => $this->hasPermission('tour_manage_others'),
-            'page_title'         => __("Recovery Tour Management"),
+            'page_title'         => __("Recuperação Tour Management"),
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
@@ -185,11 +185,11 @@ class TourController extends AdminController
                     'url'  => route('tour.admin.index')
                 ],
                 [
-                    'name'  => __('Edit Tour'),
+                    'name'  => __('Editar Tour'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__('Edit Tour')
+            'page_title'=>__('Editar Tour')
         ];
         return view('Tour::admin.detail', $data);
     }

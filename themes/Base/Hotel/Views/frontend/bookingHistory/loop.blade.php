@@ -44,7 +44,7 @@
         </a>
         @if($booking->status == 'unpaid')
             <a href="{{route('booking.checkout',['code'=>$booking->code])}}" class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1">
-                {{__("Pay now")}}
+                {{__("Pagar agora")}}
             </a>
         @endif
     </td>

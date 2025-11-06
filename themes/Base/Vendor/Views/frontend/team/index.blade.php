@@ -3,7 +3,7 @@
 @section('content')
 
     <h2 class="title-bar">
-        {{__("Vendor Teams")}}
+        {{__("Fornecedor Teams")}}
     </h2>
     @include('admin.message')
 
@@ -56,7 +56,7 @@
                                 {{__("Actions")}}
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{route('vendor.team.edit',['vendorTeam'=>$vendorTeam])}}">{{__("Edit")}}</a>
+                                <a class="dropdown-item" href="{{route('vendor.team.edit',['vendorTeam'=>$vendorTeam])}}">{{__("Editar")}}</a>
                                 @if($vendorTeam->status == Modules\Vendor\Models\VendorTeam::STATUS_PENDING)
                                     <a class="dropdown-item" href="{{route('vendor.team.re-send-request',['vendorTeam'=>$vendorTeam])}}">{{__("Send email")}}</a>
                                 @endif

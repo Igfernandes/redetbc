@@ -50,17 +50,17 @@
                             </div><!-- RELIGION -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __("Religion")  }}</label>
+                                    <label>{{ __("Religião")  }}</label>
                                     <select name="religion" class="form-control">
                                         <option value="">{{ __("Select religion") }}</option>
                                         <option value="CATHOLIC" {{ old('religion', $booking_data->religion ?? '') == 'CATHOLIC' ? 'selected' : '' }}>
-                                            {{ __("Catholic") }}
+                                            {{ __("Católico") }}
                                         </option>
                                         <option value="EVANGELICAL" {{ old('religion', $booking_data->religion ?? '') == 'EVANGELICAL' ? 'selected' : '' }}>
-                                            {{ __("Evangelical") }}
+                                            {{ __("Evangélico") }}
                                         </option>
                                         <option value="BOTH" {{ old('religion', $booking_data->religion ?? '') == 'BOTH' ? 'selected' : '' }}>
-                                            {{ __("Both") }}
+                                            {{ __("Ambos") }}
                                         </option>
                                     </select>
                                     <i class="fa fa-church input-icon"></i>
@@ -85,8 +85,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __('Phone Number')}}</label>
-                                    <input type="text" value="{{old('phone',$row->phone)}}" placeholder="{{ __('Phone')}}" name="phone" class="form-control" required>
+                                    <label>{{ __('Telefone Number')}}</label>
+                                    <input type="text" value="{{old('phone',$row->phone)}}" placeholder="{{ __('Telefone')}}" name="phone" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">

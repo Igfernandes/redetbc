@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Edit post: ').$row->title : __('Add new Post')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Editar post: ').$row->title : __('Add new Post')}}</h1>
                     @if($row->slug)
                         <p class="item-url-demo">{{__("Link permanente")}}: {{ url( (request()->query('lang') ? request()->query('lang').'/' : '').config('news.news_route_prefix'))  }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                         </p>
@@ -13,7 +13,7 @@
                 </div>
                 <div class="">
                     @if($row->slug)
-                        <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("View Post")}}</a>
+                        <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("Visualizar Post")}}</a>
                     @endif
                 </div>
             </div>

@@ -41,12 +41,12 @@
                     <div class="form-group">
                         <div class="form-controls">
                             <div class="form-group">
-                                <label> <input type="checkbox" @if($settings['vendor_enable'] ?? '' == 1) checked @endif name="vendor_enable" value="1"> {{__("Vendor Enable?")}}</label>
+                                <label> <input type="checkbox" @if($settings['vendor_enable'] ?? '' == 1) checked @endif name="vendor_enable" value="1"> {{__("Fornecedor Enable?")}}</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-group" data-condition="vendor_enable:is(1)">
-                        <label>{{__('Vendor Commission Type')}}</label>
+                        <label>{{__('Fornecedor Commission Type')}}</label>
                         <div class="form-controls">
                             <select name="vendor_commission_type" class="form-control">
                                 <option value="percent" {{($settings['vendor_commission_type'] ?? '') == 'percent' ? 'selected' : ''  }}>{{__('Percent')}}</option>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="form-group" data-condition="vendor_enable:is(1)">
-                        <label>{{__('Vendor commission value')}}</label>
+                        <label>{{__('Fornecedor commission value')}}</label>
                         <div class="form-controls">
                             <input type="text" class="form-control" name="vendor_commission_amount" value="{{!empty($settings['vendor_commission_amount'])?$settings['vendor_commission_amount']:"0" }}">
                         </div>
@@ -74,7 +74,7 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__('Vendor Register')}}</h3>
+        <h3 class="form-group-title">{{__('Fornecedor Register')}}</h3>
     </div>
     <div class="col-sm-8">
         <div class="panel">
@@ -83,12 +83,12 @@
                     <div class="form-group">
                         <div class="form-controls">
                             <div class="form-group">
-                                <label> <input type="checkbox" @if($settings['vendor_auto_approved'] ?? '' == 1) checked @endif name="vendor_auto_approved" value="1"> {{__("Vendor Auto Approved?")}}</label>
+                                <label> <input type="checkbox" @if($settings['vendor_auto_approved'] ?? '' == 1) checked @endif name="vendor_auto_approved" value="1"> {{__("Fornecedor Auto Approved?")}}</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>{{__('Vendor Role')}}</label>
+                        <label>{{__('Fornecedor Role')}}</label>
                         <div class="form-controls">
                             <select name="vendor_role" class="form-control">
                                 @foreach(\Modules\User\Models\Role::all() as $role)
@@ -107,7 +107,7 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__('Vendor Profile')}}</h3>
+        <h3 class="form-group-title">{{__('Fornecedor Profile')}}</h3>
     </div>
     <div class="col-sm-8">
         <div class="panel">
@@ -193,7 +193,7 @@
                                                 <div class="col-md-6">
                                                     <label >{{__("Nome")}}</label>
                                                     <input type="text" name="vendor_payout_methods[{{$key}}][name]" class="form-control" value="{{$item->name}}">
-                                                    <label >{{__("Description")}}</label>
+                                                    <label >{{__("Descrição")}}</label>
                                                     <textarea  name="vendor_payout_methods[{{$key}}][desc]" class="form-control" cols="30" rows="4">{{$item->desc}}</textarea>
                                                     <label >{{__("Minimum to pay")}}</label>
                                                     <input type="text" name="vendor_payout_methods[{{$key}}][min]" class="form-control" value="{{$item->min ?? ''}}">
@@ -221,7 +221,7 @@
                                             <div class="col-md-6">
                                                 <label >{{__("Nome")}}</label>
                                                 <input type="text" __name__="vendor_payout_methods[__number__][name]" class="form-control" value="">
-                                                <label >{{__("Description")}}</label>
+                                                <label >{{__("Descrição")}}</label>
                                                 <textarea  __name__="vendor_payout_methods[__number__][desc]" class="form-control" cols="30" rows="4"></textarea>
                                                 <label >{{__("Minimum to pay")}}</label>
                                                 <input type="text" __name__="vendor_payout_methods[__number__][min]" class="form-control" value="">

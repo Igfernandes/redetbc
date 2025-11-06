@@ -2,7 +2,7 @@
     <div class="bravo-list-tour-related product-card-carousel-block product-card-carousel-v5">
         <div class="space-1">
             <div class="w-md-80 w-lg-50 text-center mx-md-auto mt-3">
-                <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">{{ __("You might also like...") }}</h2>
+                <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">{{ __("Você também pode gostar...") }}</h2>
             </div>
             <div class="travel-slick-carousel u-slick u-slick--equal-height u-slick--gutters-3"
                  data-slides-show="4"
@@ -43,7 +43,7 @@
                                     <img class="card-img-top" src="{{$item->image_url}}" alt="{!! clean($translation->title) !!}">
                                 </a>
                                 <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                    <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist {{$item->isWishList()}}" data-id="{{$item->id}}" data-type="{{$item->type}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __("Save for later") }}">
+                                    <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist {{$item->isWishList()}}" data-id="{{$item->id}}" data-type="{{$item->type}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __("Salvar para mais tarde"") }}">
                                         <span class="flaticon-valentine-heart font-size-20"></span>
                                     </button>
                                 </div>
@@ -82,7 +82,7 @@
                                     </div>
                                 @endif
                                 <div class="mb-0">
-                                    <span class="mr-1 font-size-14 text-gray-1">{{ __("From") }}</span>
+                                    <span class="mr-1 font-size-14 text-gray-1">{{ __("De") }}</span>
                                     <span class="font-weight-bold">{{ $item->display_sale_price }}</span>
                                 </div>
                             </div>

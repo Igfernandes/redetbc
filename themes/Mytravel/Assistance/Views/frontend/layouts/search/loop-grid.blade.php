@@ -18,7 +18,7 @@
     </div>
     @if($row->is_featured == "1")
         <div class="featured">
-            {{ __("Featured") }}
+            {{ __("Apresentou") }}
         </div>
     @endif
     <div class="location">
@@ -90,7 +90,7 @@
     <div class="info">
         <div class="g-price">
             <div class="prefix">
-                <span class="fr_text">{{__("from")}}</span>
+                <span class="fr_text">{{__("de")}}</span>
             </div>
             <div class="price">
                 <span class="text-price">{{ format_money($row->min_price) }}</span>

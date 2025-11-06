@@ -47,7 +47,7 @@
                                 <ul class="dropdown-menu text-left">
 
                                     @if(Auth::user()->hasPermission('dashboard_vendor_access'))
-                                        <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}</a></li>
+                                        <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
                                     @endif
                                     <li class="@if(Auth::user()->hasPermission('dashboard_vendor_access')) menu-hr @endif">
                                         <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
@@ -98,7 +98,7 @@
                         </a>
                     </li>
                     @if(Auth::user()->hasPermission('dashboard_vendor_access'))
-                        <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}</a></li>
+                        <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
                     @endif
                     @if(Auth::user()->hasPermission('dashboard_access'))
                         <li>

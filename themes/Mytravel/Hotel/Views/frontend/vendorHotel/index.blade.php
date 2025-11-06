@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar">
-        {{!empty($recovery) ?__('Recovery Hotels') : __("Manage Hotels")}}
+        {{!empty($recovery) ?__('Recuperação Hotels') : __("Manage Hotels")}}
         @if(Auth::user()->hasPermission('hotel_create') && empty($recovery))
             <a href="{{ route("hotel.vendor.create") }}" class="btn-change-password">{{__("Add Hotel")}}</a>
         @endif

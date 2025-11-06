@@ -45,7 +45,7 @@
                                 @if($row->map_lat && $row->map_lng)
                                     <small class="px-1 font-size-15"> - </small>
                                     <a target="_blank" href="https://www.google.com/maps/place/{{$row->map_lat}},{{$row->map_lng}}/@<?php echo $row->map_lat ?>,{{$row->map_lng}},{{!empty($row->map_zoom) ? $row->map_zoom : 12}}z">
-                                        <span class="text-primary font-size-14">{{__('View on map')}}</span>
+                                        <span class="text-primary font-size-14">{{__('Ver no mapa')}}</span>
                                     </a>
                                 @endif
                             @endif
@@ -102,7 +102,7 @@
                     </div>
                     @endif
                     <div class="mb-0">
-                        <span class="mr-1 font-size-14 text-gray-1">{{__("from")}}</span>
+                        <span class="mr-1 font-size-14 text-gray-1">{{__("de")}}</span>
                         <span class="font-weight-bold">{{ $row->display_price }}</span>
                         <span class="font-size-14 text-gray-1"> / {{__('night')}}</span>
                     </div>

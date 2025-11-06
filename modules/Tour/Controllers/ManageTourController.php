@@ -92,7 +92,7 @@ class ManageTourController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'  => __("Recovery Tours"),
+            'page_title'  => __("Recuperação Tours"),
         ];
         return view('Tour::frontend.manageTour.index', $data);
     }
@@ -163,7 +163,7 @@ class ManageTourController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'     => __("Edit Tours"),
+            'page_title'     => __("Editar Tours"),
         ];
         return view('Tour::frontend.manageTour.detail', $data);
     }

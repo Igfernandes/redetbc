@@ -72,7 +72,7 @@ class AssistanceController extends Controller
                 "markers" => $markers,
                 'fragments'=>[
                     '.ajax-search-result'=>view('Assistance::frontend.ajax.search-result'.($for_map ? '-map' : ''), $data)->render(),
-                    '.result-count'=>$list->total() ? ($list->total() > 1 ? __(":count serviços encontradosd",['count'=>$list->total()]) : __(":count assistência encontrada",['count'=>$list->total()])) : '',
+                    '.result-count'=>$list->total() ? ($list->total() > 1 ? __(":count serviços encontrados",['count'=>$list->total()]) : __(":count assistência encontrada",['count'=>$list->total()])) : '',
                     '.count-string'=> $list->total() ? __("Mostrando :from - :to of :total serviços",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
                 ],
             ]);

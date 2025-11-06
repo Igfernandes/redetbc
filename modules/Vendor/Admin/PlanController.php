@@ -25,7 +25,7 @@ class PlanController extends AdminController
             'rows'        => $plans->with("author")->paginate(20),
             'breadcrumbs' => [
                 [
-                    'name' => __('Vendor Plans'),
+                    'name' => __('Fornecedor Plans'),
                     'url'  => route('vendor.admin.plan.index')
                 ],
                 [
@@ -59,7 +59,7 @@ class PlanController extends AdminController
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __('Vendor Plans'),
+                    'name' => __('Fornecedor Plans'),
                     'url'  => route('vendor.admin.plan.index')
                 ],
                 [
@@ -93,18 +93,18 @@ class PlanController extends AdminController
                     $meta->auto_publish = $service['auto_publish'] ?? 0;
                     $meta->save();
                 }
-                return redirect(route('vendor.admin.plan.index'))->with('success', __('Vendor plan updated'));
+                return redirect(route('vendor.admin.plan.index'))->with('success', __('Fornecedor plan updated'));
             }
         }
         $data = [
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __('Vendor Plans'),
+                    'name' => __('Fornecedor Plans'),
                     'url'  => route('vendor.admin.plan.index')
                 ],
                 [
-                    'name'  => __('Edit Page'),
+                    'name'  => __('Editar Page'),
                     'class' => 'active'
                 ],
             ]

@@ -90,7 +90,7 @@ class PageController extends AdminController
                     'url' => route('page.admin.index')
                 ],
                 [
-                    'name' => __('Edit Page'),
+                    'name' => __('Editar Page'),
                     'class' => 'active'
                 ],
             ],

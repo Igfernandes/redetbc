@@ -126,7 +126,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     [
                         'url'   => route('space.vendor.recovery'),
-                        'title'      => __("Recovery"),
+                        'title'      => __("Recuperação"),
                         'permission' => 'space_create',
                     ],
                 ]

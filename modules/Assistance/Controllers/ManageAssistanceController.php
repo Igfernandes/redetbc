@@ -257,7 +257,7 @@ class ManageAssistanceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Editar Serviços"),
+            'page_title'         => __("Editarar Serviços"),
         ];
         return view('Assistance::frontend.manageAssistance.detail', $data);
     }

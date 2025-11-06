@@ -16,7 +16,7 @@ if(!$user->hasPermission('assistance_create')) return;
                     </div>
                 </div>
             @else
-                <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.services',['id'=>$user->user_name ?? $user->id,'type'=>'assistance'])}}">{{__('View all (:total)',['total'=>$services->total()])}}</a></div>
+                <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.services',['id'=>$user->user_name ?? $user->id,'type'=>'assistance'])}}">{{__('Ver tudo (:total)',['total'=>$services->total()])}}</a></div>
             @endif
         </div>
     </div>

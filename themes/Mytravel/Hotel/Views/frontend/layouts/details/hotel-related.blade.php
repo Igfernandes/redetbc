@@ -3,7 +3,7 @@
     <div class="product-card-block product-card-v3">
         <div class="space-1">
             <div class="w-md-80 w-lg-50 text-center mx-md-auto pb-4">
-                <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">{{__("You might also like...")}}</h2>
+                <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">{{__("Você também pode gostar...")}}</h2>
             </div>
             <div class="travel-slick-carousel u-slick u-slick--equal-height u-slick--gutters-3"
                  data-slides-show="4"
@@ -99,7 +99,7 @@
                                     </div>
                                 @endif
                                 <div class="mb-0">
-                                    <span class="mr-1 font-size-14 text-gray-1">{{__("From")}}</span>
+                                    <span class="mr-1 font-size-14 text-gray-1">{{__("De")}}</span>
                                     <span class="font-weight-bold">{{ $item->display_price }}</span>
                                     <span class="font-size-14 text-gray-1">{{__("/night")}}</span>
                                 </div>

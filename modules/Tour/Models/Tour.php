@@ -141,7 +141,7 @@ class Tour extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Search for Tours");
+        $meta['seo_title'] = __("Procurar Tours");
         if (!empty($title = setting_item_with_lang("tour_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("tour_page_search_title"))) {

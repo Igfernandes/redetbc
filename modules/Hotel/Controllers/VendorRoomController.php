@@ -162,11 +162,11 @@ class VendorRoomController extends FrontendController
                     'url'  => route("hotel.vendor.room.index",['hotel_id'=>$this->currentHotel->id])
                 ],
                 [
-                    'name' => __('Edit room: :name',['name'=>$row->title]),
+                    'name' => __('Editar room: :name',['name'=>$row->title]),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Editar: :name",['name'=>$row->title]),
+            'page_title'=>__("Editarar: :name",['name'=>$row->title]),
             'hotel'=>$this->currentHotel
         ];
         return view('Hotel::frontend.vendorHotel.room.detail', $data);

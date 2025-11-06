@@ -10,19 +10,19 @@
     <div class="text-center mb-1"><span class="role-name  badge badge-primary">{{$user->role_name}}</span></div>
     <h3 class="display-name">{{$user->getDisplayName()}}
         @if($user->is_verified)
-            <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-vefified-1.svg')}}" title="{{__("Verified")}}" alt="ico-vefified-1">
+            <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-vefified-1.svg')}}" title="{{__("Verificado")}}" alt="ico-vefified-1">
         @else
-            <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-not-vefified-1.svg')}}" title="{{__("Not verified")}}" alt="ico-vefified-1">
+            <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-not-vefified-1.svg')}}" title="{{__("Não verificado")}}" alt="ico-vefified-1">
         @endif
     </h3>
 
-    <p class="profile-since">{{ __("Member Since :time",["time"=> date("M Y",strtotime($user->created_at))]) }}</p>
+    <p class="profile-since">{{ __("Membro desde :time",["time"=> date("M Y",strtotime($user->created_at))]) }}</p>
 
     @if($user->hasPermission('dashboard_vendor_access'))<hr>
     <ul class="meta-info style2">
         <li class="is_vendor">
             <i class="icon ion-ios-ribbon"></i>
-            {{__('Vendor')}}
+            {{__('Fornecedor')}}
         </li>
         <li class="review_count">
             <i class="icon ion-ios-thumbs-up"></i>
@@ -46,7 +46,7 @@
 
         @if(setting_item('vendor_show_phone'))
         <li class="user_phone">
-            <span class="label">{{__('Phone:')}}</span>
+            <span class="label">{{__('Telefone:')}}</span>
             <span class="val">{{$user->phone}}</span>
         </li>
         @endif
@@ -54,7 +54,7 @@
     @endif
     @if(empty(setting_item('user_disable_verification_feature')))
         <hr>
-        <h4 class="summary-title">{{__('Verifications')}}</h4>
+        <h4 class="summary-title">{{__('Verificações')}}</h4>
         <ul class="verification-lists">
             @if(!empty($user->verification_fields))
                 @foreach($user->verification_fields as $field)

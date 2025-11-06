@@ -35,7 +35,7 @@
                         @include('Hotel::admin/hotel/content')
                         @if(is_default_lang())
                             <div class="form-group">
-                                <label>{{__("Featured Image")}}</label>
+                                <label>{{__("Apresentou Image")}}</label>
                                 {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
                             </div>
                         @endif

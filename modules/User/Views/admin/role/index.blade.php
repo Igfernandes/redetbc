@@ -34,7 +34,7 @@
                             <td>{{$row->code}}</td>
                             <td>{{ display_date($row->updated_at)}}</td>
                             <td>
-                                <a href="{{route('user.admin.role.detail',['id' => $row->id])}}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{__("Edit")}}</a>
+                                <a href="{{route('user.admin.role.detail',['id' => $row->id])}}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{__("Editar")}}</a>
                             </td>
                         </tr>
                     @endforeach

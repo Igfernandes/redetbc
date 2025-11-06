@@ -26,7 +26,7 @@
                         @if($row->map_lat && $row->map_lng)
                             <div class="border-bottom py-4 pb-6">
                                 <h5 class="font-size-21 font-weight-bold text-dark mb-4">
-                                    {{ __("Location") }}
+                                    {{ __("Localização") }}
                                 </h5>
                                 <div class="location-map">
                                     <div id="map_content"></div>
@@ -88,11 +88,11 @@
                                 <div class="border-bottom">
                                     @if($row->discount_percent)
                                         <div class="sale-box">
-                                            <div class="ribbon ribbon--red">{{ __("SAVE :text",['text'=>$row->discount_percent]) }}</div>
+                                            <div class="ribbon ribbon--red">{{ __("SALVAR :text",['text'=>$row->discount_percent]) }}</div>
                                         </div>
                                     @endif
                                     <div class="p-4">
-                                        <span class="font-size-14">{{ __("From") }}</span>
+                                        <span class="font-size-14">{{ __("De") }}</span>
                                         <span class="font-size-24 text-gray-6 font-weight-bold ml-1">
                                             <small class="font-size-16 text-decoration-line-through text-danger">
                                                {{ $row->display_sale_price }}

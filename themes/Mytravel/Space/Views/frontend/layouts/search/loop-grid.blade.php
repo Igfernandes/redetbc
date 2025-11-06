@@ -7,7 +7,7 @@
             <img class="card-img-top" src="{{$row->image_url}}" alt="{!! clean($translation->title) !!}">
         </a>
         <div class="position-absolute top-0 right-0 pt-4 pr-3 btn-wishlist">
-            <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __("Save for later") }}">
+            <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __("Salvar para mais tarde"") }}">
                 <span class="flaticon-valentine-heart font-size-20"></span>
             </button>
         </div>
@@ -17,7 +17,7 @@
                     <span class="text-white font-weight-bold font-size-17">{!! clean($translation->title) !!}</span>
                 </a>
                 <div class="text-white my-2">
-                    <small class="mr-1 font-size-14">{{ __("From") }}</small>
+                    <small class="mr-1 font-size-14">{{ __("De") }}</small>
                     <small class="mr-1 font-size-13 text-decoration-line-through">
                         {{ $row->display_sale_price }}
                     </small>
@@ -47,7 +47,7 @@
     </div>
     <div class="position-absolute top-0 left-0 pt-4 pl-3 featured">
         @if($row->is_featured == "1")
-            <span class="badge badge-pill bg-white text-primary px-4 mr-3 py-2 font-size-14 font-weight-normal">{{ __("Featured") }}</span>
+            <span class="badge badge-pill bg-white text-primary px-4 mr-3 py-2 font-size-14 font-weight-normal">{{ __("Apresentou") }}</span>
         @endif
         @if($row->discount_percent)
             <span class="badge badge-pill bg-white px-3  py-2 font-size-14 font-weight-normal " style="color:#c47a1d;">{{$row->discount_percent}}</span>
@@ -86,7 +86,7 @@
         </div>
         <div class="g-price d-none">
             <div class="prefix">
-                <span class="fr_text">{{__("from")}}</span>
+                <span class="fr_text">{{__("de")}}</span>
             </div>
             <div class="price">
                 <span class="onsale">{{ $row->display_sale_price }}</span>
