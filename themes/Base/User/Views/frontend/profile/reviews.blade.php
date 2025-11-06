@@ -15,7 +15,7 @@ $reviews = \Modules\Review\Models\Review::query()->where([
 ?>
 @if($reviews->total())
     <div class="bravo-reviews">
-        <h3>{{__('Reviews from guests')}}</h3>
+        <h3>{{__('Comentários dos hóspedes')}}</h3>
         <div class="review-list">
             @if($reviews)
                 @foreach($reviews as $item)
@@ -61,6 +61,6 @@ $reviews = \Modules\Review\Models\Review::query()->where([
                 @endforeach
             @endif
         </div>
-        <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.reviews',['id'=> $user->user_name ?? $user->id])}}">{{__('View all reviews (:total)',['total'=>$reviews->total()])}}</a></div>
+        <div class="text-center mt30"><a class="btn btn-sm btn-primary" href="{{route('user.profile.reviews',['id'=> $user->user_name ?? $user->id])}}">{{__('Ver todas as avaliações (:total)',['total'=>$reviews->total()])}}</a></div>
     </div>
 @endif

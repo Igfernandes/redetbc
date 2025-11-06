@@ -29,7 +29,7 @@
 				@if($vendor->hasPermission('dashboard_vendor_access') and !$vendor->hasPermission('dashboard_access'))
 					<div class="mt-2">
 						<i class="icofont-info-circle"></i>
-						{{ __("Vendor") }}: <a href="{{route('user.profile',['id'=>$vendor->id])}}" target="_blank">{{$vendor->getDisplayName()}}</a>
+						{{ __("Fornecedor") }}: <a href="{{route('user.profile',['id'=>$vendor->id])}}" target="_blank">{{$vendor->getDisplayName()}}</a>
 					</div>
 				@endif
 			</div>

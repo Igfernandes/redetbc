@@ -117,7 +117,7 @@ class ListLocations extends BaseBlock
                     'default'=>false
                 ]
             ],
-            'category'=>__("Location")
+            'category'=>__("Localização")
         ];
     }
 

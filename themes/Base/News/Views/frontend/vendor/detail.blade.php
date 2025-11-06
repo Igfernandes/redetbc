@@ -5,9 +5,9 @@
         <div class="container-fluid">
 
             <h2 class="title-bar d-flex justify-content-between align-items-center">
-                {{$row->id ? __('Edit post: ').$row->title : __('Add new Post')}}
+                {{$row->id ? __('Editar post: ').$row->title : __('Add new Post')}}
                 @if($row->slug)
-                    <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("View Post")}}</a>
+                    <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("Visualizar Post")}}</a>
                 @endif
             </h2>
             @include('admin.message')

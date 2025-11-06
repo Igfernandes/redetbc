@@ -15,7 +15,7 @@
             @endif
             @if($row->map_lat && $row->map_lng)
                 <a target="_blank" href="https://www.google.com/maps/place/{{$row->map_lat}},{{$row->map_lng}}/@<?php echo $row->map_lat ?>,{{$row->map_lng}},{{!empty($row->map_zoom) ? $row->map_zoom : 12}}z" class="ml-1 d-block d-md-inline">
-                    - {{__('View on map')}}
+                    - {{__('Ver no mapa')}}
                 </a>
             @endif
         </div>
@@ -75,7 +75,7 @@
 @if($translation->content)
     <div class="border-bottom position-relative">
         <h5 class="font-size-21 font-weight-bold text-dark">
-            {{ __("Description") }}
+            {{ __("Descrição") }}
         </h5>
         <div class="description">
             <?php echo $translation->content ?>
@@ -88,7 +88,7 @@
 @if($row->map_lat && $row->map_lng)
     <div class="border-bottom py-4">
         <h5 class="font-size-21 font-weight-bold text-dark mb-4">
-            {{ __("Location") }}
+            {{ __("Localização") }}
         </h5>
         <div class="location-map">
             <div id="map_content"></div>

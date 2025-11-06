@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <h2 class="title-bar">
-            {{!empty($recovery) ?__('Recovery news') : __("Manage news")}}
+            {{!empty($recovery) ?__('Recuperação news') : __("Manage news")}}
             @if(Auth::user()->hasPermission('news_create')&& empty($recovery))
                 <a href="{{ route("news.vendor.create") }}" class="btn-change-password">{{__("Add News")}}</a>
             @endif

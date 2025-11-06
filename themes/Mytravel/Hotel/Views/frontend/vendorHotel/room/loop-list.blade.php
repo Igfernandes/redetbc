@@ -29,20 +29,20 @@
             </div>
             <div class="location">
                 <i class="icofont-wall-clock"></i>
-                {{__("Last Updated")}}: {{ display_datetime($row->updated_at ?? $row->created_at) }}
+                {{__("Última atualização")}}: {{ display_datetime($row->updated_at ?? $row->created_at) }}
             </div>
             <div class="control-action">
                 @if(Auth::user()->hasPermission('hotel_update'))
-                    <a href="{{route('hotel.vendor.room.edit',['hotel_id'=>$hotel->id,'id'=>$row->id])}}" class="btn btn-warning">{{__("Edit")}}</a>
+                    <a href="{{route('hotel.vendor.room.edit',['hotel_id'=>$hotel->id,'id'=>$row->id])}}" class="btn btn-warning">{{__("Editar")}}</a>
                 @endif
                 @if(Auth::user()->hasPermission('hotel_update'))
-                    <a href="{{route('hotel.vendor.room.delete',['hotel_id'=>$hotel->id,'id'=>$row->id])}}" class="btn btn-danger" data-confirm="<?php echo e(__("Você quer apagar?")); ?>">{{__("Del")}}</a>
+                    <a href="{{route('hotel.vendor.room.delete',['hotel_id'=>$hotel->id,'id'=>$row->id])}}" class="btn btn-danger" data-confirm="<?php echo e(__("Você quer apagar?")); ?>">{{__("Excluir")}}</a>
                 @endif
                 @if($row->status == 'publish')
-                    <a href="{{route('hotel.vendor.room.bulk_edit',['hotel_id'=>$hotel->id,'id'=>$row->id,'action' => "make-hide"])}}" class="btn btn-secondary">{{__("Make hide")}}</a>
+                    <a href="{{route('hotel.vendor.room.bulk_edit',['hotel_id'=>$hotel->id,'id'=>$row->id,'action' => "make-hide"])}}" class="btn btn-secondary">{{__("Faça esconder")}}</a>
                 @endif
                 @if($row->status == 'draft')
-                    <a href="{{route('hotel.vendor.room.bulk_edit',['hotel_id'=>$hotel->id,'id'=>$row->id,'action' => "make-publish"])}}" class="btn btn-success">{{__("Make publish")}}</a>
+                    <a href="{{route('hotel.vendor.room.bulk_edit',['hotel_id'=>$hotel->id,'id'=>$row->id,'action' => "make-publish"])}}" class="btn btn-success">{{__("Faça a publicação")}}</a>
                 @endif
             </div>
         </div>

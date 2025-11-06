@@ -13,7 +13,7 @@
         </h5>
     </div>
     <div class="p-2 flex-grow-1 overflow-auto">
-        <input type="text" v-model="s" placeholder="{{__("Search block ...")}}" class="form-control mb-2">
+        <input type="text" v-model="s" placeholder="{{__("Procurar block ...")}}" class="form-control mb-2">
         <hr>
 
         <div

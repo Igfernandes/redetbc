@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar">
-        {{!empty($recovery) ?__('Recovery Events') : __("Manage Events")}}
+        {{!empty($recovery) ?__('Recuperação Events') : __("Manage Events")}}
         @if(Auth::user()->hasPermission('event_create') && empty($recovery))
             <a href="{{ route("event.vendor.create") }}" class="btn-change-password">{{__("Add Event")}}</a>
         @endif

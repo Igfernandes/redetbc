@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__('Phone')}}">
+            <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__('Telefone')}}">
             <i class="input-icon field-icon icofont-ui-touch-phone"></i>
             <span class="invalid-feedback error error-phone"></span>
         </div>

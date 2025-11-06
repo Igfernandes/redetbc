@@ -60,7 +60,7 @@ class UserExport implements FromCollection, WithHeadings, WithMapping
             __('First name'),
             __('Last name'),
             __('Email'),
-            __('Phone'),
+            __('Telefone'),
             __('Address'),
             __('Address 2'),
             __('City'),

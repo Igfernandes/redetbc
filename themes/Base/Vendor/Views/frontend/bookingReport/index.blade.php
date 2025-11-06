@@ -66,7 +66,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="d-flex justify-content-center">{{__("Loading...")}}</div>
+                        <div class="d-flex justify-content-center">{{__("Carregando...")}}</div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
@@ -93,9 +93,9 @@
                             <input type="text" name="customer_name" class="form-control" placeholder="{{ __("Customer Name") }}" value="{{ request()->input("customer_name") }}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">{{ __("From - To") }}</label>
+                            <label for="exampleInputEmail1">{{ __("De - To") }}</label>
                             <div id="reportrange">
-                                <input type="text" class="form-control" name="date" placeholder="{{ __("From - To") }}" value="{{ request()->input("date") }}">
+                                <input type="text" class="form-control" name="date" placeholder="{{ __("De - To") }}" value="{{ request()->input("date") }}">
                                 <input type="hidden" name="from" value="{{ date("Y-m-d",strtotime('today')) }}">
                                 <input type="hidden" name="to" value="{{ date("Y-m-d",strtotime('today')) }}">
                             </div>
@@ -132,7 +132,7 @@
         $('.btn-info-booking').on('click',function (e){
             var btn = $(this);
             $(this).find('.user_id').html(btn.data('id'));
-            $(this).find('.modal-body').html('<div class="d-flex justify-content-center">{{__("Loading...")}}</div>');
+            $(this).find('.modal-body').html('<div class="d-flex justify-content-center">{{__("Carregando...")}}</div>');
             var modal = $("#modal_booking_detail");
             $.get(btn.data('ajax'), function (html){
                     modal.find('.modal-body').html(html);

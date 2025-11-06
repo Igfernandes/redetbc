@@ -18,7 +18,7 @@
                                 </div>
                                 <!-- Password -->
                                 <div class="form-group row">
-                                    <label for="recovery_code" class="col-md-4 col-form-label text-md-right">{{ __('Recovery Code') }}</label>
+                                    <label for="recovery_code" class="col-md-4 col-form-label text-md-right">{{ __('Recuperação Code') }}</label>
                                     <div class="col-md-6">
                                         <input id="recovery_code" type="text" class="form-control{{ $errors->has('recovery_code') ? ' is-invalid' : '' }}" name="recovery_code"  required>
                                         @if ($errors->has('recovery_code'))

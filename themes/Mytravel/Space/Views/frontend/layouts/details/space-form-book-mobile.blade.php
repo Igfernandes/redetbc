@@ -3,7 +3,7 @@
         <div class="left">
             <div class="g-price">
                 <div class="prefix">
-                    <span class="fr_text">{{__("from")}}</span>
+                    <span class="fr_text">{{__("de")}}</span>
                 </div>
                 <div class="price">
                     <span class="onsale">{{ $row->display_sale_price }}</span>
@@ -47,9 +47,9 @@
         </div>
         <div class="right">
             @if($row->getBookingEnquiryType() === "book")
-                <a class="btn btn-primary bravo-button-book-mobile">{{__("Book Now")}}</a>
+                <a class="btn btn-primary bravo-button-book-mobile">{{__("Reserve agora")}}</a>
             @else
-                <a class="btn btn-primary" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contact Now")}}</a>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contacte-nos agora")}}</a>
             @endif
         </div>
     </div>

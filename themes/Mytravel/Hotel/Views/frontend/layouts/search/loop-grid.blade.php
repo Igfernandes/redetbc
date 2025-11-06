@@ -62,7 +62,7 @@
             @endif
         @endif
         <div class="mb-0">
-            <span class="mr-1 font-size-14 text-gray-1">{{__("From")}}</span>
+            <span class="mr-1 font-size-14 text-gray-1">{{__("De")}}</span>
             <span class="font-weight-bold">{{ $row->display_price }}</span>
             <span class="font-size-14 text-gray-1">{{__("/night")}}</span>
         </div>

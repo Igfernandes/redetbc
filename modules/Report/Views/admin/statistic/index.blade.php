@@ -25,7 +25,7 @@
                                     <select name="user_type">
                                         <option value="">{{__("-- User Type --")}}</option>
                                         <option value="customer">{{__("Customer User")}}</option>
-                                        <option value="vendor">{{__("Vendor User")}}</option>
+                                        <option value="vendor">{{__("Fornecedor User")}}</option>
                                     </select>
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>

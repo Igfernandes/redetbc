@@ -144,7 +144,7 @@ class HotelController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Recovery Hotel Management")
+            'page_title'=>__("Recuperação Hotel Management")
         ];
         return view('Hotel::admin.index', $data);
     }
@@ -176,11 +176,11 @@ class HotelController extends AdminController
                     'url'  => route('hotel.admin.index')
                 ],
                 [
-                    'name'  => __('Edit Hotel'),
+                    'name'  => __('Editar Hotel'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Editar: :name",['name'=>$row->title])
+            'page_title'=>__("Editarar: :name",['name'=>$row->title])
         ];
         return view('Hotel::admin.detail', $data);
     }

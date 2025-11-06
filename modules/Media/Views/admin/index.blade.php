@@ -8,11 +8,11 @@
                     <div class="d-flex justify-content-between">
                         <div class="col-left d-flex align-items-center">
                             <div class="filter-item">
-                                <input type="text" placeholder="{{__("Search file name....")}}" class="form-control" v-model="filter.s" @keyup.enter="filter.page = 1;reloadLists()">
+                                <input type="text" placeholder="{{__("Procurar file name....")}}" class="form-control" v-model="filter.s" @keyup.enter="filter.page = 1;reloadLists()">
                             </div>
                             <div class="filter-item">
                                 <button class="btn btn-default" @click="reloadAll()">
-                                    <i class="fa fa-search"></i> {{__("Search")}}</button>
+                                    <i class="fa fa-search"></i> {{__("Procurar")}}</button>
                             </div>
                             <div class="filter-item">
                                 <small><i>{{__("Total")}}: @{{total}} {{__("files")}}</i></small>

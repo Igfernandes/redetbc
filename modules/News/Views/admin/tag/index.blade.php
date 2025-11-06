@@ -37,7 +37,7 @@
                     <div class="col-left">
                         <form method="get" action="{{route('news.admin.tag.index')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
                             @csrf
-                            <input placeholder="{{__("Search keyword ...")}}" type="text" name="s" value="{{ Request()->s }}" class="form-control">
+                            <input placeholder="{{__("Procurar keyword ...")}}" type="text" name="s" value="{{ Request()->s }}" class="form-control">
                             <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search Tag')}}</button>
                         </form>
                     </div>

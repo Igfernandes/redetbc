@@ -13,9 +13,9 @@
             @else
                 <div class=""><strong>{{$field['data'] ? $field['data'] : __('N/A')}}</strong></div>
                 @if(!empty($field['is_verified']))
-                    <a class="badge badge-success" href="#" onclick="return false"><i>{{__("Verified")}}</i></a>
+                    <a class="badge badge-success" href="#" onclick="return false"><i>{{__("Verificado")}}</i></a>
                 @else
-                    <span class="badge badge-secondary"><i>{{__("Not Verified")}}</i></span>
+                    <span class="badge badge-secondary"><i>{{__("Não verificado")}}</i></span>
                 @endif
             @endif
 

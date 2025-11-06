@@ -22,12 +22,12 @@
                             </div>
                             <h4 class="name">{{$row->getDisplayName()}}
                                 @if($row->is_verified)
-                                    <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-vefified-1.svg')}}" title="{{__("Verified")}}" alt="ico-vefified-1">
+                                    <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-vefified-1.svg')}}" title="{{__("Verificado")}}" alt="ico-vefified-1">
                                 @else
-                                    <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-not-vefified-1.svg')}}" title="{{__("Not verified")}}" alt="ico-vefified-1">
+                                    <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-not-vefified-1.svg')}}" title="{{__("Não verificado")}}" alt="ico-vefified-1">
                                 @endif
                             </h4>
-                            <span class="designation">{{ __("Member Since :time",["time"=> date("M Y",strtotime($row->created_at))]) }}</span>
+                            <span class="designation">{{ __("Membro desde :time",["time"=> date("M Y",strtotime($row->created_at))]) }}</span>
                             @if(setting_item('vendor_show_email') or setting_item('vendor_show_phone'))
                                 @if(setting_item('vendor_show_email'))
                                     <div class="text">
@@ -46,7 +46,7 @@
                                 </div>
                             @endif
                             <a href="{{route('user.profile',['id'=>$row->user_name ?? $row->id])}}" class="btn btn-primary">
-                                <span class="btn-title">{{ __("View Profile") }}</span>
+                                <span class="btn-title">{{ __("Visualizar Profile") }}</span>
                             </a>
                         </div>
                     </div>

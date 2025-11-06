@@ -120,7 +120,7 @@
                     {{ __("Mostrando :from - :to of :total total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
                 </div>
             @else
-                <div class="review-pag-text">{{__("No Review")}}</div>
+                <div class="review-pag-text">{{__("Sem avaliação")}}</div>
             @endif
         </div>
         @if(Auth::id())

@@ -71,7 +71,7 @@
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
                                 <th> {{ __('Name')}}</th>
-                                <th width="200px"> {{ __('Location')}}</th>
+                                <th width="200px"> {{ __('Localização')}}</th>
                                 <th width="130px"> {{ __('Author')}}</th>
                                 <th width="100px"> {{ __('Status')}}</th>
                                 <th width="100px"> {{ __('Reviews')}}</th>
@@ -89,7 +89,7 @@
                                             <a href="{{route('tour.admin.edit',['id'=>$row->id])}}">{{$row->title}}</a>
 
                                             @if($row->is_featured)
-                                                <span class="badge badge-warning">{{ __("Featured") }}</span>
+                                                <span class="badge badge-warning">{{ __("Apresentou") }}</span>
                                             @endif
                                         </td>
                                         <td>{{$row->location->name ?? ''}}</td>

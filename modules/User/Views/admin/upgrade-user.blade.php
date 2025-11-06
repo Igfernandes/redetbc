@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Vendor Requests")}}</h1>
+            <h1 class="title-bar">{{__("Fornecedor Requests")}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between ">

@@ -51,7 +51,7 @@
                                             @php $vendor = $service->author; @endphp
                                             @if($vendor->hasPermission('dashboard_vendor_access') and !$vendor->hasPermission('dashboard_access'))
                                                 <li>
-                                                    <div class="label">{{ __("Vendor") }}</div>
+                                                    <div class="label">{{ __("Fornecedor") }}</div>
                                                     <div class="val"><a href="{{route('user.profile',['id'=>$vendor->id])}}" target="_blank" >{{$vendor->getDisplayName()}}</a></div>
                                                 </li>
                                             @endif

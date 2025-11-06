@@ -5,9 +5,9 @@
 @section('content')
     <div class="d-flex align-items-center justify-content-between">
         <h2 class="title-bar no-border-bottom">
-            {{__("Booking Report")}}
+            {{__("Relatório de reserva")}}
         </h2>
-        <button class="btn btn-info"  data-toggle="modal" data-target="#filter">{{ __('Advanced Filter') }}</button>
+        <button class="btn btn-info"  data-toggle="modal" data-target="#filter">{{ __('Filtro Avançado') }}</button>
     </div>
     @include('admin.message')
     <div class="booking-history-manager">
@@ -15,7 +15,7 @@
             <ul class="nav nav-tabs ht-nav-tabs">
                 <?php $status_type = Request::query('status'); ?>
                 <li class="@if(empty($status_type)) active @endif">
-                    <a href="{{route("vendor.bookingReport")}}">{{__("All Booking")}}</a>
+                    <a href="{{route("vendor.bookingReport")}}">{{__("Todas as reservas")}}</a>
                 </li>
                 @if(!empty($statues))
                     @foreach($statues as $status)
@@ -31,14 +31,14 @@
                         <table class="table table-bordered table-striped table-booking-history">
                             <thead>
                             <tr>
-                                <th width="2%">{{__("Type")}}</th>
+                                <th width="2%">{{__("Tipo")}}</th>
                                 <th>{{__("Título")}}</th>
-                                <th class="a-hidden">{{__("Order Date")}}</th>
-                                <th class="a-hidden">{{__("Execution Time")}}</th>
-                                <th width="15%">{{__("Payment Detail")}}</th>
-                                <th>{{__("Commission")}}</th>
+                                <th class="a-hidden">{{__("Data do pedido")}}</th>
+                                <th class="a-hidden">{{__("Tempo de execução")}}</th>
+                                <th width="15%">{{__("Detalhes de pagamento")}}</th>
+                                <th>{{__("Comissão")}}</th>
                                 <th class="a-hidden">{{__("Status")}}</th>
-                                <th>{{__("Action")}}</th>
+                                <th>{{__("Ação")}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -53,20 +53,20 @@
                     </div>
                 </div>
             @else
-                {{__("No Booking History")}}
+                {{__("Sem histórico de reservas")}}
             @endif
         </div>
         <div class="modal" tabindex="-1" id="modal_booking_detail">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{__('Booking ID: #')}} <span class="user_id"></span></h5>
+                        <h5 class="modal-title">{{__('Reserva ID: #')}} <span class="user_id"></span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="d-flex justify-content-center">{{__("Loading...")}}</div>
+                        <div class="d-flex justify-content-center">{{__("Carregando...")}}</div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
@@ -82,28 +82,28 @@
                 <form action="">
                     <input type="hidden" name="status" value="{{ request()->input('status') }}">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">{{ __("Advanced Filter") }}</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __("Filtro Avançado") }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">{{ __("Customer name") }}</label>
-                            <input type="text" name="customer_name" class="form-control" placeholder="{{ __("Customer Name") }}" value="{{ request()->input("customer_name") }}">
+                            <label for="exampleInputEmail1">{{ __("Nome do cliente") }}</label>
+                            <input type="text" name="customer_name" class="form-control" placeholder="{{ __("Nome do cliente") }}" value="{{ request()->input("customer_name") }}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">{{ __("From - To") }}</label>
+                            <label for="exampleInputEmail1">{{ __("De - Para") }}</label>
                             <div id="reportrange">
-                                <input type="text" class="form-control" name="date" placeholder="{{ __("From - To") }}" value="{{ request()->input("date") }}">
+                                <input type="text" class="form-control" name="date" placeholder="{{ __("De - Para") }}" value="{{ request()->input("date") }}">
                                 <input type="hidden" name="from" value="{{ date("Y-m-d",strtotime('today')) }}">
                                 <input type="hidden" name="to" value="{{ date("Y-m-d",strtotime('today')) }}">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __("Close") }}</button>
-                        <button type="submit" class="btn btn-primary">{{ __("Filter") }}</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __("Fechar") }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __("Filtro") }}</button>
                     </div>
                 </form>
             </div>
@@ -132,7 +132,7 @@
         $('.btn-info-booking').on('click',function (e){
             var btn = $(this);
             $(this).find('.user_id').html(btn.data('id'));
-            $(this).find('.modal-body').html('<div class="d-flex justify-content-center">{{__("Loading...")}}</div>');
+            $(this).find('.modal-body').html('<div class="d-flex justify-content-center">{{__("Carregando...")}}</div>');
             var modal = $("#modal_booking_detail");
             $.get(btn.data('ajax'), function (html){
                     modal.find('.modal-body').html(html);

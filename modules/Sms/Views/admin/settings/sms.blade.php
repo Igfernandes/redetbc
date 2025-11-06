@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="">{{__("From")}}</label>
+                            <label class="">{{__("De")}}</label>
                             <div class="form-controls">
                                 <input type="text" class="form-control" name="sms_nexmo_api_from" value="{{setting_item('sms_nexmo_api_from',config('sms.nexmo.from'))}}">
                             </div>
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="">{{__("From")}}</label>
+                            <label class="">{{__("De")}}</label>
                             <div class="form-controls">
                                 <input type="number" class="form-control" name="sms_twilio_api_from" value="{{setting_item('sms_twilio_api_from',config('sms.twilio.from'))}}">
                             </div>
@@ -94,7 +94,7 @@
     <div class="col-sm-4">
         <h3 class="form-group-title">{{__('SMS Event Booking')}}</h3>
         <div class="form-group-desc">
-            {{__('Phone number must be E.164 format')}}
+            {{__('Telefone number must be E.164 format')}}
             <p>{{__('Format')}}:<code> {{__('[+][country code][subscriber number including area code]')}} </code></p>
             <p>{{__('Example')}}:<code> +12019480710</code></p>
             <div>{{__('Message')}}:</div>
@@ -137,7 +137,7 @@
                             <a class="nav-link active" data-toggle="tab" href="#SmsAdminEventCreateBooking">{{__("Administrator")}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " data-toggle="tab" href="#SmsVendorEventCreateBooking">{{__("Vendor")}}</a>
+                            <a class="nav-link " data-toggle="tab" href="#SmsVendorEventCreateBooking">{{__("Fornecedor")}}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " data-toggle="tab" href="#SmsUserEventCreateBooking">{{__("Customer")}}</a>
@@ -219,7 +219,7 @@
                             <a class="nav-link active" data-toggle="tab" href="#SmsAdminEventUpdateBooking">{{__("Administrator")}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " data-toggle="tab" href="#SmsVendorEventUpdateBooking">{{__("Vendor")}}</a>
+                            <a class="nav-link " data-toggle="tab" href="#SmsVendorEventUpdateBooking">{{__("Fornecedor")}}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " data-toggle="tab" href="#SmsUserEventUpdateBooking">{{__("Customer")}}</a>
