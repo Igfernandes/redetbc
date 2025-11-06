@@ -65,7 +65,7 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
             'term'       => ['required']
         ];
         $messages = [
-            'phone.required'      => __('Phone is required field'),
+            'phone.required'      => __('Telefone is required field'),
             'email.required'      => __('Email is required field'),
             'email.email'         => __('Email invalidate'),
             'password.required'   => __('Password is required field'),

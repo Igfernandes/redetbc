@@ -48,7 +48,7 @@
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
                                 <th>{{__('Name')}}</th>
                                 <th>{{__('Email')}}</th>
-                                <th>{{__('Phone')}}</th>
+                                <th>{{__('Telefone')}}</th>
                                 <th>{{__('Role')}}</th>
                                 <th class="date">{{ __('Date')}}</th>
                                 <th class="status">{{__('Status')}}</th>

@@ -42,7 +42,7 @@ class UserController extends FrontendController
         $data = [
             'cards_report'       => $this->booking->getTopCardsReportForVendor($user_id),
             'earning_chart_data' => $this->booking->getEarningChartDataForVendor(strtotime('monday this week'), time(), $user_id),
-            'page_title'         => __("Vendor Dashboard"),
+            'page_title'         => __("Fornecedor Dashboard"),
             'breadcrumbs'        => [
                 [
                     'name'  => __('Dashboard'),

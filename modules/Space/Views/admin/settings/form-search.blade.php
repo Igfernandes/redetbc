@@ -5,12 +5,12 @@
         <div class="panel-title"><strong>{{__("Form Search Fields")}}</strong></div>
         <div class="panel-body">
             <div class="form-group" >
-                <label class="" >{{__("Search Criteria")}}</label>
+                <label class="" >{{__("Procurar Criteria")}}</label>
                 <div class="form-controls">
                     <div class="form-group-item">
                         <div class="g-items-header">
                             <div class="row">
-                                <div class="col-md-7">{{__("Search Field")}}</div>
+                                <div class="col-md-7">{{__("Procurar Field")}}</div>
                                 <div class="col-md-4">{{__("Order")}}</div>
                                 <div class="col-md-1"></div>
                             </div>
@@ -20,10 +20,10 @@
                             $space_search_fields = setting_item_array('space_search_fields');
                             $types = [
                                 'service_name'=>__("Service name"),
-                                'location'=>__("Location"),
+                                'location'=>__("Localização"),
                                 'attr'=>__("Attribute"),
                                 'date'=>__("Data"),
-                                'guests'=>__("Guests"),
+                                'guests'=>__("Convidados"),
                             ];
                             $attrs = \Modules\Core\Models\Attributes::where('service', 'space')->get();
                             @endphp

@@ -52,7 +52,7 @@
                             <th>{{__('Name')}}</th>
                             <th>{{__('Email')}}</th>
                             <th>{{__('Credit')}}</th>
-                            <th>{{__('Phone')}}</th>
+                            <th>{{__('Telefone')}}</th>
                             <th>{{__('Role')}}</th>
                             <th class="date">{{ __('Date')}}</th>
 {{--                            <th class="status">{{__('Status')}}</th>--}}
@@ -68,9 +68,9 @@
                                 </td>
                                 <td>{{$row->email}}
                                     @if($row->email_verified_at)
-                                        <i class="fa fa-check-circle text-success" title="{{__("Verified")}}"></i>
+                                        <i class="fa fa-check-circle text-success" title="{{__("Verificado")}}"></i>
                                     @else
-                                        <i class="fa fa-info-circle text-warning" title="{{__("Not Verified")}}"></i>
+                                        <i class="fa fa-info-circle text-warning" title="{{__("Não verificado")}}"></i>
                                     @endif
                                 </td>
                                 <td>{{$row->balance}}</td>

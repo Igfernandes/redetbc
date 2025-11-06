@@ -196,7 +196,7 @@
                         <div class="form-controls">
                             <label><input type="checkbox" name="assistance_enable_review" value="1" @if(!empty($settings['assistance_enable_review'])) checked @endif /> {{__("Sim, por favor, habilite-o.")}} </label>
                             <br>
-                            <small class="form-text text-muted">{{__("Turn on the mode for reviewing assistance")}}</small>
+                            <small class="form-text text-muted">{{__("Ative o modo de assistência para revisão.")}}</small>
                         </div>
                     </div>
                     <div class="form-group" data-condition="assistance_enable_review:is(1)">

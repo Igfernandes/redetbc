@@ -23,7 +23,7 @@
         <div class="flex-horizontal-center border-bottom border-width-2 border-color-1 d-flex">
             <i class="flaticon-backpack d-flex align-items-center mr-2 font-size-24 text-primary"></i>
             <div class="smart-search">
-                <input type="text" class="smart-select parent_text form-control border-0 font-weight-bold font-size-16" readonly placeholder="{{__("All Category")}}" value="{{ $cat_name }}" data-default="{{ json_encode($list_cat_json) }}">
+                <input type="text" class="smart-select parent_text form-control border-0 font-weight-bold font-size-16" readonly placeholder="{{__("Todas as categorias")}}" value="{{ $cat_name }}" data-default="{{ json_encode($list_cat_json) }}">
                 <input type="hidden" class="child_id" name="cat_id[]" value="{{ $cat_ids[0] ?? "" }}">
             </div>
         </div>

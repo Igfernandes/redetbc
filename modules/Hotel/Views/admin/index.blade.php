@@ -62,7 +62,7 @@
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
                             <th> {{ __('Name')}}</th>
-                            <th width="200px"> {{ __('Location')}}</th>
+                            <th width="200px"> {{ __('Localização')}}</th>
                             <th width="130px"> {{ __('Author')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
                             <th width="100px"> {{ __('Reviews')}}</th>
@@ -78,7 +78,7 @@
                                     </td>
                                     <td class="title">
                                         @if($row->is_featured)
-                                            <span class="badge badge-primary">{{ __("Featured") }}</span>
+                                            <span class="badge badge-primary">{{ __("Apresentou") }}</span>
                                         @endif
                                         <a href="{{route('hotel.admin.edit',['id'=>$row->id])}}">{{$row->title}}</a>
                                     </td>
@@ -104,7 +104,7 @@
                                                     {{__("Action")}}
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="{{route('hotel.admin.edit',['id'=>$row->id])}}">{{__("Edit hotel")}}</a>
+                                                    <a class="dropdown-item" href="{{route('hotel.admin.edit',['id'=>$row->id])}}">{{__("Editar hotel")}}</a>
                                                     <a class="dropdown-item" href="{{route('hotel.admin.room.index',['hotel_id'=>$row->id])}}">{{__("Manage Rooms")}}</a>
                                                     <a class="dropdown-item" href="{{route('hotel.admin.room.availability.index',['hotel_id'=>$row->id])}}">{{__("Manage Rooms Availability")}}</a>
                                                 </div>

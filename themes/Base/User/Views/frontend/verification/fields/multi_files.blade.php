@@ -15,7 +15,7 @@
                     @foreach($old as $file)
                         <div>
                             <input type="hidden" name="verify_data_{{$field['id']}}[]" value="{{json_encode($file)}}">
-                            <a target="_blank" href="{{route('media.private.view',['path'=>$file['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("View document")}}  &nbsp;&nbsp; <i class="fa fa-download"></i></a>
+                            <a target="_blank" href="{{route('media.private.view',['path'=>$file['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("Visualizar document")}}  &nbsp;&nbsp; <i class="fa fa-download"></i></a>
                         </div>
                     @endforeach
                 @endif
@@ -30,9 +30,9 @@
                     <div><strong>{{__('N/A')}}</strong></div>
                 @endif
                 @if(!empty($field['is_verified']))
-                    <a class="badge badge-success" href="#" onclick="return false"><i>{{__("Verified")}}</i></a>
+                    <a class="badge badge-success" href="#" onclick="return false"><i>{{__("Verificado")}}</i></a>
                 @else
-                    <span class="badge badge-secondary"><i>{{__("Not Verified")}}</i></span>
+                    <span class="badge badge-secondary"><i>{{__("Não verificado")}}</i></span>
                 @endif
             @endif
         </div>

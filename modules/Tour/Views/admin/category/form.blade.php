@@ -27,7 +27,7 @@
     @php do_action(\Modules\Tour\Hook::FORM_AFTER_CATEGORY,$row) @endphp
 @endif
 {{--<div class="form-group">--}}
-    {{--<label class="control-label">{{__("Description")}}</label>--}}
+    {{--<label class="control-label">{{__("Descrição")}}</label>--}}
     {{--<div class="">--}}
         {{--<textarea name="content" class="d-none has-ckeditor" cols="30" rows="10">{{$translation->content}}</textarea>--}}
     {{--</div>--}}

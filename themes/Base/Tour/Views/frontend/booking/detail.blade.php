@@ -19,7 +19,7 @@
                 @if($vendor->hasPermission('dashboard_vendor_access') and !$vendor->hasPermission('dashboard_access'))
                     <div class="mt-1">
                         <i class="icofont-info-circle"></i>
-                        {{ __("Vendor") }}: <a href="{{route('user.profile',['id'=>$vendor->id])}}" target="_blank" >{{$vendor->getDisplayName()}}</a>
+                        {{ __("Fornecedor") }}: <a href="{{route('user.profile',['id'=>$vendor->id])}}" target="_blank" >{{$vendor->getDisplayName()}}</a>
                     </div>
                 @endif
             </div>
@@ -52,7 +52,7 @@
                     @endforeach
                 @else
                     <li>
-                        <div class="label">{{__("Guests")}}:</div>
+                        <div class="label">{{__("Convidados")}}:</div>
                         <div class="val">
                             {{$booking->total_guests}}
                         </div>
@@ -76,7 +76,7 @@
                     @endforeach
                 @else
                     <li>
-                        <div class="label">{{__("Guests")}}: {{$booking->total_guests}} * {{format_money($booking->getMeta('base_price'))}}</div>
+                        <div class="label">{{__("Convidados")}}: {{$booking->total_guests}} * {{format_money($booking->getMeta('base_price'))}}</div>
                         <div class="val">
                             {{format_money($booking->getMeta('base_price') * $booking->total_guests)}}
                         </div>

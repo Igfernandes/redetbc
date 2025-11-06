@@ -115,7 +115,7 @@ class AvailabilityController extends FrontendController{
                 'textColor'=>'#2791fe'
             ];
             $date['price_html'] = __("por hora: ").format_money($assistance->price_per_hour);
-            $date['price_html'] .= "<br>".__("per Day: ").format_money($assistance->price_per_day);
+            $date['price_html'] .= "<br>".__("por dia: ").format_money($assistance->price_per_day);
             if(!$is_single) {
                 $date['price_html'] = __("Hora: ").format_money_main($assistance->price_per_hour);
                 $date['price_html'] .= "<br>".__("Dia: ").format_money_main($assistance->price_per_day);
@@ -142,7 +142,7 @@ class AvailabilityController extends FrontendController{
                 $row->end = date('Y-m-d',strtotime($row->start_date));
                 $row->textColor = '#2791fe';
                 $row->price_html = __("por hora: ").format_money($row->price_per_hour);
-                $row->price_html .= "<br>".__("per Day: ").format_money($row->price_per_day);
+                $row->price_html .= "<br>".__("por Dia: ").format_money($row->price_per_day);
                 if(!$is_single) {
                     $row->price_html = __("Hora: ").format_money_main($row->price_per_hour);
                     $row->price_html .= "<br>".__("Dia: ").format_money_main($row->price_per_day);

@@ -40,7 +40,7 @@ class VendorRegisterForm extends BaseBlock
 
     public function getName()
     {
-        return __('Vendor Register Form');
+        return __('Fornecedor Register Form');
     }
 
     public function content($model = [])

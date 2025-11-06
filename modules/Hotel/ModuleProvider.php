@@ -121,7 +121,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     [
                         'url'   => route('hotel.vendor.recovery'),
-                        'title'      => __("Recovery"),
+                        'title'      => __("Recuperação"),
                         'permission' => 'hotel_create',
                     ],
                 ]

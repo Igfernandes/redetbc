@@ -7,7 +7,7 @@
         $payout_accounts = $currentUser->payout_accounts;
     @endphp
     <h2 class="title-bar">
-        {{__("Vendor Payouts")}}
+        {{__("Fornecedor Payouts")}}
     </h2>
     @include('admin.message')
 

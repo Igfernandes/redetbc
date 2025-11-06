@@ -59,7 +59,7 @@ class PlanController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Edit user plan")
+            'page_title'        => __("Editar user plan")
         ];
         return view('User::admin.plan.detail', $data);
     }

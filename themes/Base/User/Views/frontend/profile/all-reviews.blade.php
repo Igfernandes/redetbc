@@ -21,7 +21,7 @@
                         ?>
                         @if($reviews->total())
                             <div class="bravo-reviews">
-                                <h3>{{__('Reviews from guests')}}</h3>
+                                <h3>{{__('Comentários dos hóspedes')}}</h3>
                                 <div class="review-pag-text">
                                     {{ __("Mostrando :from - :to of :total total",["from"=>$reviews->firstItem(),"to"=>$reviews->lastItem(),"total"=>$reviews->total()]) }}
                                 </div>
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="review-pag-text">{{__("No Review")}}</div>
+                            <div class="review-pag-text">{{__("Sem avaliação")}}</div>
                         @endif
                     </div>
                 </div>

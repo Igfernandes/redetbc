@@ -122,7 +122,7 @@ class SpaceController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Recovery Space Management")
+            'page_title'=>__("Recuperação Space Management")
         ];
         return view('Space::admin.index', $data);
     }
@@ -182,11 +182,11 @@ class SpaceController extends AdminController
                     'url'  => route('space.admin.index')
                 ],
                 [
-                    'name'  => __('Edit Space'),
+                    'name'  => __('Editar Space'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Editar: :name",['name'=>$row->title])
+            'page_title'=>__("Editarar: :name",['name'=>$row->title])
         ];
         return view('Space::admin.detail', $data);
     }

@@ -23,7 +23,7 @@ class LocationCategory extends BaseModel
 
     public static function getModelName()
     {
-        return __("Location Category");
+        return __("Localização Category");
     }
 
     public static function searchForMenu($q = false)

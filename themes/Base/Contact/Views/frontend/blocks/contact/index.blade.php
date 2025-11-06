@@ -22,7 +22,7 @@
                                     <input type="text" value="" placeholder="{{ __('Email') }}" name="email" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" value="" placeholder="{{ __('Phone') }}" name="phone" class="form-control">
+                                    <input type="text" value="" placeholder="{{ __('Telefone') }}" name="phone" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <textarea name="message" cols="40" rows="10" class="form-control textarea" placeholder="{{ __('Message') }}"></textarea>

@@ -61,7 +61,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="d-flex justify-content-center">{{__("Loading...")}}</div>
+                        <div class="d-flex justify-content-center">{{__("Carregando...")}}</div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
@@ -77,7 +77,7 @@
         $('.btn-info-booking').on('click',function (e){
             var btn = $(this);
             $(this).find('.user_id').html(btn.data('id'));
-            $(this).find('.modal-body').html('<div class="d-flex justify-content-center">{{__("Loading...")}}</div>');
+            $(this).find('.modal-body').html('<div class="d-flex justify-content-center">{{__("Carregando...")}}</div>');
             var modal = $("#modal_booking_detail");
             $.get(btn.data('ajax'), function (html){
                     modal.find('.modal-body').html(html);

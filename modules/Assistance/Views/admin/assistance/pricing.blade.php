@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label">{{__("Price per hour")}}</label>
+                        <label class="control-label">{{__("Preço por hora")}}</label>
                         <input type="number" step="any" min="0" name="price_per_hour" class="form-control" value="{{$row->price_per_hour}}" placeholder="{{__("Preço por hora")}}">
                     </div>
                 </div>

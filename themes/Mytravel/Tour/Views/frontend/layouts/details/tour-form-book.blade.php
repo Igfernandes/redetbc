@@ -5,11 +5,11 @@
                 <div class="border-bottom">
                     @if($row->discount_percent)
                         <div class="sale-box">
-                            <div class="ribbon ribbon--red">{{ __("SAVE :text",['text'=>$row->discount_percent]) }}</div>
+                            <div class="ribbon ribbon--red">{{ __("SALVAR :text",['text'=>$row->discount_percent]) }}</div>
                         </div>
                     @endif
                     <div class="p-4">
-                        <span class="font-size-14">{{ __("From") }}</span>
+                        <span class="font-size-14">{{ __("De") }}</span>
                         <span class="font-size-24 text-gray-6 font-weight-bold ml-1">
                         <small class="font-size-16 text-decoration-line-through text-danger">
                            {{ $row->display_sale_price }}
@@ -20,29 +20,29 @@
                 </div>
                 <div class="nav-enquiry" v-if="is_form_enquiry_and_book">
                     <div class="enquiry-item active" >
-                        <span>{{ __("Book") }}</span>
+                        <span>{{ __("Livro") }}</span>
                     </div>
                     <div class="enquiry-item" data-toggle="modal" data-target="#enquiry_form_modal">
-                        <span>{{ __("Enquiry") }}</span>
+                        <span>{{ __("Investigação") }}</span>
                     </div>
                 </div>
                 <div class="form-book" :class="{'d-none':enquiry_type!='book'}">
                     <div class="d-flex flex-wrap clearfix text-center border-bottom" v-if="is_fixed_date">
                         <div class="w-50 py-3 flex-grow-1">
-                            <div class="font-weight-bold">{{__("Tour Start Date")}}</div>
+                            <div class="font-weight-bold">{{__("Data de início da turnê")}}</div>
                             <span>@{{ start_date_html }}</span>
                         </div>
                         <div class="w-50 py-3 flex-grow-1 border-left">
-                            <div class="font-weight-bold">{{__("Tour End Date")}}</div>
+                            <div class="font-weight-bold">{{__("Data de término da turnê")}}</div>
                             <span>@{{ end_date_html }}</span>
                         </div>
                         <div class="w-100 py-3 flex-grow-1 border-top">
-                            <div class="font-weight-bold">{{__("Last Booking Date")}}</div>
+                            <div class="font-weight-bold">{{__("Data limite para reserva")}}</div>
                             <span>@{{ last_booking_date_html }}</span>
                         </div>
                     </div>
                     <div class="p-4">
-                        <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">{{ __("Start Date") }}</span>
+                        <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">{{ __("Data de início") }}</span>
                         <div class="mb-4">
                             <div class="border-bottom border-width-2 border-color-1 position-relative" data-format="{{get_moment_date_format()}}">
                                 <div  @click="openStartDate" class="start_date d-flex align-items-center w-auto height-40 font-size-16 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0">
@@ -59,7 +59,7 @@
                                         <div class="flex-center-between mb-1 text-dark font-weight-bold">
                                             <span class="d-block">
                                                 @{{type.desc}} <br>
-                                                <small>@{{type.display_price}} {{__("per person")}}</small>
+                                                <small>@{{type.display_price}} {{__("por pessoa")}}</small>
                                             </span>
                                             <div class="flex-horizontal-center">
                                                 <a class="font-size-10 text-dark" href="javascript:;" @click="minusPersonType(type)">
@@ -81,7 +81,7 @@
                                 <div class="border-bottom border-width-2 border-color-1 pb-1">
                                     <div class="flex-center-between mb-1 text-dark font-weight-bold">
                                         <span class="d-block">
-                                            {{__("Guests")}}
+                                            {{__("Convidados")}}
                                         </span>
                                         <div class="flex-horizontal-center">
                                             <a class="font-size-10 text-dark" href="javascript:;" @click="minusGuestsType()">
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="mb-4 border-bottom border-width-2 border-color-1 pb-1" v-if="extra_price.length">
-                            <h4 class="flex-center-between mb-1 font-size-16 text-dark font-weight-bold">{{__('Extra prices:')}}</h4>
+                            <h4 class="flex-center-between mb-1 font-size-16 text-dark font-weight-bold">{{__('Preços extras:')}}</h4>
                             <div class="mb-2" v-for="(type,index) in extra_price">
                                 <div class="extra-price-wrap d-flex justify-content-between">
                                     <div class="flex-grow-1">
@@ -132,14 +132,14 @@
                                 <span class="price">@{{total_price_html}}</span>
                             </li>
                             <li v-if="is_deposit_ready">
-                                <label for="">{{__("Pay now")}}</label>
+                                <label for="">{{__("Pagar agora")}}</label>
                                 <span class="price">@{{pay_now_price_html}}</span>
                             </li>
                         </ul>
                         <div v-html="html"></div>
                         <div class="text-center">
                             <button class="btn btn-primary d-flex align-items-center justify-content-center  height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold" @click="doSubmit($event)" :class="{'disabled':onSubmit,'btn-success':(step == 2),'btn-primary':step == 1}" name="submit">
-                                <span class="stop-color-white">{{__("Book Now")}}</span>
+                                <span class="stop-color-white">{{__("Reserve agora")}}</span>
                                 <i v-show="onSubmit" class="fa fa-spinner fa-spin ml-1"></i>
                             </button>
                             <div class="alert-text mt-3 text-left" v-show="message.content" v-html="message.content" :class="{'danger':!message.type,'success':message.type}"></div>
@@ -148,7 +148,7 @@
                 </div>
                 <div class="form-send-enquiry" v-show="enquiry_type=='enquiry'">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#enquiry_form_modal">
-                        {{ __("Contact Now") }}
+                        {{ __("Contacte-nos agora") }}
                     </button>
                 </div>
             </div>

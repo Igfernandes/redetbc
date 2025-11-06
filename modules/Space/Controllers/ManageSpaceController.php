@@ -90,7 +90,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Recovery Spaces"),
+            'page_title'         => __("Recuperação Spaces"),
         ];
         return view('Space::frontend.manageSpace.index', $data);
     }
@@ -258,7 +258,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Edit Spaces"),
+            'page_title'         => __("Editar Spaces"),
         ];
         return view('Space::frontend.manageSpace.detail', $data);
     }

@@ -34,7 +34,7 @@ class ModuleProvider extends ModuleServiceProvider
             'location'=>[
                 "position"=>30,
                 'url'        => route('location.admin.index'),
-                'title'      => __("Location"),
+                'title'      => __("Localização"),
                 'icon'       => 'icon ion-md-compass',
                 'permission' => 'location_view',
                 'children'   => [
@@ -46,7 +46,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'tour_create'=>[
                         'url'        => route('location.admin.category.index'),
-                        'title'      => __("All Category"),
+                        'title'      => __("Todas as categorias"),
                         'icon'       => 'icon ion-md-compass',
                         'permission' => 'location_view',
                     ],

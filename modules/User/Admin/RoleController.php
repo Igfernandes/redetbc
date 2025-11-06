@@ -83,7 +83,7 @@ class RoleController extends AdminController
                     'url'  => route('user.admin.role.index')
                 ],
                 [
-                    'name' => __("Edit Role"),
+                    'name' => __("Editar Role"),
                 ],
             ]
         ];
@@ -182,7 +182,7 @@ class RoleController extends AdminController
                     'url'  => route('user.admin.role.verifyFields'),
                 ],
                 [
-                    'name' => __('Edit field: :name',['name'=>$row['name'] ?? $id]),
+                    'name' => __('Editar field: :name',['name'=>$row['name'] ?? $id]),
                     'active'=>1
                 ],
             ]

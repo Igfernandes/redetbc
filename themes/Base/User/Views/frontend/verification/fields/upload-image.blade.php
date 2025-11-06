@@ -13,7 +13,7 @@
                 @php ($old = json_decode($field['data'],true))
                 @if(!empty($old))
                 <input type="hidden" accept=".png,.jpg,.jpge" name="verify_data_{{$field['id']}}" value="{{($field['data'])}}">
-                <a target="_blank" href="{{route('media.private.view',['path'=>$old['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("View document")}} &nbsp;&nbsp;<i class="fa fa-download"></i></a>
+                <a target="_blank" href="{{route('media.private.view',['path'=>$old['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("Visualizar document")}} &nbsp;&nbsp;<i class="fa fa-download"></i></a>
 
                 @endif
             </div>
@@ -26,9 +26,9 @@
             <div><strong>{{__('N/A')}}</strong></div>
             @endif
             @if(!empty($field['is_verified']))
-            <span class="badge badge-success"><i>{{__("Verified")}}</i></span>
+            <span class="badge badge-success"><i>{{__("Verificado")}}</i></span>
             @else
-            <span class="badge badge-secondary"><i>{{__("Not Verified")}}</i></span>
+            <span class="badge badge-secondary"><i>{{__("Não verificado")}}</i></span>
             @endif
             @endif
         </div>

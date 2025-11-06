@@ -13,7 +13,7 @@
                 </div>
                 <div class="">
                     @if($row->slug)
-                        <a class="btn btn-primary btn-sm" href="{{$row->detail_url}}" target="_blank">{{__("View")}}</a>
+                        <a class="btn btn-primary btn-sm" href="{{$row->detail_url}}" target="_blank">{{__("Visualizar")}}</a>
                     @endif
                 </div>
             </div>

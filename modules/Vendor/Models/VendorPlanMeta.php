@@ -25,6 +25,6 @@ class VendorPlanMeta extends BaseModel
 
     public static function getModelName()
     {
-        return __("Vendor Plan Meta");
+        return __("Fornecedor Plan Meta");
     }
 }

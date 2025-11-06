@@ -126,7 +126,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     [
                         'url'   => route('tour.vendor.recovery'),
-                        'title'      => __("Recovery"),
+                        'title'      => __("Recuperação"),
                         'permission' => 'tour_create',
                     ],
                 ]

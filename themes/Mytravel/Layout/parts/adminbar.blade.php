@@ -8,7 +8,7 @@ $activeMenu = \Modules\Core\Walkers\MenuWalker::getActiveMenu();
         <ul class="adminbar-menu">
             <li><a href="{{url('/admin')}}"><i class="icon ion-ios-desktop"></i> {{__("Dashboard")}}</a></li>
             @if(is_object($activeMenu))
-                <li><a href="{{$activeMenu->getEditUrl()}}"><i class="icon ion-ios-brush"></i> {{__("Edit")}}</a></li>
+                <li><a href="{{$activeMenu->getEditUrl()}}"><i class="icon ion-ios-brush"></i> {{__("Editar")}}</a></li>
             @endif
         </ul>
     </div>

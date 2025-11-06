@@ -12,7 +12,7 @@
         <div class="row" data-condition="enable_fixed_date:is(1)">
             <div class="col-lg-3">
                 <div class="form-group" >
-                    <label for="">{{__("Start Date")}}</label>
+                    <label for="">{{__("Data de início")}}</label>
                     <input type="text" name="start_date" id=" start_date" class="form-control has-datepicker" value="{{ old('start_date',!empty($row->start_date)?$row->start_date->format("Y-m-d"):"")}}">
 
                 </div>
@@ -25,7 +25,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="form-group" >
-                    <label for="">{{__("Last Booking Date")}}</label>
+                    <label for="">{{__("Data limite para reserva")}}</label>
                     <input type="text" name="last_booking_date" id=" last_booking_date" class="form-control has-datepicker" value="{{ old('last_booking_date',!empty($row->last_booking_date)?$row->last_booking_date->format("Y-m-d"):"")}}">
                 </div>
             </div>

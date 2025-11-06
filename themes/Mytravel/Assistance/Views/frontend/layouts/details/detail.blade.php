@@ -20,7 +20,7 @@
                     <div class="head">
                         <div class="left">
                             <span class="head-rating">{{$review_score['score_text']}}</span>
-                            <span class="text-rating">{{__("from :number reviews",['number'=>$review_score['total_review']])}}</span>
+                            <span class="text-rating">{{__("de :number reviews",['number'=>$review_score['total_review']])}}</span>
                         </div>
                         <div class="score">
                             {{$review_score['score_total']}}<span>/5</span>
@@ -134,7 +134,7 @@
 @endif
 @if($translation->content)
     <div class="g-overview">
-        <h3>{{__("Description")}}</h3>
+        <h3>{{__("Descrição")}}</h3>
         <div class="description">
             <?php echo $translation->content ?>
         </div>
@@ -180,7 +180,7 @@
 @include('Assistance::frontend.layouts.details.include-exclude')
 @if($row->map_lat && $row->map_lng)
 <div class="g-location">
-    <h3>{{__("Location")}}</h3>
+    <h3>{{__("Localização")}}</h3>
     <div class="location-map">
         <div id="map_content"></div>
     </div>

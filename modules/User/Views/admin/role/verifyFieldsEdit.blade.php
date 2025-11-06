@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{ __('Edit Field: :name',['name'=>$row['name'] ?? ''])}}</h1>
+            <h1 class="title-bar">{{ __('Editar Field: :name',['name'=>$row['name'] ?? ''])}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
@@ -12,7 +12,7 @@
                 <form method="post" action="{{route('user.admin.role.verifyFieldsStore')}}" class="needs-validation" novalidate>
                     @csrf
                 <div class="panel">
-                    <div class="panel-title"><strong>{{ __('Edit verification field')}}</strong></div>
+                    <div class="panel-title"><strong>{{ __('Editar verification field')}}</strong></div>
                     <div class="panel-body">
                         @include('User::admin.role.verifyFieldsForm')
                     </div>

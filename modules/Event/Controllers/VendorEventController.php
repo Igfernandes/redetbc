@@ -253,7 +253,7 @@ class VendorEventController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Editar eventos"),
+            'page_title'         => __("Editarar eventos"),
         ];
         return view('Event::frontend.vendorEvent.detail', $data);
     }

@@ -31,7 +31,7 @@ class LocationController extends AdminController
             'translation' => new ($this->location->getTranslationModelName()),
             'breadcrumbs' => [
                 [
-                    'name' => __('Location'),
+                    'name' => __('Localização'),
                     'url'  => route('location.admin.index')
                 ],
                 [
@@ -58,7 +58,7 @@ class LocationController extends AdminController
             'parents'     => $this->location::get()->toTree(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Location'),
+                    'name' => __('Localização'),
                     'url'  => route('location.admin.index')
                 ],
                 [
@@ -95,9 +95,9 @@ class LocationController extends AdminController
         $res = $row->saveOriginOrTranslation($request->input('lang'),true);
         if ($res) {
             if($id > 0 ){
-                return back()->with('success',  __('Location updated') );
+                return back()->with('success',  __('Localização updated') );
             }else{
-                return redirect(route('location.admin.index',$row->id))->with('success', __('Location created') );
+                return redirect(route('location.admin.index',$row->id))->with('success', __('Localização created') );
             }
         }
     }
