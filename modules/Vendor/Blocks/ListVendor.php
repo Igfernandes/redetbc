@@ -75,7 +75,7 @@ class ListVendor extends BaseBlock
                     ])
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 

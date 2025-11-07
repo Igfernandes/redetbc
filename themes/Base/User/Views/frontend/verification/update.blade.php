@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-4">
-                <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Save changes")}} </button>
+                <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Salvar changes")}} </button>
             </div>
         </div>
     </form>

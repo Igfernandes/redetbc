@@ -107,7 +107,7 @@ return [
                 'db_password_label'                  => __('Database Password'),
                 'db_password_placeholder'            => __('Database Password'),
                 'app_tabs' => [
-                    'more_info'                => __('More Info'),
+                    'more_info'                => __('Mais Info'),
                     'broadcasting_title'       => __('Broadcasting, Caching, Session, &amp; Queue'),
                     'broadcasting_label'       => __('Broadcast Driver'),
                     'broadcasting_placeholder' => __('Broadcast Driver'),
@@ -152,9 +152,9 @@ return [
         'classic' => [
             'templateTitle' => __('Step 3 | Environment Settings | Classic Editor'),
             'title'         => __('Classic Environment Editor'),
-            'save'          => __('Save .env'),
+            'save'          => __('Salvar .env'),
             'back'          => __('Use Form Wizard'),
-            'install'       => __('Save and Install'),
+            'install'       => __('Salvar and Install'),
         ],
         'success' => __('Your .env file settings have been saved.'),
         'errors'  => __('Unable to save the .env file, Please create it manually.'),
@@ -202,7 +202,7 @@ return [
          */
         'welcome'  => [
             'title'   => __('Welcome To The Updater'),
-            'message' => __('Welcome to the update wizard.'),
+            'message' => __('Bem-vindo ao the update wizard.'),
         ],
         /**
          *

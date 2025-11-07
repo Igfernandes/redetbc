@@ -180,7 +180,7 @@ class TwoCheckoutGateway extends \Modules\Booking\Gateways\BaseGateway
                 } catch (\Swift_TransportException $e) {
                     Log::warning($e->getMessage());
                 }
-                return redirect($booking->getDetailUrl())->with("error", __("Payment Failed"));
+                return redirect($booking->getDetailUrl())->with("error", __("Pagamento Failed"));
             } else {
                 $payment = $booking->payment;
                 if ($payment) {

@@ -53,7 +53,7 @@ class UnmissableDestinations extends BaseBlock
         $arg[] = [
             'id'            => 'service_types',
             'type'          => 'radios',
-            'label'         => "<strong>".__('Service Type')."</strong>",
+            'label'         => "<strong>".__('Tipo de serviço')."</strong>",
             'values'        => $list_service,
         ];
 

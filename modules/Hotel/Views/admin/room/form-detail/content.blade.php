@@ -13,7 +13,7 @@
     </div>
 
     <div class="form-group">
-        <label >{{__('Gallery')}}</label>
+        <label >{{__('Galeria')}}</label>
         {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
     </div>
     <hr>

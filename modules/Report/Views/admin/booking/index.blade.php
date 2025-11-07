@@ -14,7 +14,7 @@
                             <option value="">{{__("-- Bulk Actions --")}}</option>
                             @if(!empty($statues))
                                 @foreach($statues as $status)
-                                    <option value="{{$status}}">{{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}</option>
+                                    <option value="{{$status}}">{{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}</option>
                                 @endforeach
                             @endif
                             <option value="delete">{{__("DELETE booking")}}</option>
@@ -88,7 +88,7 @@
                                 </td>
                                 <td>
                                     <ul>
-                                        <li>{{__("Name:")}} {{$row->first_name}} {{$row->last_name}} </li>
+                                        <li>{{__("Nome:")}} {{$row->first_name}} {{$row->last_name}} </li>
                                         <li>{{__("Email:")}} {{$row->email}}</li>
                                         <li>{{__("Phone:")}} {{$row->phone}}</li>
                                         <li>{{__("Address:")}} {{$row->address}}</li>
@@ -105,7 +105,7 @@
                                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__('Actions')}}
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item btn-detail-booking" href="#modal_booking_detail" data-ajax="{{route('booking.modal',['booking'=>$booking])}}" data-toggle="modal" data-id="{{$booking->id}}" data-target="#modal_booking_detail">{{__('Detail')}}</a>
+                                                <a class="dropdown-item btn-detail-booking" href="#modal_booking_detail" data-ajax="{{route('booking.modal',['booking'=>$booking])}}" data-toggle="modal" data-id="{{$booking->id}}" data-target="#modal_booking_detail">{{__('Detalhe')}}</a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-paid-{{$row->id}}">{{__('Set Paid')}}</a>
                                                 <a class="dropdown-item" href="{{route('report.admin.booking.email_preview',['id'=>$row->id])}}">{{__('Email Preview')}}</a>
                                             </div>
@@ -123,7 +123,7 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">{{__('Booking ID: #')}} <span class="user_id"></span></h5>
+                                <h5 class="modal-title">{{__('ID da reserva: #')}} <span class="user_id"></span></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

@@ -45,7 +45,7 @@
             </div>
         </div>
         @else
-            <div class="alert alert-warning">{{__("No spaces found")}}</div>
+            <div class="alert alert-warning">{{__("Nenhum espaço encontrado")}}</div>
         @endif
         <div class="d-flex justify-content-center">
             {{$rows->appends($request->query())->links()}}

@@ -10,7 +10,7 @@
                  data-nav-for="#sliderSyncingThumb">
                 @foreach($row->getGallery() as $key=>$item)
                     <div class="js-slide">
-                        <img class="img-fluid border-radius-3" src="{{$item['large']}}" alt="{{ __("Gallery") }}">
+                        <img class="img-fluid border-radius-3" src="{{$item['large']}}" alt="{{ __("Galeria") }}">
                     </div>
                 @endforeach
             </div>
@@ -49,7 +49,7 @@
                                 }]'>
                 @foreach($row->getGallery() as $key=>$item)
                     <div class="js-slide" style="cursor: pointer;">
-                        <img class="img-fluid border-radius-3 height-110" src="{{$item['thumb']}}" alt="{{ __("Gallery") }}">
+                        <img class="img-fluid border-radius-3 height-110" src="{{$item['thumb']}}" alt="{{ __("Galeria") }}">
                     </div>
                 @endforeach
             </div>
@@ -87,7 +87,7 @@
                 @endforeach
             </div>
         @endif
-        <div class="share"> {{__("Share")}}
+        <div class="share"> {{__("Compartilhar")}}
             <a class="facebook share-item" href="https://www.facebook.com/sharer/sharer.php?u={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" original-title="{{__("Facebook")}}"><i class="fa fa-facebook fa-lg"></i></a>
             <a class="twitter share-item" href="https://twitter.com/share?url={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" original-title="{{__("Twitter")}}"><i class="fa fa-twitter fa-lg"></i></a>
         </div>

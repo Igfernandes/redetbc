@@ -60,7 +60,7 @@
                         },
                         settings_modal: {
                             title: '{{ setting_item('cookie_consent_setting_modal_title',__('Cookie preferences')) }}',
-                            save_settings_btn: '{{ setting_item('cookie_consent_setting_modal_save',__('Save settings')) }}',
+                            save_settings_btn: '{{ setting_item('cookie_consent_setting_modal_save',__('Salvar settings')) }}',
                             accept_all_btn: '{{ setting_item('cookie_consent_setting_modal_accept',__('Accept all')) }}',
                             reject_all_btn: '{{ setting_item('cookie_consent_setting_modal_reject',__('Reject all')) }}',
                             close_btn_label: '{{__('Fechar')}}',

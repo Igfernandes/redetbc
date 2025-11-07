@@ -8,31 +8,31 @@
                     <strong>
                         @switch($i)
                             @case(1)
-                            {{__('Monday')}}
+                            {{__('Segunda-feira')}}
                             @break
                             @case(2)
-                            {{__('Tuesday')}}
+                            {{__('Terça-feira')}}
                             @break
                             @case (3)
-                            {{__('Wednesday')}}
+                            {{__('Quarta-feira')}}
                             @break
                             @case (4)
-                            {{__('Thursday')}}
+                            {{__('Quinta-feira')}}
                             @break
                             @case (5)
-                            {{__('Friday')}}
+                            {{__('Sexta-feira')}}
                             @break
                             @case (6)
-                            {{__('Saturday')}}
+                            {{__('Sábado')}}
                             @break
                             @case (7)
-                            {{__('Sunday')}}
+                            {{__('Domingo')}}
                             @break
                         @endswitch
                     </strong>
                     <span class="open-hour-detail">
                         @if(empty($open_hours[$i]['enable']))
-                            <span class="text text-danger">{{__("Closed")}}</span>
+                            <span class="text text-danger">{{__("Fechado")}}</span>
                         @else
                             {{$open_hours[$i]['from']}} - {{$open_hours[$i]['to']}}
                         @endif

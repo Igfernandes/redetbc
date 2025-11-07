@@ -22,7 +22,7 @@
                                 @include('Hotel::admin.room.form')
                             </div>
                             <div class="panel-footer">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> {{__("Save Changes")}}</button>
+                                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> {{__("Salvar Changes")}}</button>
                             </div>
                         </div>
                     </div>

@@ -24,9 +24,9 @@
                     <span class="font-weight-bold font-size-19">{{ $row->display_price }}</span>
                     <span class="mr-1 font-size-14">
                          @if($row->getBookingType()=="by_day")
-                            {{__("/day")}}
+                            {{__("/dia")}}
                         @else
-                            {{__("/night")}}
+                            {{__("/noite")}}
                         @endif
                     </span>
                 </div>
@@ -77,9 +77,9 @@
                 </span>
                 <span class="font-size-14 text-gray-1 ml-2 review">
                     @if($reviewData['total_review'] > 1)
-                        {{ __(":number reviews",["number"=>$reviewData['total_review'] ]) }}
+                        {{ __(":number avaliações",["number"=>$reviewData['total_review'] ]) }}
                     @else
-                        {{ __(":number review",["number"=>$reviewData['total_review'] ]) }}
+                        {{ __(":number avaliação",["number"=>$reviewData['total_review'] ]) }}
                     @endif
                 </span>
             @endif
@@ -111,7 +111,7 @@
                             <small class="flaticon-bathtub font-size-16"></small>
                         </small>
                         <div class="media-body font-size-1">
-                            {{$row->bathroom}} <small>{{ __("bathrooms") }}</small>
+                            {{$row->bathroom}} <small>{{ __("banheiros") }}</small>
                         </div>
                     </li>
                 </ul>
@@ -123,7 +123,7 @@
                             <small class="flaticon-door font-size-16"></small>
                         </small>
                         <div class="media-body font-size-1">
-                            {{$row->max_guests}} <small>{{ __("People") }}</small>
+                            {{$row->max_guests}} <small>{{ __("Pessoas") }}</small>
                         </div>
                     </li>
                     <li class="media mb-2 text-gray-1 align-items-center">
@@ -131,7 +131,7 @@
                             <small class="flaticon-bed-1 font-size-16"></small>
                         </small>
                         <div class="media-body font-size-1">
-                            {{$row->bed}} <small>{{ __("Beds") }}</small>
+                            {{$row->bed}} <small>{{__("Camas") }}</small>
                         </div>
                     </li>
                 </ul>

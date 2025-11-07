@@ -24,7 +24,7 @@ class HowItWork extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Listar item(ns)'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -58,7 +58,7 @@ class HowItWork extends BaseBlock
                     'label' => __('Image Uploader')
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

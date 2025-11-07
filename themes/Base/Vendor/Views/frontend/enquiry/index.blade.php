@@ -18,7 +18,7 @@
                                 <th width="80px">{{__('Status')}}</th>
                                 <th width="80px">{{__('Replies')}}</th>
                                 <th width="180px">{{__('Created At')}}</th>
-                                <th>{{__("Action")}}</th>
+                                <th>{{__("Ação")}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,7 +39,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <div>{{__("Name:")}} {{$row->name}}</div>
+                                            <div>{{__("Nome:")}} {{$row->name}}</div>
                                             <div>{{__("Email:")}} {{$row->email}}</div>
                                             <div>{{__("Phone:")}} {{$row->phone}}</div>
                                             <div>{{__("Notes:")}} {{$row->note}}</div>
@@ -53,7 +53,7 @@
                                             @if(!empty( $has_permission_enquiry_update ))
                                                 <a class="btn btn-xs btn-info btn-make-as" data-toggle="dropdown">
                                                     <i class="icofont-ui-settings"></i>
-                                                    {{__("Action")}}
+                                                    {{__("Ação")}}
                                                 </a>
                                                 <div class="dropdown-menu">
                                                     <a href="{{route('vendor.enquiry_report.reply',['enquiry'=>$row])}}"><i class="icofont-long-arrow-right"></i> {{__("Add Reply")}}</a>
@@ -61,7 +61,7 @@
                                                     @if(!empty($statues))
                                                         @foreach($statues as $status)
                                                             <a href="{{ \Illuminate\Support\Facades\URL::signedRoute("vendor.enquiry_report.bulk_edit" , ['id'=>$row->id , 'status'=>$status]) }}">
-                                                                <i class="icofont-long-arrow-right"></i> {{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}
+                                                                <i class="icofont-long-arrow-right"></i> {{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}
                                                             </a>
                                                         @endforeach
                                                     @endif

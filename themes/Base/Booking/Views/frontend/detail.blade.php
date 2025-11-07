@@ -23,11 +23,11 @@
                 <div class="col-lg-4 col-md-4">
                     <ul class="booking-info-detail">
                         <li><span>{{__('Booking Number')}}:</span> {{$booking->id}}</li>
-                        <li><span>{{__('Booking Date')}}:</span> {{display_date($booking->created_at)}}</li>
+                        <li><span>{{__('Data da reserva')}}:</span> {{display_date($booking->created_at)}}</li>
                         @if(!empty($gateway))
-                        <li><span>{{__('Payment Method')}}:</span> {{$gateway->name}}</li>
+                        <li><span>{{__('Método de pagamento')}}:</span> {{$gateway->name}}</li>
                         @endif
-                        <li><span>{{__('Booking Status')}}:</span> {{ $booking->status_name }}</li>
+                        <li><span>{{__('Status da reserva')')}}:</span> {{ $booking->status_name }}</li>
                     </ul>
                 </div>
             </div>

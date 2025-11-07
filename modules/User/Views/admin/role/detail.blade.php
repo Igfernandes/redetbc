@@ -16,7 +16,7 @@
                         <div class="panel-body">
                             <h3 class="panel-body-title">{{ __('Role Content')}} </h3>
                             <div class="form-group">
-                                <label>{{ __('Name')}}</label>
+                                <label>{{ __('Nome')}}</label>
                                 <input type="text" value="{{old('name',$row->name)}}" placeholder="{{ __('Role Name')}}" name="name" class="form-control">
                             </div>
                             <div class="form-group">
@@ -29,7 +29,7 @@
                     <hr>
                     <div class="d-flex justify-content-between">
                         <span>&nbsp;</span>
-                        <button class="btn btn-primary" type="submit">{{ __('Save Change')}}</button>
+                        <button class="btn btn-primary" type="submit">{{ __('Salvar Change')}}</button>
                     </div>
                 </div>
             </div>

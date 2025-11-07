@@ -76,11 +76,11 @@ class WalletController extends FrontendController
             return redirect()->back()->with("error",__("Please select payment gateway"));
         }
         if (empty($payment_gateway) or empty($gateways[$payment_gateway]) or !class_exists($gateways[$payment_gateway])) {
-            return redirect()->back()->with("error",__("Payment gateway not found"));
+            return redirect()->back()->with("error",__("Pagamento gateway not found"));
         }
         $gatewayObj = new $gateways[$payment_gateway]($payment_gateway);
         if (!$gatewayObj->isAvailable()) {
-            return redirect()->back()->with("error",__("Payment gateway is not available"));
+            return redirect()->back()->with("error",__("Pagamento gateway is not available"));
         }
         if($gRules = $gatewayObj->getValidationRules()){
             $rules = array_merge($rules,$gRules);

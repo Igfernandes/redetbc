@@ -70,7 +70,7 @@
                             <thead>
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
-                                <th> {{ __('Name')}}</th>
+                                <th> {{ __('Nome')}}</th>
                                 <th width="200px"> {{ __('Localização')}}</th>
                                 <th width="130px"> {{ __('Author')}}</th>
                                 <th width="100px"> {{ __('Status')}}</th>

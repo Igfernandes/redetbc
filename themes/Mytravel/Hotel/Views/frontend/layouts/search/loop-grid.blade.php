@@ -13,7 +13,7 @@
             @endif
         </a>
         <div class="position-absolute top-0 right-0 pt-3 pr-3">
-            <button type="button" class="btn btn-sm btn-icon text-white rounded-circle"  data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Save for later')}}">
+            <button type="button" class="btn btn-sm btn-icon text-white rounded-circle"  data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Salvar for later')}}">
                 <span class="service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}">
                     <span class="flaticon-heart-1 font-size-20"></span>
                 </span>
@@ -53,9 +53,9 @@
                     <span class="badge badge-pill badge-primary py-1 px-2 font-size-14 border-radius-3 font-weight-normal">{{$reviewData['score_total']}}/5</span>
                     <span class="font-size-14 text-gray-1 ml-2">(
                         @if($reviewData['total_review'] > 1)
-                            {{ __(":number reviews",["number"=>$reviewData['total_review'] ]) }}
+                            {{ __(":number avaliações",["number"=>$reviewData['total_review'] ]) }}
                         @else
-                            {{ __(":number review",["number"=>$reviewData['total_review'] ]) }}
+                            {{ __(":number avaliação",["number"=>$reviewData['total_review'] ]) }}
                         @endif() )
                     </span>
                 </div>
@@ -64,7 +64,7 @@
         <div class="mb-0">
             <span class="mr-1 font-size-14 text-gray-1">{{__("De")}}</span>
             <span class="font-weight-bold">{{ $row->display_price }}</span>
-            <span class="font-size-14 text-gray-1">{{__("/night")}}</span>
+            <span class="font-size-14 text-gray-1">{{__("/noite")}}</span>
         </div>
     </div>
 </div>

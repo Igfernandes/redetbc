@@ -11,7 +11,7 @@ class ListFeaturedItem extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Listar item(ns)'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -50,11 +50,11 @@ class ListFeaturedItem extends BaseBlock
                         ],
                         [
                             'value'   => 'style2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                         [
                             'value'   => 'style3',
-                            'name' => __("Style 3")
+                            'name' => __("Estilo 3")
                         ],
                         [
                             'value'   => 'style4',
@@ -67,13 +67,13 @@ class ListFeaturedItem extends BaseBlock
                     ]
                 ]
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 
     public function getName()
     {
-        return __('List Featured Item');
+        return __('Listar item em destaque');
     }
 
     public function content($model = [])

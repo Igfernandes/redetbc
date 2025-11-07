@@ -22,11 +22,11 @@ class FaqList extends BaseBlock
                     'values'        => [
                         [
                             'value'   => '',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                     ]
                 ],
@@ -39,7 +39,7 @@ class FaqList extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Listar item(ns)'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -57,7 +57,7 @@ class FaqList extends BaseBlock
                     ]
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

@@ -12,7 +12,7 @@ class BrandsList extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Brand Item(s)'),
+                    'label'       => __('Listar itens da marca'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -29,13 +29,13 @@ class BrandsList extends BaseBlock
                     ]
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 
     public function getName()
     {
-        return __('Brands List');
+        return __('Lista de marcas');
     }
 
     public function content($model = [])

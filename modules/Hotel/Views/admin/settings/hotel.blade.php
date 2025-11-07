@@ -152,10 +152,10 @@
                             <a class="nav-link active" data-toggle="tab" href="#seo_1">{{__("General Options")}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#seo_2">{{__("Share Facebook")}}</a>
+                            <a class="nav-link" data-toggle="tab" href="#seo_2">{{__("Compartilhar Facebook")}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#seo_3">{{__("Share Twitter")}}</a>
+                            <a class="nav-link" data-toggle="tab" href="#seo_3">{{__("Compartilhar Twitter")}}</a>
                         </li>
                     </ul>
                     <div class="tab-content" >

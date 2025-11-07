@@ -20,7 +20,7 @@ class ListLocations extends BaseBlock
                     'id'            => 'service_type',
                     'type'          => 'checklist',
                     'listBox'          => 'true',
-                    'label'         => "<strong>".__('Service Type')."</strong>",
+                    'label'         => "<strong>".__('Tipo de serviço')."</strong>",
                     'values'        => $list_service,
                 ],
                 [
@@ -48,15 +48,15 @@ class ListLocations extends BaseBlock
                     'values'        => [
                         [
                             'value'   => 'style_1',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                         [
                             'value'   => 'style_3',
-                            'name' => __("Style 3")
+                            'name' => __("Estilo 3")
                         ],
                         [
                             'value'   => 'style_4',

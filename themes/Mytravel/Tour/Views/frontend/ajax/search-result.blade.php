@@ -8,7 +8,7 @@
             @endforeach
         @else
             <div class="col-lg-12">
-                {{__("Tour not found")}}
+                {{__("Tour não encontrado")}}
             </div>
         @endif
     </div>

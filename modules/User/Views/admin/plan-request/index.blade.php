@@ -63,7 +63,7 @@
                             <th>{{__('Plan')}}</th>
                             <th width="80px">{{__('Amount')}}</th>
                             <th width="80px">{{__('Status')}}</th>
-                            <th width="150px">{{__('Payment Method')}}</th>
+                            <th width="150px">{{__('Método de pagamento')}}</th>
                             <th width="120px">{{__('Created At')}}</th>
                         </tr>
                         </thead>
@@ -80,10 +80,10 @@
                                     </td>
                                     <td>
                                         @if(!empty($row->plan))
-                                            <p>{{__('Name: :name',['name'=>$row->plan->title])}}
+                                            <p>{{__('Nome: :name',['name'=>$row->plan->title])}}
 
                                             @if($row->getMeta('annual')!=1)
-                                                <p>{{__('Duration:  :duration_text',['duration_text'=>$row->plan->duration_text])}}</p>
+                                                <p>{{__('Duração:  :duration_text',['duration_text'=>$row->plan->duration_text])}}</p>
                                                 @else
                                                 <p>{{__('Ano')}}</p>
                                             @endif

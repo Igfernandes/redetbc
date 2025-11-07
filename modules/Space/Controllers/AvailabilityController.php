@@ -95,7 +95,7 @@ class AvailabilityController extends FrontendController{
         }
         $space = $this->spaceClass::find($request->query('id'));
         if(empty($space)){
-            return $this->sendError(__('Space not found'));
+            return $this->sendError(__('Espaço não encontrado'));
         }
         $is_single = $request->query('for_single');
         $query = $this->spaceDateClass::query();
@@ -255,7 +255,7 @@ class AvailabilityController extends FrontendController{
         $target_id = $request->input('target_id');
 
         if(empty($space)){
-            return $this->sendError(__('Space not found'));
+            return $this->sendError(__('Espaço não encontrado'));
         }
 
         if(!$this->hasPermission('space_manage_others')){

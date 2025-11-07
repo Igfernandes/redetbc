@@ -5,7 +5,7 @@
 <div class="pricing-tabs tabs-box" data-client='{{Auth()->user()->gateway_customer_id}}'>
     @if($has_annual)
     <div class="tab-buttons">
-        <h4>{{ setting_item_with_lang('user_plans_sale_text', app()->getLocale()) ?? __('Save up to 10%') }}</h4>
+        <h4>{{ setting_item_with_lang('user_plans_sale_text', app()->getLocale()) ?? __('Salvar up to 10%') }}</h4>
         <ul class="tab-btns">
             <li data-tab="#monthly" class="tab-btn active-btn">{{__('Mêsly')}}</li>
             <li data-tab="#annual" class="tab-btn">{{__('Annual')}}</li>

@@ -21,7 +21,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">{{__('Name')}}</th>
+                                    <th scope="col">{{__('Nome')}}</th>
                                     <th scope="col">{{__('Preço')}}</th>
                                     <th scope="col">{{__("Credit")}}</th>
                                     <th scope="col"></th>

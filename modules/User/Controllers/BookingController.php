@@ -21,7 +21,7 @@ class BookingController extends FrontendController
         $data = [
             'booking'    => $booking,
             'service'    => $booking->service,
-            'page_title' => __("Invoice")
+            'page_title' => __("Fatura")
         ];
         return view('User::frontend.bookingInvoice', $data);
     }

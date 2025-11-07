@@ -27,7 +27,7 @@ class BoxCategoryTour extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Listar item(ns)'),
                     'title_field' => 'title',
                     'settings'    => [
                         [

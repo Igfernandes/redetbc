@@ -228,7 +228,7 @@ class VendorController extends FrontendController
         $row = $this->hotelClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('hotel.vendor.index'))->with('warning', __('Space not found!'));
+            return redirect(route('hotel.vendor.index'))->with('warning', __('Espaço não encontrado!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [

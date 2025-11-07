@@ -34,7 +34,7 @@ class VendorRegisterForm extends BaseBlock
                     'label' => __('Carregador de Imagem de Fundo')
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 

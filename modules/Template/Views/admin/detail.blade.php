@@ -124,7 +124,7 @@
                                 <span
                                     class="btn btn-success"
                                     @click="saveTemplate"
-                                >{{__("Save Template")}}
+                                >{{__("Salvar Template")}}
                                 <i
                                     class="fa fa-spin fa-spinner"
                                     v-show="onSaving"

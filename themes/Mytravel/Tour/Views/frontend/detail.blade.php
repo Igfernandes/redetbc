@@ -111,11 +111,11 @@
     <script>
         var bravo_booking_data = {!! json_encode($booking_data) !!}
             var bravo_booking_i18n = {
-            no_date_select:'{{__('Please select Start date')}}',
-            no_guest_select:'{{__('Please select at least one guest')}}',
+            no_date_select:'{{__('Por favor, selecione a data de início')}}',
+            no_guest_select:'{{__('Por favor, selecione pelo menos um convidado')')}}',
             load_dates_url:'{{route('tour.vendor.availability.loadDates')}}',
-            name_required:'{{ __("Name is Required") }}',
-            email_required:'{{ __("Email is Required") }}',
+            name_required:'{{ __("O nome é obrigatório"") }}',
+            email_required:'{{ __("É necessário fornecer um e-mail")") }}',
         };
     </script>
     <script type="text/javascript" src="{{ asset("libs/fotorama/fotorama.js") }}"></script>

@@ -33,14 +33,14 @@
             <ul class="review-list">
                 @if($booking->start_date)
                     <li>
-                        <div class="label">{{__('Start date:')}}</div>
+                        <div class="label">{{__('Data de início:')}}</div>
                         <div class="val">
                             {{display_date($booking->start_date)}}
                         </div>
                     </li>
                     @if($booking->getMeta("booking_type") == "ticket")
                         <li>
-                            <div class="label">{{__('Duration:')}}</div>
+                            <div class="label">{{__('Duração:')}}</div>
                             <div class="val">
                                 @php $duration = $booking->getMeta("duration") @endphp
                                 {{duration_format($duration)}}
@@ -49,7 +49,7 @@
                     @endif
                     @if($booking->getMeta("booking_type") == "time_slot")
                         <li>
-                            <div class="label">{{__('Duration:')}}</div>
+                            <div class="label">{{__('Duração:')}}</div>
                             <div class="val">
                                 {{ $booking->getMeta("duration")  }}
                                 {{ $booking->getMeta("duration_unit")  }}
@@ -113,7 +113,7 @@
                 @php $extra_price = $booking->getJsonMeta('extra_price') @endphp
                 @if(!empty($extra_price))
                     <li>
-                        <div class="label-title"><strong>{{__("Extra Prices:")}}</strong></div>
+                        <div class="label-title"><strong>{{__("Preços extras:")}}</strong></div>
                     </li>
                     <li class="no-flex">
                         <ul>

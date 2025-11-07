@@ -28,13 +28,13 @@
             <ul class="review-list">
                 @if($booking->start_date)
                     <li>
-                        <div class="label">{{__('Start date:')}}</div>
+                        <div class="label">{{__('Data de início:')}}</div>
                         <div class="val">
                             {{display_date($booking->start_date)}}
                         </div>
                     </li>
                     <li>
-                        <div class="label">{{__('Duration:')}}</div>
+                        <div class="label">{{__('Duração:')}}</div>
                         <div class="val">
                             {{human_time_diff($booking->end_date,$booking->start_date)}}
                         </div>
@@ -85,7 +85,7 @@
                 @php $extra_price = $booking->getJsonMeta('extra_price') @endphp
                 @if(!empty($extra_price))
                     <li>
-                        <div class="label-title"><strong>{{__("Extra Prices:")}}</strong></div>
+                        <div class="label-title"><strong>{{__("Preços extras:")}}</strong></div>
                     </li>
                     <li class="no-flex">
                         <ul>
@@ -103,7 +103,7 @@
                 @php $discount_by_people = $booking->getJsonMeta('discount_by_people')@endphp
                 @if(!empty($discount_by_people))
                     <li>
-                        <div class="label-title"><strong>{{__("Discounts:")}}</strong></div>
+                        <div class="label-title"><strong>{{__("Descontos:")}}</strong></div>
                     </li>
                     <li class="no-flex">
                         <ul>

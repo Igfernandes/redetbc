@@ -850,8 +850,8 @@ class Hotel extends Bookable
                     'image'           => $room->image_id ? get_file_url($room->image_id, 'medium') : '',
                     'tmp_number'      => $room->tmp_number,
                     'gallery'         => $room->getGallery(),
-                    'price_html'      => format_money($room->tmp_price) . '<span class="unit">/' . ($room->tmp_nights ? __(':count nights', ['count' => $room->tmp_nights]) : __(":count night", ['count' => $room->tmp_nights])) . '</span>',
-                    'price_text'      => format_money($room->tmp_price) . '/' . ($room->tmp_nights ? __(':count nights', ['count' => $room->tmp_nights]) : __(":count night", ['count' => $room->tmp_nights])),
+                    'price_html'      => format_money($room->tmp_price) . '<span class="unit">/' . ($room->tmp_nights ? __(':count noites', ['count' => $room->tmp_nights]) : __(":count night", ['count' => $room->tmp_nights])) . '</span>',
+                    'price_text'      => format_money($room->tmp_price) . '/' . ($room->tmp_nights ? __(':count noites', ['count' => $room->tmp_nights]) : __(":count night", ['count' => $room->tmp_nights])),
                     'terms'           => $terms,
                     'term_features'   => $term_features
                 ];
@@ -1149,11 +1149,11 @@ class Hotel extends Bookable
                     ],
                     [
                         'id' => 'adults',
-                        'title' => __('Adults')
+                        'title' => __('Adultos')
                     ],
                     [
                         'id' => 'children',
-                        'title' => __('Children')
+                        'title' => __('Crianças')
                     ]
                 ];
             }

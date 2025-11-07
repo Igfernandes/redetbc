@@ -39,16 +39,16 @@
                                         @if($row->min_day_before_booking > 1)
                                             - {{ __("Book :number days in advance",["number"=>$row->min_day_before_booking]) }}
                                         @else
-                                            - {{ __("Book :number day in advance",["number"=>$row->min_day_before_booking]) }}
+                                            - {{ __("Reserve com :number de dias de antecedência",["number"=>$row->min_day_before_booking]) }}
                                         @endif
                                     </small>
                                 @endif
                                 @if(!empty($row->min_day_stays))
                                     <small>
                                         @if($row->min_day_stays > 1)
-                                            - {{ __("Stay at least :number days",["number"=>$row->min_day_stays]) }}
+                                            - {{ __("Fique pelo menos por :number de dias"",["number"=>$row->min_day_stays]) }}
                                         @else
-                                            - {{ __("Stay at least :number day",["number"=>$row->min_day_stays]) }}
+                                            - {{ __("Fique pelo menos :number dias",["number"=>$row->min_day_stays]) }}
                                         @endif
                                     </small>
                                 @endif
@@ -59,8 +59,8 @@
                             <div class="border-bottom border-width-2 border-color-1 pb-3">
                                 <div class="flex-center-between mb-1 text-dark font-weight-bold">
                                     <span class="d-block">
-                                        {{__('Adults')}} <br>
-                                        <small>{{__('Ages 12+')}}</small>
+                                        {{__('Adultos')}} <br>
+                                        <small>{{__('Para maiores de 12 anos')}}</small>
                                     </span>
                                     <div class="flex-horizontal-center">
                                         <a class="font-size-10 text-dark" href="javascript:;" @click="minusPersonType('adults')">
@@ -78,8 +78,8 @@
                             <div class="border-bottom border-width-2 border-color-1 pb-3">
                                 <div class="flex-center-between mb-1 text-dark font-weight-bold">
                                     <span class="d-block">
-                                        {{__('Children')}} <br>
-                                        <small>{{__('Ages 2–12')}}</small>
+                                        {{__('Crianças')}} <br>
+                                        <small>{{__('Idades 2–12')}}</small>
                                     </span>
                                     <div class="flex-horizontal-center">
                                         <a class="font-size-10 text-dark" href="javascript:;" @click="minusPersonType('children')">

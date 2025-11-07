@@ -37,13 +37,13 @@
             <ul class="review-list">
                 @if($booking->start_date)
                     <li>
-                        <div class="label">{{__('Start date:')}}</div>
+                        <div class="label">{{__('Data de início:')}}</div>
                         <div class="val">
                             {{display_date($booking->start_date)}}
                         </div>
                     </li>
                     <li>
-                        <div class="label">{{__('End date:')}}</div>
+                        <div class="label">{{__('Data de término:')}}</div>
                         <div class="val">
                             {{display_date($booking->end_date)}}
                         </div>
@@ -58,7 +58,7 @@
                     @endif
                     @if($booking->getMeta("booking_type") == "by_night")
                         <li>
-                            <div class="label">{{__('Nights:')}}</div>
+                            <div class="label">{{__('Noites:')}}</div>
                             <div class="val">
                                 {{$booking->duration_nights}}
                             </div>
@@ -67,7 +67,7 @@
                 @endif
                 @if($meta = $booking->getMeta('adults'))
                     <li>
-                        <div class="label">{{__('Adults:')}}</div>
+                        <div class="label">{{__('Adultos:')}}</div>
                         <div class="val">
                             {{$meta}}
                         </div>
@@ -75,7 +75,7 @@
                 @endif
                 @if($meta = $booking->getMeta('children'))
                     <li>
-                        <div class="label">{{__('Children:')}}</div>
+                        <div class="label">{{__('Crianças:')}}</div>
                         <div class="val">
                             {{$meta}}
                         </div>
@@ -87,7 +87,7 @@
                             <p class="text-center">
                                 <a data-toggle="modal" data-target="#detailBookingDate{{$booking->code}}" aria-expanded="false"
                                    aria-controls="detailBookingDate{{$booking->code}}">
-                                    {{__('Detail')}} <i class="icofont-list"></i>
+                                    {{__('Detalhe')}} <i class="icofont-list"></i>
                                 </a>
                             </p>
                         </div>
@@ -112,7 +112,7 @@
                 @php $extra_price = $booking->getJsonMeta('extra_price') @endphp
                 @if(!empty($extra_price))
                     <li>
-                        <div class="label-title"><strong>{{__("Extra Prices:")}}</strong></div>
+                        <div class="label-title"><strong>{{__("Preços extras:")}}</strong></div>
                     </li>
                     <li class="no-flex">
                         <ul>
@@ -177,7 +177,7 @@ $dateDetail = $service->detailBookingEachDate($booking);
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center">{{__('Detail')}}</h5>
+                <h5 class="modal-title text-center">{{__('Detalhe')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

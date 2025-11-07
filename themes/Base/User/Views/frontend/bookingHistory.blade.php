@@ -30,10 +30,10 @@
                                 <th class="a-hidden">{{__("Order Date")}}</th>
                                 <th class="a-hidden">{{__("Execution Time")}}</th>
                                 <th>{{__("Total")}}</th>
-                                <th>{{__("Paid")}}</th>
-                                <th>{{__("Remain")}}</th>
+                                <th>{{__("Pago")}}</th>
+                                <th>{{__("Permanecer")}}</th>
                                 <th class="a-hidden">{{__("Status")}}</th>
-                                <th>{{__("Action")}}</th>
+                                <th>{{__("Ação")}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -55,7 +55,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{__('Booking ID: #')}} <span class="user_id"></span></h5>
+                        <h5 class="modal-title">{{__('ID da reserva: #')}} <span class="user_id"></span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

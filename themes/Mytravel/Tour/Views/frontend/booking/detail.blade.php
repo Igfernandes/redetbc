@@ -21,7 +21,7 @@
             <div class="card-header card-collapse bg-transparent border-0" >
                 <h5 class="mb-0">
                     <button type="button" class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-4 font-size-17 font-weight-bold text-dark" data-toggle="collapse" data-target="#basicsCollapseDetail">
-                        {{ __("Booking Detail") }}
+                        {{ __("Detalhes da reserva"") }}
                         <span class="card-btn-arrow font-size-14 text-dark"><i class="fa fa-chevron-down"></i></span>
                     </button>
                 </h5>
@@ -37,7 +37,7 @@
                                 </div>
                             </li>
                             <li class="d-flex justify-content-between py-2">
-                                <div class="label">{{ __("Duration") }}</div>
+                                <div class="label">{{ __("Duração") }}</div>
                                 <div class="val">{{human_time_diff($booking->end_date,$booking->start_date)}}</div>
                             </li>
                         @endif
@@ -67,7 +67,7 @@
             <div class="card-header card-collapse bg-transparent border-0" id="basicsHeadingFour">
                 <h5 class="mb-0">
                     <button type="button" class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-4 font-size-17 font-weight-bold text-dark" data-toggle="collapse" data-target="#basicsCollapsePayment">
-                        {{ __("Payment") }}
+                        {{ __("Pagamento") }}
                         <span class="card-btn-arrow font-size-14 text-dark"><i class="fa fa-chevron-down"></i></span>
                     </button>
                 </h5>
@@ -97,7 +97,7 @@
                         @if(!empty($extra_price))
                             <li class="d-flex justify-content-between py-2">
                                 <div class="font-size-16 font-weight-bold">
-                                    {{__("Extra Prices:")}}
+                                    {{__("Preços extras:")}}
                                 </div>
                             </li>
                             @foreach($extra_price as $type)
@@ -113,7 +113,7 @@
                         @if(!empty($discount_by_people))
                             <li class="d-flex justify-content-between py-2">
                                 <div class="font-size-16 font-weight-bold">
-                                    {{__("Discounts:")}}
+                                    {{__("Descontos:")}}
                                 </div>
                             </li>
                             @foreach($discount_by_people as $type)
@@ -152,7 +152,7 @@
                                 @endphp
                                 <li class="d-flex justify-content-between py-2">
                                     <div class="font-size-16 font-weight-bold">
-                                        {{__("Fee:")}}
+                                        {{__("Taxa:")}}
                                     </div>
                                 </li>
                                 <li class="d-flex justify-content-between py-2">
@@ -176,12 +176,12 @@
                       
                         @if($booking->status !='draft')
                             <li class="d-flex justify-content-between py-2">
-                                <div class="label">{{__("Paid:")}}</div>
+                                <div class="label">{{__("Pago:")}}</div>
                                 <div class="val">{{format_money($booking->paid)}}</div>
                             </li>
                             @if($booking->paid < $booking->total )
                                 <li class="d-flex justify-content-between py-2">
-                                    <div class="label">{{__("Remain:")}}</div>
+                                    <div class="label">{{__("Permanecer:")}}</div>
                                     <div class="val">{{format_money($booking->total - $booking->paid)}}</div>
                                 </li>
                             @endif

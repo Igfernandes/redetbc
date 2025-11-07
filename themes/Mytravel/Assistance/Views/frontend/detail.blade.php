@@ -59,8 +59,8 @@
             no_guest_select:'{{__('Please select at least one number')}}',
             load_dates_url:'{{route('Assistance.vendor.availability.loadDates')}}',
             availability_booking_url:'{{route('Assistance.vendor.availability.availabilityBooking')}}',
-            name_required:'{{ __("Name is Required") }}',
-            email_required:'{{ __("Email is Required") }}',
+            name_required:'{{ __("O nome é obrigatório"") }}',
+            email_required:'{{ __("É necessário fornecer um e-mail")") }}',
         };
     </script>
     <script type="text/javascript" src="{{ asset("libs/ion_rangeslider/js/ion.rangeSlider.min.js") }}"></script>

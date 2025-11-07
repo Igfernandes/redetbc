@@ -24,13 +24,13 @@ class CallToAction extends BaseBlock
                     'id'        => 'link_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Título Link More')
+                    'label'     => __('Título Link Mais')
                 ],
                 [
                     'id'        => 'link_more',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Link More')
+                    'label'     => __('Link Mais')
                 ],
                 [
                     'id'            => 'style',
@@ -43,11 +43,11 @@ class CallToAction extends BaseBlock
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                         [
                             'value'   => 'style_3',
-                            'name' => __("Style 3")
+                            'name' => __("Estilo 3")
                         ],
                     ]
                 ],
@@ -64,13 +64,13 @@ class CallToAction extends BaseBlock
                     'label' => __('- Layout 2&3 : Background Image Uploader')
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 
     public function getName()
     {
-        return __('Call To Action');
+        return __('Chamada para ação');
     }
 
     public function content($model = [])

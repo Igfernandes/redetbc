@@ -9,7 +9,7 @@ class FormSearchAllService extends BaseBlock
 {
     public function getName()
     {
-        return __('Form Search All Service');
+        return __('Formulário de Pesquisa Todos os Serviços');
     }
 
     public function getOptions()
@@ -30,7 +30,7 @@ class FormSearchAllService extends BaseBlock
             'id'            => 'service_types',
             'type'          => 'checklist',
             'listBox'          => 'true',
-            'label'         => "<strong>".__('Service Type')."</strong>",
+            'label'         => "<strong>".__('Tipo de serviço')."</strong>",
             'values'        => $list_service,
         ];
 
@@ -112,14 +112,14 @@ class FormSearchAllService extends BaseBlock
 
         $arg[] = [
             'type'=> "checkbox",
-            'label'=>__("Hide form search service?"),
+            'label'=>__("Ocultar serviço de pesquisa de formulário?"),
             'id'=> "hide_form_search",
             'default'=>false
         ];
 
         return [
             'settings' => $arg,
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

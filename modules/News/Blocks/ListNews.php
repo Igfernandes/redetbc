@@ -32,7 +32,7 @@ class ListNews extends BaseBlock
                 [
                     'id'      => 'category_id',
                     'type'    => 'select2',
-                    'label'   => __('Filter by Category'),
+                    'label'   => __('Filtrar por categoria'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => route('news.admin.category.getForSelect2') ,

@@ -14,7 +14,7 @@
                             <option value="">{{__("-- Bulk Actions --")}}</option>
                             @if(!empty($statues))
                                 @foreach($statues as $status)
-                                    <option value="{{$status}}">{{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}</option>
+                                    <option value="{{$status}}">{{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}</option>
                                 @endforeach
                             @endif
                             <option value="delete">{{__("DELETE Enquiry")}}</option>
@@ -69,7 +69,7 @@
                                         </td>
                                         <td>
                                             <ul>
-                                                <li>{{__("Name:")}} {{$row->name}}</li>
+                                                <li>{{__("Nome:")}} {{$row->name}}</li>
                                                 <li>{{__("Email:")}} {{$row->email}}</li>
                                                 <li>{{__("Phone:")}} {{$row->phone}}</li>
                                                 <li>{{__("Notes:")}} {{$row->note}}</li>

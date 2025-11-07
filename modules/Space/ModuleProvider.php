@@ -54,7 +54,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'create'=>[
                         'url'        => route('space.admin.create'),
-                        'title'      => __('Add new Space'),
+                        'title'      => __('Adicionar novo espaço'),
                         'permission' => 'space_create',
                     ],
                     'attribute'=>[
@@ -116,7 +116,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     [
                         'url'        => route('space.vendor.create'),
-                        'title'      => __("Add Space"),
+                        'title'      => __("Adicionar espaço"),
                         'permission' => 'space_create',
                     ],
                     [

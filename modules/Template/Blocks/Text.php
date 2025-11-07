@@ -44,7 +44,7 @@ class Text extends BaseBlock
                     'tab'   => 'style'
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

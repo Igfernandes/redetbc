@@ -2,7 +2,7 @@
     <div class="bravo-reviews">
         <div class="border-bottom py-4">
             <h5 id="scroll-reviews" class="font-size-21 font-weight-bold text-dark mb-4">
-                {{__("Reviews")}}
+                {{__("Avaliações")}}
             </h5>
             @if($review_score)
                 <div class="row">
@@ -15,9 +15,9 @@
                                 <div class="font-size-25 text-dark mb-3">{{$review_score['score_text']}}</div>
                                 <div class="text-gray-1">{{__("De")}}
                                     @if($review_score['total_review'] > 1)
-                                        {{ __(":number reviews",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliações",["number"=>$review_score['total_review'] ]) }}
                                     @else
-                                        {{ __(":number review",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliação",["number"=>$review_score['total_review'] ]) }}
                                     @endif
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
         <div class="py-4">
             @if($row->check_enable_review_after_booking() and Auth::id())
                 <h5 class="font-size-21 font-weight-bold text-dark mb-6">
-                    {{__("Write a review")}}
+                    {{__("Escreva uma avaliação")}}
                 </h5>
                 <div class="form-wrapper">
 
@@ -128,7 +128,7 @@
                                     @else
                                         <div class="col-md-4 mb-6">
                                             <h6 class="font-weight-bold text-dark mb-1">
-                                                {{__("Review rate")}}
+                                                {{__("Taxa de avaliação")}}
                                             </h6>
                                             <input class="review_stats" type="hidden" name="review_rate">
                                             <span class="font-size-20 letter-spacing-3 sspd_review">
@@ -144,20 +144,20 @@
                             </div>
                             <div class="col-sm-12 mb-5">
                                 <div class="js-form-message">
-                                    <input type="text" class="form-control" name="review_title" placeholder="{{__("Título")}}" required data-error-class="u-has-error" data-msg="{{__('Review title is required')}}" data-success-class="u-has-success">
-                                    <div class="invalid-feedback">{{__('Review title is required')}}</div>
+                                    <input type="text" class="form-control" name="review_title" placeholder="{{__("Título")}}" required data-error-class="u-has-error" data-msg="{{__('O título da avaliação é obrigatório')}}" data-success-class="u-has-success">
+                                    <div class="invalid-feedback">{{__('O título da avaliação é obrigatório')}}</div>
                                 </div>
                             </div>
                             <div class="col-sm-12 mb-5">
                                 <div class="js-form-message">
                                     <div class="input-group">
-                                        <textarea class="form-control" rows="6" cols="77" name="review_content" placeholder="{{__("Review content")}}" required data-msg="{{__('Review content has at least 10 character')}}" data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
-                                        <div class="invalid-feedback">{{__('Review content has at least 10 character')}}</div>
+                                        <textarea class="form-control" rows="6" cols="77" name="review_content" placeholder="{{__("Review content")}}" required data-msg="{{__('O conteúdo da avaliação tem pelo menos 10 caracteres')}}" data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
+                                        <div class="invalid-feedback">{{__('O conteúdo da avaliação tem pelo menos 10 caracteres')}}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col d-flex justify-content-center justify-content-lg-start">
-                                <button type="submit" id="submit" name="submit" class="btn rounded-xs bg-blue-dark-1 text-white p-2 height-51 width-190 transition-3d-hover">{{__("Leave a Review")}}</button>
+                                <button type="submit" id="submit" name="submit" class="btn rounded-xs bg-blue-dark-1 text-white p-2 height-51 width-190 transition-3d-hover">{{__("Deixe uma avaliação")}}</button>
                                 <input type="hidden" name="review_service_id" value="{{$row->id}}">
                                 <input type="hidden" name="review_service_type" value="{{ $row->type }}">
                             </div>
@@ -168,7 +168,7 @@
             @endif
             @if(!Auth::id())
                 <div class="review-message">
-                    {!!  __("You must <a href='#login' data-toggle='modal' data-target='#login'>log in</a> to write review") !!}
+                    {!!  __("Você deve <a href='#login' data-toggle='modal' data-target='#login'>fazer login</a> para escrever uma avaliação") !!}
                 </div>
             @endif
         </div>

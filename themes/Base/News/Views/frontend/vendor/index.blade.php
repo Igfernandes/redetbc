@@ -61,7 +61,7 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th class="title"> {{ __('Name')}}</th>
+                                    <th class="title"> {{ __('Nome')}}</th>
                                     <th width="200px"> {{ __('Category')}}</th>
                                     <th width="100px"> {{ __('Date')}}</th>
                                     <th width="100px">{{  __('Status')}}</th>

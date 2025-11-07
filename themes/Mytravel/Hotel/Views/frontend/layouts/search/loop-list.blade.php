@@ -28,7 +28,7 @@
                         @endif
                     </div>
                     <div class="position-absolute top-0 right-0 pr-md-3 d-none d-md-block rtl-left-0 rtl-right-auto">
-                        <button type="button" class="btn btn-sm btn-icon rounded-circle"  data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Save for later')}}">
+                        <button type="button" class="btn btn-sm btn-icon rounded-circle"  data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Salvar for later')}}">
                             <span class="service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}">
                                 <span class="flaticon-heart-1 font-size-20"></span>
                             </span>
@@ -95,7 +95,7 @@
                             </div>
                             <span class="font-size-14 text-gray-1">
                                 @if(!empty($reviewData['total_review']))
-                                    ({{__(":number reviews",['number'=>$reviewData['total_review']])}})
+                                    ({{__(":number avaliações",['number'=>$reviewData['total_review']])}})
                                 @endif
                             </span>
                         </div>

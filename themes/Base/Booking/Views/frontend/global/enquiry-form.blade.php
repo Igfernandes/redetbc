@@ -14,7 +14,7 @@ $user = auth()->user();
                 <input type="hidden" name="service_id" value="{{$row->id}}">
                 <input type="hidden" name="service_type" value="{{$service_type ?? ''}}">
                 <div class="form-group" >
-                    <input type="text" class="form-control" value="{{$user->display_name ?? ''}}" name="enquiry_name" placeholder="{{ __("Name *") }}">
+                    <input type="text" class="form-control" value="{{$user->display_name ?? ''}}" name="enquiry_name" placeholder="{{ __("Nome *") }}">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" value="{{$user->email ?? ''}}" name="enquiry_email" placeholder="{{ __("Email *") }}">

@@ -399,12 +399,12 @@ class Space extends Bookable
         if ($this->getBookingType() != 'by_night') {
             $numberDays = (abs(strtotime($end_date) - strtotime($start_date)) / 86400) + 1;
             if (!empty($this->min_day_stays) and  $numberDays < $this->min_day_stays) {
-                return $this->sendError(__("You must to book a minimum of :number days", ['number' => $this->min_day_stays]));
+                return $this->sendError(__("Você deve to book a minimum of :number days", ['number' => $this->min_day_stays]));
             }
         } else {
             $numberDays = (abs(strtotime($end_date) - strtotime($start_date)) / 86400);
             if (!empty($this->min_day_stays) and  $numberDays < $this->min_day_stays) {
-                return $this->sendError(__("You must to book a minimum of :number nights", ['number' => $this->min_day_stays]));
+                return $this->sendError(__("Você deve to book a minimum of :number nights", ['number' => $this->min_day_stays]));
             }
         }
 
@@ -1067,11 +1067,11 @@ class Space extends Bookable
                 $item['field_guests'] = [
                     [
                         'id' => 'adults',
-                        'title' => __('Adults')
+                        'title' => __('Adultos')
                     ],
                     [
                         'id' => 'children',
-                        'title' => __('Children')
+                        'title' => __('Crianças')
                     ]
                 ];
             }

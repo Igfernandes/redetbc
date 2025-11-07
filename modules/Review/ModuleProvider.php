@@ -26,7 +26,7 @@ class ModuleProvider extends ModuleServiceProvider
             'review'=>[
                 "position"=>55,
                 'url'   => route('review.admin.index'),
-                'title' => __("Reviews"),
+                'title' => __("Avaliações"),
                 'icon'  => 'icon ion-ios-text',
                 'permission' => 'review_manage_others',
             ],

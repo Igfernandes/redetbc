@@ -64,11 +64,11 @@
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label">{{__("Duration")}}</label>
+                    <label class="control-label">{{__("Duração")}}</label>
                     <div class="input-group mb-3">
-                        <input type="text" name="duration" class="form-control" value="{{old('duration',$row->duration)}}" placeholder="{{__("Duration")}}" aria-describedby="basic-addon2">
+                        <input type="text" name="duration" class="form-control" value="{{old('duration',$row->duration)}}" placeholder="{{__("Duração")}}" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">{{__('hours')}}</span>
+                            <span class="input-group-text" id="basic-addon2">{{__('horas')}}</span>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label">{{__("Gallery")}}</label>
+            <label class="control-label">{{__("Galeria")}}</label>
             {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',old('gallery',$row->gallery)) !!}
         </div>
         @endif

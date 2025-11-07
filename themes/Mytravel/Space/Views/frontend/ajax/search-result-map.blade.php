@@ -25,8 +25,8 @@
         </div>
     @else
         <div class="not-found-box">
-            <h3 class="n-title">{{__("We couldn't find any spaces.")}}</h3>
-            <p class="p-desc">{{__("Try changing your filter criteria")}}</p>
+            <h3 class="n-title">{{__("Não conseguimos encontrar nenhum espaço.")}}</h3>
+            <p class="p-desc">{{__("Tente alterar seus critérios de filtro.")}}</p>
         </div>
     @endif
 </div>

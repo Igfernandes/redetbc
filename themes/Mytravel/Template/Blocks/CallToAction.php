@@ -27,13 +27,13 @@ class CallToAction extends BaseBlock
                     'id'        => 'link_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Título Link More')
+                    'label'     => __('Título Link Mais')
                 ],
                 [
                     'id'        => 'link_more',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Link More')
+                    'label'     => __('Link Mais')
                 ],
                 [
                     'id'            => 'style',
@@ -42,7 +42,7 @@ class CallToAction extends BaseBlock
                     'values'        => [
                         [
                             'value'   => '',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ]
                     ]
                 ],
@@ -54,7 +54,7 @@ class CallToAction extends BaseBlock
                 [
                     'id'    => 'bg_gradient',
                     'type'  => 'radios',
-                    'label' => __('Background Gradient overlay'),
+                    'label' => __('Sobreposição de gradiente de fundo'),
                     'values' => [
                         [
                             'value'   => 'gradient_overlay_half_bg_dark',
@@ -62,26 +62,26 @@ class CallToAction extends BaseBlock
                         ],
                         [
                             'value'   => 'gradient_overlay_half_bg_grayish_blue',
-                            'name' => __("Grayish Blue")
+                            'name' => __("Azul acinzentado")
                         ],
                         [
                             'value'   => 'gradient_overlay_half_bg_blue_light',
-                            'name' => __("Blue Light")
+                            'name' => __("Luz Azul")
                         ],
                         [
                             'value'   => 'gradient_overlay_half_bg_orange',
-                            'name' => __("Orange")
+                            'name' => __("Laranja")
                         ]
                     ],
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 
     public function getName()
     {
-        return __('Call To Action');
+        return __('Chamada para ação');
     }
 
     public function content($model = [])

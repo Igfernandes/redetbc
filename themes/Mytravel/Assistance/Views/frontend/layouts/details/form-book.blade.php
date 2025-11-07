@@ -95,7 +95,7 @@
                                                 @if($row->min_day_before_booking > 1)
                                                     - {{ __("Book :number days in advance",["number"=>$row->min_day_before_booking]) }}
                                                 @else
-                                                    - {{ __("Book :number day in advance",["number"=>$row->min_day_before_booking]) }}
+                                                    - {{ __("Reserve com :number de dias de antecedência",["number"=>$row->min_day_before_booking]) }}
                                                 @endif
                                             </small>
                                         </div>

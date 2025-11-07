@@ -1,6 +1,6 @@
 @if(setting_item($row->type."_enable_review"))
     <div class="bravo-reviews" id="bravo-reviews">
-        <h3>{{__("Reviews")}}</h3>
+        <h3>{{__("Avaliações")}}</h3>
         @if($review_score)
             <div class="review-box">
                 <div class="row">
@@ -16,9 +16,9 @@
                                 {{__("Based on")}}
                                 <span>
                                     @if($review_score['total_review'] > 1)
-                                        {{ __(":number reviews",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliações",["number"=>$review_score['total_review'] ]) }}
                                     @else
-                                        {{ __(":number review",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliação",["number"=>$review_score['total_review'] ]) }}
                                     @endif
                                 </span>
                             </div>
@@ -126,7 +126,7 @@
         @if(Auth::id())
             <div class="review-form">
                 <div class="title-form">
-                    {{__("Write a review")}}
+                    {{__("Escreva uma avaliação")}}
                 </div>
                 <div class="form-wrapper">
                     @include('admin.message')
@@ -136,7 +136,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <input type="text" required class="form-control" name="review_title" placeholder="{{__("Título")}}">
-                                    <div class="invalid-feedback">{{__('Review title is required')}}</div>
+                                    <div class="invalid-feedback">{{__('O título da avaliação é obrigatório')}}</div>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                                 <div class="form-group">
                                     <textarea name="review_content" required class="form-control" placeholder="{{__("Review content")}}" minlength="10"></textarea>
                                     <div class="invalid-feedback">
-                                        {{__('Review content has at least 10 character')}}
+                                        {{__('O conteúdo da avaliação tem pelo menos 10 caracteres')}}
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group review-items">
                                         <div class="item">
-                                            <label>{{__("Review rate")}}</label>
+                                            <label>{{__("Taxa de avaliação")}}</label>
                                             <input class="review_stats" type="hidden" name="review_rate">
                                             <div class="rates">
                                                 <i class="fa fa-star-o grey"></i>
@@ -208,7 +208,7 @@
                         <div class="text-center">
                             <input type="hidden" name="review_service_id" value="{{$row->id}}">
                             <input type="hidden" name="review_service_type" value="{{$row->type}}">
-                            <input id="submit" type="submit" name="submit" class="btn" value="{{__("Leave a Review")}}">
+                            <input id="submit" type="submit" name="submit" class="btn" value="{{__("Deixe uma avaliação")}}">
                         </div>
                     </form>
                 </div>
@@ -216,7 +216,7 @@
         @endif
         @if(!Auth::id())
             <div class="review-message">
-                {!!  __("You must <a href='#login' data-toggle='modal' data-target='#login'>log in</a> to write review") !!}
+                {!!  __("Você deve <a href='#login' data-toggle='modal' data-target='#login'>fazer login</a> para escrever uma avaliação") !!}
             </div>
         @endif
     </div>

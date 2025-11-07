@@ -65,7 +65,7 @@
             save_changes: '{{__('Salvar alterações')}}',
             delete_confirm: '{{__('Are you want to delete?')}}',
             add_new: '{{__('Add New')}}',
-            save_block: '{{__('Save Block')}}',
+            save_block: '{{__('Salvar Block')}}',
         };
     </script>
 @endsection

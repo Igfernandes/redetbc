@@ -55,7 +55,7 @@
                                     <th>{{__("For Role")}}</th>
                                     <th width="60px">{{__("Preço")}}</th>
                                     <th width="60px">{{__("Annual Price")}}</th>
-                                    <th width="60px">{{__("Duration")}}</th>
+                                    <th width="60px">{{__("Duração")}}</th>
                                     <th width="60px">{{__("Max Services")}}</th>
                                     <th width="60px">{{__("Status")}}</th>
                                     <th width="60px">{{__("Data")}}</th>

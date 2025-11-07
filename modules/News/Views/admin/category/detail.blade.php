@@ -49,7 +49,7 @@
                                     </div>
                                 @endif
 
-                                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> {{ __('Save Change')}}</button>
+                                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> {{ __('Salvar Change')}}</button>
                             </div>
 
                         </div>

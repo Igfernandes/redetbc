@@ -23,7 +23,7 @@ class VendorPayout extends BaseModel
                 'title'=>__("Confirmed")
             ],
             'paid'=>[
-                'title'=>__("Paid")
+                'title'=>__("Pago")
             ],
             'rejected'=>[
                 'title'=>__("Rejected")

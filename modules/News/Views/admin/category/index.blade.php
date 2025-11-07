@@ -50,7 +50,7 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th> {{ __('Name')}}</th>
+                                    <th> {{ __('Nome')}}</th>
                                     <th> {{ __('Slug')}}</th>
                                     <th class="d-none d-md-block"> {{ __('Date')}}</th>
                                 </tr>

@@ -40,7 +40,7 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
             {{--<input type="text" class="input-search form-control">--}}
 
-            <a href="{{url('/')}}" class="btn btn-link" target="_blank"><i class="fa fa-eye"></i>  <span translate="no">{{__('Home')}} </span>
+            <a href="{{url('/')}}" class="btn btn-link" target="_blank"><i class="fa fa-eye"></i>  <span translate="no">{{__('Inicial')}} </span>
 
             </a>
 

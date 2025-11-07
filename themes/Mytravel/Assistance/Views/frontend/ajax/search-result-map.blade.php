@@ -25,7 +25,7 @@
     @else
         <div class="not-found-box">
             <h3 class="n-title">{{__("We couldn't find any services.")}}</h3>
-            <p class="p-desc">{{__("Try changing your filter criteria")}}</p>
+            <p class="p-desc">{{__("Tente alterar seus critérios de filtro.")}}</p>
 
         </div>
     @endif

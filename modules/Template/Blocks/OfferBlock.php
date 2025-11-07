@@ -19,7 +19,7 @@ class OfferBlock extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Listar item(ns)'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -43,13 +43,13 @@ class OfferBlock extends BaseBlock
                             'id'        => 'link_title',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Título Link More')
+                            'label'     => __('Título Link Mais')
                         ],
                         [
                             'id'        => 'link_more',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Link More')
+                            'label'     => __('Link Mais')
                         ],
                         [
                             'id'        => 'featured_text',
@@ -67,7 +67,7 @@ class OfferBlock extends BaseBlock
                 ],
 
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

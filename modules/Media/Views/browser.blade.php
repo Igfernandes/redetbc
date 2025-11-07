@@ -40,7 +40,7 @@
                 <div class="files-list">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a @click="toFolderRoot" href="#">{{__("Home")}}</a></li>
+                            <li class="breadcrumb-item"><a @click="toFolderRoot" href="#">{{__("Inicial")}}</a></li>
                             <li v-for="(item,index) in breadcrumbs"  class="breadcrumb-item active" aria-current="page"><a @click.prevent="showFolder(item,index)" href="#">@{{ item.name }}</a></li>
                         </ol>
                     </nav>

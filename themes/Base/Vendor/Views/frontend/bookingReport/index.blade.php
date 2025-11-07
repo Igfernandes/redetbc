@@ -35,10 +35,10 @@
                                 <th>{{__("Título")}}</th>
                                 <th class="a-hidden">{{__("Order Date")}}</th>
                                 <th class="a-hidden">{{__("Execution Time")}}</th>
-                                <th width="15%">{{__("Payment Detail")}}</th>
+                                <th width="15%">{{__("Pagamento Detail")}}</th>
                                 <th>{{__("Commission")}}</th>
                                 <th class="a-hidden">{{__("Status")}}</th>
-                                <th>{{__("Action")}}</th>
+                                <th>{{__("Ação")}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -60,7 +60,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{__('Booking ID: #')}} <span class="user_id"></span></h5>
+                        <h5 class="modal-title">{{__('ID da reserva: #')}} <span class="user_id"></span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __("Close") }}</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __("Fechar") }}</button>
                         <button type="submit" class="btn btn-primary">{{ __("Filter") }}</button>
                     </div>
                 </form>

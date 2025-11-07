@@ -71,7 +71,7 @@
             <hr>
             <div class="d-flex justify-content-between">
                 <span></span>
-                <button class="btn btn-primary" type="submit">{{ __('Save Change')}}</button>
+                <button class="btn btn-primary" type="submit">{{ __('Salvar Change')}}</button>
             </div>
         </div>
     </form>

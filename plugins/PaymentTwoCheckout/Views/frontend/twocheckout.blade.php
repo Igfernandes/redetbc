@@ -1,7 +1,7 @@
 <div class="card_twocheckout">
     <i class="icofont-ui-v-card bg"></i>
     <label>
-        <span>{{__("Name on the Card")}}</span>
+        <span>{{__("Nome on the Card")}}</span>
         <input id="bravo_twocheckout_card_name" name="card_name" placeholder="{{__("Card Name")}}">
     </label>
     <label>

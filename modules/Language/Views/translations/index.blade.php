@@ -42,7 +42,7 @@
                                             <a href="{{route('language.admin.translations.detail',['id'=>$language->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> {{__("Translate")}}</a>
                                             <a href="{{route('language.admin.translations.build',['id'=>$language->id])}}" class="btn btn-sm btn-info"><i class="fa fa-cubes"></i> {{__("Build")}}</a>
                                             <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown">
-                                                {{__("More")}}
+                                                {{__("Mais")}}
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="{{route('language.admin.translations.loadTranslateJson',['locale'=>$language->locale])}}">{{__

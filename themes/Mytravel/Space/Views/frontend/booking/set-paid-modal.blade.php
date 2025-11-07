@@ -3,7 +3,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">{{__("Booking ID")}}: #{{$booking->id}}</h4>
+                <h4 class="modal-title">{{__("ID da reserva")}}: #{{$booking->id}}</h4>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
@@ -18,12 +18,12 @@
                                     </div>
                                     @if($booking->status !='draft')
                                         <div class="d-flex justify-content-between">
-                                            <div class="label">{{__("Paid:")}}</div>
+                                            <div class="label">{{__("Pago:")}}</div>
                                             <div class="val">{{format_money($booking->paid)}}</div>
                                         </div>
                                         @if($booking->paid < $booking->total )
                                             <div class="d-flex justify-content-between">
-                                                <div class="label">{{__("Remain:")}}</div>
+                                                <div class="label">{{__("Permanecer:")}}</div>
                                                 <div class="val">{{currency_symbol()}}<input class="text-right" type="number" min="0" max="{{$booking->total}}" id="set_paid_input" value="{{($booking->total - $booking->paid)}}" />
                                                 </div>
                                             </div>
@@ -37,8 +37,8 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <span class="btn btn btn-primary" id="set_paid_btn" data-id="{{$booking->id}}">{{__("Save")}}</span>
-                <span class="btn btn-secondary" data-dismiss="modal">{{__("Close")}}</span>
+                <span class="btn btn btn-primary" id="set_paid_btn" data-id="{{$booking->id}}">{{__("Salvar")}}</span>
+                <span class="btn btn-secondary" data-dismiss="modal">{{__("Fechar")}}</span>
             </div>
         </div>
     </div>

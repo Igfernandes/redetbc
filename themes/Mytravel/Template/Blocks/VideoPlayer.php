@@ -32,7 +32,7 @@ class VideoPlayer extends BaseBlock
                     'id'        => 'caption',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Video Caption')
+                    'label'     => __('Legenda do vídeo')
                 ],
                 [
                     'id'    => 'bg_image',
@@ -42,20 +42,20 @@ class VideoPlayer extends BaseBlock
                 [
                     'id'    => 'bg_gradient',
                     'type'  => 'radios',
-                    'label' => __('Background Gradient overlay'),
+                    'label' => __('Sobreposição de gradiente de fundo'),
                     'values' => [
                         [
                             'value'   => 'gradient_overlay_half_bg_grayish_blue',
-                            'name' => __("Grayish Blue")
+                            'name' => __("Azul acinzentado")
                         ],
                         [
                             'value'   => 'gradient_overlay_half_bg_blue_light',
-                            'name' => __("Blue Light")
+                            'name' => __("Luz Azul")
                         ],
                     ],
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 

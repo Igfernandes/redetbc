@@ -22,7 +22,7 @@
                     </div>
                     <hr>
                     <div class="text-right">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__("Save changes")}}</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__("Salvar changes")}}</button>
                     </div>
                 </div>
             </div>

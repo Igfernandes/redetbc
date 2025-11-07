@@ -19,7 +19,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="form-group" >
-                    <label for="">{{__("End Date")}}</label>
+                    <label for="">{{__("Data de término")}}</label>
                     <input type="text" name="end_date" id=" end_date"  class="form-control has-datepicker" value="{{ old('end_date',!empty($row->end_date)?$row->end_date->format("Y-m-d"):"")}}">
                 </div>
             </div>
@@ -58,25 +58,25 @@
                         <td><strong>
                                 @switch($i)
                                     @case(1)
-                                    {{__('Monday')}}
+                                    {{__('Segunda-feira')}}
                                     @break
                                     @case(2)
-                                    {{__('Tuesday')}}
+                                    {{__('Terça-feira')}}
                                     @break
                                     @case (3)
-                                    {{__('Wednesday')}}
+                                    {{__('Quarta-feira')}}
                                     @break
                                     @case (4)
-                                    {{__('Thursday')}}
+                                    {{__('Quinta-feira')}}
                                     @break
                                     @case (5)
-                                    {{__('Friday')}}
+                                    {{__('Sexta-feira')}}
                                     @break
                                     @case (6)
-                                    {{__('Saturday')}}
+                                    {{__('Sábado')}}
                                     @break
                                     @case (7)
-                                    {{__('Sunday')}}
+                                    {{__('Domingo')}}
                                     @break
                                 @endswitch
                             </strong></td>

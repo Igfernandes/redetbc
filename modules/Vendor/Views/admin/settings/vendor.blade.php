@@ -161,7 +161,7 @@
                         <div><label><input name="vendor_payout_booking_status[]" @if(in_array('processing',$vendor_payout_booking_status)) checked @endif type="checkbox" value="processing"> {{__("Processing")}}</label></div>
                         <div><label><input  name="vendor_payout_booking_status[]" @if(in_array('confirmed',$vendor_payout_booking_status)) checked @endif type="checkbox" value="confirmed"> {{__("Confirmed")}}</label></div>
                         <div><label><input  name="vendor_payout_booking_status[]" @if(in_array('completed',$vendor_payout_booking_status)) checked @endif type="checkbox" value="completed"> {{__("Completed")}}</label></div>
-                        <div><label><input  name="vendor_payout_booking_status[]" @if(in_array('paid',$vendor_payout_booking_status)) checked @endif type="checkbox" value="paid"> {{__("Paid")}}</label></div>
+                        <div><label><input  name="vendor_payout_booking_status[]" @if(in_array('paid',$vendor_payout_booking_status)) checked @endif type="checkbox" value="paid"> {{__("Pago")}}</label></div>
                     </div>
                     <p><i>{{__("Select booking status will be use for calculate payout of vendor")}}</i></p>
                 </div>

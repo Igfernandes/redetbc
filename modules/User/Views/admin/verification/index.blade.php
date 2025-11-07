@@ -46,7 +46,7 @@
                             <thead>
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
-                                <th>{{__('Name')}}</th>
+                                <th>{{__('Nome')}}</th>
                                 <th>{{__('Email')}}</th>
                                 <th>{{__('Telefone')}}</th>
                                 <th>{{__('Role')}}</th>

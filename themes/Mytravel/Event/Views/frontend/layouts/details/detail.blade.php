@@ -86,7 +86,7 @@
              data-nav-for="#sliderSyncingThumb">
             @foreach($row->getGallery() as $key=>$item)
                 <div class="js-slide">
-                    <img class="img-fluid border-radius-3" src="{{$item['large']}}" alt="{{ __("Gallery") }}">
+                    <img class="img-fluid border-radius-3" src="{{$item['large']}}" alt="{{ __("Galeria") }}">
                 </div>
             @endforeach
         </div>
@@ -113,7 +113,7 @@
                                     }]'>
             @foreach($row->getGallery() as $key=>$item)
                 <div class="js-slide" style="cursor: pointer;">
-                    <img class="img-fluid border-radius-3 height-110" src="{{$item['thumb']}}" alt="{{ __("Gallery") }}">
+                    <img class="img-fluid border-radius-3 height-110" src="{{$item['thumb']}}" alt="{{ __("Galeria") }}">
                 </div>
             @endforeach
         </div>
@@ -136,7 +136,7 @@
         @if($row->duration)
             <li class="list-group-item text-lh-sm ">
                 <i class="icofont-infinite text-primary font-size-50 mb-1 "></i>
-                <div class="text-gray-1"> {{ __("Duration") }}: {{duration_format($row->duration)}} </div>
+                <div class="text-gray-1"> {{ __("Duração") }}: {{duration_format($row->duration)}} </div>
             </li>
         @endif
         @if(!empty($row->location->name))

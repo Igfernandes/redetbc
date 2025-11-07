@@ -52,7 +52,7 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th>{{ __('Name')}}</th>
+                                    <th>{{ __('Nome')}}</th>
                                     <th>{{ __('Slug')}}</th>
                                     <th>{{ __('Date')}}</th>
                                 </tr>

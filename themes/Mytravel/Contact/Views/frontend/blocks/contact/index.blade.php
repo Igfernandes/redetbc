@@ -7,7 +7,7 @@
                     <h1 class="font-size-40 font-size-xs-30 text-white font-weight-bold mb-0">{{ setting_item_with_lang("page_contact_title") }}</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-no-gutter justify-content-center mb-0">
-                            <li class="breadcrumb-item font-size-14"> <a class="text-white" href="{{ url("/") }}">{{ __("Home") }}</a> </li>
+                            <li class="breadcrumb-item font-size-14"> <a class="text-white" href="{{ url("/") }}">{{ __("Inicial") }}</a> </li>
                             <li class="breadcrumb-item custom-breadcrumb-item font-size-14 text-white active" aria-current="page">{{ setting_item_with_lang("page_contact_title") }}</li>
                         </ol>
                     </nav>

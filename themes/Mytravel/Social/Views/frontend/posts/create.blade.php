@@ -2,7 +2,7 @@
 <form action="{{route('social.post.store')}}" method="post">
     @csrf
 <div class="bravo-post-item create-post">
-    <div class="post-header">{{__("Add new post")}}</div>
+    <div class="post-header">{{__("Adicionar nova postagem")}}</div>
     <div class="post-body">
         <div class="post-author">
             <div class="media mb-2">
@@ -16,7 +16,7 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <textarea name="content" placeholder="{{__("How are you feeling today?")}}" class="form-control mb-1"  cols="30" rows="2"></textarea>
+                    <textarea name="content" placeholder="{{__("Como você está se sentindo hoje?")}}" class="form-control mb-1"  cols="30" rows="2"></textarea>
                     <div class="list-files-uploaded mb-1">
 
                     </div>
@@ -25,7 +25,7 @@
                     </ul>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success btn-block">{{__("Share")}}</button>
+            <button type="submit" class="btn btn-success btn-block">{{__("Compartilhar")}}</button>
         </div>
     </div>
 </div>

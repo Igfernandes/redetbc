@@ -29,7 +29,7 @@
         class="form-control">
 </div>
 <div class="form-group">
-    <label class="control-label">{{__("Duration")}} <span class="text-danger">*</span></label>
+    <label class="control-label">{{__("Duração")}} <span class="text-danger">*</span></label>
     <input type="number" min="1" value="{{old('duration',max(1,$row->duration))}}" name="duration" class="form-control">
 </div>
 <div class="form-group">
@@ -45,7 +45,7 @@
     <input type="number" min="0" value="{{old('commission',$row->commission)}}" name="commission" class="form-control">
 </div>
 <div class="form-group">
-    <label class="control-label">{{__("Duration Type")}} <span class="text-danger">*</span></label>
+    <label class="control-label">{{__("Duração Type")}} <span class="text-danger">*</span></label>
     <select name="duration_type" class="form-control" required>
         <option @if(old('duration_type',$row->duration_type) == 'day') selected
             @endif value="day">{{__("Day")}}</option>

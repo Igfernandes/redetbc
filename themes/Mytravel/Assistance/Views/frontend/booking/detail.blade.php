@@ -23,7 +23,7 @@
             <div class="card-header card-collapse bg-transparent border-0">
                 <h5 class="mb-0">
                     <button type="button" class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-4 font-size-17 font-weight-bold text-dark" data-toggle="collapse" data-target="#basicsCollapseDetail">
-                        {{ __("Booking Detail") }}
+                        {{ __("Detalhes da reserva"") }}
                         <span class="card-btn-arrow font-size-14 text-dark"><i class="fa fa-chevron-down"></i></span>
                     </button>
                 </h5>
@@ -33,13 +33,13 @@
                     <ul class="list-unstyled font-size-1 mb-0 font-size-16">
                         @if($booking->start_date)
                             <li  class="d-flex justify-content-between py-2">
-                                <div class="label">{{__('Start date:')}}</div>
+                                <div class="label">{{__('Data de início:')}}</div>
                                 <div class="val">
                                     {{display_datetime($booking->start_date)}}
                                 </div>
                             </li>
                             <li class="d-flex justify-content-between py-2">
-                                <div class="label">{{__('End date:')}}</div>
+                                <div class="label">{{__('Data de término:')}}</div>
                                 <div class="val">
                                     {{display_datetime($booking->end_date)}}
                                 </div>
@@ -60,7 +60,7 @@
                                 <p class="text-center">
                                     <a data-toggle="modal" data-target="#detailBookingDate{{$booking->code}}" aria-expanded="false"
                                        aria-controls="detailBookingDate{{$booking->code}}">
-                                        {{__('Detail')}} <i class="icofont-list"></i>
+                                        {{__('Detalhe')}} <i class="icofont-list"></i>
                                     </a>
                                 </p>
                             </div>
@@ -73,7 +73,7 @@
             <div class="card-header card-collapse bg-transparent border-0" id="basicsHeadingFour">
                 <h5 class="mb-0">
                     <button type="button" class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-4 font-size-17 font-weight-bold text-dark" data-toggle="collapse" data-target="#basicsCollapsePayment">
-                        {{ __("Payment") }}
+                        {{ __("Pagamento") }}
                         <span class="card-btn-arrow font-size-14 text-dark"><i class="fa fa-chevron-down"></i></span>
                     </button>
                 </h5>
@@ -97,7 +97,7 @@
                         @if(!empty($extra_price))
                             <li class="d-flex justify-content-between py-2">
                                 <div class="font-size-16 font-weight-bold">
-                                    {{__("Extra Prices:")}}
+                                    {{__("Preços extras:")}}
                                 </div>
                             </li>
                             @foreach($extra_price as $type)
@@ -129,7 +129,7 @@
                                 @endphp
                                 <li class="d-flex justify-content-between py-2">
                                     <div class="font-size-16 font-weight-bold">
-                                        {{__("Fee:")}}
+                                        {{__("Taxa:")}}
                                     </div>
                                 </li>
                                 <li class="d-flex justify-content-between py-2">
@@ -153,12 +153,12 @@
                      
                         @if($booking->status !='draft')
                             <li class="d-flex justify-content-between py-2">
-                                <div class="label">{{__("Paid:")}}</div>
+                                <div class="label">{{__("Pago:")}}</div>
                                 <div class="val">{{format_money($booking->paid)}}</div>
                             </li>
                             @if($booking->paid < $booking->total )
                                 <li class="d-flex justify-content-between py-2">
-                                    <div class="label">{{__("Remain:")}}</div>
+                                    <div class="label">{{__("Permanecer:")}}</div>
                                     <div class="val">{{format_money($booking->total - $booking->paid)}}</div>
                                 </li>
                             @endif
@@ -175,7 +175,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center">{{__('Detail')}}</h5>
+                <h5 class="modal-title text-center">{{__('Detalhe')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

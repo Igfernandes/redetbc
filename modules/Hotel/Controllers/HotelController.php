@@ -176,7 +176,7 @@ class HotelController extends Controller
         if(\request()->input('firstLoad') == "false") {
             $numberDays = abs(strtotime(\request('end_date')) - strtotime(\request('start_date'))) / 86400;
             if(!empty($hotel->min_day_stays) and  $numberDays < $hotel->min_day_stays){
-                return $this->sendError(__("You must to book a minimum of :number days",['number'=>$hotel->min_day_stays]));
+                return $this->sendError(__("Você deve to book a minimum of :number days",['number'=>$hotel->min_day_stays]));
             }
 
             if(!empty($hotel->min_day_before_booking)){

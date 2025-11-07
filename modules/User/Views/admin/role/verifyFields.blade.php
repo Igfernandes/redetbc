@@ -49,7 +49,7 @@
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
                                 <th>{{ __('ID')}}</th>
                                 <th>{{ __('Icon')}}</th>
-                                <th>{{ __('Name')}}</th>
+                                <th>{{ __('Nome')}}</th>
                                 <th>{{ __('Type')}}</th>
                                 <th>{{ __('For roles')}}</th>
                                 <th>{{ __('Ordem')}}</th>

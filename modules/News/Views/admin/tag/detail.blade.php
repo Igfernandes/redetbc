@@ -34,7 +34,7 @@
                         <div class="panel">
                             <div class="panel-title"><strong>{{__("Publicar")}}</strong></div>
                             <div class="panel-body">
-                                <button class="btn btn-success" type="submit"> <i class="fa fa-save"></i> {{ __('Save Change')}}</button>
+                                <button class="btn btn-success" type="submit"> <i class="fa fa-save"></i> {{ __('Salvar Change')}}</button>
                             </div>
                         </div>
                     </div>

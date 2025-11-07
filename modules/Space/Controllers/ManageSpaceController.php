@@ -67,7 +67,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Manage Spaces"),
+            'page_title'         => __("Gerenciar Espaços"),
         ];
         return view('Space::frontend.manageSpace.index', $data);
     }
@@ -238,7 +238,7 @@ class ManageSpaceController extends FrontendController
         $row = $this->spaceClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('space.vendor.index'))->with('warning', __('Space not found!'));
+            return redirect(route('space.vendor.index'))->with('warning', __('Espaço não encontrado!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [
@@ -339,7 +339,7 @@ class ManageSpaceController extends FrontendController
 		$row = $this->spaceClass::where("author_id", $user_id);
 		$row = $row->find($id);
 		if (empty($row)) {
-			return redirect(route('space.vendor.index'))->with('warning', __('Space not found!'));
+			return redirect(route('space.vendor.index'))->with('warning', __('Espaço não encontrado!'));
 		}
 		try{
 			$clone = $row->replicate();

@@ -28,7 +28,7 @@
                                 @csrf
                                 @include('News::admin/news/form',['row'=>$row])
                                 <div class="form-group">
-                                    <label class="control-label">{{__("Gallery")}}</label>
+                                    <label class="control-label">{{__("Galeria")}}</label>
                                     {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
                                 </div>
                             </div>

@@ -33,7 +33,7 @@
                         <thead>
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th>{{__('Name')}}</th>
+                            <th>{{__('Nome')}}</th>
                             <th>{{__('Email')}}</th>
                             <th>{{ __('Role request')}}</th>
                             <th class="date">{{ __('Date request')}}</th>

@@ -62,7 +62,7 @@ class ListTours extends BaseBlock
                 [
                     'id'      => 'category_id',
                     'type'    => 'select2',
-                    'label'   => __('Filter by Category'),
+                    'label'   => __('Filtrar por categoria'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => route('tour.admin.category.category.getForSelect2'),
@@ -149,7 +149,7 @@ class ListTours extends BaseBlock
 
     public function getName()
     {
-        return __('Tour: List Items');
+        return __('Tour: Lista de Itens');
     }
 
     public function content($model = [])

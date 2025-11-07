@@ -63,7 +63,7 @@
                             <th width="80px">{{__('Amount')}}</th>
                             <th width="80px">{{__('Credit')}}</th>
                             <th width="80px">{{__('Status')}}</th>
-                            <th width="150px">{{__('Payment Method')}}</th>
+                            <th width="150px">{{__('Método de pagamento')}}</th>
                             <th width="120px">{{__('Created At')}}</th>
                             <th width="80px">{{__('Actions')}}</th>
                         </tr>
