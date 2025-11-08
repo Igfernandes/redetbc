@@ -14,9 +14,9 @@
     <div class="form-group">
         <div class="d-flex justify-content-between">
             <label for="remember-me" class="mb0">
-                <input type="checkbox" name="remember" id="remember-me" value="1"> {{__('Remember me')}} <span class="checkmark fcheckbox"></span>
+                <input type="checkbox" name="remember" id="remember-me" value="1"> {{__('Lembre-se de mim')}} <span class="checkmark fcheckbox"></span>
             </label>
-            <a href="{{ route("password.request") }}">{{__('Forgot Password?')}}</a>
+            <a href="{{ route("password.request") }}">{{__('Esqueceu a senha?')}}</a>
         </div>
     </div>
     @if(setting_item("user_enable_login_recaptcha"))

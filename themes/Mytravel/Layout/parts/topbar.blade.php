@@ -22,7 +22,7 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                     <a href="javascript:;" class="d-flex align-items-center  py-3"
                         data-toggle="modal" data-target="#login">
                         <i class="flaticon-user mr-2 ml-1 font-size-18"></i>
-                        <span class="d-inline-block font-size-14 mr-1">{{ __("Sign in or Register") }}</span>
+                        <span class="d-inline-block font-size-14 mr-1">{{ __("Conecte-se ou cadastra-se") }}</span>
                     </a>
                     @else
                     <div class="d-flex align-items-center  py-3 dropdown">
