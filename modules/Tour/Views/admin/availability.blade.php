@@ -45,7 +45,7 @@
             </div>
         </div>
         @else
-            <div class="alert alert-warning">{{__("No tours found")}}</div>
+            <div class="alert alert-warning">{{__("Nenhum passeio encontrado")}}</div>
         @endif
         <div class="d-flex justify-content-center">
             {{$rows->appends($request->query())->links()}}
@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label >{{__('Max Guest')}}</label>
+                                <label >{{__('Convidado Máximo')}}</label>
                                 <input type="number"  v-model="form.max_guests" class="form-control">
                             </div>
                         </div>

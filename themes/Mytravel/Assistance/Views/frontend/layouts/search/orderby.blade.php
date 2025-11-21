@@ -1,5 +1,5 @@
 <div class="item">
-    <a href="{{ route("assistance.search",['_layout'=>'map']) }}">{{__("Mostre no Mapa")}}</a>
+    <a href="{{ route("assistance.search",['_layout'=>'map']) }}">{{__("Mostrar no mapa")}}</a>
 </div>
 <div class="item">
     @php
@@ -7,19 +7,19 @@
         $orderby =  request()->input("orderby");
     @endphp
     <div class="item-title">
-        {{ __("Sort by:") }}
+        {{ __("Ordenar por:") }}
     </div>
     <div class="dropdown">
         <span class=" dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             @switch($orderby)
                 @case("price_low_high")
-                {{ __("Price (Low to high)") }}
+                {{ __("Preço (do menor para o maior)") }}
                 @break
                 @case("price_high_low")
-                {{ __("Price (High to low)") }}
+                {{ __("Preço (do mais alto para o mais baixo)") }}
                 @break
 {{--                @case("rate_high_low")--}}
-{{--                {{ __("Rating (High to low)") }}--}}
+{{--                {{ __("Classificação (de alta a baixa)") }}--}}
 {{--                @break--}}
                 @default
                 {{ __("Recomendado") }}
@@ -29,11 +29,11 @@
             @php $param['orderby'] = "" @endphp
             <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Recomendado") }}</a>
             @php $param['orderby'] = "price_low_high" @endphp
-            <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Price (Low to high)") }}</a>
+            <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Preço (do menor para o maior)") }}</a>
             @php $param['orderby'] = "price_high_low" @endphp
-            <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Price (High to low)") }}</a>
+            <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Preço (do mais alto para o mais baixo)") }}</a>
 {{--            @php $param['orderby'] = "rate_high_low" @endphp--}}
-{{--            <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Rating (High to low)") }}</a>--}}
+{{--            <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Classificação (de alta a baixa)") }}</a>--}}
         </div>
     </div>
 </div>

@@ -9,9 +9,9 @@
             <label class="control-label">{{__("Target Religion")}}</label>
             <select name="religion" class="form-control">
                 <option value="">Selecione a religião</option>
-                <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangelical")}}</option>
-                <option value="EVANGELICAL" @if($row->religion == "EVANGELICAL") selected @endif > {{__("Catholic")}}</option>
-                <option value="BOTH" @if($row->religion == "BOTH") selected @endif > {{__("Both")}}</option>
+                <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangélico")}}</option>
+                <option value="EVANGELICAL" @if($row->religion == "EVANGELICAL") selected @endif > {{__("Católico")}}</option>
+                <option value="BOTH" @if($row->religion == "BOTH") selected @endif > {{__("Ambos")}}</option>
             </select>
         </div>
         <div class="form-group magic-field" data-id="content" data-type="content">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="form-group d-none">
-            <label class="control-label">{{__("Description")}}</label>
+            <label class="control-label">{{__("Descrição")}}</label>
             <div class="">
                 <textarea name="short_desc" class="form-control" cols="30" rows="4">{{old('short_desc',$translation->short_desc)}}</textarea>
             </div>

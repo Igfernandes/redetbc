@@ -68,7 +68,7 @@ $lang_local = app()->getLocale();
             @endforeach
         @else
             <tr>
-                <td class="label">{{__("Guests")}}:</td>
+                <td class="label">{{__("Convidados")}}:</td>
                 <td class="val">
                     <strong>{{$booking->total_guests}}</strong>
                 </td>
@@ -92,7 +92,7 @@ $lang_local = app()->getLocale();
                         @endforeach
                     @else
                         <tr>
-                            <td class="label">{{__("Guests")}}: {{$booking->total_guests}} {{format_money($booking->getMeta('base_price'))}}</td>
+                            <td class="label">{{__("Convidados")}}: {{$booking->total_guests}} {{format_money($booking->getMeta('base_price'))}}</td>
                             <td class="val no-r-padding">
                                 <strong>{{format_money($booking->getMeta('base_price') * $booking->total_guests)}}</strong>
                             </td>

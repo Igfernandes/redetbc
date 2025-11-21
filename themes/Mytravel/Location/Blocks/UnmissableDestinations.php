@@ -18,25 +18,25 @@ class UnmissableDestinations extends BaseBlock
             'id'        => 'location_name',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Location Name')
+            'label'     => __('Localização Name')
         ];
         $arg[] = [
             'id'        => 'location_desc',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Location Desc')
+            'label'     => __('Localização Desc')
         ];
         $arg[] = [
             'id'        => 'location_btn',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Location Button Text')
+            'label'     => __('Localização Button Text')
         ];
         $arg[] = [
             'id'        => 'location_link',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Location Button Link')
+            'label'     => __('Localização Button Link')
         ];
         $arg[] =  [
             'id'            => 'number_item',
@@ -65,7 +65,7 @@ class UnmissableDestinations extends BaseBlock
 
         return ([
             'settings' => $arg,
-            'category'=>__("Location Blocks")
+            'category'=>__("Localização Blocks")
         ]);
     }
 

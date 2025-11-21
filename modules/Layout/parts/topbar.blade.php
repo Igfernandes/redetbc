@@ -35,7 +35,7 @@
                             </li>
                             @endif
                             @if(is_vendor() && $isVerification)
-                            <li class="menu-hr"><a href="{{route('vendor.dashboard')}}" class="menu-hr"><i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}</a></li>
+                            <li class="menu-hr"><a href="{{route('vendor.dashboard')}}" class="menu-hr"><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
                             @endif
                             <li class="@if(is_vendor()) menu-hr @endif">
                                 {{$isVerification}}

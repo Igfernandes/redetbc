@@ -11,12 +11,12 @@ $vendor = $row->author;
         <div class="media-body">
             <h4 class="media-heading"><a class="author-link" href="{{route('user.profile',['id'=>$vendor->user_name ?? $vendor->id])}}" target="_blank">{{$vendor->getDisplayName()}}</a>
                 @if($vendor->is_verified)
-                    <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-vefified-1.svg')}}" title="{{__("Verified")}}" alt="{{__("Verified")}}">
+                    <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-vefified-1.svg')}}" title="{{__("Verificado")}}" alt="{{__("Verificado")}}">
                 @else
-                    <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-not-vefified-1.svg')}}" title="{{__("Not verified")}}" alt="{{__("Verified")}}">
+                    <img data-toggle="tooltip" data-placement="top" src="{{asset('icon/ico-not-vefified-1.svg')}}" title="{{__("Não verificado")}}" alt="{{__("Verificado")}}">
                 @endif
             </h4>
-            <p>{{ __("Member Since :time",["time"=> date("M Y",strtotime($vendor->created_at))]) }}</p>
+            <p>{{ __("Membro desde :time",["time"=> date("M Y",strtotime($vendor->created_at))]) }}</p>
             @if((!Auth::id() or Auth::id() != $row->author_id ) and setting_item('inbox_enable') and false)
                 <a class="btn btn-sm btn-primary" href="{{route('user.chat',['user_id'=>$row->author_id])}}" ><i class="icon ion-ios-chatboxes"></i> {{__('Reservas host')}}</a>
             @endif

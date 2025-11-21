@@ -4,7 +4,7 @@
         class="form-control">
 </div>
 <div class="form-group">
-    <label>{{__("Description")}} </label>
+    <label>{{__("Descrição")}} </label>
     <textarea name="content" cols="30" rows="5" class="form-control">{{old('content',$translation->content)}}</textarea>
 </div>
 <div class="form-group">

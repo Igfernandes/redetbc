@@ -6,11 +6,11 @@
                     <div class="d-flex justify-content-between">
                         <div class="col-left d-flex align-items-center">
                             <div class="filter-item">
-                                <input type="text" placeholder="{{__("Search file name....")}}" class="form-control" v-model="filter.s" @keyup.enter="filter.page = 1;reloadLists()">
+                                <input type="text" placeholder="{{__("Procurar file name....")}}" class="form-control" v-model="filter.s" @keyup.enter="filter.page = 1;reloadLists()">
                             </div>
                             <div class="filter-item">
                                 <button class="btn btn-default" @click="reloadAll()">
-                                    <i class="fa fa-search"></i> {{__("Search")}}</button>
+                                    <i class="fa fa-search"></i> {{__("Procurar")}}</button>
                             </div>
                             <div class="filter-item">
                                 <small><i>{{__("Total")}}: @{{total}} {{__("files")}}</i></small>
@@ -103,7 +103,7 @@
             <div class="col-sm-2 py-1  border-right border-bottom">@{{file.created_at}}</div>
             <div class="col-sm-1 py-1 border-bottom">@{{humanFileSize(file.file_size)}}</div>
             <div class="col-sm-1 py-1  border-right border-bottom d-flex justify-content-end">
-                <a :href="file.full_size" target="_blank" title="{{__("View file")}}"><i class=" fa fa-eye"></i></a>
+                <a :href="file.full_size" target="_blank" title="{{__("Visualizar file")}}"><i class=" fa fa-eye"></i></a>
             </div>
         </div>
         <div v-if="viewType == 'grid'" class="inner" :class="{active:selected.indexOf(file.id) !== -1 }" @click="selectFile(file)" :title="file.file_name">

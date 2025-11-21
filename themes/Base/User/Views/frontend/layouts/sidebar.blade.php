@@ -190,7 +190,7 @@ foreach ($menus as $k => $menuItem) {
         <div class="info-new">
             <span class="role-name badge badge-info">{{$userAuthData->role_name}}</span>
             <h5>{{$userAuthData->getDisplayName()}}</h5>
-            <p>{{ __("Member Since :time",["time"=> date("M Y",strtotime($userAuthData->created_at))]) }}</p>
+            <p>{{ __("Membro desde :time",["time"=> date("M Y",strtotime($userAuthData->created_at))]) }}</p>
         </div>
     </div>
     <div class="user-profile-plan">

@@ -39,7 +39,7 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             </li>
                             @endif
                             @if(is_vendor() && $isVerification)
-                            <li class=""><a href="{{route('vendor.dashboard')}}" class=""><i class="icon ion-md-analytics"></i> {{__("Vendor Dashboard")}}</a></li>
+                            <li class=""><a href="{{route('vendor.dashboard')}}" class=""><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
                             @endif
                             <li class="@if(is_vendor())  @endif">
                                 <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>

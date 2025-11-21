@@ -54,7 +54,7 @@
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
                                 <th  width="80px"> {{ __('ID')}}</th>
-                                <th> {{ __('Vendor')}}</th>
+                                <th> {{ __('Fornecedor')}}</th>
                                 <th>{{__("Note")}}</th>
                                 <th width="200px"> {{ __('Amount')}}</th>
                                 <th width="230px"> {{ __('Payout Method')}}</th>
@@ -91,7 +91,7 @@
                                         <td>{{display_date($payout->created_at)}}</td>
                                         <td>{{$payout->status_text}}</td>
                                         <td>
-                                            <a class="btn btn-info edit-payout-btn" href="#" onclick="return false"><i class="fa fa-edit"></i> {{__("Edit")}}</a>
+                                            <a class="btn btn-info edit-payout-btn" href="#" onclick="return false"><i class="fa fa-edit"></i> {{__("Editar")}}</a>
                                         </td>
                                     </tr>
                                 @endforeach

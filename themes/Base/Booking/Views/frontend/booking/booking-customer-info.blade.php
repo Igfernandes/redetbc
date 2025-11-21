@@ -17,7 +17,7 @@
                         <div class="val">{{$booking->email}}</div>
                     </li>
                     <li class="info-phone">
-                        <div class="label">{{__('Phone')}}</div>
+                        <div class="label">{{__('Telefone')}}</div>
                         <div class="val">{{$booking->phone}}</div>
                     </li>
                     <li class="info-address">

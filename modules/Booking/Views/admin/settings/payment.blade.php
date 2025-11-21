@@ -88,10 +88,10 @@
                                                             <label >{{__("Formatar")}}</label>
                                                             <div class="form-controls">
                                                                 {!! \App\Helpers\AdminForm::select('extra_currency['.$key.'][currency_format]',[
-                                                                    ['id'=>'right','name'=>__('Right (100$)')],
-                                                                    ['id'=>'right_space','name'=>__('Right with space (100 $)')],
+                                                                    ['id'=>'right','name'=>__('direita (100$)')],
+                                                                    ['id'=>'right_space','name'=>__('Direita com espaço (100 $)')],
                                                                     ['id'=>'left','name'=>__('esquerda ($100)')],
-                                                                    ['id'=>'left_space','name'=>__('esquerda with space ($ 100)')],
+                                                                    ['id'=>'left_space','name'=>__('esquerda com espaço ($ 100)')],
                                                                 ],$item['currency_format'] ?? '') !!}
                                                             </div>
                                                         </div>
@@ -122,7 +122,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label >{{__("Exchange rate")}}</label>
+                                                    <label >{{__("Taxa de câmbio")}}</label>
                                                     <div>
                                                         <input step=any type="text" name="extra_currency[{{$key}}][rate]" min=0 class="form-control" value="{{$item['rate'] ?? 0}}">
                                                         <p><i>{{__('Exemplo: a moeda principal é VND e a moeda extra é USD, então a taxa de câmbio deve ser 23400 (1 USD ~ 23400 VND)')}}</i></p>
@@ -155,10 +155,10 @@
                                                         <label >{{__("Formatar")}}</label>
                                                         <div class="form-controls">
                                                             {!! \App\Helpers\AdminForm::select('extra_currency[__number__][currency_format]',[
-                                                                ['id'=>'right','name'=>__('Right (100$)')],
-                                                                ['id'=>'right_space','name'=>__('Right with space (100 $)')],
+                                                                ['id'=>'right','name'=>__('Direita (100$)')],
+                                                                ['id'=>'right_space','name'=>__('Direita com espaço (100 $)')],
                                                                 ['id'=>'left','name'=>__('esquerda ($100)')],
-                                                                ['id'=>'left_space','name'=>__('esquerda with space ($ 100)')],
+                                                                ['id'=>'left_space','name'=>__('Esquerda com espaço ($ 100)')],
                                                             ],'right','',true) !!}
                                                         </div>
                                                     </div>

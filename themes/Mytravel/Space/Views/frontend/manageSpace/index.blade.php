@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar">
-        {{!empty($recovery) ?__('Recovery Spaces') : __("Manage Spaces")}}
+        {{!empty($recovery) ?__('Recuperação Spaces') : __("Manage Spaces")}}
         @if(Auth::user()->hasPermission('space_create')&& empty($recovery))
             <a href="{{ route("space.vendor.create") }}" class="btn-change-password">{{__("Add Space")}}</a>
         @endif

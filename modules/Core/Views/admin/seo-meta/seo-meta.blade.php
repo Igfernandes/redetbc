@@ -9,7 +9,7 @@ $desc = $meta_seo['seo_desc'] ?? $meta_seo['service_desc'] ?? '';
 ?>
 <div class="panel">
     <div class="panel-title d-flex justify-content-between align-items-center py-2"><strong>{{__("Mecanismo de busca")}}</strong>
-        <a href="#" data-toggle="modal" data-target="#seo_config" class="btn btn-sm btn-link">{{__("Editar")}}</a>
+        <a href="#" data-toggle="modal" data-target="#seo_config" class="btn btn-sm btn-link">{{__("Editarar")}}</a>
     </div>
     <div class="panel-body">
         <div class="seo-preview max-w-650">

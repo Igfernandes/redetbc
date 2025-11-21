@@ -33,7 +33,7 @@ class PayoutController extends FrontendController
             'page_title'=>__("Payouts Management"),
             'breadcrumbs'=>[
                 [
-                    'name'  => __('Vendor dashboard'),
+                    'name'  => __('Fornecedor dashboard'),
                     'url'=>route('vendor.dashboard')
                 ],
                 [

@@ -18,13 +18,13 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__('Phone')}}">
+            <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__('Telefone')}}">
             <i class="input-icon field-icon icofont-ui-touch-phone"></i>
             <span class="invalid-feedback error error-phone"></span>
         </div>
         <div class="box-icons roles">
             <div>
-                <span>{{_('Select your profile')}}*</span>
+                <span>{{__('Select your profile')}}*</span>
                 <span class="invalid-feedback error error-role"></span>
             </div>
             <ul>
@@ -33,7 +33,7 @@
                     <input type="radio" name="role" value="{{$roles['traveler']}}">
                     <div class="text">
                         <i class="icofont-travelling"></i>
-                        <span>{{_('Traveler')}}</span>
+                        <span>{{__('Traveler')}}</span>
                     </div>
                 </li>
                 @endif
@@ -42,7 +42,7 @@
                     <input type="radio" name="role" value="{{$roles['presenter']}}">
                     <div class="text">
                         <i class="icofont-hotel-boy-alt"></i>
-                        <span>{{_('Anfitrião')}}</span>
+                        <span>{{__('Anfitrião')}}</span>
                     </div>
                 </li>
                 @endif
@@ -51,7 +51,7 @@
                     <input type="radio" name="role" value="{{$roles['hotel']}}">
                     <div class="text">
                         <i class="icofont-building-alt"></i>
-                        <span>{{_('Hotel')}}</span>
+                        <span>{{__('Hotel')}}</span>
                     </div>
                 </li>
                 @endif
@@ -60,7 +60,7 @@
                     <input type="radio" name="role" value="{{$roles['assistance']}}">
                     <div class="text">
                         <i class="icofont-building-alt"></i>
-                        <span>{{_('Services')}}</span>
+                        <span>{{__('Services')}}</span>
                     </div>
                 </li>
                 @endif

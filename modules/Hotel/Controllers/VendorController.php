@@ -94,7 +94,7 @@ class VendorController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Recovery Hotels"),
+            'page_title'         => __("Recuperação Hotels"),
         ];
         return view('Hotel::frontend.vendorHotel.index', $data);
     }
@@ -248,7 +248,7 @@ class VendorController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Edit Hotels"),
+            'page_title'         => __("Editar Hotels"),
         ];
         return view('Hotel::frontend.vendorHotel.detail', $data);
     }

@@ -1,7 +1,7 @@
 @if($translation->itinerary)
     <div class="border-bottom  border-top py-4">
         <h5 class="font-size-21 font-weight-bold text-dark mb-4">
-            {{__("Itinerary")}}
+            {{__("Itinerário")}}
         </h5>
         <div id="itinerary">
             @foreach($translation->itinerary as $key=>$item)

@@ -99,7 +99,7 @@ class Hotel extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Search for Spaces");
+        $meta['seo_title'] = __("Procurar Spaces");
         if (!empty($title = setting_item_with_lang("hotel_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("hotel_page_search_title"))) {

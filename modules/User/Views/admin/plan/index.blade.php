@@ -78,7 +78,7 @@
                                         <td><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>
                                         <td class="">{{ display_date($row->updated_at)}}</td>
                                         <td class="title">
-                                            <a href="{{route('user.admin.plan.edit',['id'=>$row->id])}}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{__("Edit")}}</a>
+                                            <a href="{{route('user.admin.plan.edit',['id'=>$row->id])}}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> {{__("Editar")}}</a>
                                         </td>
                                     </tr>
                                 @endforeach

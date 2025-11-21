@@ -13,7 +13,7 @@
             $configs = [
                 'vendor' =>[
                     'id'        => 'vendor',
-                    'title'     => __("Vendor Settings"),
+                    'title'     => __("Fornecedor Settings"),
                     'position'  => 50,
                     'view'      => "Vendor::admin.settings.vendor",
                     "keys"      => [

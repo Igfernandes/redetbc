@@ -1,6 +1,6 @@
 @if(count($assistance_related) > 0)
     <div class="bravo-list-assistance-related">
-        <h2>{{__("You might also like")}}</h2>
+        <h2>{{__("Você também pode gostar")}}</h2>
         <div class="row">
             @foreach($assistance_related as $k=>$item)
                 <div class="col-md-3">

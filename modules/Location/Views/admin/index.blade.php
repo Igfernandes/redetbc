@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Location")}}</h1>
+            <h1 class="title-bar">{{__("Localização")}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
@@ -14,7 +14,7 @@
                             @csrf
                             @include('Location::admin/form',['parents'=>$rows])
                             <div class="form-group form-index-hide">
-                                <label class="control-label">{{__("Location Map")}}</label>
+                                <label class="control-label">{{__("Localização Map")}}</label>
                                 <div class="control-map-group">
                                     <div id="map_content"></div>
                                     <div class="g-control d-none" >

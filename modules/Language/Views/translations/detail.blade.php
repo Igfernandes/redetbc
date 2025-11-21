@@ -16,7 +16,7 @@
                                 <option @if(Request()->type == 'translated') selected @endif value="translated">{{__("Translated")}}</option>
                             </select>
                             <select name="search_by" class="form-control">
-                                <option value="">{{__("Search By")}}</option>
+                                <option value="">{{__("Procurar By")}}</option>
                                 <option @if(Request()->search_by == 'original_text') selected @endif value="original_text">{{__("Original Text")}}</option>
                                 <option @if(Request()->search_by == 'translated_text') selected @endif value="translated_text">{{__("Translated Text")}}</option>
                             </select>

@@ -29,7 +29,7 @@ class CategoryController extends AdminController
             'translation'    => new LocationCategoryTranslation(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Location'),
+                    'name' => __('Localização'),
                     'url'  => route('location.admin.index')
                 ],
                 [
@@ -56,7 +56,7 @@ class CategoryController extends AdminController
             'parents'     => $this->locationCategoryClass::get()->toTree(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Location'),
+                    'name' => __('Localização'),
                     'url'  => route('location.admin.index')
                 ],
                 [

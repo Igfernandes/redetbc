@@ -24,7 +24,7 @@ class VendorApprovedEmail extends Mailable
 
     public function build()
     {
-        $subject = __('Vendor Registration Approved');
+        $subject = __('Fornecedor Registration Approved');
 
         return $this->subject($subject)->view('User::emails.vendor-approved',['user'=>$this->user]);
     }

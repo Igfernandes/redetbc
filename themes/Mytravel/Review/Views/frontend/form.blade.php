@@ -13,7 +13,7 @@
                                     {{$review_score['score_total']}}<span class="font-size-20">/5</span>
                                 </h2>
                                 <div class="font-size-25 text-dark mb-3">{{$review_score['score_text']}}</div>
-                                <div class="text-gray-1">{{__("From")}}
+                                <div class="text-gray-1">{{__("De")}}
                                     @if($review_score['total_review'] > 1)
                                         {{ __(":number reviews",["number"=>$review_score['total_review'] ]) }}
                                     @else
@@ -55,7 +55,7 @@
                 </h5>
             @else
                 <h5 class="font-size-21 font-weight-bold text-dark mb-8">
-                    {{__("No Review")}}
+                    {{__("Sem avaliação")}}
                 </h5>
             @endif
             @if($review_list)

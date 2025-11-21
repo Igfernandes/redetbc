@@ -31,7 +31,7 @@
                     <ul class="list-unstyled font-size-1 mb-0 font-size-16">
                         @if($booking->start_date)
                             <li class="d-flex justify-content-between py-2">
-                                <div class="label">{{ __("Start Date") }}</div>
+                                <div class="label">{{ __("Data de início") }}</div>
                                 <div class="val">
                                     {{display_date($booking->start_date)}}
                                 </div>
@@ -53,7 +53,7 @@
                             @endforeach
                         @else
                             <li class="d-flex justify-content-between py-2">
-                                <div class="label">{{__("Guests")}}:</div>
+                                <div class="label">{{__("Convidados")}}:</div>
                                 <div class="val">
                                     {{$booking->total_guests}}
                                 </div>
@@ -87,7 +87,7 @@
                             @endforeach
                         @else
                             <li class="d-flex justify-content-between py-2">
-                                <div class="label">{{__("Guests")}}: {{$booking->total_guests}} * {{format_money($booking->getMeta('base_price'))}}</div>
+                                <div class="label">{{__("Convidados")}}: {{$booking->total_guests}} * {{format_money($booking->getMeta('base_price'))}}</div>
                                 <div class="val">
                                     {{format_money($booking->getMeta('base_price') * $booking->total_guests)}}
                                 </div>

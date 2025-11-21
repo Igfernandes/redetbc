@@ -15,7 +15,7 @@
             <div class="">
                 <h1 class="title-bar">
                     @if(!empty($row->id))
-                        {{__("Edit Template:")}} @{{title}}
+                        {{__("Editar Template:")}} @{{title}}
                     @else
                         {{__('Create new template')}}
                     @endif

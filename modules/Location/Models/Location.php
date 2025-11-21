@@ -39,7 +39,7 @@
 
         public static function getModelName()
         {
-            return __("Location");
+            return __("Localização");
         }
 
         public static function searchForMenu($q = false)

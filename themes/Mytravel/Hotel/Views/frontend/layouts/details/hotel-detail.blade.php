@@ -26,7 +26,7 @@
                 <i class="icon flaticon-placeholder mr-2 font-size-20"></i>{{$translation->address}}
                 @if($row->map_lat && $row->map_lng)
                     <a target="_blank" href="https://www.google.com/maps/place/{{$row->map_lat}},{{$row->map_lng}}/@<?php echo $row->map_lat ?>,{{$row->map_lng}},{{!empty($row->map_zoom) ? $row->map_zoom : 12}}z" class="ml-1 d-block d-md-inline">
-                        - {{__('View on map')}}
+                        - {{__('Ver no mapa')}}
                     </a>
                 @endif
             @endif
@@ -93,7 +93,7 @@
 </div>
 <div class="position-relative border-bottom pb-3">
     <h5 class="font-size-21 font-weight-bold text-dark mb-3">
-        {{ __("Description") }}
+        {{ __("Descrição") }}
     </h5>
     <div class="description">
         <?php echo $translation->content ?>

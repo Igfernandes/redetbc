@@ -4,10 +4,10 @@
     </h5>
     <div class="nav-enquiry" v-if="is_form_enquiry_and_book">
         <div class="enquiry-item active" >
-            <span>{{ __("Book") }}</span>
+            <span>{{ __("Livro") }}</span>
         </div>
         <div class="enquiry-item" data-toggle="modal" data-target="#enquiry_form_modal">
-            <span>{{ __("Enquiry") }}</span>
+            <span>{{ __("Investigação") }}</span>
         </div>
     </div>
     <div class="form-book">
@@ -170,7 +170,7 @@
             <div class="row row_extra_service" v-if="extra_price.length">
                 <div class="col-md-12">
                     <div class="form-section-group">
-                        <label>{{__('Extra prices:')}}</label>
+                        <label>{{__('Preços extras:')}}</label>
                         <div class="row">
                             <div class="col-md-6 extra-item" v-for="(type,index) in extra_price">
                                 <div class="extra-price-wrap d-flex justify-content-between">
@@ -232,11 +232,11 @@
                             <span> {{__("Total Price")}}:</span> @{{total_price_html}}
                         </div>
                         <div v-if="is_deposit_ready" class="total-room-price">
-                            <span>{{__("Pay now")}}</span>
+                            <span>{{__("Pagar agora")}}</span>
                             @{{pay_now_price_html}}
                         </div>
                         <button type="button" class="btn btn-primary" @click="doSubmit($event)" :class="{'disabled':onSubmit}" name="submit">
-                            <span >{{__("Book Now")}}</span>
+                            <span >{{__("Reserve agora")}}</span>
                             <i v-show="onSubmit" class="fa fa-spinner fa-spin"></i>
                         </button>
                     </div>

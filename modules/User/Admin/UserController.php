@@ -87,7 +87,7 @@ class UserController extends AdminController
                     'url' => route('user.admin.index')
                 ],
                 [
-                    'name' => __("Edit User: #:id", ['id' => $row->id]),
+                    'name' => __("Editar User: #:id", ['id' => $row->id]),
                     'class' => 'active'
                 ],
             ]

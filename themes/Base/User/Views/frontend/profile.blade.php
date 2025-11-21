@@ -53,13 +53,13 @@
                         <select name="religion" class="form-control">
                             <option value="">{{ __("Select religion") }}</option>
                             <option value="CATHOLIC" {{ old('religion', $dataUser->religion ?? '') == 'CATHOLIC' ? 'selected' : '' }}>
-                                {{ __("Catholic") }}
+                                {{ __("Católico") }}
                             </option>
                             <option value="EVANGELICAL" {{ old('religion', $dataUser->religion ?? '') == 'EVANGELICAL' ? 'selected' : '' }}>
-                                {{ __("Evangelical") }}
+                                {{ __("Evangélico") }}
                             </option>
                             <option value="BOTH" {{ old('religion', $dataUser->religion ?? '') == 'BOTH' ? 'selected' : '' }}>
-                                {{ __("Both") }}
+                                {{ __("Ambos") }}
                             </option>
                         </select>
                         <i class="fa fa-church input-icon"></i>
@@ -107,7 +107,7 @@
                                 {{__("Browse")}}… <input type="file">
                             </span>
                         </span>
-                        <input type="text" data-error="{{__("Error upload...")}}" data-loading="{{__("Loading...")}}" class="form-control text-view" readonly value="{{ get_file_url( old('avatar_id',$dataUser->avatar_id) ) ?? $dataUser->getAvatarUrl()?? __("No Image")}}">
+                        <input type="text" data-error="{{__("Error upload...")}}" data-loading="{{__("Carregando...")}}" class="form-control text-view" readonly value="{{ get_file_url( old('avatar_id',$dataUser->avatar_id) ) ?? $dataUser->getAvatarUrl()?? __("No Image")}}">
                     </div>
                     <input type="hidden" class="form-control" name="avatar_id" value="{{ old('avatar_id',$dataUser->avatar_id)?? ""}}">
                     <img class="image-demo" src="{{ get_file_url( old('avatar_id',$dataUser->avatar_id) ) ??  $dataUser->getAvatarUrl() ?? ""}}" />
@@ -116,7 +116,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-title">
-                <strong>{{__("Location Information")}}</strong>
+                <strong>{{__("Localização Information")}}</strong>
             </div>
             <div class="form-group">
                 <label>{{__("Address Line 1")}}</label>

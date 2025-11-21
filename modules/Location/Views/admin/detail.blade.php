@@ -13,7 +13,7 @@
                 </div>
                 <div class="">
                     @if($row->slug)
-                        <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("View")}}</a>
+                        <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("Visualizar")}}</a>
                     @endif
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     <div class="col-md-9">
                         <div class="panel">
                             <div class="panel-body">
-                                <h3 class="panel-body-title">{{__("Location Content")}}</h3>
+                                <h3 class="panel-body-title">{{__("Localização Content")}}</h3>
                                 @include('Location::admin/form')
                                 @if(is_default_lang())
                                     <div class="form-group">

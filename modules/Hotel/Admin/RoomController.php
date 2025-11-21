@@ -142,10 +142,10 @@ class RoomController extends AdminController
                     'url'  => route('hotel.admin.room.index',['hotel_id'=>$this->currentHotel->id])
                 ],
                 [
-                    'name' => __('Edit room: :name',['name'=>$row->title]),
+                    'name' => __('Editar room: :name',['name'=>$row->title]),
                 ],
             ],
-            'page_title'=>__("Editar: :name",['name'=>$row->title]),
+            'page_title'=>__("Editarar: :name",['name'=>$row->title]),
             'hotel'=>$this->currentHotel
         ];
         return view('Hotel::admin.room.detail', $data);

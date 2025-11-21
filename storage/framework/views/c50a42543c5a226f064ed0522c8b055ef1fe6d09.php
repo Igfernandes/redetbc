@@ -14,9 +14,15 @@
     <div class="form-group">
         <div class="d-flex justify-content-between">
             <label for="remember-me" class="mb0">
+<<<<<<< HEAD
                 <input type="checkbox" name="remember" id="remember-me" value="1"> <?php echo e(__('Lembre-se de mim')); ?> <span class="checkmark fcheckbox"></span>
             </label>
             <a href="<?php echo e(route("password.request")); ?>"><?php echo e(__('Esqueceu a senha?')); ?></a>
+=======
+                <input type="checkbox" name="remember" id="remember-me" value="1"> <?php echo e(__('Remember me')); ?> <span class="checkmark fcheckbox"></span>
+            </label>
+            <a href="<?php echo e(route("password.request")); ?>"><?php echo e(__('Forgot Password?')); ?></a>
+>>>>>>> 7145c50388a20bfba0e25431a0fb3572fdeef4a0
         </div>
     </div>
     <?php if(setting_item("user_enable_login_recaptcha")): ?>
@@ -35,7 +41,11 @@
     </div>
     <?php if(setting_item('facebook_enable') or setting_item('google_enable') or setting_item('twitter_enable')): ?>
         <div class="advanced">
+<<<<<<< HEAD
             <p class="text-center f14 c-grey"><?php echo e(__('ou continue com')); ?></p>
+=======
+            <p class="text-center f14 c-grey"><?php echo e(__('or continue with')); ?></p>
+>>>>>>> 7145c50388a20bfba0e25431a0fb3572fdeef4a0
             <div class="row justify-content-center">
                 <?php if(setting_item('facebook_enable')): ?>
                     <div class="col-xs-12 col-sm-4">

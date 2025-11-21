@@ -10,7 +10,7 @@ $service = $row->service;
             <div class="col-md-3">
                 @if($service->is_featured == "1")
                     <div class="featured">
-                        {{__("Featured")}}
+                        {{__("Apresentou")}}
                     </div>
                 @endif
                 <div class="thumb-image">
@@ -34,7 +34,7 @@ $service = $row->service;
                 <div class="location">
                     @if(!empty($service->location->name))
                         <i class="icofont-paper-plane"></i>
-                        {{__("Location")}}: {{$service->location->name ?? ''}}
+                        {{__("Localização")}}: {{$service->location->name ?? ''}}
                     @endif
                 </div>
                 <div class="location">
@@ -79,7 +79,7 @@ $service = $row->service;
                     </div>
                 @endif
                 <div class="control-action">
-                    <a href="{{$service->getDetailUrl()}}" target="_blank" class="btn btn-info">{{__("View")}}</a>
+                    <a href="{{$service->getDetailUrl()}}" target="_blank" class="btn btn-info">{{__("Visualizar")}}</a>
                     <a href="{{ route('user.wishList.remove',['id'=>$service->id , 'type' => $service->type]) }}" class="btn btn-warning">{{__("Remove")}}</a>
                 </div>
             </div>

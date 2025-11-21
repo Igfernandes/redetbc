@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="" >{{__("Location Search Style")}}</label>
+                            <label class="" >{{__("Localização Search Style")}}</label>
                             <div class="form-controls">
                                 <select name="hotel_location_search_style" class="form-control">
                                     <option {{ ($settings['hotel_location_search_style'] ?? '') == 'normal' ? 'selected' : ''  }}      value="normal">{{__("Normal")}}</option>
@@ -170,7 +170,7 @@
                             </div>
                             @if(is_default_lang())
                                 <div class="form-group form-group-image">
-                                    <label class="control-label">{{__("Featured Image")}}</label>
+                                    <label class="control-label">{{__("Apresentou Image")}}</label>
                                     {!! \Modules\Media\Helpers\FileHelper::fieldUpload('hotel_page_list_seo_image', $settings['hotel_page_list_seo_image'] ?? "" ) !!}
                                 </div>
                             @endif
@@ -449,8 +449,8 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__("Vendor Options")}}</h3>
-            <p class="form-group-desc">{{__('Vendor config for hotel')}}</p>
+            <h3 class="form-group-title">{{__("Fornecedor Options")}}</h3>
+            <p class="form-group-desc">{{__('Fornecedor config for hotel')}}</p>
         </div>
         <div class="col-sm-8">
             <div class="panel">
