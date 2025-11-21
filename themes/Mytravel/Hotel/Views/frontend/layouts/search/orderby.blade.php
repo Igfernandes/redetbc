@@ -1,9 +1,5 @@
 <div class="item">
-<<<<<<< HEAD
-    <a href="{{ route("hotel.search",['_layout'=>'map']) }}">{{__("Mostre no Mapa")}}</a>
-=======
     <a href="{{ route("hotel.search",['_layout'=>'map']) }}">{{__("Mostrar no mapa")}}</a>
->>>>>>> 7145c50388a20bfba0e25431a0fb3572fdeef4a0
 </div>
 <div class="item">
     @php

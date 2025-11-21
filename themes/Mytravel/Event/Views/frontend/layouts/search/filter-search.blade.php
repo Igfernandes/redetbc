@@ -49,11 +49,7 @@
                                 <button type="button" class="btn btn-link btn-block card-btn py-2  text-lh-3 collapsed" data-toggle="collapse" data-target="#context-filter-price" aria-expanded="false" aria-controls="context-filter-price">
                                     <span class="row align-items-center">
                                         <span class="col-9">
-<<<<<<< HEAD
-                                            <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark">{{ __("Faixa de Preço") }} ({{$currency['symbol'] ?? ''}})</span>
-=======
                                             <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark">{{ __("Faixa de preço") }} ({{$currency['symbol'] ?? ''}})</span>
->>>>>>> 7145c50388a20bfba0e25431a0fb3572fdeef4a0
                                         </span>
                                         <span class="col-3 text-right">
                                             <span class="card-btn-arrow">
