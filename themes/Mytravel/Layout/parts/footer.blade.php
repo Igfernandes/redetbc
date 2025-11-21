@@ -44,9 +44,9 @@
 
                     <div class="mb-4 mb-xl-2">
 
-                        <h4 class="h6 font-weight-bold mb-2 mb-xl-4">{{ __('Mailing List') }}</h4>
+                        <h4 class="h6 font-weight-bold mb-2 mb-xl-4">{{ __('Lista de e-mails') }}</h4>
 
-                        <p class="m-0 text-gray-1">{{ __('Sign up for our mailing list to get latest updates and offers.') }}</p>
+                        <p class="m-0 text-gray-1">{{ __('Inscreva-se na nossa lista de e-mails para receber as últimas novidades e ofertas.') }}</p>
 
                     </div>
 

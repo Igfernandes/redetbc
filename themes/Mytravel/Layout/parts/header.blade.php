@@ -36,7 +36,7 @@ if (isset($_GET['religion'])) {
     <div class="subscribe-plan">
         <div class="content">
             <p>
-                {{ __("Junte-se ao clube: escolha seu plano e tenha acesso completo à plataforma.") }}
+                {{ __("Junte-se ao clube: escolha seu plano e tenha acesso completo.") }}
             </p> &nbsp;
 
             @if(Auth::user() == null)

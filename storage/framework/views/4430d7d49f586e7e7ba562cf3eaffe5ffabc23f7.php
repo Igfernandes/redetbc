@@ -106,6 +106,6 @@
     <div class="c-grey f14 text-center">
         <?php echo e(__(" Already have an account?")); ?>
 
-        <a href="#" data-target="#login" data-toggle="modal"><?php echo e(__("Log In")); ?></a>
+        <a href="#" data-target="#login" data-toggle="modal"><?php echo e(__("Conectar-se")); ?></a>
     </div>
 </form><?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\modules/Layout/auth/register-form.blade.php ENDPATH**/ ?>

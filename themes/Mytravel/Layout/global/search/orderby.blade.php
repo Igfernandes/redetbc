@@ -1,6 +1,6 @@
 @if(empty($hideMap))
 <div class="item">
-    <a href="{{ route($routeName,['_layout'=>'map']) }}">{{__("Show on the map")}}</a>
+    <a href="{{ route($routeName,['_layout'=>'map']) }}">{{__("Mostre no Mapa")}}</a>
 </div>
 @endif
 <div class="item orderby">
@@ -25,11 +25,11 @@
                 {{ __("Rating (High to low)") }}
                 @break
                 @default
-                {{ __("Recommended") }}
+                {{ __("Recomendado") }}
             @endswitch
         </span>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#" data-value="">{{ __("Recommended") }}</a>
+            <a class="dropdown-item" href="#" data-value="">{{ __("Recomendado") }}</a>
             <a class="dropdown-item" href="#" data-value="price_low_high">{{ __("Price (Low to high)") }}</a>
             <a class="dropdown-item" href="#" data-value="price_high_low">{{ __("Price (High to low)") }}</a>
             <a class="dropdown-item" href="#" data-value="rate_high_low">{{ __("Rating (High to low)") }}</a>

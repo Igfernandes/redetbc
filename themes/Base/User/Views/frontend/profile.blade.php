@@ -49,7 +49,7 @@
                 <!-- RELIGION -->
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>{{ __("Religion") }}</label>
+                        <label>{{ __("Religião") }}</label>
                         <select name="religion" class="form-control">
                             <option value="">{{ __("Select religion") }}</option>
                             <option value="CATHOLIC" {{ old('religion', $dataUser->religion ?? '') == 'CATHOLIC' ? 'selected' : '' }}>

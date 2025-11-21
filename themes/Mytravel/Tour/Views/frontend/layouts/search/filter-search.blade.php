@@ -19,7 +19,7 @@
             <input type="hidden" name="location_id" value="{{Request::query('location_id')}}">
             @endif
             <div class="form-group">
-                <label class="control-label">{{__("Religion")}}</label>
+                <label class="control-label">{{__("Religião")}}</label>
                 <select name="religion" class="form-control">
                     <option value="">Selecione a religião</option>
                     <option value="CATHOLIC" @if(Request::query('location_id')=="CATHOLIC" ) selected @endif> {{__("Evangelical")}}</option>
@@ -51,7 +51,7 @@
                                 <button type="button" class="btn btn-link btn-block card-btn py-2  text-lh-3 collapsed" data-toggle="collapse" data-target="#context-filter-price" aria-expanded="false" aria-controls="context-filter-price">
                                     <span class="row align-items-center">
                                         <span class="col-9">
-                                            <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark">{{ __("Price Range") }} ({{$currency['symbol'] ?? ''}})</span>
+                                            <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark">{{ __("Faixa de Preço") }} ({{$currency['symbol'] ?? ''}})</span>
                                         </span>
                                         <span class="col-3 text-right">
                                             <span class="card-btn-arrow">

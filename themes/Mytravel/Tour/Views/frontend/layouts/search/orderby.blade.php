@@ -1,5 +1,5 @@
 <div class="item">
-    <a href="{{ route("tour.search",['_layout'=>'map']) }}">{{__("Show on the map")}}</a>
+    <a href="{{ route("tour.search",['_layout'=>'map']) }}">{{__("Mostre no Mapa")}}</a>
 </div>
 <div class="item">
     @php
@@ -22,12 +22,12 @@
                 {{ __("Rating (High to low)") }}
                 @break
                 @default
-                {{ __("Recommended") }}
+                {{ __("Recomendado") }}
             @endswitch
         </span>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             @php $param['orderby'] = "" @endphp
-            <a class="dropdown-item" href="{{ route("tour.search",$param) }}">{{ __("Recommended") }}</a>
+            <a class="dropdown-item" href="{{ route("tour.search",$param) }}">{{ __("Recomendado") }}</a>
             @php $param['orderby'] = "price_low_high" @endphp
             <a class="dropdown-item" href="{{ route("tour.search",$param) }}">{{ __("Price (Low to high)") }}</a>
             @php $param['orderby'] = "price_high_low" @endphp
