@@ -74,7 +74,7 @@
                                             <div class="ml-2 text-lh-1">
                                                 <div class="ml-1">
                                                     <h4 class="text-primary font-size-14 font-weight-bold mb-0">{{$review_score['score_text']}}</h4>
-                                                    <span class="text-gray-1 font-size-12">({{$review_score['total_review']}} {{ $review_score['total_review'] > 1 ? __('Reviews') : __('Review') }})</span>
+                                                    <span class="text-gray-1 font-size-12">({{$review_score['total_review']}} {{ $review_score['total_review'] > 1 ? __('Avaliações') : __('Avaliação') }})</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,7 +98,7 @@
                                                {{ $row->display_sale_price }}
                                             </small>
                                             {{ $row->display_price }}
-                                            <span class="font-size-14"> / {{__('night')}}</span>
+                                            <span class="font-size-14"> / {{__('Noite')}}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -184,7 +184,7 @@
             no_date_select:'{{__('Please select Start and End date')}}',
             no_guest_select:'{{__('Please select at least one guest')}}',
             load_dates_url:'{{route('space.vendor.availability.loadDates')}}',
-            name_required:'{{ __("Name is Required") }}',
+            name_required:'{{ __("Nome is Required") }}',
             email_required:'{{ __("Email is Required") }}',
         };
     </script>

@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel booking-history-manager">
             <div class="panel-title">{{__('Enquiries')}}</div>
@@ -69,9 +69,9 @@
                                         </td>
                                         <td>
                                             <ul>
-                                                <li>{{__("Name:")}} {{$row->name}}</li>
+                                                <li>{{__("Nome:")}} {{$row->name}}</li>
                                                 <li>{{__("Email:")}} {{$row->email}}</li>
-                                                <li>{{__("Phone:")}} {{$row->phone}}</li>
+                                                <li>{{__("Celular:")}} {{$row->phone}}</li>
                                                 <li>{{__("Notes:")}} {{$row->note}}</li>
                                             </ul>
                                         </td>
@@ -83,7 +83,7 @@
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                                    {{__("Actions")}}
+                                                    {{__("Ações")}}
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="{{route('report.admin.enquiry.reply',['enquiry'=>$row])}}">{{__("Reply")}}</a>

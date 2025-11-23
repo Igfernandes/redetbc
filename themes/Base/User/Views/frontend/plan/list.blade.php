@@ -68,7 +68,7 @@
                             <span class="tag">{{__('Recommended')}}</span>
                             @endif
                             <div class="title">{{$plan->title}}</div>
-                            <div class="price">{{format_money($plan->annual_price)}} <span class="duration">/ {{__("year")}}</span></div>
+                            <div class="price">{{format_money($plan->annual_price)}} <span class="duration">/ {{__("Ano")}}</span></div>
                             <div class="table-content">
                                 {!! clean($plan->content) !!}
                             </div>

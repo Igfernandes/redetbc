@@ -3,9 +3,9 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("All news")}}</h1>
+            <h1 class="title-bar">{{__("Todas notícias")}}</h1>
             <div class="title-actions">
-                <a href="{{route('news.admin.create')}}" class="btn btn-primary">{{__("Add new Post")}}</a>
+                <a href="{{route('news.admin.create')}}" class="btn btn-primary">{{__("Adicionar novo Post")}}</a>
             </div>
         </div>
         @include('admin.message')
@@ -16,7 +16,7 @@
                           class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
                             <option value="publish">{{__(" Publish ")}}</option>
                             <option value="pending">{{__(" Move to Pending ")}}</option>
                             <option value="draft">{{__(" Move to Draft ")}}</option>
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -57,10 +57,10 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th class="title"> {{ __('Name')}}</th>
+                                    <th class="title"> {{ __('Nome')}}</th>
                                     <th width="200px"> {{ __('Category')}}</th>
-                                    <th width="130px"> {{ __('Author')}}</th>
-                                    <th width="100px"> {{ __('Date')}}</th>
+                                    <th width="130px"> {{ __('Autor')}}</th>
+                                    <th width="100px"> {{ __('Data')}}</th>
                                     <th width="100px">{{  __('Status')}}</th>
                                     <th width="100px"></th>
                                 </tr>

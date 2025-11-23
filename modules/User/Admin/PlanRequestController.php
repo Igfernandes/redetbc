@@ -38,11 +38,11 @@ class PlanRequestController extends AdminController
             'breadcrumbs' => [
                 [
                     'url'  => route('user.admin.index'),
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                 ],
                 [
                     'url'  => '#',
-                    'name' => __('Plan request management'),
+                    'name' => __('Gerenciamento de Solicitações de Planos'),
                 ],
             ]
         ];
@@ -54,7 +54,7 @@ class PlanRequestController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids))
-            return redirect()->back()->with('error', __('Select at lease 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
         if (empty($action))
             return redirect()->back()->with('error', __('Selecione uma ação!'));
         if ($action == 'delete') {
@@ -80,6 +80,6 @@ class PlanRequestController extends AdminController
                 }
             }
         }
-        return redirect()->back()->with('success', __('Updated successfully!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
 }

@@ -10,7 +10,7 @@
                 <div class="form-group" >
                     <label class="" >{{__("Allow customer upload picture to review")}}</label>
                     <div class="form-controls">
-                        <label><input type="checkbox" name="review_upload_picture" value="1"  @if(!empty(setting_item('review_upload_picture'))) checked @endif /> {{__("Yes please")}} </label>
+                        <label><input type="checkbox" name="review_upload_picture" value="1"  @if(!empty(setting_item('review_upload_picture'))) checked @endif /> {{__("Sim please")}} </label>
                         <br>
                     </div>
                 </div>

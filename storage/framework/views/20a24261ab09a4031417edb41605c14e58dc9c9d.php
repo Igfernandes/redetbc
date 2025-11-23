@@ -35,7 +35,7 @@
     </div>
     <?php if($row->is_featured == "1"): ?>
         <div class="position-absolute top-0 left-0 pt-3 pl-3 featured">
-            <span class="badge font-weight-normal badge-pill px-4 mr-3 py-2"><?php echo e(__("Featured")); ?></span>
+            <span class="badge font-weight-normal badge-pill px-4 mr-3 py-2"><?php echo e(__("Apresentou")); ?></span>
         </div>
     <?php endif; ?>
     <div class="location">
@@ -76,7 +76,7 @@
     <?php endif; ?>
     <?php if(!empty($time = $row->start_time)): ?>
         <div class="start-time">
-            <?php echo e(__("Start Time: :time",['time'=>$time])); ?>
+            <?php echo e(__("Hora de entrada: :time",['time'=>$time])); ?>
 
         </div>
     <?php endif; ?>
@@ -87,7 +87,7 @@
         </div>
         <div class="g-price">
             <div class="prefix">
-                <span class="fr_text"><?php echo e(__("from")); ?></span>
+                <span class="fr_text"><?php echo e(__("de")); ?></span>
             </div>
             <div class="price">
                 <span class="onsale"><?php echo e($row->display_sale_price); ?></span>

@@ -142,7 +142,7 @@ class ManageTourController extends FrontendController
         $row = $this->tourClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('tour.vendor.index'))->with('warning', __('Tour not found!'));
+            return redirect(route('tour.vendor.index'))->with('warning', __('Passeios não encontrados'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [
@@ -239,10 +239,10 @@ class ManageTourController extends FrontendController
             }
             do_action(Hook::AFTER_SAVING,$row,$request);
             if ($id > 0) {
-                return back()->with('success', __('Tour updated'));
+                return back()->with('success', __('Passeios updated'));
             } else {
                 event(new CreatedServicesEvent($row));
-                return redirect(route('tour.vendor.edit', ['id' => $row->id]))->with('success', __('Tour created'));
+                return redirect(route('tour.vendor.edit', ['id' => $row->id]))->with('success', __('Passeios created'));
             }
         }
     }
@@ -339,7 +339,7 @@ class ManageTourController extends FrontendController
         $row = $this->tourClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('tour.vendor.index'))->with('warning', __('Tour not found!'));
+            return redirect(route('tour.vendor.index'))->with('warning', __('Passeios not found!'));
         };
         try {
             $clone = $row->replicate();
@@ -368,7 +368,7 @@ class ManageTourController extends FrontendController
                     }
                 }
             }
-            return redirect()->back()->with('success', __('Tour clone was successful'));
+            return redirect()->back()->with('success', __('Passeios clone was successful'));
         } catch (\Exception $exception) {
             $clone->delete();
             return redirect()->back()->with('warning', __($exception->getMessage()));

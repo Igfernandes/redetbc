@@ -47,7 +47,7 @@
         @if(!empty(setting_item("hotel_allow_vendor_can_change_their_booking_status")))
             <a class="btn btn-xs btn-info btn-make-as" data-toggle="dropdown">
                 <i class="icofont-ui-settings"></i>
-                {{__("Action")}}
+                {{__("Ação")}}
             </a>
             <div class="dropdown-menu">
                 @if(!empty($statues))

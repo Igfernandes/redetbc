@@ -2,7 +2,7 @@
 @section('content')
 <h2 class="title-bar">
     {{__("Settings")}}
-    <a href="{{route('user.change_password')}}" class="btn-change-password">{{__("Change Password")}}</a>
+    <a href="{{route('user.change_password')}}" class="btn-change-password">{{__("Alterar senha")}}</a>
 </h2>
 @include('admin.message')
 <form action="{{route('user.profile.update')}}" method="post" class="input-has-icon">
@@ -32,15 +32,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>{{__("First name")}}</label>
-                        <input type="text" value="{{old('first_name',$dataUser->first_name)}}" name="first_name" placeholder="{{__("First name")}}" class="form-control">
+                        <label>{{__("Primeiro Nome")}}</label>
+                        <input type="text" value="{{old('first_name',$dataUser->first_name)}}" name="first_name" placeholder="{{__("Primeiro Nome")}}" class="form-control">
                         <i class="fa fa-user input-icon"></i>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>{{__("Last name")}}</label>
-                        <input type="text" value="{{old('last_name',$dataUser->last_name)}}" name="last_name" placeholder="{{__("Last name")}}" class="form-control">
+                        <label>{{__("Sobrenome")}}</label>
+                        <input type="text" value="{{old('last_name',$dataUser->last_name)}}" name="last_name" placeholder="{{__("Sobrenome")}}" class="form-control">
                         <i class="fa fa-user input-icon"></i>
                     </div>
                 </div>
@@ -69,14 +69,14 @@
                 <!-- SEX -->
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>{{ __("Sex") }}</label>
+                        <label>{{ __("Sexo") }}</label>
                         <select name="sex" class="form-control">
-                            <option value="">{{ __("Select sex") }}</option>
+                            <option value="">{{ __("Selecione o sexo") }}</option>
                             <option value="MASCULINE" {{ old('sex', $dataUser->sex ?? '') == 'MASCULINE' ? 'selected' : '' }}>
-                                {{ __("Masculine") }}
+                                {{ __("Masculino") }}
                             </option>
                             <option value="FEMININE" {{ old('sex', $dataUser->sex ?? '') == 'FEMININE' ? 'selected' : '' }}>
-                                {{ __("Feminine") }}
+                                {{ __("Femino") }}
                             </option>
                         </select>
                         <i class="fa fa-venus-mars input-icon"></i>
@@ -85,8 +85,8 @@
 
             </div>
             <div class="form-group">
-                <label>{{__("Phone Number")}}</label>
-                <input type="text" value="{{old('phone',$dataUser->phone)}}" name="phone" placeholder="{{__("Phone Number")}}" class="form-control">
+                <label>{{__("Celular Number")}}</label>
+                <input type="text" value="{{old('phone',$dataUser->phone)}}" name="phone" placeholder="{{__("Celular Number")}}" class="form-control">
                 <i class="fa fa-phone input-icon"></i>
             </div>
             <div class="form-group">

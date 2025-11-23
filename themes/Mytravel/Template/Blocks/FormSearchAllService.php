@@ -101,14 +101,14 @@ class FormSearchAllService extends BaseBlock
 
         $arg[] = [
             'type'=> "checkbox",
-            'label'=>__("Hide form search service?"),
+            'label'=>__("Deseja ocultar o formulário?"),
             'id'=> "hide_form_search",
             'default'=>false
         ];
 
         $arg[] = [
             'type'=> "checkbox",
-            'label'=>__("single form search"),
+            'label'=>__("formulário de pesquisa único"),
             'id'=> "single_form_search",
             'default'=>false
         ];
@@ -116,13 +116,13 @@ class FormSearchAllService extends BaseBlock
 
         return ([
             'settings' => $arg,
-            'category'=>__("Other Block")
+            'category'=>__("Outros Blocos")
         ]);
     }
 
     public function getName()
     {
-        return __('Form Search All Service');
+        return __('Formulário de Pesquisa de Todos os Serviços');
     }
 
     public function content($model = [])

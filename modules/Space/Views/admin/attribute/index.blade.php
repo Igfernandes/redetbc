@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Attributes")}}</div>
+                    <div class="panel-title">{{__("Adicionar Atributos")}}</div>
                     <div class="panel-body">
                         <form action="{{route('space.admin.attribute.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <div class="panel-title">{{__("All Attributes")}}</div>
+                    <div class="panel-title">{{__("Todos Atributos")}}</div>
                     <div class="panel-body">
                         <form class="bravo-form-item">
                             <table class="table table-hover">
@@ -51,7 +51,7 @@
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
                                     <th>{{__("Nome")}}</th>
                                     <th>{{__("Position Order")}}</th>
-                                    <th class="">{{__("Actions")}}</th>
+                                    <th class="">{{__("Ações")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

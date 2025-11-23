@@ -30,11 +30,11 @@ class CategoryController extends AdminController
             'translation'    => new TourCategoryTranslation(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Tour'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
-                    'name'  => __('Category'),
+                    'name'  => __('Categoria'),
                     'class' => 'active'
                 ],
             ]
@@ -57,7 +57,7 @@ class CategoryController extends AdminController
             'parents'     => $this->tourCategoryClass::get()->toTree(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Tour'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [

@@ -114,8 +114,8 @@
             no_date_select:'{{__('Please select Start date')}}',
             no_guest_select:'{{__('Please select at least one guest')}}',
             load_dates_url:'{{route('tour.vendor.availability.loadDates')}}',
-            name_required:'{{ __("Name is Required") }}',
-            email_required:'{{ __("Email is Required") }}',
+            name_required:'{{ __("Nome é obrigatório") }}',
+            email_required:'{{ __("Email é obrigatório") }}',
         };
     </script>
     <script type="text/javascript" src="{{ asset("libs/fotorama/fotorama.js") }}"></script>

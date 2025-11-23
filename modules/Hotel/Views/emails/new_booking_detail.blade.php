@@ -51,7 +51,7 @@ $lang_local = app()->getLocale();
                 </td>
             </tr>
             <tr>
-                <td class="label">{{__('Nights:')}}</td>
+                <td class="label">{{__('Noites:')}}</td>
                 <td class="val">
                     {{$booking->duration_nights}}
                 </td>

@@ -43,18 +43,18 @@ class ModuleProvider extends ModuleServiceProvider
             'space'=>[
                 "position"=>41,
                 'url'        => route('space.admin.index'),
-                'title'      => __('Space'),
+                'title'      => __('Espaços'),
                 'icon'       => 'ion ion-md-home',
                 'permission' => 'space_view',
                 'children'   => [
                     'add'=>[
                         'url'        => route('space.admin.index'),
-                        'title'      => __('All Spaces'),
+                        'title'      => __('Todos os espaços'),
                         'permission' => 'space_view',
                     ],
                     'create'=>[
                         'url'        => route('space.admin.create'),
-                        'title'      => __('Add new Space'),
+                        'title'      => __('Adicionar novo espaço'),
                         'permission' => 'space_create',
                     ],
                     'attribute'=>[

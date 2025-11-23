@@ -1,17 +1,17 @@
 <div class="form-group">
     <label>{{__("Nome")}}</label>
-    <input type="text" value="{{$translation->name}}" placeholder="{{__("Attribute name")}}" name="name" class="form-control">
+    <input type="text" value="{{$translation->name}}" placeholder="{{__("Nome do Atributo")}}" name="name" class="form-control">
 </div>
 @if(is_default_lang())
     <div class="form-group">
-        <label>{{__("Position Order")}}</label>
+        <label>{{__("Ordem da posição")}}</label>
         <input type="number" min="0" value="{{$row->position}}" placeholder="{{__("Ex: 1")}}" name="position" class="form-control">
         <small>
-            {{ __("The position will be used to order in the Filter page search. The greater number is priority") }}
+            {{ __("A posição será usada para ordenar na página de pesquisa de filtros. O número maior tem prioridade") }}
         </small>
     </div>
     <div class="form-group">
-        <label>{{__('Hide in detail service')}}</label>
+        <label>{{__('Ocultar no detalhe do serviço')}}</label>
         <br>
         <label>
             <input type="checkbox" name="hide_in_single" @if($row->hide_in_single) checked @endif value="1"> {{__("Enable hide")}}

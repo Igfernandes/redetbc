@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Page Search")}}</h3>
-        <p class="form-group-desc">{{__('Config page search of your website')}}</p>
+        <h3 class="form-group-title">{{__("Página de Busca")}}</h3>
+        <p class="form-group-desc">{{__('Configurar a página de pesquisa do seu site')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
@@ -229,7 +229,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Enable review system for Hotel?")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="hotel_enable_review" value="1" @if(!empty($settings['hotel_enable_review'])) checked @endif /> {{__("Yes, please enable it")}} </label>
+                            <label><input type="checkbox" name="hotel_enable_review" value="1" @if(!empty($settings['hotel_enable_review'])) checked @endif /> {{__("Sim, please enable it")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("Turn on the mode for reviewing hotel")}}</small>
                         </div>
@@ -237,7 +237,7 @@
                     <div class="form-group" data-condition="hotel_enable_review:is(1)">
                         <label class="" >{{__("Customer must book a hotel before writing a review?")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="hotel_enable_review_after_booking" value="1"  @if(!empty($settings['hotel_enable_review_after_booking'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="hotel_enable_review_after_booking" value="1"  @if(!empty($settings['hotel_enable_review_after_booking'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Only post a review after booking - Off: Post review without booking")}}</small>
                         </div>
@@ -263,7 +263,7 @@
                     <div class="form-group" data-condition="hotel_enable_review:is(1)">
                         <label class="" >{{__("Review must be approval by admin")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="hotel_review_approved" value="1"  @if(!empty($settings['hotel_review_approved'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="hotel_review_approved" value="1"  @if(!empty($settings['hotel_review_approved'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Review must be approved by admin - OFF: Review is automatically approved")}}</small>
                         </div>
@@ -458,7 +458,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Hotel created by vendor must be approved by admin")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="hotel_vendor_create_service_must_approved_by_admin" value="1" @if(!empty($settings['hotel_vendor_create_service_must_approved_by_admin'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="hotel_vendor_create_service_must_approved_by_admin" value="1" @if(!empty($settings['hotel_vendor_create_service_must_approved_by_admin'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: When vendor posts a service, it needs to be approved by administrator")}}</small>
                         </div>
@@ -466,7 +466,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow vendor can change their booking status")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="hotel_allow_vendor_can_change_their_booking_status" value="1" @if(!empty($settings['hotel_allow_vendor_can_change_their_booking_status'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="hotel_allow_vendor_can_change_their_booking_status" value="1" @if(!empty($settings['hotel_allow_vendor_can_change_their_booking_status'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can change their booking status")}}</small>
                         </div>
@@ -474,7 +474,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow vendor can change their booking paid amount")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="hotel_allow_vendor_can_change_paid_amount" value="1" @if(!empty($settings['hotel_allow_vendor_can_change_paid_amount'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="hotel_allow_vendor_can_change_paid_amount" value="1" @if(!empty($settings['hotel_allow_vendor_can_change_paid_amount'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can change their booking paid amount")}}</small>
                         </div>
@@ -482,7 +482,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow vendor can add service fee")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="hotel_allow_vendor_can_add_service_fee" value="1" @if(!empty($settings['hotel_allow_vendor_can_add_service_fee'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="hotel_allow_vendor_can_add_service_fee" value="1" @if(!empty($settings['hotel_allow_vendor_can_add_service_fee'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can add service fee")}}</small>
                         </div>

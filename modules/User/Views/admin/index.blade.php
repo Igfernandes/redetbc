@@ -3,11 +3,11 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{ __('All Users')}}</h1>
+            <h1 class="title-bar">{{ __('Todos Usuários')}}</h1>
             <div class="title-actions">
-                <a href="{{route('user.admin.create')}}" class="btn btn-primary">{{ __('Add new user')}}</a>
-                <a class="btn btn-warning btn-icon" href="{{ route("user.admin.export") }}" target="_blank" title="{{ __("Export to excel") }}">
-                    <i class="icon ion-md-cloud-download"></i> {{ __("Export to excel") }}
+                <a href="{{route('user.admin.create')}}" class="btn btn-primary">{{ __('Adicionar novo usuário')}}</a>
+                <a class="btn btn-warning btn-icon" href="{{ route("user.admin.export") }}" target="_blank" title="{{ __("Exportar em excel") }}">
+                    <i class="icon ion-md-cloud-download"></i> {{ __("Exportar em excel") }}
                 </a>
             </div>
         </div>
@@ -18,7 +18,7 @@
                     <form method="post" action="{{route('user.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__("Ações em Massa")}}</option>
                             <option value="delete">{{__("Excluir")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
@@ -34,12 +34,12 @@
                         @endforeach
                     </select>
                     <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
-                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search User')}}</button>
+                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Buscar Usuário')}}</button>
                 </form>
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -49,12 +49,12 @@
                         <thead>
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th>{{__('Name')}}</th>
+                            <th>{{__('Nome')}}</th>
                             <th>{{__('Email')}}</th>
-                            <th>{{__('Credit')}}</th>
+                            <th>{{__('Crédito')}}</th>
                             <th>{{__('Telefone')}}</th>
-                            <th>{{__('Role')}}</th>
-                            <th class="date">{{ __('Date')}}</th>
+                            <th>{{__('Função')}}</th>
+                            <th class="date">{{ __('Data')}}</th>
 {{--                            <th class="status">{{__('Status')}}</th>--}}
                             <th></th>
                         </tr>
@@ -92,7 +92,7 @@
                                                 @else
                                                 <a class="dropdown-item"  href="#" ><i class="fa fa-check"></i> {{__('Email verified')}}</a>
                                             @endif
-                                            <a class="dropdown-item" href="{{route('user.admin.password',['id'=>$row->id])}}"><i class="fa fa-lock"></i> {{__('Change Password')}}</a>
+                                            <a class="dropdown-item" href="{{route('user.admin.password',['id'=>$row->id])}}"><i class="fa fa-lock"></i> {{__('Alterar Senha')}}</a>
                                             <a href="{{route('user.admin.wallet.addCredit',['id'=>$row->id])}}" class="dropdown-item"><i class="fa fa-plus"></i> {{__("Add Credit")}}</a>
                                         </div>
                                     </div>

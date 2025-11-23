@@ -33,7 +33,7 @@ class AttributeController extends AdminController
             'translation'    => new AttributesTranslation(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Tour'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
@@ -60,7 +60,7 @@ class AttributeController extends AdminController
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __('Tour'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
@@ -141,7 +141,7 @@ class AttributeController extends AdminController
             'translation'    => new TermsTranslation(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Tour'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
@@ -172,7 +172,7 @@ class AttributeController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs' => [
                 [
-                    'name' => __('Tour'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [

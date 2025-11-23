@@ -41,14 +41,14 @@ $menus = [
     ],
     'profile'         => [
         'url'      => route("user.profile.index"),
-        'title'    => __("My Profile"),
+        'title'    => __("Meu perfil"),
         'icon'     => 'fa fa-cogs',
         'position' => 22,
         'is_verified' => 0
     ],
     'password'        => [
         'url'      => route("user.change_password"),
-        'title'    => __("Change password"),
+        'title'    => __("Alterar senha"),
         'icon'     => 'fa fa-lock',
         'position' => 100,
         'is_verified' => 0

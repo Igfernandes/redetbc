@@ -79,7 +79,7 @@
                         @endif
                         @if(is_default_lang())
                             <div class="panel">
-                                <div class="panel-title"><strong>{{__("Tour Featured")}}</strong></div>
+                                <div class="panel-title"><strong>{{__("Passeio Destaque")}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <input type="checkbox" name="is_featured" @if($row->is_featured) checked @endif value="1"> {{__("Habilitar destaque")}}

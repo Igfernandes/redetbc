@@ -50,7 +50,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="label">{{__('Nights:')}}</div>
+						<div class="label">{{__('Noites:')}}</div>
 						<div class="val">
 							{{$booking->duration_nights}}
 						</div>
@@ -111,7 +111,7 @@
 									<div class="label">
 										{{$type['name_'.$lang_local] ?? $type['name']}}: <br>
 										{{--<small>
-											({{ $type['type'] == "per_day" ? "/".__("day") : "" }}/{{ __("room") }})
+											({{ $type['type'] == "per_day" ? "/".__("Dia") : "" }}/{{ __("room") }})
 										</small>--}}
 									</div>
 									<div class="val">

@@ -61,7 +61,7 @@ class UserController extends AdminController
             'roles' => Role::all(),
             'breadcrumbs' => [
                 [
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                     'url' => route('user.admin.index')
                 ]
             ]
@@ -83,7 +83,7 @@ class UserController extends AdminController
             'roles' => Role::all(),
             'breadcrumbs' => [
                 [
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                     'url' => route('user.admin.index')
                 ],
                 [

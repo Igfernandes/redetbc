@@ -25,7 +25,7 @@
                     @else
                     @include('Layout::parts.notification')
                     <li class="login-item dropdown">
-                        <a href="#" data-toggle="dropdown" class="login">{{__("Hi, :name",['name'=>Auth::user()->getDisplayName()])}}
+                        <a href="#" data-toggle="dropdown" class="login">{{__("Oi, :name",['name'=>Auth::user()->getDisplayName()])}}
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-user text-left">
@@ -39,7 +39,7 @@
                             @endif
                             <li class="@if(is_vendor()) menu-hr @endif">
                                 {{$isVerification}}
-                                <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
+                                <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("Meu perfil")}}</a>
                             </li>
                             @if(setting_item('inbox_enable')  && $isVerification)
                             <li class="menu-hr">
@@ -51,7 +51,7 @@
                             </li>
                             @endif
                             <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
-                            <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Change password")}}</a></li>
+                            <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 
                             @if(is_enable_plan() )
                             <li class="menu-hr"><a href="{{route('user.plan')}}"><i class="fa fa-list-alt"></i> {{__("My plan")}}</a></li>
@@ -68,7 +68,7 @@
                             <li class="menu-hr"><a href="{{route('admin.index')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a></li>
                             @endif
                             <li class="menu-hr">
-                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-topbar').submit();"><i class="fa fa-sign-out"></i> {{__('Logout')}}</a>
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-topbar').submit();"><i class="fa fa-sign-out"></i> {{__('Sair')}}</a>
                             </li>
                         </ul>
                         <form id="logout-form-topbar" action="{{ route('logout') }}" method="POST" style="display: none;">

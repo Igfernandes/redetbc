@@ -65,7 +65,7 @@ class BookingController extends AdminController
         $tour_categories = TourCategory::where('status', 'publish')->get()->toTree();
         $breadcrumbs = [
             [
-                'name' => __('Tours'),
+                'name' => __('Passeios'),
                 'url'  => route('tour.admin.index')
             ],
             [
@@ -73,7 +73,7 @@ class BookingController extends AdminController
                 'class' => 'active'
             ],
         ];
-        $page_title = __('Tour Booking History');
+        $page_title = __('Passeios Booking History');
         return view('Tour::admin.booking.index',compact('rows','tour_categories','breadcrumbs','current_month','page_title','request','prev_url','next_url'));
     }
     public function test(){

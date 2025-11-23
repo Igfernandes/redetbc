@@ -8,7 +8,7 @@
                 <div class="col-md-9">
                     <div class="d-flex justify-content-between mb20">
                         <div class="">
-                            <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Add new Hotel Room')}}</h1>
+                            <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Adicionar novo quarto')}}</h1>
                         </div>
                     </div>
                     @include('admin.message')

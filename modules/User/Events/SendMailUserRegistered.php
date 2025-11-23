@@ -14,4 +14,6 @@ class SendMailUserRegistered
     {
         $this->user = $user;
     }
+
+    
 }

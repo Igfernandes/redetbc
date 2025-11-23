@@ -18,7 +18,7 @@
                                 <th width="80px">{{__('Status')}}</th>
                                 <th width="80px">{{__('Replies')}}</th>
                                 <th width="180px">{{__('Created At')}}</th>
-                                <th>{{__("Action")}}</th>
+                                <th>{{__("Ação")}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,9 +39,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <div>{{__("Name:")}} {{$row->name}}</div>
+                                            <div>{{__("Nome:")}} {{$row->name}}</div>
                                             <div>{{__("Email:")}} {{$row->email}}</div>
-                                            <div>{{__("Phone:")}} {{$row->phone}}</div>
+                                            <div>{{__("Celular:")}} {{$row->phone}}</div>
                                             <div>{{__("Notes:")}} {{$row->note}}</div>
                                         </td>
                                         <td>
@@ -53,7 +53,7 @@
                                             @if(!empty( $has_permission_enquiry_update ))
                                                 <a class="btn btn-xs btn-info btn-make-as" data-toggle="dropdown">
                                                     <i class="icofont-ui-settings"></i>
-                                                    {{__("Action")}}
+                                                    {{__("Ação")}}
                                                 </a>
                                                 <div class="dropdown-menu">
                                                     <a href="{{route('vendor.enquiry_report.reply',['enquiry'=>$row])}}"><i class="icofont-long-arrow-right"></i> {{__("Add Reply")}}</a>

@@ -27,7 +27,7 @@ class RoleController extends AdminController
             'rows'        => Role::paginate(20),
             'breadcrumbs' => [
                 [
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                     'url'  => route('user.admin.index')
                 ]
             ]
@@ -46,7 +46,7 @@ class RoleController extends AdminController
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                     'url'  => route('user.admin.index')
                 ],
                 [
@@ -68,14 +68,14 @@ class RoleController extends AdminController
             $row->fill($request->input());
             if ($row->save()) {
 
-                return redirect(route('user.admin.role.index'))->with('success', __('Role updated'));
+                return redirect(route('user.admin.role.index'))->with('success', __('Função updated'));
             }
         }
         $data = [
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                     'url'  => route('user.admin.index')
                 ],
                 [
@@ -118,9 +118,9 @@ class RoleController extends AdminController
         $res = $row->save();
         if ($res) {
             if($id > 0 ){
-                return back()->with('success',  __('Role updated') );
+                return back()->with('success',  __('Função updated') );
             }else{
-                return redirect(route('user.admin.role.detail',['id' => $row->id]))->with('success', __('Role created') );
+                return redirect(route('user.admin.role.detail',['id' => $row->id]))->with('success', __('Função created') );
             }
         }
     }
@@ -139,7 +139,7 @@ class RoleController extends AdminController
                     'url'  => route('user.admin.index')
                 ],
                 [
-                    'name' => __('Role Management'),
+                    'name' => __('Função Management'),
                     'url'  => route('user.admin.role.index')
                 ],
                 [
@@ -174,7 +174,7 @@ class RoleController extends AdminController
                     'url'  => route('user.admin.index')
                 ],
                 [
-                    'name' => __('Role Management'),
+                    'name' => __('Função Management'),
                     'url'  => route('user.admin.role.index')
                 ],
                 [
@@ -291,7 +291,7 @@ class RoleController extends AdminController
             'role'        => $role,
             'breadcrumbs' => [
                 [
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                     'url'  => route('user.admin.index')
                 ],
                 [

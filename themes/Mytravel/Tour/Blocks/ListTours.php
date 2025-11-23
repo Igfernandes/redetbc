@@ -128,13 +128,13 @@ class ListTours extends BaseBlock
                     ])
                 ]
             ],
-            'category'=>__("Tour Blocks")
+            'category'=>__("Blocos dos Passeio")
         ]);
     }
 
     public function getName()
     {
-        return __('Tour: List Items');
+        return __('Passeios: List Items');
     }
 
     public function content($model = [])

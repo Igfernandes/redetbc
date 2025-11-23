@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-sm-4 mb-5">
                             <div class="js-form-message">
-                                <input type="text" class="form-control" name="phone" placeholder="{{ __("Phone") }}" >
+                                <input type="text" class="form-control" name="phone" placeholder="{{ __("Celular") }}" >
                             </div>
                         </div>
                         <div class="col-sm-12 mb-5">

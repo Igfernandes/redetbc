@@ -8,13 +8,13 @@
             <div class="panel">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label class="" >{{__("Disable Registration?")}}</label>
+                        <label class="" >{{__("Desativar Registro?")}}</label>
                         <div class="form-controls">
-                            <label ><input type="checkbox" name="user_disable_register" value="1" @if(setting_item('user_disable_register')) checked @endif> {{__("Yes, please disable it")}}</label>
+                            <label ><input type="checkbox" name="user_disable_register" value="1" @if(setting_item('user_disable_register')) checked @endif> {{__("Sim, por favor desative")}}</label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="" >{{__("User Register Default Role")}}</label>
+                        <label class="" >{{__("Função Padrão de Registro do Usuário")}}</label>
                         <div class="form-controls">
                             <select name="user_role" class="form-control">
                                 <option value="">{{__('-- Selecione --')}}</option>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow customer can send message to the vendor on detail page")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="inbox_enable" value="1" @if(!empty($settings['inbox_enable'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="inbox_enable" value="1" @if(!empty($settings['inbox_enable'])) checked @endif /> {{__("Sim please")}} </label>
                         </div>
                     </div>
                 </div>

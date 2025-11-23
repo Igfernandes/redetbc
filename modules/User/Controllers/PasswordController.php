@@ -26,11 +26,11 @@ class PasswordController extends FrontendController
                     'url'  => route("user.profile.index")
                 ],
                 [
-                    'name'  => __('Change Password'),
+                    'name'  => __('Alterar Senha'),
                     'class' => 'active'
                 ]
             ],
-            'page_title'  => __("Change Password"),
+            'page_title'  => __("Alterar senha"),
         ];
         return view('User::frontend.changePassword', $data);
     }

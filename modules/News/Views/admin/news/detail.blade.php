@@ -23,12 +23,12 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{ __('News content')}}</strong></div>
+                            <div class="panel-title"><strong>{{ __('Conteúdo da Notícias')}}</strong></div>
                             <div class="panel-body">
                                 @csrf
                                 @include('News::admin/news/form',['row'=>$row])
                                 <div class="form-group">
-                                    <label class="control-label">{{__("Gallery")}}</label>
+                                    <label class="control-label">{{__("Galeria")}}</label>
                                     {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
                                 </div>
                             </div>

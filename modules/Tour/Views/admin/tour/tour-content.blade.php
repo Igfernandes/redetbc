@@ -1,12 +1,12 @@
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Tour Content")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Conteúdo do Passeio")}}</strong></div>
     <div class="panel-body">
         <div class="form-group magic-field" data-id="title" data-type="title">
             <label class="control-label">{{__("Título")}}</label>
             <input type="text" value="{{old('title',$translation->title)}}" placeholder="{{__("Título")}}" name="title" class="form-control">
         </div>
         <div class="form-group">
-            <label class="control-label">{{__("Target Religion")}}</label>
+            <label class="control-label">{{__("Religião Alvo")}}</label>
             <select name="religion" class="form-control">
                 <option value="">Selecione a religião</option>
                 <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangélico")}}</option>
@@ -15,7 +15,7 @@
             </select>
         </div>
         <div class="form-group magic-field" data-id="content" data-type="content">
-            <label class="control-label">{{__("Content")}}</label>
+            <label class="control-label">{{__("Conteúdo")}}</label>
             <div class="">
                 <textarea name="content" class="d-none has-ckeditor" id="content" cols="30" rows="10">{{old('content',$translation->content)}}</textarea>
             </div>
@@ -28,7 +28,7 @@
         </div>
         @if(is_default_lang())
         <div class="form-group">
-            <label class="control-label">{{__("Category")}}</label>
+            <label class="control-label">{{__("Categoria")}}</label>
             <div class="">
                 <select name="category_id" class="form-control">
                     <option value="">{{__("-- Please Select --")}}</option>
@@ -64,11 +64,11 @@
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label">{{__("Duration")}}</label>
+                    <label class="control-label">{{__("Duração")}}</label>
                     <div class="input-group mb-3">
-                        <input type="text" name="duration" class="form-control" value="{{old('duration',$row->duration)}}" placeholder="{{__("Duration")}}" aria-describedby="basic-addon2">
+                        <input type="text" name="duration" class="form-control" value="{{old('duration',$row->duration)}}" placeholder="{{__("Duração")}}" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">{{__('hours')}}</span>
+                            <span class="input-group-text" id="basic-addon2">{{__('horas')}}</span>
                         </div>
                     </div>
                 </div>
@@ -79,14 +79,14 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label">{{__("Tour Min People")}}</label>
-                    <input type="text" name="min_people" class="form-control" value="{{old('min_people',$row->min_people)}}" placeholder="{{__("Tour Min People")}}">
+                    <label class="control-label">{{__("Passeio Min People")}}</label>
+                    <input type="text" name="min_people" class="form-control" value="{{old('min_people',$row->min_people)}}" placeholder="{{__("Passeio Min People")}}">
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label">{{__("Tour Max People")}}</label>
-                    <input type="text" name="max_people" class="form-control" value="{{old('max_people',$row->max_people)}}" placeholder="{{__("Tour Max People")}}">
+                    <label class="control-label">{{__("Passeio Max People")}}</label>
+                    <input type="text" name="max_people" class="form-control" value="{{old('max_people',$row->max_people)}}" placeholder="{{__("Passeio Max People")}}">
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
         @include('Tour::admin/tour/itinerary')
         @if(is_default_lang())
         <div class="form-group">
-            <label class="control-label">{{__("Banner Image")}}</label>
+            <label class="control-label">{{__("Imagem do Banner")}}</label>
             <div class="form-group-image">
                 {!! \Modules\Media\Helpers\FileHelper::fieldUpload('banner_image_id',old('banner_image_id',$row->banner_image_id)) !!}
             </div>

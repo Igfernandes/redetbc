@@ -130,7 +130,7 @@
         @if($row->start_time)
             <li class="list-group-item text-lh-sm ">
                 <i class="icofont-wall-clock text-primary font-size-50 mb-1 "></i>
-                <div class="text-gray-1"> {{ __("Start Time") }}: {{ $row->start_time }}</div>
+                <div class="text-gray-1"> {{ __("Hora de entrada") }}: {{ $row->start_time }}</div>
             </li>
         @endif
         @if($row->duration)

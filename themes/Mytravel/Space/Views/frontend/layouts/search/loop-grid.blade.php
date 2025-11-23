@@ -7,7 +7,7 @@
             <img class="card-img-top" src="{{$row->image_url}}" alt="{!! clean($translation->title) !!}">
         </a>
         <div class="position-absolute top-0 right-0 pt-4 pr-3 btn-wishlist">
-            <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __("Salvar para mais tarde"") }}">
+            <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __('Salvar para mais tarde') }}">
                 <span class="flaticon-valentine-heart font-size-20"></span>
             </button>
         </div>
@@ -111,7 +111,7 @@
                             <small class="flaticon-bathtub font-size-16"></small>
                         </small>
                         <div class="media-body font-size-1">
-                            {{$row->bathroom}} <small>{{ __("bathrooms") }}</small>
+                            {{$row->bathroom}} <small>{{ __("quartos") }}</small>
                         </div>
                     </li>
                 </ul>
@@ -123,7 +123,7 @@
                             <small class="flaticon-door font-size-16"></small>
                         </small>
                         <div class="media-body font-size-1">
-                            {{$row->max_guests}} <small>{{ __("People") }}</small>
+                            {{$row->max_guests}} <small>{{ __("Pessoas") }}</small>
                         </div>
                     </li>
                     <li class="media mb-2 text-gray-1 align-items-center">
@@ -131,7 +131,7 @@
                             <small class="flaticon-bed-1 font-size-16"></small>
                         </small>
                         <div class="media-body font-size-1">
-                            {{$row->bed}} <small>{{ __("Beds") }}</small>
+                            {{$row->bed}} <small>{{ __("Camas") }}</small>
                         </div>
                     </li>
                 </ul>

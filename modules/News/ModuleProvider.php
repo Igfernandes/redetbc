@@ -33,24 +33,24 @@ class ModuleProvider extends ModuleServiceProvider
             'news'=>[
                 "position"=>10,
                 'url'        => route('news.admin.index'),
-                'title'      => __("News").($count ? ' <span class="badge badge-warning">'.$count.'</span>':''),
+                'title'      => __("Notícias").($count ? ' <span class="badge badge-warning">'.$count.'</span>':''),
                 'icon'       => 'ion-md-bookmarks',
                 'permission' => 'news_view',
                 'group' => 'content',
                 'children'   => [
                     'news_view'=>[
                         'url'        => route('news.admin.index'),
-                        'title'      => __("All News"),
+                        'title'      => __("Todas notícias"),
                         'permission' => 'news_view',
                     ],
                     'news_create'=>[
                         'url'        => route('news.admin.create'),
-                        'title'      => __("Add News"),
+                        'title'      => __("Adicionar notícias"),
                         'permission' => 'news_create',
                     ],
                     'news_categoty'=>[
                         'url'        => route('news.admin.category.index'),
-                        'title'      => __("Categories"),
+                        'title'      => __("Categorias"),
                         'permission' => 'news_create',
                     ],
                     'news_tag'=>[

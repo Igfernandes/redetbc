@@ -20,8 +20,8 @@
 								<form action="{{route('newsletter.subscribe')}}" class="subcribe-form bravo-subscribe-form bravo-form">
 									@csrf
 									<div class="form-group">
-										<input type="text" name="email" class="form-control email-input" placeholder="{{__('Your Email')}}">
-										<button type="submit" class="btn-submit">{{__('Subscribe')}}
+										<input type="text" name="email" class="form-control email-input" placeholder="{{__('Seu e-mail')}}">
+										<button type="submit" class="btn-submit">{{__('Inscrever-se')}}
 											<i class="fa fa-spinner fa-pulse fa-fw"></i>
 										</button>
 									</div>

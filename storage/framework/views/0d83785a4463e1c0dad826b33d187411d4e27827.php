@@ -46,9 +46,9 @@
 
                     <div class="mb-4 mb-xl-2">
 
-                        <h4 class="h6 font-weight-bold mb-2 mb-xl-4"><?php echo e(__('Mailing List')); ?></h4>
+                        <h4 class="h6 font-weight-bold mb-2 mb-xl-4"><?php echo e(__('Novidades')); ?></h4>
 
-                        <p class="m-0 text-gray-1"><?php echo e(__('Sign up for our mailing list to get latest updates and offers.')); ?></p>
+                        <p class="m-0 text-gray-1"><?php echo e(__('Cadastre-se em nossa lista de e-mails para receber as últimas novidades e ofertas.')); ?></p>
 
                     </div>
 
@@ -58,7 +58,7 @@
 
                         <div class="input-group">
 
-                            <input type="text" name="email" class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8 email-input" placeholder="<?php echo e(__('Your Email')); ?>">
+                            <input type="text" name="email" class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8 email-input" placeholder="<?php echo e(__('Seu e-mail')); ?>">
 
                             <div class="input-group-append ml-3">
 

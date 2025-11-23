@@ -15,21 +15,21 @@
                         <p>{{__('Permanently delete account will delete all services of that user and that user')}}</p>
                     @else
                         <div class="form-group">
-                            <label> <input type="checkbox" @if($settings['user_enable_permanently_delete'] ?? '' == 1) checked @endif disabled name="user_enable_permanently_delete" value="1"> {{__("Yes, please enable it")}}</label>
+                            <label> <input type="checkbox" @if($settings['user_enable_permanently_delete'] ?? '' == 1) checked @endif disabled name="user_enable_permanently_delete" value="1"> {{__("Sim, please enable it")}}</label>
                         </div>
                         @if($settings['user_enable_permanently_delete'] != 1)
-                            <p>{{__('You must enable on main lang.')}}</p>
+                            <p>{{__('Você deve habilitar no idioma principal.')}}</p>
                         @endif
                     @endif
                 </div>
                 <div class="form-group" data-condition="user_enable_permanently_delete:is(1)">
-                    <label>{{__("Content")}}</label>
+                    <label>{{__("Conteúdo")}}</label>
                     <div class="form-controls">
                         <textarea name="user_permanently_delete_content" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('user_permanently_delete_content',request()->query('lang')) ?? '' }}</textarea>
                     </div>
                 </div>
                 <div class="form-group" data-condition="user_enable_permanently_delete:is(1)">
-                    <label>{{__("Content confirm")}}</label>
+                    <label>{{__("Conteúdo de confirmação")}}</label>
                     <div class="form-controls">
                         <textarea name="user_permanently_delete_content_confirm" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('user_permanently_delete_content_confirm',request()->query('lang')) ?? '' }}</textarea>
                     </div>
@@ -56,26 +56,26 @@
                     </div>
                 @else
                     <div class="form-group">
-                        <label> <input type="checkbox" @if($settings['user_enable_permanently_delete_email'] ?? '' == 1) checked @endif disabled name="user_enable_permanently_delete_email" value="1"> {{__("Enable?")}}</label>
+                        <label> <input type="checkbox" @if($settings['user_enable_permanently_delete'] ?? '' == 1) checked @endif disabled name="user_enable_permanently_delete" value="1"> {{__("Sim, please enable it")}}</label>
                     </div>
-                    @if($settings['user_enable_permanently_delete_email'] != 1)
-                        <p>{{__('You must enable on main lang.')}}</p>
+                    @if($settings['user_enable_permanently_delete'] != 1)
+                        <p>{{__('Você deve habilitar no idioma principal.')}}</p>
                     @endif
                 @endif
             </div>
         </div>
         <div class="panel" data-condition="user_enable_permanently_delete_email:is(1)">
-            <div class="panel-title"><strong>{{__("To customer")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Para o cliente")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group" >
-                    <label>{{__("Subject")}}</label>
+                    <label>{{__("Assunto")}}</label>
                     <div class="form-controls">
                         <input type="text" name="user_permanently_delete_subject_email" class="form-control"  value="{{setting_item_with_lang('user_permanently_delete_subject_email',request()->query('lang')) ?? '' }}">
                     </div>
                 </div>
                 <div class="form-group" >
 
-                    <label>{{__("Content")}}</label>
+                    <label>{{__("Conteúdo")}}</label>
                     <div class="form-controls">
                         <textarea name="user_permanently_delete_content_email" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('user_permanently_delete_content_email',request()->query('lang')) ?? '' }}</textarea>
                     </div>
@@ -85,17 +85,17 @@
             </div>
         </div>
         <div class="panel" data-condition="user_enable_permanently_delete_email:is(1)">
-            <div class="panel-title"><strong>{{__("To admin")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Para o administrador")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group" >
-                    <label>{{__("Subject")}}</label>
+                    <label>{{__("Assunto")}}</label>
                     <div class="form-controls">
                         <input type="text" name="user_permanently_delete_subject_email_to_admin" class="form-control"  value="{{setting_item_with_lang('user_permanently_delete_subject_email_to_admin',request()->query('lang')) ?? '' }}">
                     </div>
                 </div>
                 <div class="form-group" >
 
-                    <label>{{__("Content")}}</label>
+                    <label>{{__("Conteúdo")}}</label>
                     <div class="form-controls">
                         <textarea name="user_permanently_delete_content_email_to_admin" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('user_permanently_delete_content_email_to_admin',request()->query('lang')) ?? '' }}</textarea>
                     </div>

@@ -128,7 +128,7 @@ class SpaceController extends Controller
             'body_class'=>'is_single',
             'breadcrumbs'       => [
                 [
-                    'name'  => __('Space'),
+                    'name'  => __('Espaços'),
                     'url'  => route('space.search'),
                 ],
             ],

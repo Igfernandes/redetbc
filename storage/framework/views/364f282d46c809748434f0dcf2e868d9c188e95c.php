@@ -7,7 +7,7 @@
             <img class="card-img-top" src="<?php echo e($row->image_url); ?>" alt="<?php echo clean($translation->title); ?>">
         </a>
         <div class="position-absolute top-0 right-0 pt-4 pr-3 btn-wishlist">
-            <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist <?php echo e($row->isWishList()); ?>" data-id="<?php echo e($row->id); ?>" data-type="<?php echo e($row->type); ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo e(__("Save for later")); ?>">
+            <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist <?php echo e($row->isWishList()); ?>" data-id="<?php echo e($row->id); ?>" data-type="<?php echo e($row->type); ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo e(__('Salvar para mais tarde')); ?>">
                 <span class="flaticon-valentine-heart font-size-20"></span>
             </button>
         </div>
@@ -17,7 +17,7 @@
                     <span class="text-white font-weight-bold font-size-17"><?php echo clean($translation->title); ?></span>
                 </a>
                 <div class="text-white my-2">
-                    <small class="mr-1 font-size-14"><?php echo e(__("From")); ?></small>
+                    <small class="mr-1 font-size-14"><?php echo e(__("De")); ?></small>
                     <small class="mr-1 font-size-13 text-decoration-line-through">
                         <?php echo e($row->display_sale_price); ?>
 
@@ -51,7 +51,7 @@
     </div>
     <div class="position-absolute top-0 left-0 pt-4 pl-3 featured">
         <?php if($row->is_featured == "1"): ?>
-            <span class="badge badge-pill bg-white text-primary px-4 mr-3 py-2 font-size-14 font-weight-normal"><?php echo e(__("Featured")); ?></span>
+            <span class="badge badge-pill bg-white text-primary px-4 mr-3 py-2 font-size-14 font-weight-normal"><?php echo e(__("Apresentou")); ?></span>
         <?php endif; ?>
         <?php if($row->discount_percent): ?>
             <span class="badge badge-pill bg-white px-3  py-2 font-size-14 font-weight-normal " style="color:#c47a1d;"><?php echo e($row->discount_percent); ?></span>
@@ -93,7 +93,7 @@
         </div>
         <div class="g-price d-none">
             <div class="prefix">
-                <span class="fr_text"><?php echo e(__("from")); ?></span>
+                <span class="fr_text"><?php echo e(__("de")); ?></span>
             </div>
             <div class="price">
                 <span class="onsale"><?php echo e($row->display_sale_price); ?></span>
@@ -119,7 +119,7 @@
                             <small class="flaticon-bathtub font-size-16"></small>
                         </small>
                         <div class="media-body font-size-1">
-                            <?php echo e($row->bathroom); ?> <small><?php echo e(__("bathrooms")); ?></small>
+                            <?php echo e($row->bathroom); ?> <small><?php echo e(__("quartos")); ?></small>
                         </div>
                     </li>
                 </ul>
@@ -131,7 +131,7 @@
                             <small class="flaticon-door font-size-16"></small>
                         </small>
                         <div class="media-body font-size-1">
-                            <?php echo e($row->max_guests); ?> <small><?php echo e(__("People")); ?></small>
+                            <?php echo e($row->max_guests); ?> <small><?php echo e(__("Pessoas")); ?></small>
                         </div>
                     </li>
                     <li class="media mb-2 text-gray-1 align-items-center">
@@ -139,7 +139,7 @@
                             <small class="flaticon-bed-1 font-size-16"></small>
                         </small>
                         <div class="media-body font-size-1">
-                            <?php echo e($row->bed); ?> <small><?php echo e(__("Beds")); ?></small>
+                            <?php echo e($row->bed); ?> <small><?php echo e(__("Camas")); ?></small>
                         </div>
                     </li>
                 </ul>

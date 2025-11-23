@@ -1,6 +1,6 @@
 <div class="form-group">
     <label>{{__("Nome")}}</label>
-    <input type="text" value="{{$translation->name}}" placeholder="{{__("Category name")}}" name="name" class="form-control">
+    <input type="text" value="{{$translation->name}}" placeholder="{{__('Nome da categoria')}}" name="name" class="form-control">
 </div>
 
 @if(is_default_lang())

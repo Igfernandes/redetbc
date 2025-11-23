@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{ __('Role')}}</h1>
+            <h1 class="title-bar">{{ __('Função')}}</h1>
             <div class="title-actions">
                 <a href="{{route('user.admin.role.verifyFields')}}" class="btn btn-warning"><i class="fa fa-check-circle-o"></i> {{ __('Verify Configs')}}</a>
                 <a href="{{route('user.admin.role.permission_matrix')}}" class="btn btn-info">{{ __('Permission Matrix')}}</a>
@@ -18,9 +18,9 @@
                     <tr>
                         <th width="60px"><input type="checkbox" class="check-all"></th>
                         <th>{{ __('ID')}}</th>
-                        <th>{{ __('Name')}}</th>
-                        <th>{{ __('Code')}}</th>
-                        <th>{{ __('Date')}}</th>
+                        <th>{{ __('Nome')}}</th>
+                        <th>{{ __('Código')}}</th>
+                        <th>{{ __('Data')}}</th>
                     </tr>
                     </thead>
                     <tbody>

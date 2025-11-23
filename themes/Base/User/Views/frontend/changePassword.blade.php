@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar">
-        {{__("Change Password")}}
+        {{__("Alterar senha")}}
     </h2>
     @include('admin.message')
     <form action="{{ route("user.change_password.update") }}" method="post">
@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-12">
                 <hr>
-                <input type="submit" class="btn btn-primary" value="{{__("Change Password")}}">
+                <input type="submit" class="btn btn-primary" value="{{__("Alterar senha")}}">
                 <a href="{{ route("user.profile.index") }}" class="btn btn-default">{{__("Cancel")}}</a>
             </div>
         </div>

@@ -104,7 +104,7 @@
                     <div class="mb-0">
                         <span class="mr-1 font-size-14 text-gray-1">{{__("de")}}</span>
                         <span class="font-weight-bold">{{ $row->display_price }}</span>
-                        <span class="font-size-14 text-gray-1"> / {{__('night')}}</span>
+                        <span class="font-size-14 text-gray-1"> / {{__('Noite')}}</span>
                     </div>
                 </div>
             </div>

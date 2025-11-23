@@ -45,9 +45,18 @@ class AdminChannelServices extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject(__('Bem-vindo(a)! Sua conta foi criada com sucesso'))
+            ->view(
+                'Base::User.frontend.emails.registered',
+                [
+                    'id'      => $this->data['id'],
+                    'name'    => $this->data['name'],
+                    'avatar'  => $this->data['avatar'],
+                    'link'    => $this->data['link'],
+                    'message' => $this->data['message'],
+                    'data'    => $this->data
+                ]
+            );
     }
 
     /**

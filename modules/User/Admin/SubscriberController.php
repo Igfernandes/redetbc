@@ -37,7 +37,7 @@ class SubscriberController extends AdminController
                     'url'  => route('user.admin.index')
                 ],
                 [
-                    'name'  => __('Subscribers'),
+                    'name'  => __('Assinantes'),
                     'class' => 'active'
                 ],
             ]
@@ -60,7 +60,7 @@ class SubscriberController extends AdminController
                     'url'  => route('user.admin.index')
                 ],
                 [
-                    'name' => __('Subscribers'),
+                    'name' => __('Assinantes'),
                     'url'  => route('user.admin.subscriber.index')
                 ],
                 [

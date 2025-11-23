@@ -26,7 +26,7 @@
                                 <div class="col-md-7">
                                     <label for="">{{ __("Address") }}</label>
                                     <input type="text" name="page_contact_lists[{{$key}}][address]" class="form-control" value="{{$item['address']}}">
-                                    <label for="">{{ __("Phone") }}</label>
+                                    <label for="">{{ __("Celular") }}</label>
                                     <input type="text" name="page_contact_lists[{{$key}}][phone]" class="form-control" value="{{$item['phone']}}">
                                     <label for="">{{ __("Email") }}</label>
                                     <input type="text" name="page_contact_lists[{{$key}}][email]" class="form-control" value="{{$item['email']}}">
@@ -53,7 +53,7 @@
                             <div class="col-md-7">
                                 <label for="">{{ __("Address") }}</label>
                                 <input type="text" __name__="page_contact_lists[__number__][address]" class="form-control" value="">
-                                <label for="">{{ __("Phone") }}</label>
+                                <label for="">{{ __("Celular") }}</label>
                                 <input type="text" __name__="page_contact_lists[__number__][phone]" class="form-control" value="">
                                 <label for="">{{ __("Email") }}</label>
                                 <input type="text" __name__="page_contact_lists[__number__][email]" class="form-control" value="">

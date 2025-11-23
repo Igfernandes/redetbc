@@ -70,7 +70,7 @@
     @endif
     @if(!empty($time = $row->start_time))
         <div class="start-time">
-            {{ __("Start Time: :time",['time'=>$time]) }}
+            {{ __("Hora de entrada: :time",['time'=>$time]) }}
         </div>
     @endif
     <div class="info">

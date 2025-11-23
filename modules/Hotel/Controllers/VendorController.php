@@ -228,7 +228,7 @@ class VendorController extends FrontendController
         $row = $this->hotelClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('hotel.vendor.index'))->with('warning', __('Space not found!'));
+            return redirect(route('hotel.vendor.index'))->with('warning', __('Espaços não encontrado!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [
@@ -313,7 +313,7 @@ class VendorController extends FrontendController
             case "clone":
                 $this->checkPermission('hotel_create');
                 $query->saveCloneByID($id);
-                return redirect()->back()->with('success', __('Clone realizado com sucesso!'));
+                return redirect()->back()->with('success', __('Duplicar realizado com sucesso!'));
                 break;
         }
         $query->save();

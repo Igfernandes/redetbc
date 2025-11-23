@@ -149,7 +149,7 @@
                     <div class="form-controls">
                         <label ><strong>{{__("Disable Payout Module?")}}</strong></label>
                         <div class="form-group">
-                            <label> <input type="checkbox" @if(setting_item('disable_payout') == 1) checked @endif name="disable_payout" value="1"> {{__("Yes, please disable it")}}</label>
+                            <label> <input type="checkbox" @if(setting_item('disable_payout') == 1) checked @endif name="disable_payout" value="1"> {{__("Sim, please disable it")}}</label>
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,7 @@
                     @endforeach
                 </ul>
                 @if(count($item->terms) > 3 and empty($selected))
-                    <button type="button" class="btn btn-link btn-more-item">{{__("More")}} <i class="fa fa-caret-down"></i></button>
+                    <button type="button" class="btn btn-link btn-more-item">{{__("Mais")}} <i class="fa fa-caret-down"></i></button>
                 @endif
             </div>
         </div>

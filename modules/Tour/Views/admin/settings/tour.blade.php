@@ -1,27 +1,27 @@
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Page Search")}}</h3>
-        <p class="form-group-desc">{{__('Config page search of your website')}}</p>
+        <h3 class="form-group-title">{{__("Busca de Página")}}</h3>
+        <p class="form-group-desc">{{__('Configurar a página de busca do seu site')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("General Options")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Opções Gerais")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="" >{{__("Title Page")}}</label>
+                    <label class="" >{{__("Título da Página")}}</label>
                     <div class="form-controls">
                         <input type="text" name="tour_page_search_title" value="{{ setting_item_with_lang('tour_page_search_title',request()->query('lang')) }}" class="form-control">
                     </div>
                 </div>
                 @if(is_default_lang())
                 <div class="form-group">
-                    <label class="" >{{__("Banner Page")}}</label>
+                    <label class="" >{{__("Banner da Página")}}</label>
                     <div class="form-controls form-group-image">
                         {!! \Modules\Media\Helpers\FileHelper::fieldUpload('tour_page_search_banner',$settings['tour_page_search_banner'] ?? "") !!}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="" >{{__("Layout Search")}}</label>
+                    <label class="" >{{__("Layout de Busca")}}</label>
                     <div class="form-controls">
                         <select name="tour_layout_search" class="form-control" >
                             @foreach(config('tour.layouts',['normal'=>__("Layout normal"),'map'=>__("Layout do Mapa")]) as $id=>$name))
@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="" >{{__("Localização Search Style")}}</label>
+                            <label class="" >{{__("Estilo de Busca de Localização")}}</label>
                             <div class="form-controls">
                                 <select name="tour_location_search_style" class="form-control">
                                     <option {{ ($settings['tour_location_search_style'] ?? '') == 'normal' ? 'selected' : ''  }}      value="normal">{{__("Normal")}}</option>
@@ -46,14 +46,14 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label class="" >{{__("Limit item per Page")}}</label>
+                            <label class="" >{{__("Limite de itens por página")}}</label>
                             <div class="form-controls">
                                 <input type="number" min="1" name="tour_page_limit_item" placeholder="{{ __("Default: 9") }}" value="{{setting_item_with_lang('tour_page_limit_item',request()->query('lang'), 9)}}" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3" data-condition="tour_location_search_style:is(autocompletePlace)">
-                        <label class="" >{{__("Radius options")}}</label>
+                        <label class="" >{{__("Opções de Raio")}}</label>
                         <div class="input-group mb-3">
                             <input type="number" name="tour_location_radius_value" min="0" value="{{ setting_item('tour_location_radius_value',1)}}" class="form-control" >
                             <div class="input-group-append">
@@ -67,7 +67,7 @@
 
                 </div>
                 <div class="form-group">
-                    <label class="" >{{__("Layout Map Option")}}</label>
+                    <label class="" >{{__("Opção de Layout do Mapa")}}</label>
                     <div class="form-controls">
                         <select name="tour_layout_map_option" class="form-control">
                             <option {{ (setting_item_with_lang('tour_layout_map_option',request()->query('lang')) ?? '') == 'map_left' ? 'selected' : '' }} value="map_left">{{__('Map Left')}}</option>
@@ -77,19 +77,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <label>{{__("Map Lat Default")}}</label>
+                        <label>{{__("Latitude Padrão do Mapa")}}</label>
                         <div class="form-controls">
                             <input type="text" name="tour_map_lat_default" value="{{$settings['tour_map_lat_default'] ?? ''}}" class="form-control" placeholder="21.030513">
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label>{{__("Map Lng Default")}}</label>
+                        <label>{{__("Longitude Padrão do Mapa")}}</label>
                         <div class="form-controls">
                             <input type="text" name="tour_map_lng_default" value="{{$settings['tour_map_lng_default'] ?? ''}}" class="form-control" placeholder="105.840565">
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label>{{__("Map Zoom Default")}}</label>
+                        <label>{{__("Zoom Padrão do Mapa")}}</label>
                         <div class="form-controls">
                             <input type="text" name="tour_map_zoom_default" value="{{$settings['tour_map_zoom_default'] ?? ''}}" class="form-control" placeholder="13">
                         </div>
@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <div class="form-group mt-3">
-                    <label class="" >{{__("Icon Marker in Map")}}</label>
+                    <label class="" >{{__("Ícone do Marcador no Mapa")}}</label>
                     <div class="form-controls form-group-image">
                         {!! \Modules\Media\Helpers\FileHelper::fieldUpload('tour_icon_marker_map',$settings['tour_icon_marker_map'] ?? "") !!}
                     </div>
@@ -110,7 +110,7 @@
         @include('Tour::admin.settings.form-search')
         @include('Tour::admin.settings.map-search')
         <div class="panel">
-            <div class="panel-title"><strong>{{__("SEO Options")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Opções de SEO")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
                     <ul class="nav nav-tabs">
@@ -195,7 +195,7 @@
                 <div class="form-group">
                     <label class="" >{{__("Enable review system for Tour?")}}</label>
                     <div class="form-controls">
-                        <label><input type="checkbox" name="tour_enable_review" value="1" @if(!empty($settings['tour_enable_review'])) checked @endif /> {{__("Yes, please enable it")}} </label>
+                        <label><input type="checkbox" name="tour_enable_review" value="1" @if(!empty($settings['tour_enable_review'])) checked @endif /> {{__("Sim, please enable it")}} </label>
                         <br>
                         <small class="form-text text-muted">{{__("Turn on the mode for reviewing tour")}}</small>
                     </div>
@@ -203,7 +203,7 @@
                 <div class="form-group" data-condition="tour_enable_review:is(1)">
                     <label class="" >{{__("Customer must book a tour before writing a review?")}}</label>
                     <div class="form-controls">
-                        <label><input type="checkbox" name="tour_enable_review_after_booking" value="1"  @if(!empty($settings['tour_enable_review_after_booking'])) checked @endif /> {{__("Yes please")}} </label>
+                        <label><input type="checkbox" name="tour_enable_review_after_booking" value="1"  @if(!empty($settings['tour_enable_review_after_booking'])) checked @endif /> {{__("Sim please")}} </label>
                         <br>
                         <small class="form-text text-muted">{{__("ON: Only post a review after booking - Off: Post review without booking")}}</small>
                     </div>
@@ -229,7 +229,7 @@
                 <div class="form-group" data-condition="tour_enable_review:is(1)">
                     <label class="" >{{__("Does the review need approved by admin?")}}</label>
                     <div class="form-controls">
-                        <label><input type="checkbox" name="tour_review_approved" value="1"  @if(!empty($settings['tour_review_approved'])) checked @endif /> {{__("Yes please")}} </label>
+                        <label><input type="checkbox" name="tour_review_approved" value="1"  @if(!empty($settings['tour_review_approved'])) checked @endif /> {{__("Sim please")}} </label>
                         <br>
                         <small class="form-text text-muted">{{__("ON: Review must be approved by admin - OFF: Review is automatically approved")}}</small>
                     </div>
@@ -423,9 +423,9 @@
             <div class="panel">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label class="" >{{__("Tour create by vendor must be approved by admin?")}}</label>
+                        <label class="" >{{__("Passeio create by vendor must be approved by admin?")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="tour_vendor_create_service_must_approved_by_admin" value="1" @if(!empty($settings['tour_vendor_create_service_must_approved_by_admin'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="tour_vendor_create_service_must_approved_by_admin" value="1" @if(!empty($settings['tour_vendor_create_service_must_approved_by_admin'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: When vendor posts a service, it needs to be approved by administrator")}}</small>
                         </div>
@@ -433,7 +433,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow vendor can change their booking status")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="tour_allow_vendor_can_change_their_booking_status" value="1" @if(!empty($settings['tour_allow_vendor_can_change_their_booking_status'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="tour_allow_vendor_can_change_their_booking_status" value="1" @if(!empty($settings['tour_allow_vendor_can_change_their_booking_status'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can change their booking status")}}</small>
                         </div>
@@ -441,7 +441,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow vendor can change their booking paid amount")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="tour_allow_vendor_can_change_paid_amount" value="1" @if(!empty($settings['tour_allow_vendor_can_change_paid_amount'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="tour_allow_vendor_can_change_paid_amount" value="1" @if(!empty($settings['tour_allow_vendor_can_change_paid_amount'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can change their booking paid amount")}}</small>
                         </div>
@@ -449,7 +449,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow vendor can add service fee")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="tour_allow_vendor_can_add_service_fee" value="1" @if(!empty($settings['tour_allow_vendor_can_add_service_fee'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="tour_allow_vendor_can_add_service_fee" value="1" @if(!empty($settings['tour_allow_vendor_can_add_service_fee'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can add service fee")}}</small>
                         </div>

@@ -49,7 +49,7 @@
                             </div>
                             @include ($service->booking_customer_info_file ?? 'Booking::frontend/booking/booking-customer-info')
                             <div class="text-right py-4 pr-4">
-                                <a href="{{route('user.booking_history')}}" class="btn btn-primary rounded-sm transition-3d-hover font-size-16 font-weight-bold py-3">{{__('Booking History')}}</a>
+                                <a href="{{route('user.booking_history')}}" class="btn btn-primary rounded-sm transition-3d-hover font-size-16 font-weight-bold py-3">{{__('Reservas')}}</a>
                             </div>
                         </div>
                     </div>

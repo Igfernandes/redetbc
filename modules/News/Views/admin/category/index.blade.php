@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar"> {{ __('News Categories')}}</h1>
+            <h1 class="title-bar"> {{ __('Categorias de Notícias')}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
@@ -50,9 +50,9 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th> {{ __('Name')}}</th>
+                                    <th> {{ __('Nome')}}</th>
                                     <th> {{ __('Slug')}}</th>
-                                    <th class="d-none d-md-block"> {{ __('Date')}}</th>
+                                    <th class="d-none d-md-block"> {{ __('Data')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

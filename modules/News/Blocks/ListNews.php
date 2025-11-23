@@ -75,13 +75,13 @@ class ListNews extends BaseBlock
                     ]
                 ]
             ],
-            'category'=>__("News")
+            'category'=>__("Notícias")
         ]);
     }
 
     public function getName()
     {
-        return __('News: List Items');
+        return __('Notícias: List Items');
     }
 
     public function content($model = [])

@@ -2,7 +2,7 @@
 $translation = $service->translate();
 $lang_local = app()->getLocale();
 ?>
-<div class="b-panel-title">{{__('Space information')}}</div>
+<div class="b-panel-title">{{__('Informações do Espaço')}}</div>
 <div class="b-table-wrap">
     <table class="b-table" cellspacing="0" cellpadding="0">
         <tr>
@@ -26,7 +26,7 @@ $lang_local = app()->getLocale();
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Space name')}}</td>
+            <td class="label">{{__('Espaços name')}}</td>
             <td class="val">
                 <a href="{{$service->getDetailUrl()}}">{!! clean($translation->title) !!}</a>
             </td>
@@ -61,7 +61,7 @@ $lang_local = app()->getLocale();
             @endif
             @if($booking->getMeta("booking_type") == "by_night")
                 <tr>
-                    <td class="label">{{__('Nights:')}}</td>
+                    <td class="label">{{__('Noites:')}}</td>
                     <td class="val">
                         {{$booking->duration_nights}}
                     </td>

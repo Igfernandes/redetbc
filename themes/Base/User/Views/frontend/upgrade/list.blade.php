@@ -62,7 +62,7 @@
                     <div class="pricing-table col-lg-4 col-md-6 col-sm-12">
                         <div class="inner-box">
                             <div class="title">{{$plan->title}}</div>
-                            <div class="price">{{format_money($plan->annual_price)}} <span class="duration">/ {{__("year")}}</span></div>
+                            <div class="price">{{format_money($plan->annual_price)}} <span class="duration">/ {{__("Ano")}}</span></div>
                             <div class="table-content">
                                 {!! clean($plan->content) !!}
                             </div>

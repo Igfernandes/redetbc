@@ -56,7 +56,7 @@
 
                         <div class="input-group">
 
-                            <input type="text" name="email" class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8 email-input" placeholder="{{__('Your Email')}}">
+                            <input type="text" name="email" class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8 email-input" placeholder="{{__('Seu e-mail')}}">
 
                             <div class="input-group-append ml-3">
 

@@ -11,12 +11,12 @@
                     @csrf
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="{{__("First Name")}}">
+                        <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="{{__("Primeiro Nome")}}">
                         <span class="invalid-feedback error error-first_name"></span>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="{{__("Last Name")}}">
+                        <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="{{__("Sobrenome")}}">
                         <span class="invalid-feedback error error-last_name"></span>
                     </div>
                     <div class="form-group">
@@ -24,7 +24,7 @@
                         <span class="invalid-feedback error error-business_name"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__("Phone")}}">
+                        <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__("Celular")}}">
                         <span class="invalid-feedback error error-phone"></span>
                     </div>
                     <div class="form-group">

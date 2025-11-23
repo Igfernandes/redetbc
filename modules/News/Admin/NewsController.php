@@ -34,7 +34,7 @@ class NewsController extends AdminController
             'categories'  => NewsCategory::get(),
             'breadcrumbs' => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.admin.index')
                 ],
                 [
@@ -44,7 +44,7 @@ class NewsController extends AdminController
             ],
             "languages"=>Language::getActive(false),
             "locale"=>\App::getLocale(),
-            'page_title'=>__("News Management")
+            'page_title'=>__("Notícias Management")
         ];
         return view('News::admin.news.index', $data);
     }
@@ -61,7 +61,7 @@ class NewsController extends AdminController
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.admin.index')
                 ],
                 [
@@ -124,9 +124,9 @@ class NewsController extends AdminController
                 $row->saveTag($request->input('tag_name'), $request->input('tag_ids'));
             }
             if($id > 0 ){
-                return back()->with('success',  __('News updated') );
+                return back()->with('success',  __('Notícias updated') );
             }else{
-                return redirect(route('news.admin.edit',$row->id))->with('success', __('News created') );
+                return redirect(route('news.admin.edit',$row->id))->with('success', __('Notícias created') );
             }
         }
     }
@@ -174,7 +174,7 @@ class NewsController extends AdminController
         $row = News::find($id);
 
         if(empty($row)){
-            return redirect()->back()->with("danger",__("News does not exists"));
+            return redirect()->back()->with("danger",__("Notícias does not exists"));
         }
 
         $translated = News::query()->where('origin_id',$id)->where('lang',$locale)->first();

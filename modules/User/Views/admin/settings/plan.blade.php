@@ -26,25 +26,25 @@
 
                 <div data-condition="user_plans_enable:is(1)">
                     <div class="form-group">
-                        <label>{{__("Page Title")}}</label>
+                        <label>{{__("Título da Página")}}</label>
                         <div class="form-controls">
                             <input type="text" name="user_plans_page_title" class="form-control" value="{{setting_item_with_lang('user_plans_page_title',request()->query('lang')) ?? '' }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>{{__("Page Sub Title")}}</label>
+                        <label>{{__("Subtítulo da Página")}}</label>
                         <div class="form-controls">
                             <input type="text" name="user_plans_page_sub_title" class="form-control" value="{{setting_item_with_lang('user_plans_page_sub_title',request()->query('lang')) ?? '' }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>{{__("Sale Of Text")}}</label>
+                        <label>{{__("Texto de Venda")}}</label>
                         <div class="form-controls">
                             <input type="text" name="user_plans_sale_text" class="form-control" value="{{setting_item_with_lang('user_plans_sale_text',request()->query('lang')) ?? '' }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>{{__("Enable Multi User Plans")}}</label>
+                        <label>{{__("Habilitar Múltiplos Planos de Usuário")}}</label>
                         <div class="form-controls">
                             <label><input type="checkbox" name="user_plans_multiple_buy" value="1" @if(!empty($settings['enable_multi_user_plans'])) checked @endif /> {{__("On")}} </label>
                         </div>

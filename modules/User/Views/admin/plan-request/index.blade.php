@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__('Plan request management')}}</h1>
+            <h1 class="title-bar">{{__('Solicitações de Planos management')}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between">
@@ -11,7 +11,7 @@
                     <form method="post" action="{{route('user.admin.plan_request.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
                             <option value="completed">{{__("Mark as completed")}}</option>
                             <option value="cancelled">{{__("Mark as cancelled")}}</option>
                         </select>
@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel booking-history-manager">
             <div class="panel-title">{{__('Purchase logs')}}</div>
@@ -80,7 +80,7 @@
                                     </td>
                                     <td>
                                         @if(!empty($row->plan))
-                                            <p>{{__('Name: :name',['name'=>$row->plan->title])}}
+                                            <p>{{__('Nome: :name',['name'=>$row->plan->title])}}
 
                                             @if($row->getMeta('annual')!=1)
                                                 <p>{{__('Duration:  :duration_text',['duration_text'=>$row->plan->duration_text])}}</p>

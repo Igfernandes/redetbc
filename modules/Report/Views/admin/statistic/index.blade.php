@@ -176,14 +176,14 @@
                 "opens": "center",
                 "showDropdowns": true,
                 ranges: {
-                    '{{__("Today")}}': [moment(), moment()],
-                    '{{__("Yesterday")}}': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    '{{__("Last 7 Days")}}': [moment().subtract(6, 'days'), moment()],
-                    '{{__("Last 30 Days")}}': [moment().subtract(29, 'days'), moment()],
-                    '{{__("This Month")}}': [moment().startOf('month'), moment().endOf('month')],
-                    '{{__("Last Month")}}': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                    '{{__("This Year")}}': [moment().startOf('year'), moment().endOf('year')],
-                    '{{__('This Week')}}': [moment().startOf('week'), end]
+                    '{{__("Hoje")}}': [moment(), moment()],
+                    '{{__("Ontem")}}': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '{{__("Ultimos 7 Dias")}}': [moment().subtract(6, 'days'), moment()],
+                    '{{__("Ultimos 30 Dias")}}': [moment().subtract(29, 'days'), moment()],
+                    '{{__("Neste Mês")}}': [moment().startOf('month'), moment().endOf('month')],
+                    '{{__("Ultimo Mês")}}': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                    '{{__("Este Ano")}}': [moment().startOf('year'), moment().endOf('year')],
+                    '{{__("Esta Semana")}}': [moment().startOf('week'), end]
                 }
             }, cb).on('apply.daterangepicker', function (ev, picker) {
                 $('#reportrange input[name=from]').val(picker.startDate.format('YYYY-MM-DD'));

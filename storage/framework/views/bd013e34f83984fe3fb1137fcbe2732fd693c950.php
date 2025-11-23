@@ -4,14 +4,14 @@
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="<?php echo e(__("First Name")); ?>">
+                    <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="<?php echo e(__("Primeiro Nome")); ?>">
                     <i class="input-icon field-icon icofont-waiter-alt"></i>
                     <span class="invalid-feedback error error-first_name"></span>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="<?php echo e(__("Last Name")); ?>">
+                    <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="<?php echo e(__("Sobrenome")); ?>">
                     <i class="input-icon field-icon icofont-waiter-alt"></i>
                     <span class="invalid-feedback error error-last_name"></span>
                 </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="box-icons roles">
             <div>
-                <span><?php echo e(__('Select your profile')); ?>*</span>
+                <span><?php echo e(__('Selecione seu perfil')); ?>*</span>
                 <span class="invalid-feedback error error-role"></span>
             </div>
             <ul>

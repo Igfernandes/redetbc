@@ -30,15 +30,9 @@
         </span>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#" data-value="">{{ __("Recomendado") }}</a>
-<<<<<<< HEAD
-            <a class="dropdown-item" href="#" data-value="price_low_high">{{ __("Price (Low to high)") }}</a>
-            <a class="dropdown-item" href="#" data-value="price_high_low">{{ __("Price (High to low)") }}</a>
-            <a class="dropdown-item" href="#" data-value="rate_high_low">{{ __("Rating (High to low)") }}</a>
-=======
             <a class="dropdown-item" href="#" data-value="price_low_high">{{ __("Preço (do menor para o maior)") }}</a>
             <a class="dropdown-item" href="#" data-value="price_high_low">{{ __("Preço (do mais alto para o mais baixo)") }}</a>
             <a class="dropdown-item" href="#" data-value="rate_high_low">{{ __("Classificação (de alta a baixa)") }}</a>
->>>>>>> 7145c50388a20bfba0e25431a0fb3572fdeef4a0
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@
                 @if(!empty($rows))
                     <label >{{__("With selected:")}}</label>
                     <div  class="filter-form filter-form-left d-flex justify-content-start">
-                        <button class="btn-info btn btn-icon dungdt-form-payout-btn" type="button">{{__('Bulk action')}}</button>
+                        <button class="btn-info btn btn-icon dungdt-form-payout-btn" type="button">{{__('Selecionar Ação')}}</button>
                         <button class="has-loading btn-danger btn btn-icon dungdt-form-payout-delete" type="button">{{__('Delete')}}
                             <i class="fa fa-spinner fa-spin fa-fw"></i>
                         </button>
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">

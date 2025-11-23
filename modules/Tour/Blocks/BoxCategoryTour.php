@@ -59,7 +59,7 @@ class BoxCategoryTour extends BaseBlock
 
     public function getName()
     {
-        return __('Tour: Box Category');
+        return __('Passeios: Grupo de Categorias');
     }
 
     public function content($model = [])

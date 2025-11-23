@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Category")}}</div>
+                    <div class="panel-title">{{__("Adicionar Categoria")}}</div>
                     <div class="panel-body">
                         <form action="{{route('location.admin.category.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf

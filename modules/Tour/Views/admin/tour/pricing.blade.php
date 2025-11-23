@@ -2,41 +2,41 @@
     <div class="panel-title"><strong>{{__("Pricing")}}</strong></div>
     <div class="panel-body">
         @if(is_default_lang())
-            <h3 class="panel-body-title">{{__("Tour Price")}}</h3>
+            <h3 class="panel-body-title">{{__("Preço do Passeio")}}</h3>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label class="control-label">{{__("Preço")}}</label>
-                        <input type="text" name="price" class="form-control" value="{{old('price',$row->price)}}" placeholder="{{__("Tour Price")}}">
+                        <input type="text" name="price" class="form-control" value="{{old('price',$row->price)}}" placeholder="{{__("Preço do Passeio")}}">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label">{{__("Sale Price")}}</label>
-                        <input type="text" name="sale_price" class="form-control" value="{{old('sale_price',$row->sale_price)}}" placeholder="{{__("Tour Sale Price")}}">
+                        <label class="control-label">{{__("Preço com Desconto")}}</label>
+                        <input type="text" name="sale_price" class="form-control" value="{{old('sale_price',$row->sale_price)}}" placeholder="{{__("Preço com Desconto")}}">
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <span>
-                        {{__("If the regular price is less than the discount , it will show the regular price")}}
+                        {{__("Se o preço regular for menor que o desconto, será exibido o preço regular")}}
                     </span>
                 </div>
             </div>
             <hr>
         @endif
         @if(is_default_lang())
-            <h3 class="panel-body-title">{{__('Person Types')}}</h3>
+            <h3 class="panel-body-title">{{__('Tipos de Pessoa')}}</h3>
             <div class="form-group">
-                <label><input type="checkbox" name="enable_person_types" @if(!empty($row->meta->enable_person_types)) checked @endif value="1"> {{__('Enable Person Types')}}
+                <label><input type="checkbox" name="enable_person_types" @if(!empty($row->meta->enable_person_types)) checked @endif value="1"> {{__('Ativar Tipos de Pessoa')}}
                 </label>
             </div>
             <div class="form-group-item" data-condition="enable_person_types:is(1)">
-                <label class="control-label">{{__('Person Types')}}</label>
+                <label class="control-label">{{__('Tipos de Pessoa')}}</label>
                 <div class="g-items-header">
                     <div class="row">
-                        <div class="col-md-5">{{__("Person Type")}}</div>
-                        <div class="col-md-2">{{__('Min')}}</div>
-                        <div class="col-md-2">{{__('Max')}}</div>
+                        <div class="col-md-5">{{__("Tipo de Pessoa")}}</div>
+                        <div class="col-md-2">{{__('mín')}}</div>
+                        <div class="col-md-2">{{__('máx')}}</div>
                         <div class="col-md-2">{{__('Preço')}}</div>
                         <div class="col-md-1"></div>
                     </div>

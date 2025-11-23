@@ -26,7 +26,7 @@ class WalletController extends AdminController
             'breadcrumbs'=>[
                 [
                     'url'=>route('user.admin.index'),
-                    'name'=>__("Users"),
+                    'name'=>__("Usuários"),
                 ],
                 [
                     'url'=>'#',
@@ -56,7 +56,7 @@ class WalletController extends AdminController
                 return redirect()->back()->with("error",$exception->getMessage());
             }
 
-            return redirect()->back()->with("success",__(":amount credit added",['amount'=>$amount]));
+            return redirect()->back()->with("success",__(":amount credito adicionado",['amount'=>$amount]));
         }
     }
 
@@ -75,11 +75,11 @@ class WalletController extends AdminController
             'breadcrumbs'=>[
                 [
                     'url'=>route('user.admin.index'),
-                    'name'=>__("Users"),
+                    'name'=>__("Usuários"),
                 ],
                 [
                     'url'=>'#',
-                    'name'=>__('Credit purchase report'),
+                    'name'=>__('Crédito purchase report'),
                 ],
             ]
         ];

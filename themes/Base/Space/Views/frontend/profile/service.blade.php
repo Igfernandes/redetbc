@@ -3,7 +3,7 @@ if(!$user->hasPermission('space_create')) return;
 ?>
 @if(!empty($services) and $services->total())
     <div class="bravo-profile-list-services">
-        @include('Space::frontend.blocks.list-space.index', ['rows'=>$services,'style_list'=>'normal','desc'=>' ','title'=>!empty($view_all) ? __('Space by :name',['name'=>$user->first_name]) :'','col'=>4])
+        @include('Space::frontend.blocks.list-space.index', ['rows'=>$services,'style_list'=>'normal','desc'=>' ','title'=>!empty($view_all) ? __('Espaços by :name',['name'=>$user->first_name]) :'','col'=>4])
 
         <div class="container">
             @if(!empty($view_all))

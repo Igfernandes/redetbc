@@ -23,7 +23,7 @@ class NewsCategory extends BaseModel
 
     public static function getModelName()
     {
-        return __("News Category");
+        return __("Categoria de Notícias");
     }
 
     public function filterbyCat($id)

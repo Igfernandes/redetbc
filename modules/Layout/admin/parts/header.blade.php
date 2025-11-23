@@ -273,7 +273,7 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
                 <a class="dropdown-item" href="{{route('user.admin.detail',['id'=>$user->id])}}">{{__('Editar Profile')}}</a>
 
-                <a class="dropdown-item" href="{{route('user.admin.password',['id'=>$user->id])}}">{{__('Change Password')}}</a>
+                <a class="dropdown-item" href="{{route('user.admin.password',['id'=>$user->id])}}">{{__('Alterar Senha')}}</a>
 
                 <div class="dropdown-divider"></div>
 
@@ -287,7 +287,7 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
                 <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__('Logout')}}
+                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__('Sair')}}
 
                 </a>
 

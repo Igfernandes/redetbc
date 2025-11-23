@@ -25,7 +25,7 @@
                         </form>
                     </div>
                     <div class="col-left">
-                        <p><i>{{__('Found :total texts',['total'=>$origins->total()])}}</i></p>
+                        <p><i>{{__('Encontrado :total texts',['total'=>$origins->total()])}}</i></p>
                     </div>
                 </div>
                 <div class="panel">

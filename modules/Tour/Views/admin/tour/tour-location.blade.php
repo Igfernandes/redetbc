@@ -1,5 +1,5 @@
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Tour Locations")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Passeio Locations")}}</strong></div>
     <div class="panel-body">
         @if(is_default_lang())
             <div class="form-group">
@@ -35,7 +35,7 @@
                 @else
                     <div class="">
                         <select name="location_id" class="form-control">
-                            <option value="">{{__("-- Please Select --")}}</option>
+                            <option value="">{{__("-- Porfavor Selecione --")}}</option>
                             <?php
                             $traverse = function ($locations, $prefix = '') use (&$traverse, $row) {
                                 foreach ($locations as $location) {
@@ -54,7 +54,7 @@
             </div>
         @endif
         <div class="form-group">
-            <label class="control-label">{{__("Real tour address")}}</label>
+            <label class="control-label">{{__("Endereço real do passeio")}}</label>
             <input type="text" name="address" id="customPlaceAddress" class="form-control" placeholder="{{__("Real tour address")}}" value="{{$translation->address}}">
         </div>
         @if(is_default_lang())

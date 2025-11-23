@@ -3,7 +3,7 @@
     <div class="panel-body">
         <div class="form-group magic-field" data-id="title" data-type="title">
             <label class="control-label">{{__("Título")}}</label>
-            <input type="text" value="{!! clean($translation->title) !!}" placeholder="{{__("Name of the hotel")}}" name="title" class="form-control">
+            <input type="text" value="{!! clean($translation->title) !!}" placeholder="{{__("Nome do hotel")}}" name="title" class="form-control">
         </div>
         <div class="form-group">
             <label class="control-label">{{__("Target Religion")}}</label>

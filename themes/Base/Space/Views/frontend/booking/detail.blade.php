@@ -58,7 +58,7 @@
                     @endif
                     @if($booking->getMeta("booking_type") == "by_night")
                         <li>
-                            <div class="label">{{__('Nights:')}}</div>
+                            <div class="label">{{__('Noites:')}}</div>
                             <div class="val">
                                 {{$booking->duration_nights}}
                             </div>

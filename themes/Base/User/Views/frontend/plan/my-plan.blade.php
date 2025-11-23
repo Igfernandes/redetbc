@@ -18,9 +18,9 @@
                         <table class="table table-bordered table-striped  mb-5">
                             <thead>
                             <tr>
-                                <th>{{__("Plan ID")}}</th>
-                                <th>{{__("Plan Name")}}</th>
-                                <th>{{__("Expiry")}}</th>
+                                <th>{{__("ID")}}</th>
+                                <th>{{__("Nome do Plano")}}</th>
+                                <th>{{__("Expira em")}}</th>
                                 <th>{{__("Total")}}</th>
                                 <th>{{__("Preço")}}</th>
                                 <th>{{__("Status")}}</th>

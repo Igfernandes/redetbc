@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{ __('News Tags')}} </h1>
+            <h1 class="title-bar">{{ __('Notícias Tags')}} </h1>
         </div>
         @include('admin.message')
         <div class="row">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+                    <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
                 </div>
                 <div class="panel">
                     <form action="" class="bravo-form-item">
@@ -52,9 +52,9 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th>{{ __('Name')}}</th>
+                                    <th>{{ __('Nome')}}</th>
                                     <th>{{ __('Slug')}}</th>
-                                    <th>{{ __('Date')}}</th>
+                                    <th>{{ __('Data')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

@@ -17,8 +17,6 @@
         public $user;
 
         const CODE = [
-            'first_name' => '[first_name]',
-            'last_name'  => '[last_name]',
             'name'       => '[name]',
             'email'      => '[email]',
             'button_verify' => '[button_verify]',

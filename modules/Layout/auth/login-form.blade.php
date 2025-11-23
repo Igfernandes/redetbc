@@ -55,6 +55,6 @@
         </div>
     @endif
     @if(is_enable_registration())
-        <div class="c-grey font-medium f14 text-center"> {{__('Do not have an account?')}} <a href="" data-target="#register" data-toggle="modal">{{__('Sign Up')}}</a></div>
+        <div class="c-grey font-medium f14 text-center"> {{__('Você não tem uma conta?')}} <a href="" data-target="#register" data-toggle="modal">{{__('Cadastre-se')}}</a></div>
     @endif
 </form>

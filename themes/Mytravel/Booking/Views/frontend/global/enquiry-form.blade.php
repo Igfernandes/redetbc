@@ -11,13 +11,13 @@
                 <input type="hidden" name="service_id" value="{{$row->id}}">
                 <input type="hidden" name="service_type" value="{{$service_type ?? ''}}">
                 <div class="form-group" >
-                    <input type="text" class="form-control" name="enquiry_name" placeholder="{{ __("Name *") }}">
+                    <input type="text" class="form-control" name="enquiry_name" placeholder="{{ __("Nome *") }}">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="enquiry_email" placeholder="{{ __("Email *") }}">
                 </div>
                 <div class="form-group" v-if="!enquiry_is_submit">
-                    <input type="text" class="form-control" name="enquiry_phone" placeholder="{{ __("Phone") }}">
+                    <input type="text" class="form-control" name="enquiry_phone" placeholder="{{ __("Celular") }}">
                 </div>
                 <div class="form-group" v-if="!enquiry_is_submit">
                     <textarea class="form-control" placeholder="{{ __("Note") }}" name="enquiry_note"></textarea>

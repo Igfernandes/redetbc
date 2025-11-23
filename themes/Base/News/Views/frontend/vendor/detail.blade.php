@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{ __('News content')}}</strong></div>
+                            <div class="panel-title"><strong>{{ __('Notícias content')}}</strong></div>
                             <div class="panel-body">
                                 @csrf
                                 @include('News::frontend.vendor.form',['row'=>$row])

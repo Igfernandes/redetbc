@@ -39,7 +39,7 @@ class VendorNewsController extends FrontendController
             'categories'  => NewsCategory::get(),
             'breadcrumbs' => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.vendor.index')
                 ],
                 [
@@ -49,7 +49,7 @@ class VendorNewsController extends FrontendController
             ],
             "languages"=>Language::getActive(false),
             "locale"=>\App::getLocale(),
-            'page_title'=>__("News Management")
+            'page_title'=>__("Notícias Management")
         ];
         return view('News::frontend.vendor.index', $data);
     }
@@ -63,7 +63,7 @@ class VendorNewsController extends FrontendController
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.vendor.index')
                 ],
                 [
@@ -97,7 +97,7 @@ class VendorNewsController extends FrontendController
             'enable_multi_lang'=>true,
             'breadcrumbs' => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.vendor.index')
                 ],
                 [
@@ -147,9 +147,9 @@ class VendorNewsController extends FrontendController
                 $row->saveTag($request->input('tag_name'), $request->input('tag_ids'));
             }
             if($id > 0 ){
-                return back()->with('success',  __('News updated') );
+                return back()->with('success',  __('Notícias updated') );
             }else{
-                return redirect(route('news.vendor.edit',$row->id))->with('success', __('News created') );
+                return redirect(route('news.vendor.edit',$row->id))->with('success', __('Notícias created') );
             }
         }
     }

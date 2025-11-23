@@ -4,7 +4,7 @@
         {{$row->id ? __('Editar: ').$row->title : __('Add new room')}}
         <div class="title-action">
             <a class="btn btn-info" href="{{route('hotel.vendor.room.index',['hotel_id'=>$hotel->id])}}">
-                <i class="fa fa-hand-o-right"></i> {{__("Manage Rooms")}}
+                <i class="fa fa-hand-o-right"></i> {{__("Gerenciar Quartos")}}
             </a>
         </div>
     </h2>

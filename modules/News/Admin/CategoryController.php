@@ -31,7 +31,7 @@ class CategoryController extends AdminController
             'row'         => new NewsCategory(),
             'breadcrumbs' => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.admin.index')
                 ],
                 [

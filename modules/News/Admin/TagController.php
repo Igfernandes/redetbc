@@ -31,7 +31,7 @@ class TagController extends AdminController
             'row'    => new Tag(),
             'breadcrumbs' => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.admin.index')
                 ],
                 [

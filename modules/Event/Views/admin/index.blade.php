@@ -16,7 +16,7 @@
                     <form method="post" action="{{route('event.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
 
                             @if(!empty($recovery))
                                 <option value="recovery">{{__(" Recovery ")}}</option>
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -61,12 +61,12 @@
                         <thead>
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th> {{ __('Name')}}</th>
+                            <th> {{ __('Nome')}}</th>
                             <th width="200px"> {{ __('Localização')}}</th>
-                            <th width="130px"> {{ __('Author')}}</th>
+                            <th width="130px"> {{ __('Autor')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
-                            <th width="100px"> {{ __('Reviews')}}</th>
-                            <th width="100px"> {{ __('Date')}}</th>
+                            <th width="100px"> {{ __('Avaliações')}}</th>
+                            <th width="100px"> {{ __('Data')}}</th>
                             <th width="100px"></th>
                         </tr>
                         </thead>

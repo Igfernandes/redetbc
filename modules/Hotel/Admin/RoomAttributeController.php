@@ -39,7 +39,7 @@ class RoomAttributeController extends AdminController
                     'url'  => route('hotel.admin.index')
                 ],
                 [
-                    'name'  => __('Room Attributes'),
+                    'name'  => __('Atributos do Quarto'),
                     'class' => 'active'
                 ],
             ]
@@ -66,7 +66,7 @@ class RoomAttributeController extends AdminController
                     'url'  => route('hotel.admin.index')
                 ],
                 [
-                    'name' => __('Room Attributes'),
+                    'name' => __('Atributos do Quarto'),
                     'url'  => route('hotel.admin.room.attribute.index')
                 ],
                 [
@@ -147,7 +147,7 @@ class RoomAttributeController extends AdminController
                     'url'  => route('hotel.admin.index')
                 ],
                 [
-                    'name' => __('Room Attributes'),
+                    'name' => __('Atributos do Quarto'),
                     'url'  => route('hotel.admin.room.attribute.index')
                 ],
                 [
@@ -178,7 +178,7 @@ class RoomAttributeController extends AdminController
                     'url'  => route('hotel.admin.index')
                 ],
                 [
-                    'name' => __('Room Attributes'),
+                    'name' => __('Atributos do Quarto'),
                     'url'  => route('hotel.admin.room.attribute.index')
                 ],
                 [

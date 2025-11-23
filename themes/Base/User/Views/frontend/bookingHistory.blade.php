@@ -33,7 +33,7 @@
                                 <th>{{__("Paid")}}</th>
                                 <th>{{__("Remain")}}</th>
                                 <th class="a-hidden">{{__("Status")}}</th>
-                                <th>{{__("Action")}}</th>
+                                <th>{{__("Ação")}}</th>
                             </tr>
                             </thead>
                             <tbody>

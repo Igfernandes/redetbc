@@ -2,10 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("All Tour")}}</h1>
+            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("Todos Passeios")}}</h1>
             <div class="title-actions">
                 @if(empty($recovery))
-                <a href="{{route('tour.admin.create')}}" class="btn btn-primary">{{__("Add new tour")}}</a>
+                <a href="{{route('tour.admin.create')}}" class="btn btn-primary">{{__("Adicionar novo passeio")}}</a>
                 @endif
             </div>
         </div>
@@ -16,7 +16,7 @@
                     <form method="post" action="{{route('tour.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
 
                             @if(!empty($recovery))
                                 <option value="recovery">{{__(" Recovery ")}}</option>
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -70,12 +70,12 @@
                             <thead>
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
-                                <th> {{ __('Name')}}</th>
+                                <th> {{ __('Nome')}}</th>
                                 <th width="200px"> {{ __('Localização')}}</th>
-                                <th width="130px"> {{ __('Author')}}</th>
+                                <th width="130px"> {{ __('Autor')}}</th>
                                 <th width="100px"> {{ __('Status')}}</th>
-                                <th width="100px"> {{ __('Reviews')}}</th>
-                                <th width="100px"> {{ __('Date')}}</th>
+                                <th width="100px"> {{ __('Avaliações')}}</th>
+                                <th width="100px"> {{ __('Data')}}</th>
                                 <th width="100px"></th>
                             </tr>
                             </thead>

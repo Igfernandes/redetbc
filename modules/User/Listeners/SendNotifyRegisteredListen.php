@@ -3,9 +3,7 @@
     namespace Modules\User\Listeners;
 
     use App\Notifications\AdminChannelServices;
-    use Illuminate\Support\Facades\Auth;
     use Modules\User\Events\SendMailUserRegistered;
-    use Modules\User\Models\User;
 
     class SendNotifyRegisteredListen
     {

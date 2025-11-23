@@ -9,7 +9,7 @@
                     @include('User::frontend.profile.sidebar')
                 </div>
                 <div class="col-md-9">
-                    <h3 class="profile-name">{{__("Hi, I'm :name",['name'=>$user->getDisplayName()])}}</h3>
+                    <h3 class="profile-name">{{__("Oi, I'm :name",['name'=>$user->getDisplayName()])}}</h3>
                     <div class="profile-bio">{!! $user->bio !!}</div>
                     @include('User::frontend.profile.services')
                     <div class="div" style="margin-top: 40px;">

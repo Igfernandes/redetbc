@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel booking-history-manager">
             <div class="panel-title">{{__('Bookings')}}</div>
@@ -88,9 +88,9 @@
                                 </td>
                                 <td>
                                     <ul>
-                                        <li>{{__("Name:")}} {{$row->first_name}} {{$row->last_name}} </li>
+                                        <li>{{__("Nome:")}} {{$row->first_name}} {{$row->last_name}} </li>
                                         <li>{{__("Email:")}} {{$row->email}}</li>
-                                        <li>{{__("Phone:")}} {{$row->phone}}</li>
+                                        <li>{{__("Celular:")}} {{$row->phone}}</li>
                                         <li>{{__("Address:")}} {{$row->address}}</li>
                                         <li>{{__("Custom Requirement:")}} {{$row->customer_notes}}</li>
                                     </ul>

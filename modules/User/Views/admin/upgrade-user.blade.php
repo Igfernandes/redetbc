@@ -12,8 +12,8 @@
                     <form method="post" action="{{route('user.admin.userUpgradeRequestApproved')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
-                            <option value="approved">{{__(" Approved ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
+                            <option value="approved">{{__(" Aprovado ")}}</option>
                             <option value="delete">{{__("Excluir")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
@@ -23,7 +23,7 @@
 
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -33,11 +33,11 @@
                         <thead>
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th>{{__('Name')}}</th>
+                            <th>{{__('Nome')}}</th>
                             <th>{{__('Email')}}</th>
-                            <th>{{ __('Role request')}}</th>
-                            <th class="date">{{ __('Date request')}}</th>
-                            <th class="date">{{ __('Date approved')}}</th>
+                            <th>{{ __('Função request')}}</th>
+                            <th class="date">{{ __("Data request")}}</th>
+                            <th class="date">{{ __("Data approved")}}</th>
                             <th>{{ __('Approved By')}}</th>
                             <th class="status">{{__('Status')}}</th>
                             <th></th>

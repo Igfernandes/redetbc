@@ -12,9 +12,9 @@
                 <div class="form-group">
                     <label>{{__("Type")}}</label>
                     <select class="form-control" name="schedule_type">
-                        <option value="day" @if($row->schedule_type == 'day') selected @endif >{{__("Day")}}</option>
-                        <option value="month" @if($row->schedule_type == 'month') selected @endif >{{__("Month")}}</option>
-                        <option value="year" @if($row->schedule_type == 'year') selected @endif >{{__("Year")}}</option>
+                        <option value="day" @if($row->schedule_type == 'day') selected @endif >{{__("Dia")}}</option>
+                        <option value="month" @if($row->schedule_type == 'month') selected @endif >{{__("Mês")}}</option>
+                        <option value="year" @if($row->schedule_type == 'year') selected @endif >{{__("Ano")}}</option>
                     </select>
                 </div>
             </div>

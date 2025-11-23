@@ -69,7 +69,7 @@ class AvailabilityController extends FrontendController{
         }
         $breadcrumbs = [
             [
-                'name' => __('Spaces'),
+                'name' => __('Espaços'),
                 'url'  => route('space.vendor.index')
             ],
             [
@@ -77,7 +77,7 @@ class AvailabilityController extends FrontendController{
                 'class' => 'active'
             ],
         ];
-        $page_title = __('Spaces Availability');
+        $page_title = __('Espaçoss Availability');
 
         return view($this->indexView,compact('rows','breadcrumbs','current_month','page_title','request'));
     }
@@ -95,7 +95,7 @@ class AvailabilityController extends FrontendController{
         }
         $space = $this->spaceClass::find($request->query('id'));
         if(empty($space)){
-            return $this->sendError(__('Space not found'));
+            return $this->sendError(__('Espaços not found'));
         }
         $is_single = $request->query('for_single');
         $query = $this->spaceDateClass::query();
@@ -255,7 +255,7 @@ class AvailabilityController extends FrontendController{
         $target_id = $request->input('target_id');
 
         if(empty($space)){
-            return $this->sendError(__('Space not found'));
+            return $this->sendError(__('Espaços not found'));
         }
 
         if(!$this->hasPermission('space_manage_others')){

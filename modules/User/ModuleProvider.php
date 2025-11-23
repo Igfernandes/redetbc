@@ -53,30 +53,30 @@ class ModuleProvider extends ModuleServiceProvider
         $options = [
             "position" => 10,
             'url'        => route('user.admin.index'),
-            'title'      => __('Users :count', ['count' => $noti ? sprintf('<span class="badge badge-warning">%d</span>', $noti) : '']),
+            'title'      => __('Usuários :count', ['count' => $noti ? sprintf('<span class="badge badge-warning">%d</span>', $noti) : '']),
             'icon'       => 'icon ion-ios-contacts',
             'permission' => 'user_view',
             'group'    => 'system',
             'children'   => [
                 'user' => [
                     'url'   => route('user.admin.index'),
-                    'title' => __('All Users'),
+                    'title' => __('Todos Usuários'),
                     'icon'  => 'fa fa-user',
                 ],
                 'role' => [
                     'url'        => route('user.admin.role.index'),
-                    'title'      => __('Role Manager'),
+                    'title'      => __('Função Manager'),
                     'permission' => 'role_view',
                     'icon'       => 'fa fa-lock',
                 ],
                 'subscriber' => [
                     'url'        => route('user.admin.subscriber.index'),
-                    'title'      => __('Subscribers'),
+                    'title'      => __('Assinantes'),
                     'permission' => 'newsletter_manage',
                 ],
                 'userUpgradeRequest' => [
                     'url'        => route('user.admin.upgrade'),
-                    'title'      => __('Upgrade Request :count', ['count' => $noti_upgrade ? sprintf('<span class="badge badge-warning">%d</span>', $noti_upgrade) : '']),
+                    'title'      => __('Solicitações de Atualização :count', ['count' => $noti_upgrade ? sprintf('<span class="badge badge-warning">%d</span>', $noti_upgrade) : '']),
                     'permission' => 'user_view',
                 ],
             ]
@@ -86,7 +86,7 @@ class ModuleProvider extends ModuleServiceProvider
         if (empty($is_disable_verification_feature)) {
             $options['children']['user_verification'] = [
                 'url'        => route('user.admin.verification.index'),
-                'title'      => __('Verification Request :count', ['count' => $noti_verify ? sprintf('<span class="badge badge-warning">%d</span>', $noti_verify) : '']),
+                'title'      => __('Solicitações de Verificação :count', ['count' => $noti_verify ? sprintf('<span class="badge badge-warning">%d</span>', $noti_verify) : '']),
                 'permission' => 'user_view',
             ];
         }
@@ -98,24 +98,24 @@ class ModuleProvider extends ModuleServiceProvider
             'plan' => [
                 "position" => 50,
                 'url'        => route('user.admin.plan.index'),
-                'title'      => __('User Plans :count', ['count' => $count ? sprintf('<span class="badge badge-warning">%d</span>', $count) : '']),
+                'title'      => __('Planos do Usuário :count', ['count' => $count ? sprintf('<span class="badge badge-warning">%d</span>', $count) : '']),
                 'icon'       => 'fa fa-list-alt',
                 'permission' => 'role_view',
                 'group' => 'system',
                 'children'   => [
                     'user-plan' => [
                         'url'   => route('user.admin.plan.index'),
-                        'title' => __('User Plans'),
+                        'title' => __('Planos do Usuário'),
                         'permission' => 'role_view',
                     ],
                     'plan-report' => [
                         'url'        => route('user.admin.plan_report.index'),
-                        'title'      => __('Plan Report'),
+                        'title'      => __('Histórico de Planos'),
                         'permission' => 'role_view',
                     ],
                     'plan-request' => [
                         'url'        => route('user.admin.plan_request.index'),
-                        'title'      => __('Plan Request :count', ['count' => $count ? sprintf('<span class="badge badge-warning">%d</span>', $count) : '']),
+                        'title'      => __('Solicitações de Planos :count', ['count' => $count ? sprintf('<span class="badge badge-warning">%d</span>', $count) : '']),
                         'permission' => 'role_view',
                     ],
                 ]
@@ -172,7 +172,7 @@ class ModuleProvider extends ModuleServiceProvider
         if (is_enable_plan())
             $res['my_plan'] = [
                 'url' => 'user/my-plan',
-                'title' => __("My Plans"),
+                'title' => __("Meus Planos"),
                 'icon' => 'fa fa-list-alt',
                 'permission' => 'dashboard_vendor_access',
                 'enable' => true,

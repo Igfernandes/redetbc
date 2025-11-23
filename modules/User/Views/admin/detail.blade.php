@@ -38,14 +38,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("First name")}}</label>
-                                    <input type="text" required value="{{old('first_name',$row->first_name)}}" name="first_name" placeholder="{{__("First name")}}" class="form-control">
+                                    <label>{{__("Primeiro Nome")}}</label>
+                                    <input type="text" required value="{{old('first_name',$row->first_name)}}" name="first_name" placeholder="{{__("Primeiro Nome")}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("Last name")}}</label>
-                                    <input type="text" required value="{{old('last_name',$row->last_name)}}" name="last_name" placeholder="{{__("Last name")}}" class="form-control">
+                                    <label>{{__("Sobrenome")}}</label>
+                                    <input type="text" required value="{{old('last_name',$row->last_name)}}" name="last_name" placeholder="{{__("Sobrenome")}}" class="form-control">
                                 </div>
                             </div><!-- RELIGION -->
                             <div class="col-md-6">
@@ -71,21 +71,21 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>
-                                        <i class="fa fa-venus-mars input-icon"></i> &nbsp;{{ __("Sex")}} </label>
+                                        <i class="fa fa-venus-mars input-icon"></i> &nbsp;{{ __("Sexo")}} </label>
                                     <select name="sex" class="form-control">
-                                        <option value="">{{ __("Select sex") }}</option>
+                                        <option value="">{{ __("Selecione o sexo") }}</option>
                                         <option value="MASCULINE" {{ old('sex', $row->sex ?? '') === 'MASCULINE' ? 'selected' : '' }}>
-                                            {{ __("Masculine") }}
+                                            {{ __("Masculino") }}
                                         </option>
                                         <option value="FEMININE" {{ old('sex', $row->sex ?? '') === 'FEMININE' ? 'selected' : '' }}>
-                                            {{ __("Feminine") }}
+                                            {{ __("Femino") }}
                                         </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __('Telefone Number')}}</label>
+                                    <label>{{ ('Telefone')}}</label>
                                     <input type="text" value="{{old('phone',$row->phone)}}" placeholder="{{ __('Telefone')}}" name="phone" class="form-control" required>
                                 </div>
                             </div>
@@ -97,13 +97,13 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __('Address Line 1')}}</label>
+                                    <label>{{ ('Endereço 1')}}</label>
                                     <input type="text" value="{{old('address',$row->address)}}" placeholder="{{ __('Address')}}" name="address" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __('Address Line 2')}}</label>
+                                    <label>{{ ('Endereço 2')}}</label>
                                     <input type="text" value="{{old('address2',$row->address2)}}" placeholder="{{ __('Address 2')}}" name="address2" class="form-control">
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                         @if(is_admin())
                         @if(empty($user_type) or $user_type != 'vendor')
                         <div class="form-group">
-                            <label>{{__('Role')}} <span class="text-danger">*</span></label>
+                            <label>{{__('Função')}} <span class="text-danger">*</span></label>
                             <select required class="form-control" name="role_id">
                                 <option value="">{{ __('-- Selecione --')}}</option>
                                 @foreach($roles as $role)

@@ -44,13 +44,13 @@ class ModuleProvider extends ModuleServiceProvider
             'event'=>[
                 "position"=>50,
                 'url'        => route('event.admin.index'),
-                'title'      => __('Event'),
+                'title'      => __('Evento'),
                 'icon'       => 'ion-ios-calendar',
                 'permission' => 'event_view',
                 'children'   => [
                     'add'=>[
                         'url'        => route('event.admin.index'),
-                        'title'      => __('All Events'),
+                        'title'      => __('Todos eventos'),
                         'permission' => 'event_view',
                     ],
                     'create'=>[

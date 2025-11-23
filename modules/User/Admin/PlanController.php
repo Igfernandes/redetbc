@@ -31,7 +31,7 @@ class PlanController extends AdminController
             'translation' => new PlanTranslation(),
             'breadcrumbs' => [
                 [
-                    'name'  => __('User Plans'),
+                    'name'  => __('Planos do Usuário'),
                     'class' => 'active'
                 ],
             ],
@@ -55,7 +55,7 @@ class PlanController extends AdminController
             'row'               => $row,
             'breadcrumbs'       => [
                 [
-                    'name'  => __('User Plans'),
+                    'name'  => __('Planos do Usuário'),
                     'class' => 'active'
                 ],
             ],

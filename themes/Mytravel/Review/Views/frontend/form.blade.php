@@ -2,7 +2,7 @@
     <div class="bravo-reviews">
         <div class="border-bottom py-4">
             <h5 id="scroll-reviews" class="font-size-21 font-weight-bold text-dark mb-4">
-                {{__("Reviews")}}
+                {{__("Avaliações")}}
             </h5>
             @if($review_score)
                 <div class="row">
@@ -144,15 +144,15 @@
                             </div>
                             <div class="col-sm-12 mb-5">
                                 <div class="js-form-message">
-                                    <input type="text" class="form-control" name="review_title" placeholder="{{__("Título")}}" required data-error-class="u-has-error" data-msg="{{__('Review title is required')}}" data-success-class="u-has-success">
-                                    <div class="invalid-feedback">{{__('Review title is required')}}</div>
+                                    <input type="text" class="form-control" name="review_title" placeholder="{{__("Título")}}" required data-error-class="u-has-error" data-msg="{{__('Avaliação title is required')}}" data-success-class="u-has-success">
+                                    <div class="invalid-feedback">{{__('Avaliação title is required')}}</div>
                                 </div>
                             </div>
                             <div class="col-sm-12 mb-5">
                                 <div class="js-form-message">
                                     <div class="input-group">
-                                        <textarea class="form-control" rows="6" cols="77" name="review_content" placeholder="{{__("Review content")}}" required data-msg="{{__('Review content has at least 10 character')}}" data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
-                                        <div class="invalid-feedback">{{__('Review content has at least 10 character')}}</div>
+                                        <textarea class="form-control" rows="6" cols="77" name="review_content" placeholder="{{__("Review content")}}" required data-msg="{{__('Avaliação content has at least 10 character')}}" data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
+                                        <div class="invalid-feedback">{{__('Avaliação content has at least 10 character')}}</div>
                                     </div>
                                 </div>
                             </div>

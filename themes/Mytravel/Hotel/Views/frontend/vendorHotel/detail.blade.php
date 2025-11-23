@@ -1,11 +1,11 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar no-border-bottom">
-        {{$row->id ? __('Editar: ').$row->title : __('Add new hotel')}}
+        {{$row->id ? __('Editar: ').$row->title : __('Adicionar novo hotel')}}
         @if($row->id)
             <div class="title-action">
                 <a class="btn btn-info" href="{{route('hotel.vendor.room.index',['hotel_id'=>$row->id])}}">
-                    <i class="fa fa-hand-o-right"></i> {{__("Manage Rooms")}}
+                    <i class="fa fa-hand-o-right"></i> {{__("Gerenciar Quartos")}}
                 </a>
                 <a href="{{route('hotel.vendor.room.availability.index',['hotel_id'=>$row->id])}}" class="btn btn-warning">
                     <i class="fa fa-calendar"></i> {{__("Availability Rooms")}}

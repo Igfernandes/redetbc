@@ -11,7 +11,7 @@
                     <form method="post" action="{{route('review.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
                             <option value="approved">{{__(" Approved ")}}</option>
                             <option value="pending">{{__(" Pending ")}}</option>
                             <option value="spam">{{__(" Spam ")}}</option>
@@ -61,7 +61,7 @@
                 <a href="{{ route('review.admin.index',['status'=>'trash'])  }}">{{__("Trash")}}
                     <span>({{ \Modules\Review\Models\Review::countReviewByStatus("trash") }})</span></a>
             </div>
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -71,8 +71,8 @@
                         <thead>
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th width="150px"> {{ __('Author')}}</th>
-                            <th> {{ __('Review Content')}}</th>
+                            <th width="150px"> {{ __('Autor')}}</th>
+                            <th> {{ __('Avaliação Content')}}</th>
                             <th width="250px"> {{ __('In Response To')}}</th>
                             <th width="80px"> {{ __('Serviço')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
@@ -122,7 +122,7 @@
                                         @if(!empty($service) and !empty($allReviewStats = $service->getReviewStats()))
                                             @if(!empty($metaReviews = $row->getReviewMeta()))
                                                 <a class="btn-show-info-review right" data-toggle="collapse" href="#review-{{$row->id}}">
-                                                    {{__("More info")}}
+                                                    {{__("Mais info")}}
                                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                                 </a>
                                                 <div class="collapse" id="review-{{$row->id}}">

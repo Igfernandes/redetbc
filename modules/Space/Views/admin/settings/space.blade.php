@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Page Search")}}</h3>
-        <p class="form-group-desc">{{__('Config page search of your website')}}</p>
+        <h3 class="form-group-title">{{__("Busca de Página")}}</h3>
+        <p class="form-group-desc">{{__('Configurar a página de busca do seu site')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("General Options")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Opções Gerais")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="" >{{__("Title Page")}}</label>
+                    <label class="" >{{__("Título da Página")}}</label>
                     <div class="form-controls">
                         <input type="text" name="space_page_search_title" value="{{setting_item_with_lang('space_page_search_title',request()->query('lang'))}}" class="form-control">
                     </div>
@@ -196,7 +196,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Enable review system for Space?")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="space_enable_review" value="1" @if(!empty($settings['space_enable_review'])) checked @endif /> {{__("Yes, please enable it")}} </label>
+                            <label><input type="checkbox" name="space_enable_review" value="1" @if(!empty($settings['space_enable_review'])) checked @endif /> {{__("Sim, please enable it")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("Turn on the mode for reviewing space")}}</small>
                         </div>
@@ -204,7 +204,7 @@
                     <div class="form-group" data-condition="space_enable_review:is(1)">
                         <label class="" >{{__("Customer must book a space before writing a review?")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="space_enable_review_after_booking" value="1"  @if(!empty($settings['space_enable_review_after_booking'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="space_enable_review_after_booking" value="1"  @if(!empty($settings['space_enable_review_after_booking'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Only post a review after booking - Off: Post review without booking")}}</small>
                         </div>
@@ -230,7 +230,7 @@
                     <div class="form-group" data-condition="space_enable_review:is(1)">
                         <label class="" >{{__("Review must be approval by admin")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="space_review_approved" value="1"  @if(!empty($settings['space_review_approved'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="space_review_approved" value="1"  @if(!empty($settings['space_review_approved'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Review must be approved by admin - OFF: Review is automatically approved")}}</small>
                         </div>
@@ -440,7 +440,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Space created by vendor must be approved by admin")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="space_vendor_create_service_must_approved_by_admin" value="1" @if(!empty($settings['space_vendor_create_service_must_approved_by_admin'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="space_vendor_create_service_must_approved_by_admin" value="1" @if(!empty($settings['space_vendor_create_service_must_approved_by_admin'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: When vendor posts a service, it needs to be approved by administrator")}}</small>
                         </div>
@@ -448,7 +448,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow vendor can change their booking status")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="space_allow_vendor_can_change_their_booking_status" value="1" @if(!empty($settings['space_allow_vendor_can_change_their_booking_status'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="space_allow_vendor_can_change_their_booking_status" value="1" @if(!empty($settings['space_allow_vendor_can_change_their_booking_status'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can change their booking status")}}</small>
                         </div>
@@ -456,7 +456,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow vendor can change their booking paid amount")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="space_allow_vendor_can_change_paid_amount" value="1" @if(!empty($settings['space_allow_vendor_can_change_paid_amount'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="space_allow_vendor_can_change_paid_amount" value="1" @if(!empty($settings['space_allow_vendor_can_change_paid_amount'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can change their booking paid amount")}}</small>
                         </div>
@@ -464,7 +464,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Allow vendor can add service fee")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="space_allow_vendor_can_add_service_fee" value="1" @if(!empty($settings['space_allow_vendor_can_add_service_fee'])) checked @endif /> {{__("Yes please")}} </label>
+                            <label><input type="checkbox" name="space_allow_vendor_can_add_service_fee" value="1" @if(!empty($settings['space_allow_vendor_can_add_service_fee'])) checked @endif /> {{__("Sim please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can add service fee")}}</small>
                         </div>

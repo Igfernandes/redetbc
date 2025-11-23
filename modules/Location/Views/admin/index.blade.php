@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Location")}}</div>
+                    <div class="panel-title">{{__("Adicionar Localização")}}</div>
                     <div class="panel-body panel-index">
                         <form action="{{route('location.admin.store',['id'=>'-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf

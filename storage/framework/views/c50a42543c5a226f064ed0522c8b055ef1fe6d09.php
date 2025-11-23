@@ -14,15 +14,9 @@
     <div class="form-group">
         <div class="d-flex justify-content-between">
             <label for="remember-me" class="mb0">
-<<<<<<< HEAD
                 <input type="checkbox" name="remember" id="remember-me" value="1"> <?php echo e(__('Lembre-se de mim')); ?> <span class="checkmark fcheckbox"></span>
             </label>
             <a href="<?php echo e(route("password.request")); ?>"><?php echo e(__('Esqueceu a senha?')); ?></a>
-=======
-                <input type="checkbox" name="remember" id="remember-me" value="1"> <?php echo e(__('Remember me')); ?> <span class="checkmark fcheckbox"></span>
-            </label>
-            <a href="<?php echo e(route("password.request")); ?>"><?php echo e(__('Forgot Password?')); ?></a>
->>>>>>> 7145c50388a20bfba0e25431a0fb3572fdeef4a0
         </div>
     </div>
     <?php if(setting_item("user_enable_login_recaptcha")): ?>
@@ -65,7 +59,7 @@
         </div>
     <?php endif; ?>
     <?php if(is_enable_registration()): ?>
-        <div class="c-grey font-medium f14 text-center"> <?php echo e(__('Do not have an account?')); ?> <a href="" data-target="#register" data-toggle="modal"><?php echo e(__('Sign Up')); ?></a></div>
+        <div class="c-grey font-medium f14 text-center"> <?php echo e(__('Você não tem uma conta?')); ?> <a href="" data-target="#register" data-toggle="modal"><?php echo e(__('Cadastre-se')); ?></a></div>
     <?php endif; ?>
 </form>
 <?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\modules/Layout/auth/login-form.blade.php ENDPATH**/ ?>

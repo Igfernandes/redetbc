@@ -15,7 +15,7 @@ class NewsTag extends BaseModel
 
     public static function getModelName()
     {
-        return __("News Tag");
+        return __("Notícias Tag");
     }
 
     public static function searchForMenu($q = false)

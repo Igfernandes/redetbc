@@ -14,10 +14,10 @@
                     <div class="panel-body">
                             <div class="form-group">
                                 <label>{{__("Client Message:")}}</label>
-                                <div><strong>{{__("Name:")}}</strong> {{$enquiry->name}}</div>
+                                <div><strong>{{__("Nome:")}}</strong> {{$enquiry->name}}</div>
                                 <div><strong>{{__("Email:")}}</strong> {{$enquiry->email}}</div>
-                                <div><strong>{{__("Phone:")}}</strong> {{$enquiry->phone}}</div>
-                                <div><strong>{{__("Content:")}}</strong> {{$enquiry->note}}</div>
+                                <div><strong>{{__("Celular:")}}</strong> {{$enquiry->phone}}</div>
+                                <div><strong>{{__("Conteúdo:")}}</strong> {{$enquiry->note}}</div>
                             </div>
                             <hr>
                             <div class="form-group">

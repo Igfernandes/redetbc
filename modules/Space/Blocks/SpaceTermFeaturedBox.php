@@ -8,7 +8,7 @@ class SpaceTermFeaturedBox extends BaseBlock
 {
     public function getName()
     {
-        return __('Space: Term Featured Box');
+        return __('Espaços: Term Featured Box');
     }
 
     public function getOptions()

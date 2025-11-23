@@ -36,11 +36,11 @@ class UserBookingController extends FrontendController
             'statues'     => config('booking.statuses'),
             'breadcrumbs' => [
                 [
-                    'name'  => __('Booking History'),
+                    'name'  => __('Reservas'),
                     'class' => 'active'
                 ]
             ],
-            'page_title'  => __("Booking History"),
+            'page_title'  => __("Histórico de Reservas"),
         ];
         return view('User::frontend.booking.overview', $data);
     }
@@ -59,11 +59,11 @@ class UserBookingController extends FrontendController
             'statues'     => config('booking.statuses'),
             'breadcrumbs' => [
                 [
-                    'name'  => __('Booking History'),
+                    'name'  => __('Reservas'),
                     'class' => 'active'
                 ]
             ],
-            'page_title'  => __("Booking History"),
+            'page_title'  => __("Histórico de Reservas"),
         ];
         return view('User::frontend.booking.preview', $data);
     }

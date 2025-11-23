@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{ __('All Page')}}</h1>
+            <h1 class="title-bar">{{ __('Todas Páginas')}}</h1>
             <div class="title-actions">
-                <a href="{{route('page.admin.create')}}" class="btn btn-primary">{{ __('Add new page')}}</a>
+                <a href="{{route('page.admin.create')}}" class="btn btn-primary">{{ __('Adicionar nova página')}}</a>
             </div>
         </div>
         @include('admin.message')
@@ -15,7 +15,7 @@
                 <form method="post" action="{{route('page.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                     {{csrf_field()}}
                     <select name="action" class="form-control">
-                        <option value="">{{__(" Bulk Actions ")}}</option>
+                        <option value="">{{__(" Ações em Massa ")}}</option>
                         <option value="publish">{{__(" Publish ")}}</option>
                         <option value="draft">{{__(" Move to Draft ")}}</option>
                         <option value="delete">{{__("Excluir")}}</option>
@@ -27,7 +27,7 @@
             <div class="col-left">
                <form method="get" action="{{route('page.admin.index')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
                     <input  type="text" name="page_name" value="{{ Request()->page_name }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
-                    <button class="btn-info btn btn-icon btn_search"  type="submit">{{__('Search Page')}}</button>
+                    <button class="btn-info btn btn-icon btn_search"  type="submit">{{__('Buscar Página')}}</button>
                 </form>
             </div>
         </div>
@@ -39,8 +39,8 @@
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
                                 <th >{{ __('Título')}}</th>
-                                <th width="130px">{{ __('Author')}} </th>
-                                <th width="100px">{{__('Date')}} </th>
+                                <th width="130px">{{ __('Autor')}} </th>
+                                <th width="100px">{{__('Data')}} </th>
                                 <th width="100px">{{__('Status')}} </th>
                                 <th width="100px"></th>
                             </tr>
@@ -68,7 +68,7 @@
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                                    {{__("Actions")}}
+                                                    {{__("Ações")}}
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a href="{{route('page.admin.edit',['id'=>$row->id])}}" class="dropdown-item"><i class="fa fa-edit"></i> {{__('Editar')}}</a>

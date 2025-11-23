@@ -27,7 +27,7 @@
     </form>
 
     <hr>
-    <h4>{{__("Users on your team")}}</h4>
+    <h4>{{__("Usuários on your team")}}</h4>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-booking-history">
             <thead>
@@ -37,7 +37,7 @@
                 <th>{{__("Email")}}</th>
                 <th>{{__("Permissions")}}</th>
                 <th>{{__("Status")}}</th>
-                <th>{{__("Actions")}}</th>
+                <th>{{__("Ações")}}</th>
             </tr>
             </thead>
             <tbody>
@@ -53,7 +53,7 @@
                     <td>
                         <div class="dropdown">
                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                {{__("Actions")}}
+                                {{__("Ações")}}
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{route('vendor.team.edit',['vendorTeam'=>$vendorTeam])}}">{{__("Editar")}}</a>

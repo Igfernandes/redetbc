@@ -94,7 +94,7 @@
     <div class="col-sm-4">
         <h3 class="form-group-title">{{__('SMS Event Booking')}}</h3>
         <div class="form-group-desc">
-            {{__('Telefone number must be E.164 format')}}
+            {{('Telefone must be E.164 format')}}
             <p>{{__('Format')}}:<code> {{__('[+][country code][subscriber number including area code]')}} </code></p>
             <p>{{__('Example')}}:<code> +12019480710</code></p>
             <div>{{__('Message')}}:</div>

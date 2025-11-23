@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar">
-        {{__("Manage Rooms")}}
+        {{__("Gerenciar Quartos")}}
         <div class="title-action">
             <a href="{{route('hotel.vendor.edit',['id'=>$hotel->id])}}" class="btn btn-info"><i class="fa fa-hand-o-right"></i> {{__("Back to hotel")}}</a>
             <a href="{{route('hotel.vendor.room.availability.index',['hotel_id'=>$hotel->id])}}" class="btn btn-warning"><i class="fa fa-calendar"></i> {{__("Availability Rooms")}}</a>

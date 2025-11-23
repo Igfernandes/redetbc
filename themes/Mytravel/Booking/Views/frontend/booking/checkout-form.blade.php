@@ -37,15 +37,15 @@
                 @endif
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
-                        {{ __("First Name") }}
+                        {{ __("Primeiro Nome") }}
                     </label>
-                    <input type="text" placeholder="{{__("First Name")}}" class="form-control" value="{{$user->first_name ?? ''}}" name="first_name">
+                    <input type="text" placeholder="{{__("Primeiro Nome")}}" class="form-control" value="{{$user->first_name ?? ''}}" name="first_name">
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
-                        {{ __("Last name") }}
+                        {{ __("Sobrenome") }}
                     </label>
-                    <input type="text" placeholder="{{__("Last Name")}}" class="form-control" value="{{$user->last_name ?? ''}}" name="last_name">
+                    <input type="text" placeholder="{{__("Sobrenome")}}" class="form-control" value="{{$user->last_name ?? ''}}" name="last_name">
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
-                        {{ __("Phone") }}
+                        {{ __("Celular") }}
                     </label>
                     <input type="text" placeholder="{{__("Your Phone")}}" class="form-control" value="{{$user->phone ?? ''}}" name="phone">
                 </div>

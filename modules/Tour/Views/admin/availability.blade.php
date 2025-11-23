@@ -4,7 +4,7 @@
     @php $services  = []; @endphp
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Tours Availability Calendar")}}</h1>
+            <h1 class="title-bar">{{__("Calendários de disponibilidade de Passeios")}}</h1>
         </div>
         @include('admin.message')
         <div class="panel">

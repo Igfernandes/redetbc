@@ -15,7 +15,7 @@ class ListSpace extends BaseBlock
 
     public function getName()
     {
-        return __('Space: List Items');
+        return __('Espaços: List Items');
     }
 
     public function getOptions()

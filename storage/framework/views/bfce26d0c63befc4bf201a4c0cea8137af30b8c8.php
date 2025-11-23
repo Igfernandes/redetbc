@@ -66,7 +66,7 @@
             <?php endif; ?>
         <?php endif; ?>
         <div class="mb-0">
-            <span class="mr-1 font-size-14 text-gray-1"><?php echo e(__("From")); ?></span>
+            <span class="mr-1 font-size-14 text-gray-1"><?php echo e(__("De")); ?></span>
             <span class="font-weight-bold"><?php echo e($row->display_price); ?></span>
             <span class="font-size-14 text-gray-1"><?php echo e(__("/night")); ?></span>
         </div>

@@ -72,10 +72,10 @@ class TourController extends AdminController
             ])->paginate(20),
             'tour_categories'    => $this->tourCategoryClass::where('status', 'publish')->get()->toTree(),
             'tour_manage_others' => $this->hasPermission('tour_manage_others'),
-            'page_title'         => __("Tour Management"),
+            'page_title'         => __("Gerenciamento de Passeio"),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Tours'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
@@ -117,7 +117,7 @@ class TourController extends AdminController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Tours'),
+                    'name' => __('Passeioss'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
@@ -145,7 +145,7 @@ class TourController extends AdminController
             'translation'       => new $this->tourTranslationClass(),
             'breadcrumbs'       => [
                 [
-                    'name' => __('Tours'),
+                    'name' => __('Passeioss'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
@@ -181,7 +181,7 @@ class TourController extends AdminController
             'enable_multi_lang' => true,
             'breadcrumbs'       => [
                 [
-                    'name' => __('Tours'),
+                    'name' => __('Passeioss'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
@@ -244,10 +244,10 @@ class TourController extends AdminController
 
             if ($id > 0) {
                 event(new UpdatedServiceEvent($row));
-                return back()->with('success', __('Tour updated'));
+                return back()->with('success', __('Passeios updated'));
             } else {
                 event(new CreatedServicesEvent($row));
-                return redirect(route('tour.admin.edit', $row->id))->with('success', __('Tour created'));
+                return redirect(route('tour.admin.edit', $row->id))->with('success', __('Passeios created'));
             }
         }
     }
@@ -329,7 +329,7 @@ class TourController extends AdminController
                 foreach ($ids as $id) {
                     (new $this->tourClass())->saveCloneByID($id);
                 }
-                return redirect()->back()->with('success', __('Clone realizado com sucesso!'));
+                return redirect()->back()->with('success', __('Duplicar realizado com sucesso!'));
                 break;
             default:
                 // Change status

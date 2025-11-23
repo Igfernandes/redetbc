@@ -56,18 +56,18 @@
         @endif
         <li class="list-group-item text-lh-sm ">
             <i class="flaticon-door text-primary font-size-50 mb-1 d-block"></i>
-            <div class="text-gray-1"> {{$row->max_guests}} {{ __("People") }}</div>
+            <div class="text-gray-1"> {{$row->max_guests}} {{ __("Pessoas") }}</div>
         </li>
         @if($row->bathroom)
             <li class="list-group-item text-lh-sm ">
                 <i class="flaticon-bathtub text-primary font-size-50 mb-1 d-block"></i>
-                <div class="text-gray-1"> {{$row->bathroom}} {{ __("bathrooms") }}</div>
+                <div class="text-gray-1"> {{$row->bathroom}} {{ __("quartos") }}</div>
             </li>
         @endif
         @if(!empty($row->bed))
             <li class="list-group-item text-lh-sm ">
                 <i class="flaticon-bed-1 text-primary font-size-50 mb-1 d-block"></i>
-                <div class="text-gray-1">{{$row->bed}} {{ __("beds") }}</div>
+                <div class="text-gray-1">{{$row->bed}} {{ __("Camas") }}</div>
             </li>
         @endif
     </ul>

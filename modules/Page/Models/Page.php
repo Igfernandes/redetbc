@@ -45,7 +45,7 @@ class Page extends BaseModel
 
     public static function getModelName()
     {
-        return __("Page");
+        return __("Página");
     }
 
     public static function getAsMenuItem($id)

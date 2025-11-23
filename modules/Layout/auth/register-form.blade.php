@@ -4,14 +4,14 @@
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="{{__("First Name")}}">
+                    <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="{{__("Primeiro Nome")}}">
                     <i class="input-icon field-icon icofont-waiter-alt"></i>
                     <span class="invalid-feedback error error-first_name"></span>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="{{__("Last Name")}}">
+                    <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="{{__("Sobrenome")}}">
                     <i class="input-icon field-icon icofont-waiter-alt"></i>
                     <span class="invalid-feedback error error-last_name"></span>
                 </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="box-icons roles">
             <div>
-                <span>{{__('Select your profile')}}*</span>
+                <span>{{__('Selecione seu perfil')}}*</span>
                 <span class="invalid-feedback error error-role"></span>
             </div>
             <ul>
@@ -81,7 +81,7 @@
     <div class="form-group">
         <label for="term">
             <input id="term" type="checkbox" name="term" class="mr5">
-            {!! __("I have read and accept the <a href=':link' target='_blank'>Terms and Privacy Policy</a>",['link'=>get_page_url(setting_item('booking_term_conditions'))]) !!}
+            {!! __("Eu li e aceito os <a href=':link' target='_blank'>Termos e Política de Privacidade</a>",['link'=>get_page_url(setting_item('booking_term_conditions'))]) !!}
             <span class="checkmark fcheckbox"></span>
         </label>
         <div><span class="invalid-feedback error error-term"></span></div>
@@ -95,13 +95,13 @@
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary form-submit">
-            {{ __('Sign Up') }}
+            {{ __('Cadastrar') }}
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
         </button>
     </div>
 
     <div class="c-grey f14 text-center">
-        {{__(" Already have an account?")}}
+        {{__(" Já tem uma conta?")}}
         <a href="#" data-target="#login" data-toggle="modal">{{__("Conectar-se")}}</a>
     </div>
 </form>

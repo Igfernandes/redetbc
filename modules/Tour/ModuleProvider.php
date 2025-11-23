@@ -53,23 +53,23 @@ class ModuleProvider extends ModuleServiceProvider
             $res['tour'] = [
                 "position"=>40,
                 'url'        => route('tour.admin.index'),
-                'title'      => __("Tour"),
+                'title'      => __("Passeio"),
                 'icon'       => 'icon ion-md-umbrella',
                 'permission' => 'tour_view',
                 'children'   => [
                     'tour_view'=>[
                         'url'        => route('tour.admin.index'),
-                        'title'      => __('All Tours'),
+                        'title'      => __('Todos Passeios'),
                         'permission' => 'tour_view',
                     ],
                     'tour_create'=>[
                         'url'        => route('tour.admin.create'),
-                        'title'      => __("Add Tour"),
+                        'title'      => __("Adicionar tour"),
                         'permission' => 'tour_create',
                     ],
                     'tour_category'=>[
                         'url'        => route('tour.admin.category.index'),
-                        'title'      => __('Categories'),
+                        'title'      => __('Categorias'),
                         'permission' => 'tour_manage_others',
                     ],
                     'tour_attribute'=>[
@@ -84,7 +84,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'tour_booking'=>[
                         'url'        => route('tour.admin.booking.index'),
-                        'title'      => __('Booking Calendar'),
+                        'title'      => __('Calendário de Reservas'),
                         'permission' => 'tour_create',
                     ],
                     'recovery'=>[
@@ -112,11 +112,11 @@ class ModuleProvider extends ModuleServiceProvider
                 'children'   => [
                     [
                         'url'   => route('tour.vendor.index'),
-                        'title' => __("All Tours"),
+                        'title' => __("Todos Passeioss"),
                     ],
                     [
                         'url'        => route('tour.vendor.create'),
-                        'title'      => __("Add Tour"),
+                        'title'      => __("Adicionar tour"),
                         'permission' => 'tour_create',
                     ],
                     [
@@ -142,13 +142,13 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             [
                 'class' => \Modules\Tour\Models\Tour::class,
-                'name'  => __("Tour"),
+                'name'  => __("Passeio"),
                 'items' => \Modules\Tour\Models\Tour::searchForMenu(),
                 'position'=>20
             ],
             [
                 'class' => \Modules\Tour\Models\TourCategory::class,
-                'name'  => __("Tour Category"),
+                'name'  => __("Passeio Category"),
                 'items' => \Modules\Tour\Models\TourCategory::searchForMenu(),
                 'position'=>30
             ],

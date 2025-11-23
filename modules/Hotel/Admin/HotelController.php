@@ -346,7 +346,7 @@ class HotelController extends AdminController
                 foreach ($ids as $id) {
                     (new $this->hotelClass())->saveCloneByID($id);
                 }
-                return redirect()->back()->with('success', __('Clone realizado com sucesso!'));
+                return redirect()->back()->with('success', __('Duplicar realizado com sucesso!'));
                 break;
             default:
                 // Change status

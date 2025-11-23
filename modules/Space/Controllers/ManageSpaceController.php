@@ -207,10 +207,10 @@ class ManageSpaceController extends FrontendController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Space updated') );
+                return back()->with('success',  __('Espaços updated') );
             }else{
                 event(new CreatedServicesEvent($row));
-                return redirect(route('space.vendor.edit',['id'=>$row->id]))->with('success', __('Space created') );
+                return redirect(route('space.vendor.edit',['id'=>$row->id]))->with('success', __('Espaços created') );
             }
         }
     }
@@ -238,7 +238,7 @@ class ManageSpaceController extends FrontendController
         $row = $this->spaceClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('space.vendor.index'))->with('warning', __('Space not found!'));
+            return redirect(route('space.vendor.index'))->with('warning', __('Espaços not found!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [
@@ -339,7 +339,7 @@ class ManageSpaceController extends FrontendController
 		$row = $this->spaceClass::where("author_id", $user_id);
 		$row = $row->find($id);
 		if (empty($row)) {
-			return redirect(route('space.vendor.index'))->with('warning', __('Space not found!'));
+			return redirect(route('space.vendor.index'))->with('warning', __('Espaços not found!'));
 		}
 		try{
 			$clone = $row->replicate();
@@ -371,7 +371,7 @@ class ManageSpaceController extends FrontendController
 				}
 			}
 
-			return redirect()->back()->with('success',__('Space clone was successful'));
+			return redirect()->back()->with('success',__('Espaços clone was successful'));
 		}catch (\Exception $exception){
 			$clone->delete();
 			return redirect()->back()->with('warning',__($exception->getMessage()));

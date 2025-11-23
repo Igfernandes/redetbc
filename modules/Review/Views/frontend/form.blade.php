@@ -1,6 +1,6 @@
 @if(setting_item($row->type."_enable_review"))
     <div class="bravo-reviews" id="bravo-reviews">
-        <h3>{{__("Reviews")}}</h3>
+        <h3>{{__("Avaliações")}}</h3>
         @if($review_score)
             <div class="review-box">
                 <div class="row">
@@ -136,7 +136,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <input type="text" required class="form-control" name="review_title" placeholder="{{__("Título")}}">
-                                    <div class="invalid-feedback">{{__('Review title is required')}}</div>
+                                    <div class="invalid-feedback">{{__('Avaliação title is required')}}</div>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                                 <div class="form-group">
                                     <textarea name="review_content" required class="form-control" placeholder="{{__("Review content")}}" minlength="10"></textarea>
                                     <div class="invalid-feedback">
-                                        {{__('Review content has at least 10 character')}}
+                                        {{__('Avaliação content has at least 10 character')}}
                                     </div>
                                 </div>
                             </div>

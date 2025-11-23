@@ -94,7 +94,7 @@
                           @if ($standardFormat)
                               <th>{{__('Level')}}</th>
                               <th>{{__('Context')}}</th>
-                              <th>{{__('Date')}}</th>
+                              <th>{{__('Data')}}</th>
                           @else
                               <th>{{__('Line number')}}</th>
                           @endif

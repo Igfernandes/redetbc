@@ -160,7 +160,7 @@ if (isset($_GET['religion'])) {
 
                                     @endif
 
-                                    {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                                    {{__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])}}
 
                                     <i class="fa fa-angle-down"></i>
 
@@ -178,7 +178,7 @@ if (isset($_GET['religion'])) {
 
                                     <li class="@if(Auth::user()->hasPermission('dashboard_vendor_access')) menu-hr @endif">
 
-                                        <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
+                                        <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("Meu perfil")}}</a>
 
                                     </li>
 
@@ -190,7 +190,7 @@ if (isset($_GET['religion'])) {
 
                                     <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
 
-                                    <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Change password")}}</a></li>
+                                    <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 
                                     @if(Auth::user()->hasPermission('dashboard_access'))
 
@@ -200,7 +200,7 @@ if (isset($_GET['religion'])) {
 
                                     <li class="menu-hr">
 
-                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__('Logout')}}</a>
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__("Sair")}}</a>
 
                                     </li>
 
@@ -262,7 +262,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="{{route('user.profile.index')}}">
 
-                                <i class="icofont-user-suited"></i> {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                                <i class="icofont-user-suited"></i> {{__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])}}
 
                             </a>
 
@@ -272,7 +272,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="{{route('user.profile.index')}}">
 
-                                <i class="icon ion-md-construct"></i> {{__("My profile")}}
+                                <i class="icon ion-md-construct"></i> {{__("Meu perfil")}}
 
                             </a>
 
@@ -306,7 +306,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
 
-                                <i class="fa fa-sign-out"></i> {{__('Logout')}}
+                                <i class="fa fa-sign-out"></i> {{__("Sair")}}
 
                             </a>
 

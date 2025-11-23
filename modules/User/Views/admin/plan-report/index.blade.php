@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Plan Report")}}</h1>
+            <h1 class="title-bar">{{__("Planos")}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
@@ -14,7 +14,7 @@
 {{--                                  class="filter-form filter-form-left d-flex justify-content-start">--}}
 {{--                                {{csrf_field()}}--}}
 {{--                                <select name="action" class="form-control">--}}
-{{--                                    <option value="">{{__(" Bulk Actions ")}}</option>--}}
+{{--                                    <option value="">{{__(" Ações em Massa ")}}</option>--}}
 {{--                                    <option value="publish">{{__(" Publish ")}}</option>--}}
 {{--                                    <option value="draft">{{__(" Move to Draft ")}}</option>--}}
 {{--                                </select>--}}
@@ -59,11 +59,11 @@
                                 <thead>
                                 <tr>
 {{--                                    <th width="60px"><input type="checkbox" class="check-all"></th>--}}
-                                    <th>{{__("Plan ID")}}</th>
+                                    <th>{{__("ID")}}</th>
                                     <th>{{__("Customer")}}</th>
-                                    <th>{{__("Plan Name")}}</th>
-                                    <th>{{__("Expiry")}}</th>
-                                    <th>{{__("Used/Total")}}</th>
+                                    <th>{{__("Nome do Plano")}}</th>
+                                    <th>{{__("Expira em")}}</th>
+                                    <th>{{__("Usado/Total")}}</th>
                                     <th>{{__("Preço")}}</th>
                                     <th>{{__("Status")}}</th>
                                     <th width="100px"></th>

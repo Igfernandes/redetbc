@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Page List")}}</h3>
-        <p class="form-group-desc">{{__('Config page list news of your website')}}</p>
+        <h3 class="form-group-title">{{__("Lista de Páginas")}}</h3>
+        <p class="form-group-desc">{{__('Configurar a página de listagem de notícias do seu site')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="" >{{__("Title Page")}}</label>
+                    <label class="">{{__("Title Page")}}</label>
                     <div class="form-controls">
                         <input type="text" name="news_page_list_title" value="{{setting_item_with_lang('news_page_list_title',request()->query('lang'),$settings['news_page_list_title'] ?? '')}}" class="form-control">
                     </div>
@@ -23,27 +23,27 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="" >{{__("Banner Page")}}</label>
+                    <label class="">{{__("Banner Page")}}</label>
                     <div class="form-controls form-group-image">
                         {!! \Modules\Media\Helpers\FileHelper::fieldUpload('news_page_list_banner',$settings['news_page_list_banner'] ?? "") !!}
                     </div>
                 </div>
                 @php $layouts = config('news.layouts') @endphp
-                    @if(!empty($layouts))
-                        <div class="form-group">
-                            <label class="" >{{__("Layout Search")}}</label>
-                            <div class="form-controls">
-                                <select name="news_layout_search" class="form-control" >
-                                    @foreach(config('news.layouts') as $id=>$name)
-                                        <option value="{{$id}}" {{ setting_item('news_layout_search','normal') == $id ? 'selected' : ''  }}>{{$name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    @endif
+                @if(!empty($layouts))
+                <div class="form-group">
+                    <label class="">{{__("Layout Search")}}</label>
+                    <div class="form-controls">
+                        <select name="news_layout_search" class="form-control">
+                            @foreach(config('news.layouts') as $id=>$name)
+                            <option value="{{$id}}" {{ setting_item('news_layout_search','normal') == $id ? 'selected' : ''  }}>{{$name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                @endif
                 @endif
                 <div class="form-group">
-                    <label class="" >{{__("SEO Options")}}</label>
+                    <label class="">{{__("SEO Options")}}</label>
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#seo_1">{{__("General Options")}}</a>
@@ -55,9 +55,9 @@
                             <a class="nav-link" data-toggle="tab" href="#seo_3">{{__("Share Twitter")}}</a>
                         </li>
                     </ul>
-                    <div class="tab-content" >
+                    <div class="tab-content">
                         <div class="tab-pane active" id="seo_1">
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label class="control-label">{{__("Seo Title")}}</label>
                                 <input type="text" name="news_page_list_seo_title" class="form-control" placeholder="{{__("Enter title...")}}" value="{{ setting_item_with_lang('news_page_list_seo_title',request()->query('lang'),$settings['news_page_list_seo_title'] ?? "")}}">
                             </div>
@@ -135,12 +135,12 @@
                             <div class="g-items">
                                 <?php
                                 $social_share = [];
-                                if(!empty($settings['news_sidebar'])){
-                                $social_share  = $settings['news_sidebar'];
+                                if (!empty($settings['news_sidebar'])) {
+                                    $social_share  = $settings['news_sidebar'];
 
-                                $social_share = json_decode(setting_item_with_lang('news_sidebar',request()->query('lang'),$settings['news_sidebar'] ?? "[]"));
+                                    $social_share = json_decode(setting_item_with_lang('news_sidebar', request()->query('lang'), $settings['news_sidebar'] ?? "[]"));
                                 ?>
-                                @foreach($social_share as $key=>$item)
+                                    @foreach($social_share as $key=>$item)
                                     <div class="item" data-number="{{$key}}">
                                         <div class="row">
                                             <div class="col-md-8">
@@ -162,7 +162,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                    @endforeach
                                 <?php } ?>
                             </div>
                             <div class="text-right">
@@ -208,7 +208,7 @@
             <div class="panel-title"><strong>{{__("Fornecedor News")}}</strong></div>
             <div class="panel-body">
                 <div>
-                    <label ><input type="checkbox" name="news_vendor_need_approve" value="1" @if(setting_item('news_vendor_need_approve')) checked @endif> {{__("Admin need approve news to be publish")}}</label>
+                    <label><input type="checkbox" name="news_vendor_need_approve" value="1" @if(setting_item('news_vendor_need_approve')) checked @endif> {{__("Admin need approve news to be publish")}}</label>
                 </div>
             </div>
         </div>
