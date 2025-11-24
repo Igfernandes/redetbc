@@ -1,3 +1,12 @@
+<?php
+use Modules\User\Models\Role;
+
+$roles = [];
+foreach (Role::all(['id', 'name'])->toArray() as $role) {
+$roles[strtolower($role['name'])] = $role['id'];
+}
+?>
+
 <form class="form bravo-form-register" method="post" action="<?php echo e(route('auth.register.store')); ?>">
     <?php echo csrf_field(); ?>
     <div class="">
@@ -33,7 +42,7 @@
                     <input type="radio" name="role" value="<?php echo e($roles['traveler']); ?>">
                     <div class="text">
                         <i class="icofont-travelling"></i>
-                        <span><?php echo e(__('Traveler')); ?></span>
+                        <span><?php echo e(__('Viajante')); ?></span>
                     </div>
                 </li>
                 <?php endif; ?>
@@ -60,7 +69,7 @@
                     <input type="radio" name="role" value="<?php echo e($roles['assistance']); ?>">
                     <div class="text">
                         <i class="icofont-building-alt"></i>
-                        <span><?php echo e(__('Services')); ?></span>
+                        <span><?php echo e(__('Serviços')); ?></span>
                     </div>
                 </li>
                 <?php endif; ?>

@@ -41,9 +41,9 @@
                         </div>
                         <span class="text-secondary font-size-14 mt-1">
                         @if($reviewData['total_review'] > 1)
-                                {{ __(":number Reviews",["number"=>$reviewData['total_review'] ]) }}
+                                {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
                             @else
-                                {{ __(":number Review",["number"=>$reviewData['total_review'] ]) }}
+                                {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
                             @endif
                     </span>
                     </div>
@@ -86,7 +86,7 @@
              data-nav-for="#sliderSyncingThumb">
             @foreach($row->getGallery() as $key=>$item)
                 <div class="js-slide">
-                    <img class="img-fluid border-radius-3" src="{{$item['large']}}" alt="{{ __("Gallery") }}">
+                    <img class="img-fluid border-radius-3" src="{{$item['large']}}" alt="{{ __("Galeria") }}">
                 </div>
             @endforeach
         </div>
@@ -113,7 +113,7 @@
                                     }]'>
             @foreach($row->getGallery() as $key=>$item)
                 <div class="js-slide" style="cursor: pointer;">
-                    <img class="img-fluid border-radius-3 height-110" src="{{$item['thumb']}}" alt="{{ __("Gallery") }}">
+                    <img class="img-fluid border-radius-3 height-110" src="{{$item['thumb']}}" alt="{{ __("Galeria") }}">
                 </div>
             @endforeach
         </div>
@@ -125,7 +125,7 @@
             <i class="icofont-heart-beat text-primary font-size-50 mb-1 "></i>
             <div class="text-gray-1">
                 {{ $row->getNumberWishlistInService() }}
-                {{ __("Wishlist") }}</div>
+                {{ __("Lista de desejos") }}</div>
         </li>
         @if($row->start_time)
             <li class="list-group-item text-lh-sm ">

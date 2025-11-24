@@ -61,7 +61,7 @@
                         <folder-item @deleted="deletedFolder" @toggle-edit="toggleEditFolder" @dblclick="showFolder(folder)" @update="updateFolder" v-for="(folder,index) in folders" :index="index" :key="'folder-'+index" :folder="folder"></folder-item>
                         <file-item v-for="(file,index) in files" :key="index" :view-type="viewType" :selected="selected" :file="file" v-on:select-file="selectFile"></file-item>
                     </div>
-                    <p class="no-files-text text-center" v-show="!total && apiFinished" style="display: none">{{__("No file found")}}</p>
+                    <p class="no-files-text text-center" v-show="!total && apiFinished" style="display: none">{{__("Arquivo não encontrado")}}</p>
                     <div class="text-center" v-if="totalPage > 1">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">

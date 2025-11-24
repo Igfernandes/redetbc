@@ -51,7 +51,7 @@
                     @endif
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary form-submit">
-                            {{ __('Sign Up') }}
+                            {{ __('Cadastrar-se') }}
                             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true" style="display: none"></span>
                         </button>
                     </div>

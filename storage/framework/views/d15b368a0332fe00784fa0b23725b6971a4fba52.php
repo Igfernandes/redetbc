@@ -142,7 +142,7 @@ if (isset($_GET['religion'])) {
 
                             <li class="signup-item">
 
-                                <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Sign Up')); ?></a>
+                                <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Cadastrar-se')); ?></a>
 
                             </li>
 
@@ -256,7 +256,7 @@ if (isset($_GET['religion'])) {
 
                         <li>
 
-                            <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Sign Up')); ?></a>
+                            <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Cadastrar-se')); ?></a>
 
                         </li>
 

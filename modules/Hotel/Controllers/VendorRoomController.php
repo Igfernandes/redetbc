@@ -257,7 +257,7 @@ class VendorRoomController extends FrontendController
         if(!empty($query)){
             $query->delete();
         }
-        return redirect()->back()->with('success', __('Delete room success!'));
+        return redirect()->back()->with('success', __('Excluir quarto com sucesso!'));
     }
 
     public function bulkEdit(Request $request , $hotel_id , $id)

@@ -120,7 +120,7 @@ class AvailabilityController extends FrontendController{
 
         if(!$this->hasHotelPermission($hotel_id))
         {
-            return $this->sendError(__("Hotel not found"));
+            return $this->sendError(__("Hotel não encontrado"));
         }
         /**
          * @var $room HotelRoom
@@ -226,7 +226,7 @@ class AvailabilityController extends FrontendController{
 
         if(!$this->hasHotelPermission($hotel_id))
         {
-            return $this->sendError(__("Hotel not found"));
+            return $this->sendError(__("Hotel não encontrado"));
         }
 
         $request->validate([
@@ -239,13 +239,13 @@ class AvailabilityController extends FrontendController{
         $target_id = $request->input('target_id');
 
         if(empty($room)){
-            return $this->sendError(__('Room not found'));
+            return $this->sendError(__('Quarto não encontrado'));
         }
 
         if(!$this->hasPermission('hotel_manage_others')){
 
             if($this->currentHotel->author_id != Auth::id()){
-                return $this->sendError("You do not have permission to access it");
+                return $this->sendError(__("Você não tem permissão para acessá-lo"));
             }
         }
 

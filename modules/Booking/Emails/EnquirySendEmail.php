@@ -27,7 +27,7 @@ class EnquirySendEmail extends Mailable
         $subject = '';
         switch ($this->email_type){
             case "admin":
-                $subject = __('[:site_name] Nova investigação foi feita',['site_name'=>setting_item('site_title')]);
+                $subject = __('[:site_name] Nova Consulta foi feita',['site_name'=>setting_item('site_title')]);
             break;
             case "vendor":
                 $subject = __('[:site_name] Você recebe uma nova solicitação de consulta',['site_name'=>setting_item('site_title')]);

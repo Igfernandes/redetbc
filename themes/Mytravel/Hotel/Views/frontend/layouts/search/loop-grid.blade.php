@@ -53,9 +53,9 @@
                     <span class="badge badge-pill badge-primary py-1 px-2 font-size-14 border-radius-3 font-weight-normal">{{$reviewData['score_total']}}/5</span>
                     <span class="font-size-14 text-gray-1 ml-2">(
                         @if($reviewData['total_review'] > 1)
-                            {{ __(":number reviews",["number"=>$reviewData['total_review'] ]) }}
+                            {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
                         @else
-                            {{ __(":number review",["number"=>$reviewData['total_review'] ]) }}
+                            {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
                         @endif() )
                     </span>
                 </div>
@@ -64,7 +64,7 @@
         <div class="mb-0">
             <span class="mr-1 font-size-14 text-gray-1">{{__("De")}}</span>
             <span class="font-weight-bold">{{ $row->display_price }}</span>
-            <span class="font-size-14 text-gray-1">{{__("/night")}}</span>
+            <span class="font-size-14 text-gray-1">{{__("/noite")}}</span>
         </div>
     </div>
 </div>

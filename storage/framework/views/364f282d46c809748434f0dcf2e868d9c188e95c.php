@@ -28,7 +28,7 @@
                             <?php echo e(__("/day")); ?>
 
                         <?php else: ?>
-                            <?php echo e(__("/night")); ?>
+                            <?php echo e(__("/noite")); ?>
 
                         <?php endif; ?>
                     </span>
@@ -82,10 +82,10 @@
                 </span>
                 <span class="font-size-14 text-gray-1 ml-2 review">
                     <?php if($reviewData['total_review'] > 1): ?>
-                        <?php echo e(__(":number reviews",["number"=>$reviewData['total_review'] ])); ?>
+                        <?php echo e(__(":number Avaliações",["number"=>$reviewData['total_review'] ])); ?>
 
                     <?php else: ?>
-                        <?php echo e(__(":number review",["number"=>$reviewData['total_review'] ])); ?>
+                        <?php echo e(__(":number Avaliação",["number"=>$reviewData['total_review'] ])); ?>
 
                     <?php endif; ?>
                 </span>

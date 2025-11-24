@@ -6,7 +6,7 @@
         <div class="panel">
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="" >{{__("Why Book With Us?")}}</label>
+                    <label class="" >{{__("Por que reservar conosco?")}}</label>
                 </div>
                 <div class="form-group">
                     <div class="form-group-item">

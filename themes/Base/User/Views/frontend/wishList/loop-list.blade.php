@@ -51,9 +51,9 @@ $service = $row->service;
                         <div class="service-review tour-review-{{$score_total}}">
                     <span class="review">
                         @if($reviewData['total_review'] > 1)
-                            {{ __(":number Reviews",["number"=>$reviewData['total_review'] ]) }}
+                            {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
                         @else
-                            {{ __(":number Review",["number"=>$reviewData['total_review'] ]) }}
+                            {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
                         @endif
                     </span>
                             <div class="list-star">

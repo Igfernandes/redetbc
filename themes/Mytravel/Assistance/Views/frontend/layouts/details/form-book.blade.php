@@ -15,7 +15,7 @@
                         <span>{{ __("Livro") }}</span>
                     </div>
                     <div class="enquiry-item" data-toggle="modal" data-target="#enquiry_form_modal">
-                        <span>{{ __("Investigação") }}</span>
+                        <span>{{ __("Consulta") }}</span>
                     </div>
                 </div>
                 <div class="form-book" :class="{'d-none':enquiry_type!='book'}">

@@ -48,7 +48,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]);
         $IDs_vendor[] = $create_user =  "1";
         $IDs[] = DB::table('bravo_events')->insertGetId(
@@ -78,7 +78,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]);
         $IDs_vendor[] = $create_user =  rand(4,6);
         $IDs[] = DB::table('bravo_events')->insertGetId(
@@ -108,7 +108,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]);
         $IDs_vendor[] = $create_user =  "1";
         $IDs[] = DB::table('bravo_events')->insertGetId(
@@ -138,7 +138,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
 
            ]);
         $IDs_vendor[] = $create_user =  rand(4,6);
@@ -169,7 +169,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]);
         $IDs_vendor[] = $create_user =  rand(4,6);
         $IDs[] = DB::table('bravo_events')->insertGetId(
@@ -199,7 +199,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]
         );
         $IDs_vendor[] = $create_user =  rand(4,6);
@@ -230,7 +230,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]
         );
         $IDs_vendor[] = $create_user =  rand(4,6);
@@ -261,7 +261,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]
         );
         $IDs_vendor[] = $create_user =  rand(4,6);
@@ -292,7 +292,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]
         );
         $IDs_vendor[] = $create_user =  rand(4,6);
@@ -323,7 +323,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]
         );
         $IDs_vendor[] = $create_user =  rand(4,6);
@@ -354,7 +354,7 @@ class EventSeeder extends Seeder
                 'created_at' =>  date("Y-m-d H:i:s"),
 
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]
         );
         $IDs_vendor[] = $create_user = "1";
@@ -384,7 +384,7 @@ class EventSeeder extends Seeder
                 'author_id' => $create_user,
                 'created_at' =>  date("Y-m-d H:i:s"),
                 'enable_extra_price' => '1',
-                'extra_price' => '[{"name":"Event service","price":"100","type":"one_time"}]',
+                'extra_price' => '[{"name":"Serviço do Evento","price":"100","type":"one_time"}]',
             ]
         );
 

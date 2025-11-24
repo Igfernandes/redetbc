@@ -4,7 +4,7 @@
             <h4 class="font-size-23 font-weight-bold mb-1 mr-3">{!! clean($translation->title) !!}</h4>
             @if($row->getReviewEnable())
                 <span class="font-size-14 text-primary mr-2">{{ $review_score['score_total'] }}/5 {{$review_score['score_text']}}</span>
-                <span class="font-size-14 text-gray-1 ml-1">{{__(":number reviews",['number'=>$review_score['total_review']])}}</span>
+                <span class="font-size-14 text-gray-1 ml-1">{{__(":number Avaliações",['number'=>$review_score['total_review']])}}</span>
             @endif
 
         </div>

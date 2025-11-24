@@ -85,7 +85,7 @@ class ListFeaturedItem extends BaseBlock
                     'values'        => false,
                 ]
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 

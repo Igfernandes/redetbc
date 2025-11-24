@@ -47,7 +47,7 @@
         </div>
     </div>
     @else
-        <div class="alert alert-warning">{{__("No rooms found")}}</div>
+        <div class="alert alert-warning">{{__("Quartos não encontrados")}}</div>
     @endif
     <div class="d-flex justify-content-center">
         {{$rows->appends($request->query())->links()}}

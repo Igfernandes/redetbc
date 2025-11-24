@@ -77,7 +77,7 @@
                                     </tr>
                                 @endforeach
                             @else
-                                <tr><td colspan="5">{{__("No data found")}}</td></tr>
+                                <tr><td colspan="7">{{__("Nenhuma informação encontrada")}}</td></tr>
                             @endif
                         </tbody>
                         {{$transactions->links()}}

@@ -2,7 +2,6 @@
 
 namespace Modules\Ai;
 
-use App\Helpers\Assets;
 use Modules\Ai\Drivers\AiDriver;
 use Modules\Ai\Drivers\OpenAi;
 use Modules\ModuleServiceProvider;
@@ -31,7 +30,7 @@ class ModuleProvider extends ModuleServiceProvider
             $settings = config('ai.providers');
             $default = config('ai.default');
             if (empty($settings[$default])) {
-                throw new \Exception("AI Driver not found");
+                throw new \Exception("Driver AI não encontrado");
             }
             return new OpenAi($settings[$default]);
         });

@@ -7,8 +7,8 @@
     <div class="tab-buttons">
         <h4><?php echo e(setting_item_with_lang('user_plans_sale_text', app()->getLocale()) ?? __('Save up to 10%')); ?></h4>
         <ul class="tab-btns">
-            <li data-tab="#monthly" class="tab-btn active-btn"><?php echo e(__('Mêsly')); ?></li>
-            <li data-tab="#annual" class="tab-btn"><?php echo e(__('Annual')); ?></li>
+            <li data-tab="#monthly" class="tab-btn active-btn"><?php echo e(__('Mensal')); ?></li>
+            <li data-tab="#annual" class="tab-btn"><?php echo e(__('Anual')); ?></li>
         </ul>
     </div>
     <?php endif; ?>;

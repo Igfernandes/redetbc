@@ -7,7 +7,7 @@
             <span>{{ __("Livro") }}</span>
         </div>
         <div class="enquiry-item" data-toggle="modal" data-target="#enquiry_form_modal">
-            <span>{{ __("Investigação") }}</span>
+            <span>{{ __("Consulta") }}</span>
         </div>
     </div>
     <div class="form-book">
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <i class="fa fa-angle-down arrow"></i>
                         <div class="form-content dropdown-toggle" data-toggle="dropdown">
-                            <label class="form-label">{{__('Guests')}}</label>
+                            <label class="form-label">{{__('Hospedes')}}</label>
                             <div class="render">
                                 <span class="adults" >
                                     <span class="one" >@{{adults}}
@@ -67,7 +67,7 @@
                 <div class="col-md-4 col-btn">
                     <div class="g-button-submit">
                         <button class="btn btn-primary btn-search" @click="checkAvailability" :class="{'loading':onLoadAvailability}" type="submit">
-                            {{__("Check Availability")}}
+                            {{__("Verificar Disponibilidade")}}
                             <i v-show="onLoadAvailability" class="fa fa-spinner fa-spin"></i>
                         </button>
                     </div>
@@ -220,7 +220,7 @@
                     <div class="extra-price-wrap d-flex justify-content-between is_mobile">
                         <div class="flex-grow-1">
                             <label>
-                                {{__("Total Price")}}:
+                                {{__("Preço total")}}:
                             </label>
                         </div>
                         <div class="total-room-price">@{{total_price_html}}</div>
@@ -229,7 +229,7 @@
                 <div class="col-md-6">
                     <div class="control-book">
                         <div class="total-room-price">
-                            <span> {{__("Total Price")}}:</span> @{{total_price_html}}
+                            <span> {{__("Preço total")}}:</span> @{{total_price_html}}
                         </div>
                         <div v-if="is_deposit_ready" class="total-room-price">
                             <span>{{__("Pagar agora")}}</span>

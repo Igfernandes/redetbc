@@ -1,3 +1,12 @@
+@php
+use Modules\User\Models\Role;
+
+$roles = [];
+foreach (Role::all(['id', 'name'])->toArray() as $role) {
+$roles[strtolower($role['name'])] = $role['id'];
+}
+@endphp
+
 <form class="form bravo-form-register" method="post" action="{{route('auth.register.store')}}">
     @csrf
     <div class="">

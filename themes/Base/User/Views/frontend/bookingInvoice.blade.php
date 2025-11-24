@@ -76,7 +76,7 @@
                     </div>
                 </th>
                 <th width="50%" align="right" class="text-right">
-                    <h2 class="invoice-text-title">{{__("INVOICE")}}</h2>
+                    <h2 class="invoice-text-title">{{__("Fatura")}}</h2>
                     {{__('Invoice #: :number',['number'=>$booking->id])}}
                     <br>
                     {{__('Created: :date',['date'=>display_date($booking->created_at)])}}

@@ -120,7 +120,7 @@ class ManageSpaceController extends FrontendController
             'attributes'    => $this->attributesClass::where('service', 'space')->get(),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Gerenciar Espaços'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -128,7 +128,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Create Spaces"),
+            'page_title'         => __("Criar Espaços"),
         ];
         return view('Space::frontend.manageSpace.detail', $data);
     }
@@ -250,7 +250,7 @@ class ManageSpaceController extends FrontendController
             "selected_terms" => $row->terms->pluck('term_id'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Gerenciar Espaços'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -258,7 +258,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Editar Spaces"),
+            'page_title'         => __("Editar Espaços"),
         ];
         return view('Space::frontend.manageSpace.detail', $data);
     }

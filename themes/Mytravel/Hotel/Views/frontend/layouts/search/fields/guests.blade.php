@@ -9,11 +9,11 @@
             @endphp
             <div class="text-black font-size-16 font-weight-semi-bold mr-auto">
                <div class="render">
-                    <span class="adults" ><span class="one @if($adults >1) d-none @endif">{{__('1 Adult')}}</span> <span class="@if($adults <= 1) d-none @endif multi" data-html="{{__(':count Adults')}}">{{__(':count Adults',['count'=>request()->query('adults',1)])}}</span></span>
+                    <span class="adults" ><span class="one @if($adults >1) d-none @endif">{{__('1 Adulto')}}</span> <span class="@if($adults <= 1) d-none @endif multi" data-html="{{__(':count Adultos')}}">{{__(':count Adultos',['count'=>request()->query('adults',1)])}}</span></span>
                     -
                     <span class="children" >
-                        <span class="one @if($children >1) d-none @endif" data-html="{{__(':count Child')}}">{{__(':count Child',['count'=>request()->query('children',0)])}}</span>
-                        <span class="multi @if($children <=1) d-none @endif" data-html="{{__(':count Children')}}">{{__(':count Children',['count'=>request()->query('children',0)])}}</span>
+                        <span class="one @if($children >1) d-none @endif" data-html="{{__(':count criança')}}">{{__(':count criança',['count'=>request()->query('children',0)])}}</span>
+                        <span class="multi @if($children <=1) d-none @endif" data-html="{{__(':count crianças')}}">{{__(':count crianças',['count'=>request()->query('children',0)])}}</span>
                     </span>
                </div>
             </div>

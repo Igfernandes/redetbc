@@ -2,7 +2,7 @@
 @if(!empty($booking_why_book_with_us))
     <div class="border border-color-7 rounded p-4 mb-5 mt-5">
         <h6 class="font-size-17 font-weight-bold text-gray-3 mx-1 mb-3 pb-1">
-            {{ __("Why Book With Us?") }}
+            {{ __("Por que reservar conosco?") }}
         </h6>
         @foreach($booking_why_book_with_us as $key=>$item)
             <div class="d-flex align-items-center mt-3">

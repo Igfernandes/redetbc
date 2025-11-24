@@ -29,7 +29,7 @@
                             </li>
                             @if(is_enable_registration())
                                 <li class="signup-item">
-                                    <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                                    <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Cadastrar-se')}}</a>
                                 </li>
                             @endif
                         @else
@@ -87,7 +87,7 @@
                     </li>
                     @if(is_enable_registration())
                         <li>
-                            <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                            <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Cadastrar-se')}}</a>
                         </li>
                     @endif
                 @else

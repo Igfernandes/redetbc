@@ -9,11 +9,11 @@
             ?>
             <div class="text-black font-size-16 font-weight-semi-bold mr-auto">
                <div class="render">
-                    <span class="adults" ><span class="one <?php if($adults >1): ?> d-none <?php endif; ?>"><?php echo e(__('1 Adult')); ?></span> <span class="<?php if($adults <= 1): ?> d-none <?php endif; ?> multi" data-html="<?php echo e(__(':count Adults')); ?>"><?php echo e(__(':count Adults',['count'=>request()->query('adults',1)])); ?></span></span>
+                    <span class="adults" ><span class="one <?php if($adults >1): ?> d-none <?php endif; ?>"><?php echo e(__('1 Adulto')); ?></span> <span class="<?php if($adults <= 1): ?> d-none <?php endif; ?> multi" data-html="<?php echo e(__(':count Adultos')); ?>"><?php echo e(__(':count Adultos',['count'=>request()->query('adults',1)])); ?></span></span>
                     -
                     <span class="children" >
-                        <span class="one <?php if($children >1): ?> d-none <?php endif; ?>" data-html="<?php echo e(__(':count Child')); ?>"><?php echo e(__(':count Child',['count'=>request()->query('children',0)])); ?></span>
-                        <span class="multi <?php if($children <=1): ?> d-none <?php endif; ?>" data-html="<?php echo e(__(':count Children')); ?>"><?php echo e(__(':count Children',['count'=>request()->query('children',0)])); ?></span>
+                        <span class="one <?php if($children >1): ?> d-none <?php endif; ?>" data-html="<?php echo e(__(':count criança')); ?>"><?php echo e(__(':count criança',['count'=>request()->query('children',0)])); ?></span>
+                        <span class="multi <?php if($children <=1): ?> d-none <?php endif; ?>" data-html="<?php echo e(__(':count crianças')); ?>"><?php echo e(__(':count crianças',['count'=>request()->query('children',0)])); ?></span>
                     </span>
                </div>
             </div>

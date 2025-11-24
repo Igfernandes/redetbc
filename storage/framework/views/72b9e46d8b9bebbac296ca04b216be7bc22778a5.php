@@ -1,1 +1,0 @@
-<?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\modules/Language/Views/admin/navigation.blade.php ENDPATH**/ ?>

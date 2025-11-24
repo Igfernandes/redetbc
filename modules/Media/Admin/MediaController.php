@@ -231,7 +231,7 @@ class MediaController extends Controller
 
         $file = MediaFile::find($image_id);
         if(!$file){
-            return $this->sendError("File not found");
+            return $this->sendError("Arquivo não encontrado");
         }
 
         try{

@@ -66,9 +66,9 @@
                         </div>
                         <span class="review">
                         @if($reviewData['total_review'] > 1)
-                                {{ __(":number Reviews",["number"=>$reviewData['total_review'] ]) }}
+                                {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
                             @else
-                                {{ __(":number Review",["number"=>$reviewData['total_review'] ]) }}
+                                {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
                             @endif
                     </span>
                     </div>
@@ -111,9 +111,9 @@
     <script>
         var bravo_booking_data = {!! json_encode($booking_data) !!}
             var bravo_booking_i18n = {
-            no_date_select:'{{__('Please select Start date')}}',
-            no_guest_select:'{{__('Please select at least one guest')}}',
-            load_dates_url:'{{route('tour.vendor.availability.loadDates')}}',
+            no_date_select:'{{__("Please select Start date")}}',
+            no_guest_select:'{{__("Please select at least one guest")}}',
+            load_dates_url:'{{route("tour.vendor.availability.loadDates")}}',
             name_required:'{{ __("Nome é obrigatório") }}',
             email_required:'{{ __("Email é obrigatório") }}',
         };

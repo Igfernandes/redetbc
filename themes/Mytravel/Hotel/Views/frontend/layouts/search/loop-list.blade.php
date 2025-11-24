@@ -95,7 +95,7 @@
                             </div>
                             <span class="font-size-14 text-gray-1">
                                 @if(!empty($reviewData['total_review']))
-                                    ({{__(":number reviews",['number'=>$reviewData['total_review']])}})
+                                    ({{__(":number Avaliações",['number'=>$reviewData['total_review']])}})
                                 @endif
                             </span>
                         </div>

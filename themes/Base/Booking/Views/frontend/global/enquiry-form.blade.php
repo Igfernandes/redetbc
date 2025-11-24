@@ -5,7 +5,7 @@ $user = auth()->user();
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content enquiry_form_modal_form">
             <div class="modal-header">
-                <h5 class="modal-title">{{__("Investigação")}}</h5>
+                <h5 class="modal-title">{{__("Consulta")}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -34,7 +34,7 @@ $user = auth()->user();
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
-                <button type="button" class="btn btn-primary btn-submit-enquiry">{{__("Send now")}}
+                <button type="button" class="btn btn-primary btn-submit-enquiry">{{__("Enviar Agora")}}
                 <i class="fa icon-loading fa-spinner fa-spin fa-fw" style="display: none"></i>
                 </button>
             </div>

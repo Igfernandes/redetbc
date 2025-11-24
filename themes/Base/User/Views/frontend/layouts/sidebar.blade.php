@@ -19,7 +19,7 @@ $menus = [
     ],
     "wishlist" => [
         'url'   => route("user.wishList.index"),
-        'title' => __("Wishlist"),
+        'title' => __("Lista de desejos"),
         'icon'  => 'fa fa-heart-o',
         'position' => 21,
         'is_verified' => 1

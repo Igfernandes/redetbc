@@ -26,7 +26,7 @@
                          @if($row->getBookingType()=="by_day")
                             {{__("/day")}}
                         @else
-                            {{__("/night")}}
+                            {{__("/noite")}}
                         @endif
                     </span>
                 </div>
@@ -77,9 +77,9 @@
                 </span>
                 <span class="font-size-14 text-gray-1 ml-2 review">
                     @if($reviewData['total_review'] > 1)
-                        {{ __(":number reviews",["number"=>$reviewData['total_review'] ]) }}
+                        {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
                     @else
-                        {{ __(":number review",["number"=>$reviewData['total_review'] ]) }}
+                        {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
                     @endif
                 </span>
             @endif

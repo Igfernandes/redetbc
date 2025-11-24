@@ -8,7 +8,7 @@
             @endforeach
         @else
             <div class="col-lg-12">
-                {{__("Service not found")}}
+                {{__("Serviço não encontrado")}}
             </div>
         @endif
     </div>

@@ -9,7 +9,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>{{__("Número do Quarto")}} <span class="text-danger">*</span></label>
-                <input type="number" required value="{{$row->number ?? 1}}" min="1" max="100" placeholder="{{__("Number")}}" name="number" class="form-control">
+                <input type="number" required value="{{$row->number ?? 1}}" min="1" max="100" placeholder="{{__("Número")}}" name="number" class="form-control">
             </div>
         </div>
     </div>
@@ -31,14 +31,14 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>{{__("Número de camas")}} </label>
-                <input type="number"  value="{{$row->beds ?? 1}}" min="1" max="10" placeholder="{{__("Number")}}" name="beds" class="form-control">
+                <input type="number"  value="{{$row->beds ?? 1}}" min="1" max="10" placeholder="{{__("Número")}}" name="beds" class="form-control">
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>{{__("Tamanho do Quarto")}} </label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="size" value="{{$row->size ?? 0}}" placeholder="{{__("Room size")}}" >
+                    <input type="text" class="form-control" name="size" value="{{$row->size ?? 0}}" placeholder="{{__("Tamanho do Quarto")}}" >
                     <div class="input-group-append">
                         <span class="input-group-text" >{!! size_unit_format() !!}</span>
                     </div>

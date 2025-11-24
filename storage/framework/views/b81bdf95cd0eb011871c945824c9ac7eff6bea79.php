@@ -13,7 +13,7 @@
                                     <i class="fa fa-search"></i> <?php echo e(__("Procurar")); ?></button>
                             </div>
                             <div class="filter-item">
-                                <small><i><?php echo e(__("Total")); ?>: {{total}} <?php echo e(__("files")); ?></i></small>
+                                <small><i><?php echo e(__("Total")); ?>: {{total}} <?php echo e(__("Arquivos")); ?></i></small>
                             </div>
                         </div>
                         <div class="div">
@@ -49,7 +49,7 @@
                             <div class="col-sm-6 py-2 border-bottom border-right"><?php echo e(__("Nome")); ?></div>
                             <div class="col-sm-2 py-2 border-bottom border-right"><?php echo e(__("Tipo")); ?></div>
                             <div class="col-sm-2 py-2 border-bottom border-right"><?php echo e(__("Criado em")); ?></div>
-                            <div class="col-sm-2 py-2 border-bottom border-right"><?php echo e(__("Size")); ?></div>
+                            <div class="col-sm-2 py-2 border-bottom border-right"><?php echo e(__("Tamanho")); ?></div>
                         </div>
                         <folder-item @deleted="deletedFolder" @toggle-edit="toggleEditFolder" @dblclick="showFolder(folder)" @update="updateFolder" :view-type="viewType" v-for="(folder,index) in folders" :index="index" :key="'folder-'+index" :folder="folder"></folder-item>
                         <file-item v-for="(file,index) in files" :key="index" :view-type="viewType" :selected="selected" :file="file" v-on:select-file="selectFile"></file-item>
@@ -58,19 +58,19 @@
                         <folder-item @deleted="deletedFolder" @toggle-edit="toggleEditFolder" @dblclick="showFolder(folder)" @update="updateFolder" v-for="(folder,index) in folders" :index="index" :key="'folder-'+index" :folder="folder"></folder-item>
                         <file-item v-for="(file,index) in files" :key="index" :view-type="viewType" :selected="selected" :file="file" v-on:select-file="selectFile"></file-item>
                     </div>
-                    <p class="no-files-text text-center" v-show="!total && apiFinished" style="display: none"><?php echo e(__("No file found")); ?></p>
+                    <p class="no-files-text text-center" v-show="!total && apiFinished" style="display: none"><?php echo e(__("Nenhum arquivo encontrado")); ?></p>
                     <div class="text-center" v-if="totalPage > 1">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item" :class="{disabled:filter.page <= 1}">
-                                    <a class="page-link" v-if="filter.page <=1"><?php echo e(__("Previous")); ?></a>
-                                    <a class="page-link" href="#" v-if="filter.page > 1" v-on:click="changePage(filter.page-1,$event)"><?php echo e(__("Previous")); ?></a>
+                                    <a class="page-link" v-if="filter.page <=1"><?php echo e(__("Anterior")); ?></a>
+                                    <a class="page-link" href="#" v-if="filter.page > 1" v-on:click="changePage(filter.page-1,$event)"><?php echo e(__("Anterior")); ?></a>
                                 </li>
                                 <li class="page-item" v-if="p >= (filter.page-3) && p <= (filter.page+3)" :class="{active: p == filter.page}" v-for="p in totalPage" @click="changePage(p,$event)">
                                     <a class="page-link" href="#">{{p}}</a></li>
                                 <li class="page-item" :class="{disabled:filter.page >= totalPage}">
-                                    <a v-if="filter.page >= totalPage" class="page-link"><?php echo e(__("Next")); ?></a>
-                                    <a href="#" class="page-link" v-if="filter.page < totalPage" v-on:click="changePage(filter.page+1,$event)"><?php echo e(__("Next")); ?></a>
+                                    <a v-if="filter.page >= totalPage" class="page-link"><?php echo e(__("Próximo")); ?></a>
+                                    <a href="#" class="page-link" v-if="filter.page < totalPage" v-on:click="changePage(filter.page+1,$event)"><?php echo e(__("Próximo")); ?></a>
                                 </li>
                             </ul>
                         </nav>
@@ -79,15 +79,15 @@
                 <div class="browser-actions d-flex justify-content-between flex-shrink-0" v-if="selected.length">
                     <div class="col-left" v-show="selected.length">
                         <div class="control-remove" v-if="selected && selected.length">
-                            <button class="btn btn-danger" @click="removeFiles"><?php echo e(__("Delete file")); ?></button>
+                            <button class="btn btn-danger" @click="removeFiles"><?php echo e(__("Excluir arquivo")); ?></button>
                         </div>
                         <div class="control-info" v-if="selected && selected.length">
-                            <div class="count-selected">{{selected.length}} <?php echo e(__("file selected")); ?></div>
-                            <div class="clear-selected" @click="selected=[]"><i><?php echo e(__("unselect")); ?></i></div>
+                            <div class="count-selected">{{selected.length}} <?php echo e(__("arquivo selecionado")); ?></div>
+                            <div class="clear-selected" @click="selected=[]"><i><?php echo e(__("desmarcar")); ?></i></div>
                         </div>
                     </div>
                     <div class="col-right" v-show="selected.length">
-                        <button class="btn btn-primary" :class="{disabled:!selected.length}" @click="sendFiles"><?php echo e(__("Use file")); ?></button>
+                        <button class="btn btn-primary" :class="{disabled:!selected.length}" @click="sendFiles"><?php echo e(__("Usar arquivo")); ?></button>
                     </div>
                 </div>
             </div>
@@ -135,10 +135,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-2 py-1 border-right border-bottom"><?php echo e(__("Folder")); ?></div>
+            <div class="col-sm-2 py-1 border-right border-bottom"><?php echo e(__("Pasta")); ?></div>
             <div class="col-sm-2 py-1 border-right border-bottom">{{ folder.created_at }}</div>
             <div class="col-sm-2 py-1 border-right border-bottom d-flex justify-content-end">
-                <a href="#" class="btn-sm text-danger" title="<?php echo e(__("Delete this folder")); ?>" @click.prevent="deleteFolder"><i class="fa fa-trash"></i></a>
+                <a href="#" class="btn-sm text-danger" title="<?php echo e(__("Excluir esta pasta")); ?>" @click.prevent="deleteFolder"><i class="fa fa-trash"></i></a>
             </div>
         </div>
         <div v-if="viewType == 'grid'" class="inner d-flex flex-column  position-relative">

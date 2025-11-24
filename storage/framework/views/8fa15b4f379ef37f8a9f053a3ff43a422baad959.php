@@ -91,10 +91,10 @@
                     </div>
                     <span class="text-secondary font-size-14 mt-1">
                         <?php if($reviewData['total_review'] > 1): ?>
-                            <?php echo e(__(":number Reviews",["number"=>$reviewData['total_review'] ])); ?>
+                            <?php echo e(__(":number Avaliações",["number"=>$reviewData['total_review'] ])); ?>
 
                         <?php else: ?>
-                            <?php echo e(__(":number Review",["number"=>$reviewData['total_review'] ])); ?>
+                            <?php echo e(__(":number Avaliação",["number"=>$reviewData['total_review'] ])); ?>
 
                         <?php endif; ?>
                     </span>

@@ -99,7 +99,7 @@ class Hotel extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Procurar Spaces");
+        $meta['seo_title'] = __("Procurar Espaços");
         if (!empty($title = setting_item_with_lang("hotel_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("hotel_page_search_title"))) {
@@ -1114,7 +1114,7 @@ class Hotel extends Bookable
                 "max_price" => ceil(Currency::convertPrice($min_max_price[1])),
             ],
             [
-                "title"    => __("Hotel Star"),
+                "title"    => __("Estrela do Hotel"),
                 "field"    => "star_rate",
                 "position" => "2",
                 "min" => "1",
