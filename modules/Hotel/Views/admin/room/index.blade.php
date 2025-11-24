@@ -19,7 +19,7 @@
                             @include('Hotel::admin.room.form')
                         </div>
                         <div class="panel-footer">
-                            <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> {{__("Add Room")}}</button>
+                            <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> {{__("Adicionar Quarto")}}</button>
                         </div>
                     </div>
                 </form>
@@ -34,8 +34,8 @@
                                     <option value="">{{__(" Ações em Massa ")}}</option>
                                     <option value="publish">{{__(" Publicar ")}}</option>
                                     <option value="draft">{{__(" Mover para Lixeira ")}}</option>
-                                    <option value="pending">{{__("Move to Pending")}}</option>
-                                    {{--<option value="clone">{{__(" Clone ")}}</option>--}}
+                                    <option value="pending">{{__("Mover para Pendente")}}</option>
+                                    {{--<option value="clone">{{__(" Duplicar ")}}</option>--}}
                                     <option value="delete">{{__("Excluir")}}</option>
                                 </select>
                                 <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
@@ -54,7 +54,7 @@
                                     <thead>
                                     <tr>
                                         <th width="45px"><input type="checkbox" class="check-all"></th>
-                                        <th> {{ __('Room name')}}</th>
+                                        <th> {{ __('Nome do Quarto')}}</th>
                                         <th width="100px"> {{ __('Número')}}</th>
                                         <th width="100px"> {{ __('Preço')}}</th>
                                         <th width="100px"> {{ __('Status')}}</th>

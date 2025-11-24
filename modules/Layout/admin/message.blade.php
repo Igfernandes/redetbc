@@ -40,7 +40,7 @@
 @if ($errors->any())
     <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">×</button>
-        {{__("Please check the form below for errors")}}
+        {{__("Por favor, verifique o formulário abaixo em busca de erros")}}
         <ul style="padding-left: 20px">
             @foreach ($errors->all() as $error)
                 <li>{!! clean($error) !!}</li>

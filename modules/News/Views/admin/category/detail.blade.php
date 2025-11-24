@@ -5,7 +5,7 @@
         <div class="container">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->name : __('Add new category')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->name : __('Adicionar nova categoria')}}</h1>
                     @if($row->slug)
                         <p class="item-url-demo"> {{ __('Permalink:')}}
                             {{ url((request()->query('lang') ? request()->query('lang').'/' : '').config('news.news_route_prefix')."/".config('news.news_category_route_prefix')) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
@@ -15,7 +15,7 @@
                 <div class="">
                     @if($row->slug)
                         <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl()}}"
-                           target="_blank"> {{ __('View')}}</a>
+                           target="_blank"> {{ __('Visualizar')}}</a>
                     @endif
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     <div class="col-md-9">
                         <div class="panel">
                             <div class="panel-body">
-                                <h3 class="panel-body-title"> {{ __('Category Content')}}</h3>
+                                <h3 class="panel-body-title"> {{ __('Conteúdo da Categoria')}}</h3>
                                 @include('News::admin/category/form')
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                     </div>
                                 @endif
 
-                                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> {{ __('Save Change')}}</button>
+                                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> {{ __('Salvar Alterações')}}</button>
                             </div>
 
                         </div>

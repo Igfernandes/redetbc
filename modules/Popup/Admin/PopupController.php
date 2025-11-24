@@ -100,7 +100,7 @@ class PopupController extends AdminController
                     'url'  => route('popup.admin.index')
                 ],
                 [
-                    'name'  => __('Add Popup'),
+                    'name'  => __('Adicionar Popup'),
                     'class' => 'active'
                 ],
             ],
@@ -131,7 +131,7 @@ class PopupController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Editarar: :name", ['name' => $row->title])
+            'page_title'        => __("Editar: :name", ['name' => $row->title])
         ];
         return view('Popup::admin.detail', $data);
     }

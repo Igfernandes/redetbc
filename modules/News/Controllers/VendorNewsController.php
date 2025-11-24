@@ -67,7 +67,7 @@ class VendorNewsController extends FrontendController
                     'url'  => route('news.vendor.index')
                 ],
                 [
-                    'name'  => __('Add News'),
+                    'name'  => __('Adicionar notícias'),
                     'class' => 'active'
                 ],
             ],

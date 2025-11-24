@@ -33,7 +33,7 @@
                     <input type="radio" name="role" value="{{$roles['traveler']}}">
                     <div class="text">
                         <i class="icofont-travelling"></i>
-                        <span>{{__('Traveler')}}</span>
+                        <span>{{__('Viajante')}}</span>
                     </div>
                 </li>
                 @endif
@@ -60,7 +60,7 @@
                     <input type="radio" name="role" value="{{$roles['assistance']}}">
                     <div class="text">
                         <i class="icofont-building-alt"></i>
-                        <span>{{__('Services')}}</span>
+                        <span>{{__('Serviços')}}</span>
                     </div>
                 </li>
                 @endif

@@ -20,7 +20,7 @@ class MediaController extends Controller
     public function privateFileStore(Request $request)
     {
         if(!$user_id = Auth::id()){
-            return $this->sendError(__("Please log in"));
+            return $this->sendError(__("Por favor, faça login"));
         }
 
         $fileName = 'file';
@@ -66,7 +66,7 @@ class MediaController extends Controller
                 return $this->sendError($exception->getMessage());
             }
         }
-        return $this->sendError(__("Can not upload the file"));
+        return $this->sendError(__("Não foi possível enviar o arquivo"));
     }
 
     /**
@@ -130,10 +130,10 @@ class MediaController extends Controller
         $config = isset($uploadConfigs[$group]) ? $uploadConfigs[$group] : $uploadConfigs['default'];
 
         if (!in_array(strtolower($file->getClientOriginalExtension()), $config['types'])) {
-            throw new \Exception(__("File type are not allowed"));
+            throw new \Exception(__("Tipo de arquivo não permitido"));
         }
         if ($file->getSize() > $config['max_size']) {
-            throw new \Exception(__("Maximum upload file size is :max_size B", ['max_size' => $config['max_size']]));
+            throw new \Exception(__("O tamanho máximo do arquivo para upload é :max_size B", ['max_size' => $config['max_size']]));
         }
 
         if(in_array($file_extension = strtolower($file->getClientOriginalExtension()), $allowedExtsImage)) {
@@ -141,13 +141,13 @@ class MediaController extends Controller
             if (!empty($config['max_width']) or !empty($config['max_width'])) {
                 $imagedata = getimagesize($file->getPathname());
                 if (empty($imagedata)) {
-                    throw new \Exception(__("Can not get image dimensions"));
+                    throw new \Exception(__("Não foi possível obter as dimensões da imagem"));
                 }
                 if (!empty($config['max_width']) and $imagedata[0] > $config['max_width']) {
-                    throw new \Exception(__("Maximum width allowed is: :number", ['number' => $config['max_width']]));
+                    throw new \Exception(__("A largura máxima permitida é: :number", ['number' => $config['max_width']]));
                 }
                 if (!empty($config['max_height']) and $imagedata[1] > $config['max_height']) {
-                    throw new \Exception(__("Maximum height allowed is: :number", ['number' => $config['max_height']]));
+                    throw new \Exception(__("A altura máxima permitida é: :number", ['number' => $config['max_height']]));
                 }
             }
         }

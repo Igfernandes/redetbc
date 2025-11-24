@@ -34,54 +34,59 @@
         language: '{{ app()->getLocale() }}',
         module:{}
     };
+
     @if(auth()->user())
         bookingCore.media = {
-        groups:{!! json_encode(config('bc.media.groups')) !!},
-    }
+            groups:{!! json_encode(config('bc.media.groups')) !!}
+        }
     @endif
+
     @foreach(get_bookable_services() as $id=>$class)
         @if($class::isEnable())
             bookingCore.module.{{$id}} = '{{route($id.'.search')}}';
         @endif
     @endforeach
+
     var i18n = {
-        warning:"{{__("Warning")}}",
-        success:"{{__("Success")}}",
-        confirm_delete:"{{__("Você quer apagar?")}}",
-        confirm:"{{__("Confirm")}}",
-        cancel:"{{__("Cancelar")}}",
+        warning:"Aviso",
+        success:"Sucesso",
+        confirm_delete:"Você quer apagar?",
+        confirm:"Confirmar",
+        cancel:"Cancelar"
     };
+
     var daterangepickerLocale = {
-        "applyLabel": "{{__('Aplicar')}}",
-        "cancelLabel": "{{__('Cancel')}}",
-        "fromLabel": "{{__('From')}}",
-        "toLabel": "{{__('To')}}",
-        "customRangeLabel": "{{__('Custom')}}",
-        "weekLabel": "{{__('W')}}",
+        "applyLabel": "Aplicar",
+        "cancelLabel": "Cancelar",
+        "fromLabel": "De",
+        "toLabel": "Até",
+        "customRangeLabel": "Personalizado",
+        "weekLabel": "S",
         "first_day_of_week": {{ setting_item("site_first_day_of_the_weekin_calendar","1") }},
         "daysOfWeek": [
-            "{{__('Su')}}",
-            "{{__('Mo')}}",
-            "{{__('Tu')}}",
-            "{{__('We')}}",
-            "{{__('Th')}}",
-            "{{__('Fr')}}",
-            "{{__('Sa')}}"
+            "Dom",
+            "Seg",
+            "Ter",
+            "Qua",
+            "Qui",
+            "Sex",
+            "Sáb"
         ],
         "monthNames": [
-            "{{__('January')}}",
-            "{{__('February')}}",
-            "{{__('March')}}",
-            "{{__('April')}}",
-            "{{__('May')}}",
-            "{{__('June')}}",
-            "{{__('July')}}",
-            "{{__('August')}}",
-            "{{__('September')}}",
-            "{{__('October')}}",
-            "{{__('November')}}",
-            "{{__('December')}}"
-        ],
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"
+        ]
     };
+
     window.currentUrl = '{{request()->url()}}';
 </script>

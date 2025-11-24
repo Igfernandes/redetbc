@@ -14,11 +14,11 @@
                     @include('Core::frontend.currency-switcher')
                     @if(!Auth::check())
                     <li class="login-item">
-                        <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
+                        <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Conectar')}}</a>
                     </li>
                     @if(is_enable_registration())
                     <li class="signup-item">
-                        <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                        <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Registrar')}}</a>
                     </li>
                     @endif
                     @else
@@ -48,13 +48,13 @@
                             <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 
                             @if(is_enable_plan() )
-                            <li class="menu-hr"><a href="{{route('user.plan')}}"><i class="fa fa-list-alt"></i> {{__("My plan")}}</a></li>
+                            <li class="menu-hr"><a href="{{route('user.plan')}}"><i class="fa fa-list-alt"></i> {{__("Meu plano")}}</a></li>
                             @endif
 
                             @if(isPro())
                             <li class="menu-hr">
                                 <a href="{{route('support.index')}}">
-                                    <i class="fa fa-list-alt"></i> {{__("Support Center")}}</a>
+                                    <i class="fa fa-list-alt"></i> {{__("Centro de Suporte")}}</a>
                             </li>
                             @endif
 

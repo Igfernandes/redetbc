@@ -77,7 +77,7 @@ class AvailabilityController extends FrontendController{
                 'class' => 'active'
             ],
         ];
-        $page_title = __('Espaçoss Availability');
+        $page_title = __('Disponibilidade do Espaço');
 
         return view($this->indexView,compact('rows','breadcrumbs','current_month','page_title','request'));
     }
@@ -95,7 +95,7 @@ class AvailabilityController extends FrontendController{
         }
         $space = $this->spaceClass::find($request->query('id'));
         if(empty($space)){
-            return $this->sendError(__('Espaços not found'));
+            return $this->sendError(__('Espaço não encontrado'));
         }
         $is_single = $request->query('for_single');
         $query = $this->spaceDateClass::query();
@@ -255,12 +255,12 @@ class AvailabilityController extends FrontendController{
         $target_id = $request->input('target_id');
 
         if(empty($space)){
-            return $this->sendError(__('Espaços not found'));
+            return $this->sendError(__('Espaço não encontrado'));
         }
 
         if(!$this->hasPermission('space_manage_others')){
             if($space->author_id != Auth::id()){
-                return $this->sendError("You do not have permission to access it");
+                return $this->sendError(__('Você não tem permissão para acessá-lo'));
             }
         }
 

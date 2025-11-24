@@ -19,12 +19,12 @@
                             <option value="">{{__(" Ações em Massa ")}}</option>
 
                             @if(!empty($recovery))
-                                <option value="recovery">{{__(" Recovery ")}}</option>
-                                <option value="permanently_delete">{{__("Permanently delete")}}</option>
+                                <option value="recovery">{{__(" Recuperar ")}}</option>
+                                <option value="permanently_delete">{{__("Excluir permanentemente")}}</option>
                             @else
                                 <option value="publish">{{__(" Publicar ")}}</option>
                                 <option value="draft">{{__(" Mover para Lixeira ")}}</option>
-                                <option value="pending">{{__("Move to Pending")}}</option>
+                                <option value="pending">{{__("Mover para pendentes")}}</option>
                                 <option value="clone">{{__(" Clone ")}}</option>
                                 <option value="delete">{{__("Excluir")}}</option>
                             @endif
@@ -106,7 +106,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7">{{__("No space found")}}</td>
+                                <td colspan="7">{{__("Nenhum espaço encontrado")}}</td>
                             </tr>
                         @endif
                         </tbody>

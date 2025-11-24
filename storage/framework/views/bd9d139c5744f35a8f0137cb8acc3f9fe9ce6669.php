@@ -20,7 +20,7 @@
         </div>
         <div class="dropdown-menu select-guests-dropdown" >
             <div class="dropdown-item-row">
-                <div class="label"><?php echo e(__('Adults')); ?></div>
+                <div class="label"><?php echo e(__('Adultos')); ?></div>
                 <div class="val">
                     <span class="btn-minus" data-input="adults"><i class="icon ion-md-remove"></i></span>
                     <span class="count-display"><input type="number" name="adults" value="<?php echo e(request()->query('adults',1)); ?>" min="1"></span>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="dropdown-item-row">
-                <div class="label"><?php echo e(__('Children')); ?></div>
+                <div class="label"><?php echo e(__('Crianças')); ?></div>
                 <div class="val">
                     <span class="btn-minus" data-input="children"><i class="icon ion-md-remove"></i></span>
                     <span class="count-display"> <input type="number" name="children" value="<?php echo e(request()->query('children',0)); ?>" min="0"> </span>

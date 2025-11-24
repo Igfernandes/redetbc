@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label>{{__("Locale")}}</label>
+    <label>{{__("Localização")}}</label>
     <div>
         <select name="locale" class="form-control dungdt-select2-field dungdt_input_locale" data-options='{"allowClear":true}' data-id="{{$row->id}}">
             <option value="">{{__("-- Selecione --")}}</option>
@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label>{{__("Flag Icon")}}</label>
+    <label>{{__("Ícone da Bandeira")}}</label>
     <div class="input-group mb-3">
         <input type="text" value="{{$row->flag}}" placeholder="{{__("Eg: gb")}}" name="flag" class="form-control dungdt-input-flag-icon" required>
         <div class="input-group-append">
@@ -18,15 +18,15 @@
         </div>
 
         <div class="invalid-feedback">
-            {{__('Please input flag code')}}
+            {{__('Porfavor insira o código da bandeira válida')}} ({{__("Eg: gb, us, fr ...")}})
         </div>
     </div>
 </div>
 <div class="form-group">
     <label>{{__("Nome")}}</label>
-    <input type="text" value="{{$row->name}}" placeholder="{{__("Display Name")}}" name="name" class="form-control" required>
+    <input type="text" value="{{$row->name}}" placeholder="{{__("Nome de Exibição")}}" name="name" class="form-control" required>
     <div class="invalid-feedback">
-        {{__('Please input language name')}}
+        {{__('Por favor, insira o nome do idioma')}}
     </div>
 </div>
 <div class="form-group">

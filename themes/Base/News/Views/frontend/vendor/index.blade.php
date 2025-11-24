@@ -19,7 +19,7 @@
                             @if(!setting_item('news_vendor_need_approve'))
                                 <option value="publish">{{__(" Publicar ")}}</option>
                             @endif
-                            <option value="pending">{{__("Move to Pending")}}</option>
+                            <option value="pending">{{__("Mover para pendentes")}}</option>
                             <option value="draft">{{__(" Mover para Lixeira ")}}</option>
                             <option value="delete">{{__("Excluir")}}</option>
                         </select>

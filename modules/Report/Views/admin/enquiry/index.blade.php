@@ -2,7 +2,7 @@
 @section ('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__('All Enquiries')}}</h1>
+            <h1 class="title-bar">{{__('Todas as consultas')}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between">
@@ -14,10 +14,10 @@
                             <option value="">{{__("-- Bulk Actions --")}}</option>
                             @if(!empty($statues))
                                 @foreach($statues as $status)
-                                    <option value="{{$status}}">{{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}</option>
+                                    <option value="{{$status}}">{{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}</option>
                                 @endforeach
                             @endif
-                            <option value="delete">{{__("DELETE Enquiry")}}</option>
+                            <option value="delete">{{__("EXCLUIR Consulta")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
@@ -42,9 +42,9 @@
                         <tr>
                             <th width="80px"><input type="checkbox" class="check-all"></th>
                             <th>{{__('Serviço')}}</th>
-                            <th>{{__('Customer')}}</th>
+                            <th>{{__('Cliente')}}</th>
                             <th width="80px">{{__('Status')}}</th>
-                            <th width="80px">{{__('Replies')}}</th>
+                            <th width="80px">{{__('Respostas')}}</th>
                             <th width="180px">{{__('Criado em')}}</th>
                         </tr>
                         </thead>
@@ -59,7 +59,7 @@
                                                 <a href="{{$service->getDetailUrl()}}" target="_blank">{{$service->title ?? ''}}</a>
                                                 @if($service->author->id)
                                                     <br>
-                                                    <span>{{__('by')}}</span>
+                                                    <span>{{__('por')}}</span>
                                                     <a href="{{route('user.admin.detail',['id'=>$service->author->id])}}"
                                                        target="_blank">{{ $service->author->getDisplayName() .' (#'.$service->author->id.')' }}</a>
                                                 @endif
@@ -72,7 +72,7 @@
                                                 <li>{{__("Nome:")}} {{$row->name}}</li>
                                                 <li>{{__("Email:")}} {{$row->email}}</li>
                                                 <li>{{__("Celular:")}} {{$row->phone}}</li>
-                                                <li>{{__("Notes:")}} {{$row->note}}</li>
+                                                <li>{{__("Notas:")}} {{$row->note}}</li>
                                             </ul>
                                         </td>
                                         <td>

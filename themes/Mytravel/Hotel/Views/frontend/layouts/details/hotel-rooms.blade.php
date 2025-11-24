@@ -31,22 +31,22 @@
                             <div class="render">
                                 <span class="adults" >
                                     <span class="one" >@{{adults}}
-                                        <span v-if="adults < 2">{{__('Adult')}}</span>
-                                        <span v-else>{{__('Adults')}}</span>
+                                        <span v-if="adults < 2">{{__('Adulto')}}</span>
+                                        <span v-else>{{__('Adultos')}}</span>
                                     </span>
                                 </span>
                                 -
                                 <span class="children" >
                                     <span class="one" >@{{children}}
-                                        <span v-if="children < 2">{{__('Child')}}</span>
-                                        <span v-else>{{__('Children')}}</span>
+                                        <span v-if="children < 2">{{__('Criança')}}</span>
+                                        <span v-else>{{__('Crianças')}}</span>
                                     </span>
                                 </span>
                             </div>
                         </div>
                         <div class="dropdown-menu select-guests-dropdown" >
                             <div class="dropdown-item-row">
-                                <div class="label">{{__('Adults')}}</div>
+                                <div class="label">{{__('Adultos')}}</div>
                                 <div class="val">
                                     <span class="btn-minus2" data-input="adults" @click="minusPersonType('adults')"><i class="icon ion-md-remove"></i></span>
                                     <span class="count-display"><input type="number" v-model="adults" min="1"/></span>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="dropdown-item-row">
-                                <div class="label">{{__('Children')}}</div>
+                                <div class="label">{{__('Crianças')}}</div>
                                 <div class="val">
                                     <span class="btn-minus2" data-input="children" @click="minusPersonType('children')"><i class="icon ion-md-remove"></i></span>
                                     <span class="count-display"><input type="number" v-model="children" min="0"/></span>

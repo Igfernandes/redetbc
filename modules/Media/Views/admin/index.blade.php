@@ -15,7 +15,7 @@
                                     <i class="fa fa-search"></i> {{__("Procurar")}}</button>
                             </div>
                             <div class="filter-item">
-                                <small><i>{{__("Total")}}: @{{total}} {{__("files")}}</i></small>
+                                <small><i>{{__("Total")}}: @{{total}} {{__("arquivos")}}</i></small>
                             </div>
                         </div>
                         <div class="div">
@@ -52,7 +52,7 @@
                             <div class="col-sm-6 py-2 border-bottom border-right">{{__("Nome")}}</div>
                             <div class="col-sm-2 py-2 border-bottom border-right">{{__("Tipo")}}</div>
                             <div class="col-sm-2 py-2 border-bottom border-right">{{__("Criado em")}}</div>
-                            <div class="col-sm-2 py-2 border-bottom border-right">{{__("Size")}}</div>
+                            <div class="col-sm-2 py-2 border-bottom border-right">{{__("Tamanho")}}</div>
                         </div>
                         <folder-item @deleted="deletedFolder" @toggle-edit="toggleEditFolder" @dblclick="showFolder(folder)" @update="updateFolder" :view-type="viewType" v-for="(folder,index) in folders" :index="index" :key="'folder-'+index" :folder="folder"></folder-item>
                         <file-item v-for="(file,index) in files" :key="index" :view-type="viewType" :selected="selected" :file="file" v-on:select-file="selectFile"></file-item>
@@ -66,14 +66,14 @@
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item" :class="{disabled:filter.page <= 1}">
-                                    <a class="page-link" v-if="filter.page <=1">{{__("Previous")}}</a>
-                                    <a class="page-link" href="#" v-if="filter.page > 1" v-on:click="changePage(filter.page-1,$event)">{{__("Previous")}}</a>
+                                    <a class="page-link" v-if="filter.page <=1">{{__("Anterior")}}</a>
+                                    <a class="page-link" href="#" v-if="filter.page > 1" v-on:click="changePage(filter.page-1,$event)">{{__("Anterior")}}</a>
                                 </li>
                                 <li class="page-item" v-if="p >= (filter.page-3) && p <= (filter.page+3)" :class="{active: p == filter.page}" v-for="p in totalPage" @click="changePage(p,$event)">
                                     <a class="page-link" href="#">@{{p}}</a></li>
                                 <li class="page-item" :class="{disabled:filter.page >= totalPage}">
-                                    <a v-if="filter.page >= totalPage" class="page-link">{{__("Next")}}</a>
-                                    <a href="#" class="page-link" v-if="filter.page < totalPage" v-on:click="changePage(filter.page+1,$event)">{{__("Next")}}</a>
+                                    <a v-if="filter.page >= totalPage" class="page-link">{{__("Próximo")}}</a>
+                                    <a href="#" class="page-link" v-if="filter.page < totalPage" v-on:click="changePage(filter.page+1,$event)">{{__("Próximo")}}</a>
                                 </li>
                             </ul>
                         </nav>
@@ -82,15 +82,15 @@
                 <div class="browser-actions d-flex justify-content-between flex-shrink-0" v-if="selected.length">
                     <div class="col-left" v-show="selected.length">
                         <div class="control-remove" v-if="selected && selected.length">
-                            <button class="btn btn-danger" @click="removeFiles">{{__("Delete file")}}</button>
+                            <button class="btn btn-danger" @click="removeFiles">{{__("Excluir arquivo")}}</button>
                         </div>
                         <div class="control-info" v-if="selected && selected.length">
-                            <div class="count-selected">@{{selected.length}} {{__("file selected")}}</div>
-                            <div class="clear-selected" @click="selected=[]"><i>{{__("unselect")}}</i></div>
+                            <div class="count-selected">@{{selected.length}} {{__("arquivo selecionado")}}</div>
+                            <div class="clear-selected" @click="selected=[]"><i>{{__("desmarcar")}}</i></div>
                         </div>
                     </div>
                     <div class="col-right d-none" v-show="selected.length">
-                        <button class="btn btn-primary" :class="{disabled:!selected.length}" @click="sendFiles">{{__("Use file")}}</button>
+                        <button class="btn btn-primary" :class="{disabled:!selected.length}" @click="sendFiles">{{__("Usar arquivo")}}</button>
                     </div>
                 </div>
             </div>

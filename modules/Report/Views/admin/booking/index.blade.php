@@ -2,7 +2,7 @@
 @section ('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__('All Bookings')}}</h1>
+            <h1 class="title-bar">{{__('Todas Reservas')}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between">
@@ -14,10 +14,10 @@
                             <option value="">{{__("-- Bulk Actions --")}}</option>
                             @if(!empty($statues))
                                 @foreach($statues as $status)
-                                    <option value="{{$status}}">{{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}</option>
+                                    <option value="{{$status}}">{{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}</option>
                                 @endforeach
                             @endif
-                            <option value="delete">{{__("DELETE booking")}}</option>
+                            <option value="delete">{{__("EXCLUIR reserva")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
@@ -36,7 +36,7 @@
                                     'dataType' => 'json'
                                 ],
                                 'allowClear'  => true,
-                                'placeholder' => __('-- Vendor --')
+                                'placeholder' => __('-- Anfitrião --')
                             ]
                         ], !empty($user->id) ? [
                             $user->id,
@@ -44,8 +44,8 @@
                         ] : false)
                         ?>
                     @endif
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name or ID')}}" class="form-control">
-                    <button class="btn-info btn btn-icon" type="submit">{{__('Filter')}}</button>
+                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Buscar por nome ou ID')}}" class="form-control">
+                    <button class="btn-info btn btn-icon" type="submit">{{__('Filtrar')}}</button>
                 </form>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel booking-history-manager">
-            <div class="panel-title">{{__('Bookings')}}</div>
+            <div class="panel-title">{{__('Todas Reservas')}}</div>
             <div class="panel-body">
                 <form action="" class="bravo-form-item">
                     <table class="table table-hover bravo-list-item">
@@ -61,10 +61,10 @@
                         <tr>
                             <th width="80px"><input type="checkbox" class="check-all"></th>
                             <th>{{__('Serviço')}}</th>
-                            <th>{{__('Customer')}}</th>
+                            <th>{{__('Cliente')}}</th>
                             <th width="120px">{{__('Status')}}</th>
                             <th width="220px">{{__('Criado em')}}</th>
-                            <th width="80px">{{__('Actions')}}</th>
+                            <th width="80px">{{__('Ações')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -91,8 +91,8 @@
                                         <li>{{__("Nome:")}} {{$row->first_name}} {{$row->last_name}} </li>
                                         <li>{{__("Email:")}} {{$row->email}}</li>
                                         <li>{{__("Celular:")}} {{$row->phone}}</li>
-                                        <li>{{__("Address:")}} {{$row->address}}</li>
-                                        <li>{{__("Custom Requirement:")}} {{$row->customer_notes}}</li>
+                                        <li>{{__("Endereço:")}} {{$row->address}}</li>
+                                        <li>{{__("Requisito Personalizado:")}} {{$row->customer_notes}}</li>
                                     </ul>
                                 </td>
                                 <td>
@@ -105,7 +105,7 @@
                                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__('Actions')}}
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item btn-detail-booking" href="#modal_booking_detail" data-ajax="{{route('booking.modal',['booking'=>$booking])}}" data-toggle="modal" data-id="{{$booking->id}}" data-target="#modal_booking_detail">{{__('Detail')}}</a>
+                                                <a class="dropdown-item btn-detail-booking" href="#modal_booking_detail" data-ajax="{{route('booking.modal',['booking'=>$booking])}}" data-toggle="modal" data-id="{{$booking->id}}" data-target="#modal_booking_detail">{{__('Detalhes')}}</a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-paid-{{$row->id}}">{{__('Set Paid')}}</a>
                                                 <a class="dropdown-item" href="{{route('report.admin.booking.email_preview',['id'=>$row->id])}}">{{__('Email Preview')}}</a>
                                             </div>
@@ -123,7 +123,7 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">{{__('Booking ID: #')}} <span class="user_id"></span></h5>
+                                <h5 class="modal-title">{{__('Reserva ID: #')}} <span class="user_id"></span></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

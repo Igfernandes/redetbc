@@ -2,13 +2,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Languages")}}</h1>
+            <h1 class="title-bar">{{__("Idiomas")}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Language")}}</div>
+                    <div class="panel-title">{{__("Adicionar Idioma")}}</div>
                     <div class="panel-body">
                         <form action="" class="needs-validation" novalidate method="post">
                             @csrf
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <div class="panel-title">{{__("All Languages")}}</div>
+                    <div class="panel-title">{{__("Todos os Idiomas")}}</div>
                     <div class="panel-body">
                         <form action="" class="bravo-form-item">
                             <div class="table-responsive">
@@ -54,7 +54,7 @@
                                     <tr>
                                         <th width="60px"><input type="checkbox" class="check-all"></th>
                                         <th>{{__("Nome")}}</th>
-                                        <th>{{__("Locale")}}</th>
+                                        <th>{{__("Localização")}}</th>
                                         <th>{{__("Status")}}</th>
                                         <th>{{__("Data")}}</th>
                                     </tr>

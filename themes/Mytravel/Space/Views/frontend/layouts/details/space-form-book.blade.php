@@ -59,7 +59,7 @@
                             <div class="border-bottom border-width-2 border-color-1 pb-3">
                                 <div class="flex-center-between mb-1 text-dark font-weight-bold">
                                     <span class="d-block">
-                                        {{__('Adults')}} <br>
+                                        {{__('Adultos')}} <br>
                                         <small>{{__('Ages 12+')}}</small>
                                     </span>
                                     <div class="flex-horizontal-center">
@@ -78,7 +78,7 @@
                             <div class="border-bottom border-width-2 border-color-1 pb-3">
                                 <div class="flex-center-between mb-1 text-dark font-weight-bold">
                                     <span class="d-block">
-                                        {{__('Children')}} <br>
+                                        {{__('Crianças')}} <br>
                                         <small>{{__('Ages 2–12')}}</small>
                                     </span>
                                     <div class="flex-horizontal-center">

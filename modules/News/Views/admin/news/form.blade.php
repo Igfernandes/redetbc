@@ -3,7 +3,7 @@
     <input type="text" value="{{ $translation->title ?? 'New Post' }}" placeholder="News title" name="title" class="form-control">
 </div>
 <div class="form-group">
-    <label class="control-label">{{__("Target Religion")}}</label>
+    <label class="control-label">{{__("Religião")}}</label>
     <select name="religion" class="form-control">
         <option value="">Selecione a religião</option>
         <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangélico")}}</option>
@@ -12,7 +12,7 @@
     </select>
 </div>
 <div class="form-group magic-field" data-id="content" data-type="content" data-editor="1">
-    <label class="control-label">{{ __('Content')}} </label>
+    <label class="control-label">{{ __('Conteúdo')}} </label>
     <div class="">
         <textarea name="content" class="d-none has-ckeditor" id="content" cols="30" rows="10">{{$translation->content}}</textarea>
     </div>

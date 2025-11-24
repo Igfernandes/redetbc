@@ -81,7 +81,7 @@ class RoomController extends AdminController
             'hotel_manage_others' => $this->hasPermission('hotel_manage_others'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Hotels'),
+                    'name' => __('Hotéis'),
                     'url'  => route('hotel.admin.index')
                 ],
                 [
@@ -89,11 +89,11 @@ class RoomController extends AdminController
                     'url'  => route('hotel.admin.edit',['id'=>$this->currentHotel->id])
                 ],
                 [
-                    'name'  => __('Room Management'),
+                    'name'  => __('Gerenciamento de Quartos'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Room Management"),
+            'page_title'=>__("Gerenciamento de Quartos"),
             'hotel'=>$this->currentHotel,
             'row'=> new $this->roomClass(),
             'translation'=>new $this->roomTranslationClass(),
@@ -130,7 +130,7 @@ class RoomController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
-                    'name' => __('Hotels'),
+                    'name' => __('Hotéis'),
                     'url'  => route('hotel.admin.index')
                 ],
                 [
@@ -138,14 +138,14 @@ class RoomController extends AdminController
                     'url'  => route('hotel.admin.edit',['id'=>$this->currentHotel->id])
                 ],
                 [
-                    'name' => __('All Rooms'),
+                    'name' => __('Todos os Quartos'),
                     'url'  => route('hotel.admin.room.index',['hotel_id'=>$this->currentHotel->id])
                 ],
                 [
-                    'name' => __('Editar room: :name',['name'=>$row->title]),
+                    'name' => __('Editar quarto: :name',['name'=>$row->title]),
                 ],
             ],
-            'page_title'=>__("Editarar: :name",['name'=>$row->title]),
+            'page_title'=>__("Editar: :name",['name'=>$row->title]),
             'hotel'=>$this->currentHotel
         ];
         return view('Hotel::admin.room.detail', $data);

@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Cloud Storage Configs")}}</h3>
+        <h3 class="form-group-title">{{__("Configurações de armazenamento em nuvem")}}</h3>
     </div>
     <div class="col-sm-8">
         <div class="panel">
             <div class="panel-body">
                 <div class="form-group">
-                    <label>{{__('Select Cloud Driver')}}</label>
+                    <label>{{__('Selecionar driver de nuvem')}}</label>
                     <div class="form-controls">
                         <select name="filesystem_default" class="form-control">
-                            <option value="uploads" {{setting_item('filesystem_default') == 'uploads' ? 'selected' : ''  }}>{{__('-- Local Storage --')}}</option>
+                            <option value="uploads" {{setting_item('filesystem_default') == 'uploads' ? 'selected' : ''  }}>{{__('-- Armazenamento Local --')}}</option>
                             <option value="s3" {{setting_item('filesystem_default') == 's3' ? 'selected' : ''  }}>{{__('AWS S3')}}</option>
                             <option value="gcs" {{setting_item('filesystem_default') == 'gcs' ? 'selected' : ''  }}>{{__('Google Cloud Storage')}}</option>
                         </select>
@@ -55,12 +55,12 @@
                 </div>
 
                 <p>
-                    * If your system does not hosted on Google Cloud, you need to upload your Service Account Key File to folder:
-                    <code>{{storage_path('app/gcs')}}</code>, then copy file name to input above, Example: project-name-xxx-xxx.json <br>
+                    * Se o seu sistema não estiver hospedado no Google Cloud, você precisa fazer upload do seu arquivo de chave de conta de serviço para a pasta:
+                    <code>{{storage_path('app/gcs')}}</code>, em seguida, copie o nome do arquivo para o campo acima, Exemplo: project-name-xxx-xxx.json <br>
 
-                    * If running in Google App Engine, the built-in service account associated with the application will be used.
+                    * Se estiver executando no Google App Engine, a conta de serviço integrada associada ao aplicativo será usada.
                     <br>
-                    * If running in Google Compute Engine, the built-in service account associated with the virtual machine instance will be used.
+                    * Se estiver executando no Google Compute Engine, a conta de serviço integrada associada à instância da máquina virtual será usada.
                 </p>
             </div>
         </div>

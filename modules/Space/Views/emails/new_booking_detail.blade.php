@@ -46,7 +46,7 @@ $lang_local = app()->getLocale();
                 <td class="val">{{display_date($booking->start_date)}}</td>
             </tr>
             <tr>
-                <td class="label">{{__('End date:')}}</td>
+                <td class="label">{{__('Data de Término:')}}</td>
                 <td class="val">
                     {{display_date($booking->end_date)}}
                 </td>
@@ -71,7 +71,7 @@ $lang_local = app()->getLocale();
 
         @if($meta = $booking->getMeta('adults'))
             <tr>
-                <td class="label">{{__('Adults')}}:</td>
+                <td class="label">{{__('Adultos')}}:</td>
                 <td class="val">
                     <strong>{{$meta}}</strong>
                 </td>
@@ -79,7 +79,7 @@ $lang_local = app()->getLocale();
         @endif
         @if($meta = $booking->getMeta('children'))
             <tr>
-                <td class="label">{{__('Children')}}:</td>
+                <td class="label">{{__('Crianças')}}:</td>
                 <td class="val">
                     <strong>{{$meta}}</strong>
                 </td>
@@ -91,7 +91,7 @@ $lang_local = app()->getLocale();
                 <table class="pricing-list" width="100%">
                     <tr>
                         <td class="label">
-                            {{__('Rental price')}}
+                             {{ __("Preço do Aluguel") }}
                         </td>
                         <td class="val">
                             @php

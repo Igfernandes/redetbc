@@ -156,10 +156,10 @@ class PageController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids)) {
-            return redirect()->back()->with('error', __('Please select at least 1 item!'));
+            return redirect()->back()->with('error', __('Por favor, selecione pelo menos 1 item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('No Action is selected!'));
+            return redirect()->back()->with('error', __('Nenhuma ação selecionada!'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {

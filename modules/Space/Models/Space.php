@@ -96,7 +96,7 @@ class Space extends Bookable
 
     public static function getModelName()
     {
-        return __("Space");
+        return __("Espaços");
     }
 
     /**
@@ -106,7 +106,7 @@ class Space extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Procurar Spaces");
+        $meta['seo_title'] = __("Procurar Espaços");
         if (!empty($title = setting_item_with_lang("space_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("space_page_search_title"))) {
@@ -385,7 +385,7 @@ class Space extends Bookable
         }
         $total_guests = $request->input('adults') + $request->input('children');
         if ($total_guests > $this->max_guests) {
-            return $this->sendError(__("Maximum guests is :count", ['count' => $this->max_guests]));
+            return $this->sendError(__("O máximo de convidados é :count", ['count' => $this->max_guests]));
         }
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
@@ -400,22 +400,22 @@ class Space extends Bookable
 
         // Validate Date and Booking
         if (!$this->isAvailableInRanges($start_date, $end_date)) {
-            return $this->sendError(__("This space is not available at selected dates"));
+            return $this->sendError(__("Este espaço não está disponível nas datas selecionadas"));
         }
 
         if (!$this->checkBusyDate($start_date, $end_date)) {
-            return $this->sendError(__("This space is not available at selected dates"));
+            return $this->sendError(__("Este espaço não está disponível nas datas selecionadas"));
         }
 
         if ($this->getBookingType() != 'by_night') {
             $numberDays = (abs(strtotime($end_date) - strtotime($start_date)) / 86400) + 1;
             if (!empty($this->min_day_stays) and  $numberDays < $this->min_day_stays) {
-                return $this->sendError(__("You must to book a minimum of :number days", ['number' => $this->min_day_stays]));
+                return $this->sendError(__("Você deve reservar um mínimo de :number dias", ['number' => $this->min_day_stays]));
             }
         } else {
             $numberDays = (abs(strtotime($end_date) - strtotime($start_date)) / 86400);
             if (!empty($this->min_day_stays) and  $numberDays < $this->min_day_stays) {
-                return $this->sendError(__("You must to book a minimum of :number nights", ['number' => $this->min_day_stays]));
+                return $this->sendError(__("Você deve reservar um mínimo de :number noites", ['number' => $this->min_day_stays]));
             }
         }
 
@@ -433,7 +433,7 @@ class Space extends Bookable
     public function beforeCheckout(Request $request, $booking)
     {
         if (!$this->isAvailableInRanges($booking->start_date, $booking->end_date)) {
-            return $this->sendError(__("This space is not available at selected dates"));
+            return $this->sendError(__("Este espaço não está disponível nas datas selecionadas"));
         }
     }
 
@@ -1078,11 +1078,11 @@ class Space extends Bookable
                 $item['field_guests'] = [
                     [
                         'id' => 'adults',
-                        'title' => __('Adults')
+                        'title' => __('Adultos')
                     ],
                     [
                         'id' => 'children',
-                        'title' => __('Children')
+                        'title' => __('Crianças')
                     ]
                 ];
             }

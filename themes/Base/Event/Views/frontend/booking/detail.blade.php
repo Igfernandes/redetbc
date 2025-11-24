@@ -33,7 +33,7 @@
             <ul class="review-list">
                 @if($booking->start_date)
                     <li>
-                        <div class="label">{{__('Start date:')}}</div>
+                        <div class="label">{{__('Data de Início:')}}</div>
                         <div class="val">
                             {{display_date($booking->start_date)}}
                         </div>

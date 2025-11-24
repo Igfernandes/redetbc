@@ -12,7 +12,7 @@ if(!$user->hasPermission('assistance_create')) return;
                         {{$services->appends(request()->query())->links()}}
                     </div>
                     <div class="review-pag-text text-center">
-                        {{ __("Mostrando :from - :to of :total total",["from"=>$services->firstItem(),"to"=>$services->lastItem(),"total"=>$services->total()]) }}
+                        {{ __("Mostrando :from - :to de :total total",["from"=>$services->firstItem(),"to"=>$services->lastItem(),"total"=>$services->total()]) }}
                     </div>
                 </div>
             @else

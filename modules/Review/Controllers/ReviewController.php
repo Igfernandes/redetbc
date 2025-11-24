@@ -27,9 +27,9 @@ class ReviewController extends Controller
 
         if (empty($allServices[$service_type])) {
             if ($is_return) {
-                return $this->sendError(__("Service type not found"));
+                return $this->sendError(__("Tipo do serviço não foi encontrado"));
             } else {
-                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Service type not found'));
+                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Tipo do serviço não foi encontrado'));
             }
         }
 
@@ -37,9 +37,9 @@ class ReviewController extends Controller
         $module = $module_class::find($service_id);
         if (empty($module)) {
             if ($is_return) {
-                return $this->sendError(__("Service not found"));
+                return $this->sendError(__("Serviço não encontrado"));
             } else {
-                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Service not found'));
+                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Serviço não encontrado'));
             }
         }
         $reviewEnable = $module->getReviewEnable();
@@ -92,7 +92,7 @@ class ReviewController extends Controller
             if (!$codeCapcha or !ReCaptchaEngine::verify($codeCapcha)) {
                 $data = [
                     'status'  => 0,
-                    'message' => __('Please verify the captcha'),
+                    'message' => __('Por favor, verifique o captcha'),
                 ];
                 return response()->json($data, 200);
             }
@@ -157,9 +157,9 @@ class ReviewController extends Controller
                 }
             }
 
-            $msg = __('Avaliação success!');
+            $msg = __('Avaliação realizada com sucesso!');
             if ($module->getReviewApproved()) {
-                $msg = __("Review success! Please wait for admin approved!");
+                $msg = __("Avaliação realizada com sucesso! Por favor, aguarde a aprovação do administrador!");
             }
             event(new CreateReviewEvent($module, $review));
             $module->update_service_rate();

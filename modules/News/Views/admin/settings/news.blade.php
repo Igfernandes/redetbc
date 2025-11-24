@@ -31,7 +31,7 @@
                 @php $layouts = config('news.layouts') @endphp
                 @if(!empty($layouts))
                 <div class="form-group">
-                    <label class="">{{__("Layout Search")}}</label>
+                    <label class="">{{__("Buscar Layout")}}</label>
                     <div class="form-controls">
                         <select name="news_layout_search" class="form-control">
                             @foreach(config('news.layouts') as $id=>$name)
@@ -43,10 +43,10 @@
                 @endif
                 @endif
                 <div class="form-group">
-                    <label class="">{{__("SEO Options")}}</label>
+                    <label class="">{{__("Opções de SEO")}}</label>
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#seo_1">{{__("General Options")}}</a>
+                            <a class="nav-link active" data-toggle="tab" href="#seo_1">{{__("Opções Gerais")}}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#seo_2">{{__("Compartilhar Facebook")}}</a>
@@ -144,7 +144,7 @@
                                     <div class="item" data-number="{{$key}}">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <input type="text" name="news_sidebar[{{$key}}][title]" class="form-control" placeholder="{{__('Título: About Us')}}" value="{{$item->title}}">
+                                                <input type="text" name="news_sidebar[{{$key}}][title]" class="form-control" placeholder="{{__('Título: Sobre nós')}}" value="{{$item->title}}">
                                                 <textarea name="news_sidebar[{{$key}}][content]" rows="2" class="form-control" placeholder="{{__("Conteúdo")}}">{{$item->content}}</textarea>
                                             </div>
                                             <div class="col-md-3">
@@ -200,12 +200,12 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Fornecedor News")}}</h3>
-        <p class="form-group-desc">{{__('Config for vendor')}}</p>
+        <h3 class="form-group-title">{{__("Notícias Anfitrião")}}</h3>
+        <p class="form-group-desc">{{__('Configuração para fornecedor')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Fornecedor News")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Notícias Anfitrião")}}</strong></div>
             <div class="panel-body">
                 <div>
                     <label><input type="checkbox" name="news_vendor_need_approve" value="1" @if(setting_item('news_vendor_need_approve')) checked @endif> {{__("Admin need approve news to be publish")}}</label>

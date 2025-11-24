@@ -92,7 +92,7 @@ class AvailabilityController extends FrontendController{
         }
         $breadcrumbs = [
             [
-                'name' => __('Hotels'),
+                'name' => __('Hotéis'),
                 'url'  => route('hotel.vendor.index')
             ],
             [

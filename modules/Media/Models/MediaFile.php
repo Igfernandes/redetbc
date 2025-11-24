@@ -62,7 +62,7 @@ class MediaFile extends BaseModel
         $storage = Storage::disk($this->driver);
         if(!$storage or !in_array($this->driver,['uploads']))
         {
-            throw new \Exception(__("Can not edit non-local images"));
+            throw new \Exception(__("Não é possível editar imagens não locais."));
         }
 
         // Check Old file
@@ -95,7 +95,7 @@ class MediaFile extends BaseModel
         $result = [
             'src'     => get_file_url($this->id,'large'),
             'old'     =>  asset("uploads/".$oldPath.$fileName),
-            'message' => __('Update Successful'),
+            'message' => __('Atualização bem-sucedida'),
             'status'=>0
         ];
         return $result;

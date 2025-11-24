@@ -16,9 +16,9 @@
                                 {{__("Baseado em")}}
                                 <span>
                                     @if($review_score['total_review'] > 1)
-                                        {{ __(":number reviews",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliações",["number"=>$review_score['total_review'] ]) }}
                                     @else
-                                        {{ __(":number review",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliação",["number"=>$review_score['total_review'] ]) }}
                                     @endif
                                 </span>
                             </div>
@@ -117,7 +117,7 @@
                     {{$review_list->appends(request()->query())->fragment('review-list')->links()}}
                 </div>
                 <div class="review-pag-text">
-                    {{ __("Mostrando :from - :to of :total total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
+                    {{ __("Mostrando :from - :to de :total no total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
                 </div>
             @else
                 <div class="review-pag-text">{{__("Sem avaliação")}}</div>

@@ -329,7 +329,7 @@ class FileHelper
             <div class="upload-box" v-show="!value">
                 <input type="hidden" name="<?php echo $inputId ?>" v-model="value" value="<?php echo htmlspecialchars($oldValue) ?>">
                 <div class="text-left">
-                    <span class="btn btn-info btn-sm btn-field-upload" @click="openUploader"><i class="fa fa-plus-circle"></i> <?php echo __("Select images") ?></span>
+                    <span class="btn btn-info btn-sm btn-field-upload" @click="openUploader"><i class="fa fa-plus-circle"></i> <?php echo __("Selecione images") ?></span>
                 </div>
             </div>
         </div>

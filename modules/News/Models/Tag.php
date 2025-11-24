@@ -20,7 +20,7 @@ class Tag extends BaseModel
 
     public static function getModelName()
     {
-        return __("New Tag");
+        return __("Nova Tag");
     }
 
     public static function searchForMenu($q = false)

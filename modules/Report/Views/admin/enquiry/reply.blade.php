@@ -26,7 +26,7 @@
                             </div>
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Add New')}}</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Adicionar Nova')}}</button>
                     </div>
                     </form>
                 </div>

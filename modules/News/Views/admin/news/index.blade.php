@@ -18,7 +18,7 @@
                         <select name="action" class="form-control">
                             <option value="">{{__(" Ações em Massa ")}}</option>
                             <option value="publish">{{__(" Publicar ")}}</option>
-                            <option value="pending">{{__(" Move to Pending ")}}</option>
+                            <option value="pending">{{__(" Move para Pendente ")}}</option>
                             <option value="draft">{{__(" Mover para Lixeira ")}}</option>
                             <option value="delete">{{__("Excluir")}}</option>
                         </select>

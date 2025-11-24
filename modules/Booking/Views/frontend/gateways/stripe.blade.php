@@ -2,7 +2,7 @@
     <i class="icofont-ui-v-card bg"></i>
     <label>
         <span>{{__("Nome no cartão")}}</span>
-        <input id="bravo_card_name" name="card_name" placeholder="{{__("Card Name")}}">
+        <input id="bravo_card_name" name="card_name" placeholder="{{__("Nome no Cartão")}}">
     </label>
     <label>
         <span>{{__("Número do cartão")}}</span>

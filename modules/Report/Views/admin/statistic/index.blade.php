@@ -6,30 +6,35 @@
         }
     </style>
 @endpush
+
 @section ('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__('Bookings Statistic')}}</h1>
+            <h1 class="title-bar">{{__('Estatísticas de Reservas')}}</h1>
         </div>
+
         @include('admin.message')
+
         <div class="bravo-statistic">
             <div class="row">
                 <div class="col-md-12">
                     <form action="" class="form-fiter-statistic">
                         <div class="header-statistic">
                             <div class="item">
-                                {{__("Filter:")}}
+                                {{__("Filtro:")}}
                             </div>
+
                             <div class="item no-padding">
                                 <div class="group-icon">
                                     <select name="user_type">
-                                        <option value="">{{__("-- User Type --")}}</option>
-                                        <option value="customer">{{__("Customer User")}}</option>
-                                        <option value="vendor">{{__("Fornecedor User")}}</option>
+                                        <option value="">{{__("-- Tipo de Usuário --")}}</option>
+                                        <option value="customer">{{__("Usuário Cliente")}}</option>
+                                        <option value="vendor">{{__("Usuário Fornecedor")}}</option>
                                     </select>
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                             </div>
+
                             <div class="item no-padding">
                                 <div class="group-icon">
                                     <?php
@@ -41,7 +46,7 @@
                                                 'dataType' => 'json'
                                             ],
                                             'allowClear'  => true,
-                                            'placeholder' => __('-- Selecione Usuário --')
+                                            'placeholder' => __('-- Selecione o Usuário --')
                                         ]
                                     ], !empty($user->id) ? [
                                         $user->id,
@@ -50,6 +55,7 @@
                                     ?>
                                 </div>
                             </div>
+
                             <div class="item">
                                 <div id="reportrange">
                                     <i class="fa fa-calendar"></i>&nbsp;
@@ -59,19 +65,24 @@
                                     <input type="hidden" name="to">
                                 </div>
                             </div>
+
                             <div class="item">
-                                <button type="submit" class="btn-submit">{{__("Apply")}}
-                                    <i class="fa fa-spinner fa-pulse fa-fw"></i></button>
+                                <button type="submit" class="btn-submit">
+                                    {{__("Aplicar")}}
+                                    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                </button>
                             </div>
+
                         </div>
                     </form>
                 </div>
             </div>
+
             <div class="row row-eq-height">
                 <div class="col-md-8">
                     <div class="g-statistic">
                         <div class="head">
-                            {{__("Bookings Statistic")}}
+                            {{__("Estatísticas de Reservas")}}
                         </div>
                         <div class="content">
                             <canvas id="earning_chart"></canvas>
@@ -82,10 +93,11 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="g-statistic">
                         <div class="head">
-                            {{__("Detail statistics")}}
+                            {{__("Estatísticas Detalhadas")}}
                         </div>
                         <div class="content">
                             <div class="list-detail">
@@ -100,10 +112,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+            </div> <!-- row -->
+        </div> <!-- bravo-statistic -->
     </div>
 @endsection
+
 @push('js')
     <script src="{{url('libs/chart_js/Chart.min.js')}}"></script>
     <script src="{{url('libs/daterange/moment.min.js')}}"></script>
@@ -112,7 +126,9 @@
 
     <script>
         jQuery(function ($) {
+
             var ctx = document.getElementById('earning_chart').getContext('2d');
+
             window.myMixedChart = new Chart(ctx, {
                 type: 'bar',
                 data: earning_chart_data,
@@ -131,7 +147,7 @@
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: '{{__("Timeline")}}'
+                                labelString: '{{__("Linha do Tempo")}}'
                             }
                         }],
                         yAxes: [{
@@ -139,7 +155,7 @@
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: '{{__("Currency: :currency_main",['currency_main'=>setting_item('currency_main')])}}'
+                                labelString: '{{__("Moeda: :currency_main",["currency_main"=>setting_item("currency_main")])}}'
                             },
                             ticks: {
                                 beginAtZero: true,
@@ -160,11 +176,14 @@
                     }
                 }
             });
+
             var start = moment().startOf('week');
             var end = moment();
 
             function cb(start, end) {
-                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                $('#reportrange span').html(
+                    start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY')
+                );
                 $('#reportrange input[name=from]').val(start.format('YYYY-MM-DD'));
                 $('#reportrange input[name=to]').val(end.format('YYYY-MM-DD'));
             }
@@ -172,16 +191,16 @@
             $('#reportrange').daterangepicker({
                 startDate: start,
                 endDate: end,
-                "alwaysShowCalendars": true,
-                "opens": "center",
-                "showDropdowns": true,
+                alwaysShowCalendars: true,
+                opens: "center",
+                showDropdowns: true,
                 ranges: {
                     '{{__("Hoje")}}': [moment(), moment()],
                     '{{__("Ontem")}}': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    '{{__("Ultimos 7 Dias")}}': [moment().subtract(6, 'days'), moment()],
-                    '{{__("Ultimos 30 Dias")}}': [moment().subtract(29, 'days'), moment()],
+                    '{{__("Últimos 7 Dias")}}': [moment().subtract(6, 'days'), moment()],
+                    '{{__("Últimos 30 Dias")}}': [moment().subtract(29, 'days'), moment()],
                     '{{__("Neste Mês")}}': [moment().startOf('month'), moment().endOf('month')],
-                    '{{__("Ultimo Mês")}}': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                    '{{__("Último Mês")}}': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
                     '{{__("Este Ano")}}': [moment().startOf('year'), moment().endOf('year')],
                     '{{__("Esta Semana")}}': [moment().startOf('week'), end]
                 }
@@ -189,10 +208,14 @@
                 $('#reportrange input[name=from]').val(picker.startDate.format('YYYY-MM-DD'));
                 $('#reportrange input[name=to]').val(picker.endDate.format('YYYY-MM-DD'));
             });
+
             cb(start, end);
+
             $('.form-fiter-statistic').submit(function (e) {
-                e.preventDefault(); // avoid to execute the actual submit of the form.
+                e.preventDefault();
+
                 var form = $(this);
+
                 $.ajax({
                     url: '{{route('report.admin.statistic.reloadChart')}}',
                     data: form.serialize(),
@@ -206,15 +229,20 @@
                         if (res.status) {
                             window.myMixedChart.data = res.chart_data;
                             window.myMixedChart.update();
+
                             $(".bravo-statistic .list-detail").html("");
+
                             for (var item_id in res.detail_data) {
                                 var item = res.detail_data[item_id];
-                                $(".bravo-statistic .list-detail").append("<div class='item'><span>" + item.title + ": </span> " + item.val + "</div>");
+                                $(".bravo-statistic .list-detail").append(
+                                    "<div class='item'><span>" +
+                                    item.title + ": </span> " + item.val + "</div>"
+                                );
                             }
                         }
                     }
                 })
-            })
-        })
+            });
+        });
     </script>
 @endpush

@@ -37,13 +37,13 @@
             <ul class="review-list">
                 @if($booking->start_date)
                     <li>
-                        <div class="label">{{__('Start date:')}}</div>
+                        <div class="label">{{__('Data de Início:')}}</div>
                         <div class="val">
                             {{display_date($booking->start_date)}}
                         </div>
                     </li>
                     <li>
-                        <div class="label">{{__('End date:')}}</div>
+                        <div class="label">{{__('Data de Término:')}}</div>
                         <div class="val">
                             {{display_date($booking->end_date)}}
                         </div>
@@ -67,7 +67,7 @@
                 @endif
                 @if($meta = $booking->getMeta('adults'))
                     <li>
-                        <div class="label">{{__('Adults:')}}</div>
+                        <div class="label">{{__('Adultos:')}}</div>
                         <div class="val">
                             {{$meta}}
                         </div>
@@ -75,7 +75,7 @@
                 @endif
                 @if($meta = $booking->getMeta('children'))
                     <li>
-                        <div class="label">{{__('Children:')}}</div>
+                        <div class="label">{{__('Crianças:')}}</div>
                         <div class="val">
                             {{$meta}}
                         </div>
@@ -87,7 +87,7 @@
                             <p class="text-center">
                                 <a data-toggle="modal" data-target="#detailBookingDate{{$booking->code}}" aria-expanded="false"
                                    aria-controls="detailBookingDate{{$booking->code}}">
-                                    {{__('Detail')}} <i class="icofont-list"></i>
+                                    {{__('Detalhes')}} <i class="icofont-list"></i>
                                 </a>
                             </p>
                         </div>
@@ -102,7 +102,7 @@
                 @endphp
                 @if(!empty($price_item))
                     <li>
-                        <div class="label">{{__('Rental price')}}
+                        <div class="label"> {{ __("Preço do Aluguel") }}
                         </div>
                         <div class="val">
                             {{format_money( $price_item)}}
@@ -177,7 +177,7 @@ $dateDetail = $service->detailBookingEachDate($booking);
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center">{{__('Detail')}}</h5>
+                <h5 class="modal-title text-center">{{__('Detalhes')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

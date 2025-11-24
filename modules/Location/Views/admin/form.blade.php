@@ -4,7 +4,7 @@
 </div>
 @if(is_default_lang())
     <div class="form-group">
-        <label>{{__("Parent")}}</label>
+        <label>{{__("Relacionado")}}</label>
         <select name="parent_id" class="form-control">
             <option value="">{{__("-- Selecione --")}}</option>
             <?php

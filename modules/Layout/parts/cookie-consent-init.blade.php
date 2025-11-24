@@ -47,7 +47,7 @@
                 languages: {
                     '{{ app()->getLocale() }}': {
                         consent_modal: {
-                            title: '{{ setting_item('cookie_consent_title',__('We use cookies!')) }}',
+                            title: '{{ setting_item('cookie_consent_title',__('Nós usamos cookies!')) }}',
                             description:'{!! clean(str_replace(array("\r", "\n"),'',setting_item('cookie_consent_desc'))) !!}',
                             primary_btn: {
                                 text: '{{ setting_item('cookie_consent_primary_btn_text',__('Accept all')) }}',

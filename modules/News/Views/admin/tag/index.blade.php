@@ -8,13 +8,13 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="panel">
-                    <div class="panel-title">{{ __('Add Tag')}}</div>
+                    <div class="panel-title">{{ __('Adicionar Tag')}}</div>
                     <div class="panel-body">
                         <form action="{{route('news.admin.tag.store',['id'=>-1])}}" method="post">
                             @csrf
                             @include('News::admin/tag/form',['parents'=>$rows])
                             <div class="">
-                                <button class="btn btn-primary" type="submit"> {{ __('Add new')}}</button>
+                                <button class="btn btn-primary" type="submit"> {{ __('Adicionar novo')}}</button>
                             </div>
                         </form>
                     </div>
@@ -38,7 +38,7 @@
                         <form method="get" action="{{route('news.admin.tag.index')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
                             @csrf
                             <input placeholder="{{__("Procurar keyword ...")}}" type="text" name="s" value="{{ Request()->s }}" class="form-control">
-                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search Tag')}}</button>
+                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Buscar Tag')}}</button>
                         </form>
                     </div>
                 </div>

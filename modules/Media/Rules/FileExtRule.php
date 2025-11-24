@@ -42,6 +42,6 @@ class FileExtRule implements Rule
      */
     public function message()
     {
-        return __("File type invalid");
+        return __("Tipo de arquivo inválido");
     }
 }

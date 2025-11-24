@@ -18,12 +18,12 @@
                                     </div>
                                     @if($booking->status !='draft')
                                         <div class="d-flex justify-content-between">
-                                            <div class="label">{{__("Paid:")}}</div>
+                                            <div class="label">{{__("Pago:")}}</div>
                                             <div class="val">{{format_money($booking->paid)}}</div>
                                         </div>
                                         @if($booking->paid < $booking->total )
                                             <div class="d-flex justify-content-between">
-                                                <div class="label">{{__("Remain:")}}</div>
+                                                <div class="label">{{__("Permanecer:")}}</div>
                                                 <div class="val">{{currency_symbol()}}<input class="text-right" type="number" min="0" max="{{$booking->total}}" id="set_paid_input" value="{{($booking->total - $booking->paid)}}" />
                                                 </div>
                                             </div>
