@@ -15,7 +15,7 @@
             @endif
         </div>
         <div class="position-absolute top-0 right-0 pt-4 pr-3 btn-wishlist">
-            <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __("Salvar para mais tarde"") }}">
+            <button type="button" class="p-0 btn btn-sm btn-icon text-white rounded-circle service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __('Salvar para mais tarde') }}">
                 <span class="flaticon-valentine-heart font-size-20"></span>
             </button>
         </div>
@@ -86,9 +86,9 @@
                     </div>
                     <span class="text-secondary font-size-14 mt-1">
                         @if($reviewData['total_review'] > 1)
-                            {{ __(":number Reviews",["number"=>$reviewData['total_review'] ]) }}
+                            {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
                         @else
-                            {{ __(":number Review",["number"=>$reviewData['total_review'] ]) }}
+                            {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
                         @endif
                     </span>
                 </div>

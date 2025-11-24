@@ -33,7 +33,7 @@ class CategoryController extends AdminController
                     'url'  => route('location.admin.index')
                 ],
                 [
-                    'name'  => __('Category'),
+                    'name'  => __('Categoria'),
                     'class' => 'active'
                 ],
             ]
@@ -60,7 +60,7 @@ class CategoryController extends AdminController
                     'url'  => route('location.admin.index')
                 ],
                 [
-                    'name'  => __('Category'),
+                    'name'  => __('Categoria'),
                     'class' => 'active'
                 ],
             ]
@@ -88,7 +88,7 @@ class CategoryController extends AdminController
         $res = $row->saveOriginOrTranslation($request->input('lang'),true);
 
         if ($res) {
-            return back()->with('success',  __('Category saved') );
+            return back()->with('success',  __('Categoria salva') );
         }
     }
 

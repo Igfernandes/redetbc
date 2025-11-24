@@ -60,7 +60,7 @@
             no_date_select:'{{__('Please select Start and End date')}}',
             no_guest_select:'{{__('Please select at least one guest')}}',
             load_dates_url:'{{route('space.vendor.availability.loadDates')}}',
-            name_required:'{{ __("Name is Required") }}',
+            name_required:'{{ __("Nome is Required") }}',
             email_required:'{{ __("Email is Required") }}',
         };
     </script>

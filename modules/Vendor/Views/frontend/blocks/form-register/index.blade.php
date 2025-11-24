@@ -11,20 +11,20 @@
                     @csrf
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="{{__("First Name")}}">
+                        <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="{{__("Primeiro Nome")}}">
                         <span class="invalid-feedback error error-first_name"></span>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="{{__("Last Name")}}">
+                        <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="{{__("Sobrenome")}}">
                         <span class="invalid-feedback error error-last_name"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="business_name" autocomplete="off" placeholder="{{__("Business Name")}}">
+                        <input type="text" class="form-control" name="business_name" autocomplete="off" placeholder="{{__("Razão Social")}}">
                         <span class="invalid-feedback error error-business_name"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__("Phone")}}">
+                        <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="{{__("Celular")}}">
                         <span class="invalid-feedback error error-phone"></span>
                     </div>
                     <div class="form-group">
@@ -32,7 +32,7 @@
                         <span class="invalid-feedback error error-email"></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" autocomplete="off" placeholder="{{__("Password")}}">
+                        <input type="password" class="form-control" name="password" autocomplete="off" placeholder="{{__("Senha")}}">
                         <span class="invalid-feedback error error-password"></span>
                     </div>
                     <div class="form-group">
@@ -51,7 +51,7 @@
                     @endif
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary form-submit">
-                            {{ __('Sign Up') }}
+                            {{ __('Cadastrar-se') }}
                             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true" style="display: none"></span>
                         </button>
                     </div>

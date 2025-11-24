@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Location")}}</div>
+                    <div class="panel-title">{{__("Adicionar Localização")}}</div>
                     <div class="panel-body panel-index">
                         <form action="{{route('location.admin.store',['id'=>'-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
@@ -52,8 +52,8 @@
 
                                 <select name="action" class="form-control">
                                     <option value="">{{__("Ação em massa")}}</option>
-                                    <option value="publish">{{__(" Publish ")}}</option>
-                                    <option value="draft">{{__(" Move to Draft ")}}</option>
+                                    <option value="publish">{{__(" Publicar ")}}</option>
+                                    <option value="draft">{{__(" Mover para Lixeira ")}}</option>
                                     <option value="delete">{{__("Excluir")}}</option>
                                 </select>
                                 <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>

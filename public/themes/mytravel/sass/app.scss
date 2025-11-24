@@ -234,6 +234,19 @@ ol {
         .sub-footer {
             @media (max-width: 767px) {
                 flex-direction: column;
+                justify-content: center;
+                a{
+                    flex-wrap: wrap;
+                    text-align: center;
+                    img{
+                        margin: 0 auto;
+                    }
+                    span{
+                        width: 100%;
+                        font-size: 1.5rem;
+                        margin-top: 12px;
+                    }
+                }
                 .footer-select {
                     padding-top: 2rem;
                     .dropdown-menu {

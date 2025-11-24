@@ -59,7 +59,7 @@
             no_guest_select:'{{__('Please select at least one number')}}',
             load_dates_url:'{{route('Assistance.vendor.availability.loadDates')}}',
             availability_booking_url:'{{route('Assistance.vendor.availability.availabilityBooking')}}',
-            name_required:'{{ __("Name is Required") }}',
+            name_required:'{{ __("Nome is Required") }}',
             email_required:'{{ __("Email is Required") }}',
         };
     </script>

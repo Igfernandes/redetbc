@@ -2,19 +2,19 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar"> {{ __('News Categories')}}</h1>
+            <h1 class="title-bar"> {{ __('Categorias de Notícias')}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title"> {{ __('Add Category')}}</div>
+                    <div class="panel-title"> {{ __('Adicionar Categoria')}}</div>
                     <div class="panel-body">
                         <form action="{{route('news.admin.category.store',['id'=>-1])}}" method="post">
                             @csrf
                             @include('News::admin/category/form',['parents'=>$rows])
                             <div class="">
-                                <button class="btn btn-primary" type="submit"> {{ __('Add new')}}</button>
+                                <button class="btn btn-primary" type="submit"> {{ __('Adicionar notícias')}}</button>
                             </div>
                         </form>
                     </div>
@@ -39,7 +39,7 @@
                         <form method="get" action="{{route('news.admin.category.index')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
                             @csrf
                             <input type="text" name="s" value="{{ Request()->s }}" class="form-control">
-                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search Category')}}</button>
+                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Buscar Categoria')}}</button>
                         </form>
                     </div>
                 </div>
@@ -50,9 +50,9 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th> {{ __('Name')}}</th>
+                                    <th> {{ __('Nome')}}</th>
                                     <th> {{ __('Slug')}}</th>
-                                    <th class="d-none d-md-block"> {{ __('Date')}}</th>
+                                    <th class="d-none d-md-block"> {{ __('Data')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

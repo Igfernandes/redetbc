@@ -48,7 +48,7 @@ class ListTours extends BaseBlock
                 [
                     'id'      => 'category_id',
                     'type'    => 'select2',
-                    'label'   => __('Filter by Category'),
+                    'label'   => __('Filtrar por Categoria'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => url('/admin/module/tour/category/getForSelect2'),
@@ -114,7 +114,7 @@ class ListTours extends BaseBlock
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('List Tour by IDs'),
+                    'label'        => __('Listar passeios pelo IDs'),
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('tour.admin.getForSelect2'),
@@ -128,13 +128,13 @@ class ListTours extends BaseBlock
                     ])
                 ]
             ],
-            'category'=>__("Tour Blocks")
+            'category'=>__("Blocos dos Passeio")
         ]);
     }
 
     public function getName()
     {
-        return __('Tour: List Items');
+        return __('Passeios: List Items');
     }
 
     public function content($model = [])

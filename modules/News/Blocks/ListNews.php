@@ -32,7 +32,7 @@ class ListNews extends BaseBlock
                 [
                     'id'      => 'category_id',
                     'type'    => 'select2',
-                    'label'   => __('Filter by Category'),
+                    'label'   => __('Filtrar por categoria'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => route('news.admin.category.getForSelect2') ,
@@ -75,13 +75,13 @@ class ListNews extends BaseBlock
                     ]
                 ]
             ],
-            'category'=>__("News")
+            'category'=>__("Notícias")
         ]);
     }
 
     public function getName()
     {
-        return __('News: List Items');
+        return __('Notícias: List Items');
     }
 
     public function content($model = [])

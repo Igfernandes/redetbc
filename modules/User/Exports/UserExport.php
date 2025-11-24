@@ -56,19 +56,19 @@ class UserExport implements FromCollection, WithHeadings, WithMapping
     public function headings(): array
     {
         return [
-            __('Business Name'),
-            __('First name'),
-            __('Last name'),
+            __('Nome da Empresa'),
+            __('Primeiro nome'),
+            __('Último nome'),
             __('Email'),
             __('Telefone'),
-            __('Address'),
-            __('Address 2'),
-            __('City'),
-            __('State'),
-            __('Country'),
-            __('Zip Code'),
+            __('Endereço'),
+            __('Endereço 2'),
+            __('Cidade'),
+            __('Estado'),
+            __('País'),
+            __('Código Postal'),
             __('Status'),
-            //__('Role'),
+            //__('Função'),
         ];
     }
 }

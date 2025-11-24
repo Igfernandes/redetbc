@@ -30,7 +30,7 @@ class LanguageController extends AdminController
                 $row = new Language($request->input());
                 $row->save();
             }
-            return redirect(route('language.admin.index'))->with('success', __("Language created"));
+            return redirect(route('language.admin.index'))->with('success', __("Idioma criado com sucesso"));
         }
         $listLanguage = Language::query() ;
         if (!empty($search = $request->query('s'))) {
@@ -44,7 +44,7 @@ class LanguageController extends AdminController
             'locales'     => config('languages.locales'),
             'breadcrumbs' => [
                 [
-                    'name'  => __('Language Management'),
+                    'name'  => __('Gerenciamento de Idiomas'),
                     'class' => 'active'
                 ],
             ]
@@ -81,7 +81,7 @@ class LanguageController extends AdminController
             Cache::forget('locale_active_1');
 
             if ($row->save()) {
-                return redirect()->back()->with('success', __('Language updated'));
+                return redirect()->back()->with('success', __('Idioma Atualizado'));
             }
         }
         $data = [
@@ -109,7 +109,7 @@ class LanguageController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __("Select at least 1 item!"));
+            return redirect()->back()->with('error', __("Selecione pelo menos 1 item!"));
         }
         if (empty($action)) {
             return redirect()->back()->with('error', __('Selecione uma ação!'));

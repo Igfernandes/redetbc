@@ -2,21 +2,21 @@
     <input type="hidden" name="redirect" value="{{request()->query('redirect')}}">
     @csrf
     <div class="form-group">
-        <input type="text" class="form-control" name="email" autocomplete="off" placeholder="{{__('Email address')}}">
+        <input type="text" class="form-control" name="email" autocomplete="off" placeholder="{{__("E-mail")}}">
         <i class="input-icon icofont-mail"></i>
         <span class="invalid-feedback error error-email"></span>
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" name="password" autocomplete="off"  placeholder="{{__('Password')}}">
+        <input type="password" class="form-control" name="password" autocomplete="off"  placeholder="{{__('Senha')}}">
         <i class="input-icon icofont-ui-password"></i>
         <span class="invalid-feedback error error-password"></span>
     </div>
     <div class="form-group">
         <div class="d-flex justify-content-between">
             <label for="remember-me" class="mb0">
-                <input type="checkbox" name="remember" id="remember-me" value="1"> {{__('Remember me')}} <span class="checkmark fcheckbox"></span>
+                <input type="checkbox" name="remember" id="remember-me" value="1"> {{__('Lembre-se de mim')}} <span class="checkmark fcheckbox"></span>
             </label>
-            <a href="{{ route("password.request") }}">{{__('Forgot Password?')}}</a>
+            <a href="{{ route("password.request") }}">{{__('Esqueceu a senha?')}}</a>
         </div>
     </div>
     @if(setting_item("user_enable_login_recaptcha"))
@@ -33,7 +33,7 @@
     </div>
     @if(setting_item('facebook_enable') or setting_item('google_enable') or setting_item('twitter_enable'))
         <div class="advanced">
-            <p class="text-center f14 c-grey">{{__('or continue with')}}</p>
+            <p class="text-center f14 c-grey">{{__('ou continue com')}}</p>
             <div class="row justify-content-center">
                 @if(setting_item('facebook_enable'))
                     <div class="col-xs-12 col-sm-4">
@@ -55,6 +55,6 @@
         </div>
     @endif
     @if(is_enable_registration())
-        <div class="c-grey font-medium f14 text-center"> {{__('Do not have an account?')}} <a href="" data-target="#register" data-toggle="modal">{{__('Sign Up')}}</a></div>
+        <div class="c-grey font-medium f14 text-center"> {{__('Você não tem uma conta?')}} <a href="" data-target="#register" data-toggle="modal">{{__('Cadastre-se')}}</a></div>
     @endif
 </form>

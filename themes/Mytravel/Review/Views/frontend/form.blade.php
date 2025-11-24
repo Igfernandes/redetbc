@@ -2,7 +2,7 @@
     <div class="bravo-reviews">
         <div class="border-bottom py-4">
             <h5 id="scroll-reviews" class="font-size-21 font-weight-bold text-dark mb-4">
-                {{__("Reviews")}}
+                {{__("Avaliações")}}
             </h5>
             @if($review_score)
                 <div class="row">
@@ -15,14 +15,15 @@
                                 <div class="font-size-25 text-dark mb-3">{{$review_score['score_text']}}</div>
                                 <div class="text-gray-1">{{__("De")}}
                                     @if($review_score['total_review'] > 1)
-                                        {{ __(":number reviews",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliações",["number"=>$review_score['total_review'] ]) }}
                                     @else
-                                        {{ __(":number review",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliação",["number"=>$review_score['total_review'] ]) }}
                                     @endif
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-8">
                         <div class="row">
                             @if($review_score['rate_score'])
@@ -47,17 +48,20 @@
                 </div>
             @endif
         </div>
+
         <div id="stickyBlockEndPoint"></div>
+
         <div class="border-bottom py-4">
             @if($review_list->total() > 0)
                 <h5 class="font-size-21 font-weight-bold text-dark mb-5 mt-3">
-                    {{ __("Mostrando :from - :to of :total total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
+                    {{ __("Mostrando :from - :to de :total resultados",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
                 </h5>
             @else
                 <h5 class="font-size-21 font-weight-bold text-dark mb-8">
-                    {{__("Sem avaliação")}}
+                    {{__("Nenhuma avaliação")}}
                 </h5>
             @endif
+
             @if($review_list)
                 @foreach($review_list as $item)
                     @php $userInfo = $item->author; @endphp
@@ -69,43 +73,52 @@
                                 @endif
                             </a>
                         </div>
+
                         <div class="media-body text-center text-md-left">
                             <div class="mb-4">
                                 <h6 class="font-weight-bold text-gray-3">
                                     <a href="#">{{$userInfo->getDisplayName()}}</a>
                                 </h6>
                                 <div class="font-weight-normal font-size-14 text-gray-9 mb-2">{{display_datetime($item->created_at)}}</div>
+
                                 <div class="d-flex align-items-center flex-column flex-md-row mb-2">
                                     @if($item->rate_number)
-                                        <button type="button" class="btn btn-xs btn-primary rounded-xs font-size-14 py-1 px-2 mr-2 mb-2 mb-md-0">{{$item->rate_number}} /5 </button>
+                                        <button type="button" class="btn btn-xs btn-primary rounded-xs font-size-14 py-1 px-2 mr-2 mb-2 mb-md-0">
+                                            {{$item->rate_number}} /5
+                                        </button>
                                     @endif
                                     <span class="font-weight-bold font-italic text-gray-3">{{$item->title}}</span>
                                 </div>
+
                                 <p class="text-lh-1dot6 mb-0 pr-lg-5">{{$item->content}}</p>
                             </div>
                         </div>
                     </div>
                 @endforeach
             @endif
+
             @if($review_list->total() > 0)
                 <div class="bravo-pagination">
                     {{$review_list->appends(request()->query())->fragment('review-list')->links()}}
                 </div>
             @endif
         </div>
+
         <div class="py-4">
             @if($row->check_enable_review_after_booking() and Auth::id())
                 <h5 class="font-size-21 font-weight-bold text-dark mb-6">
-                    {{__("Write a review")}}
+                    {{__("Escreva uma avaliação")}}
                 </h5>
-                <div class="form-wrapper">
 
+                <div class="form-wrapper">
                     <form action="{{ route('review.store')}}" class="needs-validation sfeedbacks_form" novalidate method="post">
                         @csrf
                         <div class="row mb-5 mb-lg-0">
+
                             <div class="col-sm-12">
                                 @include('admin.message')
                             </div>
+
                             <div class="col-sm-12">
                                 <div class="row">
                                     @if($tour_review_stats = setting_item($row->type."_review_stats"))
@@ -128,7 +141,7 @@
                                     @else
                                         <div class="col-md-4 mb-6">
                                             <h6 class="font-weight-bold text-dark mb-1">
-                                                {{__("Review rate")}}
+                                                {{__("Avaliação geral")}}
                                             </h6>
                                             <input class="review_stats" type="hidden" name="review_rate">
                                             <span class="font-size-20 letter-spacing-3 sspd_review">
@@ -142,33 +155,38 @@
                                     @endif
                                 </div>
                             </div>
+
                             <div class="col-sm-12 mb-5">
                                 <div class="js-form-message">
-                                    <input type="text" class="form-control" name="review_title" placeholder="{{__("Título")}}" required data-error-class="u-has-error" data-msg="{{__('Review title is required')}}" data-success-class="u-has-success">
-                                    <div class="invalid-feedback">{{__('Review title is required')}}</div>
+                                    <input type="text" class="form-control" name="review_title" placeholder="{{__("Título")}}" required data-error-class="u-has-error" data-msg="{{__('O título da avaliação é obrigatório')}}" data-success-class="u-has-success">
+                                    <div class="invalid-feedback">{{__('O título da avaliação é obrigatório')}}</div>
                                 </div>
                             </div>
+
                             <div class="col-sm-12 mb-5">
                                 <div class="js-form-message">
                                     <div class="input-group">
-                                        <textarea class="form-control" rows="6" cols="77" name="review_content" placeholder="{{__("Review content")}}" required data-msg="{{__('Review content has at least 10 character')}}" data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
-                                        <div class="invalid-feedback">{{__('Review content has at least 10 character')}}</div>
+                                        <textarea class="form-control" rows="6" cols="77" name="review_content" placeholder="{{__("Conteúdo da avaliação")}}" required data-msg="{{__('O conteúdo da avaliação precisa ter no mínimo 10 caracteres')}}" data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
+                                        <div class="invalid-feedback">{{__('O conteúdo da avaliação precisa ter no mínimo 10 caracteres')}}</div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col d-flex justify-content-center justify-content-lg-start">
-                                <button type="submit" id="submit" name="submit" class="btn rounded-xs bg-blue-dark-1 text-white p-2 height-51 width-190 transition-3d-hover">{{__("Leave a Review")}}</button>
+                                <button type="submit" id="submit" name="submit" class="btn rounded-xs bg-blue-dark-1 text-white p-2 height-51 width-190 transition-3d-hover">
+                                    {{__("Enviar Avaliação")}}
+                                </button>
                                 <input type="hidden" name="review_service_id" value="{{$row->id}}">
                                 <input type="hidden" name="review_service_type" value="{{ $row->type }}">
                             </div>
                         </div>
-
                     </form>
                 </div>
             @endif
+
             @if(!Auth::id())
                 <div class="review-message">
-                    {!!  __("You must <a href='#login' data-toggle='modal' data-target='#login'>log in</a> to write review") !!}
+                    {!!  __("Você precisa <a href='#login' data-toggle='modal' data-target='#login'>entrar</a> para escrever uma avaliação") !!}
                 </div>
             @endif
         </div>

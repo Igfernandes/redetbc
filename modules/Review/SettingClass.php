@@ -12,7 +12,7 @@ class SettingClass extends BaseSettingsClass
         return [
             [
                 'id'   => 'review',
-                'title' => __("Review Advanced Settings"),
+                'title' => __("Configurações avançadas de avaliações"),
                 'position'=>140,
                 'view'=>"Review::admin.settings.review",
                 "keys"=>[

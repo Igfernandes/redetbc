@@ -94,7 +94,7 @@
     <div class="col-sm-4">
         <h3 class="form-group-title">{{__('SMS Event Booking')}}</h3>
         <div class="form-group-desc">
-            {{__('Telefone number must be E.164 format')}}
+            {{('Telefone must be E.164 format')}}
             <p>{{__('Format')}}:<code> {{__('[+][country code][subscriber number including area code]')}} </code></p>
             <p>{{__('Example')}}:<code> +12019480710</code></p>
             <div>{{__('Message')}}:</div>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="">{{__("Country")}}</label>
+                    <label class="">{{__("País")}}</label>
                     <select name="admin_country_has_booking" class="form-control">
                         <option value="">{{__('-- Selecione --')}}</option>
                         @foreach(get_country_lists() as $id=>$name)
@@ -306,7 +306,7 @@
             <div class="panel-body">
                 <div class="form-group">
                     <div class="form-controls">
-                        <label class="">{{__("Country")}}</label>
+                        <label class="">{{__("País")}}</label>
                         <select name="country" class="form-control" id="country-sms-testing">
                             <option value="">{{__('-- Selecione --')}}</option>
                             @foreach(get_country_lists() as $id=>$name)

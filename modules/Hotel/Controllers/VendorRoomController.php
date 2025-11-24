@@ -66,7 +66,7 @@ class VendorRoomController extends FrontendController
             'rows'               => $query->with(['author'])->paginate(20),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Hotels'),
+                    'name' => __('Hoteís'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -74,11 +74,11 @@ class VendorRoomController extends FrontendController
                     'url'  => route('hotel.vendor.edit',[$this->currentHotel->id])
                 ],
                 [
-                    'name'  => __('All Rooms'),
+                    'name'  => __('Todos os Quartos'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Room Management"),
+            'page_title'=>__("Gerenciamento de Quartos"),
             'hotel'=>$this->currentHotel,
             'row'=> new $this->roomClass(),
             'translation'=>new $this->roomTranslationClass(),
@@ -104,7 +104,7 @@ class VendorRoomController extends FrontendController
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
-                    'name' => __('Hotels'),
+                    'name' => __('Hoteís'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -112,7 +112,7 @@ class VendorRoomController extends FrontendController
                     'url'  => route('hotel.vendor.edit',[$this->currentHotel->id])
                 ],
                 [
-                    'name' => __('All Rooms'),
+                    'name' => __('Todos os Quartos'),
                     'url'  => route("hotel.vendor.room.index",['hotel_id'=>$this->currentHotel->id])
                 ],
                 [
@@ -120,7 +120,7 @@ class VendorRoomController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Create Room"),
+            'page_title'         => __("Criar Quarto"),
             'hotel'=>$this->currentHotel
         ];
         return view('Hotel::frontend.vendorHotel.room.detail', $data);
@@ -150,7 +150,7 @@ class VendorRoomController extends FrontendController
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
-                    'name' => __('Hotels'),
+                    'name' => __('Hoteís'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -158,15 +158,15 @@ class VendorRoomController extends FrontendController
                     'url'  => route('hotel.vendor.edit',[$this->currentHotel->id])
                 ],
                 [
-                    'name' => __('All Rooms'),
+                    'name' => __('Todos os Quartos'),
                     'url'  => route("hotel.vendor.room.index",['hotel_id'=>$this->currentHotel->id])
                 ],
                 [
-                    'name' => __('Editar room: :name',['name'=>$row->title]),
+                    'name' => __('Editar quarto: :name',['name'=>$row->title]),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Editarar: :name",['name'=>$row->title]),
+            'page_title'=>__("Editar: :name",['name'=>$row->title]),
             'hotel'=>$this->currentHotel
         ];
         return view('Hotel::frontend.vendorHotel.room.detail', $data);
@@ -226,9 +226,9 @@ class VendorRoomController extends FrontendController
             }
 
             if($id > 0 ){
-                return redirect()->back()->with('success',  __('Room updated') );
+                return redirect()->back()->with('success',  __('Quarto Atualizado') );
             }else{
-                return redirect(route('hotel.vendor.room.edit',['hotel_id'=>$hotel_id,'id'=>$row->id]))->with('success', __('Room created') );
+                return redirect(route('hotel.vendor.room.edit',['hotel_id'=>$hotel_id,'id'=>$row->id]))->with('success', __('Quarto Criado') );
             }
         }
     }
@@ -257,7 +257,7 @@ class VendorRoomController extends FrontendController
         if(!empty($query)){
             $query->delete();
         }
-        return redirect()->back()->with('success', __('Delete room success!'));
+        return redirect()->back()->with('success', __('Excluir quarto com sucesso!'));
     }
 
     public function bulkEdit(Request $request , $hotel_id , $id)

@@ -15,7 +15,7 @@
                     <form method="post" action="{{route('template.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
                             <option value="delete">{{__("Excluir")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
@@ -40,8 +40,8 @@
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
                                 <th>{{__('Título')}}</th>
-                                <th>{{__('Date')}}</th>
-                                <th>{{__('Actions')}}</th>
+                                <th>{{__('Data')}}</th>
+                                <th>{{__('Ações')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -61,7 +61,7 @@
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="{{route('template.admin.edit',[$row->id])}}"> <i class="fa fa-edit" aria-hidden="true"></i> {{__('Editar')}}</a>
                                                     <a class="dropdown-item" href="{{route('template.admin.exportTemplate',[$row->id])}}"> <i class="fa fa-download" aria-hidden="true"></i> {{__('Export')}}</a>
-                                                    <a class="dropdown-item" href="{{\Illuminate\Support\Facades\URL::signedRoute('template.admin.clone',[$row->id])}}"> <i class="fa fa-copy" aria-hidden="true"></i> {{__('Clone')}}</a>
+                                                    <a class="dropdown-item" href="{{\Illuminate\Support\Facades\URL::signedRoute('template.admin.clone',[$row->id])}}"> <i class="fa fa-copy" aria-hidden="true"></i> {{__('Duplicar')}}</a>
                                                 </div>
                                             </div>
 

@@ -15,7 +15,7 @@
                         <span>{{ __("Livro") }}</span>
                     </div>
                     <div class="enquiry-item" data-toggle="modal" data-target="#enquiry_form_modal">
-                        <span>{{ __("Investigação") }}</span>
+                        <span>{{ __("Consulta") }}</span>
                     </div>
                 </div>
                 <div class="form-book" :class="{'d-none':enquiry_type!='book'}">
@@ -36,7 +36,7 @@
                                         <div class="flex-center-between mb-1 text-dark font-weight-bold">
                                             <span class="d-block">
                                                 @{{type.name}} <br>
-                                                <small>@{{type.display_price}} {{__("per ticket")}}</small>
+                                                <small>@{{type.display_price}} {{__("port ingresso")}}</small>
                                             </span>
                                             <div class="flex-horizontal-center">
                                                 <a class="font-size-10 text-dark" href="javascript:;" @click="minusPersonType(type)">

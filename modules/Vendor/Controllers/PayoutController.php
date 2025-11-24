@@ -30,14 +30,14 @@ class PayoutController extends FrontendController
 
         $this->checkPermission('dashboard_vendor_access');
         $data = [
-            'page_title'=>__("Payouts Management"),
+            'page_title'=>__("Pagamentos Management"),
             'breadcrumbs'=>[
                 [
                     'name'  => __('Fornecedor dashboard'),
                     'url'=>route('vendor.dashboard')
                 ],
                 [
-                    'name'  => __('Payouts'),
+                    'name'  => __('Pagamentos'),
                     'class' => 'active'
                 ],
             ],

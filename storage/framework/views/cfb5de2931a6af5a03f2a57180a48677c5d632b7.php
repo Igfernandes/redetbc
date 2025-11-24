@@ -34,7 +34,7 @@
     </div>
     <div class="g-button-submit align-self-lg-end">
         <button type="submit" class="btn btn-primary btn-md border-radius-3 mb-xl-0 mb-lg-1 transition-3d-hover">
-            <i class="flaticon-magnifying-glass font-size-20 mr-2"></i><?php echo e(__("Search")); ?>
+            <i class="flaticon-magnifying-glass font-size-20 mr-2"></i><?php echo e(__("Procurar")); ?>
 
         </button>
     </div>

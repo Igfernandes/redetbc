@@ -20,16 +20,16 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>{{__("First Name")}} </label>
-                                        <input type="text" placeholder="{{__("First Name")}}" class="form-control"
+                                        <label>{{__("Primeiro Nome")}} </label>
+                                        <input type="text" placeholder="{{__("Primeiro Nome")}}" class="form-control"
                                                value="{{$old_item['first_name'] ?? ''}}"
                                                name="passengers[{{$i}}][first_name]">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>{{__("Last Name")}}</label>
-                                        <input type="text" placeholder="{{__("Last Name")}}" class="form-control"
+                                        <label>{{__("Sobrenome")}}</label>
+                                        <input type="text" placeholder="{{__("Sobrenome")}}" class="form-control"
                                                value="{{$old_item['last_name'] ?? ''}}"
                                                name="passengers[{{$i}}][last_name]">
                                     </div>
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>{{__("Phone")}} </label>
+                                        <label>{{__("Celular")}} </label>
                                         <input type="text" placeholder="{{__("Your Phone")}}" class="form-control"
                                                value="{{$old_item['phone'] ?? ''}}" name="passengers[{{$i}}][phone]">
                                     </div>

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Translate Manager for: :name",['name'=>$lang->name])}}</h1>
+            <h1 class="title-bar">{{__("Gerenciador de tradução para: :name",['name'=>$lang->name])}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
@@ -11,25 +11,25 @@
                     <div class="col-left">
                         <form method="get" action="" class="filter-form filter-form-left d-flex justify-content-start flex-column flex-sm-row">
                             <select name="type" class="form-control">
-                                <option value="">{{__("All text")}}</option>
-                                <option @if(Request()->type == 'not_translated') selected @endif value="not_translated">{{__("Not translated")}}</option>
-                                <option @if(Request()->type == 'translated') selected @endif value="translated">{{__("Translated")}}</option>
+                                <option value="">{{__("Todos os textos")}}</option>
+                                <option @if(Request()->type == 'not_translated') selected @endif value="not_translated">{{__("ão traduzido")}}</option>
+                                <option @if(Request()->type == 'translated') selected @endif value="translated">{{__("Traduzido")}}</option>
                             </select>
                             <select name="search_by" class="form-control">
-                                <option value="">{{__("Procurar By")}}</option>
-                                <option @if(Request()->search_by == 'original_text') selected @endif value="original_text">{{__("Original Text")}}</option>
-                                <option @if(Request()->search_by == 'translated_text') selected @endif value="translated_text">{{__("Translated Text")}}</option>
+                                <option value="">{{__("Procurar pelo")}}</option>
+                                <option @if(Request()->search_by == 'original_text') selected @endif value="original_text">{{__("Texto Original")}}</option>
+                                <option @if(Request()->search_by == 'translated_text') selected @endif value="translated_text">{{__("Texto Traduzido")}}</option>
                             </select>
                             <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by key ...')}}" class="form-control">
                             <button class="btn-info btn btn-icon" type="submit">{{__('Filter')}}</button>
                         </form>
                     </div>
                     <div class="col-left">
-                        <p><i>{{__('Found :total texts',['total'=>$origins->total()])}}</i></p>
+                        <p><i>{{__('Encontrado :total texts',['total'=>$origins->total()])}}</i></p>
                     </div>
                 </div>
                 <div class="panel">
-                    <div class="panel-title">{{__("Translate")}}</div>
+                    <div class="panel-title">{{__("Traduzir")}}</div>
                     <div class="panel-body">
                         <form action="{{route('language.admin.translations.store',['id'=>$lang->id])}}" method="post">
                             @csrf
@@ -37,8 +37,8 @@
                                 <thead>
                                 <tr>
                                     <th width="50px"></th>
-                                    <th width="50%">{{__("Origin")}}</th>
-                                    <th>{{__("Translated")}}</th>
+                                    <th width="50%">{{__("Texto Original")}}</th>
+                                    <th>{{__("Texto Traduzido")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

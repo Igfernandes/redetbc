@@ -37,7 +37,7 @@ class TagNewsController extends FrontendController
             'model_news'     => News::where("status", "publish"),
             'breadcrumbs'    => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.index')
                 ],
                 [

@@ -5,7 +5,7 @@ $user = auth()->user();
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content enquiry_form_modal_form">
             <div class="modal-header">
-                <h5 class="modal-title">{{__("Investigação")}}</h5>
+                <h5 class="modal-title">{{__("Consulta")}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -14,7 +14,7 @@ $user = auth()->user();
                 <input type="hidden" name="service_id" value="{{$row->id}}">
                 <input type="hidden" name="service_type" value="{{$service_type ?? ''}}">
                 <div class="form-group" >
-                    <input type="text" class="form-control" value="{{$user->display_name ?? ''}}" name="enquiry_name" placeholder="{{ __("Name *") }}">
+                    <input type="text" class="form-control" value="{{$user->display_name ?? ''}}" name="enquiry_name" placeholder="{{ __("Nome *") }}">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" value="{{$user->email ?? ''}}" name="enquiry_email" placeholder="{{ __("Email *") }}">

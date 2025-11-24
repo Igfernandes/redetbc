@@ -46,7 +46,7 @@ class BookingController extends AdminController
         $query->orderBy('id', 'desc');
         $data = [
             'rows'                  => $query->paginate(20),
-            'page_title'            => __("All Bookings"),
+            'page_title'            => __("Todas Reservas"),
             'booking_manage_others' => $this->hasPermission('booking_manage_others'),
             'booking_update'        => $this->hasPermission('booking_update'),
             'statues'               => config('booking.statuses')
@@ -59,10 +59,10 @@ class BookingController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('No items selected'));
+            return redirect()->back()->with('error', __('Nenhum item selecionado'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select action'));
+            return redirect()->back()->with('error', __('Por favor selecione uma ação'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {

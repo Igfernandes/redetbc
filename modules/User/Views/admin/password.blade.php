@@ -17,28 +17,28 @@
                     <div class="panel">
                         <div class="panel-title">
                             @if($row->id)
-                                <strong class="">{{ __('Change Password')}}</strong>
+                                <strong class="">{{ __('Alterar Senha')}}</strong>
                             @else
-                                <strong class="">{{ __('Password')}}</strong>
+                                <strong class="">{{ __('Senha')}}</strong>
                             @endif
                         </div>
                         <div class="panel-body">
 
                             @if($row->id and $row->id != $currentUser->id and !$currentUser->hasPermission('user_update') )
                                 <div class="form-group">
-                                    <label>{{ __('Old Password')}}</label>
+                                    <label>{{ __('Senha Antiga')}}</label>
                                     <input type="password" value="" placeholder="{{ __('Old Password')}}" name="old_password" class="form-control" >
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label>{{ __('New password')}}</label>
-                                <input type="password" value="" placeholder="{{ __('Password')}}" name="password" class="form-control">
+                                <label>{{ __('Nova senha')}}</label>
+                                <input type="password" value="" placeholder="{{ __('Nova senha')}}" name="password" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>{{ __('Re-Password')}}</label>
-                                <input type="password" value="" placeholder="{{ __('Re-Password')}}" name="password_confirmation" class="form-control">
+                                <label>{{ __('Re-senha')}}</label>
+                                <input type="password" value="" placeholder="{{ __('Re-senha')}}" name="password_confirmation" class="form-control">
                             </div>
-                            <button type="submit" class="btn btn-primary"> {{ __('Change Password')}} </button>
+                            <button type="submit" class="btn btn-primary"> {{ __('Alterar Senha')}} </button>
                         </div>
                     </div>
                 </div>

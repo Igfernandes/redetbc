@@ -2,20 +2,20 @@
 $translation = $service->translate();
 $lang_local = app()->getLocale();
 ?>
-<div class="b-panel-title">{{__('Tour information')}}</div>
+<div class="b-panel-title">{{__('Passeios information')}}</div>
 <div class="b-table-wrap">
     <table class="b-table" cellspacing="0" cellpadding="0">
         <tr>
-            <td class="label">{{__('Booking Number')}}</td>
+            <td class="label">{{__('Numero da Reserva')}}</td>
             <td class="val">#{{$booking->id}}</td>
         </tr>
         <tr>
-            <td class="label">{{__('Booking Status')}}</td>
+            <td class="label">{{__('Status da Reserva')}}</td>
             <td class="val">{{$booking->statusName}}</td>
         </tr>
         @if($booking->gatewayObj)
             <tr>
-                <td class="label">{{__('Payment method')}}</td>
+                <td class="label">{{__('Método de Pagamento')}}</td>
                 <td class="val">{{$booking->gatewayObj->getOption('name')}}</td>
             </tr>
         @endif
@@ -26,7 +26,7 @@ $lang_local = app()->getLocale();
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Tour name')}}</td>
+            <td class="label">{{__('Nome do Passeio')}}</td>
             <td class="val">
                 <a href="{{$service->getDetailUrl()}}">{!! clean($translation->title) !!}</a>
             </td>
@@ -34,7 +34,7 @@ $lang_local = app()->getLocale();
         </tr>
         <tr>
             @if($translation->address)
-                <td class="label">{{__('Address')}}</td>
+                <td class="label">{{__('Endereço')}}</td>
                 <td class="val">
                     {{$translation->address}}
                 </td>
@@ -42,12 +42,12 @@ $lang_local = app()->getLocale();
         </tr>
         @if($booking->start_date && $booking->end_date)
             <tr>
-                <td class="label">{{__('Start date')}}</td>
+                <td class="label">{{__('Data de Início')}}</td>
                 <td class="val">{{display_date($booking->start_date)}}</td>
             </tr>
 
             <tr>
-                <td class="label">{{__('Duration:')}}</td>
+                <td class="label">{{__('Duração:')}}</td>
                 <td class="val">
                     {{human_time_diff($booking->end_date,$booking->start_date)}}
                 </td>
@@ -75,7 +75,7 @@ $lang_local = app()->getLocale();
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Pricing')}}</td>
+            <td class="label">{{__('Preços')}}</td>
             <td class="val no-r-padding">
                 <table class="pricing-list" width="100%">
                     @php $person_types = $booking->getJsonMeta('person_types')

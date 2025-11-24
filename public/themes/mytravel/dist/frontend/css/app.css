@@ -45347,10 +45347,11 @@ ol {
 }
 @media (max-width: 768px) {
   .bravo_wrap .subscribe-plan .content {
-    flex-wrap: wrap;
+    display: block;
   }
 }
 .bravo_wrap .subscribe-plan .content p {
+  display: inline;
   color: #fff;
   margin: 0;
 }
@@ -45365,7 +45366,7 @@ ol {
 }
 @media (max-width: 768px) {
   .bravo_wrap .subscribe-plan .content a {
-    width: 100%;
+    display: inline;
   }
 }
 @media (max-width: 768px) {
@@ -45608,7 +45609,7 @@ ol {
   padding: 0px 10px;
   float: right;
   display: none;
-  color: #fff;
+  color: #003583;
 }
 @media (max-width: 991px) {
   .bravo_wrap .bravo_header .content .header-right .bravo-more-menu {
@@ -46118,6 +46119,19 @@ ol {
 @media (max-width: 767px) {
   .bravo_wrap .bravo_footer .sub-footer {
     flex-direction: column;
+    justify-content: center;
+  }
+  .bravo_wrap .bravo_footer .sub-footer a {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .bravo_wrap .bravo_footer .sub-footer a img {
+    margin: 0 auto;
+  }
+  .bravo_wrap .bravo_footer .sub-footer a span {
+    width: 100%;
+    font-size: 1.5rem;
+    margin-top: 12px;
   }
   .bravo_wrap .bravo_footer .sub-footer .footer-select {
     padding-top: 2rem;

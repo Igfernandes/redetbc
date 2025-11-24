@@ -15,7 +15,7 @@
                         <span>{{ __("Livro") }}</span>
                     </div>
                     <div class="enquiry-item" data-toggle="modal" data-target="#enquiry_form_modal">
-                        <span>{{ __("Investigação") }}</span>
+                        <span>{{ __("Consulta") }}</span>
                     </div>
                 </div>
                 <div class="form-book" :class="{'d-none':enquiry_type!='book'}">
@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <div class="guest-wrapper d-flex justify-content-between align-items-center border-bottom border-width-2 border-color-1 pb-3">
                                     <div class="flex-grow-1">
-                                        <label>{{__("Start Time")}}</label>
+                                        <label>{{__("Hora de entrada")}}</label>
                                     </div>
                                     <div class="flex-shrink-0">
                                         <div class="input-number-group">

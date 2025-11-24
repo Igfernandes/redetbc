@@ -50,7 +50,7 @@ class NewsController extends FrontendController
             'custom_title_page' => $title_page ?? "",
             'breadcrumbs'       => [
                 [
-                    'name'  => __('News'),
+                    'name'  => __('Notícias'),
                     'class' => 'active'
                 ]
             ],
@@ -85,7 +85,7 @@ class NewsController extends FrontendController
             'related'           => $related ?? false,
             'breadcrumbs'       => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.index')
                 ],
                 [

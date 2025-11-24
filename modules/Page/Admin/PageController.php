@@ -29,10 +29,10 @@ class PageController extends AdminController
         $datapage = $datapage->orderBy('title', 'asc');
         $data = [
             'rows' => $datapage->paginate(20),
-            'page_title' => __("Page Management"),
+            'page_title' => __("Gerenciador de Página"),
             'breadcrumbs' => [
                 [
-                    'name' => __('Pages'),
+                    'name' => __('Páginas'),
                     'url' => route('page.admin.index')
                 ],
                 [
@@ -58,11 +58,11 @@ class PageController extends AdminController
             'templates' => Template::orderBy('id', 'desc')->limit(100)->get(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Pages'),
+                    'name' => __('Páginas'),
                     'url' => route('page.admin.index')
                 ],
                 [
-                    'name' => __('Add Page'),
+                    'name' => __('Adicionar  Página'),
                     'class' => 'active'
                 ],
             ]
@@ -86,7 +86,7 @@ class PageController extends AdminController
             'templates' => Template::orderBy('id', 'desc')->limit(100)->get(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Pages'),
+                    'name' => __('Páginas'),
                     'url' => route('page.admin.index')
                 ],
                 [
@@ -129,9 +129,9 @@ class PageController extends AdminController
         $row->saveOriginOrTranslation($request->query('lang'), true);
 
         if ($id > 0) {
-            return back()->with('success', __('Page updated'));
+            return back()->with('success', __('Página atualizada'));
         } else {
-            return redirect()->route('page.admin.edit', ['id' => $row->id])->with('success', $id > 0 ? __('Page updated') : __('Page created'));
+            return redirect()->route('page.admin.edit', ['id' => $row->id])->with('success', $id > 0 ? __('Página atualizada') : __('Página criada'));
         }
     }
 
@@ -156,10 +156,10 @@ class PageController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids)) {
-            return redirect()->back()->with('error', __('Please select at least 1 item!'));
+            return redirect()->back()->with('error', __('Por favor, selecione pelo menos 1 item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('No Action is selected!'));
+            return redirect()->back()->with('error', __('Nenhuma ação selecionada!'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {

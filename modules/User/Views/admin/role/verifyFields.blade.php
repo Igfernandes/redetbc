@@ -11,9 +11,9 @@
                     <form method="post" action="{{route('user.admin.role.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-end">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
-                            {{--<option value="publish">{{__(" Publish ")}}</option>--}}
-                            {{--<option value="draft">{{__(" Move to Draft ")}}</option>--}}
+                            <option value="">{{__(" Ações em Massa ")}}</option>
+                            {{--<option value="publish">{{__(" Publicado ")}}</option>--}}
+                            {{--<option value="draft">{{__(" Mover para Rascunho ")}}</option>--}}
                             <option value="delete">{{__("Excluir")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
@@ -27,19 +27,19 @@
                 <form method="post" action="{{route('user.admin.role.verifyFieldsStore')}}" class="needs-validation" novalidate>
                     @csrf
                 <div class="panel">
-                    <div class="panel-title"><strong>{{__("Add new field")}}</strong></div>
+                    <div class="panel-title"><strong>{{__("Adicionar novo campo")}}</strong></div>
                     <div class="panel-body">
                         @include('User::admin.role.verifyFieldsForm')
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" class="btn btn-success">{{__('Add new')}}</button>
+                        <button type="submit" class="btn btn-success">{{__('Adicionar novo')}}</button>
                     </div>
                 </div>
                 </form>
             </div>
             <div class="col-md-8">
                 <div class="panel">
-                    <div class="panel-title">{{ __('All Fields')}}</div>
+                    <div class="panel-title">{{ __('Todos os Campos')}}</div>
                     <div class="panel-body">
                         <form action="" class="bravo-form-item">
                             <div class="table-responsive">
@@ -49,7 +49,7 @@
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
                                 <th>{{ __('ID')}}</th>
                                 <th>{{ __('Icon')}}</th>
-                                <th>{{ __('Name')}}</th>
+                                <th>{{ __('Nome')}}</th>
                                 <th>{{ __('Type')}}</th>
                                 <th>{{ __('For roles')}}</th>
                                 <th>{{ __('Ordem')}}</th>
@@ -76,7 +76,7 @@
                                         @endphp
                                     </td>
                                     <th>{{$row['order'] ?? 0}}</th>
-                                    <td>{{$row['required'] ? __("Yes") : 'No'}}</td>
+                                    <td>{{$row['required'] ? __("Sim") : 'No'}}</td>
                                     <th><a href="{{route('user.admin.role.verifyFieldsEdit',['id'=>$id])}}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i>  {{__('Editar')}}</a></th>
                                 </tr>
                             @endforeach

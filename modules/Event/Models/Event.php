@@ -361,7 +361,7 @@ class Event extends Bookable
                 if (!empty($item['unit']) and $item['unit'] == "percent") {
                     $fee_price = ($amount / 100) * $item['price'];
                 } else {
-                    //for Fixed and per Ticket
+                    //for Fixed and port ingresso
                     if (!empty($item['per_ticket']) and $item['per_ticket'] == "on") {
                         $fee_price = $fee_price * $guests;
                     }

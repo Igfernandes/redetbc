@@ -133,11 +133,11 @@ class UserController extends FrontendController
             'statues'     => config('booking.statuses'),
             'breadcrumbs' => [
                 [
-                    'name'  => __('Booking History'),
+                    'name'  => __('Reservas'),
                     'class' => 'active'
                 ]
             ],
-            'page_title'  => __("Booking History"),
+            'page_title'  => __("Histórico de Reservas"),
         ];
         return view('User::frontend.bookingHistory', $data);
     }
@@ -151,9 +151,9 @@ class UserController extends FrontendController
         if ($check) {
             if ($check->trashed()) {
                 $check->restore();
-                return $this->sendSuccess([], __('Thank you for subscribing'));
+                return $this->sendSuccess([], __('Obrigado por se inscrever'));
             }
-            return $this->sendError(__('You are already subscribed'));
+            return $this->sendError(__('Você já está inscrito'));
         } else {
             $a = new Subscriber();
             $a->email = $request->input('email');
@@ -163,7 +163,7 @@ class UserController extends FrontendController
 
             event(new UserSubscriberSubmit($a));
 
-            return $this->sendSuccess([], __('Thank you for subscribing'));
+            return $this->sendSuccess([], __('Obrigado por se inscrever'));
         }
     }
 

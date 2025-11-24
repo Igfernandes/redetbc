@@ -1,12 +1,12 @@
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Hotel Content")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Conteúdo do Hotel")}}</strong></div>
     <div class="panel-body">
         <div class="form-group magic-field" data-id="title" data-type="title">
             <label class="control-label">{{__("Título")}}</label>
-            <input type="text" value="{!! clean($translation->title) !!}" placeholder="{{__("Name of the hotel")}}" name="title" class="form-control">
+            <input type="text" value="{!! clean($translation->title) !!}" placeholder="{{__("Nome do hotel")}}" name="title" class="form-control">
         </div>
         <div class="form-group">
-            <label class="control-label">{{__("Target Religion")}}</label>
+            <label class="control-label">{{__("Religião Alvo")}}</label>
             <select name="religion" class="form-control">
                 <option value="">Selecione a religião</option>
                 <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangélico")}}</option>
@@ -15,7 +15,7 @@
             </select>
         </div>
         <div class="form-group magic-field" data-id="content" data-type="content" data-editor="1">
-            <label class="control-label" data->{{__("Content")}}</label>
+            <label class="control-label" data->{{__("Conteúdo")}}</label>
             <div class="">
                 <textarea name="content" class="d-none has-ckeditor" id="content" cols="30" rows="10">{{$translation->content}}</textarea>
             </div>
@@ -28,13 +28,13 @@
         @endif
         @if(is_default_lang())
         <div class="form-group">
-            <label class="control-label">{{__("Banner Image")}}</label>
+            <label class="control-label">{{__("Imagem do Banner")}}</label>
             <div class="form-group-image">
                 {!! \Modules\Media\Helpers\FileHelper::fieldUpload('banner_image_id',$row->banner_image_id) !!}
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label">{{__("Gallery")}}</label>
+            <label class="control-label">{{__("Galeria")}}</label>
             {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
         </div>
         @endif
@@ -42,24 +42,24 @@
 </div>
 
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Hotel Policy")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Política do Hotel")}}</strong></div>
     <div class="panel-body">
         @if(is_default_lang())
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>{{__("Hotel rating standard")}}</label>
+                    <label>{{__("Classificação do Hotel")}}</label>
                     <input type="number" value="{{$row->star_rate}}" placeholder="{{__("Eg: 5")}}" name="star_rate" class="form-control">
                 </div>
             </div>
         </div>
         @endif
         <div class="form-group-item">
-            <label class="control-label">{{__('Policy')}}</label>
+            <label class="control-label">{{__('Política')}}</label>
             <div class="g-items-header">
                 <div class="row">
                     <div class="col-md-5">{{__("Título")}}</div>
-                    <div class="col-md-5">{{__('Content')}}</div>
+                    <div class="col-md-5">{{__('Conteúdo')}}</div>
                     <div class="col-md-1"></div>
                 </div>
             </div>

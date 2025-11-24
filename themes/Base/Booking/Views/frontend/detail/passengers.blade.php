@@ -19,13 +19,13 @@ if(!count($passengers)) return;
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{__("First Name")}}: </label>
+                                <label>{{__("Primeiro Nome")}}: </label>
                                 <strong> {{$passenger->first_name}}</strong>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{__("Last Name")}}:</label>
+                                <label>{{__("Sobrenome")}}:</label>
 
                                 <strong>{{$passenger->last_name}}</strong>
                             </div>
@@ -39,7 +39,7 @@ if(!count($passengers)) return;
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{__("Phone")}}: </label>
+                                <label>{{__("Celular")}}: </label>
 
                                 <strong>{{$passenger->phone}}</strong>
                             </div>

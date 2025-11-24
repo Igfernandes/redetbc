@@ -80,7 +80,7 @@ class HotelController extends Controller
                 "markers" => $markers,
                 'fragments'=>[
                     '.ajax-search-result'=>view('Hotel::frontend.ajax.search-result'.($for_map ? '-map' : ''), $data)->render(),
-                    '.result-count'=>$list->total() > 1 ? __(":count hotels found",['count'=>$list->total()]) : __(":count hotel found",['count'=>$list->total()]),
+                    '.result-count'=>$list->total() > 1 ? __(":count hotéis encontrados",['count'=>$list->total()]) : __(":count hotel encontrado",['count'=>$list->total()]),
                     '.count-string'=> $list->total() ? __("Mostrando :from - :to of :total Hotels",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
                 ]
             ]);
@@ -161,22 +161,22 @@ class HotelController extends Controller
             }
 
             if(strtotime(\request('end_date')) - strtotime(\request('start_date')) < DAY_IN_SECONDS){
-                return $this->sendError(__("Dates are not valid"));
+                return $this->sendError(__("Datas não são válidas"));
             }
             if(strtotime(\request('end_date')) - strtotime(\request('start_date')) > 30*DAY_IN_SECONDS){
-                return $this->sendError(__("Maximum day for booking is 30"));
+                return $this->sendError(__("O máximo de dias para reserva é 30"));
             }
         }
 
         $hotel = $this->hotelClass::find($hotel_id);
         if(empty($hotel_id) or empty($hotel)){
-            return $this->sendError(__("Hotel not found"));
+            return $this->sendError(__("Hotel não encontrado"));
         }
 
         if(\request()->input('firstLoad') == "false") {
             $numberDays = abs(strtotime(\request('end_date')) - strtotime(\request('start_date'))) / 86400;
             if(!empty($hotel->min_day_stays) and  $numberDays < $hotel->min_day_stays){
-                return $this->sendError(__("You must to book a minimum of :number days",['number'=>$hotel->min_day_stays]));
+                return $this->sendError(__("Você deve reservar um mínimo de :number dias",['number'=>$hotel->min_day_stays]));
             }
 
             if(!empty($hotel->min_day_before_booking)){

@@ -20,10 +20,10 @@ class MediaController extends Controller
 
         $this->setActiveMenu(route('media.admin.index'));
         $data = [
-            'page_title'=>__("Media Management"),
+            'page_title'=>__("Gerenciamento de Mídia"),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Media Management'),
+                    'name' => __('Gerenciamento de Mídia'),
                     'url'  => route('media.admin.index')
                 ],
             ]
@@ -57,13 +57,13 @@ class MediaController extends Controller
     {
 
         if(!\auth()->user()){
-            return $this->sendError(__("Please log in"));
+            return $this->sendError(__("Por favor, faça login"));
         }
 
         $ckEditor = $request->query('ckeditor');
 
         if (!$this->hasPermissionMedia()) {
-            return $this->sendError('There is no permission upload');
+            return $this->sendError(__('Não há permissão para upload'));
         }
         $fileName = 'file';
         if($ckEditor) $fileName = 'upload';
@@ -83,7 +83,7 @@ class MediaController extends Controller
     public function getLists(Request $request)
     {
         if (!$this->hasPermissionMedia()) {
-            return $this->sendError('There is no permission upload');
+            return $this->sendError(__('Não há permissão para upload'));
         }
         $file_type = $request->input('file_type', 'image');
         $s = $request->input('s');
@@ -95,7 +95,7 @@ class MediaController extends Controller
         $uploadConfigs = config('bc.media.groups');
 
         if(!isset($uploadConfigs[$file_type])){
-            return $this->sendError('File type not found');
+            return $this->sendError(__('Tipo de arquivo não encontrado'));
         }
 
         $config = isset($uploadConfigs[$file_type]) ? $uploadConfigs[$file_type] : $uploadConfigs['default'];
@@ -174,15 +174,15 @@ class MediaController extends Controller
 
     public function removeFiles(Request $request){
         if(is_demo_mode()){
-            return $this->sendError(__("Can not remove!"));
+            return $this->sendError(__("Não pode ser removido!"));
         }
         $file_ids = $request->input('file_ids');
         $driver = config('filesystems.default','uploads');
         if(empty($file_ids)){
-            return $this->sendError(__("Please select file"));
+            return $this->sendError(__("Por favor, selecione um arquivo"));
         }
         if (!$this->hasPermissionMedia()) {
-            return $this->sendError(__("You don't have permission delete the file!"));
+            return $this->sendError(__("Você não tem permissão para excluir o arquivo!"));
         }
         $model = MediaFile::query()->whereIn("id",$file_ids);
         if (!Auth::user()->hasPermission("media_manage_others")) {
@@ -206,9 +206,9 @@ class MediaController extends Controller
                 }
                 $file->forceDelete();
             }
-            return $this->sendSuccess([],__("Delete the file success!"));
+            return $this->sendSuccess([],__("Arquivo excluído com sucesso!"));
         }
-        return $this->sendError(__("File not found!"));
+        return $this->sendError(__("Arquivo não encontrado!"));
     }
 
     public function editImage(Request $request){
@@ -231,7 +231,7 @@ class MediaController extends Controller
 
         $file = MediaFile::find($image_id);
         if(!$file){
-            return $this->sendError("File not found");
+            return $this->sendError("Arquivo não encontrado");
         }
 
         try{

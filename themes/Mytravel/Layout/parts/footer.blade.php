@@ -44,9 +44,9 @@
 
                     <div class="mb-4 mb-xl-2">
 
-                        <h4 class="h6 font-weight-bold mb-2 mb-xl-4">{{ __('Mailing List') }}</h4>
+                        <h4 class="h6 font-weight-bold mb-2 mb-xl-4">{{ __('Lista de e-mails') }}</h4>
 
-                        <p class="m-0 text-gray-1">{{ __('Sign up for our mailing list to get latest updates and offers.') }}</p>
+                        <p class="m-0 text-gray-1">{{ __('Inscreva-se na nossa lista de e-mails para receber as últimas novidades e ofertas.') }}</p>
 
                     </div>
 
@@ -56,11 +56,11 @@
 
                         <div class="input-group">
 
-                            <input type="text" name="email" class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8 email-input" placeholder="{{__('Your Email')}}">
+                            <input type="text" name="email" class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8 email-input" placeholder="{{__('Seu e-mail')}}">
 
                             <div class="input-group-append ml-3">
 
-                                <button type="submit" class="btn-submit btn btn-sea-green border-radius-3 height-54 min-width-112 font-size-14">{{__('Subscribe')}}
+                                <button type="submit" class="btn-submit btn btn-sea-green border-radius-3 height-54 min-width-112 font-size-14">{{__('Inscrever-se')}}
 
                                     <i class="fa fa-spinner fa-pulse fa-fw"></i>
 
@@ -97,12 +97,6 @@
                 </a>
 
                 <div class="footer-select bravo_topbar d-flex align-items-center">
-
-                    <div class="mr-3">
-
-                        @include('Language::frontend.switcher')
-
-                    </div>
 
                     @include('Core::frontend.currency-switcher')
 

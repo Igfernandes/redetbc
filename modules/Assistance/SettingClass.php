@@ -12,7 +12,7 @@ class SettingClass extends BaseSettingsClass
         return [
             [
                 'id'   => 'assistance',
-                'title' => __("Configurações de assistência"),
+                'title' => __("Configurações de serviços"),
                 'position'=>20,
                 'view'=>"Assistance::admin.settings.assistance",
                 "keys"=>[

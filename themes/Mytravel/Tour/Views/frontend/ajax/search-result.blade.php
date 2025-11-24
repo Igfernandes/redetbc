@@ -8,14 +8,14 @@
             @endforeach
         @else
             <div class="col-lg-12">
-                {{__("Tour not found")}}
+                {{__("Passeio não encontrado")}}
             </div>
         @endif
     </div>
 </div>
 <div class="bravo-pagination">
     @if($rows->total() > 0)
-        <div class="text-center text-md-left font-size-14 mb-3 text-lh-1">{{ __("Mostrando :from - :to of :total Tours",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</div>
+        <div class="text-center text-md-left font-size-14 mb-3 text-lh-1">{{ __("Mostrando :from - :to de :total Passeios",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</div>
     @endif
     {{$rows->appends(request()->query())->links()}}
 </div>

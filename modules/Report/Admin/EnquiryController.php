@@ -30,7 +30,7 @@ class EnquiryController extends AdminController
         if (!empty($request->s)) {
             $query->where('email', 'LIKE', '%' . $request->s . '%');
             $query->orderBy('email', 'asc');
-            $title_page = __('Search results: ":s"', ["s" => $request->s]);
+            $title_page = __('Buscar resultado: ":s"', ["s" => $request->s]);
         }
         $query->whereIn('object_model', array_keys(get_bookable_services()));
         $query->orderBy('id','desc');
@@ -38,7 +38,7 @@ class EnquiryController extends AdminController
             'rows'                  => $query->withCount(['replies'])->paginate(20),
             'breadcrumbs' => [
                 [
-                    'name' => __('Enquiry'),
+                    'name' => __('Inquérito'),
                     'url'  => route('report.admin.enquiry.index')
                 ],
                 [
@@ -49,7 +49,7 @@ class EnquiryController extends AdminController
             'enquiry_update'        => $this->hasPermission('enquiry_update'),
             'enquiry_manage_others' => $this->hasPermission('enquiry_manage_others'),
             'statues'        => $this->enquiryClass->enquiryStatus,
-            'page_title'=> $title_page ?? __("Enquiry Management")
+            'page_title'=> $title_page ?? __("Gerenciamento de Inquérito")
         ];
 
         return view('Report::admin.enquiry.index', $data);
@@ -60,10 +60,10 @@ class EnquiryController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('No items selected'));
+            return redirect()->back()->with('error', __('Nenhum item selecionado'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('Please select action'));
+            return redirect()->back()->with('error', __('Por favor selecione uma ação'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {
@@ -106,14 +106,14 @@ class EnquiryController extends AdminController
                     'url'  => route('report.admin.enquiry.index')
                 ],
                 [
-                    'name'  => __('Enquiry :name',['name'=>'#'.$enquiry->id.' - '.($enquiry->service->title ?? '')]),
+                    'name'  => __('Inquérito :name',['name'=>'#'.$enquiry->id.' - '.($enquiry->service->title ?? '')]),
                 ],
                 [
-                    'name'  => __('All Replies'),
+                    'name'  => __('Todas Respostas'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Replies"),
+            'page_title'=>__("Respostas"),
             'enquiry'=>$enquiry
         ];
 
@@ -136,7 +136,7 @@ class EnquiryController extends AdminController
 
         EnquiryReplyCreated::dispatch($reply,$enquiry);
 
-        return back()->with('success',__("Reply added"));
+        return back()->with('success',__("Resposta adicionada"));
     }
 
 }

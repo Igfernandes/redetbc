@@ -14,7 +14,7 @@ class TranslationsController extends AdminController
     {
         $this->checkPermission('language_translation');
         $data = [
-            'page_title' => __('Translation Manager'),
+            'page_title' => __('Gerenciador de Traduções'),
             'languages'  => Language::paginate(20),
             'total_text' => Translation::where('locale', 'raw')->count()
         ];
@@ -72,11 +72,11 @@ class TranslationsController extends AdminController
             'lang'        => $lang,
             'breadcrumbs' => [
                 [
-                    'name' => __('Translation Manager'),
+                    'name' => __('Gerenciador de Traduções'),
                     'url'  => route('language.admin.translations.index')
                 ],
                 [
-                    'name'  => __('Translate for: :name', ['name' => $lang->name]),
+                    'name'  => __('Traduzir para: :name', ['name' => $lang->name]),
                     'class' => 'active'
                 ],
             ]
@@ -110,7 +110,7 @@ class TranslationsController extends AdminController
                 }
             }
         }
-        return redirect()->back()->with('success', __("Translation saved"));
+        return redirect()->back()->with('success', __("Tradução salva"));
     }
 
     public function build($id)
@@ -124,10 +124,10 @@ class TranslationsController extends AdminController
         }
         $file = base_path('resources/lang/' . $lang->locale . '.json');
         if (!is_writable(base_path('resources/lang'))) {
-            return redirect($back)->with('error', __("Folder: resources/lang is not write-able. Please contact your hosting provider"));
+            return redirect($back)->with('error', __("Pasta: resources/lang não tem permissão de escrita. Por favor, contate o provedor de hospedagem"));
         }
         if (file_exists($file) and !is_writable($file)) {
-            return redirect($back)->with('error', __("File: :file_name is not write-able. Please contact your hosting provider", ['file_name' => 'resources/lang/' . $lang->locale . '.json']));
+            return redirect($back)->with('error', __("Arquivo: :file_name não tem permissão de escrita. Por favor, contate o provedor de hospedagem", ['file_name' => 'resources/lang/' . $lang->locale . '.json']));
         }
         $query = Translation::select([
             'core_translations.*',
@@ -150,7 +150,7 @@ class TranslationsController extends AdminController
         fclose($myfile);
         $lang->last_build_at = date('Y-m-d H:i:s');
         $lang->save();
-        return redirect(route('language.admin.translations.index'))->with('success', __("Re-build language file for: :name success", ['name' => $lang->name]));
+        return redirect(route('language.admin.translations.index'))->with('success', __("Reconstruir arquivo de idioma para: :name com sucesso", ['name' => $lang->name]));
     }
 
     public function loadStrings(){
@@ -161,17 +161,17 @@ class TranslationsController extends AdminController
         $back = route('language.admin.translations.index');
 
         if(!is_file($file)){
-            return redirect($back)->with('error', __("Default language source does not exists"));
+            return redirect($back)->with('error', __("Fonte do idioma padrão não existe"));
         }
 
         $content = file_get_contents($file);
         if(empty($content)){
-            return redirect($back)->with('error', __("Default language source empty"));
+            return redirect($back)->with('error', __("Fonte do idioma padrão está vazia"));
         }
 
         $json = \GuzzleHttp\json_decode($content,true);
         if(empty($json)){
-            return redirect($back)->with('error', __("Default language source do not have any strings"));
+            return redirect($back)->with('error', __("Fonte do idioma padrão não possui nenhuma string"));
         }
 
 
@@ -196,10 +196,10 @@ class TranslationsController extends AdminController
         $back = route('language.admin.translations.index');
         $file = base_path('resources/lang/default.json');
         if (!is_writable(base_path('resources/lang'))) {
-            return redirect($back)->with('error', __("Folder: resources/lang is not write-able. Please contact your hosting provider"));
+            return redirect($back)->with('error', __("Pasta: resources/lang não tem permissão de escrita. Por favor, contate o provedor de hospedagem"));
         }
         if (file_exists($file) and !is_writable($file)) {
-            return redirect($back)->with('error', __("File: :file_name is not write-able. Please contact your hosting provider"));
+            return redirect($back)->with('error', __("Arquivo: :file_name não tem permissão de escrita. Por favor, contate o provedor de hospedagem"));
         }
         $query = Translation::select([
             'core_translations.*',
@@ -215,7 +215,7 @@ class TranslationsController extends AdminController
         fwrite($myfile, json_encode($json));
         fclose($myfile);
 
-        return redirect($back)->with('success', __("Generate Default JSON Language"));
+        return redirect($back)->with('success', __("Gerar arquivo JSON padrão de idioma"));
     }
 
     public function findTranslations($path = null)
@@ -289,15 +289,15 @@ class TranslationsController extends AdminController
         $file = base_path('resources/lang/'.$locale_name.'.json');
         $back = route('language.admin.translations.index');
         if(!is_file($file)){
-            return redirect($back)->with('error', __("File language source does not exists"));
+            return redirect($back)->with('error', __("Fonte do idioma padrão não existe"));
         }
         $content = file_get_contents($file);
         if(empty($content)){
-            return redirect($back)->with('error', __("File language source empty"));
+            return redirect($back)->with('error', __("Fonte do idioma padrão está vazia"));
         }
         $json = \GuzzleHttp\json_decode($content,true);
         if(empty($json)){
-            return redirect($back)->with('error', __("File language source do not have any strings"));
+            return redirect($back)->with('error', __("Fonte do idioma padrão não possui nenhuma string"));
         }
 
         $all_string = Translation::select("*")->where("locale","raw")->get()->pluck('string',"id")->toArray();
@@ -317,6 +317,6 @@ class TranslationsController extends AdminController
                 }
             }
         }
-        return redirect($back)->with('success', __("Load language from json success"));
+        return redirect($back)->with('success', __("Carregar idioma do json com sucesso"));
     }
 }

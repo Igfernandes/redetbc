@@ -35,11 +35,11 @@ class PlanReportController extends AdminController
             'plans'       => $this->planClass::where('status', 'publish')->get(),
             'breadcrumbs' => [
                 [
-                    'name'  => __('User Plans'),
+                    'name'  => __('Planos do Usuário'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'  => __("Plan Report")
+            'page_title'  => __("Planos")
         ];
         return view('User::admin.plan-report.index', $data);
     }

@@ -36,7 +36,7 @@ if (isset($_GET['religion'])) {
     <div class="subscribe-plan">
         <div class="content">
             <p>
-                {{ __("Junte-se ao clube: escolha seu plano e tenha acesso completo à plataforma.") }}
+                {{ __("Junte-se ao clube: escolha seu plano e tenha acesso completo.") }}
             </p> &nbsp;
 
             @if(Auth::user() == null)
@@ -128,8 +128,6 @@ if (isset($_GET['religion'])) {
 
                             @include('Core::frontend.currency-switcher')
 
-                            @include('Language::frontend.switcher')
-
                             @if(!Auth::id())
 
                             <li class="login-item">
@@ -140,7 +138,7 @@ if (isset($_GET['religion'])) {
 
                             <li class="signup-item">
 
-                                <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                                <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Cadastrar-se')}}</a>
 
                             </li>
 
@@ -160,7 +158,7 @@ if (isset($_GET['religion'])) {
 
                                     @endif
 
-                                    {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                                    {{__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])}}
 
                                     <i class="fa fa-angle-down"></i>
 
@@ -178,7 +176,7 @@ if (isset($_GET['religion'])) {
 
                                     <li class="@if(Auth::user()->hasPermission('dashboard_vendor_access')) menu-hr @endif">
 
-                                        <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
+                                        <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("Meu perfil")}}</a>
 
                                     </li>
 
@@ -188,9 +186,9 @@ if (isset($_GET['religion'])) {
 
                                     @endif
 
-                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
+                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
 
-                                    <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Change password")}}</a></li>
+                                    <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 
                                     @if(Auth::user()->hasPermission('dashboard_access'))
 
@@ -200,7 +198,7 @@ if (isset($_GET['religion'])) {
 
                                     <li class="menu-hr">
 
-                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__('Logout')}}</a>
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__("Sair")}}</a>
 
                                     </li>
 
@@ -252,7 +250,7 @@ if (isset($_GET['religion'])) {
 
                         <li>
 
-                            <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                            <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Cadastrar-se')}}</a>
 
                         </li>
 
@@ -262,7 +260,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="{{route('user.profile.index')}}">
 
-                                <i class="icofont-user-suited"></i> {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                                <i class="icofont-user-suited"></i> {{__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])}}
 
                             </a>
 
@@ -272,7 +270,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="{{route('user.profile.index')}}">
 
-                                <i class="icon ion-md-construct"></i> {{__("My profile")}}
+                                <i class="icon ion-md-construct"></i> {{__("Meu perfil")}}
 
                             </a>
 
@@ -306,7 +304,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
 
-                                <i class="fa fa-sign-out"></i> {{__('Logout')}}
+                                <i class="fa fa-sign-out"></i> {{__("Sair")}}
 
                             </a>
 
@@ -327,12 +325,6 @@ if (isset($_GET['religion'])) {
                     <ul class="multi-lang">
 
                         @include('Core::frontend.currency-switcher-dropdown')
-
-                    </ul>
-
-                    <ul class="multi-lang">
-
-                        @include('Language::frontend.switcher-dropdown')
 
                     </ul>
 

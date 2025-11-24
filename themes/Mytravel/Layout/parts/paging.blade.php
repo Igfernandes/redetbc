@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav aria-label="{{__('Page navigation')}}">
+    <nav aria-label="{{__('Página navigation')}}">
         <ul class="list-pagination-1 pagination border border-color-4 rounded-sm overflow-auto overflow-xl-visible justify-content-md-center align-items-center py-2 mb-0">
             @if ($paginator->onFirstPage())
                 <li class="page-item disabled">

@@ -12,14 +12,14 @@ $menus = [
     ],
     'booking-history' => [
         'url'      => route("user.booking_history"),
-        'title'    => __("Booking History"),
+        'title'    => __("Histórico de Reservas"),
         'icon'     => 'fa fa-clock-o',
         'position' => 20,
         'is_verified' => 1
     ],
     "wishlist" => [
         'url'   => route("user.wishList.index"),
-        'title' => __("Wishlist"),
+        'title' => __("Lista de desejos"),
         'icon'  => 'fa fa-heart-o',
         'position' => 21,
         'is_verified' => 1
@@ -41,14 +41,14 @@ $menus = [
     ],
     'profile'         => [
         'url'      => route("user.profile.index"),
-        'title'    => __("My Profile"),
+        'title'    => __("Meu perfil"),
         'icon'     => 'fa fa-cogs',
         'position' => 22,
         'is_verified' => 0
     ],
     'password'        => [
         'url'      => route("user.change_password"),
-        'title'    => __("Change password"),
+        'title'    => __("Alterar senha"),
         'icon'     => 'fa fa-lock',
         'position' => 100,
         'is_verified' => 0
@@ -230,10 +230,10 @@ foreach ($menus as $k => $menuItem) {
         <form id="logout-form-vendor" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
-        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i class="fa fa-sign-out"></i> {{__("Log Out")}}
+        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i class="fa fa-sign-out"></i> {{__("Sair")}}
         </a>
     </div>
     <div class="logout">
-        <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Back to Homepage")}}</a>
+        <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Voltar para início")}}</a>
     </div>
 </div>

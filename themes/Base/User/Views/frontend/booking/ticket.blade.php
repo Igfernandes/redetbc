@@ -123,7 +123,7 @@
                                 </div>
                             @endif
                             @if($booking->getMeta("booking_type") == "time_slot")
-                                    <div class="label"><i class="fa fa-ticket"></i> {{__("Start Time")}}</div>
+                                    <div class="label"><i class="fa fa-ticket"></i> {{__("Hora de entrada")}}</div>
                                     <div class="val">
                                         <div class="slots-wrapper d-flex justify-content-start flex-wrap">
                                             @if(!empty($timeSlots = $booking->time_slots))

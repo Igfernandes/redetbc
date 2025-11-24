@@ -42,7 +42,7 @@ class VideoPlayer extends BaseBlock
                 [
                     'id'    => 'bg_gradient',
                     'type'  => 'radios',
-                    'label' => __('Background Gradient overlay'),
+                    'label' => __('Sobreposição de Gradiente de Fundo'),
                     'values' => [
                         [
                             'value'   => 'gradient_overlay_half_bg_grayish_blue',
@@ -55,7 +55,7 @@ class VideoPlayer extends BaseBlock
                     ],
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 

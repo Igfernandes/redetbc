@@ -16,7 +16,7 @@
                             @include('admin.message')
                             <div class="contact-form">
                                 <div class="form-group">
-                                    <input type="text" value="" placeholder=" {{ __('Name') }} " name="name" class="form-control">
+                                    <input type="text" value="" placeholder=" {{ __('Nome') }} " name="name" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" value="" placeholder="{{ __('Email') }}" name="email" class="form-control">

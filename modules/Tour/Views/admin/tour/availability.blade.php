@@ -2,10 +2,10 @@
     <div class="panel-title"><strong>{{__("Disponibilidade")}}</strong></div>
     <div class="panel-body">
 
-        <h3 class="panel-body-title">{{__('Fixed dates')}}</h3>
+        <h3 class="panel-body-title">{{__('Datas fixas')}}</h3>
         <div class="form-group">
             <label>
-                <input type="checkbox" name="enable_fixed_date" @if(!empty($row->enable_fixed_date)) checked @endif value="1"> {{__('Enable Fixed Date')}}
+                <input type="checkbox" name="enable_fixed_date" @if(!empty($row->enable_fixed_date)) checked @endif value="1"> {{__('Ativar data fixa')}}
             </label>
         </div>
         <?php $old = $row->meta->open_hours ?? [];?>
@@ -14,12 +14,11 @@
                 <div class="form-group" >
                     <label for="">{{__("Data de início")}}</label>
                     <input type="text" name="start_date" id=" start_date" class="form-control has-datepicker" value="{{ old('start_date',!empty($row->start_date)?$row->start_date->format("Y-m-d"):"")}}">
-
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="form-group" >
-                    <label for="">{{__("End Date")}}</label>
+                    <label for="">{{__("Data de término")}}</label>
                     <input type="text" name="end_date" id=" end_date"  class="form-control has-datepicker" value="{{ old('end_date',!empty($row->end_date)?$row->end_date->format("Y-m-d"):"")}}">
                 </div>
             </div>
@@ -31,12 +30,10 @@
             </div>
         </div>
 
-
-
-        <h3 class="panel-body-title">{{__('Open Hours')}}</h3>
+        <h3 class="panel-body-title">{{__('Horários de funcionamento')}}</h3>
         <div class="form-group">
             <label>
-                <input type="checkbox" name="enable_open_hours" @if(!empty($row->meta->enable_open_hours)) checked @endif value="1"> {{__('Enable Open Hours')}}
+                <input type="checkbox" name="enable_open_hours" @if(!empty($row->meta->enable_open_hours)) checked @endif value="1"> {{__('Ativar horários de funcionamento')}}
             </label>
         </div>
         <?php $old = $row->meta->open_hours ?? [];?>
@@ -44,9 +41,9 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>{{__('Enable?')}}</th>
-                    <th>{{__('Dia of Week')}}</th>
-                    <th>{{__('Open')}}</th>
+                    <th>{{__('Ativar?')}}</th>
+                    <th>{{__('Dia da semana')}}</th>
+                    <th>{{__('Abrir')}}</th>
                     <th>{{__('Fechar')}}</th>
                 </tr>
                 </thead>
@@ -58,25 +55,25 @@
                         <td><strong>
                                 @switch($i)
                                     @case(1)
-                                    {{__('Monday')}}
+                                    {{__('Segunda-feira')}}
                                     @break
                                     @case(2)
-                                    {{__('Tuesday')}}
+                                    {{__('Terça-feira')}}
                                     @break
                                     @case (3)
-                                    {{__('Wednesday')}}
+                                    {{__('Quarta-feira')}}
                                     @break
                                     @case (4)
-                                    {{__('Thursday')}}
+                                    {{__('Quinta-feira')}}
                                     @break
                                     @case (5)
-                                    {{__('Friday')}}
+                                    {{__('Sexta-feira')}}
                                     @break
                                     @case (6)
-                                    {{__('Saturday')}}
+                                    {{__('Sábado')}}
                                     @break
                                     @case (7)
-                                    {{__('Sunday')}}
+                                    {{__('Domingo')}}
                                     @break
                                 @endswitch
                             </strong></td>

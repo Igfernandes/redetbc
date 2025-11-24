@@ -55,10 +55,10 @@
                     <span class="badge badge-pill badge-primary py-1 px-2 font-size-14 border-radius-3 font-weight-normal"><?php echo e($reviewData['score_total']); ?>/5</span>
                     <span class="font-size-14 text-gray-1 ml-2">(
                         <?php if($reviewData['total_review'] > 1): ?>
-                            <?php echo e(__(":number reviews",["number"=>$reviewData['total_review'] ])); ?>
+                            <?php echo e(__(":number Avaliações",["number"=>$reviewData['total_review'] ])); ?>
 
                         <?php else: ?>
-                            <?php echo e(__(":number review",["number"=>$reviewData['total_review'] ])); ?>
+                            <?php echo e(__(":number Avaliação",["number"=>$reviewData['total_review'] ])); ?>
 
                         <?php endif; ?> )
                     </span>
@@ -66,9 +66,9 @@
             <?php endif; ?>
         <?php endif; ?>
         <div class="mb-0">
-            <span class="mr-1 font-size-14 text-gray-1"><?php echo e(__("From")); ?></span>
+            <span class="mr-1 font-size-14 text-gray-1"><?php echo e(__("De")); ?></span>
             <span class="font-weight-bold"><?php echo e($row->display_price); ?></span>
-            <span class="font-size-14 text-gray-1"><?php echo e(__("/night")); ?></span>
+            <span class="font-size-14 text-gray-1"><?php echo e(__("/noite")); ?></span>
         </div>
     </div>
 </div>

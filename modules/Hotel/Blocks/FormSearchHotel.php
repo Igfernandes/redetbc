@@ -9,7 +9,7 @@ class FormSearchHotel extends BaseBlock
 {
     public function getName()
     {
-        return __('Hotel: Form Search');
+        return __('Hotel: Formulário de pesquisa');
     }
 
     public function getOptions()

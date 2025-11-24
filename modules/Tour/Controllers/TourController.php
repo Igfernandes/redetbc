@@ -127,7 +127,7 @@
                 'body_class'=>'is_single',
                 'breadcrumbs'       => [
                     [
-                        'name'  => __('Tour'),
+                        'name'  => __('Passeios'),
                         'url'  => route('tour.search'),
                     ],
                 ],

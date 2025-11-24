@@ -15,7 +15,7 @@
 			return [
 				[
 					'id'        => 'sms',
-					'title'     => __("Sms Settings"),
+					'title'     => __("Configurações de sms"),
 					'position'  => 100,
 					'view'      => "Sms::admin.settings.sms",
 					"keys"      => [

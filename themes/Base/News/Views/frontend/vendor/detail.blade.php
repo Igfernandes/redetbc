@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{ __('News content')}}</strong></div>
+                            <div class="panel-title"><strong>{{ __('Notícias content')}}</strong></div>
                             <div class="panel-body">
                                 @csrf
                                 @include('News::frontend.vendor.form',['row'=>$row])
@@ -50,7 +50,7 @@
                             <div class="panel">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label>{{  __('Category')}} </label>
+                                        <label>{{  __('Categoria')}} </label>
                                         <select name="cat_id" class="form-control">
                                             <option value="">{{ __('-- Please Select --')}} </option>
                                             <?php

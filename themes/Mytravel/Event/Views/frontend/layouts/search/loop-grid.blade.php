@@ -61,16 +61,16 @@
         </span>
             <span class="review">
          @if($reviewData['total_review'] > 1)
-                    {{ __(":number Reviews",["number"=>$reviewData['total_review'] ]) }}
+                    {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
                 @else
-                    {{ __(":number Review",["number"=>$reviewData['total_review'] ]) }}
+                    {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
                 @endif
         </span>
         </div>
     @endif
     @if(!empty($time = $row->start_time))
         <div class="start-time">
-            {{ __("Start Time: :time",['time'=>$time]) }}
+            {{ __("Hora de entrada: :time",['time'=>$time]) }}
         </div>
     @endif
     <div class="info">

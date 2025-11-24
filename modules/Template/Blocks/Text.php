@@ -13,12 +13,12 @@ class Text extends BaseBlock
         return [
             'setting_tabs' => [
                 'content' => [
-                    'label' => __("Content"),
+                    'label' => __("Conteúdo"),
                     'icon'  => 'fa fa-pencil',
                     'order' => 1
                 ],
                 'style'   => [
-                    'label' => __("Style"),
+                    'label' => __("Estilo"),
                     'order' => 2,
                     'icon'  => 'fa fa-object-group',
                 ],

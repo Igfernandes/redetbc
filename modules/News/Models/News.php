@@ -112,7 +112,7 @@ class News extends BaseModel
 
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = setting_item_with_lang("news_page_list_seo_title", false, null) ?? setting_item_with_lang("news_page_list_title", false, null) ?? __("News");
+        $meta['seo_title'] = setting_item_with_lang("news_page_list_seo_title", false, null) ?? setting_item_with_lang("news_page_list_title", false, null) ?? __("Notícias");
         $meta['seo_desc'] = setting_item_with_lang("news_page_list_seo_desc");
         $meta['seo_image'] = setting_item("news_page_list_seo_image", null) ?? setting_item("news_page_list_banner", null);
         $meta['seo_share'] = setting_item_with_lang("news_page_list_seo_share");
@@ -158,7 +158,7 @@ class News extends BaseModel
 
     public static function getModelName()
     {
-        return __("News");
+        return __("Notícias");
     }
 
     public function getReviewEnable()

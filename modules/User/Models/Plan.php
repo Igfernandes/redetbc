@@ -48,16 +48,16 @@ class Plan extends Bookable
     public function getDurationTypeTextAttribute(){
         switch ($this->duration_type){
             case "day":
-                return __("day");
+                return __("Dia");
             break;
             case "week":
-                return __("week");
+                return __("semana");
             break;
             case "month":
-                return __("month");
+                return __("Mês");
             break;
             case "year":
-                return __("year");
+                return __("Ano");
             break;
         }
     }

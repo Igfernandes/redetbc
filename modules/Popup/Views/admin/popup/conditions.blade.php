@@ -1,5 +1,5 @@
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Show on")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Mostrar em")}}</strong></div>
     <div class="panel-body">
         <div class="form-group">
             <label>{{__("Include URLs")}}</label>
@@ -55,7 +55,7 @@
         </div>
         <hr>
         <div class="form-group">
-            <label>{{__("Exclude URLs")}}</label>
+            <label>{{__("URLs excluídas")}}</label>
             <div class="form-controls">
                 <div class="form-group-item g-simple">
                     <div class="g-items">

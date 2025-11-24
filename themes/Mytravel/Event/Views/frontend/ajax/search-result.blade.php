@@ -8,7 +8,7 @@
             @endforeach
         @else
             <div class="col-lg-12">
-                {{__("Event not found")}}
+                {{__("Evento não encontrado")}}
             </div>
         @endif
     </div>

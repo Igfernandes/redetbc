@@ -59,7 +59,7 @@ class ManageSpaceController extends FrontendController
             'rows' => $rows->paginate(5),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Gerenciar Espaços'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -67,7 +67,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Manage Spaces"),
+            'page_title'         => __("Gerenciar Espaços"),
         ];
         return view('Space::frontend.manageSpace.index', $data);
     }
@@ -82,7 +82,7 @@ class ManageSpaceController extends FrontendController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Gerenciar Espaços'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -90,7 +90,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Recuperação Spaces"),
+            'page_title'         => __("Recuperação de Espaços"),
         ];
         return view('Space::frontend.manageSpace.index', $data);
     }
@@ -105,7 +105,7 @@ class ManageSpaceController extends FrontendController
             event(new UpdatedServiceEvent($query));
 
         }
-        return redirect(route('space.vendor.recovery'))->with('success', __('Restore space success!'));
+        return redirect(route('space.vendor.recovery'))->with('success', __('Restaurar espaço com sucesso!'));
     }
 
     public function createSpace(Request $request)
@@ -120,7 +120,7 @@ class ManageSpaceController extends FrontendController
             'attributes'    => $this->attributesClass::where('service', 'space')->get(),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Gerenciar Espaços'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -128,7 +128,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Create Spaces"),
+            'page_title'         => __("Criar Espaços"),
         ];
         return view('Space::frontend.manageSpace.detail', $data);
     }
@@ -207,10 +207,10 @@ class ManageSpaceController extends FrontendController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Space updated') );
+                return back()->with('success',  __('Espaços atualizado') );
             }else{
                 event(new CreatedServicesEvent($row));
-                return redirect(route('space.vendor.edit',['id'=>$row->id]))->with('success', __('Space created') );
+                return redirect(route('space.vendor.edit',['id'=>$row->id]))->with('success', __('Espaços criado') );
             }
         }
     }
@@ -238,7 +238,7 @@ class ManageSpaceController extends FrontendController
         $row = $this->spaceClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('space.vendor.index'))->with('warning', __('Space not found!'));
+            return redirect(route('space.vendor.index'))->with('warning', __('Espaço não encontrado!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [
@@ -250,7 +250,7 @@ class ManageSpaceController extends FrontendController
             "selected_terms" => $row->terms->pluck('term_id'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Spaces'),
+                    'name' => __('Gerenciar Espaços'),
                     'url'  => route('space.vendor.index')
                 ],
                 [
@@ -258,7 +258,7 @@ class ManageSpaceController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Editar Spaces"),
+            'page_title'         => __("Editar Espaços"),
         ];
         return view('Space::frontend.manageSpace.detail', $data);
     }
@@ -279,7 +279,7 @@ class ManageSpaceController extends FrontendController
                 event(new UpdatedServiceEvent($query));
             }
         }
-        return redirect(route('space.vendor.index'))->with('success', __('Delete space success!'));
+        return redirect(route('space.vendor.index'))->with('success', __('Excluir espaço com sucesso!'));
     }
 
     public function bulkEditSpace($id , Request $request){
@@ -339,7 +339,7 @@ class ManageSpaceController extends FrontendController
 		$row = $this->spaceClass::where("author_id", $user_id);
 		$row = $row->find($id);
 		if (empty($row)) {
-			return redirect(route('space.vendor.index'))->with('warning', __('Space not found!'));
+			return redirect(route('space.vendor.index'))->with('warning', __('Espaço não encontrado!'));
 		}
 		try{
 			$clone = $row->replicate();
@@ -371,7 +371,7 @@ class ManageSpaceController extends FrontendController
 				}
 			}
 
-			return redirect()->back()->with('success',__('Space clone was successful'));
+			return redirect()->back()->with('success',__('Clone de espaço foi bem-sucedido'));
 		}catch (\Exception $exception){
 			$clone->delete();
 			return redirect()->back()->with('warning',__($exception->getMessage()));

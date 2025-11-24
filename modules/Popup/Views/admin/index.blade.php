@@ -2,10 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("All Popups")}}</h1>
+            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("Todos Popups")}}</h1>
             <div class="title-actions">
                 @if(empty($recovery))
-                <a href="{{route('popup.admin.create')}}" class="btn btn-primary">{{__("Add new popup")}}</a>
+                <a href="{{route('popup.admin.create')}}" class="btn btn-primary">{{__("Adicionar novo popup")}}</a>
                 @endif
             </div>
         </div>
@@ -16,16 +16,16 @@
                     <form method="post" action="{{route('popup.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
 
                             @if(!empty($recovery))
-                                <option value="recovery">{{__(" Recovery ")}}</option>
-                                <option value="permanently_delete">{{__("Permanently delete")}}</option>
+                                <option value="recovery">{{__(" Recuperar ")}}</option>
+                                <option value="permanently_delete">{{__("Excluir permanentemente")}}</option>
                             @else
-                                <option value="publish">{{__(" Publish ")}}</option>
-                                <option value="draft">{{__(" Move to Draft ")}}</option>
-                                <option value="pending">{{__("Move to Pending")}}</option>
-                                <option value="clone">{{__(" Clone ")}}</option>
+                                <option value="publish">{{__(" Publicar ")}}</option>
+                                <option value="draft">{{__(" Mover para Lixeira ")}}</option>
+                                <option value="pending">{{__("Mover para Pendente")}}</option>
+                                <option value="clone">{{__(" Duplicar ")}}</option>
                                 <option value="delete">{{__("Excluir")}}</option>
                             @endif
                         </select>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -51,9 +51,9 @@
                         <thead>
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th> {{ __('Name')}}</th>
+                            <th> {{ __('Nome')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
-                            <th width="100px"> {{ __('Date')}}</th>
+                            <th width="100px"> {{ __('Data')}}</th>
                             <th width="100px"></th>
                         </tr>
                         </thead>
@@ -76,7 +76,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7">{{__("No popup found")}}</td>
+                                <td colspan="7">{{__("Nenhum popup encontrado")}}</td>
                             </tr>
                         @endif
                         </tbody>

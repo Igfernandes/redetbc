@@ -5,7 +5,7 @@
         <div class="container">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? 'Edit: '.$row->name : __("Add new location")}}</h1>
+                    <h1 class="title-bar">{{$row->id ? 'Edit: '.$row->name : __("Adicionar novo local")}}</h1>
                     @if($row->slug)
                         <p class="item-url-demo">{{__("Link permanente")}}: {{url('news-category')}}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                         </p>
@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     @include('admin.message')
                     <div class="panel">
-                        <div class="panel-title">{{__("Language Content")}}</div>
+                        <div class="panel-title">{{__("Conteúdo do Idioma")}}</div>
                         <div class="panel-body">
                             @include('Language::admin.language.form')
                         </div>

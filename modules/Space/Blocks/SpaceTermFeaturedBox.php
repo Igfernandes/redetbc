@@ -8,7 +8,7 @@ class SpaceTermFeaturedBox extends BaseBlock
 {
     public function getName()
     {
-        return __('Space: Term Featured Box');
+        return __('Espaços: Term Featured Box');
     }
 
     public function getOptions()
@@ -30,7 +30,7 @@ class SpaceTermFeaturedBox extends BaseBlock
                 [
                     'id'           => 'term_space',
                     'type'         => 'select2',
-                    'label'        => __('Select term space'),
+                    'label'        => __('Selecione termos de espaço'),
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('space.admin.attribute.term.getForSelect2', ['type' => 'space']),
@@ -45,7 +45,7 @@ class SpaceTermFeaturedBox extends BaseBlock
                     ])
                 ],
             ],
-            'category'=>__("Service Space")
+            'category'=>__("Serviço Espaço")
         ];
     }
 

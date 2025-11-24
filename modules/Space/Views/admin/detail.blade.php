@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Add new space')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Adicionar novo espaço')}}</h1>
                     @if($row->slug)
                         <p class="item-url-demo">{{__("Link permanente")}}: {{ url('space' ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                         </p>
@@ -81,7 +81,7 @@
                                 <div class="panel-title"><strong>{{__("Disponibilidade")}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label>{{__('Space Featured')}}</label>
+                                        <label>{{__('Espaços Em destaque')}}</label>
                                         <br>
                                         <label>
                                             <input type="checkbox" name="is_featured" @if($row->is_featured) checked @endif value="1"> {{__("Habilitar destaque")}}

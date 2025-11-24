@@ -50,7 +50,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="label">{{__('Nights:')}}</div>
+						<div class="label">{{__('Noites:')}}</div>
 						<div class="val">
 							{{$booking->duration_nights}}
 						</div>
@@ -58,7 +58,7 @@
 				@endif
 				@if($meta = $booking->getMeta('adults'))
 					<li>
-						<div class="label">{{__('Adults:')}}</div>
+						<div class="label">{{__('Adultos:')}}</div>
 						<div class="val">
 							{{$meta}}
 						</div>
@@ -66,7 +66,7 @@
 				@endif
 				@if($meta = $booking->getMeta('children'))
 					<li>
-						<div class="label">{{__('Children:')}}</div>
+						<div class="label">{{__('Crianças:')}}</div>
 						<div class="val">
 							{{$meta}}
 						</div>
@@ -93,7 +93,7 @@
 									<p class="text-center">
 										<a data-toggle="modal" data-target="#detailBookingDate{{$booking->code}}" aria-expanded="false"
 										   aria-controls="detailBookingDate{{$booking->code}}">
-											{{__('Detail')}} <i class="icofont-list"></i>
+											{{__('Detalhes')}} <i class="icofont-list"></i>
 										</a>
 									</p>
 								</div>
@@ -111,7 +111,7 @@
 									<div class="label">
 										{{$type['name_'.$lang_local] ?? $type['name']}}: <br>
 										{{--<small>
-											({{ $type['type'] == "per_day" ? "/".__("day") : "" }}/{{ __("room") }})
+											({{ $type['type'] == "per_day" ? "/".__("Dia") : "" }}/{{ __("room") }})
 										</small>--}}
 									</div>
 									<div class="val">
@@ -171,7 +171,7 @@ $dateDetail = $service->detailBookingEachDate($booking);
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title text-center">{{__('Detail')}}</h5>
+				<h5 class="modal-title text-center">{{__('Detalhes')}}</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>

@@ -63,7 +63,7 @@ class VendorController extends FrontendController
             'rows' => $list_hotel->paginate(5),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Hotels'),
+                    'name' => __('Gerenciador de Hotéis'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -71,7 +71,7 @@ class VendorController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Manage Hotels"),
+            'page_title'         => __("Gerenciar Hotéis"),
         ];
         return view('Hotel::frontend.vendorHotel.index', $data);
     }
@@ -86,7 +86,7 @@ class VendorController extends FrontendController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Hotels'),
+                    'name' => __('Gerenciador de Hotéis'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -111,7 +111,7 @@ class VendorController extends FrontendController
             'attributes'    => $this->attributesClass::where('service', 'hotel')->get(),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Hotels'),
+                    'name' => __('Gerenciador de Hotéis'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -119,7 +119,7 @@ class VendorController extends FrontendController
                     'class' => 'active'
                 ],
             ],
-            'page_title'         => __("Create Hotels"),
+            'page_title'         => __("Criar Hotéis"),
         ];
         return view('Hotel::frontend.vendorHotel.detail', $data);
     }
@@ -128,7 +128,7 @@ class VendorController extends FrontendController
     public function store( Request $request, $id ){
 
         if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("DEMO MODE: Disable setting update"));
+            return redirect()->back()->with('danger',__("MODO DEMO: Desativar atualização de configurações"));
         }
         if($id>0){
             $this->checkPermission('hotel_update');
@@ -197,10 +197,10 @@ class VendorController extends FrontendController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Hotel updated') );
+                return back()->with('success',  __('Hotel atualizado') );
             }else{
                 event(new CreatedServicesEvent($row));
-                return redirect(route('hotel.vendor.edit',['id'=>$row->id]))->with('success', __('Hotel created') );
+                return redirect(route('hotel.vendor.edit',['id'=>$row->id]))->with('success', __('Hotel criado') );
             }
         }
     }
@@ -228,7 +228,7 @@ class VendorController extends FrontendController
         $row = $this->hotelClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('hotel.vendor.index'))->with('warning', __('Space not found!'));
+            return redirect(route('hotel.vendor.index'))->with('warning', __('Espaços não encontrado!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [
@@ -240,7 +240,7 @@ class VendorController extends FrontendController
             "selected_terms" => $row->terms->pluck('term_id'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Manage Hotels'),
+                    'name' => __('Gerenciador de Hotéis'),
                     'url'  => route('hotel.vendor.index')
                 ],
                 [
@@ -269,7 +269,7 @@ class VendorController extends FrontendController
                 event(new UpdatedServiceEvent($query));
             }
         }
-        return redirect(route('hotel.vendor.index'))->with('success', __('Delete hotel success!'));
+        return redirect(route('hotel.vendor.index'))->with('success', __('Excluir hotel com sucesso!'));
     }
 
     public function restore($id)
@@ -282,7 +282,7 @@ class VendorController extends FrontendController
             event(new UpdatedServiceEvent($query));
 
         }
-        return redirect(route('hotel.vendor.recovery'))->with('success', __('Restore hotel success!'));
+        return redirect(route('hotel.vendor.recovery'))->with('success', __('Restaurar hotel com sucesso!'));
     }
 
     public function bulkEditHotel($id , Request $request){
@@ -313,7 +313,7 @@ class VendorController extends FrontendController
             case "clone":
                 $this->checkPermission('hotel_create');
                 $query->saveCloneByID($id);
-                return redirect()->back()->with('success', __('Clone realizado com sucesso!'));
+                return redirect()->back()->with('success', __('Duplicar realizado com sucesso!'));
                 break;
         }
         $query->save();

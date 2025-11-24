@@ -2,10 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("All Hotels")}}</h1>
+            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("Todos os Hotéis")}}</h1>
             <div class="title-actions">
                 @if(empty($recovery))
-                <a href="{{route('hotel.admin.create')}}" class="btn btn-primary">{{__("Add new hotel")}}</a>
+                <a href="{{route('hotel.admin.create')}}" class="btn btn-primary">{{__("Adicionar novo hotel")}}</a>
                 @endif
             </div>
         </div>
@@ -16,15 +16,15 @@
                     <form method="post" action="{{route('hotel.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
                             <option value="clone">{{__(" Clone ")}}</option>
                             @if(!empty($recovery))
-                                <option value="recovery">{{__(" Recovery ")}}</option>
-                                <option value="permanently_delete">{{__("Permanently delete")}}</option>
+                                <option value="recovery">{{__(" Recuperar ")}}</option>
+                                <option value="permanently_delete">{{__("Excluir permanentemente")}}</option>
                             @else
-                                <option value="publish">{{__(" Publish ")}}</option>
-                                <option value="draft">{{__(" Move to Draft ")}}</option>
-                                <option value="pending">{{__("Move to Pending")}}</option>
+                                <option value="publish">{{__(" Publicar ")}}</option>
+                                <option value="draft">{{__(" Mover para Lixeira ")}}</option>
+                                <option value="pending">{{__("Mover para Pendente")}}</option>
                                 <option value="delete">{{__("Excluir")}}</option>
                             @endif
 
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total itens',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -61,12 +61,12 @@
                         <thead>
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th> {{ __('Name')}}</th>
+                            <th> {{ __('Nome')}}</th>
                             <th width="200px"> {{ __('Localização')}}</th>
-                            <th width="130px"> {{ __('Author')}}</th>
+                            <th width="130px"> {{ __('Autor')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
-                            <th width="100px"> {{ __('Reviews')}}</th>
-                            <th width="100px"> {{ __('Date')}}</th>
+                            <th width="100px"> {{ __('Avaliações')}}</th>
+                            <th width="100px"> {{ __('Data')}}</th>
                             <th width="100px"></th>
                         </tr>
                         </thead>
@@ -101,12 +101,12 @@
                                         @if(empty($recovery))
                                             <div class="dropdown">
                                                 <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{__("Action")}}
+                                                    {{__("Ação")}}
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="{{route('hotel.admin.edit',['id'=>$row->id])}}">{{__("Editar hotel")}}</a>
-                                                    <a class="dropdown-item" href="{{route('hotel.admin.room.index',['hotel_id'=>$row->id])}}">{{__("Manage Rooms")}}</a>
-                                                    <a class="dropdown-item" href="{{route('hotel.admin.room.availability.index',['hotel_id'=>$row->id])}}">{{__("Manage Rooms Availability")}}</a>
+                                                    <a class="dropdown-item" href="{{route('hotel.admin.room.index',['hotel_id'=>$row->id])}}">{{__("Gerenciar Quartos")}}</a>
+                                                    <a class="dropdown-item" href="{{route('hotel.admin.room.availability.index',['hotel_id'=>$row->id])}}">{{__("Gerenciar Quartos")}}</a>
                                                 </div>
                                             </div>
                                         @endif
@@ -115,7 +115,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7">{{__("No hotel found")}}</td>
+                                <td colspan="7">{{__("Nenhum hotel encontrado")}}</td>
                             </tr>
                         @endif
                         </tbody>

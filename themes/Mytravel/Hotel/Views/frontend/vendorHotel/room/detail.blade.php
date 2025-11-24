@@ -1,10 +1,10 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar no-border-bottom">
-        {{$row->id ? __('Editar: ').$row->title : __('Add new room')}}
+        {{$row->id ? __('Editar: ').$row->title : __('Adicionar Novo Quarto')}}
         <div class="title-action">
             <a class="btn btn-info" href="{{route('hotel.vendor.room.index',['hotel_id'=>$hotel->id])}}">
-                <i class="fa fa-hand-o-right"></i> {{__("Manage Rooms")}}
+                <i class="fa fa-hand-o-right"></i> {{__("Gerenciar Quartos")}}
             </a>
         </div>
     </h2>
@@ -17,12 +17,11 @@
             @csrf
             <div class="form-add-service">
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <a data-toggle="tab" href="#nav-tour-content" aria-selected="true" class="active">{{__("1. Room Content")}}</a>
+                    <a data-toggle="tab" href="#nav-tour-content" aria-selected="true" class="active">{{__("1. Conteúdo do Quarto")}}</a>
                     @if(is_default_lang())
-                        <a data-toggle="tab" href="#nav-tour-pricing" aria-selected="false">{{__("2. Pricing")}}</a>
-                        <a data-toggle="tab" href="#nav-attribute" aria-selected="false">{{__("3. Attributes")}}</a>
+                        <a data-toggle="tab" href="#nav-tour-pricing" aria-selected="false">{{__("2. Preços")}}</a>
+                        <a data-toggle="tab" href="#nav-attribute" aria-selected="false">{{__("3. Atributos")}}</a>
                         <a data-toggle="tab" href="#nav-ical" aria-selected="false">{{__("4. Ical")}}</a>
-
                     @endif
                 </div>
                 <div class="tab-content" id="nav-tabContent">
@@ -43,11 +42,14 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between">
-                <button class="btn btn-primary btn_submit" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
+                <button class="btn btn-primary btn_submit" type="submit">
+                    <i class="fa fa-save"></i> {{__('Salvar Alterações')}}
+                </button>
             </div>
         </form>
     </div>
 @endsection
+
 @push('js')
     <script type="text/javascript" src="{{ asset('libs/tinymce/js/tinymce/tinymce.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/condition.js?_ver='.config('app.asset_version')) }}"></script>

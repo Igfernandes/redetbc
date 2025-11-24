@@ -61,7 +61,7 @@ class AvailabilityController extends FrontendController
         }
         $breadcrumbs = [
             [
-                'name' => __('Tours'),
+                'name' => __('Passeios'),
                 'url'  => route('tour.vendor.index')
             ],
             [
@@ -69,7 +69,7 @@ class AvailabilityController extends FrontendController
                 'class' => 'active'
             ],
         ];
-        $page_title = __('Tours Availability');
+        $page_title = __('Passeios Disponibilidade');
         return view($this->indexView, compact('rows', 'breadcrumbs', 'current_month', 'page_title', 'request'));
     }
 
@@ -86,7 +86,7 @@ class AvailabilityController extends FrontendController
         }
         $tour = $this->tourClass::find($request->query('id'));
         if (empty($tour)) {
-            return $this->sendError(__('Tour not found'));
+            return $this->sendError(__('Passeios não encontrado'));
         }
         $lang = app()->getLocale();
         $is_single = $request->query('for_single');
@@ -300,11 +300,11 @@ class AvailabilityController extends FrontendController
         $tour = $this->tourClass::find($request->input('target_id'));
         $target_id = $request->input('target_id');
         if (empty($tour)) {
-            return $this->sendError(__('Tour not found'));
+            return $this->sendError(__('Passeios não encontrado'));
         }
         if (!$this->hasPermission('tour_manage_others')) {
             if ($tour->author_id != Auth::id()) {
-                return $this->sendError("You do not have permission to access it");
+                return $this->sendError("Você não tem permissão para acessá-lo");
             }
         }
         $postData = $request->input();

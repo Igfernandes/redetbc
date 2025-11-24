@@ -35,7 +35,7 @@
                             @foreach($row->getGallery() as $key=>$item)
                                 @if($key === 0)
                                     <a class="travel-fancybox btn btn-white transition-3d-hover ml-2 py-2 px-md-4 px-3 shadow-6" href="javascript:;" data-src="{{$item['large']}}" data-fancybox="gallery_tour" data-caption="{!! clean($translation->title) !!} - #{{ $key }}" data-speed="700">
-                                        <i class="flaticon-gallery mr-md-2 font-size-18 text-primary"></i><span class="d-none d-md-inline">{{ __("Gallery") }}</span>
+                                        <i class="flaticon-gallery mr-md-2 font-size-18 text-primary"></i><span class="d-none d-md-inline">{{ __("Galeria") }}</span>
                                     </a>
                                 @else
                                     <img class="travel-fancybox d-none" alt="Image Description" data-fancybox="gallery_tour" data-src="{{$item['large']}}" data-caption="{!! clean($translation->title) !!} - #{{ $key }}" data-speed="700">

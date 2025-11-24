@@ -13,7 +13,7 @@
     @case("email")
     @include('User::frontend.verification.fields.email')
     @break
-    @case("phone")
+    @case("Celular")
     @include('User::frontend.verification.fields.phone')
     @break
     @case("upload-image")

@@ -2,7 +2,7 @@
 $translation = $service->translate();
 $lang_local = app()->getLocale();
 ?>
-<div class="b-panel-title">{{__('Space information')}}</div>
+<div class="b-panel-title">{{__('Informações do Espaço')}}</div>
 <div class="b-table-wrap">
     <table class="b-table" cellspacing="0" cellpadding="0">
         <tr>
@@ -26,7 +26,7 @@ $lang_local = app()->getLocale();
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Space name')}}</td>
+            <td class="label">{{__('Espaços name')}}</td>
             <td class="val">
                 <a href="{{$service->getDetailUrl()}}">{!! clean($translation->title) !!}</a>
             </td>
@@ -46,7 +46,7 @@ $lang_local = app()->getLocale();
                 <td class="val">{{display_date($booking->start_date)}}</td>
             </tr>
             <tr>
-                <td class="label">{{__('End date:')}}</td>
+                <td class="label">{{__('Data de Término:')}}</td>
                 <td class="val">
                     {{display_date($booking->end_date)}}
                 </td>
@@ -61,7 +61,7 @@ $lang_local = app()->getLocale();
             @endif
             @if($booking->getMeta("booking_type") == "by_night")
                 <tr>
-                    <td class="label">{{__('Nights:')}}</td>
+                    <td class="label">{{__('Noites:')}}</td>
                     <td class="val">
                         {{$booking->duration_nights}}
                     </td>
@@ -71,7 +71,7 @@ $lang_local = app()->getLocale();
 
         @if($meta = $booking->getMeta('adults'))
             <tr>
-                <td class="label">{{__('Adults')}}:</td>
+                <td class="label">{{__('Adultos')}}:</td>
                 <td class="val">
                     <strong>{{$meta}}</strong>
                 </td>
@@ -79,19 +79,19 @@ $lang_local = app()->getLocale();
         @endif
         @if($meta = $booking->getMeta('children'))
             <tr>
-                <td class="label">{{__('Children')}}:</td>
+                <td class="label">{{__('Crianças')}}:</td>
                 <td class="val">
                     <strong>{{$meta}}</strong>
                 </td>
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Pricing')}}</td>
+            <td class="label">{{__('Preços')}}</td>
             <td class="val">
                 <table class="pricing-list" width="100%">
                     <tr>
                         <td class="label">
-                            {{__('Rental price')}}
+                             {{ __("Preço do Aluguel") }}
                         </td>
                         <td class="val">
                             @php

@@ -9,10 +9,12 @@
             padding: 10px;
 
             @media (max-width: 768px) {
-                flex-wrap: wrap;
+              display: block;
+
             }
 
             p {
+                display: inline;
                 color: #fff;
                 margin: 0;
 
@@ -26,7 +28,7 @@
                 margin-left: 4px;
 
                 @media (max-width: 768px) {
-                    width: 100%;
+                    display: inline;
                 }
             }
         }
@@ -319,7 +321,7 @@
                     padding: 0px 10px;
                     float: right;
                     display: none;
-                    color: #fff;
+                    color: #003583;
 
                     @media (max-width: 991px) {
                         display: block;

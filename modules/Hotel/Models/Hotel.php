@@ -99,7 +99,7 @@ class Hotel extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Procurar Spaces");
+        $meta['seo_title'] = __("Procurar Espaços");
         if (!empty($title = setting_item_with_lang("hotel_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("hotel_page_search_title"))) {
@@ -368,7 +368,7 @@ class Hotel extends Bookable
             return !empty($value['number_selected']) and $value['number_selected'] > 0;
         });
         if ($total_rooms <= 0 or empty($selected_rooms)) {
-            return $this->sendError(__("Please select at lease one room"));
+            return $this->sendError(__("Por favor selecione pelo menos um quarto"));
         }
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
@@ -382,7 +382,7 @@ class Hotel extends Bookable
         $rooms = $this->getRoomsAvailability(request()->input());
         $rooms_by_id = [];
         if (empty($rooms))
-            return $this->sendError(__("There is no room available at your selected dates"));
+            return $this->sendError(__("Não há quartos disponíveis nas datas selecionadas"));
         foreach ($this->tmp_rooms as $room) {
             $rooms_by_id[$room['id']] = $room;
         }
@@ -393,10 +393,10 @@ class Hotel extends Bookable
         $total_child_select = 0;
         foreach ($selected_rooms as $room) {
             if (!in_array($room['id'], $rooms_ids) or $room['number_selected'] > $rooms_by_id[$room['id']]->tmp_number) {
-                return $this->sendError(__("Your selected room is not available. Please search again"));
+                return $this->sendError(__("O quarto selecionado não está disponível. Por favor, pesquise novamente"));
             }
             if (!empty($rooms_by_id[$room['id']]->min_day_stays) and  $numberDays < $rooms_by_id[$room['id']]->min_day_stays) {
-                return $this->sendError(__("The :name need to select at least :number days", ['name' => $rooms_by_id[$room['id']]->title, 'number' => $rooms_by_id[$room['id']]->min_day_stays]));
+                return $this->sendError(__("O :name precisa selecionar pelo menos :number dias", ['name' => $rooms_by_id[$room['id']]->title, 'number' => $rooms_by_id[$room['id']]->min_day_stays]));
             }
             if (!empty($rooms_by_id[$room['id']])) {
                 $total_adult_select += $rooms_by_id[$room['id']]->adults * $room['number_selected'];
@@ -404,10 +404,10 @@ class Hotel extends Bookable
             }
         }
         if (!empty($adults = $request->input('adults')) and $adults > $total_adult_select) {
-            return $this->sendError(__("Sorry, the current rooms are not enough for adults"));
+            return $this->sendError(__("Lamentamos, mas os quartos disponíveis atualmente não são suficientes para adultos."));
         }
         if (!empty($adults = $request->input('children')) and $adults > $total_child_select) {
-            return $this->sendError(__("Sorry, the current rooms are not enough for children"));
+            return $this->sendError(__("Lamentamos, mas os quartos disponíveis atualmente não são suficientes para crianças."));
         }
         $this->tmp_rooms_by_id = $rooms_by_id;
         $this->tmp_selected_rooms = $selected_rooms;
@@ -427,7 +427,7 @@ class Hotel extends Bookable
         $rooms = HotelRoom::whereIn('id', $room_ids)->get();
         foreach ($rooms as $room) {
             if (!$room->isAvailableAt($filters)) {
-                return $this->sendError(__("There is no room available at your selected dates"));
+                return $this->sendError(__("Não há quartos disponíveis nas datas selecionadas"));
             }
         }
     }
@@ -513,9 +513,9 @@ class Hotel extends Bookable
             'max_guests'      => $this->max_guests ?? 1,
             'buyer_fees'      => [],
             'i18n'            => [
-                'date_required' => __("Please select check-in and check-out date"),
-                "rooms"         => __('rooms'),
-                "room"          => __('room'),
+                'date_required' => __("Por favor selecione a data de check-in e check-out"),
+                "rooms"         => __('Quartos'),
+                "room"          => __('Quarto'),
             ],
             'start_date'      => request()->input('start') ?? "",
             'start_date_html' => $date_html ?? __('Por favor selecione'),
@@ -862,8 +862,8 @@ class Hotel extends Bookable
                     'image'           => $room->image_id ? get_file_url($room->image_id, 'medium') : '',
                     'tmp_number'      => $room->tmp_number,
                     'gallery'         => $room->getGallery(),
-                    'price_html'      => format_money($room->tmp_price) . '<span class="unit">/' . ($room->tmp_nights ? __(':count nights', ['count' => $room->tmp_nights]) : __(":count night", ['count' => $room->tmp_nights])) . '</span>',
-                    'price_text'      => format_money($room->tmp_price) . '/' . ($room->tmp_nights ? __(':count nights', ['count' => $room->tmp_nights]) : __(":count night", ['count' => $room->tmp_nights])),
+                    'price_html'      => format_money($room->tmp_price) . '<span class="unit">/' . ($room->tmp_nights ? __(':count noites', ['count' => $room->tmp_nights]) : __(":count noite", ['count' => $room->tmp_nights])) . '</span>',
+                    'price_text'      => format_money($room->tmp_price) . '/' . ($room->tmp_nights ? __(':count noites', ['count' => $room->tmp_nights]) : __(":count noite", ['count' => $room->tmp_nights])),
                     'terms'           => $terms,
                     'term_features'   => $term_features
                 ];
@@ -1114,7 +1114,7 @@ class Hotel extends Bookable
                 "max_price" => ceil(Currency::convertPrice($min_max_price[1])),
             ],
             [
-                "title"    => __("Hotel Star"),
+                "title"    => __("Estrela do Hotel"),
                 "field"    => "star_rate",
                 "position" => "2",
                 "min" => "1",
@@ -1157,15 +1157,15 @@ class Hotel extends Bookable
                 $item['field_guests'] = [
                     [
                         'id' => 'room',
-                        'title' => __('Rooms')
+                        'title' => __('Quartos')
                     ],
                     [
                         'id' => 'adults',
-                        'title' => __('Adults')
+                        'title' => __('Adultos')
                     ],
                     [
                         'id' => 'children',
-                        'title' => __('Children')
+                        'title' => __('Crianças')
                     ]
                 ];
             }

@@ -2,27 +2,27 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Translation Manager")}}</h1>
+            <h1 class="title-bar">{{__("Gerenciador de Tradução")}}</h1>
             <a class="btn btn-primary" href="{{route('language.admin.translations,loadStrings')}}"><i class="icon ion-ios-search"></i> {{__("Find Translations")}}</a>
         </div>
         @include('admin.message')
         <div class="alert alert-warning">
-            {{__("After translation. You must re-build language file to apply the change")}}
+            {{__("Após a tradução. Você deve reconstruir o arquivo de idioma para aplicar a alteração")}}
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel">
-                    <div class="panel-title">{{__("All Languages")}}</div>
+                    <div class="panel-title">{{__("Todos os Idiomas")}}</div>
                     <div class="panel-body">
                         <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th>{{__("Nome")}}</th>
-                                <th>{{__("Percent")}}</th>
-                                <th>{{__("Translated")}}</th>
-                                <th>{{__("Last build at")}}</th>
-                                <th>{{__("Actions")}}</th>
+                                <th>{{__("Percentual")}}</th>
+                                <th>{{__("Traduzido")}}</th>
+                                <th>{{__("Última compilação em")}}</th>
+                                <th>{{__("Ações")}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -42,11 +42,11 @@
                                             <a href="{{route('language.admin.translations.detail',['id'=>$language->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> {{__("Translate")}}</a>
                                             <a href="{{route('language.admin.translations.build',['id'=>$language->id])}}" class="btn btn-sm btn-info"><i class="fa fa-cubes"></i> {{__("Build")}}</a>
                                             <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown">
-                                                {{__("More")}}
+                                                {{__("Mais")}}
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="{{route('language.admin.translations.loadTranslateJson',['locale'=>$language->locale])}}">{{__
-                                                ("Load Translate  Default")}}</a>
+                                                ("Carregar Tradução Padrão")}}</a>
                                             </div>
                                         </td>
                                     </tr>

@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\News\Models;
 
 use App\BaseModel;
@@ -23,7 +24,7 @@ class NewsCategory extends BaseModel
 
     public static function getModelName()
     {
-        return __("News Category");
+        return __("Categoria de Notícias");
     }
 
     public function filterbyCat($id)
@@ -34,30 +35,33 @@ class NewsCategory extends BaseModel
 
     public static function searchForMenu($q = false)
     {
-        $query = static::select('id', 'name');
-        if (strlen($q)) {
+        $query = static::select('id', 'name', 'slug');
 
+        if (strlen($q)) {
             $query->where('name', 'like', "%" . $q . "%");
         }
-        $a = $query->orderBy('id', 'desc')->limit(10)->get();
-        return $a;
+
+        return $query->orderBy('id', 'desc')->limit(10)->get();
     }
 
     public function getDetailUrl($locale = false)
     {
-        return route('news.category.index',['slug'=>$this->slug]);
+        if (!$this->slug) return '#'; // or return null
+        return route('news.category.index', ['slug' => $this->slug]);
     }
 
-    public function dataForApi(){
+    public function dataForApi()
+    {
         $translation = $this->translate();
         return [
-            'name'=>$translation->name,
-            'id'=>$this->id,
-            'url'=>$this->getDetailUrl()
+            'name' => $translation->name,
+            'id' => $this->id,
+            'url' => $this->getDetailUrl()
         ];
     }
 
-    public function news(){
-        return $this->hasMany(News::class,'cat_id');
+    public function news()
+    {
+        return $this->hasMany(News::class, 'cat_id');
     }
 }

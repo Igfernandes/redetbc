@@ -22,14 +22,14 @@
     <ul class="meta-info style2">
         <li class="is_vendor">
             <i class="icon ion-ios-ribbon"></i>
-            {{__('Fornecedor')}}
+            {{__('Anfitrião')}}
         </li>
         <li class="review_count">
             <i class="icon ion-ios-thumbs-up"></i>
             @if($user->review_count <= 1)
-                {{__(':count review',['count'=>$user->review_count])}}
+                {{__(':count avaliação',['count'=>$user->review_count])}}
             @else
-                {{__(':count reviews',['count'=>$user->review_count])}}
+                {{__(':count avaliações',['count'=>$user->review_count])}}
             @endif
         </li>
     </ul>

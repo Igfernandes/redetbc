@@ -95,9 +95,9 @@ class LocationController extends AdminController
         $res = $row->saveOriginOrTranslation($request->input('lang'),true);
         if ($res) {
             if($id > 0 ){
-                return back()->with('success',  __('Localização updated') );
+                return back()->with('success',  __('Localização atualizada') );
             }else{
-                return redirect(route('location.admin.index',$row->id))->with('success', __('Localização created') );
+                return redirect(route('location.admin.index',$row->id))->with('success', __('Localização criada') );
             }
         }
     }
@@ -139,7 +139,7 @@ class LocationController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __("Select at least 1 item!"));
+            return redirect()->back()->with('error', __("Selecione pelo menos 1 item!"));
         }
         if (empty($action)) {
             return redirect()->back()->with('error', __('Selecione uma ação!'));

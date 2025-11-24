@@ -4,18 +4,18 @@
     @php $services  = []; @endphp
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Tour Booking Calendar")}}</h1>
+            <h1 class="title-bar">{{__("Calendário de Reservas de Passeio")}}</h1>
         </div>
         @include('admin.message')
         <div class="panel">
-{{--            <div class="panel-title"><strong>{{__("Tour Filters")}}</strong></div>--}}
+{{--            <div class="panel-title"><strong>{{__("Filtros de Passeio")}}</strong></div>--}}
             <div class="panel-body">
                 <div class="filter-div d-flex justify-content-between ">
                     <div class="col-left">
                         <form method="get" action="" class="filter-form filter-form-left d-flex flex-column flex-sm-row" role="search">
                             <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
                             <select name="cat_id" class="form-control">
-                                <option value="">{{ __('--All Category --')}} </option>
+                                <option value="">{{ __('--Todas Categorias --')}} </option>
                                 <?php
                                 foreach ($tour_categories as $category) {
                                     $selected = '';
@@ -43,7 +43,7 @@
                 <table class="vec-view-container" width="100%" cellpadding="0" cellspacing="0">
                     <thead class="vec-head">
                     <tr>
-                        <th width="300px" class="vec-event-header">{{__('Tours')}}</th>
+                        <th width="300px" class="vec-event-header">{{__('Passeioss')}}</th>
                         <th class="vec-divider"></th>
                         <th class="vc-time-area">
                             <div class="vec-scroll-flip">
@@ -142,7 +142,7 @@
 <script>
 	new VerticalEventCalendar({
         el:'#booking-calendar',
-		eventHeaderName:'{{__('Tours')}}'
+		eventHeaderName:'{{__("Passeios")}}'
     });
     var baseColumnWidth = ($('.vec-header-toolbar').width() - $('.vec-event-header').width() - 5 ) / {{date('t',$current_month)}};
 

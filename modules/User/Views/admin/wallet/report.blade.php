@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__('Credit Purchase Report')}}</h1>
+            <h1 class="title-bar">{{__('Crédito Purchase Report')}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between">
@@ -11,7 +11,7 @@
                     <form method="post" action="{{route('user.admin.wallet.reportBulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
                             <option value="completed">{{__("Mark as completed")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel booking-history-manager">
             <div class="panel-title">{{__('Purchase logs')}}</div>
@@ -60,11 +60,11 @@
                             <th width="80px"><input type="checkbox" class="check-all"></th>
                             <th>{{__('Customer')}}</th>
 
-                            <th width="80px">{{__('Amount')}}</th>
-                            <th width="80px">{{__('Credit')}}</th>
+                            <th width="80px">{{__('Quantidade')}}</th>
+                            <th width="80px">{{__('Crédito')}}</th>
                             <th width="80px">{{__('Status')}}</th>
                             <th width="150px">{{__('Payment Method')}}</th>
-                            <th width="120px">{{__('Created At')}}</th>
+                            <th width="120px">{{__('Criado em')}}</th>
                             <th width="80px">{{__('Actions')}}</th>
                         </tr>
                         </thead>

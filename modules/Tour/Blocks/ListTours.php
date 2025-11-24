@@ -149,7 +149,7 @@ class ListTours extends BaseBlock
 
     public function getName()
     {
-        return __('Tour: List Items');
+        return __('Passeios: Lista de Itens');
     }
 
     public function content($model = [])

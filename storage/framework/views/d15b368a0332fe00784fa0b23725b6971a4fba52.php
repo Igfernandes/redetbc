@@ -36,7 +36,7 @@ if (isset($_GET['religion'])) {
     <div class="subscribe-plan">
         <div class="content">
             <p>
-                <?php echo e(__("Junte-se ao clube: escolha seu plano e tenha acesso completo à plataforma.")); ?>
+                <?php echo e(__("Junte-se ao clube: escolha seu plano e tenha acesso completo.")); ?>
 
             </p> &nbsp;
 
@@ -132,8 +132,6 @@ if (isset($_GET['religion'])) {
 
                             <?php echo $__env->make('Core::frontend.currency-switcher', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-                            <?php echo $__env->make('Language::frontend.switcher', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
                             <?php if(!Auth::id()): ?>
 
                             <li class="login-item">
@@ -144,7 +142,7 @@ if (isset($_GET['religion'])) {
 
                             <li class="signup-item">
 
-                                <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Sign Up')); ?></a>
+                                <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Cadastrar-se')); ?></a>
 
                             </li>
 
@@ -164,7 +162,7 @@ if (isset($_GET['religion'])) {
 
                                     <?php endif; ?>
 
-                                    <?php echo e(__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])); ?>
+                                    <?php echo e(__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])); ?>
 
 
                                     <i class="fa fa-angle-down"></i>
@@ -177,13 +175,13 @@ if (isset($_GET['religion'])) {
 
                                     <?php if(Auth::user()->hasPermission('dashboard_vendor_access')): ?>
 
-                                    <li><a href="<?php echo e(route('vendor.dashboard')); ?>"><i class="icon ion-md-analytics"></i> <?php echo e(__("Vendor Dashboard")); ?></a></li>
+                                    <li><a href="<?php echo e(route('vendor.dashboard')); ?>"><i class="icon ion-md-analytics"></i> <?php echo e(__("Fornecedor Dashboard")); ?></a></li>
 
                                     <?php endif; ?>
 
                                     <li class="<?php if(Auth::user()->hasPermission('dashboard_vendor_access')): ?> menu-hr <?php endif; ?>">
 
-                                        <a href="<?php echo e(route('user.profile.index')); ?>"><i class="icon ion-md-construct"></i> <?php echo e(__("My profile")); ?></a>
+                                        <a href="<?php echo e(route('user.profile.index')); ?>"><i class="icon ion-md-construct"></i> <?php echo e(__("Meu perfil")); ?></a>
 
                                     </li>
 
@@ -193,9 +191,9 @@ if (isset($_GET['religion'])) {
 
                                     <?php endif; ?>
 
-                                    <li class="menu-hr"><a href="<?php echo e(route('user.booking_history')); ?>"><i class="fa fa-clock-o"></i> <?php echo e(__("Booking History")); ?></a></li>
+                                    <li class="menu-hr"><a href="<?php echo e(route('user.booking_history')); ?>"><i class="fa fa-clock-o"></i> <?php echo e(__("Histórico de Reservas")); ?></a></li>
 
-                                    <li class="menu-hr"><a href="<?php echo e(route('user.change_password')); ?>"><i class="fa fa-lock"></i> <?php echo e(__("Change password")); ?></a></li>
+                                    <li class="menu-hr"><a href="<?php echo e(route('user.change_password')); ?>"><i class="fa fa-lock"></i> <?php echo e(__("Alterar senha")); ?></a></li>
 
                                     <?php if(Auth::user()->hasPermission('dashboard_access')): ?>
 
@@ -205,7 +203,7 @@ if (isset($_GET['religion'])) {
 
                                     <li class="menu-hr">
 
-                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <?php echo e(__('Logout')); ?></a>
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <?php echo e(__("Sair")); ?></a>
 
                                     </li>
 
@@ -258,7 +256,7 @@ if (isset($_GET['religion'])) {
 
                         <li>
 
-                            <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Sign Up')); ?></a>
+                            <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Cadastrar-se')); ?></a>
 
                         </li>
 
@@ -268,7 +266,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="<?php echo e(route('user.profile.index')); ?>">
 
-                                <i class="icofont-user-suited"></i> <?php echo e(__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])); ?>
+                                <i class="icofont-user-suited"></i> <?php echo e(__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])); ?>
 
 
                             </a>
@@ -279,7 +277,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="<?php echo e(route('user.profile.index')); ?>">
 
-                                <i class="icon ion-md-construct"></i> <?php echo e(__("My profile")); ?>
+                                <i class="icon ion-md-construct"></i> <?php echo e(__("Meu perfil")); ?>
 
 
                             </a>
@@ -292,7 +290,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="<?php echo e(route('vendor.dashboard')); ?>">
 
-                                <i class="icon ion-md-analytics"></i> <?php echo e(__("Vendor Dashboard")); ?>
+                                <i class="icon ion-md-analytics"></i> <?php echo e(__("Fornecedor Dashboard")); ?>
 
 
                             </a>
@@ -315,7 +313,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
 
-                                <i class="fa fa-sign-out"></i> <?php echo e(__('Logout')); ?>
+                                <i class="fa fa-sign-out"></i> <?php echo e(__("Sair")); ?>
 
 
                             </a>
@@ -338,12 +336,6 @@ if (isset($_GET['religion'])) {
                     <ul class="multi-lang">
 
                         <?php echo $__env->make('Core::frontend.currency-switcher-dropdown', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
-                    </ul>
-
-                    <ul class="multi-lang">
-
-                        <?php echo $__env->make('Language::frontend.switcher-dropdown', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                     </ul>
 

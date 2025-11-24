@@ -1,30 +1,39 @@
+<?php
+use Modules\User\Models\Role;
+
+$roles = [];
+foreach (Role::all(['id', 'name'])->toArray() as $role) {
+$roles[strtolower($role['name'])] = $role['id'];
+}
+?>
+
 <form class="form bravo-form-register" method="post" action="<?php echo e(route('auth.register.store')); ?>">
     <?php echo csrf_field(); ?>
     <div class="">
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="<?php echo e(__("First Name")); ?>">
+                    <input type="text" class="form-control" name="first_name" autocomplete="off" placeholder="<?php echo e(__("Primeiro Nome")); ?>">
                     <i class="input-icon field-icon icofont-waiter-alt"></i>
                     <span class="invalid-feedback error error-first_name"></span>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="<?php echo e(__("Last Name")); ?>">
+                    <input type="text" class="form-control" name="last_name" autocomplete="off" placeholder="<?php echo e(__("Sobrenome")); ?>">
                     <i class="input-icon field-icon icofont-waiter-alt"></i>
                     <span class="invalid-feedback error error-last_name"></span>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="<?php echo e(__('Phone')); ?>">
+            <input type="text" class="form-control" name="phone" autocomplete="off" placeholder="<?php echo e(__('Telefone')); ?>">
             <i class="input-icon field-icon icofont-ui-touch-phone"></i>
             <span class="invalid-feedback error error-phone"></span>
         </div>
         <div class="box-icons roles">
             <div>
-                <span><?php echo e(_('Select your profile')); ?>*</span>
+                <span><?php echo e(__('Selecione seu perfil')); ?>*</span>
                 <span class="invalid-feedback error error-role"></span>
             </div>
             <ul>
@@ -33,7 +42,7 @@
                     <input type="radio" name="role" value="<?php echo e($roles['traveler']); ?>">
                     <div class="text">
                         <i class="icofont-travelling"></i>
-                        <span><?php echo e(_('Traveler')); ?></span>
+                        <span><?php echo e(__('Viajante')); ?></span>
                     </div>
                 </li>
                 <?php endif; ?>
@@ -42,7 +51,7 @@
                     <input type="radio" name="role" value="<?php echo e($roles['presenter']); ?>">
                     <div class="text">
                         <i class="icofont-hotel-boy-alt"></i>
-                        <span><?php echo e(_('Anfitrião')); ?></span>
+                        <span><?php echo e(__('Anfitrião')); ?></span>
                     </div>
                 </li>
                 <?php endif; ?>
@@ -51,7 +60,7 @@
                     <input type="radio" name="role" value="<?php echo e($roles['hotel']); ?>">
                     <div class="text">
                         <i class="icofont-building-alt"></i>
-                        <span><?php echo e(_('Hotel')); ?></span>
+                        <span><?php echo e(__('Hotel')); ?></span>
                     </div>
                 </li>
                 <?php endif; ?>
@@ -60,7 +69,7 @@
                     <input type="radio" name="role" value="<?php echo e($roles['assistance']); ?>">
                     <div class="text">
                         <i class="icofont-building-alt"></i>
-                        <span><?php echo e(_('Services')); ?></span>
+                        <span><?php echo e(__('Serviços')); ?></span>
                     </div>
                 </li>
                 <?php endif; ?>
@@ -68,12 +77,12 @@
         </div>
 
         <div class="form-group mt-2">
-            <input type="email" class="form-control" name="email" autocomplete="off" placeholder="<?php echo e(__('Email address')); ?>">
+            <input type="email" class="form-control" name="email" autocomplete="off" placeholder="<?php echo e(__("E-mail")); ?>">
             <i class="input-icon field-icon icofont-mail"></i>
             <span class="invalid-feedback error error-email"></span>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="password" autocomplete="off" placeholder="<?php echo e(__('Password')); ?>">
+            <input type="password" class="form-control" name="password" autocomplete="off" placeholder="<?php echo e(__('Senha')); ?>">
             <i class="input-icon field-icon icofont-ui-password"></i>
             <span class="invalid-feedback error error-password"></span>
         </div>
@@ -81,7 +90,7 @@
     <div class="form-group">
         <label for="term">
             <input id="term" type="checkbox" name="term" class="mr5">
-            <?php echo __("I have read and accept the <a href=':link' target='_blank'>Terms and Privacy Policy</a>",['link'=>get_page_url(setting_item('booking_term_conditions'))]); ?>
+            <?php echo __("Eu li e aceito os <a href=':link' target='_blank'>Termos e Política de Privacidade</a>",['link'=>get_page_url(setting_item('booking_term_conditions'))]); ?>
 
             <span class="checkmark fcheckbox"></span>
         </label>
@@ -97,15 +106,15 @@
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary form-submit">
-            <?php echo e(__('Sign Up')); ?>
+            <?php echo e(__('Cadastrar')); ?>
 
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
         </button>
     </div>
 
     <div class="c-grey f14 text-center">
-        <?php echo e(__(" Already have an account?")); ?>
+        <?php echo e(__(" Já tem uma conta?")); ?>
 
-        <a href="#" data-target="#login" data-toggle="modal"><?php echo e(__("Log In")); ?></a>
+        <a href="#" data-target="#login" data-toggle="modal"><?php echo e(__("Conectar-se")); ?></a>
     </div>
 </form><?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\modules/Layout/auth/register-form.blade.php ENDPATH**/ ?>

@@ -2,7 +2,7 @@
 @section ('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__('All Reply')}}</h1>
+            <h1 class="title-bar">{{__('Todas as respostas')}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
@@ -10,30 +10,30 @@
                 <div class="panel">
                     <form action="{{route('vendor.enquiry_report.replyStore',['enquiry'=>$enquiry])}}" method="post">
                         @csrf
-                    <div class="panel-title"><strong>{{__("Add Reply")}}</strong></div>
+                    <div class="panel-title"><strong>{{__("Adicionar resposta")}}</strong></div>
                     <div class="panel-body">
                             <div class="form-group">
-                                <label>{{__("Client Message:")}}</label>
-                                <div><strong>{{__("Name:")}}</strong> {{$enquiry->name}}</div>
+                                <label>{{__("Mensagem do cliente:")}}</label>
+                                <div><strong>{{__("Nome:")}}</strong> {{$enquiry->name}}</div>
                                 <div><strong>{{__("Email:")}}</strong> {{$enquiry->email}}</div>
-                                <div><strong>{{__("Phone:")}}</strong> {{$enquiry->phone}}</div>
-                                <div><strong>{{__("Content:")}}</strong> {{$enquiry->note}}</div>
+                                <div><strong>{{__("Celular:")}}</strong> {{$enquiry->phone}}</div>
+                                <div><strong>{{__("Conteúdo:")}}</strong> {{$enquiry->note}}</div>
                             </div>
                             <hr>
                             <div class="form-group">
-                                <label>{{__("Reply Content")}}</label>
+                                <label>{{__("Conteúdo da resposta")}}</label>
                                 <textarea required name="content" class="form-control" cols="30" rows="10"></textarea>
                             </div>
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Add New')}}</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Adicionar novo')}}</button>
                     </div>
                     </form>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="p-3 bg-white rounded shadow-sm">
-                    <h6 class="border-bottom border-gray pb-2 mb-0">{{__('Recent updates')}}</h6>
+                    <h6 class="border-bottom border-gray pb-2 mb-0">{{__('Atualizações recentes')}}</h6>
                     @foreach($rows as $row)
                         <div class="media text-muted pt-3">
                             <div class="bd-placeholder-img mr-2 rounded">

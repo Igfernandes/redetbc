@@ -28,20 +28,20 @@ class Review extends BaseModel
     {
         switch ($lever) {
             case 5:
-                return __("Excellent");
+                return __("Excelente");
                 break;
             case 4:
-                return __("Very Good");
+                return __("Muito Bom");
                 break;
             case 3:
-                return __("Average");
+                return __("Médio");
                 break;
             case 2:
-                return __("Poor");
+                return __("Ruim");
                 break;
             case 1:
             case 0:
-                return __("Terrible");
+                return __("Terrível");
                 break;
             default:
                 return __("Não classificado");

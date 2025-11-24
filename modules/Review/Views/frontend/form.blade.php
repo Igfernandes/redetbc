@@ -1,6 +1,6 @@
 @if(setting_item($row->type."_enable_review"))
     <div class="bravo-reviews" id="bravo-reviews">
-        <h3>{{__("Reviews")}}</h3>
+        <h3>{{__("Avaliações")}}</h3>
         @if($review_score)
             <div class="review-box">
                 <div class="row">
@@ -13,12 +13,12 @@
                                 {{$review_score['score_text']}}
                             </div>
                             <div class="review-score-base">
-                                {{__("Based on")}}
+                                {{__("Baseado em")}}
                                 <span>
                                     @if($review_score['total_review'] > 1)
-                                        {{ __(":number reviews",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliações",["number"=>$review_score['total_review'] ]) }}
                                     @else
-                                        {{ __(":number review",["number"=>$review_score['total_review'] ]) }}
+                                        {{ __(":number avaliação",["number"=>$review_score['total_review'] ]) }}
                                     @endif
                                 </span>
                             </div>
@@ -117,7 +117,7 @@
                     {{$review_list->appends(request()->query())->fragment('review-list')->links()}}
                 </div>
                 <div class="review-pag-text">
-                    {{ __("Mostrando :from - :to of :total total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
+                    {{ __("Mostrando :from - :to de :total no total",["from"=>$review_list->firstItem(),"to"=>$review_list->lastItem(),"total"=>$review_list->total()]) }}
                 </div>
             @else
                 <div class="review-pag-text">{{__("Sem avaliação")}}</div>
@@ -136,16 +136,16 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <input type="text" required class="form-control" name="review_title" placeholder="{{__("Título")}}">
-                                    <div class="invalid-feedback">{{__('Review title is required')}}</div>
+                                    <div class="invalid-feedback">{{__('Avaliação title is required')}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-8">
                                 <div class="form-group">
-                                    <textarea name="review_content" required class="form-control" placeholder="{{__("Review content")}}" minlength="10"></textarea>
+                                    <textarea name="review_content" required class="form-control" placeholder="{{__("Conteúdo de avaliação")}}" minlength="10"></textarea>
                                     <div class="invalid-feedback">
-                                        {{__('Review content has at least 10 character')}}
+                                        {{__('Conteúdo da Avaliação precisa ter pelo menos 10 caracteres')}}
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group review-items">
                                         <div class="item">
-                                            <label>{{__("Review rate")}}</label>
+                                            <label>{{__("Avaliação")}}</label>
                                             <input class="review_stats" type="hidden" name="review_rate">
                                             <div class="rates">
                                                 <i class="fa fa-star-o grey"></i>
@@ -188,7 +188,7 @@
                         </div>
                         @if(setting_item('review_upload_picture'))
                             <div class="review_upload_wrap">
-                                <div class="mb-3"><i class="fa fa-camera"></i> {{__('Add photo')}}</div>
+                                <div class="mb-3"><i class="fa fa-camera"></i> {{__('Adicionar foto')}}</div>
 
                                 <div class="row">
                                     <div class="col-md-2">
@@ -216,7 +216,7 @@
         @endif
         @if(!Auth::id())
             <div class="review-message">
-                {!!  __("You must <a href='#login' data-toggle='modal' data-target='#login'>log in</a> to write review") !!}
+                {!!  __("Você deve <a href='#login' data-toggle='modal' data-target='#login'>entrar</a> para escrever uma avaliação") !!}
             </div>
         @endif
     </div>

@@ -78,7 +78,7 @@ class SpaceController extends AdminController
             'space_manage_others' => $this->hasPermission('space_manage_others'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Spaces'),
+                    'name' => __('Espaços'),
                     'url'  => route('space.admin.index')
                 ],
                 [
@@ -86,7 +86,7 @@ class SpaceController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Space Management")
+            'page_title'=>__("Gerenciamento de Espaços")
         ];
         return view('Space::admin.index', $data);
     }
@@ -114,7 +114,7 @@ class SpaceController extends AdminController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Spaces'),
+                    'name' => __('Espaços'),
                     'url'  => route('space.admin.index')
                 ],
                 [
@@ -122,7 +122,7 @@ class SpaceController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Recuperação Space Management")
+            'page_title'=>__("Recuperação Gerenciamento de Espaços")
         ];
         return view('Space::admin.index', $data);
     }
@@ -142,15 +142,15 @@ class SpaceController extends AdminController
             'translation'    => new $this->space_translation(),
             'breadcrumbs'    => [
                 [
-                    'name' => __('Spaces'),
+                    'name' => __('Espaços'),
                     'url'  => route('space.admin.index')
                 ],
                 [
-                    'name'  => __('Add Space'),
+                    'name'  => __('Adicionar Espaço'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'     => __("Add new Space")
+            'page_title'     => __("Adicionar novo Espaço")
         ];
         return view('Space::admin.detail', $data);
     }
@@ -178,15 +178,15 @@ class SpaceController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
-                    'name' => __('Spaces'),
+                    'name' => __('Espaços'),
                     'url'  => route('space.admin.index')
                 ],
                 [
-                    'name'  => __('Editar Space'),
+                    'name'  => __('Editar Espaço'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Editarar: :name",['name'=>$row->title])
+            'page_title'=>__("Editar: :name",['name'=>$row->title])
         ];
         return view('Space::admin.detail', $data);
     }
@@ -266,11 +266,11 @@ class SpaceController extends AdminController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Space updated') );
+                return back()->with('success',  __('Espaços atualizado') );
             }else{
                 event(new CreatedServicesEvent($row));
 
-                return redirect(route('space.admin.edit',$row->id))->with('success', __('Space created') );
+                return redirect(route('space.admin.edit',$row->id))->with('success', __('Espaços criado') );
             }
         }
     }
@@ -356,7 +356,7 @@ class SpaceController extends AdminController
                 foreach ($ids as $id) {
                     (new $this->space())->saveCloneByID($id);
                 }
-                return redirect()->back()->with('success', __('Clone realizado com sucesso!'));
+                return redirect()->back()->with('success', __('Duplicar realizado com sucesso!'));
                 break;
             default:
                 // Change status

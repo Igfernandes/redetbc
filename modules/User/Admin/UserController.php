@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Modules\AdminController;
@@ -61,7 +60,7 @@ class UserController extends AdminController
             'roles' => Role::all(),
             'breadcrumbs' => [
                 [
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                     'url' => route('user.admin.index')
                 ]
             ]
@@ -83,7 +82,7 @@ class UserController extends AdminController
             'roles' => Role::all(),
             'breadcrumbs' => [
                 [
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                     'url' => route('user.admin.index')
                 ],
                 [
@@ -137,7 +136,7 @@ class UserController extends AdminController
             if ($password) {
                 if (!(Hash::check($request->input('old_password'), $urow->password))) {
                     // The Old passwords matches
-                    return redirect()->back()->with("error", __("Your current password does not matches with the password you provided. Please try again."));
+                    return redirect()->back()->with("error", __("Sua senha atual não corresponde à senha que você forneceu. Por favor, tente novamente."));
                 }
             }
         }
@@ -149,7 +148,7 @@ class UserController extends AdminController
             if ($request->input('role_id') and $role = $roleModel->findById($request->input('role_id'))) {
                 $urow->assignRole($role);
             }
-            return redirect()->back()->with('success', __('Password updated!'));
+            return redirect()->back()->with('success', __('Senha atualizada!'));
         }
     }
 
@@ -247,7 +246,7 @@ class UserController extends AdminController
                 }
             }
 
-            return back()->with('success', ($id and $id > 0) ? __('User updated') : __("User created"));
+            return back()->with('success', ($id and $id > 0) ? __('Usuário atualizado') : __("Usuário criado"));
         }
     }
 
@@ -344,7 +343,7 @@ class UserController extends AdminController
                 User::where("id", $id)->update(['status' => $action]);
             }
         }
-        return redirect()->back()->with('success', __('Updated successfully!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
     public function userUpgradeRequest(Request $request)
     {
@@ -363,7 +362,7 @@ class UserController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids))
-            return redirect()->back()->with('error', __('Select at leas 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
         if (empty($action))
             return redirect()->back()->with('error', __('Selecione uma ação!'));
 
@@ -390,7 +389,7 @@ class UserController extends AdminController
                         event(new VendorApproved($user, $vendorRequest));
                     }
                 }
-                return redirect()->back()->with('success', __('Updated successfully!'));
+                return redirect()->back()->with('success', __('Atualizado com sucesso!'));
                 break;
         }
     }
@@ -410,7 +409,7 @@ class UserController extends AdminController
 
             event(new VendorApproved($user, $vendorRequest));
         }
-        return redirect()->back()->with('success', __('Updated successfully!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
 
     public function export()
@@ -424,9 +423,9 @@ class UserController extends AdminController
         if (!empty($user)) {
             $user->email_verified_at = now();
             $user->save();
-            return redirect()->back()->with('success', __('Verify email successfully!'));
+            return redirect()->back()->with('success', __('Verificar email com sucesso!'));
         } else {
-            return redirect()->back()->with('error', __('Verify email cancel!'));
+            return redirect()->back()->with('error', __('Verificar email cancelado!'));
         }
     }
 }

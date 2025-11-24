@@ -15,7 +15,7 @@
             @endforeach
         @else
             <div class="col-lg-12">
-                {{__("Hotel not found")}}
+                {{__("Hotel não encontrado")}}
             </div>
         @endif
     </div>

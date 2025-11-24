@@ -5,7 +5,7 @@
         {{ __("Availability Rooms") }}
         <div class="title-action">
             <a class="btn btn-info" href="{{route('hotel.vendor.room.index',['hotel_id'=>$hotel->id])}}">
-                <i class="fa fa-hand-o-right"></i> {{__("Manage Rooms")}}
+                <i class="fa fa-hand-o-right"></i> {{__("Gerenciar Quartos")}}
             </a>
         </div>
     </h2>
@@ -47,7 +47,7 @@
         </div>
     </div>
     @else
-        <div class="alert alert-warning">{{__("No rooms found")}}</div>
+        <div class="alert alert-warning">{{__("Quartos não encontrados")}}</div>
     @endif
     <div class="d-flex justify-content-center">
         {{$rows->appends($request->query())->links()}}
@@ -78,7 +78,7 @@
                         </div>
                         <div class="col-md-6" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Preço')}}</label>
+                                <label >{{__("Preço")}}</label>
                                 <input type="number"  v-model="form.price" class="form-control">
                             </div>
                         </div>

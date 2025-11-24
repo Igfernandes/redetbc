@@ -71,7 +71,7 @@ class VerificationController extends AdminController
             'roles' => Role::all(),
             'breadcrumbs' => [
                 [
-                    'name' => __("Users"),
+                    'name' => __("Usuários"),
                     'url' => route('user.admin.index')
                 ],
                 [
@@ -90,7 +90,7 @@ class VerificationController extends AdminController
     {
         $row = User::find($id);
         if (empty($row)) {
-            return redirect()->back()->with("danger", __("User not found"));
+            return redirect()->back()->with("danger", __("Usuário não encontrado"));
         }
         if ($row->id != Auth::user()->id and !Auth::user()->hasPermission('user_update')) {
             abort(403);
@@ -98,7 +98,7 @@ class VerificationController extends AdminController
 
         $fields = $row->verification_fields;
         if (empty($fields)) {
-            return redirect()->back()->with("danger", __("No verification field found"));
+            return redirect()->back()->with("danger", __("Nenhum campo de verificação encontrado"));
         }
 
         $verifiedFields = $request->input('fields') ?? [];

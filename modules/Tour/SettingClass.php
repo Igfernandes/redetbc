@@ -17,7 +17,7 @@ class SettingClass extends BaseSettingsClass
         $configs = [
             'tour' => [
                 'id'   => 'tour',
-                'title' => __("Tour Settings"),
+                'title' => __("Configurações de Passeio"),
                 'position'=>20,
                 'view'=>"Tour::admin.settings.tour",
                 "keys"=>[

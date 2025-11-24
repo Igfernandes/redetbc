@@ -9,18 +9,18 @@
             @endphp
             <div class="text-black font-size-16 font-weight-semi-bold mr-auto">
                <div class="render">
-                    <span class="adults" ><span class="one @if($adults >1) d-none @endif">{{__('1 Adult')}}</span> <span class="@if($adults <= 1) d-none @endif multi" data-html="{{__(':count Adults')}}">{{__(':count Adults',['count'=>request()->query('adults',1)])}}</span></span>
+                    <span class="adults" ><span class="one @if($adults >1) d-none @endif">{{__('1 Adulto')}}</span> <span class="@if($adults <= 1) d-none @endif multi" data-html="{{__(':count Adultos')}}">{{__(':count Adultos',['count'=>request()->query('adults',1)])}}</span></span>
                     -
                     <span class="children" >
-                        <span class="one @if($children >1) d-none @endif" data-html="{{__(':count Child')}}">{{__(':count Child',['count'=>request()->query('children',0)])}}</span>
-                        <span class="multi @if($children <=1) d-none @endif" data-html="{{__(':count Children')}}">{{__(':count Children',['count'=>request()->query('children',0)])}}</span>
+                        <span class="one @if($children >1) d-none @endif" data-html="{{__(':count criança')}}">{{__(':count criança',['count'=>request()->query('children',0)])}}</span>
+                        <span class="multi @if($children <=1) d-none @endif" data-html="{{__(':count crianças')}}">{{__(':count crianças',['count'=>request()->query('children',0)])}}</span>
                     </span>
                </div>
             </div>
         </div>
         <div class="dropdown-menu select-guests-dropdown" >
             <div class="dropdown-item-row">
-                <div class="label">{{__('Adults')}}</div>
+                <div class="label">{{__('Adultos')}}</div>
                 <div class="val">
                     <span class="btn-minus" data-input="adults"><i class="icon ion-md-remove"></i></span>
                     <span class="count-display"><input type="number" name="adults" value="{{request()->query('adults',1)}}" min="1"></span>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="dropdown-item-row">
-                <div class="label">{{__('Children')}}</div>
+                <div class="label">{{__('Crianças')}}</div>
                 <div class="val">
                     <span class="btn-minus" data-input="children"><i class="icon ion-md-remove"></i></span>
                     <span class="count-display"> <input type="number" name="children" value="{{request()->query('children',0)}}" min="0"> </span>

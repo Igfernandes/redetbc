@@ -7,7 +7,7 @@
     <div class="container">
         <div class="d-flex justify-content-between mb20">
             <div class="">
-                <h1 class="title-bar">{{$row->id ? __('Editar: ') .$translation->title :  __('Add new page') }}</h1>
+                <h1 class="title-bar">{{$row->id ? __('Editar: ') .$translation->title :  __('Adicionar nova página') }}</h1>
                 @if($row->slug)
                 <p class="item-url-demo">{{ __('Permalink: ')}} {{ url((request()->query('lang') ? request()->query('lang').'/' : ''). config('page.page_route_prefix') )}}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                 </p>
@@ -18,7 +18,7 @@
                 <a class="btn btn-primary btn-sm" href="{{route('page.admin.builder',['id'=>$row->id])}}"><i class="fa fa-paint-brush"></i> {{ __('Template Builder')}}</a>
                 @endif
                 @if($row->slug)
-                <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{ __('View page')}}</a>
+                <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{ __('Visualização de página')}}</a>
                 @endif
             </div>
         </div>
@@ -31,7 +31,7 @@
                 <div class="col-md-9">
                     <div class="panel">
                         <div class="panel-title">
-                            <strong>{{ __('Page Content')}}</strong>
+                            <strong>{{ __('Página Content')}}</strong>
                         </div>
                         <div class="panel-body">
                             <div class="form-group magic-field" data-id="title" data-type="title">
@@ -44,7 +44,7 @@
                                     class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">{{__("Target Religion")}}</label>
+                                <label class="control-label">{{__("Religião")}}</label>
                                 <select name="religion" class="form-control">
                                     <option value="">Selecione a religião</option>
                                     <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangélico")}}</option>
@@ -53,7 +53,7 @@
                                 </select>
                             </div>
                             <div class="form-group magic-field" data-id="content" data-type="content">
-                                <label class="control-label">{{__("Content")}}</label>
+                                <label class="control-label">{{__("Conteúdo")}}</label>
                                 <div class="">
                                     <textarea
                                         name="content"

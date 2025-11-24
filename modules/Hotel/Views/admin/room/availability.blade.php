@@ -4,7 +4,7 @@
     @php $services  = []; @endphp
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Room Availability Calendar")}}</h1>
+            <h1 class="title-bar">{{__("Calendário de Disponibilidade de Quartos")}}</h1>
         </div>
         @include('admin.message')
         <div class="panel">
@@ -39,7 +39,7 @@
             </div>
         </div>
         @else
-            <div class="alert alert-warning">{{__("No rooms found")}}</div>
+            <div class="alert alert-warning">{{__("Nenhum quarto encontrado")}}</div>
         @endif
         <div class="d-flex justify-content-center">
             {{$rows->appends($request->query())->links()}}
@@ -71,19 +71,19 @@
                         </div>
                         <div class="col-md-6" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Preço')}}</label>
+                                <label >{{__("Preço")}}</label>
                                 <input type="number"  v-model="form.price" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Number of room')}}</label>
+                                <label >{{__('Número de quartos')}}</label>
                                 <input type="number"  v-model="form.number" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6 d-none" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Instant Booking?')}}</label>
+                                <label >{{__('Reserva Instantânea?')}}</label>
                                 <br>
                                 <label><input true-value=1 false-value=0  type="checkbox"  v-model="form.is_instant" > {{__("Habilitar reserva instantânea")}}</label>
                             </div>

@@ -13,30 +13,30 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label">{{__("Sale Price")}}</label>
-                        <input type="number" step="any" name="sale_price" class="form-control" value="{{$row->sale_price}}" placeholder="{{__("Space Sale Price")}}">
-                        <span><i>{{__("If the regular price is less than the discount , it will show the regular price")}}</i></span>
+                        <label class="control-label">{{__("Preço de Venda")}}</label>
+                        <input type="number" step="any" name="sale_price" class="form-control" value="{{$row->sale_price}}" placeholder="{{__("Space Preço de Venda")}}">
+                        <span><i>{{__("Se o preço normal for menor que o desconto, o preço normal será exibido.")}}</i></span>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label">{{__("Max Guests")}}</label>
+                        <label class="control-label">{{__("Máximo de convidados")}}</label>
                         <input type="number" step="any" name="max_guests" class="form-control" value="{{$row->max_guests}}" >
                     </div>
                 </div>
             </div>
         @endif
         <div class="form-group @if(!is_default_lang()) d-none @endif">
-            <label><input type="checkbox" name="enable_extra_price" @if(!empty($row->enable_extra_price)) checked @endif value="1"> {{__('Enable extra price')}}
+            <label><input type="checkbox" name="enable_extra_price" @if(!empty($row->enable_extra_price)) checked @endif value="1"> {{__('Ativar preço extra')}}
             </label>
         </div>
         <div class="form-group-item @if(!is_default_lang()) d-none @endif" data-condition="enable_extra_price:is(1)">
-            <label class="control-label">{{__('Extra Price')}}</label>
+            <label class="control-label">{{__('Preço Extra')}}</label>
             <div class="g-items-header">
                 <div class="row">
                     <div class="col-md-5">{{__("Nome")}}</div>
-                    <div class="col-md-3">{{__('Preço')}}</div>
-                    <div class="col-md-3">{{__('Type')}}</div>
+                    <div class="col-md-3">{{__("Preço")}}</div>
+                    <div class="col-md-3">{{__("Tipo")}}</div>
                     <div class="col-md-1"></div>
                 </div>
             </div>
@@ -134,7 +134,7 @@
                     <div class="row">
                         <div class="col-md-4">{{__("No of people")}}</div>
                         <div class="col-md-3">{{__('Discount')}}</div>
-                        <div class="col-md-3">{{__('Type')}}</div>
+                        <div class="col-md-3">{{__("Tipo")}}</div>
                         <div class="col-md-1"></div>
                     </div>
                 </div>
@@ -197,9 +197,9 @@
         @endif
         @if(is_default_lang() and (!empty(setting_item("space_allow_vendor_can_add_service_fee")) or is_admin()))
             <hr>
-            <h3 class="panel-body-title app_get_locale">{{__('Service fee')}}</h3>
+            <h3 class="panel-body-title app_get_locale">{{ __('Taxa de serviço')}}</h3>
             <div class="form-group app_get_locale">
-                <label><input type="checkbox" name="enable_service_fee" @if(!empty($row->enable_service_fee)) checked @endif value="1"> {{__('Enable service fee')}}
+                <label><input type="checkbox" name="enable_service_fee" @if(!empty($row->enable_service_fee)) checked @endif value="1"> {{__('Ativar taxa de serviço')}}
                 </label>
             </div>
             <div class="form-group-item" data-condition="enable_service_fee:is(1)">
@@ -207,8 +207,8 @@
                 <div class="g-items-header">
                     <div class="row">
                         <div class="col-md-5">{{__("Nome")}}</div>
-                        <div class="col-md-3">{{__('Preço')}}</div>
-                        <div class="col-md-3">{{__('Type')}}</div>
+                        <div class="col-md-3">{{__("Preço")}}</div>
+                        <div class="col-md-3">{{__("Tipo")}}</div>
                         <div class="col-md-1"></div>
                     </div>
                 </div>

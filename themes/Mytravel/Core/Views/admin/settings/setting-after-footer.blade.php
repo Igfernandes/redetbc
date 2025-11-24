@@ -7,9 +7,9 @@
 </div>
 @if(is_default_lang())
     <div class="form-group">
-        <label>{{__("Phone Contact")}}</label>
+        <label>{{__("Celular Contact")}}</label>
         <div class="form-controls">
-            <input type="text" class="form-control" name="phone_contact" value="{{setting_item("phone_contact")}}">
+            <input type="text" class="form-control" name="phone_contact" value="{{setting_item("Celular_contact")}}">
         </div>
     </div>
 @endif

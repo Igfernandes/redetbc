@@ -2,13 +2,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Subscribers")}}</h1>
+            <h1 class="title-bar">{{__("Assinantes")}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
             <div class="col-md-4">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Subscriber")}}</div>
+                    <div class="panel-title">{{__("Adicionar assinantes")}}</div>
                     <div class="panel-body">
                         <form action="{{route('user.admin.subscriber.store')}}" method="post">
                             @csrf
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-left">
                         <form method="get" action="{{route('user.admin.subscriber.index')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
-                            <a class="btn btn-warning btn-icon" href="{{route('user.admin.subscriber.export')}}" target="_blank" title="{{__("Export to excel")}}"><i class="icon ion-md-cloud-download"></i>&nbsp;{{__
+                            <a class="btn btn-warning btn-icon" href="{{route('user.admin.subscriber.export')}}" target="_blank" title="{{__("Exportar em excel")}}"><i class="icon ion-md-cloud-download"></i>&nbsp;{{__
                             ('Export')}}
                             </a>
                             <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Procurar by name or email")}}">
@@ -52,8 +52,8 @@
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
                                     <th>{{__("Nome")}}</th>
-                                    <th>{{__("First name")}}</th>
-                                    <th>{{__("Last name")}}</th>
+                                    <th>{{__("Primeiro Nome")}}</th>
+                                    <th>{{__("Sobrenome")}}</th>
                                     <th class="date">{{__("Data")}}</th>
                                 </tr>
                                 </thead>

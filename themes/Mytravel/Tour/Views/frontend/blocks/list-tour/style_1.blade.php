@@ -8,7 +8,7 @@
                         {{ $desc }}
                     </small>
                 </div>
-                <a href="{{ route("tour.search") }}" class="font-weight-bold d-flex text-lh-1 mb-md-2 ml-2">{{ __("More") }}
+                <a href="{{ route("tour.search") }}" class="font-weight-bold d-flex text-lh-1 mb-md-2 ml-2">{{ __("Mais") }}
                     <i class="flaticon-right-arrow ml-2"></i>
                 </a>
             </div>

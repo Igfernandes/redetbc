@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar">
-        {{__("Wallet")}}
+        {{__('Carteira')}}
         <a href="{{route('user.wallet.buy')}}" class="btn-change-password">{{__("Buy credits")}}</a>
     </h2>
     @include('admin.message')
@@ -47,8 +47,8 @@
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">{{__('Type')}}</th>
-                            <th scope="col">{{__('Amount')}}</th>
+                            <th scope="col">{{__("Tipo")}}</th>
+                            <th scope="col">{{__('Quantidade')}}</th>
                             <th scope="col">{{__('Gateway')}}</th>
                             <th scope="col">{{__('Status')}}</th>
                             <th scope="col">{{__("Descrição")}}</th>
@@ -77,7 +77,7 @@
                                     </tr>
                                 @endforeach
                             @else
-                                <tr><td colspan="5">{{__("No data found")}}</td></tr>
+                                <tr><td colspan="7">{{__("Nenhuma informação encontrada")}}</td></tr>
                             @endif
                         </tbody>
                         {{$transactions->links()}}

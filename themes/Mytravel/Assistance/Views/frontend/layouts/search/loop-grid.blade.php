@@ -46,16 +46,16 @@
                 </span>
                 <span class="review">
                  @if($reviewData['total_review'] > 1)
-                        {{ __(":number Reviews",["number"=>$reviewData['total_review'] ]) }}
+                        {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
                     @else
-                        {{ __(":number Review",["number"=>$reviewData['total_review'] ]) }}
+                        {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
                     @endif
                 </span>
             </div>
         @endif
     <div class="amenities">
         @if($row->max_guest)
-            <span class="amenity total" data-toggle="tooltip"  title="{{ __("Max Guests") }}">
+            <span class="amenity total" data-toggle="tooltip"  title="{{ __("Máximo de convidados") }}">
                 <i class="icofont-ui-user-group input-icon field-icon"></i>
                 <span class="text">
                     {{$row->max_guest}}

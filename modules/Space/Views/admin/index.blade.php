@@ -2,10 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("All Spaces")}}</h1>
+            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("Todos Espaços")}}</h1>
             <div class="title-actions">
                 @if(empty($recovery))
-                <a href="{{route('space.admin.create')}}" class="btn btn-primary">{{__("Add new space")}}</a>
+                <a href="{{route('space.admin.create')}}" class="btn btn-primary">{{__("Adicionar novo espaço")}}</a>
                 @endif
             </div>
         </div>
@@ -16,15 +16,15 @@
                     <form method="post" action="{{route('space.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
 
                             @if(!empty($recovery))
-                                <option value="recovery">{{__(" Recovery ")}}</option>
-                                <option value="permanently_delete">{{__("Permanently delete")}}</option>
+                                <option value="recovery">{{__(" Recuperar ")}}</option>
+                                <option value="permanently_delete">{{__("Excluir permanentemente")}}</option>
                             @else
-                                <option value="publish">{{__(" Publish ")}}</option>
-                                <option value="draft">{{__(" Move to Draft ")}}</option>
-                                <option value="pending">{{__("Move to Pending")}}</option>
+                                <option value="publish">{{__(" Publicar ")}}</option>
+                                <option value="draft">{{__(" Mover para Lixeira ")}}</option>
+                                <option value="pending">{{__("Mover para pendentes")}}</option>
                                 <option value="clone">{{__(" Clone ")}}</option>
                                 <option value="delete">{{__("Excluir")}}</option>
                             @endif
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -61,12 +61,12 @@
                         <thead>
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th> {{ __('Name')}}</th>
+                            <th> {{ __('Nome')}}</th>
                             <th width="200px"> {{ __('Localização')}}</th>
-                            <th width="130px"> {{ __('Author')}}</th>
+                            <th width="130px"> {{ __('Autor')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
-                            <th width="100px"> {{ __('Reviews')}}</th>
-                            <th width="100px"> {{ __('Date')}}</th>
+                            <th width="100px"> {{ __('Avaliações')}}</th>
+                            <th width="100px"> {{ __('Data')}}</th>
                             <th width="100px"></th>
                         </tr>
                         </thead>
@@ -106,7 +106,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7">{{__("No space found")}}</td>
+                                <td colspan="7">{{__("Nenhum espaço encontrado")}}</td>
                             </tr>
                         @endif
                         </tbody>

@@ -17,7 +17,7 @@
                     <div class="col-md-9">
                         <div class="panel">
                             <div class="panel-body">
-                                <h3 class="panel-body-title">{{__("Plan Content")}}</h3>
+                                <h3 class="panel-body-title">{{__("Conteúdo do Plano")}}</h3>
                                 @include('User::admin.plan.form')
                             </div>
                         </div>

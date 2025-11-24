@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar">
-        {{__("Change Password")}}
+        {{__("Alterar senha")}}
     </h2>
     @include('admin.message')
     <form action="{{ route("user.change_password.update") }}" method="post">
@@ -9,23 +9,23 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>{{__("Current Password")}}</label>
-                    <input type="password" required name="current-password" placeholder="{{__("Current Password")}}" class="form-control">
+                    <label>{{__("Senha Atual")}}</label>
+                    <input type="password" required name="current-password" placeholder="{{__("Senha Atual")}}" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{__("New Password")}}</label>
-                    <input type="password" required name="new-password" minlength="8" placeholder="{{__("New Password")}}" class="form-control">
-                    <p><i>{{__("* Require at least one uppercase, one lowercase letter, one number and one symbol.")}}</i></p>
+                    <label>{{__("Nova Senha")}}</label>
+                    <input type="password" required name="new-password" minlength="8" placeholder="{{__("Nova Senha")}}" class="form-control">
+                    <p><i>{{__("* Exige pelo menos uma letra maiúscula, uma letra minúscula, um número e um símbolo.")}}</i></p>
                </div>
                 <div class="form-group">
-                    <label>{{__("New Password Again")}}</label>
-                    <input type="password" required name="new-password_confirmation" minlength="8" placeholder="{{__("New Password Again")}}" class="form-control">
+                    <label>{{__("Confirmação de Senha")}}</label>
+                    <input type="password" required name="new-password_confirmation" minlength="8" placeholder="{{__("Confirmação de Senha")}}" class="form-control">
                 </div>
             </div>
             <div class="col-md-12">
                 <hr>
-                <input type="submit" class="btn btn-primary" value="{{__("Change Password")}}">
-                <a href="{{ route("user.profile.index") }}" class="btn btn-default">{{__("Cancel")}}</a>
+                <input type="submit" class="btn btn-primary" value="{{__("Alterar senha")}}">
+                <a href="{{ route("user.profile.index") }}" class="btn btn-default">{{__("Cancelar")}}</a>
             </div>
         </div>
     </form>

@@ -2,13 +2,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Languages")}}</h1>
+            <h1 class="title-bar">{{__("Idiomas")}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Language")}}</div>
+                    <div class="panel-title">{{__("Adicionar Idioma")}}</div>
                     <div class="panel-body">
                         <form action="" class="needs-validation" novalidate method="post">
                             @csrf
@@ -29,8 +29,8 @@
 
                                 <select name="action" class="form-control">
                                     <option value="">{{__("Ação em massa")}}</option>
-                                    <option value="publish">{{__(" Publish ")}}</option>
-                                    <option value="draft">{{__(" Move to Draft ")}}</option>
+                                    <option value="publish">{{__(" Publicar ")}}</option>
+                                    <option value="draft">{{__(" Mover para Lixeira ")}}</option>
                                     <option value="delete">{{__("Excluir")}}</option>
                                 </select>
                                 <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <div class="panel-title">{{__("All Languages")}}</div>
+                    <div class="panel-title">{{__("Todos os Idiomas")}}</div>
                     <div class="panel-body">
                         <form action="" class="bravo-form-item">
                             <div class="table-responsive">
@@ -54,7 +54,7 @@
                                     <tr>
                                         <th width="60px"><input type="checkbox" class="check-all"></th>
                                         <th>{{__("Nome")}}</th>
-                                        <th>{{__("Locale")}}</th>
+                                        <th>{{__("Localização")}}</th>
                                         <th>{{__("Status")}}</th>
                                         <th>{{__("Data")}}</th>
                                     </tr>

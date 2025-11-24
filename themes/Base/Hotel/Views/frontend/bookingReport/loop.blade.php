@@ -13,10 +13,10 @@
             <small>
                 <div>{{ __("Customer Info") }}</div>
                 <div>
-                    {{ __("First Name") }}: {{ $booking->first_name }}
+                    {{ __("Primeiro Nome") }}: {{ $booking->first_name }}
                 </div>
                 <div>
-                    {{ __("Last Name") }}: {{ $booking->last_name }}
+                    {{ __("Sobrenome") }}: {{ $booking->last_name }}
                 </div>
             </small>
         @else
@@ -46,16 +46,16 @@
     <td width="2%">
         @if($service = $booking->service)
             <a class="btn btn-xs btn-primary btn-info-booking" data-ajax="{{route('booking.modal',['booking'=>$booking])}}" data-toggle="modal" data-id="{{$booking->id}}" data-target="#modal_booking_detail">
-                <i class="fa fa-info-circle"></i>{{__("Details")}}
+                <i class="fa fa-info-circle"></i>{{__("Detalhes")}}
             </a>
         @endif
         <a href="{{route('user.booking.invoice',['code'=>$booking->code])}}" class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1" onclick="window.open(this.href); return false;">
-            <i class="fa fa-print"></i>{{__("Invoice")}}
+            <i class="fa fa-print"></i>{{__("Fatura")}}
         </a>
         @if(!empty(setting_item("hotel_allow_vendor_can_change_their_booking_status")))
             <a class="btn btn-xs btn-info btn-make-as" data-toggle="dropdown">
                 <i class="icofont-ui-settings"></i>
-                {{__("Action")}}
+                {{__("Ação")}}
             </a>
             <div class="dropdown-menu">
                 @if(!empty($statues))

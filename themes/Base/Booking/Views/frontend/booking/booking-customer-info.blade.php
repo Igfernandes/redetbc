@@ -21,15 +21,15 @@
                         <div class="val">{{$booking->phone}}</div>
                     </li>
                     <li class="info-address">
-                        <div class="label">{{__('Address line 1')}}</div>
+                        <div class="label">{{('Endereço 1')}}</div>
                         <div class="val">{{$booking->address}}</div>
                     </li>
                     <li class="info-address2">
-                        <div class="label">{{__('Address line 2')}}</div>
+                        <div class="label">{{('Endereço 2')}}</div>
                         <div class="val">{{$booking->address2}}</div>
                     </li>
                     <li class="info-city">
-                        <div class="label">{{__('City')}}</div>
+                        <div class="label">{{__('Cidade')}}</div>
                         <div class="val">{{$booking->city}}</div>
                     </li>
                     <li class="info-state">

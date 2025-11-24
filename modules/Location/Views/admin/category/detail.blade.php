@@ -22,7 +22,7 @@
                     <div class="col-md-9">
                         <div class="panel">
                             <div class="panel-body">
-                                <h3 class="panel-body-title">{{__("Category Content")}}</h3>
+                                <h3 class="panel-body-title">{{__("Conteúdo da Categoria")}}</h3>
                                 @include('Location::admin/category/form')
                             </div>
                         </div>

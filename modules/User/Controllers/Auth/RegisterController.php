@@ -119,6 +119,7 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
                 Log::warning("SendMailUserRegistered: " . $exception->getMessage());
             }
             $user->assignRole($request->input('role'));
+            
             return response()->json([
                 'error'    => false,
                 'messages' => false,

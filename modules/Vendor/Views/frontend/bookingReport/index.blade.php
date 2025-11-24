@@ -26,14 +26,14 @@
                         <table class="table table-bordered table-striped table-booking-history">
                             <thead>
                             <tr>
-                                <th width="2%">{{__("Type")}}</th>
+                                <th width="2%">{{__("Tipo")}}</th>
                                 <th>{{__("Título")}}</th>
                                 <th class="a-hidden">{{__("Order Date")}}</th>
                                 <th class="a-hidden">{{__("Execution Time")}}</th>
                                 <th width="15%">{{__("Payment Detail")}}</th>
                                 <th>{{__("Commission")}}</th>
                                 <th class="a-hidden">{{__("Status")}}</th>
-                                <th>{{__("Action")}}</th>
+                                <th>{{__("Ação")}}</th>
                             </tr>
                             </thead>
                             <tbody>

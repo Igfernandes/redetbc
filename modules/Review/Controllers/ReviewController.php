@@ -27,9 +27,9 @@ class ReviewController extends Controller
 
         if (empty($allServices[$service_type])) {
             if ($is_return) {
-                return $this->sendError(__("Service type not found"));
+                return $this->sendError(__("Tipo do serviço não foi encontrado"));
             } else {
-                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Service type not found'));
+                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Tipo do serviço não foi encontrado'));
             }
         }
 
@@ -37,35 +37,35 @@ class ReviewController extends Controller
         $module = $module_class::find($service_id);
         if (empty($module)) {
             if ($is_return) {
-                return $this->sendError(__("Service not found"));
+                return $this->sendError(__("Serviço não encontrado"));
             } else {
-                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Service not found'));
+                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Serviço não encontrado'));
             }
         }
         $reviewEnable = $module->getReviewEnable();
         if (!$reviewEnable) {
             if ($is_return) {
-                return $this->sendError(__("Review not enable"));
+                return $this->sendError(__("Avaliação indisponível"));
             } else {
-                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Review not enable'));
+                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Avaliação indisponível'));
             }
         }
 
         if ($module->review_after_booking()) {
             if (!$module->count_remain_review()) {
                 if ($is_return) {
-                    return $this->sendError(__("You need to make a booking or the Orders must be confirmed before writing a review"));
+                    return $this->sendError(__("Você precisa fazer uma reserva ou os pedidos devem ser confirmados antes de escrever uma avaliação"));
                 } else {
-                    return redirect()->to(url()->previous() . '#review-form')->with('error', __('You need to make a booking or the Orders must be confirmed before writing a review'));
+                    return redirect()->to(url()->previous() . '#review-form')->with('error', __('Você precisa fazer uma reserva ou os pedidos devem ser confirmados antes de escrever uma avaliação'));
                 }
             }
         }
 
         if ($module->author_id == Auth::id()) {
             if ($is_return) {
-                return $this->sendError(__("You cannot review your service"));
+                return $this->sendError(__("Você não pode avaliar seu serviço"));
             } else {
-                return redirect()->to(url()->previous() . '#review-form')->with('error', __('You cannot review your service'));
+                return redirect()->to(url()->previous() . '#review-form')->with('error', __('Você não pode avaliar seu serviço'));
             }
         }
 
@@ -74,9 +74,9 @@ class ReviewController extends Controller
             'review_content' => 'required|min:10'
         ];
         $messages = [
-            'review_title.required'   => __('Review Title is required field'),
-            'review_content.required' => __('Review Content is required field'),
-            'review_content.min'      => __('Review Content has at least 10 character'),
+            'review_title.required'   => __('O título da Avaliação é um campo obrigatório'),
+            'review_content.required' => __('O Conteúdo da Avaliação é um campo obrigatório'),
+            'review_content.min'      => __('O Conteúdo da Avaliação deve ter pelo menos 10 caracteres'),
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
@@ -92,7 +92,7 @@ class ReviewController extends Controller
             if (!$codeCapcha or !ReCaptchaEngine::verify($codeCapcha)) {
                 $data = [
                     'status'  => 0,
-                    'message' => __('Please verify the captcha'),
+                    'message' => __('Por favor, verifique o captcha'),
                 ];
                 return response()->json($data, 200);
             }
@@ -157,9 +157,9 @@ class ReviewController extends Controller
                 }
             }
 
-            $msg = __('Review success!');
+            $msg = __('Avaliação realizada com sucesso!');
             if ($module->getReviewApproved()) {
-                $msg = __("Review success! Please wait for admin approved!");
+                $msg = __("Avaliação realizada com sucesso! Por favor, aguarde a aprovação do administrador!");
             }
             event(new CreateReviewEvent($module, $review));
             $module->update_service_rate();
@@ -170,9 +170,9 @@ class ReviewController extends Controller
             }
         }
         if ($is_return) {
-            return $this->sendError(__('Review error!'));
+            return $this->sendError(__('Avaliação error!'));
         } else {
-            return redirect()->to(url()->previous() . '#review-form')->with('error', __('Review error!'));
+            return redirect()->to(url()->previous() . '#review-form')->with('error', __('Avaliação error!'));
         }
     }
 

@@ -3,7 +3,7 @@
     <h2 class="title-bar">
         {{!empty($recovery) ?__('Recuperação Tours') : __("Manage Tours")}}
         @if(Auth::user()->hasPermission('tour_create') && empty($recovery))
-            <a href="{{ route("tour.vendor.create") }}" class="btn-change-password">{{__("Add Tour")}}</a>
+            <a href="{{ route("tour.vendor.create") }}" class="btn-change-password">{{__("Adicionar Passeio")}}</a>
         @endif
     </h2>
     @include('admin.message')

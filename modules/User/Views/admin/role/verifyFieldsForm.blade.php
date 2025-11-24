@@ -31,13 +31,13 @@
     </div>
 </div>
 <div class="form-group">
-    <label>{{__("Type")}} <span class="text-danger">*</span></label>
+    <label>{{__("Tipo")}} <span class="text-danger">*</span></label>
     <select class="custom-select" name="type" required>
         <option value="text">{{__("Text")}}</option>
-        <option {{($row['type'] ?? '') == 'phone' ? 'selected':''}} value="phone">{{__("Phone")}}</option>
-        <option {{($row['type'] ?? '') == 'number' ? 'selected':''}} value="number">{{__("Number")}}</option>
-        <option {{($row['type'] ?? '') == 'file' ? 'selected':''}} value="file">{{__("File attachment")}}</option>
-        <option {{($row['type'] ?? '') == 'multi_files' ? 'selected':''}} value="multi_files">{{__("Multi files attachment")}}</option>
+        <option {{($row['type'] ?? '') == 'phone' ? 'selected':''}} value="phone">{{__("Celular")}}</option>
+        <option {{($row['type'] ?? '') == 'number' ? 'selected':''}} value="number">{{__("Número")}}</option>
+        <option {{($row['type'] ?? '') == 'file' ? 'selected':''}} value="file">{{__("Anexo de arquivo")}}</option>
+        <option {{($row['type'] ?? '') == 'multi_files' ? 'selected':''}} value="multi_files">{{__("Anexos múltiplos de arquivos")}}</option>
     </select>
     <div class="invalid-feedback">
         {{__('Please enter field type')}}
@@ -55,14 +55,14 @@
         @endforeach
     </div>
     <div class="invalid-feedback">
-        {{__('Please enter roles')}}
+        {{__('Porfavor selecione pelo menos uma função')}}
     </div>
 </div>
 <div class="form-group">
     <label>{{__("Is Required?")}}</label>
     <select class="custom-select" name="required">
         <option value="">{{__("No")}}</option>
-        <option {{($row['required'] ?? '') == 1 ? 'selected':''}} value="1">{{__("Yes")}}</option>
+        <option {{($row['required'] ?? '') == 1 ? 'selected':''}} value="1">{{__("Sim")}}</option>
     </select>
 </div>
 <div class="form-group">

@@ -21,32 +21,32 @@ class ModuleProvider extends \Modules\ModuleServiceProvider
             'report'=>[
                 "position"=>110,
                 'url'        => route('report.admin.booking'),
-                'title'      =>  __('Reports :count',['count'=>$count ? sprintf('<span class="badge badge-warning">%d</span>',$count) : '']),
+                'title'      =>  __('Relatórios :count',['count'=>$count ? sprintf('<span class="badge badge-warning">%d</span>',$count) : '']),
                 'icon'       => 'icon ion-ios-pie',
                 'permission' => 'report_view',
                 'group' => 'system',
                 'children'   => [
                     'enquiry'=>[
                         'url'        => route('report.admin.enquiry.index'),
-                        'title'      => __('Enquiry Reports'),
+                        'title'      => __('Relatórios de Inquérito'),
                         'icon'       => 'icon ion-ios-pricetags',
                         'permission' => 'report_view',
                     ],
                     'booking'=>[
                         'url'        => route('report.admin.booking'),
-                        'title'      => __('Booking Reports'),
+                        'title'      => __('Relatórios de Reservas'),
                         'icon'       => 'icon ion-ios-pricetags',
                         'permission' => 'report_view',
                     ],
                     'statistic'=>[
                         'url'        => route('report.admin.statistic.index'),
-                        'title'      => __('Booking Statistic'),
+                        'title'      => __('Estatísticas de Reservas'),
                         'icon'       => 'icon ion ion-md-podium',
                         'permission' => 'report_view',
                     ],
                     'contact'=>[
                         'url'        => route('contact.admin.index'),
-                        'title'      => __('Contact Submissions'),
+                        'title'      => __('Envios de Contato'),
                         'icon'       => 'icon ion ion-md-mail',
                         'permission' => 'contact_manage',
                     ],

@@ -98,7 +98,7 @@ class Tour extends Bookable
 
     public static function getModelName()
     {
-        return __("Tour");
+        return __("Passeio");
     }
 
     protected $bookingClass;
@@ -1159,7 +1159,7 @@ class Tour extends Bookable
                 "max" => "5",
             ],
             [
-                "title"    => __("Tour Type"),
+                "title"    => __("Passeio Type"),
                 "field"    => "cat_id",
                 "position" => "3",
                 "data" => $category->map(function ($category) {

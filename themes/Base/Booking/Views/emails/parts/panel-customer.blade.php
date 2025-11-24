@@ -19,15 +19,15 @@
                 <div class="val">{{$booking->phone}}</div>
             </div>
             <div class="info-address b-tr">
-                <div class="label">{{__('Address line 1')}}</div>
+                <div class="label">{{('Endereço 1')}}</div>
                 <div class="val">{{$booking->address}}</div>
             </div>
             <div class="info-address2 b-tr">
-                <div class="label">{{__('Address line 2')}}</div>
+                <div class="label">{{('Endereço 2')}}</div>
                 <div class="val">{{$booking->address2}}</div>
             </div>
             <div class="info-city b-tr">
-                <div class="label">{{__('City')}}</div>
+                <div class="label">{{__('Cidade')}}</div>
                 <div class="val">{{$booking->city}}</div>
             </div>
             <div class="info-state b-tr">

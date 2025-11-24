@@ -34,55 +34,61 @@
         language: '<?php echo e(app()->getLocale()); ?>',
         module:{}
     };
+
     <?php if(auth()->user()): ?>
         bookingCore.media = {
-        groups:<?php echo json_encode(config('bc.media.groups')); ?>,
-    }
+            groups:<?php echo json_encode(config('bc.media.groups')); ?>
+
+        }
     <?php endif; ?>
+
     <?php $__currentLoopData = get_bookable_services(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $id=>$class): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php if($class::isEnable()): ?>
             bookingCore.module.<?php echo e($id); ?> = '<?php echo e(route($id.'.search')); ?>';
         <?php endif; ?>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
     var i18n = {
-        warning:"<?php echo e(__("Warning")); ?>",
-        success:"<?php echo e(__("Success")); ?>",
-        confirm_delete:"<?php echo e(__("Você quer apagar?")); ?>",
-        confirm:"<?php echo e(__("Confirm")); ?>",
-        cancel:"<?php echo e(__("Cancel")); ?>",
+        warning:"Aviso",
+        success:"Sucesso",
+        confirm_delete:"Você quer apagar?",
+        confirm:"Confirmar",
+        cancel:"Cancelar"
     };
+
     var daterangepickerLocale = {
-        "applyLabel": "<?php echo e(__('Aplicar')); ?>",
-        "cancelLabel": "<?php echo e(__('Cancel')); ?>",
-        "fromLabel": "<?php echo e(__('From')); ?>",
-        "toLabel": "<?php echo e(__('To')); ?>",
-        "customRangeLabel": "<?php echo e(__('Custom')); ?>",
-        "weekLabel": "<?php echo e(__('W')); ?>",
+        "applyLabel": "Aplicar",
+        "cancelLabel": "Cancelar",
+        "fromLabel": "De",
+        "toLabel": "Até",
+        "customRangeLabel": "Personalizado",
+        "weekLabel": "S",
         "first_day_of_week": <?php echo e(setting_item("site_first_day_of_the_weekin_calendar","1")); ?>,
         "daysOfWeek": [
-            "<?php echo e(__('Su')); ?>",
-            "<?php echo e(__('Mo')); ?>",
-            "<?php echo e(__('Tu')); ?>",
-            "<?php echo e(__('We')); ?>",
-            "<?php echo e(__('Th')); ?>",
-            "<?php echo e(__('Fr')); ?>",
-            "<?php echo e(__('Sa')); ?>"
+            "Dom",
+            "Seg",
+            "Ter",
+            "Qua",
+            "Qui",
+            "Sex",
+            "Sáb"
         ],
         "monthNames": [
-            "<?php echo e(__('January')); ?>",
-            "<?php echo e(__('February')); ?>",
-            "<?php echo e(__('March')); ?>",
-            "<?php echo e(__('April')); ?>",
-            "<?php echo e(__('May')); ?>",
-            "<?php echo e(__('June')); ?>",
-            "<?php echo e(__('July')); ?>",
-            "<?php echo e(__('August')); ?>",
-            "<?php echo e(__('September')); ?>",
-            "<?php echo e(__('October')); ?>",
-            "<?php echo e(__('November')); ?>",
-            "<?php echo e(__('December')); ?>"
-        ],
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"
+        ]
     };
+
     window.currentUrl = '<?php echo e(request()->url()); ?>';
 </script>
 <?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\modules/Layout/parts/global-script.blade.php ENDPATH**/ ?>

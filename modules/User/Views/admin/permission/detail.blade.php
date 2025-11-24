@@ -16,8 +16,8 @@
                         <div class="panel-body">
                             <h3 class="panel-body-title">{{ __('Permission Content')}}</h3>
                             <div class="form-group">
-                                <label>{{ __('Name')}}</label>
-                                <input type="text" value="{{$row->name}}" placeholder="{{ __('Name')}}" name="name" class="form-control">
+                                <label>{{ __('Nome')}}</label>
+                                <input type="text" value="{{$row->name}}" placeholder="{{ __('Nome')}}" name="name" class="form-control">
                             </div>
                         </div>
                     </div>

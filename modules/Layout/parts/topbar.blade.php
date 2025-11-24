@@ -12,34 +12,28 @@
             <div class="topbar-right">
                 <ul class="topbar-items">
                     @include('Core::frontend.currency-switcher')
-                    @include('Language::frontend.switcher')
                     @if(!Auth::check())
                     <li class="login-item">
-                        <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
+                        <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Conectar')}}</a>
                     </li>
                     @if(is_enable_registration())
                     <li class="signup-item">
-                        <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                        <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Registrar')}}</a>
                     </li>
                     @endif
                     @else
                     @include('Layout::parts.notification')
                     <li class="login-item dropdown">
-                        <a href="#" data-toggle="dropdown" class="login">{{__("Hi, :name",['name'=>Auth::user()->getDisplayName()])}}
+                        <a href="#" data-toggle="dropdown" class="login">{{__("Oi, :name",['name'=>Auth::user()->getDisplayName()])}}
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-user text-left">
-                            @if(empty( setting_item('wallet_module_disable') ) && $isVerification)
-                            <li class="credit_amount">
-                                <a href="{{route('user.wallet')}}"><i class="fa fa-money"></i> {{__("Credit: :amount",['amount'=>auth()->user()->balance])}}</a>
-                            </li>
-                            @endif
                             @if(is_vendor() && $isVerification)
                             <li class="menu-hr"><a href="{{route('vendor.dashboard')}}" class="menu-hr"><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
                             @endif
                             <li class="@if(is_vendor()) menu-hr @endif">
                                 {{$isVerification}}
-                                <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
+                                <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("Meu perfil")}}</a>
                             </li>
                             @if(setting_item('inbox_enable')  && $isVerification)
                             <li class="menu-hr">
@@ -50,17 +44,17 @@
                                 </a>
                             </li>
                             @endif
-                            <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
-                            <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Change password")}}</a></li>
+                            <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
+                            <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 
                             @if(is_enable_plan() )
-                            <li class="menu-hr"><a href="{{route('user.plan')}}"><i class="fa fa-list-alt"></i> {{__("My plan")}}</a></li>
+                            <li class="menu-hr"><a href="{{route('user.plan')}}"><i class="fa fa-list-alt"></i> {{__("Meu plano")}}</a></li>
                             @endif
 
                             @if(isPro())
                             <li class="menu-hr">
                                 <a href="{{route('support.index')}}">
-                                    <i class="fa fa-list-alt"></i> {{__("Support Center")}}</a>
+                                    <i class="fa fa-list-alt"></i> {{__("Centro de Suporte")}}</a>
                             </li>
                             @endif
 
@@ -68,7 +62,7 @@
                             <li class="menu-hr"><a href="{{route('admin.index')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a></li>
                             @endif
                             <li class="menu-hr">
-                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-topbar').submit();"><i class="fa fa-sign-out"></i> {{__('Logout')}}</a>
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-topbar').submit();"><i class="fa fa-sign-out"></i> {{__('Sair')}}</a>
                             </li>
                         </ul>
                         <form id="logout-form-topbar" action="{{ route('logout') }}" method="POST" style="display: none;">

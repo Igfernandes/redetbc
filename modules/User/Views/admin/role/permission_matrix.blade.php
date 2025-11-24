@@ -17,7 +17,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
-                                        <td><strong>{{ __('Role')}}</strong></td>
+                                        <td><strong>{{ __('Função')}}</strong></td>
                                         @foreach($roles as $role)
                                             <td><strong>{{ucfirst($role->name)}}</strong></td>
                                         @endforeach

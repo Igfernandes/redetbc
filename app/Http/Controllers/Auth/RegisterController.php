@@ -52,12 +52,27 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], [
+            'name.required' => 'O campo nome é obrigatório.',
+            'name.string' => 'O nome deve ser um texto válido.',
+            'name.max' => 'O nome não pode ter mais que 255 caracteres.',
+
+            'email.required' => 'O campo email é obrigatório.',
+            'email.string' => 'O email deve ser um texto válido.',
+            'email.email' => 'Por favor, insira um endereço de email válido.',
+            'email.max' => 'O email não pode ter mais que 255 caracteres.',
+            'email.unique' => 'Este email já está cadastrado.',
+
+            'password.required' => 'A palavra-passe é obrigatória.',
+            'password.string' => 'A palavra-passe deve ser um texto válido.',
+            'password.min' => 'A palavra-passe deve ter no mínimo 8 caracteres.',
+            'password.confirmed' => 'A confirmação da palavra-passe não corresponde.',
         ]);
     }
 
     public function showRegistrationForm()
     {
-        return view('auth.register',['page_title'=> __("Cadastrar-se")]);
+        return view('auth.register', ['page_title' => __("Cadastrar-se")]);
     }
 
     /**
@@ -72,7 +87,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'status'=>'publish'
+            'status' => 'publish',
+            'email_verified_at' => now(),
         ]);
     }
 }

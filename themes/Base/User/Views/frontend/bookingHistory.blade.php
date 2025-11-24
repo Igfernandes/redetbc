@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar no-border-bottom">
-        {{__("Booking History")}}
+        {{__("Histórico de Reservas")}}
     </h2>
     @include('admin.message')
     <div class="booking-history-manager">
@@ -25,7 +25,7 @@
                         <table class="table table-bordered table-striped table-booking-history">
                             <thead>
                             <tr>
-                                <th width="2%">{{__("Type")}}</th>
+                                <th width="2%">{{__("Tipo")}}</th>
                                 <th>{{__("Título")}}</th>
                                 <th class="a-hidden">{{__("Order Date")}}</th>
                                 <th class="a-hidden">{{__("Execution Time")}}</th>
@@ -33,7 +33,7 @@
                                 <th>{{__("Paid")}}</th>
                                 <th>{{__("Remain")}}</th>
                                 <th class="a-hidden">{{__("Status")}}</th>
-                                <th>{{__("Action")}}</th>
+                                <th>{{__("Ação")}}</th>
                             </tr>
                             </thead>
                             <tbody>

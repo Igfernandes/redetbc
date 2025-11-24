@@ -23,14 +23,13 @@
                 @if(!empty($header_right_menu))
                     <ul class="topbar-items">
                         @include('Core::frontend.currency-switcher')
-                        @include('Language::frontend.switcher')
                         @if(!Auth::check())
                             <li class="login-item">
                                 <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
                             </li>
                             @if(is_enable_registration())
                                 <li class="signup-item">
-                                    <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                                    <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Cadastrar-se')}}</a>
                                 </li>
                             @endif
                         @else
@@ -41,7 +40,7 @@
                                     @else
                                         <span class="avatar-text">{{ucfirst( Auth::user()->getDisplayName()[0])}}</span>
                                     @endif
-                                    {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                                    {{__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])}}
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu text-left">
@@ -50,18 +49,18 @@
                                         <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
                                     @endif
                                     <li class="@if(Auth::user()->hasPermission('dashboard_vendor_access')) menu-hr @endif">
-                                        <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("My profile")}}</a>
+                                        <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("Meu perfil")}}</a>
                                     </li>
                                     @if(setting_item('inbox_enable'))
                                     <li class="menu-hr"><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Reservas")}}</a></li>
                                     @endif
-                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
-                                    <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Change password")}}</a></li>
+                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
+                                    <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
                                     @if(Auth::user()->hasPermission('dashboard_access'))
                                         <li class="menu-hr"><a href="{{route('admin.index')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a></li>
                                     @endif
                                     <li class="menu-hr">
-                                        <a  href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__('Logout')}}</a>
+                                        <a  href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{__('Sair')}}</a>
                                     </li>
                                 </ul>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -88,13 +87,13 @@
                     </li>
                     @if(is_enable_registration())
                         <li>
-                            <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Sign Up')}}</a>
+                            <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Cadastrar-se')}}</a>
                         </li>
                     @endif
                 @else
                     <li>
                         <a href="{{route('user.profile.index')}}">
-                            <i class="icofont-user-suited"></i> {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                            <i class="icofont-user-suited"></i> {{__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])}}
                         </a>
                     </li>
                     @if(Auth::user()->hasPermission('dashboard_vendor_access'))
@@ -107,12 +106,12 @@
                     @endif
                     <li>
                         <a href="{{route('user.profile.index')}}">
-                            <i class="icon ion-md-construct"></i> {{__("My profile")}}
+                            <i class="icon ion-md-construct"></i> {{__("Meu perfil")}}
                         </a>
                     </li>
                     <li>
                         <a  href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
-                            <i class="fa fa-sign-out"></i> {{__('Logout')}}
+                            <i class="fa fa-sign-out"></i> {{__('Sair')}}
                         </a>
                         <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
@@ -123,9 +122,6 @@
             </ul>
             <ul class="multi-lang">
                 @include('Core::frontend.currency-switcher')
-            </ul>
-            <ul class="multi-lang">
-                @include('Language::frontend.switcher')
             </ul>
         </div>
         <div class="g-menu">

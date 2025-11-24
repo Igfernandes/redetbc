@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar">
-        {{__("WishList")}}
+        {{__("Lista de desejos")}}
     </h2>
     @include('admin.message')
     @if($rows->total() > 0)

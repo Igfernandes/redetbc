@@ -1,9 +1,9 @@
 <div class="form-group">
-    <label>{{__("Room Name")}} <span class="text-danger">*</span></label>
-    <input type="text" required value="{!! clean($translation->title) !!}" placeholder="{{__("Room name")}}" name="title" class="form-control">
+    <label>{{__("Nome do Quarto")}} <span class="text-danger">*</span></label>
+    <input type="text" required value="{!! clean($translation->title) !!}" placeholder="{{__("Nome do Quarto")}}" name="title" class="form-control">
 </div>
 <div class="form-group d-none">
-    <label>{{__("Room Description")}}</label>
+    <label>{{__("Descrição do Quarto")}}</label>
     <textarea name="content" cols="30" rows="5" class="form-control">{{$translation->content}}</textarea>
 </div>
 @if(is_default_lang())
@@ -13,7 +13,7 @@
     </div>
 
     <div class="form-group">
-        <label >{{__('Gallery')}}</label>
+        <label >{{__('Galeria')}}</label>
         {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
     </div>
     <hr>

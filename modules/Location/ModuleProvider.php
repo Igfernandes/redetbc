@@ -40,7 +40,7 @@ class ModuleProvider extends ModuleServiceProvider
                 'children'   => [
                     'tour_view'=>[
                         'url'        => route('location.admin.index'),
-                        'title'      => __('All Location'),
+                        'title'      => __('Todas localizações'),
                         'icon'       => 'icon ion-md-compass',
                         'permission' => 'location_view',
                     ],

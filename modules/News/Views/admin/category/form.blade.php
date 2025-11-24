@@ -1,12 +1,12 @@
 <div class="form-group">
-    <label> {{ __('Name')}}</label>
+    <label> {{ __('Nome')}}</label>
     <input type="text" value="{{$translation->name}}" placeholder="Category name" name="name" class="form-control">
 </div>
 @if(is_default_lang())
 <div class="form-group">
-    <label> {{ __('Parent')}}</label>
+    <label> {{ __('Relação')}}</label>
     <select name="parent_id" class="form-control">
-        <option value=""> {{ __('-- Please Select --')}}</option>
+        <option value=""> {{ __('-- selecione --')}}</option>
         <?php
         $traverse = function ($categories, $prefix = '') use (&$traverse, $row) {
             foreach ($categories as $category) {
@@ -30,6 +30,6 @@
 </div>
 @endif
 {{--<div class="form-group">--}}
-    {{--<label class="control-label"> {{ __('Description')}}</label>--}}
+    {{--<label class="control-label"> {{ __('Descrição')}}</label>--}}
     {{--<textarea name="content" class="d-none has-ckeditor" cols="30" rows="10">{{$translation->content}}</textarea>--}}
 {{--</div>--}}

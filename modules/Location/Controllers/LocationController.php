@@ -68,6 +68,6 @@ class LocationController extends Controller
             }
             return $this->sendSuccess(['data'=>$list_json]);
         }
-        return $this->sendError(__("Localização not found"));
+        return $this->sendError(__("Localização não encontrada"));
     }
 }

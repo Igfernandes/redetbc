@@ -2,7 +2,7 @@
 
 @section ('content')
     <h2 class="title-bar no-border-bottom">
-        {{ __("Availability Spaces") }}
+        {{ __("Disponibilidade de Espaços") }}
     </h2>
     <div class="language-navigation">
         <div class="panel-body">
@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-right">
                     @if($rows->total() > 0)
-                        <span class="count-string">{{ __("Mostrando :from - :to of :total spaces",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                        <span class="count-string">{{ __("Mostrando :from - :to de :total espaços",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                     @endif
                 </div>
             </div>
@@ -42,7 +42,7 @@
         </div>
     </div>
     @else
-        <div class="alert alert-warning">{{__("No spaces found")}}</div>
+        <div class="alert alert-warning">{{__("Espaço não encontrado")}}</div>
     @endif
     <div class="d-flex justify-content-center">
         {{$rows->appends($request->query())->links()}}
@@ -73,13 +73,13 @@
                         </div>
                         <div class="col-md-6" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Preço')}}</label>
+                                <label >{{__("Preço")}}</label>
                                 <input type="number"  v-model="form.price" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6 d-none" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Instant Booking?')}}</label>
+                                <label >{{__('Reserva Instantânea?')}}</label>
                                 <br>
                                 <label><input true-value=1 false-value=0  type="checkbox"  v-model="form.is_instant" > {{__("Habilitar reserva instantânea")}}</label>
                             </div>

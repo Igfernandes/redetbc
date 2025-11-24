@@ -10,7 +10,7 @@ class SettingClass extends BaseSettingsClass
         $wallet =
             [
                 'id'        => 'wallet',
-                'title'     => __("Wallet Settings"),
+                'title'     => __("Configurações das carteiras"),
                 'position'  => 50,
                 'view'      => "User::admin.settings.wallet",
                 "keys"      => [
@@ -38,7 +38,7 @@ class SettingClass extends BaseSettingsClass
         return [
             [
                 'id'   => 'user',
-                'title' => __("User Settings"),
+                'title' => __("Configurações dos Usuários"),
                 'position'=>50,
                 'view'=>"User::admin.settings.user",
                 "keys"=>[
@@ -77,7 +77,7 @@ class SettingClass extends BaseSettingsClass
             ],
             [
                 'id'   => 'user_plans',
-                'title' => __("User Plans Settings"),
+                'title' => __("Configurações dos planos de usuário"),
                 'position'=>51,
                 'view'=>"User::admin.settings.plan",
                 "keys"=>[

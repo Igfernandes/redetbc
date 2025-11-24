@@ -3,9 +3,7 @@
     namespace Modules\User\Listeners;
 
     use App\Notifications\AdminChannelServices;
-    use Illuminate\Support\Facades\Auth;
     use Modules\User\Events\SendMailUserRegistered;
-    use Modules\User\Models\User;
 
     class SendNotifyRegisteredListen
     {
@@ -21,7 +19,7 @@
                 'avatar' =>  $user->avatar_url,
                 'link' => route('user.admin.index', ['s' => $user->id] ),
                 'type' => 'user',
-                'message' => $user->display_name.__(' has been registered')
+                'message' => $user->display_name.__(' foi registrado')
             ];
 
             $user->notify(new AdminChannelServices($data));

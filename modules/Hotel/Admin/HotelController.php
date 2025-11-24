@@ -72,7 +72,7 @@ class HotelController extends AdminController
             'hotel_manage_others' => $this->hasPermission('hotel_manage_others'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Hotels'),
+                    'name' => __('Hotéis'),
                     'url'  => route('hotel.admin.index')
                 ],
                 [
@@ -80,7 +80,7 @@ class HotelController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Hotel Management")
+            'page_title'=>__("Gerenciamento de Hotéis")
         ];
         return view('Hotel::admin.index', $data);
     }
@@ -100,15 +100,15 @@ class HotelController extends AdminController
             'translation'    => new $this->hotelTranslationClass(),
             'breadcrumbs'    => [
                 [
-                    'name' => __('Hotels'),
+                    'name' => __('Hotéis'),
                     'url'  => route('hotel.admin.index')
                 ],
                 [
-                    'name'  => __('Add Hotel'),
+                    'name'  => __('Adicionar Hotel'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'     => __("Add new Hotel")
+            'page_title'     => __("Adicionar novo hotel"),
         ];
         return view('Hotel::admin.detail', $data);
     }
@@ -136,7 +136,7 @@ class HotelController extends AdminController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Hotels'),
+                    'name' => __('Hotéis'),
                     'url'  => route('hotel.admin.index')
                 ],
                 [
@@ -144,7 +144,7 @@ class HotelController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Recuperação Hotel Management")
+            'page_title'=>__("Recuperação Gerenciamento de Hotéis")
         ];
         return view('Hotel::admin.index', $data);
     }
@@ -172,7 +172,7 @@ class HotelController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
-                    'name' => __('Hotels'),
+                    'name' => __('Hotéis'),
                     'url'  => route('hotel.admin.index')
                 ],
                 [
@@ -258,11 +258,11 @@ class HotelController extends AdminController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Hotel updated') );
+                return back()->with('success',  __('Hotel atualizado') );
             }else{
                 event(new CreatedServicesEvent($row));
 
-                return redirect(route('hotel.admin.edit',$row->id))->with('success', __('Hotel created') );
+                return redirect(route('hotel.admin.edit',$row->id))->with('success', __('Hotel criado') );
             }
         }
     }
@@ -346,7 +346,7 @@ class HotelController extends AdminController
                 foreach ($ids as $id) {
                     (new $this->hotelClass())->saveCloneByID($id);
                 }
-                return redirect()->back()->with('success', __('Clone realizado com sucesso!'));
+                return redirect()->back()->with('success', __('Duplicar realizado com sucesso!'));
                 break;
             default:
                 // Change status

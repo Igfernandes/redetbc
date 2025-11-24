@@ -4,7 +4,7 @@
         <h2 class="title-bar">
             {{!empty($recovery) ?__('Recuperação news') : __("Manage news")}}
             @if(Auth::user()->hasPermission('news_create')&& empty($recovery))
-                <a href="{{ route("news.vendor.create") }}" class="btn-change-password">{{__("Add News")}}</a>
+                <a href="{{ route("news.vendor.create") }}" class="btn-change-password">{{__("Adicionar notícias")}}</a>
             @endif
         </h2>
         @include('admin.message')
@@ -15,12 +15,12 @@
                           class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control mr-3">
-                            <option value="">{{__(" Bulk Actions ")}}</option>
+                            <option value="">{{__(" Ações em Massa ")}}</option>
                             @if(!setting_item('news_vendor_need_approve'))
-                                <option value="publish">{{__(" Publish ")}}</option>
+                                <option value="publish">{{__(" Publicar ")}}</option>
                             @endif
-                            <option value="pending">{{__("Move to Pending")}}</option>
-                            <option value="draft">{{__(" Move to Draft ")}}</option>
+                            <option value="pending">{{__("Mover para pendentes")}}</option>
+                            <option value="draft">{{__(" Mover para Lixeira ")}}</option>
                             <option value="delete">{{__("Excluir")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="py-2 btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
@@ -32,7 +32,7 @@
                     <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}"
                            class="form-control mr-3">
                     <select name="cate_id" class="form-control mr-3">
-                        <option value="">{{ __('--All Category --')}} </option>
+                        <option value="">{{ __('--Todas Categorias --')}} </option>
                         <?php
                         if (!empty($categories)) {
                             foreach ($categories as $category) {
@@ -42,14 +42,14 @@
                         ?>
                     </select>
                     <div class="flex-shrink-0">
-                        <button class="btn-info btn btn-icon btn_search py-2" type="submit">{{__('Search News')}}</button>
+                        <button class="btn-info btn btn-icon btn_search py-2" type="submit">{{__('Buscar Notícias')}}</button>
                     </div>
 
                 </form>
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -61,9 +61,9 @@
                                 <thead>
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
-                                    <th class="title"> {{ __('Name')}}</th>
-                                    <th width="200px"> {{ __('Category')}}</th>
-                                    <th width="100px"> {{ __('Date')}}</th>
+                                    <th class="title"> {{ __('Nome')}}</th>
+                                    <th width="200px"> {{ __('Categoria')}}</th>
+                                    <th width="100px"> {{ __('Data')}}</th>
                                     <th width="100px">{{  __('Status')}}</th>
                                     <th width="100px"></th>
                                 </tr>

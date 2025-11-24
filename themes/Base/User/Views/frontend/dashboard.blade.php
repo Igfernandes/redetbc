@@ -29,7 +29,7 @@
     </div>
     <div class="bravo-user-chart">
         <div class="chart-title">
-            {{__("Earning statistics")}}
+            {{__("Estatísticas de Ganho")}}
             <div class="action-control">
                 <div id="reportrange">
                     <i class="fa fa-calendar"></i>&nbsp;
@@ -111,7 +111,7 @@
                 "showDropdowns": true,
                 ranges: {
                     '{{__("Today")}}': [moment(), moment()],
-                    '{{__("Yesterday")}}': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '{{__("Simterday")}}': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
                     '{{__("Last 7 Days")}}': [moment().subtract(6, 'days'), moment()],
                     '{{__("Last 30 Days")}}': [moment().subtract(29, 'days'), moment()],
                     '{{__("This Month")}}': [moment().startOf('month'), moment().endOf('month')],

@@ -11,8 +11,8 @@
 										<i class="icofont-island-alt"></i>
 									</div>
 									<div class="media-body">
-										<h4 class="media-heading">{{__("Get Updates & More")}}</h4>
-										<p>{{__("Thoughtful thoughts to your inbox")}}</p>
+										<h4 class="media-heading">{{__("Receba atualizações e muito mais")}}</h4>
+										<p>{{__("Pensamentos cuidadosos para sua caixa de entrada")}}</p>
 									</div>
 								</div>
 							</div>
@@ -20,8 +20,8 @@
 								<form action="{{route('newsletter.subscribe')}}" class="subcribe-form bravo-subscribe-form bravo-form">
 									@csrf
 									<div class="form-group">
-										<input type="text" name="email" class="form-control email-input" placeholder="{{__('Your Email')}}">
-										<button type="submit" class="btn-submit">{{__('Subscribe')}}
+										<input type="text" name="email" class="form-control email-input" placeholder="{{__('Seu e-mail')}}">
+										<button type="submit" class="btn-submit">{{__('Inscrever-se')}}
 											<i class="fa fa-spinner fa-pulse fa-fw"></i>
 										</button>
 									</div>

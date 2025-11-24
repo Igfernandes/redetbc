@@ -4,7 +4,7 @@
             <h4 class="font-size-23 font-weight-bold mb-1 mr-3">{!! clean($translation->title) !!}</h4>
             @if($row->getReviewEnable())
                 <span class="font-size-14 text-primary mr-2">{{ $review_score['score_total'] }}/5 {{$review_score['score_text']}}</span>
-                <span class="font-size-14 text-gray-1 ml-1">{{__(":number reviews",['number'=>$review_score['total_review']])}}</span>
+                <span class="font-size-14 text-gray-1 ml-1">{{__(":number Avaliações",['number'=>$review_score['total_review']])}}</span>
             @endif
 
         </div>
@@ -56,18 +56,18 @@
         @endif
         <li class="list-group-item text-lh-sm ">
             <i class="flaticon-door text-primary font-size-50 mb-1 d-block"></i>
-            <div class="text-gray-1"> {{$row->max_guests}} {{ __("People") }}</div>
+            <div class="text-gray-1"> {{$row->max_guests}} {{ __("Pessoas") }}</div>
         </li>
         @if($row->bathroom)
             <li class="list-group-item text-lh-sm ">
                 <i class="flaticon-bathtub text-primary font-size-50 mb-1 d-block"></i>
-                <div class="text-gray-1"> {{$row->bathroom}} {{ __("bathrooms") }}</div>
+                <div class="text-gray-1"> {{$row->bathroom}} {{ __("quartos") }}</div>
             </li>
         @endif
         @if(!empty($row->bed))
             <li class="list-group-item text-lh-sm ">
                 <i class="flaticon-bed-1 text-primary font-size-50 mb-1 d-block"></i>
-                <div class="text-gray-1">{{$row->bed}} {{ __("beds") }}</div>
+                <div class="text-gray-1">{{$row->bed}} {{ __("Camas") }}</div>
             </li>
         @endif
     </ul>

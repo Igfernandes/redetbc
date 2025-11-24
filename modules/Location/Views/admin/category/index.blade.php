@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Category")}}</div>
+                    <div class="panel-title">{{__("Adicionar Categoria")}}</div>
                     <div class="panel-body">
                         <form action="{{route('location.admin.category.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
@@ -28,8 +28,8 @@
                                 {{csrf_field()}}
                                 <select name="action" class="form-control">
                                     <option value="">{{__("Ação em massa")}}</option>
-                                    <option value="publish">{{__(" Publish ")}}</option>
-                                    <option value="draft">{{__(" Move to Draft ")}}</option>
+                                    <option value="publish">{{__(" Publicar ")}}</option>
+                                    <option value="draft">{{__(" Mover para Lixeira ")}}</option>
                                     <option value="delete">{{__("Excluir")}}</option>
                                 </select>
                                 <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>

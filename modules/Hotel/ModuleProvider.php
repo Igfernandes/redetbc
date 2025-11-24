@@ -49,12 +49,12 @@ class ModuleProvider extends ModuleServiceProvider
                 'children'   => [
                     'add'=>[
                         'url'        => route('hotel.admin.index'),
-                        'title'      => __('All Hotels'),
+                        'title'      => __('Todos Hotéis'),
                         'permission' => 'hotel_view',
                     ],
                     'create'=>[
                         'url'        => route('hotel.admin.create'),
-                        'title'      => __('Add new Hotel'),
+                        'title'      => __('Adicionar novo hotel'),
                         'permission' => 'hotel_create',
                     ],
                     'attribute'=>[
@@ -64,7 +64,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'room_attribute'=>[
                         'url'        => route('hotel.admin.room.attribute.index'),
-                        'title'      => __('Room Attributes'),
+                        'title'      => __('Atributos do Quarto'),
                         'permission' => 'hotel_manage_attributes',
                     ],
                     'recovery'=>[
@@ -105,18 +105,18 @@ class ModuleProvider extends ModuleServiceProvider
         if(Hotel::isEnable()){
             $res['hotel'] = [
                 'url'   => route('hotel.vendor.index'),
-                'title'      => __("Manage Hotel"),
+                'title'      => __("Gerenciar Hotel"),
                 'icon'       => Hotel::getServiceIconFeatured(),
                 'position'   => 30,
                 'permission' => 'hotel_view',
                 'children' => [
                     [
                         'url'   => route('hotel.vendor.index'),
-                        'title'  => __("All Hotels"),
+                        'title'  => __("Todos os Hotéis"),
                     ],
                     [
                         'url'   => route('hotel.vendor.create'),
-                        'title'      => __("Add Hotel"),
+                        'title'      => __("Adicionar Hotel"),
                         'permission' => 'hotel_create',
                     ],
                     [

@@ -41,7 +41,7 @@ class FolderController extends FrontendController
         }else{
             $folder = MediaFolder::ofMine()->find($id);
             if(!$folder){
-                return $this->sendError(__("You are not allowed to edit this folder"));
+                return $this->sendError(__("Você não tem permissão para editar esta pasta."));
             }
         }
 
@@ -55,7 +55,7 @@ class FolderController extends FrontendController
                     }),
                 ]
         ],[
-            'name.unique'=>__("Folder name exists, please select new one")
+            'name.unique'=>__("O nome da pasta já existe, por favor selecione outro")
         ]);
 
         $folder->name = $request->input('name');
@@ -74,12 +74,12 @@ class FolderController extends FrontendController
         $id = $request->input('id');
         $folder = MediaFolder::ofMine()->find($id);
         if(!$folder){
-            return $this->sendError(__("You are not allowed to delete this folder"));
+            return $this->sendError(__("Você não tem permissão para excluir esta pasta"));
         }
 
         MediaFile::query()->inFolder($folder->id)->delete();
         $folder->delete();
 
-        return $this->sendSuccess(__("Folder deleted"));
+        return $this->sendSuccess(__("Pasta excluída"));
     }
 }

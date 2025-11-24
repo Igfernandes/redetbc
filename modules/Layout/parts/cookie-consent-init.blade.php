@@ -47,14 +47,14 @@
                 languages: {
                     '{{ app()->getLocale() }}': {
                         consent_modal: {
-                            title: '{{ setting_item('cookie_consent_title',__('We use cookies!')) }}',
+                            title: '{{ setting_item('cookie_consent_title',__('Nós usamos cookies!')) }}',
                             description:'{!! clean(str_replace(array("\r", "\n"),'',setting_item('cookie_consent_desc'))) !!}',
                             primary_btn: {
-                                text: '{{ setting_item('cookie_consent_primary_btn_text',__('Accept all')) }}',
+                                text: '{{ setting_item('cookie_consent_primary_btn_text',__('Aceitar todos')) }}',
                                 role: '{{ setting_item('cookie_consent_primary_btn_text','accept_all') }}', // 'accept_selected' or 'accept_all'
                             },
                             secondary_btn: {
-                                text: '{{ setting_item('cookie_consent_secondary_btn_text',__('Settings')) }}',
+                                text: '{{ setting_item('cookie_consent_secondary_btn_text',__('Configurações')) }}',
                                 role: '{{ setting_item('cookie_consent_secondary_btn_text','settings') }}', // 'settings' or 'accept_necessary'
                             }
                         },

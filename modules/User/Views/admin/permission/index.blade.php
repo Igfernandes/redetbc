@@ -2,22 +2,22 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{ __('Page')}}</h1>
+            <h1 class="title-bar">{{ __('Página')}}</h1>
             <div class="title-actions">
                 <a href="{{route('user.admin.permission.create')}}" class="btn btn-primary">{{ __('Add new permission')}}</a>
             </div>
         </div>
         @include('admin.message')
         <div class="panel">
-            <div class="panel-title">{{ __('All Permission')}}</div>
+            <div class="panel-title">{{ __('Todas Permissões')}}</div>
             <div class="panel-body">
                 <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th width="60px"><input type="checkbox" class="check-all"></th>
-                        <th>{{ __('Name')}}</th>
-                        <th>{{ __('Date')}}</th>
+                        <th>{{ __('Nome')}}</th>
+                        <th>{{ __('Data')}}</th>
                     </tr>
                     </thead>
                     <tbody>

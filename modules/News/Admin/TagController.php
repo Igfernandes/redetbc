@@ -31,7 +31,7 @@ class TagController extends AdminController
             'row'    => new Tag(),
             'breadcrumbs' => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Notícias'),
                     'url'  => route('news.admin.index')
                 ],
                 [
@@ -80,9 +80,9 @@ class TagController extends AdminController
 
         if ($res) {
             if($id > 0 ){
-                return back()->with('success',  __('Tag updated') );
+                return back()->with('success',  __('Tag atualizada') );
             }else{
-                return redirect(route('news.admin.tag.index'))->with('success', __('Tag Created') );
+                return redirect(route('news.admin.tag.index'))->with('success', __('Tag criada') );
             }
         }
     }
@@ -93,7 +93,7 @@ class TagController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('Please select at least 1 item!'));
+            return redirect()->back()->with('error', __('Por favor, selecione pelo menos 1 item!'));
         }
         if (empty($action)) {
             return redirect()->back()->with('error', __('Selecione uma ação!'));

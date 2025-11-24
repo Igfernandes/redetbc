@@ -7,7 +7,7 @@
             <span>{{ __("Livro") }}</span>
         </div>
         <div class="enquiry-item" data-toggle="modal" data-target="#enquiry_form_modal">
-            <span>{{ __("Investigação") }}</span>
+            <span>{{ __("Consulta") }}</span>
         </div>
     </div>
     <div class="form-book">
@@ -27,26 +27,26 @@
                     <div class="form-group">
                         <i class="fa fa-angle-down arrow"></i>
                         <div class="form-content dropdown-toggle" data-toggle="dropdown">
-                            <label class="form-label">{{__('Guests')}}</label>
+                            <label class="form-label">{{__('Hospedes')}}</label>
                             <div class="render">
                                 <span class="adults" >
                                     <span class="one" >@{{adults}}
-                                        <span v-if="adults < 2">{{__('Adult')}}</span>
-                                        <span v-else>{{__('Adults')}}</span>
+                                        <span v-if="adults < 2">{{__('Adulto')}}</span>
+                                        <span v-else>{{__('Adultos')}}</span>
                                     </span>
                                 </span>
                                 -
                                 <span class="children" >
                                     <span class="one" >@{{children}}
-                                        <span v-if="children < 2">{{__('Child')}}</span>
-                                        <span v-else>{{__('Children')}}</span>
+                                        <span v-if="children < 2">{{__('Criança')}}</span>
+                                        <span v-else>{{__('Crianças')}}</span>
                                     </span>
                                 </span>
                             </div>
                         </div>
                         <div class="dropdown-menu select-guests-dropdown" >
                             <div class="dropdown-item-row">
-                                <div class="label">{{__('Adults')}}</div>
+                                <div class="label">{{__('Adultos')}}</div>
                                 <div class="val">
                                     <span class="btn-minus2" data-input="adults" @click="minusPersonType('adults')"><i class="icon ion-md-remove"></i></span>
                                     <span class="count-display"><input type="number" v-model="adults" min="1"/></span>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="dropdown-item-row">
-                                <div class="label">{{__('Children')}}</div>
+                                <div class="label">{{__('Crianças')}}</div>
                                 <div class="val">
                                     <span class="btn-minus2" data-input="children" @click="minusPersonType('children')"><i class="icon ion-md-remove"></i></span>
                                     <span class="count-display"><input type="number" v-model="children" min="0"/></span>
@@ -67,7 +67,7 @@
                 <div class="col-md-4 col-btn">
                     <div class="g-button-submit">
                         <button class="btn btn-primary btn-search" @click="checkAvailability" :class="{'loading':onLoadAvailability}" type="submit">
-                            {{__("Check Availability")}}
+                            {{__("Verificar Disponibilidade")}}
                             <i v-show="onLoadAvailability" class="fa fa-spinner fa-spin"></i>
                         </button>
                     </div>
@@ -220,7 +220,7 @@
                     <div class="extra-price-wrap d-flex justify-content-between is_mobile">
                         <div class="flex-grow-1">
                             <label>
-                                {{__("Total Price")}}:
+                                {{__("Preço total")}}:
                             </label>
                         </div>
                         <div class="total-room-price">@{{total_price_html}}</div>
@@ -229,7 +229,7 @@
                 <div class="col-md-6">
                     <div class="control-book">
                         <div class="total-room-price">
-                            <span> {{__("Total Price")}}:</span> @{{total_price_html}}
+                            <span> {{__("Preço total")}}:</span> @{{total_price_html}}
                         </div>
                         <div v-if="is_deposit_ready" class="total-room-price">
                             <span>{{__("Pagar agora")}}</span>

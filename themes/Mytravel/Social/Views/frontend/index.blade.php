@@ -17,7 +17,7 @@
                         <ul class="nav-items nav flex-column nav-pills">
                             <li class=""><a class="nav-link media active" href="{{route('social.index')}}">
                                     <i class="bravo-icon fa fa-paper-plane-o"></i>
-                                    <span class="media-body">{{__("News Feed")}}</span>
+                                    <span class="media-body">{{__("Notícias Feed")}}</span>
                                 </a>
                             </li>
                         </ul>

@@ -23,7 +23,7 @@
                             <div class="bravo-reviews">
                                 <h3>{{__('Comentários dos hóspedes')}}</h3>
                                 <div class="review-pag-text">
-                                    {{ __("Mostrando :from - :to of :total total",["from"=>$reviews->firstItem(),"to"=>$reviews->lastItem(),"total"=>$reviews->total()]) }}
+                                    {{ __("Mostrando :from - :to de :total total",["from"=>$reviews->firstItem(),"to"=>$reviews->lastItem(),"total"=>$reviews->total()]) }}
                                 </div>
                                 <div class="review-list">
                                     @if($reviews)
@@ -75,7 +75,7 @@
                                         {{$reviews->appends(request()->query())->links()}}
                                     </div>
                                     <div class="review-pag-text">
-                                        {{ __("Mostrando :from - :to of :total total",["from"=>$reviews->firstItem(),"to"=>$reviews->lastItem(),"total"=>$reviews->total()]) }}
+                                        {{ __("Mostrando :from - :to de :total total",["from"=>$reviews->firstItem(),"to"=>$reviews->lastItem(),"total"=>$reviews->total()]) }}
                                     </div>
                                 </div>
                             </div>

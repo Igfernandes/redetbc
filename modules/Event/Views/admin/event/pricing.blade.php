@@ -110,7 +110,7 @@
             <div class="g-items-header">
                 <div class="row">
                     <div class="col-md-5">{{__("Nome")}}</div>
-                    <div class="col-md-3">{{__('Preço')}}</div>
+                    <div class="col-md-3">{{__("Preço")}}</div>
                     <div class="col-md-3">{{__('Tipo')}}</div>
                     <div class="col-md-1"></div>
                 </div>
@@ -201,7 +201,7 @@
                 <div class="g-items-header">
                     <div class="row">
                         <div class="col-md-5">{{__("Nome")}}</div>
-                        <div class="col-md-3">{{__('Preço')}}</div>
+                        <div class="col-md-3">{{__("Preço")}}</div>
                         <div class="col-md-3">{{__('Tipo')}}</div>
                         <div class="col-md-1"></div>
                     </div>

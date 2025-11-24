@@ -26,7 +26,7 @@ trait HasUpload
         if($folder_id){
             $folder = MediaFolder::ofMine()->find($folder_id);
             if(!$folder){
-                throw new \Exception(__("Folder not found. Please try again"));
+                throw new \Exception(__("Pasta não encontrada. Tente novamente."));
             }
         }
 
@@ -101,7 +101,7 @@ trait HasUpload
                 throw $exception;
             }
         }
-        throw new \Exception(__("Can not upload file"));
+        throw new \Exception(__("Não é possível enviar o arquivo"));
     }
 
     public function validateFile(Request $request, $group = "default",$fileName = 'file',$isArray = false)

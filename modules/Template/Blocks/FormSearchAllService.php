@@ -112,7 +112,7 @@ class FormSearchAllService extends BaseBlock
 
         $arg[] = [
             'type'=> "checkbox",
-            'label'=>__("Hide form search service?"),
+            'label'=>__("Ocultar formulário de busca de serviço?"),
             'id'=> "hide_form_search",
             'default'=>false
         ];

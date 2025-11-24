@@ -45,7 +45,7 @@
                  data-nav-for="#sliderSyncingThumb">
                 @foreach($row->getGallery() as $key=>$item)
                     <div class="js-slide">
-                        <img class="img-fluid border-radius-3" src="{{$item['large']}}" alt="{{ __("Gallery") }}">
+                        <img class="img-fluid border-radius-3" src="{{$item['large']}}" alt="{{ __("Galeria") }}">
                     </div>
                 @endforeach
             </div>
@@ -84,7 +84,7 @@
                                     }]'>
                 @foreach($row->getGallery() as $key=>$item)
                     <div class="js-slide" style="cursor: pointer;">
-                        <img class="img-fluid border-radius-3 height-110" src="{{$item['thumb']}}" alt="{{ __("Gallery") }}">
+                        <img class="img-fluid border-radius-3 height-110" src="{{$item['thumb']}}" alt="{{ __("Galeria") }}">
                     </div>
                 @endforeach
             </div>

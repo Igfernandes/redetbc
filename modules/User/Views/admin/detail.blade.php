@@ -18,8 +18,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("Business name")}}</label>
-                                    <input type="text" value="{{old('business_name',$row->business_name)}}" required name="business_name" placeholder="{{__("Business name")}}" class="form-control">
+                                    <label>{{__("Razão Social")}}</label>
+                                    <input type="text" value="{{old('business_name',$row->business_name)}}" required name="business_name" placeholder="{{__("Razão Social")}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -30,22 +30,22 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("User name")}}</label>
-                                    <input type="text" name="user_name" required value="{{old('user_name',$row->user_name)}}" placeholder="{{__("User name")}}" class="form-control">
+                                    <label>{{__("Nome de Acesso")}}</label>
+                                    <input type="text" name="user_name" required value="{{old('user_name',$row->user_name)}}" placeholder="{{__("Nome de Acesso")}}" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("First name")}}</label>
-                                    <input type="text" required value="{{old('first_name',$row->first_name)}}" name="first_name" placeholder="{{__("First name")}}" class="form-control">
+                                    <label>{{__("Primeiro Nome")}}</label>
+                                    <input type="text" required value="{{old('first_name',$row->first_name)}}" name="first_name" placeholder="{{__("Primeiro Nome")}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("Last name")}}</label>
-                                    <input type="text" required value="{{old('last_name',$row->last_name)}}" name="last_name" placeholder="{{__("Last name")}}" class="form-control">
+                                    <label>{{__("Sobrenome")}}</label>
+                                    <input type="text" required value="{{old('last_name',$row->last_name)}}" name="last_name" placeholder="{{__("Sobrenome")}}" class="form-control">
                                 </div>
                             </div><!-- RELIGION -->
                             <div class="col-md-6">
@@ -71,21 +71,21 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>
-                                        <i class="fa fa-venus-mars input-icon"></i> &nbsp;{{ __("Sex")}} </label>
+                                        <i class="fa fa-venus-mars input-icon"></i> &nbsp;{{ __("Sexo")}} </label>
                                     <select name="sex" class="form-control">
-                                        <option value="">{{ __("Select sex") }}</option>
+                                        <option value="">{{ __("Selecione o sexo") }}</option>
                                         <option value="MASCULINE" {{ old('sex', $row->sex ?? '') === 'MASCULINE' ? 'selected' : '' }}>
-                                            {{ __("Masculine") }}
+                                            {{ __("Masculino") }}
                                         </option>
                                         <option value="FEMININE" {{ old('sex', $row->sex ?? '') === 'FEMININE' ? 'selected' : '' }}>
-                                            {{ __("Feminine") }}
+                                            {{ __("Femino") }}
                                         </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __('Telefone Number')}}</label>
+                                    <label>{{ ('Telefone')}}</label>
                                     <input type="text" value="{{old('phone',$row->phone)}}" placeholder="{{ __('Telefone')}}" name="phone" class="form-control" required>
                                 </div>
                             </div>
@@ -97,31 +97,31 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __('Address Line 1')}}</label>
+                                    <label>{{ ('Endereço 1')}}</label>
                                     <input type="text" value="{{old('address',$row->address)}}" placeholder="{{ __('Address')}}" name="address" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __('Address Line 2')}}</label>
+                                    <label>{{ ('Endereço 2')}}</label>
                                     <input type="text" value="{{old('address2',$row->address2)}}" placeholder="{{ __('Address 2')}}" name="address2" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("City")}}</label>
-                                    <input type="text" value="{{old('city',$row->city)}}" name="city" placeholder="{{__("City")}}" class="form-control">
+                                    <label>{{__("Cidade")}}</label>
+                                    <input type="text" value="{{old('city',$row->city)}}" name="city" placeholder="{{__("Cidade")}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("State")}}</label>
-                                    <input type="text" value="{{old('state',$row->state)}}" name="state" placeholder="{{__("State")}}" class="form-control">
+                                    <label>{{__("Estado")}}</label>
+                                    <input type="text" value="{{old('state',$row->state)}}" name="state" placeholder="{{__("Estado")}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="">{{__("Country")}}</label>
+                                    <label class="">{{__("País")}}</label>
                                     <select name="country" class="form-control" id="country-sms-testing" required>
                                         <option value="">{{__('-- Selecione --')}}</option>
                                         @foreach(get_country_lists() as $id=>$name)
@@ -132,8 +132,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("Zip Code")}}</label>
-                                    <input type="text" value="{{old('zip_code',$row->zip_code)}}" name="zip_code" placeholder="{{__("Zip Code")}}" class="form-control">
+                                    <label>{{__("CEP")}}</label>
+                                    <input type="text" value="{{old('zip_code',$row->zip_code)}}" name="zip_code" placeholder="{{__("CEP")}}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                         @if(is_admin())
                         @if(empty($user_type) or $user_type != 'vendor')
                         <div class="form-group">
-                            <label>{{__('Role')}} <span class="text-danger">*</span></label>
+                            <label>{{__('Função')}} <span class="text-danger">*</span></label>
                             <select required class="form-control" name="role_id">
                                 <option value="">{{ __('-- Selecione --')}}</option>
                                 @foreach($roles as $role)

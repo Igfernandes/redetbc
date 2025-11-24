@@ -26,7 +26,7 @@ class Testimonial extends BaseBlock
                             'id'        => 'name',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Name')
+                            'label'     => __('Nome')
                         ],
                         [
                             'id'    => 'desc',

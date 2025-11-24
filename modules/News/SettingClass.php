@@ -10,7 +10,7 @@ class SettingClass extends BaseSettingsClass
         $configs = [
             'news' => [
                 'id'   => 'news',
-                'title' => __("News Settings"),
+                'title' => __("Configurações de Notícias"),
                 'position'=>30,
                 'view'=>"News::admin.settings.news",
                 "keys"=>[

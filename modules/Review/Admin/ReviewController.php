@@ -45,7 +45,7 @@ class ReviewController extends AdminController
         $data = [
             'rows'        => $model->paginate(10),
             'breadcrumbs' => [
-                ['name'  => __('Review'),
+                ['name'  => __('Avaliação'),
                  'class' => 'active'
                 ],
             ]

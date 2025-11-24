@@ -3,7 +3,7 @@ if(!$user->hasPermission('space_create')) return;
 ?>
 @if(!empty($services) and $services->total())
     <div class="bravo-profile-list-services">
-        @include('Space::frontend.blocks.list-space.style_1', ['rows'=>$services,'desc'=>' ','title'=>!empty($view_all) ? __('Space by :name',['name'=>$user->first_name]) :'','col'=>4])
+        @include('Space::frontend.blocks.list-space.style_1', ['rows'=>$services,'desc'=>' ','title'=>!empty($view_all) ? __('Espaços by :name',['name'=>$user->first_name]) :'','col'=>4])
 
         <div class="container">
             @if(!empty($view_all))
@@ -12,7 +12,7 @@ if(!$user->hasPermission('space_create')) return;
                         {{$services->appends(request()->query())->links()}}
                     </div>
                     <div class="review-pag-text text-center">
-                        {{ __("Mostrando :from - :to of :total total",["from"=>$services->firstItem(),"to"=>$services->lastItem(),"total"=>$services->total()]) }}
+                        {{ __("Mostrando :from - :to de :total total",["from"=>$services->firstItem(),"to"=>$services->lastItem(),"total"=>$services->total()]) }}
                     </div>
                 </div>
             @else

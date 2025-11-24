@@ -51,15 +51,15 @@ class ImageSizeRule implements Rule
         }
         $imagedata = getimagesize($value->getPathname());
         if (empty($imagedata)) {
-            $this->lastError = __("Can not get image size");
+            $this->lastError = __("Não foi possível obter o tamanho da imagem.");
             return false;
         }
         if (!empty($this->maxWidth) and $imagedata[0] > $this->maxWidth) {
-            $this->lastError = __("Maximum width allowed is: :number", ['number' => $this->maxWidth]);
+            $this->lastError = __("A largura máxima permitida é: :number", ['number' => $this->maxWidth]);
             return false;
         }
         if (!empty($this->maxHeight) and $imagedata[1] > $this->maxHeight) {
-            $this->lastError = __("Maximum height allowed is: :number", ['number' => $this->maxHeight]);
+            $this->lastError = __("A altura máxima permitida é: :number", ['number' => $this->maxHeight]);
             return false;
         }
         return true;

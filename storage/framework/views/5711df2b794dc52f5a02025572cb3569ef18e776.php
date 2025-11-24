@@ -10,7 +10,7 @@
 
                     </small>
                 </div>
-                <a href="<?php echo e(route("space.search")); ?>" class="font-weight-bold d-flex text-lh-1 mb-md-2 ml-2"><?php echo e(__("More")); ?>
+                <a href="<?php echo e(route("space.search")); ?>" class="font-weight-bold d-flex text-lh-1 mb-md-2 ml-2"><?php echo e(__("Mais")); ?>
 
                     <i class="flaticon-right-arrow ml-2"></i>
                 </a>

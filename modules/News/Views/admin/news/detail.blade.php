@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Editar post: ').$row->title : __('Add new Post')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Editar post: ').$row->title : __('Adicionar novo post')}}</h1>
                     @if($row->slug)
                         <p class="item-url-demo">{{__("Link permanente")}}: {{ url( (request()->query('lang') ? request()->query('lang').'/' : '').config('news.news_route_prefix'))  }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                         </p>
@@ -23,12 +23,12 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{ __('News content')}}</strong></div>
+                            <div class="panel-title"><strong>{{ __('Conteúdo da Notícias')}}</strong></div>
                             <div class="panel-body">
                                 @csrf
                                 @include('News::admin/news/form',['row'=>$row])
                                 <div class="form-group">
-                                    <label class="control-label">{{__("Gallery")}}</label>
+                                    <label class="control-label">{{__("Galeria")}}</label>
                                     {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                             <div class="panel">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label>{{  __('Category')}} </label>
+                                        <label>{{  __('Categoria')}} </label>
                                         <select name="cat_id" class="form-control">
                                             <option value="">{{ __('-- Please Select --')}} </option>
                                             <?php

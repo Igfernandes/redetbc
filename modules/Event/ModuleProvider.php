@@ -44,13 +44,13 @@ class ModuleProvider extends ModuleServiceProvider
             'event'=>[
                 "position"=>50,
                 'url'        => route('event.admin.index'),
-                'title'      => __('Event'),
+                'title'      => __('Evento'),
                 'icon'       => 'ion-ios-calendar',
                 'permission' => 'event_view',
                 'children'   => [
                     'add'=>[
                         'url'        => route('event.admin.index'),
-                        'title'      => __('All Events'),
+                        'title'      => __('Todos eventos'),
                         'permission' => 'event_view',
                     ],
                     'create'=>[
@@ -105,18 +105,18 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             'event' => [
                 'url'   => route('event.vendor.index'),
-                'title'      => __("Manage Event"),
+                'title'      => __("Gerenciar Evento"),
                 'icon'       => Event::getServiceIconFeatured(),
                 'position'   => 80,
                 'permission' => 'event_view',
                 'children' => [
                     [
                         'url'   => route('event.vendor.index'),
-                        'title'  => __("All Events"),
+                        'title'  => __("Todos Eventos"),
                     ],
                     [
                         'url'   => route('event.vendor.create'),
-                        'title'      => __("Add Event"),
+                        'title'      => __("Adicionar Evento"),
                         'permission' => 'event_create',
                     ],
                     'availability'=>[
