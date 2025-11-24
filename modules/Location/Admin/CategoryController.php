@@ -33,7 +33,7 @@ class CategoryController extends AdminController
                     'url'  => route('location.admin.index')
                 ],
                 [
-                    'name'  => __('Category'),
+                    'name'  => __('Categoria'),
                     'class' => 'active'
                 ],
             ]
@@ -60,7 +60,7 @@ class CategoryController extends AdminController
                     'url'  => route('location.admin.index')
                 ],
                 [
-                    'name'  => __('Category'),
+                    'name'  => __('Categoria'),
                     'class' => 'active'
                 ],
             ]

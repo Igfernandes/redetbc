@@ -18,8 +18,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("Business name")}}</label>
-                                    <input type="text" value="{{old('business_name',$row->business_name)}}" required name="business_name" placeholder="{{__("Business name")}}" class="form-control">
+                                    <label>{{__("Razão Social")}}</label>
+                                    <input type="text" value="{{old('business_name',$row->business_name)}}" required name="business_name" placeholder="{{__("Razão Social")}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -30,8 +30,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("User name")}}</label>
-                                    <input type="text" name="user_name" required value="{{old('user_name',$row->user_name)}}" placeholder="{{__("User name")}}" class="form-control">
+                                    <label>{{__("Nome de Acesso")}}</label>
+                                    <input type="text" name="user_name" required value="{{old('user_name',$row->user_name)}}" placeholder="{{__("Nome de Acesso")}}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -109,19 +109,19 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("City")}}</label>
-                                    <input type="text" value="{{old('city',$row->city)}}" name="city" placeholder="{{__("City")}}" class="form-control">
+                                    <label>{{__("Cidade")}}</label>
+                                    <input type="text" value="{{old('city',$row->city)}}" name="city" placeholder="{{__("Cidade")}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("State")}}</label>
-                                    <input type="text" value="{{old('state',$row->state)}}" name="state" placeholder="{{__("State")}}" class="form-control">
+                                    <label>{{__("Estado")}}</label>
+                                    <input type="text" value="{{old('state',$row->state)}}" name="state" placeholder="{{__("Estado")}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="">{{__("Country")}}</label>
+                                    <label class="">{{__("País")}}</label>
                                     <select name="country" class="form-control" id="country-sms-testing" required>
                                         <option value="">{{__('-- Selecione --')}}</option>
                                         @foreach(get_country_lists() as $id=>$name)
@@ -132,8 +132,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{__("Zip Code")}}</label>
-                                    <input type="text" value="{{old('zip_code',$row->zip_code)}}" name="zip_code" placeholder="{{__("Zip Code")}}" class="form-control">
+                                    <label>{{__("CEP")}}</label>
+                                    <input type="text" value="{{old('zip_code',$row->zip_code)}}" name="zip_code" placeholder="{{__("CEP")}}" class="form-control">
                                 </div>
                             </div>
                         </div>

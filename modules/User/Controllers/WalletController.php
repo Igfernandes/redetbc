@@ -21,7 +21,7 @@ class WalletController extends FrontendController
         $row = auth()->user();
         $data = [
             'row'=>$row,
-            'page_title'         => __("Wallet"),
+            'page_title'         => __('Carteira'),
             'breadcrumbs'        => [
                 [
                     'name'  => __('Wallet'),

@@ -95,9 +95,9 @@ class LocationController extends AdminController
         $res = $row->saveOriginOrTranslation($request->input('lang'),true);
         if ($res) {
             if($id > 0 ){
-                return back()->with('success',  __('Localização updated') );
+                return back()->with('success',  __('Localização atualizada') );
             }else{
-                return redirect(route('location.admin.index',$row->id))->with('success', __('Localização created') );
+                return redirect(route('location.admin.index',$row->id))->with('success', __('Localização criada') );
             }
         }
     }

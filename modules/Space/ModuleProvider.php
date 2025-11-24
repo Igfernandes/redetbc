@@ -92,7 +92,7 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             'space'=>[
                 'class' => Space::class,
-                'name'  => __("Spaces"),
+                'name'  => __("Espaços"),
                 'items' => Space::searchForMenu(),
                 'position'=>41
             ]
@@ -112,11 +112,11 @@ class ModuleProvider extends ModuleServiceProvider
                 'children'   => [
                     [
                         'url'   => route('space.vendor.index'),
-                        'title' => __("All Spaces"),
+                        'title' => __("Todos os Espaços"),
                     ],
                     [
                         'url'        => route('space.vendor.create'),
-                        'title'      => __("Add Space"),
+                        'title'      => __("Adicionar Espaço"),
                         'permission' => 'space_create',
                     ],
                     [

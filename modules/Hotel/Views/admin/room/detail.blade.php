@@ -17,7 +17,7 @@
                     @endif
                     <div class="lang-content-box">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{__("Room information")}}</strong></div>
+                            <div class="panel-title"><strong>{{__("Informações do Quarto")}}</strong></div>
                             <div class="panel-body">
                                 @include('Hotel::admin.room.form')
                             </div>

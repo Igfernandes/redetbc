@@ -24,7 +24,7 @@
         confirm_delete: "<?php echo e(__("Você quer apagar?")); ?>",
         confirm_recovery: "<?php echo e(__("Do you want to restore?")); ?>",
         confirm: "<?php echo e(__("Confirm")); ?>",
-        cancel: "<?php echo e(__("Cancel")); ?>",
+        cancel: "<?php echo e(__("Cancelar")); ?>",
         custom_range: "<?php echo e(__("Custom Range")); ?>",
         apply: "<?php echo e(__("Apply")); ?>"
     };

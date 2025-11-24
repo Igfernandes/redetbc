@@ -45,7 +45,7 @@
                             <th>{{__('Customer')}}</th>
                             <th width="80px">{{__('Status')}}</th>
                             <th width="80px">{{__('Replies')}}</th>
-                            <th width="180px">{{__('Created At')}}</th>
+                            <th width="180px">{{__('Criado em')}}</th>
                         </tr>
                         </thead>
                         <tbody>

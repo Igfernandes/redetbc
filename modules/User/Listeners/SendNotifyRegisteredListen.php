@@ -19,7 +19,7 @@
                 'avatar' =>  $user->avatar_url,
                 'link' => route('user.admin.index', ['s' => $user->id] ),
                 'type' => 'user',
-                'message' => $user->display_name.__(' has been registered')
+                'message' => $user->display_name.__(' foi registrado')
             ];
 
             $user->notify(new AdminChannelServices($data));

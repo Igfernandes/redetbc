@@ -80,7 +80,7 @@
                                 <div class="panel-title"><strong>{{__("Disponibilidade")}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label>{{__('Hotel Featured')}}</label>
+                                        <label>{{__('Hotéis em Destaque')}}</label>
                                         <br>
                                         <label>
                                             <input type="checkbox" name="is_featured" @if($row->is_featured) checked @endif value="1"> {{__("Habilitar destaque")}}

@@ -211,9 +211,9 @@ class RoomController extends AdminController
             }
 
             if($id > 0 ){
-                return redirect()->back()->with('success',  __('Room updated') );
+                return redirect()->back()->with('success',  __('Quarto Atualizado') );
             }else{
-                return redirect()->back()->with('success',  __('Room created') );
+                return redirect()->back()->with('success',  __('Quarto Criado') );
             }
         }
     }

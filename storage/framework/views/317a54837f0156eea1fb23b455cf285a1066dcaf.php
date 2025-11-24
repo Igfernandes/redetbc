@@ -111,7 +111,7 @@
             <div class="g-items-header">
                 <div class="row">
                     <div class="col-md-5"><?php echo e(__("Nome")); ?></div>
-                    <div class="col-md-3"><?php echo e(__('Preço')); ?></div>
+                    <div class="col-md-3"><?php echo e(__("Preço")); ?></div>
                     <div class="col-md-3"><?php echo e(__('Tipo')); ?></div>
                     <div class="col-md-1"></div>
                 </div>
@@ -203,7 +203,7 @@
                 <div class="g-items-header">
                     <div class="row">
                         <div class="col-md-5"><?php echo e(__("Nome")); ?></div>
-                        <div class="col-md-3"><?php echo e(__('Preço')); ?></div>
+                        <div class="col-md-3"><?php echo e(__("Preço")); ?></div>
                         <div class="col-md-3"><?php echo e(__('Tipo')); ?></div>
                         <div class="col-md-1"></div>
                     </div>

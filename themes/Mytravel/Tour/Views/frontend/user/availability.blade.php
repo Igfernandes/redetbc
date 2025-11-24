@@ -103,7 +103,7 @@
                         </div>
                         <div class="col-md-6" v-else>
                             <div class="form-group">
-                                <label >{{__('Preço')}}</label>
+                                <label >{{__("Preço")}}</label>
                                 <input type="text" v-model="form.price" class="form-control">
                             </div>
                         </div>

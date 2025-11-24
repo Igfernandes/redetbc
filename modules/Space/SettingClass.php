@@ -12,7 +12,7 @@ class SettingClass extends BaseSettingsClass
         $configs = [
             'space' => [
                 'id' => 'space',
-                'title' => __("Space Settings"),
+                'title' => __("Configuração do espaço"),
                 'position' => 20,
                 'view' => "Space::admin.settings.space",
                 "keys" => [

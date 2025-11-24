@@ -2,13 +2,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Payout request management")}}</h1>
+            <h1 class="title-bar">{{__("Gerenciamento de solicitações de pagamento")}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between ">
             <div class="col-left">
                 @if(!empty($rows))
-                    <label >{{__("With selected:")}}</label>
+                    <label >{{__("Selecionado com")}}</label>
                     <div  class="filter-form filter-form-left d-flex justify-content-start">
                         <button class="btn-info btn btn-icon dungdt-form-payout-btn" type="button">{{__('Selecionar Ação')}}</button>
                         <button class="has-loading btn-danger btn btn-icon dungdt-form-payout-delete" type="button">{{__('Delete')}}
@@ -37,7 +37,7 @@
                         ] : false)
                         ?>
                     @endif
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by payout id')}}" class="form-control">
+                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Busque pelo id do pagamento')}}" class="form-control">
                     <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Procurar')}}</button>
                 </form>
             </div>
@@ -56,9 +56,9 @@
                                 <th  width="80px"> {{ __('ID')}}</th>
                                 <th> {{ __('Fornecedor')}}</th>
                                 <th>{{__("Note")}}</th>
-                                <th width="200px"> {{ __('Amount')}}</th>
-                                <th width="230px"> {{ __('Payout Method')}}</th>
-                                <th width="130px"> {{ __('Created At')}}</th>
+                                <th width="200px"> {{ __('Quantidade')}}</th>
+                                <th width="230px"> {{ __('Método de Pagamento')}}</th>
+                                <th width="130px"> {{ __('Criado em')}}</th>
                                 <th width="100px"> {{ __('Status')}}</th>
                             </tr>
                             </thead>

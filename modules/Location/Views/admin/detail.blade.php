@@ -27,30 +27,30 @@
                     <div class="col-md-9">
                         <div class="panel">
                             <div class="panel-body">
-                                <h3 class="panel-body-title">{{__("Localização Content")}}</h3>
+                                <h3 class="panel-body-title">{{__("Conteúdo da Localização")}}</h3>
                                 @include('Location::admin/form')
                                 @if(is_default_lang())
                                     <div class="form-group">
-                                        <label class="control-label">{{__("Banner Image")}}</label>
+                                        <label class="control-label">{{__("Imagem do Banner")}}</label>
                                         <div class="form-group-image">
                                             {!! \Modules\Media\Helpers\FileHelper::fieldUpload('banner_image_id',$row->banner_image_id) !!}
                                         </div>
                                     </div>
                                     <div class="form-group form-index-hide">
-                                        <label class="control-label">{{__("The geographic coordinate")}}</label>
+                                        <label class="control-label">{{__("A coordenada geográfica")}}</label>
                                         <div class="control-map-group">
                                             <div id="map_content"></div>
                                             <div class="g-control">
                                                 <div class="form-group">
-                                                    <label>{{__("Map Latitude")}}:</label>
+                                                    <label>{{__("Latitude do Mapa")}}:</label>
                                                     <input type="text" name="map_lat" class="form-control" value="{{$row->map_lat}}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>{{__("Map Longitude")}}:</label>
+                                                    <label>{{__("Longitude do Mapa")}}:</label>
                                                     <input type="text" name="map_lng" class="form-control" value="{{$row->map_lng}}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>{{__("Map Zoom")}}:</label>
+                                                    <label>{{__("Zoom do Mapa")}}:</label>
                                                     <input type="text" name="map_zoom" class="form-control" value="{{$row->map_zoom ?? "8"}}">
                                                 </div>
                                             </div>
@@ -59,12 +59,12 @@
                                 @endif
                                 @php do_action(\Modules\Location\Hook::AFTER_MAP,$row) @endphp
                                 <div class="form-group-item">
-                                    <label class="control-label">{{__('Trip Ideas')}}</label>
+                                    <label class="control-label">{{__('Ideias de Viagem')}}</label>
                                     <div class="g-items-header">
                                         <div class="row">
-                                            <div class="col-md-2">{{__('Image')}}</div>
-                                            <div class="col-md-4">{{__("Title/Link")}}</div>
-                                            <div class="col-md-5">{{__('Content')}}</div>
+                                            <div class="col-md-2">{{__('Imagem')}}</div>
+                                            <div class="col-md-4">{{__("Título/Link")}}</div>
+                                            <div class="col-md-5">{{__('Conteúdo')}}</div>
                                             <div class="col-md-1"></div>
                                         </div>
                                     </div>

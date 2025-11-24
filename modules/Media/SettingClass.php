@@ -14,7 +14,7 @@ class SettingClass extends BaseSettingsClass
         return [
             'media'=>[
                 'id'=>'media',
-                'title' => __("Media Settings"),
+                'title' => __("Configurações dos arquivos"),
                 'view'      => "Media::admin.settings.file-system",
                 'position'=>85,
                 "keys"=>[

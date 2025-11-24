@@ -20,7 +20,7 @@
                         <?php echo e(csrf_field()); ?>
 
                         <select name="action" class="form-control">
-                            <option value=""><?php echo e(__(" Bulk Actions ")); ?></option>
+                            <option value=""><?php echo e(__("Ações em Massa")); ?></option>
                             <option value="delete"><?php echo e(__("Excluir")); ?></option>
                         </select>
                         <button data-confirm="<?php echo e(__("Você quer apagar?")); ?>" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button"><?php echo e(__('Aplicar')); ?></button>

@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-3">
                 <label class="font-weight-bold">{{__("Add someone to your team:")}}</label>
-                <input type="email" value="{{old('email')}}" name="email" required class="form-control" placeholder="{{__("Email address")}}" aria-label="{{__("Email address")}}" aria-describedby="button-addon2">
+                <input type="email" value="{{old('email')}}" name="email" required class="form-control" placeholder="{{__("E-mail")}}" aria-label="{{__("E-mail")}}" aria-describedby="button-addon2">
             </div>
             <div class="col-md-3">
                 <label class="font-weight-bold">{{__("Permissions")}}</label>

@@ -26,7 +26,7 @@
                             $traverse($space_location);
                             ?>
                             <div class="smart-search">
-                                <input type="text" class="smart-search-location parent_text form-control" placeholder="{{__("-- Please Select --")}}" value="{{ $location_name }}" data-onLoad="{{__("Carregando...")}}"
+                                <input type="text" class="smart-search-location parent_text form-control" placeholder="{{__("-- Selecione --")}}" value="{{ $location_name }}" data-onLoad="{{__("Carregando...")}}"
                                        data-default="{{ json_encode($list_json) }}">
                                 <input type="hidden" class="child_id" name="location_id" value="{{$row->location_id ?? Request::query('location_id')}}">
                             </div>
@@ -35,7 +35,7 @@
                 @else
                     <div class="">
                         <select name="location_id" class="form-control">
-                            <option value="">{{__("-- Please Select --")}}</option>
+                            <option value="">{{__("-- Selecione --")}}</option>
                             <?php
                             $traverse = function ($locations, $prefix = '') use (&$traverse, $row) {
                                 foreach ($locations as $location) {

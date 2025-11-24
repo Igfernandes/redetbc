@@ -18,8 +18,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label><?php echo e(__("Business name")); ?></label>
-                                    <input type="text" value="<?php echo e(old('business_name',$row->business_name)); ?>" required name="business_name" placeholder="<?php echo e(__("Business name")); ?>" class="form-control">
+                                    <label><?php echo e(__("Razão Social")); ?></label>
+                                    <input type="text" value="<?php echo e(old('business_name',$row->business_name)); ?>" required name="business_name" placeholder="<?php echo e(__("Razão Social")); ?>" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -30,8 +30,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label><?php echo e(__("User name")); ?></label>
-                                    <input type="text" name="user_name" required value="<?php echo e(old('user_name',$row->user_name)); ?>" placeholder="<?php echo e(__("User name")); ?>" class="form-control">
+                                    <label><?php echo e(__("Nome de Acesso")); ?></label>
+                                    <input type="text" name="user_name" required value="<?php echo e(old('user_name',$row->user_name)); ?>" placeholder="<?php echo e(__("Nome de Acesso")); ?>" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -114,19 +114,19 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label><?php echo e(__("City")); ?></label>
-                                    <input type="text" value="<?php echo e(old('city',$row->city)); ?>" name="city" placeholder="<?php echo e(__("City")); ?>" class="form-control">
+                                    <label><?php echo e(__("Cidade")); ?></label>
+                                    <input type="text" value="<?php echo e(old('city',$row->city)); ?>" name="city" placeholder="<?php echo e(__("Cidade")); ?>" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label><?php echo e(__("State")); ?></label>
-                                    <input type="text" value="<?php echo e(old('state',$row->state)); ?>" name="state" placeholder="<?php echo e(__("State")); ?>" class="form-control">
+                                    <label><?php echo e(__("Estado")); ?></label>
+                                    <input type="text" value="<?php echo e(old('state',$row->state)); ?>" name="state" placeholder="<?php echo e(__("Estado")); ?>" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class=""><?php echo e(__("Country")); ?></label>
+                                    <label class=""><?php echo e(__("País")); ?></label>
                                     <select name="country" class="form-control" id="country-sms-testing" required>
                                         <option value=""><?php echo e(__('-- Selecione --')); ?></option>
                                         <?php $__currentLoopData = get_country_lists(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $id=>$name): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -137,8 +137,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label><?php echo e(__("Zip Code")); ?></label>
-                                    <input type="text" value="<?php echo e(old('zip_code',$row->zip_code)); ?>" name="zip_code" placeholder="<?php echo e(__("Zip Code")); ?>" class="form-control">
+                                    <label><?php echo e(__("CEP")); ?></label>
+                                    <input type="text" value="<?php echo e(old('zip_code',$row->zip_code)); ?>" name="zip_code" placeholder="<?php echo e(__("CEP")); ?>" class="form-control">
                                 </div>
                             </div>
                         </div>

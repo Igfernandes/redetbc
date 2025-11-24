@@ -23,7 +23,6 @@
                 @if(!empty($header_right_menu))
                     <ul class="topbar-items">
                         @include('Core::frontend.currency-switcher')
-                        @include('Language::frontend.switcher')
                         @if(!Auth::check())
                             <li class="login-item">
                                 <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
@@ -55,7 +54,7 @@
                                     @if(setting_item('inbox_enable'))
                                     <li class="menu-hr"><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Reservas")}}</a></li>
                                     @endif
-                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
+                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
                                     <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
                                     @if(Auth::user()->hasPermission('dashboard_access'))
                                         <li class="menu-hr"><a href="{{route('admin.index')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a></li>
@@ -123,9 +122,6 @@
             </ul>
             <ul class="multi-lang">
                 @include('Core::frontend.currency-switcher')
-            </ul>
-            <ul class="multi-lang">
-                @include('Language::frontend.switcher')
             </ul>
         </div>
         <div class="g-menu">

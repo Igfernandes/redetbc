@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
 <h2 class="title-bar">
-    {{__("Settings")}}
+    {{__("Configurações")}}
     <a href="{{route('user.change_password')}}" class="btn-change-password">{{__("Alterar senha")}}</a>
 </h2>
 @include('admin.message')
@@ -10,18 +10,18 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-title">
-                <strong>{{__("Personal Information")}}</strong>
+                <strong>{{__("Informações Pessoais")}}</strong>
             </div>
             @if($is_vendor_access)
             <div class="form-group">
-                <label>{{__("Business name")}}</label>
-                <input type="text" value="{{old('business_name',$dataUser->business_name)}}" name="business_name" placeholder="{{__("Business name")}}" class="form-control">
+                <label>{{__("Razão Social")}}</label>
+                <input type="text" value="{{old('business_name',$dataUser->business_name)}}" name="business_name" placeholder="{{__("Razão Social")}}" class="form-control">
                 <i class="fa fa-user input-icon"></i>
             </div>
             @endif
             <div class="form-group">
-                <label>{{__("User name")}} <span class="text-danger">*</span></label>
-                <input type="text" required minlength="4" name="user_name" value="{{old('user_name',$dataUser->user_name)}}" placeholder="{{__("User name")}}" class="form-control">
+                <label>{{__("Nome de Acesso")}} <span class="text-danger">*</span></label>
+                <input type="text" required minlength="4" name="user_name" value="{{old('user_name',$dataUser->user_name)}}" placeholder="{{__("Nome de Acesso")}}" class="form-control">
                 <i class="fa fa-user input-icon"></i>
             </div>
             <div class="form-group">
@@ -85,17 +85,17 @@
 
             </div>
             <div class="form-group">
-                <label>{{__("Celular Number")}}</label>
-                <input type="text" value="{{old('phone',$dataUser->phone)}}" name="phone" placeholder="{{__("Celular Number")}}" class="form-control">
+                <label>{{__("Celular")}}</label>
+                <input type="text" value="{{old('phone',$dataUser->phone)}}" name="phone" placeholder="{{__("Celular")}}" class="form-control">
                 <i class="fa fa-phone input-icon"></i>
             </div>
             <div class="form-group">
-                <label>{{__("Birthday")}}</label>
-                <input type="text" value="{{ old('birthday',$dataUser->birthday? display_date($dataUser->birthday) :'') }}" name="birthday" placeholder="{{__("Birthday")}}" class="form-control date-picker">
+                <label>{{__("Data de Nascimento")}}</label>
+                <input type="text" value="{{ old('birthday',$dataUser->birthday? display_date($dataUser->birthday) :'') }}" name="birthday" placeholder="{{__("Data de Nascimento")}}" class="form-control date-picker">
                 <i class="fa fa-birthday-cake input-icon"></i>
             </div>
             <div class="form-group">
-                <label>{{__("About Yourself")}}</label>
+                <label>{{__("Sobre Você")}}</label>
                 <textarea name="bio" rows="5" class="form-control">{{old('bio',$dataUser->bio)}}</textarea>
             </div>
             <div class="form-group">
@@ -116,30 +116,30 @@
         </div>
         <div class="col-md-6">
             <div class="form-title">
-                <strong>{{__("Localização Information")}}</strong>
+                <strong>{{__("Informações Localização")}}</strong>
             </div>
             <div class="form-group">
-                <label>{{__("Address Line 1")}}</label>
+                <label>{{__("Endereço 1")}}</label>
                 <input type="text" value="{{old('address',$dataUser->address)}}" name="address" placeholder="{{__("Address")}}" class="form-control">
                 <i class="fa fa-location-arrow input-icon"></i>
             </div>
             <div class="form-group">
-                <label>{{__("Address Line 2")}}</label>
+                <label>{{__("Endereço 2")}}</label>
                 <input type="text" value="{{old('address2',$dataUser->address2)}}" name="address2" placeholder="{{__("Address2")}}" class="form-control">
                 <i class="fa fa-location-arrow input-icon"></i>
             </div>
             <div class="form-group">
-                <label>{{__("City")}}</label>
-                <input type="text" value="{{old('city',$dataUser->city)}}" name="city" placeholder="{{__("City")}}" class="form-control">
+                <label>{{__("Cidade")}}</label>
+                <input type="text" value="{{old('city',$dataUser->city)}}" name="city" placeholder="{{__("Cidade")}}" class="form-control">
                 <i class="fa fa-street-view input-icon"></i>
             </div>
             <div class="form-group">
-                <label>{{__("State")}}</label>
-                <input type="text" value="{{old('state',$dataUser->state)}}" name="state" placeholder="{{__("State")}}" class="form-control">
+                <label>{{__("Estado")}}</label>
+                <input type="text" value="{{old('state',$dataUser->state)}}" name="state" placeholder="{{__("Estado")}}" class="form-control">
                 <i class="fa fa-map-signs input-icon"></i>
             </div>
             <div class="form-group">
-                <label>{{__("Country")}}</label>
+                <label>{{__("País")}}</label>
                 <select name="country" class="form-control">
                     <option value="">{{__('-- Selecione --')}}</option>
                     @foreach(get_country_lists() as $id=>$name)
@@ -148,8 +148,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>{{__("Zip Code")}}</label>
-                <input type="text" value="{{old('zip_code',$dataUser->zip_code)}}" name="zip_code" placeholder="{{__("Zip Code")}}" class="form-control">
+                <label>{{__("CEP")}}</label>
+                <input type="text" value="{{old('zip_code',$dataUser->zip_code)}}" name="zip_code" placeholder="{{__("CEP")}}" class="form-control">
                 <i class="fa fa-map-pin input-icon"></i>
             </div>
 

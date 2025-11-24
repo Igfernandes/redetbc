@@ -81,7 +81,7 @@
                                 <div class="panel-title"><strong>{{__("Disponibilidade")}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label>{{__('Espaços Featured')}}</label>
+                                        <label>{{__('Espaços Em destaque')}}</label>
                                         <br>
                                         <label>
                                             <input type="checkbox" name="is_featured" @if($row->is_featured) checked @endif value="1"> {{__("Habilitar destaque")}}

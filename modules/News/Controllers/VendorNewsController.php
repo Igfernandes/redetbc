@@ -147,9 +147,9 @@ class VendorNewsController extends FrontendController
                 $row->saveTag($request->input('tag_name'), $request->input('tag_ids'));
             }
             if($id > 0 ){
-                return back()->with('success',  __('Notícias updated') );
+                return back()->with('success',  __('Notícias atualizada') );
             }else{
-                return redirect(route('news.vendor.edit',$row->id))->with('success', __('Notícias created') );
+                return redirect(route('news.vendor.edit',$row->id))->with('success', __('Notícias criada') );
             }
         }
     }

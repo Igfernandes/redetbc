@@ -16,7 +16,6 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                 </div>
                 <?php endif; ?>
                 <?php echo $__env->make('Core::frontend.currency-switcher', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                <?php echo $__env->make('Language::frontend.switcher', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <?php echo $__env->make('Layout::parts.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <div class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider">
                     <?php if(!Auth::id() || null === Auth::user()): ?>
@@ -35,11 +34,6 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                         </span>
 
                         <ul class="dropdown-menu dropdown-menu-user text-left dropdown">
-                            <?php if(empty( setting_item('wallet_module_disable') ) && $isVerification): ?>
-                            <li class="credit_amount">
-                                <a href="<?php echo e(route('user.wallet')); ?>"><i class="fa fa-money"></i> <?php echo e(__("Credit: :amount",['amount'=>auth()->user()->balance])); ?></a>
-                            </li>
-                            <?php endif; ?>
                             <?php if(is_vendor() && $isVerification): ?>
                             <li class=""><a href="<?php echo e(route('vendor.dashboard')); ?>" class=""><i class="icon ion-md-analytics"></i> <?php echo e(__("Fornecedor Dashboard")); ?></a></li>
                             <?php endif; ?>
@@ -50,7 +44,7 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             <li class=""><a href="<?php echo e(route('user.chat')); ?>"><i class="fa fa-comments"></i> <?php echo e(__("Reservas")); ?></a></li>
                             <?php endif; ?>
                             <?php if( $isVerification): ?>
-                            <li class=""><a href="<?php echo e(route('user.booking_history')); ?>"><i class="fa fa-clock-o"></i> <?php echo e(__("Booking History")); ?></a></li>
+                            <li class=""><a href="<?php echo e(route('user.booking_history')); ?>"><i class="fa fa-clock-o"></i> <?php echo e(__("Histórico de Reservas")); ?></a></li>
                             <?php endif; ?>
                             <li class=""><a href="<?php echo e(route('user.change_password')); ?>"><i class="fa fa-lock"></i> <?php echo e(__("Alterar senha")); ?></a></li>
                             <?php if(is_admin()): ?>

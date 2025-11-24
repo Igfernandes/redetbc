@@ -2,7 +2,7 @@
     <label>{{__("Locale")}}</label>
     <div>
         <select name="locale" class="form-control dungdt-select2-field dungdt_input_locale" data-options='{"allowClear":true}' data-id="{{$row->id}}">
-            <option value="">{{__("-- Please select --")}}</option>
+            <option value="">{{__("-- Selecione --")}}</option>
             @foreach($locales as $locale => $name)
                 <option data-name="{{$name}}" @if($row->locale == $locale) selected @endif value="{{$locale}}">{{$name}} - ({{$locale}})</option>
             @endforeach

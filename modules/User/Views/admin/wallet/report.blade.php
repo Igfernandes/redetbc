@@ -60,11 +60,11 @@
                             <th width="80px"><input type="checkbox" class="check-all"></th>
                             <th>{{__('Customer')}}</th>
 
-                            <th width="80px">{{__('Amount')}}</th>
+                            <th width="80px">{{__('Quantidade')}}</th>
                             <th width="80px">{{__('Crédito')}}</th>
                             <th width="80px">{{__('Status')}}</th>
                             <th width="150px">{{__('Payment Method')}}</th>
-                            <th width="120px">{{__('Created At')}}</th>
+                            <th width="120px">{{__('Criado em')}}</th>
                             <th width="80px">{{__('Actions')}}</th>
                         </tr>
                         </thead>

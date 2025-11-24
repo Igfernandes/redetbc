@@ -13,7 +13,7 @@
                                 {{$review_score['score_text']}}
                             </div>
                             <div class="review-score-base">
-                                {{__("Based on")}}
+                                {{__("Baseado em")}}
                                 <span>
                                     @if($review_score['total_review'] > 1)
                                         {{ __(":number reviews",["number"=>$review_score['total_review'] ]) }}
@@ -143,9 +143,9 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-8">
                                 <div class="form-group">
-                                    <textarea name="review_content" required class="form-control" placeholder="{{__("Review content")}}" minlength="10"></textarea>
+                                    <textarea name="review_content" required class="form-control" placeholder="{{__("Conteúdo de avaliação")}}" minlength="10"></textarea>
                                     <div class="invalid-feedback">
-                                        {{__('Avaliação content has at least 10 character')}}
+                                        {{__('Conteúdo da Avaliação precisa ter pelo menos 10 caracteres')}}
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group review-items">
                                         <div class="item">
-                                            <label>{{__("Review rate")}}</label>
+                                            <label>{{__("Avaliação")}}</label>
                                             <input class="review_stats" type="hidden" name="review_rate">
                                             <div class="rates">
                                                 <i class="fa fa-star-o grey"></i>
@@ -188,7 +188,7 @@
                         </div>
                         @if(setting_item('review_upload_picture'))
                             <div class="review_upload_wrap">
-                                <div class="mb-3"><i class="fa fa-camera"></i> {{__('Add photo')}}</div>
+                                <div class="mb-3"><i class="fa fa-camera"></i> {{__('Adicionar foto')}}</div>
 
                                 <div class="row">
                                     <div class="col-md-2">
@@ -216,7 +216,7 @@
         @endif
         @if(!Auth::id())
             <div class="review-message">
-                {!!  __("You must <a href='#login' data-toggle='modal' data-target='#login'>log in</a> to write review") !!}
+                {!!  __("Você deve <a href='#login' data-toggle='modal' data-target='#login'>entrar</a> para escrever uma avaliação") !!}
             </div>
         @endif
     </div>

@@ -15,20 +15,6 @@
                     @endif
                 @endforeach
             </span>
-            <ul class="dropdown-menu dropdown-menu-user text-left width-auto">
-                @foreach($languages as $language)
-                    @if($locale != $language->locale)
-                        <li>
-                            <a href="{{get_lang_switcher_url($language->locale)}}" class="d-flex">
-                                @if($language->flag)
-                                    <span class="flag-icon flag-icon-{{$language->flag}} mr-2"></span>
-                                @endif
-                                {{$language->name}}
-                            </a>
-                        </li>
-                    @endif
-                @endforeach
-            </ul>
         </div>
     </div>
 @endif

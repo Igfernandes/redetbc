@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     @include('admin.message')
                     <div class="panel">
-                        <div class="panel-title">{{__("Language Content")}}</div>
+                        <div class="panel-title">{{__("Conteúdo do Idioma")}}</div>
                         <div class="panel-body">
                             @include('Language::admin.language.form')
                         </div>

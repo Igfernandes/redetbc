@@ -1,0 +1,96 @@
+
+<?php $__env->startSection('content'); ?>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between mb20">
+            <h1 class="title-bar"><?php echo e(__("Categorias de Passeio")); ?></h1>
+        </div>
+        <?php echo $__env->make('admin.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <div class="row">
+            <div class="col-md-4 mb40">
+                <div class="panel">
+                    <div class="panel-title"><?php echo e(__("Adicionar Categoria")); ?></div>
+                    <div class="panel-body">
+                        <form action="<?php echo e(route('tour.admin.category.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <?php echo $__env->make('Tour::admin/category/form',['parents'=>$rows], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                            <div class="">
+                                <button class="btn btn-primary" type="submit"><?php echo e(__("Adicionar novo")); ?></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="filter-div d-flex justify-content-between ">
+                    <div class="col-left">
+                        <?php if(!empty($rows)): ?>
+                            <form method="post" action="<?php echo e(route('tour.admin.category.bulkEdit')); ?>" class="filter-form filter-form-left d-flex justify-content-start">
+                                <?php echo e(csrf_field()); ?>
+
+                                <select name="action" class="form-control">
+                                    <option value=""><?php echo e(__("Ação em massa")); ?></option>
+                                    <option value="publish"><?php echo e(__(" Publicar ")); ?></option>
+                                    <option value="draft"><?php echo e(__(" Mover para Lixeira ")); ?></option>
+                                    <option value="delete"><?php echo e(__("Excluir")); ?></option>
+                                </select>
+                                <button data-confirm="<?php echo e(__("Você quer apagar?")); ?>" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button"><?php echo e(__('Aplicar')); ?></button>
+                            </form>
+                        <?php endif; ?>
+                    </div>
+                    <div class="col-left">
+                        <form method="get" action="<?php echo e(route('tour.admin.category.index')); ?> " class="filter-form filter-form-right d-flex justify-content-end" role="search">
+                            <input type="text" name="s" value="<?php echo e(Request()->s); ?>" class="form-control" placeholder="<?php echo e(__("Pesquisar por nome")); ?>">
+                            <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit"><?php echo e(__('Procurar')); ?></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <form class="bravo-form-item">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th width="60px"><input type="checkbox" class="check-all"></th>
+                                    <th><?php echo e(__("Nome")); ?></th>
+                                    <th class="slug d-none d-md-block"><?php echo e(__("Slug")); ?></th>
+                                    <th class="status"><?php echo e(__("Status")); ?></th>
+                                    <th class="date d-none d-md-block"><?php echo e(__("Data")); ?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php if( count($rows) > 0): ?>
+                                    <?php
+                                    $traverse = function ($categories, $prefix = '') use (&$traverse) {
+                                    foreach ($categories as $row) {
+                                    ?>
+                                    <tr>
+                                        <td><input type="checkbox" name="ids[]" value="<?php echo e($row->id); ?>" class="check-item">
+                                        <td class="title">
+                                            <a href="<?php echo e(route('tour.admin.category.edit',['id'=>$row->id])); ?>"><?php echo e($prefix.' '.$row->name); ?></a>
+                                        </td>
+                                        <td class="d-none d-md-block"><?php echo e($row->slug); ?></td>
+                                        <td><span class="badge badge-<?php echo e($row->status); ?>"><?php echo e($row->status); ?></span></td>
+                                        <td class="d-none d-md-block"><?php echo e(display_date($row->updated_at)); ?></td>
+                                    </tr>
+                                    <?php
+                                    $traverse($row->children, $prefix . '-');
+                                    }
+                                    };
+                                    $traverse($rows);
+                                    ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="5"><?php echo e(__("Sem dados")); ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\modules/Tour/Views/admin/category/index.blade.php ENDPATH**/ ?>

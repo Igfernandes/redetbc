@@ -68,7 +68,7 @@ class RoleController extends AdminController
             $row->fill($request->input());
             if ($row->save()) {
 
-                return redirect(route('user.admin.role.index'))->with('success', __('Função updated'));
+                return redirect(route('user.admin.role.index'))->with('success', __('Função atualizada'));
             }
         }
         $data = [
@@ -79,11 +79,11 @@ class RoleController extends AdminController
                     'url'  => route('user.admin.index')
                 ],
                 [
-                    'name' => __("Roles"),
+                    'name' => __("Funções"),
                     'url'  => route('user.admin.role.index')
                 ],
                 [
-                    'name' => __("Editar Role"),
+                    'name' => __("Editar Função"),
                 ],
             ]
         ];
@@ -118,7 +118,7 @@ class RoleController extends AdminController
         $res = $row->save();
         if ($res) {
             if($id > 0 ){
-                return back()->with('success',  __('Função updated') );
+                return back()->with('success',  __('Função atualizada') );
             }else{
                 return redirect(route('user.admin.role.detail',['id' => $row->id]))->with('success', __('Função created') );
             }
@@ -143,7 +143,7 @@ class RoleController extends AdminController
                     'url'  => route('user.admin.role.index')
                 ],
                 [
-                    'name' => __('Verify Configs'),
+                    'name' => __('Verificar Configurações'),
                     'url'  => route('user.admin.role.verifyFields'),
                     'active'=>1
                 ],
@@ -161,7 +161,7 @@ class RoleController extends AdminController
         $all = setting_item_array('role_verify_fields');
         $row = $all[$id] ?? [];
 
-        if(empty($row)) return redirect()->back()->with("error",__("Field not found"));
+        if(empty($row)) return redirect()->back()->with("error",__("Campo não encontrado"));
 
         $row['id'] = $id;
 
@@ -174,15 +174,15 @@ class RoleController extends AdminController
                     'url'  => route('user.admin.index')
                 ],
                 [
-                    'name' => __('Função Management'),
+                    'name' => __('Gerenciamento de Funções'),
                     'url'  => route('user.admin.role.index')
                 ],
                 [
-                    'name' => __('Verify Configs'),
+                    'name' => __('Configurações de Verificação'),
                     'url'  => route('user.admin.role.verifyFields'),
                 ],
                 [
-                    'name' => __('Editar field: :name',['name'=>$row['name'] ?? $id]),
+                    'name' => __('Editar campo: :name',['name'=>$row['name'] ?? $id]),
                     'active'=>1
                 ],
             ]
@@ -326,7 +326,7 @@ class RoleController extends AdminController
             $permissions = $matrix[$role->id];
             $role->syncPermissions($permissions);
         }
-        return redirect()->back()->with('success', __('Permission Matrix updated'));
+        return redirect()->back()->with('success', __('Matriz de Permissões atualizada com sucesso!'));
     }
 
     public function getForSelect2(Request $request)

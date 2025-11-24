@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Fornecedor Requests")}}</h1>
+            <h1 class="title-bar">{{__("Solicitações")}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between ">
@@ -35,10 +35,10 @@
                             <th width="60px"><input type="checkbox" class="check-all"></th>
                             <th>{{__('Nome')}}</th>
                             <th>{{__('Email')}}</th>
-                            <th>{{ __('Função request')}}</th>
-                            <th class="date">{{ __("Data request")}}</th>
-                            <th class="date">{{ __("Data approved")}}</th>
-                            <th>{{ __('Approved By')}}</th>
+                            <th>{{ __('Função Solicitada')}}</th>
+                            <th class="date">{{ __("Data de Solicitação")}}</th>
+                            <th class="date">{{ __("Data de Aprovação")}}</th>
+                            <th>{{ __('Aprovado por')}}</th>
                             <th class="status">{{__('Status')}}</th>
                             <th></th>
                         </tr>

@@ -29,7 +29,7 @@
     </div>
     <div class="bravo-user-chart">
         <div class="chart-title">
-            {{__("Earning statistics")}}
+            {{__("Estatísticas de Ganho")}}
             <div class="action-control">
                 <div id="reportrange">
                     <i class="fa fa-calendar"></i>&nbsp;

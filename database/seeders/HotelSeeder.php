@@ -390,7 +390,7 @@ class HotelSeeder extends Seeder
 
         $term_ids = [];
         $property_type = new Attributes([
-            'name'=>'Property type',
+            'name'=>'Tipo da propriedade',
             'service'=>'hotel'
         ]);
         $property_type->save();
@@ -439,7 +439,7 @@ class HotelSeeder extends Seeder
         }
 
         $attr = new Attributes([
-            'name'=>'Hotel Service',
+            'name'=>'Serviço do Hotel',
             'service'=>'hotel'
         ]);
         $attr->save();

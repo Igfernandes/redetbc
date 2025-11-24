@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-md-6" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Preço')}}</label>
+                                <label >{{__("Preço")}}</label>
                                 <input type="number"  v-model="form.price" class="form-control">
                             </div>
                         </div>

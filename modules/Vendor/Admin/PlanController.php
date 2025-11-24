@@ -93,18 +93,18 @@ class PlanController extends AdminController
                     $meta->auto_publish = $service['auto_publish'] ?? 0;
                     $meta->save();
                 }
-                return redirect(route('vendor.admin.plan.index'))->with('success', __('Fornecedor plan updated'));
+                return redirect(route('vendor.admin.plan.index'))->with('success', __('Plano Anfitrião atualizado com sucesso'));
             }
         }
         $data = [
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __('Fornecedor Plans'),
+                    'name' => __('Planos de Fornecedor'),
                     'url'  => route('vendor.admin.plan.index')
                 ],
                 [
-                    'name'  => __('Editar Page'),
+                    'name'  => __('Editar Página'),
                     'class' => 'active'
                 ],
             ]
@@ -130,10 +130,10 @@ class PlanController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids)) {
-            return redirect()->back()->with('error', __('Please select at least 1 item!'));
+            return redirect()->back()->with('error', __('Por favor, selecione pelo menos 1 item!'));
         }
         if (empty($action)) {
-            return redirect()->back()->with('error', __('No Action is selected!'));
+            return redirect()->back()->with('error', __('Nenhuma ação foi selecionada!'));
         }
         if ($action == "delete") {
             foreach ($ids as $id) {

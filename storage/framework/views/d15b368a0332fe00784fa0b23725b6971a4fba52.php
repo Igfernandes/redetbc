@@ -132,8 +132,6 @@ if (isset($_GET['religion'])) {
 
                             <?php echo $__env->make('Core::frontend.currency-switcher', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-                            <?php echo $__env->make('Language::frontend.switcher', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
                             <?php if(!Auth::id()): ?>
 
                             <li class="login-item">
@@ -193,7 +191,7 @@ if (isset($_GET['religion'])) {
 
                                     <?php endif; ?>
 
-                                    <li class="menu-hr"><a href="<?php echo e(route('user.booking_history')); ?>"><i class="fa fa-clock-o"></i> <?php echo e(__("Booking History")); ?></a></li>
+                                    <li class="menu-hr"><a href="<?php echo e(route('user.booking_history')); ?>"><i class="fa fa-clock-o"></i> <?php echo e(__("Histórico de Reservas")); ?></a></li>
 
                                     <li class="menu-hr"><a href="<?php echo e(route('user.change_password')); ?>"><i class="fa fa-lock"></i> <?php echo e(__("Alterar senha")); ?></a></li>
 
@@ -338,12 +336,6 @@ if (isset($_GET['religion'])) {
                     <ul class="multi-lang">
 
                         <?php echo $__env->make('Core::frontend.currency-switcher-dropdown', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
-                    </ul>
-
-                    <ul class="multi-lang">
-
-                        <?php echo $__env->make('Language::frontend.switcher-dropdown', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                     </ul>
 

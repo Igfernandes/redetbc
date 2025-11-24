@@ -49,7 +49,7 @@
         success:"<?php echo e(__("Success")); ?>",
         confirm_delete:"<?php echo e(__("Você quer apagar?")); ?>",
         confirm:"<?php echo e(__("Confirm")); ?>",
-        cancel:"<?php echo e(__("Cancel")); ?>",
+        cancel:"<?php echo e(__("Cancelar")); ?>",
     };
     var daterangepickerLocale = {
         "applyLabel": "<?php echo e(__('Aplicar')); ?>",

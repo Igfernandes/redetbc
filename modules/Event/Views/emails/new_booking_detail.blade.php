@@ -100,7 +100,7 @@ $lang_local = app()->getLocale();
             @endforeach
         @endif
         <tr>
-            <td class="label">{{__('Pricing')}}</td>
+            <td class="label">{{__('Preços')}}</td>
             <td class="val no-r-padding">
                 <table class="pricing-list" width="100%">
                     @if($booking->getMeta("booking_type") == "time_slot")

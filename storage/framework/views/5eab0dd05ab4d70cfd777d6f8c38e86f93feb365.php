@@ -2,10 +2,10 @@
 <?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar"><?php echo e(!empty($recovery) ? __('Recuperação') : __("All Hotels")); ?></h1>
+            <h1 class="title-bar"><?php echo e(!empty($recovery) ? __('Recuperação') : __("Todos os Hotéis")); ?></h1>
             <div class="title-actions">
                 <?php if(empty($recovery)): ?>
-                <a href="<?php echo e(route('hotel.admin.create')); ?>" class="btn btn-primary"><?php echo e(__("Add new hotel")); ?></a>
+                <a href="<?php echo e(route('hotel.admin.create')); ?>" class="btn btn-primary"><?php echo e(__("Adicionar novo hotel")); ?></a>
                 <?php endif; ?>
             </div>
         </div>
@@ -17,15 +17,15 @@
                         <?php echo e(csrf_field()); ?>
 
                         <select name="action" class="form-control">
-                            <option value=""><?php echo e(__(" Bulk Actions ")); ?></option>
-                            <option value="clone"><?php echo e(__(" Clone ")); ?></option>
+                            <option value=""><?php echo e(__(" Ações em Massa ")); ?></option>
+                            <option value="clone"><?php echo e(__(" Duplicar ")); ?></option>
                             <?php if(!empty($recovery)): ?>
-                                <option value="recovery"><?php echo e(__(" Recovery ")); ?></option>
-                                <option value="permanently_delete"><?php echo e(__("Permanently delete")); ?></option>
+                                <option value="recovery"><?php echo e(__(" Recuperar ")); ?></option>
+                                <option value="permanently_delete"><?php echo e(__("Excluir permanentemente")); ?></option>
                             <?php else: ?>
-                                <option value="publish"><?php echo e(__(" Publish ")); ?></option>
-                                <option value="draft"><?php echo e(__(" Move to Draft ")); ?></option>
-                                <option value="pending"><?php echo e(__("Move to Pending")); ?></option>
+                                <option value="publish"><?php echo e(__(" Publicar ")); ?></option>
+                                <option value="draft"><?php echo e(__(" Mover para Lixeira ")); ?></option>
+                                <option value="pending"><?php echo e(__("Mover para Pendente")); ?></option>
                                 <option value="delete"><?php echo e(__("Excluir")); ?></option>
                             <?php endif; ?>
 
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i><?php echo e(__('Encontrado :total items',['total'=>$rows->total()])); ?></i></p>
+            <p><i><?php echo e(__('Encontrado :total itens',['total'=>$rows->total()])); ?></i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -112,7 +112,7 @@
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="<?php echo e(route('hotel.admin.edit',['id'=>$row->id])); ?>"><?php echo e(__("Editar hotel")); ?></a>
                                                     <a class="dropdown-item" href="<?php echo e(route('hotel.admin.room.index',['hotel_id'=>$row->id])); ?>"><?php echo e(__("Gerenciar Quartos")); ?></a>
-                                                    <a class="dropdown-item" href="<?php echo e(route('hotel.admin.room.availability.index',['hotel_id'=>$row->id])); ?>"><?php echo e(__("Gerenciar Quartos" Availability")); ?></a>
+                                                    <a class="dropdown-item" href="<?php echo e(route('hotel.admin.room.availability.index',['hotel_id'=>$row->id])); ?>"><?php echo e(__("Gerenciar Quartos")); ?></a>
                                                 </div>
                                             </div>
                                         <?php endif; ?>
@@ -121,7 +121,7 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="7"><?php echo e(__("No hotel found")); ?></td>
+                                <td colspan="7"><?php echo e(__("Nenhum hotel encontrado")); ?></td>
                             </tr>
                         <?php endif; ?>
                         </tbody>
@@ -135,4 +135,4 @@
     </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\modules/Hotel/Views/admin/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> ?><?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\modules/Hotel/Views/admin/index.blade.php ENDPATH**/ ?>

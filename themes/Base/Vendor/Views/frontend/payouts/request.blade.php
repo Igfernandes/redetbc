@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{__("Amount")}} <span class="text-danger">*</span></label>
+                        <label class="col-sm-3 col-form-label">{{__("Quantidade")}} <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
                             <input type="number" required max="{{$available_payout_amount}}" class="form-control" name="amount" value="{{$available_payout_amount}}">
                         </div>

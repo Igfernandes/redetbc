@@ -197,10 +197,10 @@ class VendorController extends FrontendController
             if($id > 0 ){
                 event(new UpdatedServiceEvent($row));
 
-                return back()->with('success',  __('Hotel updated') );
+                return back()->with('success',  __('Hotel atualizado') );
             }else{
                 event(new CreatedServicesEvent($row));
-                return redirect(route('hotel.vendor.edit',['id'=>$row->id]))->with('success', __('Hotel created') );
+                return redirect(route('hotel.vendor.edit',['id'=>$row->id]))->with('success', __('Hotel criado') );
             }
         }
     }

@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-sm-6" >
                                 <div class="form-group ">
-                                    <label class="form-label" >{{__("Password")}} <span class="required">*</span></label>
+                                    <label class="form-label" >{{__("Senha")}} <span class="required">*</span></label>
                                     <input type="password" class="form-control" name="password" autocomplete="off" >
                                 </div>
                             </div>
@@ -62,15 +62,15 @@
                 <div class="w-100"></div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
-                        {{ __("Address line 1") }}
+                        {{ __("Endereço 1") }}
                     </label>
-                    <input type="text" placeholder="{{__("Address line 1")}}" class="form-control" value="{{$user->address ?? ''}}" name="address_line_1">
+                    <input type="text" placeholder="{{__("Endereço 1")}}" class="form-control" value="{{$user->address ?? ''}}" name="address_line_1">
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
-                        {{ __("Address line 2") }}
+                        {{ __("Endereço 2") }}
                     </label>
-                    <input type="text" placeholder="{{__("Address line 2")}}" class="form-control" value="{{$user->address2 ?? ''}}" name="address_line_2">
+                    <input type="text" placeholder="{{__("Endereço 2")}}" class="form-control" value="{{$user->address2 ?? ''}}" name="address_line_2">
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
@@ -87,7 +87,7 @@
                 <div class="col-sm-6 mb-4">
 
                     <label class="form-label">
-                        {{ __("Country") }}
+                        {{ __("País") }}
                     </label>
                     <select name="country" class="form-control">
                         <option value="">{{__('-- Selecione --')}}</option>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
-                        {{ __("City") }}
+                        {{ __("Cidade") }}
                     </label>
                     <input type="text" class="form-control" value="{{$user->city ?? ''}}" name="city" placeholder="{{__("Your City")}}">
                 </div>

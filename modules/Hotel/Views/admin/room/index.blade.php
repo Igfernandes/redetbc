@@ -2,10 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Room Management")}}</h1>
+            <h1 class="title-bar">{{__("Gerenciador de Quartos")}}</h1>
             <div class="title-actions">
-                <a href="{{route('hotel.admin.room.availability.index',['hotel_id'=>$hotel->id])}}" class="btn btn-warning btn-xs"><i class="fa fa-calendar"></i> {{__("Room Availability")}}</a>
-                <a href="{{route('hotel.admin.edit',['id'=>$hotel->id])}}" class="btn btn-info btn-xs"><i class="fa fa-hand-o-right"></i> {{__("Back to hotel")}}</a>
+                <a href="{{route('hotel.admin.room.availability.index',['hotel_id'=>$hotel->id])}}" class="btn btn-warning btn-xs"><i class="fa fa-calendar"></i> {{__("Disponibilidade de Quartos")}}</a>
+                <a href="{{route('hotel.admin.edit',['id'=>$hotel->id])}}" class="btn btn-info btn-xs"><i class="fa fa-hand-o-right"></i> {{__("Voltar para o hotel")}}</a>
             </div>
         </div>
         @include('admin.message')
@@ -13,7 +13,7 @@
             <div class="col-md-4">
                 <form novalidate class="needs-validation" action="{{route('hotel.admin.room.store',['hotel_id'=>$hotel->id,'id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                     <div class="panel">
-                        <div class="panel-title"><strong>{{__("Add Room")}}</strong></div>
+                        <div class="panel-title"><strong>{{__("Adicionar Quarto")}}</strong></div>
                         <div class="panel-body">
                             @csrf
                             @include('Hotel::admin.room.form')
@@ -32,8 +32,8 @@
                                 {{csrf_field()}}
                                 <select name="action" class="form-control">
                                     <option value="">{{__(" Ações em Massa ")}}</option>
-                                    <option value="publish">{{__(" Publish ")}}</option>
-                                    <option value="draft">{{__(" Move to Draft ")}}</option>
+                                    <option value="publish">{{__(" Publicar ")}}</option>
+                                    <option value="draft">{{__(" Mover para Lixeira ")}}</option>
                                     <option value="pending">{{__("Move to Pending")}}</option>
                                     {{--<option value="clone">{{__(" Clone ")}}</option>--}}
                                     <option value="delete">{{__("Excluir")}}</option>
@@ -81,7 +81,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="7">{{__("No room found")}}</td>
+                                            <td colspan="7">{{__("Nenhum quarto encontrado")}}</td>
                                         </tr>
                                     @endif
                                     </tbody>

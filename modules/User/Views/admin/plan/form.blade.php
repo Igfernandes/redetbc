@@ -10,7 +10,7 @@
 <div class="form-group">
     <label>{{__("For Role")}} <span class="text-danger">*</span></label>
     <select name="role_id" class="form-control">
-        <option value="">{{__("-- Please Select --")}}</option>
+        <option value="">{{__("-- Selecione --")}}</option>
         @foreach(\Modules\User\Models\Role::all() as $role)
         <option @if(old('role_id',$row->role_id) == $role->id) selected
             @endif value="{{$role->id}}">{{$role->name}}</option>

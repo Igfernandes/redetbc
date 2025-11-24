@@ -64,7 +64,7 @@
                                         <div class="g-items-header">
                                             <div class="row">
                                                 <div class="col-md-5">{{__("Nome")}}</div>
-                                                <div class="col-md-3">{{__('Amount')}}</div>
+                                                <div class="col-md-3">{{__('Quantidade')}}</div>
                                                 <div class="col-md-3">{{__('Earn credit')}}</div>
                                                 <div class="col-md-1"></div>
                                             </div>
@@ -141,13 +141,13 @@
             <div class="panel-title"><strong>{{__("Email for Admin")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="" >{{__("Subject")}}</label>
+                    <label class="" >{{__("Assunto")}}</label>
                     <div class="form-controls">
                         <textarea name="wallet_new_deposit_admin_subject" class="form-control" cols="30" rows="2">{{setting_item_with_lang('wallet_new_deposit_admin_subject',request()->query('lang')) ?? '','New credit order' }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="" >{{__("Content")}}</label>
+                    <label class="" >{{__("Conteúdo")}}</label>
                     <div class="form-controls">
                         <textarea name="wallet_new_deposit_admin_content" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('wallet_new_deposit_admin_content',request()->query('lang')) ?? '',\Modules\User\Emails\CreditPaymentEmail::defaultNewBody() }}</textarea>
                     </div>
@@ -155,16 +155,16 @@
             </div>
         </div>
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Email for Customer")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Email para o Cliente")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="" >{{__("Subject")}}</label>
+                    <label class="" >{{__("Assunto")}}</label>
                     <div class="form-controls">
                         <textarea name="wallet_new_deposit_customer_subject" class="form-control" cols="30" rows="2">{{setting_item_with_lang('wallet_new_deposit_customer_subject',request()->query('lang')) ?? '','Thank you for your purchasing' }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="" >{{__("Content")}}</label>
+                    <label class="" >{{__("Conteúdo")}}</label>
                     <div class="form-controls">
                         <textarea name="wallet_new_deposit_customer_content" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('wallet_new_deposit_customer_content',request()->query('lang')) ?? '',\Modules\User\Emails\CreditPaymentEmail::defaultNewBody() }}</textarea>
                     </div>
@@ -177,7 +177,7 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Credit Purchase Updated Template")}}</h3>
+        <h3 class="form-group-title">{{__("Modelo de Atualização de Compra de Crédito")}}</h3>
         <div class="form-group-desc">
             @foreach(\Modules\User\Emails\CreditPaymentEmail::CODE as $item=>$value)
                 <div><code>{{$value}}</code></div>
@@ -186,16 +186,16 @@
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Email for Admin")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Email para o Administrador")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="" >{{__("Subject")}}</label>
+                    <label class="" >{{__("Assunto")}}</label>
                     <div class="form-controls">
                         <textarea name="wallet_update_deposit_admin_subject" class="form-control" cols="30" rows="2">{{setting_item_with_lang('wallet_update_deposit_admin_subject',request()->query('lang')) ?? '' }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="" >{{__("Content")}}</label>
+                    <label class="" >{{__("Conteúdo")}}</label>
                     <div class="form-controls">
                         <textarea name="wallet_update_deposit_admin_content" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('wallet_update_deposit_admin_content',request()->query('lang')) ?? '' }}</textarea>
                     </div>
@@ -203,16 +203,16 @@
             </div>
         </div>
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Email for Customer")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Email para o Cliente")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="" >{{__("Subject")}}</label>
+                    <label class="" >{{__("Assunto")}}</label>
                     <div class="form-controls">
                         <textarea name="wallet_update_deposit_customer_subject" class="form-control" cols="30" rows="2">{{setting_item_with_lang('wallet_update_deposit_customer_subject',request()->query('lang')) ?? '' }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="" >{{__("Content")}}</label>
+                    <label class="" >{{__("Conteúdo")}}</label>
                     <div class="form-controls">
                         <textarea name="wallet_update_deposit_customer_content" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('wallet_update_deposit_customer_content',request()->query('lang')) ?? '' }}</textarea>
                     </div>

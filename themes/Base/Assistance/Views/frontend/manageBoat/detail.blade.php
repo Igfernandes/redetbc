@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar no-border-bottom">
-        {{$row->id ? __('Editar: ').$row->title : __('Todos os Novos serviços')}}
+        {{$row->id ? __('Editar: ').$row->title : __('Todos os Novos Serviços')}}
     </h2>
     @include('admin.message')
     @if($row->id)
@@ -12,11 +12,11 @@
             @csrf
             <div class="form-add-service">
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <a data-toggle="tab" href="#nav-tour-content" aria-selected="true" class="active">{{__("1. Content")}}</a>
-                    <a data-toggle="tab" href="#nav-tour-location" aria-selected="false">{{__("2. Locations")}}</a>
-                    <a data-toggle="tab" href="#nav-tour-pricing" aria-selected="false">{{__("3. Pricing")}}</a>
+                    <a data-toggle="tab" href="#nav-tour-content" aria-selected="true" class="active">{{__("1. Conteúdo")}}</a>
+                    <a data-toggle="tab" href="#nav-tour-location" aria-selected="false">{{__("2. Localizações")}}</a>
+                    <a data-toggle="tab" href="#nav-tour-pricing" aria-selected="false">{{__("3. Preços")}}</a>
                     @if(is_default_lang())
-                        <a data-toggle="tab" href="#nav-attribute" aria-selected="false">{{__("4. Attributes")}}</a>
+                        <a data-toggle="tab" href="#nav-attribute" aria-selected="false">{{__("4. Atributos")}}</a>
                     @endif
                 </div>
                 <div class="tab-content" id="nav-tabContent">
@@ -24,7 +24,7 @@
                         @include('Assistance::admin/assistance/content')
                         @if(is_default_lang())
                             <div class="form-group">
-                                <label>{{__("Apresentou Image")}}</label>
+                                <label>{{__("Imagem de Apresentação")}}</label>
                                 {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
                             </div>
                         @endif

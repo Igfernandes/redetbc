@@ -91,7 +91,7 @@ class SubscriberController extends AdminController
         }
         $row->fill($request->input());
         if ($row->save()) {
-            return redirect()->back()->with('success', __('Subscriber updated'));
+            return redirect()->back()->with('success', __('Inscrição atualizada com sucesso!'));
         }
     }
 
@@ -123,7 +123,7 @@ class SubscriberController extends AdminController
                 }
                 break;
         }
-        return redirect()->back()->with('success', __('Updated successfully!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
 
     public function export()

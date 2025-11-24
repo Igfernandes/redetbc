@@ -2,26 +2,29 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("All Reviews")}}</h1>
+            <h1 class="title-bar">{{__("Todas as Avaliações")}}</h1>
         </div>
+
         @include('admin.message')
+
         <div class="filter-div d-flex justify-content-between ">
             <div class="col-left">
                 @if(!empty($rows))
                     <form method="post" action="{{route('review.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Ações em Massa ")}}</option>
-                            <option value="approved">{{__(" Approved ")}}</option>
-                            <option value="pending">{{__(" Pending ")}}</option>
-                            <option value="spam">{{__(" Spam ")}}</option>
-                            <option value="trash">{{__(" Move to Trash ")}}</option>
+                            <option value="">{{__("Ações em Massa")}}</option>
+                            <option value="approved">{{__("Aprovado")}}</option>
+                            <option value="pending">{{__("Pendente")}}</option>
+                            <option value="spam">{{__("Spam")}}</option>
+                            <option value="trash">{{__("Mover para Lixeira")}}</option>
                             <option value="delete">{{__("Excluir")}}</option>
                         </select>
-                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
+                        <button data-confirm="{{__('Você quer apagar?')}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
                 @endif
             </div>
+
             <div class="col-left">
                 <form method="post" action="{{route('review.admin.index')}} " class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
                     @csrf
@@ -35,7 +38,7 @@
                                     'dataType' => 'json'
                                 ],
                                 'allowClear'  => true,
-                                'placeholder' => __('-- Customer --')
+                                'placeholder' => __('-- Cliente --')
                             ]
                         ], !empty($user->id) ? [
                             $user->id,
@@ -43,152 +46,195 @@
                         ] : false)
                         ?>
                     @endif
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by title')}}" class="form-control">
+
+                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por título')}}" class="form-control">
                     <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Procurar')}}</button>
                 </form>
             </div>
         </div>
+
         <div class="text-right">
             <div class="header-status-control">
-                <a href="{{ route('review.admin.index') }}">{{__("All Reviews")}}
+                <a href="{{ route('review.admin.index') }}">{{__("Todas as Avaliações")}}
                     <span>({{ \Modules\Review\Models\Review::countReviewByStatus() }})</span> </a> -
-                <a href="{{ route('review.admin.index',['status'=>'approved'])}}">{{__("Approved")}}
+
+                <a href="{{ route('review.admin.index',['status'=>'approved'])}}">{{__("Aprovadas")}}
                     <span>({{ \Modules\Review\Models\Review::countReviewByStatus("approved") }})</span></a> -
-                <a href="{{ route('review.admin.index',['status'=>'pending'])  }}">{{__("Pending")}}
+
+                <a href="{{ route('review.admin.index',['status'=>'pending']) }}">{{__("Pendentes")}}
                     <span>({{ \Modules\Review\Models\Review::countReviewByStatus("pending") }})</span></a> -
-                <a href="{{ route('review.admin.index',['status'=>'spam'])  }}">{{__("Spam")}}
+
+                <a href="{{ route('review.admin.index',['status'=>'spam']) }}">{{__("Spam")}}
                     <span>({{ \Modules\Review\Models\Review::countReviewByStatus("spam") }})</span></a> -
-                <a href="{{ route('review.admin.index',['status'=>'trash'])  }}">{{__("Trash")}}
+
+                <a href="{{ route('review.admin.index',['status'=>'trash']) }}">{{__("Lixeira")}}
                     <span>({{ \Modules\Review\Models\Review::countReviewByStatus("trash") }})</span></a>
             </div>
-            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
+
+            <p><i>{{__('Encontrado :total itens',['total'=>$rows->total()])}}</i></p>
         </div>
+
         <div class="panel">
             <div class="panel-body">
                 <form class="bravo-form-item">
                     <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th width="150px"> {{ __('Autor')}}</th>
-                            <th> {{ __('Avaliação Content')}}</th>
-                            <th width="250px"> {{ __('In Response To')}}</th>
-                            <th width="80px"> {{ __('Serviço')}}</th>
-                            <th width="100px"> {{ __('Status')}}</th>
-                            <th width="140px"> {{ __('Submitted On')}}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @if($rows->total() > 0)
-                            @foreach($rows as $row)
-                                @php $service = $row->getService @endphp
-                                <tr class="{{$row->status}}">
-                                    <td><input type="checkbox" name="ids[]" class="check-item" value="{{$row->id}}">
-                                    </td>
-                                    <td>
-                                        @if(!empty( $metaUser =  $row->author))
-                                            <a href="{{ route('review.admin.index',['customer_id'=>$metaUser->id]) }}">{{ $metaUser->email ?? 'Email' }}</a>
-                                            <p>
-                                                <a href="{{ route("review.admin.index",['s'=>$row->author_ip]) }}">{{$row->author_ip}}</a>
-                                            </p>
-                                        @else
-                                            {{__("[Author Deleted]")}}
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <strong>{{$row->title}}</strong>
-                                        <p>{{$row->content}}</p>
-                                        @if(!empty($metaReviews = $row->getReviewMetaPicture()))
-                                            @php $listImages = json_decode($metaReviews->val, true); @endphp
-                                            <div class="review_list_photos d-flex mt-3">
-                                                @foreach($listImages as $oneImages)
-                                                    @php $imagesData = json_decode($oneImages, true); @endphp
-                                                    <div class="review_upload_item" style="background-image: url({{@$imagesData['download']}}); background-repeat: no-repeat; background-size: cover; background-position: center; height: 100px;width: 100px;margin-right: 10px;"></div>
-                                                @endforeach
-                                            </div>
-                                        @endif
-                                        @if($row->rate_number)
-                                            <ul class="review-star left">
-                                                @for( $i = 0 ; $i < 5 ; $i++ )
-                                                    @if($i < $row->rate_number)
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    @else
-                                                        <li><i class="fa fa-star-o"></i></li>
-                                                    @endif
-                                                @endfor
-                                            </ul>
-                                        @endif
-                                        @if(!empty($service) and !empty($allReviewStats = $service->getReviewStats()))
-                                            @if(!empty($metaReviews = $row->getReviewMeta()))
-                                                <a class="btn-show-info-review right" data-toggle="collapse" href="#review-{{$row->id}}">
-                                                    {{__("Mais info")}}
-                                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th width="60px"><input type="checkbox" class="check-all"></th>
+                                <th width="150px">{{ __('Autor')}}</th>
+                                <th>{{ __('Conteúdo da Avaliação')}}</th>
+                                <th width="250px">{{ __('Em Resposta a')}}</th>
+                                <th width="80px">{{ __('Serviço')}}</th>
+                                <th width="100px">{{ __('Status')}}</th>
+                                <th width="140px">{{ __('Enviado em')}}</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            @if($rows->total() > 0)
+                                @foreach($rows as $row)
+                                    @php $service = $row->getService @endphp
+                                    <tr class="{{$row->status}}">
+                                        <td><input type="checkbox" name="ids[]" class="check-item" value="{{$row->id}}"></td>
+
+                                        <td>
+                                            @if(!empty($metaUser =  $row->author))
+                                                <a href="{{ route('review.admin.index',['customer_id'=>$metaUser->id]) }}">
+                                                    {{ $metaUser->email ?? 'Email' }}
                                                 </a>
-                                                <div class="collapse" id="review-{{$row->id}}">
-                                                    <div class="review-items">
-                                                        <div class="row">
-                                                            @foreach($metaReviews as $metaReview)
-                                                                @if( in_array($metaReview->name , $allReviewStats))
-                                                                    <div class="item col-md-12">
-                                                                        <label style="margin-right: 15px;">{{$metaReview->name}}</label>
-                                                                        <ul class="review-star">
-                                                                            @for( $i = 0 ; $i < 5 ; $i++ )
-                                                                                @if($i < $metaReview->val)
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                @else
-                                                                                    <li><i class="fa fa-star-o"></i>
-                                                                                    </li>
-                                                                                @endif
-                                                                            @endfor
-                                                                        </ul>
-                                                                    </div>
-                                                                @endif
-                                                            @endforeach
+
+                                                <p>
+                                                    <a href="{{ route('review.admin.index',['s'=>$row->author_ip]) }}">
+                                                        {{$row->author_ip}}
+                                                    </a>
+                                                </p>
+
+                                            @else
+                                                {{__("[Autor Excluído]")}}
+                                            @endif
+                                        </td>
+
+                                        <td>
+                                            <strong>{{$row->title}}</strong>
+                                            <p>{{$row->content}}</p>
+
+                                            @if(!empty($metaReviews = $row->getReviewMetaPicture()))
+                                                @php $listImages = json_decode($metaReviews->val, true); @endphp
+                                                <div class="review_list_photos d-flex mt-3">
+                                                    @foreach($listImages as $oneImages)
+                                                        @php $imagesData = json_decode($oneImages, true); @endphp
+                                                        <div class="review_upload_item"
+                                                             style="background-image: url({{@$imagesData['download']}});
+                                                             background-repeat: no-repeat;
+                                                             background-size: cover;
+                                                             background-position: center;
+                                                             height: 100px;width: 100px;margin-right: 10px;">
                                                         </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             @endif
-                                        @endif
 
-                                    </td>
-                                    <td>
-                                        @if(!empty($service))
-                                            <a href="{{ route('review.admin.index',['service_id'=>$service->id,'object_model'=>$service->type]) }}">
-                                                {{ $service->title }}
-                                            </a>
-                                            <p>
-                                                <a target="_blank" href="{{$service->getDetailUrl()}}">
-                                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i> {{ __("Visualizar :name",["name"=>$service->getModelName() ])}}
+                                            @if($row->rate_number)
+                                                <ul class="review-star left">
+                                                    @for( $i = 0 ; $i < 5 ; $i++ )
+                                                        @if($i < $row->rate_number)
+                                                            <li><i class="fa fa-star"></i></li>
+                                                        @else
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                        @endif
+                                                    @endfor
+                                                </ul>
+                                            @endif
+
+                                            @if(!empty($service) and !empty($allReviewStats = $service->getReviewStats()))
+                                                @if(!empty($metaReviews = $row->getReviewMeta()))
+                                                    <a class="btn-show-info-review right" data-toggle="collapse" href="#review-{{$row->id}}">
+                                                        {{__("Mais informações")}}
+                                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                    </a>
+
+                                                    <div class="collapse" id="review-{{$row->id}}">
+                                                        <div class="review-items">
+                                                            <div class="row">
+
+                                                                @foreach($metaReviews as $metaReview)
+                                                                    @if(in_array($metaReview->name , $allReviewStats))
+                                                                        <div class="item col-md-12">
+                                                                            <label style="margin-right: 15px;">{{$metaReview->name}}</label>
+
+                                                                            <ul class="review-star">
+                                                                                @for( $i = 0 ; $i < 5 ; $i++ )
+                                                                                    @if($i < $metaReview->val)
+                                                                                        <li><i class="fa fa-star"></i></li>
+                                                                                    @else
+                                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                                    @endif
+                                                                                @endfor
+                                                                            </ul>
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endif
+                                        </td>
+
+                                        <td>
+                                            @if(!empty($service))
+                                                <a href="{{ route('review.admin.index',['service_id'=>$service->id,'object_model'=>$service->type]) }}">
+                                                    {{ $service->title }}
                                                 </a>
-                                            </p>
-                                        @else
-                                            {{__("[Deleted]")}}
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if(!empty($service))
-                                            <a href="{{ route('review.admin.index',['service'=>$service->getModelName()]) }}" class="badge badge-dark">{{  $service->getModelName() }}</a>
-                                        @else
-                                            {{__("[Deleted]")}}
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{route('review.admin.index',['status'=>$row->status]) }}" class="badge badge-{{ $row->status }}">{{ $row->status }}</a>
-                                    </td>
-                                    <td>{{ display_datetime($row->updated_at)}}</td>
+
+                                                <p>
+                                                    <a target="_blank" href="{{$service->getDetailUrl()}}">
+                                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                                        {{ __("Visualizar :name",["name"=>$service->getModelName() ])}}
+                                                    </a>
+                                                </p>
+                                            @else
+                                                {{__("[Excluído]")}}
+                                            @endif
+                                        </td>
+
+                                        <td>
+                                            @if(!empty($service))
+                                                <a href="{{ route('review.admin.index',['service'=>$service->getModelName()]) }}"
+                                                   class="badge badge-dark">
+                                                    {{  $service->getModelName() }}
+                                                </a>
+                                            @else
+                                                {{__("[Excluído]")}}
+                                            @endif
+                                        </td>
+
+                                        <td>
+                                            <a href="{{route('review.admin.index',['status'=>$row->status]) }}"
+                                               class="badge badge-{{ $row->status }}">
+                                                {{ $row->status }}
+                                            </a>
+                                        </td>
+
+                                        <td>{{ display_datetime($row->updated_at)}}</td>
+
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="6">{{__("Sem dados")}}</td>
                                 </tr>
-                            @endforeach
-                        @else
-                            <tr>
-                                <td colspan="6">{{__("Sem dados")}}</td>
-                            </tr>
-                        @endif
-                        </tbody>
-                    </table>
+                            @endif
+                            </tbody>
+
+                        </table>
                     </div>
                 </form>
+
                 {{$rows->appends(request()->query())->links()}}
+
             </div>
         </div>
     </div>

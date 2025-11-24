@@ -29,7 +29,7 @@ class Transaction extends BaseModel
             return __("Confirmed");
         }
         if(!$this->payment_id || !$this->payment){
-            return __("Pending");
+            return __("Pendentes");
         }
         return $this->payment->status_name;
     }

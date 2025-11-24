@@ -10,9 +10,9 @@ if(!auth()->check()) return;
                 </span>
     <ul class="dropdown-menu text-left dropdown overflow-auto notify-items dropdown-large">
         <div class="dropdown-toolbar">
-            <h3 class="dropdown-toolbar-title"><?php echo e(__('Notifications')); ?> (<span class="notif-count"><?php echo e($countUnread); ?></span>)</h3>
+            <h3 class="dropdown-toolbar-title"><?php echo e(__('Notificações')); ?> (<span class="notif-count"><?php echo e($countUnread); ?></span>)</h3>
             <div class="dropdown-toolbar-actions">
-                <a href="#" class="markAllAsRead"><?php echo e(__('Mark all as read')); ?></a>
+                <a href="#" class="markAllAsRead"><?php echo e(__('Marcar todos como lido')); ?></a>
             </div>
         </div>
         <ul class="dropdown-list-items p-0">
@@ -61,7 +61,7 @@ if(!auth()->check()) return;
             <?php endif; ?>
         </ul>
         <div class="dropdown-footer text-right">
-            <a href="<?php echo e(route('core.notification.loadNotify')); ?>"><?php echo e(__('View More')); ?></a>
+            <a href="<?php echo e(route('core.notification.loadNotify')); ?>"><?php echo e(__('Ver Mais')); ?></a>
         </div>
     </ul>
 </div>

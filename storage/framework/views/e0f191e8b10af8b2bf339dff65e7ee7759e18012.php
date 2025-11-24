@@ -2,7 +2,7 @@
 <?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar"><?php echo e(__("Room Attributes")); ?></h1>
+            <h1 class="title-bar"><?php echo e(__("Atributos do quarto")); ?></h1>
         </div>
         <?php echo $__env->make('admin.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <div class="row">
@@ -67,7 +67,7 @@
                                                 <a href="<?php echo e(route('hotel.admin.room.attribute.edit',['id'=>$row->id])); ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> <?php echo e(__('Editar')); ?>
 
                                                 </a>
-                                                <a href="<?php echo e(route('hotel.admin.room.attribute.term.index',['id'=>$row->id])); ?>" class="btn btn-sm btn-success"><i class="fa fa"></i> <?php echo e(__("Manage Terms")); ?>
+                                                <a href="<?php echo e(route('hotel.admin.room.attribute.term.index',['id'=>$row->id])); ?>" class="btn btn-sm btn-success"><i class="fa fa"></i> <?php echo e(__("Gerenciador de Termos")); ?>
 
                                                 </a>
 

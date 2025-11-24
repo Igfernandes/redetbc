@@ -2,10 +2,10 @@
 <?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar"><?php echo e(!empty($recovery) ? __('Recuperação') : __("All Spaces")); ?></h1>
+            <h1 class="title-bar"><?php echo e(!empty($recovery) ? __('Recuperação') : __("Todos Espaços")); ?></h1>
             <div class="title-actions">
                 <?php if(empty($recovery)): ?>
-                <a href="<?php echo e(route('space.admin.create')); ?>" class="btn btn-primary"><?php echo e(__("Add new space")); ?></a>
+                <a href="<?php echo e(route('space.admin.create')); ?>" class="btn btn-primary"><?php echo e(__("Adicionar novo espaço")); ?></a>
                 <?php endif; ?>
             </div>
         </div>
@@ -17,15 +17,15 @@
                         <?php echo e(csrf_field()); ?>
 
                         <select name="action" class="form-control">
-                            <option value=""><?php echo e(__(" Bulk Actions ")); ?></option>
+                            <option value=""><?php echo e(__(" Ações em Massa ")); ?></option>
 
                             <?php if(!empty($recovery)): ?>
-                                <option value="recovery"><?php echo e(__(" Recovery ")); ?></option>
-                                <option value="permanently_delete"><?php echo e(__("Permanently delete")); ?></option>
+                                <option value="recovery"><?php echo e(__(" Recuperação ")); ?></option>
+                                <option value="permanently_delete"><?php echo e(__("Excluir permanentemente")); ?></option>
                             <?php else: ?>
-                                <option value="publish"><?php echo e(__(" Publish ")); ?></option>
-                                <option value="draft"><?php echo e(__(" Move to Draft ")); ?></option>
-                                <option value="pending"><?php echo e(__("Move to Pending")); ?></option>
+                                <option value="publish"><?php echo e(__(" Publicar ")); ?></option>
+                                <option value="draft"><?php echo e(__(" Mover para Lixeira ")); ?></option>
+                                <option value="pending"><?php echo e(__("Mover para Pendente")); ?></option>
                                 <option value="clone"><?php echo e(__(" Clone ")); ?></option>
                                 <option value="delete"><?php echo e(__("Excluir")); ?></option>
                             <?php endif; ?>
@@ -40,8 +40,7 @@
                     <?php if(!empty($rows) and $space_manage_others): ?>
                         <div class="ml-3 position-relative">
                             <button class="btn btn-secondary dropdown-toggle bc-dropdown-toggle-filter" type="button" id="dropdown_filters">
-                                <?php echo e(__("Advanced")); ?>
-
+                                <?php echo e(__("Avançado")); ?>
                             </button>
                             <div class="dropdown-menu px-3 py-3 dropdown-menu-right" aria-labelledby="dropdown_filters">
                                 <?php echo $__env->make("Core::admin.global.advanced-filter", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

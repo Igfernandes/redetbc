@@ -12,12 +12,12 @@
                         <table class="table table-bordered table-striped table-booking-history">
                             <thead>
                             <tr>
-                                <th width="2%">{{__("Type")}}</th>
+                                <th width="2%">{{__("Tipo")}}</th>
                                 <th>{{__('Service Info')}}</th>
                                 <th>{{__('Customer Info')}}</th>
                                 <th width="80px">{{__('Status')}}</th>
                                 <th width="80px">{{__('Replies')}}</th>
-                                <th width="180px">{{__('Created At')}}</th>
+                                <th width="180px">{{__('Criado em')}}</th>
                                 <th>{{__("Ação")}}</th>
                             </tr>
                             </thead>

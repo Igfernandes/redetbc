@@ -244,10 +244,10 @@ class TourController extends AdminController
 
             if ($id > 0) {
                 event(new UpdatedServiceEvent($row));
-                return back()->with('success', __('Passeios updated'));
+                return back()->with('success', __('Passeios atualizado'));
             } else {
                 event(new CreatedServicesEvent($row));
-                return redirect(route('tour.admin.edit', $row->id))->with('success', __('Passeios created'));
+                return redirect(route('tour.admin.edit', $row->id))->with('success', __('Passeios criado'));
             }
         }
     }

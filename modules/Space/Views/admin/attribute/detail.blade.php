@@ -19,7 +19,7 @@
                     <div class="lang-content-box">
                         <div class="panel">
                             <div class="panel-title">
-                                <strong>{{__("Attribute Content")}}</strong>
+                                <strong>{{__("Conteúdo do Atributo")}}</strong>
                             </div>
                             <div class="panel-body">
                                 @include('Space::admin/attribute/form')

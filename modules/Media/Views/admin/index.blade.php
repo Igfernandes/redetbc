@@ -8,7 +8,7 @@
                     <div class="d-flex justify-content-between">
                         <div class="col-left d-flex align-items-center">
                             <div class="filter-item">
-                                <input type="text" placeholder="{{__("Procurar file name....")}}" class="form-control" v-model="filter.s" @keyup.enter="filter.page = 1;reloadLists()">
+                                <input type="text" placeholder="{{__("Procurar nome do arquivo....")}}" class="form-control" v-model="filter.s" @keyup.enter="filter.page = 1;reloadLists()">
                             </div>
                             <div class="filter-item">
                                 <button class="btn btn-default" @click="reloadAll()">
@@ -27,7 +27,7 @@
                         <div class="col-right">
                             <i class="fa-spin fa fa-spinner icon-loading active" v-show="isLoading"></i>
                             <button class="btn btn-primary mr-2" @click="addFolder">
-                                <span><i class="fa fa-folder"></i> {{__("Add Folder")}}</span>
+                                <span><i class="fa fa-folder"></i> {{__("Adicionar Pasta")}}</span>
                             </button>
                             <button class="btn btn-success btn-pick-files">
                                 <span><i class="fa fa-upload"></i> {{__("Upload")}}</span>
@@ -50,8 +50,8 @@
                     <div class="border-top border-left mb-3 px-3" v-if="viewType == 'list'">
                         <div class="row font-weight-bold " style="font-size: 16px">
                             <div class="col-sm-6 py-2 border-bottom border-right">{{__("Nome")}}</div>
-                            <div class="col-sm-2 py-2 border-bottom border-right">{{__("Type")}}</div>
-                            <div class="col-sm-2 py-2 border-bottom border-right">{{__("Created At")}}</div>
+                            <div class="col-sm-2 py-2 border-bottom border-right">{{__("Tipo")}}</div>
+                            <div class="col-sm-2 py-2 border-bottom border-right">{{__("Criado em")}}</div>
                             <div class="col-sm-2 py-2 border-bottom border-right">{{__("Size")}}</div>
                         </div>
                         <folder-item @deleted="deletedFolder" @toggle-edit="toggleEditFolder" @dblclick="showFolder(folder)" @update="updateFolder" :view-type="viewType" v-for="(folder,index) in folders" :index="index" :key="'folder-'+index" :folder="folder"></folder-item>

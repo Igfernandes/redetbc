@@ -81,7 +81,7 @@ class LanguageController extends AdminController
             Cache::forget('locale_active_1');
 
             if ($row->save()) {
-                return redirect()->back()->with('success', __('Language updated'));
+                return redirect()->back()->with('success', __('Idioma Atualizado'));
             }
         }
         $data = [

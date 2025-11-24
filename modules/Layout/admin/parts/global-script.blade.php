@@ -24,7 +24,7 @@
         confirm_delete: "{{__("Você quer apagar?")}}",
         confirm_recovery: "{{__("Do you want to restore?")}}",
         confirm: "{{__("Confirm")}}",
-        cancel: "{{__("Cancel")}}",
+        cancel: "{{__("Cancelar")}}",
         custom_range: "{{ __("Custom Range") }}",
         apply: "{{ __("Apply") }}"
     };

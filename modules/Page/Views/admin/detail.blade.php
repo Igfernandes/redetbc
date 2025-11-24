@@ -44,7 +44,7 @@
                                     class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">{{__("Target Religion")}}</label>
+                                <label class="control-label">{{__("Religião")}}</label>
                                 <select name="religion" class="form-control">
                                     <option value="">Selecione a religião</option>
                                     <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangélico")}}</option>
@@ -53,7 +53,7 @@
                                 </select>
                             </div>
                             <div class="form-group magic-field" data-id="content" data-type="content">
-                                <label class="control-label">{{__("Content")}}</label>
+                                <label class="control-label">{{__("Conteúdo")}}</label>
                                 <div class="">
                                     <textarea
                                         name="content"

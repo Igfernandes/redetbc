@@ -1,12 +1,12 @@
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Space Content")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Conteúdo do espaço")}}</strong></div>
     <div class="panel-body">
         <div class="form-group magic-field" data-id="title" data-type="title">
             <label class="control-label">{{__("Título")}}</label>
             <input type="text" value="{{$translation->title}}" placeholder="{{__("Título")}}" name="title" class="form-control">
         </div>
         <div class="form-group">
-            <label class="control-label">{{__("Target Religion")}}</label>
+            <label class="control-label">{{__("Religião")}}</label>
             <select name="religion" class="form-control">
                 <option value="">Selecione a religião</option>
                 <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangélico")}}</option>
@@ -15,7 +15,7 @@
             </select>
         </div>
         <div class="form-group magic-field" data-id="content" data-type="content">
-            <label class="control-label">{{__("Content")}}</label>
+            <label class="control-label">{{__("Conteúdo")}}</label>
             <div class="">
                 <textarea name="content" class="d-none has-ckeditor" id="content" cols="30" rows="10">{{$translation->content}}</textarea>
             </div>
@@ -31,7 +31,7 @@
             <div class="g-items-header">
                 <div class="row">
                     <div class="col-md-5">{{__("Título")}}</div>
-                    <div class="col-md-5">{{__('Content')}}</div>
+                    <div class="col-md-5">{{__('Conteúdo')}}</div>
                     <div class="col-md-1"></div>
                 </div>
             </div>
@@ -76,13 +76,13 @@
         </div>
         @if(is_default_lang())
         <div class="form-group">
-            <label class="control-label">{{__("Banner Image")}}</label>
+            <label class="control-label">{{__("Imagem do Banner")}}</label>
             <div class="form-group-image">
                 {!! \Modules\Media\Helpers\FileHelper::fieldUpload('banner_image_id',$row->banner_image_id) !!}
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label">{{__("Gallery")}}</label>
+            <label class="control-label">{{__("Galeria")}}</label>
             {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
         </div>
         @endif
@@ -90,25 +90,25 @@
 </div>
 @if(is_default_lang())
 <div class="panel">
-    <div class="panel-title"><strong>{{__("Extra Info")}}</strong></div>
+    <div class="panel-title"><strong>{{__("Informações Extras")}}</strong></div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label>{{__("No. Bed")}}</label>
-                    <input type="number" value="{{$row->bed}}" placeholder="{{__("Example: 3")}}" name="bed" class="form-control">
+                    <label>{{__("No. Cama")}}</label>
+                    <input type="number" value="{{$row->bed}}" placeholder="{{__("Exemplo: 3")}}" name="bed" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label>{{__("No. Bathroom")}}</label>
-                    <input type="number" value="{{$row->bathroom}}" placeholder="{{__("Example: 5")}}" name="bathroom" class="form-control">
+                    <label>{{__("No. Banheiro")}}</label>
+                    <input type="number" value="{{$row->bathroom}}" placeholder="{{__("Exemplo: 5")}}" name="bathroom" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label>{{__("Square")}}</label>
-                    <input type="number" value="{{$row->square}}" placeholder="{{__("Example: 100")}}" name="square" class="form-control">
+                    <label>{{__("Área")}}</label>
+                    <input type="number" value="{{$row->square}}" placeholder="{{__("Exemplo: 100")}}" name="square" class="form-control">
                 </div>
             </div>
         </div>
@@ -116,16 +116,16 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label">{{__("Minimum advance reservations")}}</label>
+                    <label class="control-label">{{__("Reserva mínima antecipada")}}</label>
                     <input type="number" name="min_day_before_booking" class="form-control" value="{{$row->min_day_before_booking}}" placeholder="{{__("Ex: 3")}}">
-                    <i>{{ __("Leave blank if you dont need to use the min day option") }}</i>
+                    <i>{{ __("Deixe em branco se não precisar usar a opção de dia mínimo.") }}</i>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label">{{__("Minimum day stay requirements")}}</label>
+                    <label class="control-label">{{__("Requisitos mínimos de estadia")}}</label>
                     <input type="number" name="min_day_stays" class="form-control" value="{{$row->min_day_stays}}" placeholder="{{__("Ex: 2")}}">
-                    <i>{{ __("Leave blank if you dont need to set minimum day stay option") }}</i>
+                    <i>{{ __("Deixe em branco se não precisar usar a opção de estadia mínima.") }}</i>
                 </div>
             </div>
         </div>

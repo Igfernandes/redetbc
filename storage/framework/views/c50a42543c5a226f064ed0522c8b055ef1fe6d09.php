@@ -2,12 +2,12 @@
     <input type="hidden" name="redirect" value="<?php echo e(request()->query('redirect')); ?>">
     <?php echo csrf_field(); ?>
     <div class="form-group">
-        <input type="text" class="form-control" name="email" autocomplete="off" placeholder="<?php echo e(__('Email address')); ?>">
+        <input type="text" class="form-control" name="email" autocomplete="off" placeholder="<?php echo e(__("E-mail")); ?>">
         <i class="input-icon icofont-mail"></i>
         <span class="invalid-feedback error error-email"></span>
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" name="password" autocomplete="off"  placeholder="<?php echo e(__('Password')); ?>">
+        <input type="password" class="form-control" name="password" autocomplete="off"  placeholder="<?php echo e(__('Senha')); ?>">
         <i class="input-icon icofont-ui-password"></i>
         <span class="invalid-feedback error error-password"></span>
     </div>

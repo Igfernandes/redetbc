@@ -17,9 +17,9 @@
                         {{csrf_field()}}
                         <select name="action" class="form-control">
                             <option value="">{{__(" Ações em Massa ")}}</option>
-                            <option value="publish">{{__(" Publish ")}}</option>
+                            <option value="publish">{{__(" Publicar ")}}</option>
                             <option value="pending">{{__(" Move to Pending ")}}</option>
-                            <option value="draft">{{__(" Move to Draft ")}}</option>
+                            <option value="draft">{{__(" Mover para Lixeira ")}}</option>
                             <option value="delete">{{__("Excluir")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
@@ -31,7 +31,7 @@
                     <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}"
                            class="form-control">
                     <select name="cate_id" class="form-control">
-                        <option value="">{{ __('--All Category --')}} </option>
+                        <option value="">{{ __('--Todas Categorias --')}} </option>
                         <?php
                         if (!empty($categories)) {
                             foreach ($categories as $category) {
@@ -40,7 +40,7 @@
                         }
                         ?>
                     </select>
-                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search News')}}</button>
+                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Buscar Notícias')}}</button>
                 </form>
             </div>
         </div>
@@ -58,7 +58,7 @@
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
                                     <th class="title"> {{ __('Nome')}}</th>
-                                    <th width="200px"> {{ __('Category')}}</th>
+                                    <th width="200px"> {{ __('Categoria')}}</th>
                                     <th width="130px"> {{ __('Autor')}}</th>
                                     <th width="100px"> {{ __('Data')}}</th>
                                     <th width="100px">{{  __('Status')}}</th>

@@ -59,13 +59,13 @@
             <div class="col-md-6 field-address-line-1">
                 <div class="form-group">
                     <label >{{__("Endereço 1")}} </label>
-                    <input type="text" placeholder="{{__("Address line 1")}}" class="form-control" value="{{$user->address ?? ''}}" name="address_line_1">
+                    <input type="text" placeholder="{{__("Endereço 1")}}" class="form-control" value="{{$user->address ?? ''}}" name="address_line_1">
                 </div>
             </div>
             <div class="col-md-6 field-address-line-2">
                 <div class="form-group">
                     <label >{{__("Endereço  2")}} </label>
-                    <input type="text" placeholder="{{__("Address line 2")}}" class="form-control" value="{{$user->address2 ?? ''}}" name="address_line_2">
+                    <input type="text" placeholder="{{__("Endereço 2")}}" class="form-control" value="{{$user->address2 ?? ''}}" name="address_line_2">
                 </div>
             </div>
             <div class="col-md-6 field-city">

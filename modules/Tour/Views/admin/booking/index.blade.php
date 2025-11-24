@@ -15,7 +15,7 @@
                         <form method="get" action="" class="filter-form filter-form-left d-flex flex-column flex-sm-row" role="search">
                             <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
                             <select name="cat_id" class="form-control">
-                                <option value="">{{ __('--All Category --')}} </option>
+                                <option value="">{{ __('--Todas Categorias --')}} </option>
                                 <?php
                                 foreach ($tour_categories as $category) {
                                     $selected = '';
@@ -142,7 +142,7 @@
 <script>
 	new VerticalEventCalendar({
         el:'#booking-calendar',
-		eventHeaderName:'{{__('Passeioss')}}'
+		eventHeaderName:'{{__("Passeios")}}'
     });
     var baseColumnWidth = ($('.vec-header-toolbar').width() - $('.vec-event-header').width() - 5 ) / {{date('t',$current_month)}};
 

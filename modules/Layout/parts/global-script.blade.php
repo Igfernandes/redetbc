@@ -49,7 +49,7 @@
         success:"{{__("Success")}}",
         confirm_delete:"{{__("Você quer apagar?")}}",
         confirm:"{{__("Confirm")}}",
-        cancel:"{{__("Cancel")}}",
+        cancel:"{{__("Cancelar")}}",
     };
     var daterangepickerLocale = {
         "applyLabel": "{{__('Aplicar')}}",

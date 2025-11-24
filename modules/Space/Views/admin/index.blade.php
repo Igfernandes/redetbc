@@ -2,10 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("All Spaces")}}</h1>
+            <h1 class="title-bar">{{!empty($recovery) ? __('Recuperação') : __("Todos Espaços")}}</h1>
             <div class="title-actions">
                 @if(empty($recovery))
-                <a href="{{route('space.admin.create')}}" class="btn btn-primary">{{__("Add new space")}}</a>
+                <a href="{{route('space.admin.create')}}" class="btn btn-primary">{{__("Adicionar novo espaço")}}</a>
                 @endif
             </div>
         </div>
@@ -22,8 +22,8 @@
                                 <option value="recovery">{{__(" Recovery ")}}</option>
                                 <option value="permanently_delete">{{__("Permanently delete")}}</option>
                             @else
-                                <option value="publish">{{__(" Publish ")}}</option>
-                                <option value="draft">{{__(" Move to Draft ")}}</option>
+                                <option value="publish">{{__(" Publicar ")}}</option>
+                                <option value="draft">{{__(" Mover para Lixeira ")}}</option>
                                 <option value="pending">{{__("Move to Pending")}}</option>
                                 <option value="clone">{{__(" Clone ")}}</option>
                                 <option value="delete">{{__("Excluir")}}</option>

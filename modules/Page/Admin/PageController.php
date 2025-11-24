@@ -129,9 +129,9 @@ class PageController extends AdminController
         $row->saveOriginOrTranslation($request->query('lang'), true);
 
         if ($id > 0) {
-            return back()->with('success', __('Página updated'));
+            return back()->with('success', __('Página atualizada'));
         } else {
-            return redirect()->route('page.admin.edit', ['id' => $row->id])->with('success', $id > 0 ? __('Página updated') : __('Página created'));
+            return redirect()->route('page.admin.edit', ['id' => $row->id])->with('success', $id > 0 ? __('Página atualizada') : __('Página criada'));
         }
     }
 

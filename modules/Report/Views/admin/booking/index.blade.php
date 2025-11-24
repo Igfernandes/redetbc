@@ -63,7 +63,7 @@
                             <th>{{__('Serviço')}}</th>
                             <th>{{__('Customer')}}</th>
                             <th width="120px">{{__('Status')}}</th>
-                            <th width="220px">{{__('Created At')}}</th>
+                            <th width="220px">{{__('Criado em')}}</th>
                             <th width="80px">{{__('Actions')}}</th>
                         </tr>
                         </thead>

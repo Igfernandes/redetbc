@@ -12,7 +12,7 @@
             <div class="modal-body relative">
                 <form class="bc-form-confirm-password bc-form" method="POST" action="{{ route('password.confirm') }}">
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password"  placeholder="{{__('Password')}}">
+                        <input type="password" class="form-control" name="password"  placeholder="{{__('Senha')}}">
                         <span class="invalid-feedback error error-password"></span>
                     </div>
                     <div class="error message-error invalid-feedback"></div>

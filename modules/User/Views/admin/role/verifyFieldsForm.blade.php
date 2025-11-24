@@ -31,7 +31,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label>{{__("Type")}} <span class="text-danger">*</span></label>
+    <label>{{__("Tipo")}} <span class="text-danger">*</span></label>
     <select class="custom-select" name="type" required>
         <option value="text">{{__("Text")}}</option>
         <option {{($row['type'] ?? '') == 'phone' ? 'selected':''}} value="phone">{{__("Celular")}}</option>

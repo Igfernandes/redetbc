@@ -104,7 +104,7 @@ class PopupController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'   => __("Add new Popup")
+            'page_title'   => __("Adicionar novo popup")
         ];
         return view('Popup::admin.detail', $data);
     }
@@ -168,9 +168,9 @@ class PopupController extends AdminController
         if ($res) {
 
             if ($id > 0) {
-                return back()->with('success', __('Popup updated'));
+                return back()->with('success', __('Popup atualizado'));
             } else {
-                return redirect(route('popup.admin.edit', $row->id))->with('success', __('Popup created'));
+                return redirect(route('popup.admin.edit', $row->id))->with('success', __('Popup criado'));
             }
         }
     }

@@ -81,7 +81,7 @@
                             <div class="panel">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label>{{  __('Category')}} </label>
+                                        <label>{{  __('Categoria')}} </label>
                                         <select name="cat_id" class="form-control">
                                             <option value="">{{ __('-- Please Select --')}} </option>
                                             <?php

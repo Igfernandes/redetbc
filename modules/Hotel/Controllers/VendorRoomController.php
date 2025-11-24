@@ -226,9 +226,9 @@ class VendorRoomController extends FrontendController
             }
 
             if($id > 0 ){
-                return redirect()->back()->with('success',  __('Room updated') );
+                return redirect()->back()->with('success',  __('Quarto Atualizado') );
             }else{
-                return redirect(route('hotel.vendor.room.edit',['hotel_id'=>$hotel_id,'id'=>$row->id]))->with('success', __('Room created') );
+                return redirect(route('hotel.vendor.room.edit',['hotel_id'=>$hotel_id,'id'=>$row->id]))->with('success', __('Quarto Criado') );
             }
         }
     }

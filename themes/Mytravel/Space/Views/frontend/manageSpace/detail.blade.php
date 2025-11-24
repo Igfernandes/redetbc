@@ -12,11 +12,11 @@
             @csrf
             <div class="form-add-service">
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <a data-toggle="tab" href="#nav-tour-content" aria-selected="true" class="active">{{__("1. Content")}}</a>
-                    <a data-toggle="tab" href="#nav-tour-location" aria-selected="false">{{__("2. Locations")}}</a>
-                    <a data-toggle="tab" href="#nav-tour-pricing" aria-selected="false">{{__("3. Pricing")}}</a>
+                    <a data-toggle="tab" href="#nav-tour-content" aria-selected="true" class="active">{{__("1. Conteúdo")}}</a>
+                    <a data-toggle="tab" href="#nav-tour-location" aria-selected="false">{{__("2. Localizações")}}</a>
+                    <a data-toggle="tab" href="#nav-tour-pricing" aria-selected="false">{{__("3. Preços")}}</a>
                     @if(is_default_lang())
-                        <a data-toggle="tab" href="#nav-attribute" aria-selected="false">{{__("4. Attributes")}}</a>
+                        <a data-toggle="tab" href="#nav-attribute" aria-selected="false">{{__("4. Atributos")}}</a>
                         <a data-toggle="tab" href="#nav-ical" aria-selected="false">{{__("5. Ical")}}</a>
                     @endif
                 </div>
@@ -25,7 +25,7 @@
                         @include('Space::admin/space/content')
                         @if(is_default_lang())
                             <div class="form-group">
-                                <label>{{__("Apresentou Image")}}</label>
+                                <label>{{__("Imagem de apresentação")}}</label>
                                 {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
                             </div>
                         @endif
@@ -37,7 +37,7 @@
                     </div>
                     <div class="tab-pane fade" id="nav-tour-pricing">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{__('Estado Padrão')}}</strong></div>
+                            <div class="panel-title"><strong>{{__('Estado padrão')}}</strong></div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">

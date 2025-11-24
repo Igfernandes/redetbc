@@ -55,7 +55,7 @@
         @endif
     <div class="amenities">
         @if($row->max_guest)
-            <span class="amenity total" data-toggle="tooltip"  title="{{ __("Max Guests") }}">
+            <span class="amenity total" data-toggle="tooltip"  title="{{ __("Máximo de convidados") }}">
                 <i class="icofont-ui-user-group input-icon field-icon"></i>
                 <span class="text">
                     {{$row->max_guest}}

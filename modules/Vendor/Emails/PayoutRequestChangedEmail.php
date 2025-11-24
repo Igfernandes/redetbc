@@ -29,10 +29,10 @@ class PayoutRequestChangedEmail extends Mailable
         switch ($this->email_to)
         {
             case "admin":
-                $subject = __('A payout request has been updated');
+                $subject = __('A solicitação de pagamento foi atualizada');
                 break;
             case "vendor":
-                $subject = __('Your payout request has been updated');
+                $subject = __('Sua solicitação de pagamento foi atualizada');
                 break;
         }
 

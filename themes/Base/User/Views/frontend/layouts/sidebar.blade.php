@@ -12,7 +12,7 @@ $menus = [
     ],
     'booking-history' => [
         'url'      => route("user.booking_history"),
-        'title'    => __("Booking History"),
+        'title'    => __("Histórico de Reservas"),
         'icon'     => 'fa fa-clock-o',
         'position' => 20,
         'is_verified' => 1
@@ -230,10 +230,10 @@ foreach ($menus as $k => $menuItem) {
         <form id="logout-form-vendor" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
-        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i class="fa fa-sign-out"></i> {{__("Log Out")}}
+        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i class="fa fa-sign-out"></i> {{__("Sair")}}
         </a>
     </div>
     <div class="logout">
-        <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Back to Homepage")}}</a>
+        <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Voltar para início")}}</a>
     </div>
 </div>

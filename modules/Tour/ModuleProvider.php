@@ -64,7 +64,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     'tour_create'=>[
                         'url'        => route('tour.admin.create'),
-                        'title'      => __("Adicionar tour"),
+                        'title'      => __("Adicionar Passeio"),
                         'permission' => 'tour_create',
                     ],
                     'tour_category'=>[
@@ -116,7 +116,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     [
                         'url'        => route('tour.vendor.create'),
-                        'title'      => __("Adicionar tour"),
+                        'title'      => __("Adicionar Passeio"),
                         'permission' => 'tour_create',
                     ],
                     [

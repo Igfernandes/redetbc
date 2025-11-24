@@ -10,9 +10,9 @@ if(!auth()->check()) return;
                 </span>
     <ul class="dropdown-menu text-left dropdown overflow-auto notify-items dropdown-large">
         <div class="dropdown-toolbar">
-            <h3 class="dropdown-toolbar-title">{{__('Notifications')}} (<span class="notif-count">{{$countUnread}}</span>)</h3>
+            <h3 class="dropdown-toolbar-title">{{__('Notificações')}} (<span class="notif-count">{{$countUnread}}</span>)</h3>
             <div class="dropdown-toolbar-actions">
-                <a href="#" class="markAllAsRead">{{__('Mark all as read')}}</a>
+                <a href="#" class="markAllAsRead">{{__('Marcar todos como lido')}}</a>
             </div>
         </div>
         <ul class="dropdown-list-items p-0">
@@ -61,7 +61,7 @@ if(!auth()->check()) return;
             @endif
         </ul>
         <div class="dropdown-footer text-right">
-            <a href="{{route('core.notification.loadNotify')}}">{{__('View More')}}</a>
+            <a href="{{route('core.notification.loadNotify')}}">{{__('Ver Mais')}}</a>
         </div>
     </ul>
 </div>

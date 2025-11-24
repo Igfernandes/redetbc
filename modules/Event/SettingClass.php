@@ -12,7 +12,7 @@ class SettingClass extends BaseSettingsClass
         return [
             [
                 'id'   => 'event',
-                'title' => __("Event Settings"),
+                'title' => __("Configuração do evento"),
                 'position'=>20,
                 'view'=>"Event::admin.settings.event",
                 "keys"=>[

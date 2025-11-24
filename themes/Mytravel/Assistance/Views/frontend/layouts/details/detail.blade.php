@@ -44,7 +44,7 @@
                         <i class="icofont-ui-user-group"></i>
                     </div>
                     <div class="info">
-                        <h4 class="name">{{__("Max Guests")}}</h4>
+                        <h4 class="name">{{__("Máximo de convidados")}}</h4>
                         <p class="value">
                             {{$row->max_guest}}
                         </p>

@@ -1,6 +1,6 @@
 <input type="hidden" name="mytravel_save_extra" value="1">
 <div class="form-group-item">
-    <label class="control-label">{{__('Badge tag')}}</label>
+    <label class="control-label">{{__('Etiqueta')}}</label>
     <div class="g-items-header">
         <div class="row">
             <div class="col-md-5">{{__("Título")}}</div>

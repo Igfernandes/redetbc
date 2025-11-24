@@ -50,7 +50,7 @@
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
                                     <th>{{__("Nome")}}</th>
-                                    <th>{{__("Position Order")}}</th>
+                                    <th>{{__("Ordem de posição")}}</th>
                                     <th class="">{{__("Ações")}}</th>
                                 </tr>
                                 </thead>
@@ -68,7 +68,7 @@
                                             <td>
                                                 <a href="{{route('tour.admin.attribute.edit', ['id' => $row->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Editar')}}
                                                 </a>
-                                                <a href="{{route('tour.admin.attribute.term.index', ['attr_id' => $row->id]) }}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Manage Terms")}}
+                                                <a href="{{route('tour.admin.attribute.term.index', ['attr_id' => $row->id]) }}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Gerenciador de Termos")}}
                                                 </a>
 
                                             </td>

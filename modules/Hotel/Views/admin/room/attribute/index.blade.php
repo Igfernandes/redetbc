@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Room Attributes")}}</h1>
+            <h1 class="title-bar">{{__("Atributos do quarto")}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
@@ -65,7 +65,7 @@
                                             <td>
                                                 <a href="{{route('hotel.admin.room.attribute.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Editar')}}
                                                 </a>
-                                                <a href="{{route('hotel.admin.room.attribute.term.index',['id'=>$row->id])}}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Manage Terms")}}
+                                                <a href="{{route('hotel.admin.room.attribute.term.index',['id'=>$row->id])}}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Gerenciador de Termos")}}
                                                 </a>
 
                                             </td>

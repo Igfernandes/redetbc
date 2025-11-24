@@ -50,67 +50,6 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
     <div class="widgets-right flex-shrink-0 d-flex">
 
-
-        <?php if(!empty($languages) and is_enable_multi_lang()): ?>
-
-        <div class="dropdown header-widget widget-user widget-language flex-shrink-0">
-
-            <div data-toggle="dropdown" class="user-dropdown d-flex align-items-center" aria-haspopup="true" aria-expanded="false">
-
-                <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                <?php if($locale == $language->locale): ?>
-
-                <div class="user-info flex-grow-1 d-flex">
-
-                    <?php if($language->flag): ?>
-
-                    <span class="flag-icon mr-2 flag-icon-<?php echo e($language->flag); ?>"></span>
-
-                    <?php endif; ?>
-
-                    <?php echo e($language->name); ?>
-
-
-                </div>
-
-                <?php endif; ?>
-
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                <i class="fa fa-angle-down"></i>
-
-            </div>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                <?php if($language->locale == $locale) continue; ?>
-
-
-
-                <a class="dropdown-item" href="<?php echo e(route('language.set-admin-lang',['locale'=>$language->locale])); ?>">
-
-                    <?php if($language->flag): ?>
-
-                    <span class="flag-icon flag-icon-<?php echo e($language->flag); ?>"></span>
-
-                    <?php endif; ?>
-
-                    <?php echo e($language->name); ?>
-
-
-                </a>
-
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-            </div>
-
-        </div>
-
-        <?php endif; ?>
-
         <div class="dropdown header-widget widget-user pt-2 dropdown-notifications flex-shrink-0" style="min-width: 0">
 
             <div data-toggle="dropdown" class="user-dropdown d-flex align-items-center" aria-haspopup="true" aria-expanded="false">
@@ -127,11 +66,11 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
                     <div class="dropdown-toolbar-actions">
 
-                        <a href="#" class="markAllAsRead"><?php echo e(__('Mark all as read')); ?></a>
+                        <a href="#" class="markAllAsRead"><?php echo e(__('Marcar todos como lido')); ?></a>
 
                     </div>
 
-                    <h3 class="dropdown-toolbar-title"><?php echo e(__('Notifications')); ?> (<span class="notif-count"><?php echo e($countUnread); ?></span>)</h3>
+                    <h3 class="dropdown-toolbar-title"><?php echo e(__('Notificações')); ?> (<span class="notif-count"><?php echo e($countUnread); ?></span>)</h3>
 
                 </div>
 
@@ -234,7 +173,7 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
                 <div class="dropdown-footer text-center">
 
-                    <a href="<?php echo e(route('core.admin.notification.loadNotify')); ?>"><?php echo e(__('View More')); ?></a>
+                    <a href="<?php echo e(route('core.admin.notification.loadNotify')); ?>"><?php echo e(__('Ver Mais')); ?></a>
 
                 </div>
 

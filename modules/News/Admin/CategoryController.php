@@ -35,7 +35,7 @@ class CategoryController extends AdminController
                     'url'  => route('news.admin.index')
                 ],
                 [
-                    'name'  => __('Category'),
+                    'name'  => __('Categoria'),
                     'class' => 'active'
                 ],
             ],
@@ -83,9 +83,9 @@ class CategoryController extends AdminController
 
         if ($res) {
             if($id > 0 ){
-                return back()->with('success',  __('Category updated') );
+                return back()->with('success',  __('Categoria atualizada') );
             }else{
-                return redirect(route('news.admin.category.index'))->with('success', __('Category created') );
+                return redirect(route('news.admin.category.index'))->with('success', __('Categoria criada') );
             }
         }
     }

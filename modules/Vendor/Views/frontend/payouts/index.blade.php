@@ -34,8 +34,8 @@
                 <thead>
                     <tr>
                         <th width="2%">{{__("#")}}</th>
-                        <th>{{__("Amount")}}</th>
-                        <th>{{__("Payout Method")}}</th>
+                        <th>{{__("Quantidade")}}</th>
+                        <th>{{__("Método de Pagamento")}}</th>
                         <th>{{__("Date Request")}}</th>
                         <th>{{__("Notes")}}</th>
                         <th>{{__("Date Processed")}}</th>

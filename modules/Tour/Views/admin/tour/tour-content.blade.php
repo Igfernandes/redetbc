@@ -9,8 +9,8 @@
             <label class="control-label">{{__("Religião Alvo")}}</label>
             <select name="religion" class="form-control">
                 <option value="">Selecione a religião</option>
-                <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangélico")}}</option>
-                <option value="EVANGELICAL" @if($row->religion == "EVANGELICAL") selected @endif > {{__("Católico")}}</option>
+                <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Católico")}}</option>
+                <option value="EVANGELICAL" @if($row->religion == "EVANGELICAL") selected @endif > {{__("Evangélico")}}</option>
                 <option value="BOTH" @if($row->religion == "BOTH") selected @endif > {{__("Ambos")}}</option>
             </select>
         </div>
@@ -31,7 +31,7 @@
             <label class="control-label">{{__("Categoria")}}</label>
             <div class="">
                 <select name="category_id" class="form-control">
-                    <option value="">{{__("-- Please Select --")}}</option>
+                    <option value="">{{__("-- Selecione --")}}</option>
                     <?php
                     $traverse = function ($categories, $prefix = '') use (&$traverse, $row) {
                         foreach ($categories as $category) {
@@ -48,18 +48,17 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label">{{__("Youtube Video")}}</label>
-            <input type="text" name="video" class="form-control" value="{{old('video',$row->video)}}" placeholder="{{__("Youtube link video")}}">
+            <label class="control-label">{{__("Vídeo do Youtube")}}</label>
+            <input type="text" name="video" class="form-control" value="{{old('video',$row->video)}}" placeholder="{{__("Link do vídeo no Youtube")}}">
         </div>
-
 
         @if(is_default_lang())
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label">{{__("Minimum advance reservations")}}</label>
+                    <label class="control-label">{{__("Reservas antecipadas mínimas")}}</label>
                     <input type="number" name="min_day_before_booking" class="form-control" value="{{ old('min_day_before_booking', $row->min_day_before_booking) }}" placeholder="{{__("Ex: 3")}}">
-                    <i>{{ __("Leave blank if you dont need to use the min day option") }}</i>
+                    <i>{{ __("Deixe em branco se não precisar usar a opção de dia mínimo.") }}</i>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -79,14 +78,14 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label">{{__("Passeio Min People")}}</label>
-                    <input type="text" name="min_people" class="form-control" value="{{old('min_people',$row->min_people)}}" placeholder="{{__("Passeio Min People")}}">
+                    <label class="control-label">{{__("Passeio - Mínimo de Pessoas")}}</label>
+                    <input type="text" name="min_people" class="form-control" value="{{old('min_people',$row->min_people)}}" placeholder="{{__("Passeio - Mínimo de Pessoas")}}">
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label">{{__("Passeio Max People")}}</label>
-                    <input type="text" name="max_people" class="form-control" value="{{old('max_people',$row->max_people)}}" placeholder="{{__("Passeio Max People")}}">
+                    <label class="control-label">{{__("Passeio - Máximo de Pessoas")}}</label>
+                    <input type="text" name="max_people" class="form-control" value="{{old('max_people',$row->max_people)}}" placeholder="{{__("Passeio - Máximo de Pessoas")}}">
                 </div>
             </div>
         </div>
@@ -98,7 +97,7 @@
             <div class="g-items-header">
                 <div class="row">
                     <div class="col-md-5">{{__("Título")}}</div>
-                    <div class="col-md-5">{{__('Content')}}</div>
+                    <div class="col-md-5">{{__('Conteúdo')}}</div>
                     <div class="col-md-1"></div>
                 </div>
             </div>
@@ -109,7 +108,7 @@
                 <div class="item" data-number="{{$key}}">
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="text" name="faqs[{{$key}}][title]" class="form-control" value="{{$faq['title']}}" placeholder="{{__('Eg: When and where does the tour end?')}}">
+                            <input type="text" name="faqs[{{$key}}][title]" class="form-control" value="{{$faq['title']}}" placeholder="{{__('Ex: Quando e onde o passeio termina?')}}">
                         </div>
                         <div class="col-md-6">
                             <textarea name="faqs[{{$key}}][content]" class="form-control full-h" placeholder="...">{{$faq['content']}}</textarea>
@@ -129,7 +128,7 @@
                 <div class="item" data-number="__number__">
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="text" __name__="faqs[__number__][title]" class="form-control" placeholder="{{__('Eg: When and where does the tour end?')}}">
+                            <input type="text" __name__="faqs[__number__][title]" class="form-control" placeholder="{{__('Ex: Quando e onde o passeio termina?')}}">
                         </div>
                         <div class="col-md-6">
                             <textarea __name__="faqs[__number__][content]" class="form-control full-h" placeholder="..."></textarea>
@@ -141,8 +140,10 @@
                 </div>
             </div>
         </div>
+
         @include('Tour::admin/tour/include-exclude')
         @include('Tour::admin/tour/itinerary')
+
         @if(is_default_lang())
         <div class="form-group">
             <label class="control-label">{{__("Imagem do Banner")}}</label>
@@ -151,7 +152,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label">{{__("Gallery")}}</label>
+            <label class="control-label">{{__("Galeria")}}</label>
             {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',old('gallery',$row->gallery)) !!}
         </div>
         @endif

@@ -20,7 +20,7 @@
                         <span class="invalid-feedback error error-last_name"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="business_name" autocomplete="off" placeholder="{{__("Business Name")}}">
+                        <input type="text" class="form-control" name="business_name" autocomplete="off" placeholder="{{__("Razão Social")}}">
                         <span class="invalid-feedback error error-business_name"></span>
                     </div>
                     <div class="form-group">
@@ -32,7 +32,7 @@
                         <span class="invalid-feedback error error-email"></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" autocomplete="off" placeholder="{{__("Password")}}">
+                        <input type="password" class="form-control" name="password" autocomplete="off" placeholder="{{__("Senha")}}">
                         <span class="invalid-feedback error error-password"></span>
                     </div>
                     <div class="form-group">

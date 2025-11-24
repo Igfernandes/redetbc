@@ -53,8 +53,8 @@
 
                                 <select name="action" class="form-control">
                                     <option value=""><?php echo e(__("Ação em massa")); ?></option>
-                                    <option value="publish"><?php echo e(__(" Publish ")); ?></option>
-                                    <option value="draft"><?php echo e(__(" Move to Draft ")); ?></option>
+                                    <option value="publish"><?php echo e(__(" Publicar ")); ?></option>
+                                    <option value="draft"><?php echo e(__(" Mover para Lixeira ")); ?></option>
                                     <option value="delete"><?php echo e(__("Excluir")); ?></option>
                                 </select>
                                 <button data-confirm="<?php echo e(__("Você quer apagar?")); ?>" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button"><?php echo e(__('Aplicar')); ?></button>

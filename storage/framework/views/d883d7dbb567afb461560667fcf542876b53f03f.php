@@ -6,7 +6,7 @@
     <div class="form-group">
         <label><?php echo e(__("Parent")); ?></label>
         <select name="parent_id" class="form-control">
-            <option value=""><?php echo e(__("-- Please Select --")); ?></option>
+            <option value=""><?php echo e(__("-- Selecione --")); ?></option>
             <?php
             $traverse = function ($categories, $prefix = '') use (&$traverse, $row) {
                 foreach ($categories as $category) {

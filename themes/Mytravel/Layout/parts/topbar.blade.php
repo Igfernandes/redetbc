@@ -15,7 +15,6 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                 </div>
                 @endif
                 @include('Core::frontend.currency-switcher')
-                @include('Language::frontend.switcher')
                 @include('Layout::parts.notification')
                 <div class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider">
                     @if(!Auth::id() || null === Auth::user())
@@ -33,11 +32,6 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                         </span>
 
                         <ul class="dropdown-menu dropdown-menu-user text-left dropdown">
-                            @if(empty( setting_item('wallet_module_disable') ) && $isVerification)
-                            <li class="credit_amount">
-                                <a href="{{route('user.wallet')}}"><i class="fa fa-money"></i> {{__("Credit: :amount",['amount'=>auth()->user()->balance])}}</a>
-                            </li>
-                            @endif
                             @if(is_vendor() && $isVerification)
                             <li class=""><a href="{{route('vendor.dashboard')}}" class=""><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
                             @endif
@@ -48,7 +42,7 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             <li class=""><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Reservas")}}</a></li>
                             @endif
                             @if( $isVerification)
-                            <li class=""><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
+                            <li class=""><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
                             @endif
                             <li class=""><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
                             @if(is_admin())

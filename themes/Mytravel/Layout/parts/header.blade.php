@@ -128,8 +128,6 @@ if (isset($_GET['religion'])) {
 
                             @include('Core::frontend.currency-switcher')
 
-                            @include('Language::frontend.switcher')
-
                             @if(!Auth::id())
 
                             <li class="login-item">
@@ -188,7 +186,7 @@ if (isset($_GET['religion'])) {
 
                                     @endif
 
-                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
+                                    <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
 
                                     <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 
@@ -327,12 +325,6 @@ if (isset($_GET['religion'])) {
                     <ul class="multi-lang">
 
                         @include('Core::frontend.currency-switcher-dropdown')
-
-                    </ul>
-
-                    <ul class="multi-lang">
-
-                        @include('Language::frontend.switcher-dropdown')
 
                     </ul>
 

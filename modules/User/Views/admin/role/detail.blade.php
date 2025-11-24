@@ -14,7 +14,7 @@
                 <div class="col-md-6">
                     <div class="panel">
                         <div class="panel-body">
-                            <h3 class="panel-body-title">{{ __('Função Content')}} </h3>
+                            <h3 class="panel-body-title">{{ __('Conteúdo da Função')}} </h3>
                             <div class="form-group">
                                 <label>{{ __('Nome')}}</label>
                                 <input type="text" value="{{old('name',$row->name)}}" placeholder="{{ __('Função Name')}}" name="name" class="form-control">

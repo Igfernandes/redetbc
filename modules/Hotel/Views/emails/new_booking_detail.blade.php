@@ -75,7 +75,7 @@ $lang_local = app()->getLocale();
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Pricing')}}</td>
+            <td class="label">{{__('Preços')}}</td>
             <td class="val">
                 <table class="pricing-list" width="100%">
                     @php $rooms = \Modules\Hotel\Models\HotelRoomBooking::getByBookingId($booking->id) @endphp

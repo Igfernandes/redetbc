@@ -15,8 +15,8 @@
 {{--                                {{csrf_field()}}--}}
 {{--                                <select name="action" class="form-control">--}}
 {{--                                    <option value="">{{__(" Ações em Massa ")}}</option>--}}
-{{--                                    <option value="publish">{{__(" Publish ")}}</option>--}}
-{{--                                    <option value="draft">{{__(" Move to Draft ")}}</option>--}}
+{{--                                    <option value="publish">{{__(" Publicar ")}}</option>--}}
+{{--                                    <option value="draft">{{__(" Mover para Lixeira ")}}</option>--}}
 {{--                                </select>--}}
 {{--                                <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>--}}
 {{--                            </form>--}}

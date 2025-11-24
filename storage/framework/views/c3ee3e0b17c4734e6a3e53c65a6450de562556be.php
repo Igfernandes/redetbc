@@ -10,7 +10,7 @@
 <div class="form-group">
     <label><?php echo e(__("For Role")); ?> <span class="text-danger">*</span></label>
     <select name="role_id" class="form-control">
-        <option value=""><?php echo e(__("-- Please Select --")); ?></option>
+        <option value=""><?php echo e(__("-- Selecione --")); ?></option>
         <?php $__currentLoopData = \Modules\User\Models\Role::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <option <?php if(old('role_id',$row->role_id) == $role->id): ?> selected
             <?php endif; ?> value="<?php echo e($role->id); ?>"><?php echo e($role->name); ?></option>
@@ -24,16 +24,16 @@
         class="form-control">
 </div>
 <div class="form-group">
-    <label class="control-label"><?php echo e(__("Annual Price")); ?></label>
+    <label class="control-label"><?php echo e(__("Preço Anual")); ?></label>
     <input type="number" step="any" value="<?php echo e(old('annual_price',$row->annual_price)); ?>" name="annual_price"
         class="form-control">
 </div>
 <div class="form-group">
-    <label class="control-label"><?php echo e(__("Duration")); ?> <span class="text-danger">*</span></label>
+    <label class="control-label"><?php echo e(__("Duração")); ?> <span class="text-danger">*</span></label>
     <input type="number" min="1" value="<?php echo e(old('duration',max(1,$row->duration))); ?>" name="duration" class="form-control">
 </div>
 <div class="form-group">
-    <label class="control-label"><?php echo e(__("Dias Gratuity")); ?> <span class="text-danger">*</span></label>
+    <label class="control-label"><?php echo e(__("Dias Gratuitos")); ?> <span class="text-danger">*</span></label>
     <input type="number" min="0" value="<?php echo e(old('days_gratuity',max(0,$row->days_gratuity))); ?>" name="days_gratuity" class="form-control">
 </div>
 <div class="form-group">
@@ -41,11 +41,11 @@
     <input type="text" maxlength="130" value="<?php echo e(old('snippet',$row->snippet)); ?>" name="snippet" class="form-control">
 </div>
 <div class="form-group">
-    <label class="control-label"><?php echo e(__("Commission")); ?> <span class="text-danger"></span></label>
+    <label class="control-label"><?php echo e(__("Comissão")); ?> <span class="text-danger"></span></label>
     <input type="number" min="0" value="<?php echo e(old('commission',$row->commission)); ?>" name="commission" class="form-control">
 </div>
 <div class="form-group">
-    <label class="control-label"><?php echo e(__("Duration Type")); ?> <span class="text-danger">*</span></label>
+    <label class="control-label"><?php echo e(__("Tipo de Duração")); ?> <span class="text-danger">*</span></label>
     <select name="duration_type" class="form-control" required>
         <option <?php if(old('duration_type',$row->duration_type) == 'day'): ?> selected
             <?php endif; ?> value="day"><?php echo e(__("Dia")); ?></option>
@@ -58,10 +58,10 @@
     </select>
 </div>
 <div class="form-group">
-    <label class="control-label"><?php echo e(__("Max Services")); ?> </label>
+    <label class="control-label"><?php echo e(__("Max Serviços")); ?> </label>
     <input type="number" min="0" value="<?php echo e(old('max_service',$row->max_service)); ?>" name="max_service"
-        placeholder="<?php echo e(__("Unlimited")); ?>" class="form-control">
-    <p><i><?php echo e(__("How many publish services user can post")); ?></i></p>
+        placeholder="<?php echo e(__("Ilimitado")); ?>" class="form-control">
+    <p><i><?php echo e(__("Quantos serviços publicados o usuário pode postar")); ?></i></p>
 </div>
 
 <div class="form-group">

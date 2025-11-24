@@ -80,9 +80,9 @@ class TagController extends AdminController
 
         if ($res) {
             if($id > 0 ){
-                return back()->with('success',  __('Tag updated') );
+                return back()->with('success',  __('Tag atualizada') );
             }else{
-                return redirect(route('news.admin.tag.index'))->with('success', __('Tag Created') );
+                return redirect(route('news.admin.tag.index'))->with('success', __('Tag criada') );
             }
         }
     }

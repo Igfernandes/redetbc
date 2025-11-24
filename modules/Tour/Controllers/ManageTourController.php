@@ -239,10 +239,10 @@ class ManageTourController extends FrontendController
             }
             do_action(Hook::AFTER_SAVING,$row,$request);
             if ($id > 0) {
-                return back()->with('success', __('Passeios updated'));
+                return back()->with('success', __('Passeios atualizado'));
             } else {
                 event(new CreatedServicesEvent($row));
-                return redirect(route('tour.vendor.edit', ['id' => $row->id]))->with('success', __('Passeios created'));
+                return redirect(route('tour.vendor.edit', ['id' => $row->id]))->with('success', __('Passeios criado'));
             }
         }
     }

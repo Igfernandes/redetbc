@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Add new popup')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Adicionar novo popup')}}</h1>
                 </div>
                 <div class="">
                     @if($row->id)

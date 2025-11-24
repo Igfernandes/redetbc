@@ -12,7 +12,6 @@
             <div class="topbar-right">
                 <ul class="topbar-items">
                     @include('Core::frontend.currency-switcher')
-                    @include('Language::frontend.switcher')
                     @if(!Auth::check())
                     <li class="login-item">
                         <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
@@ -29,11 +28,6 @@
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-user text-left">
-                            @if(empty( setting_item('wallet_module_disable') ) && $isVerification)
-                            <li class="credit_amount">
-                                <a href="{{route('user.wallet')}}"><i class="fa fa-money"></i> {{__("Credit: :amount",['amount'=>auth()->user()->balance])}}</a>
-                            </li>
-                            @endif
                             @if(is_vendor() && $isVerification)
                             <li class="menu-hr"><a href="{{route('vendor.dashboard')}}" class="menu-hr"><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
                             @endif
@@ -50,7 +44,7 @@
                                 </a>
                             </li>
                             @endif
-                            <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Booking History")}}</a></li>
+                            <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
                             <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 
                             @if(is_enable_plan() )

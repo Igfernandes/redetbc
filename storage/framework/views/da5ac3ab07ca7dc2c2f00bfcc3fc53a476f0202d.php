@@ -17,20 +17,20 @@
                         <?php echo e(csrf_field()); ?>
 
                         <select name="action" class="form-control">
-                            <option value=""><?php echo e(__(" Bulk Actions ")); ?></option>
+                            <option value=""><?php echo e(__("Ações em Massa")); ?></option>
 
                             <?php if(!empty($recovery)): ?>
-                                <option value="recovery"><?php echo e(__(" Recovery ")); ?></option>
-                                <option value="permanently_delete"><?php echo e(__("Permanently delete")); ?></option>
+                                <option value="recovery"><?php echo e(__("Restaurar")); ?></option>
+                                <option value="permanently_delete"><?php echo e(__("Excluir permanentemente")); ?></option>
                             <?php else: ?>
-                                <option value="publish"><?php echo e(__(" Publish ")); ?></option>
-                                <option value="draft"><?php echo e(__(" Move to Draft ")); ?></option>
-                                <option value="pending"><?php echo e(__("Move to Pending")); ?></option>
-                                <option value="clone"><?php echo e(__(" Clone ")); ?></option>
+                                <option value="publish"><?php echo e(__("Publicar")); ?></option>
+                                <option value="draft"><?php echo e(__("Mover para rascunho")); ?></option>
+                                <option value="pending"><?php echo e(__("Mover para pendente")); ?></option>
+                                <option value="clone"><?php echo e(__("Clonar")); ?></option>
                                 <option value="delete"><?php echo e(__("Excluir")); ?></option>
                             <?php endif; ?>
                         </select>
-                        <button data-confirm="<?php echo e(__("Você quer apagar?")); ?>" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button"><?php echo e(__('Aplicar')); ?></button>
+                        <button data-confirm="<?php echo e(__('Você quer apagar?')); ?>" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button"><?php echo e(__('Aplicar')); ?></button>
                     </form>
                 <?php endif; ?>
             </div>
@@ -40,14 +40,14 @@
                     <?php if(!empty($rows) and $tour_manage_others): ?>
                         <div class="ml-3 position-relative">
                             <button class="btn btn-secondary dropdown-toggle bc-dropdown-toggle-filter" type="button" id="dropdown_filters">
-                                <?php echo e(__("Advanced")); ?>
+                                <?php echo e(__("Avançado")); ?>
 
                             </button>
                             <div class="dropdown-menu px-3 py-3 dropdown-menu-right" aria-labelledby="dropdown_filters">
                                 <div class="mb-3">
-                                    <label class="d-block" for="exampleInputEmail1"><?php echo e(__("Category")); ?></label>
+                                    <label class="d-block" for="exampleInputEmail1"><?php echo e(__("Categoria")); ?></label>
                                     <select name="cate_id" class="form-control">
-                                        <option value=""><?php echo e(__('-- All Category --')); ?> </option>
+                                        <option value=""><?php echo e(__('-- Todas Categorias --')); ?> </option>
                                         <?php $__currentLoopData = $tour_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <option value="<?php echo e($category->id); ?>" <?php if(Request()->cate_id == $category->id): ?> selected <?php endif; ?>><?php echo e($category->name); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i><?php echo e(__('Encontrado :total items',['total'=>$rows->total()])); ?></i></p>
+            <p><i><?php echo e(__('Encontrado :total itens',['total'=>$rows->total()])); ?></i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -91,7 +91,7 @@
                                             <a href="<?php echo e(route('tour.admin.edit',['id'=>$row->id])); ?>"><?php echo e($row->title); ?></a>
 
                                             <?php if($row->is_featured): ?>
-                                                <span class="badge badge-warning"><?php echo e(__("Apresentou")); ?></span>
+                                                <span class="badge badge-warning"><?php echo e(__("Destaque")); ?></span>
                                             <?php endif; ?>
                                         </td>
                                         <td><?php echo e($row->location->name ?? ''); ?></td>
@@ -100,7 +100,7 @@
                                                 <?php echo e($row->author->getDisplayName()); ?>
 
                                             <?php else: ?>
-                                                <?php echo e(__("[Author Deleted]")); ?>
+                                                <?php echo e(__("[Autor Deletado]")); ?>
 
                                             <?php endif; ?>
                                         </td>

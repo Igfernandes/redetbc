@@ -60,7 +60,7 @@
 
                             <div class="input-group-append ml-3">
 
-                                <button type="submit" class="btn-submit btn btn-sea-green border-radius-3 height-54 min-width-112 font-size-14">{{__('Subscribe')}}
+                                <button type="submit" class="btn-submit btn btn-sea-green border-radius-3 height-54 min-width-112 font-size-14">{{__('Inscriver-se')}}
 
                                     <i class="fa fa-spinner fa-pulse fa-fw"></i>
 
@@ -97,12 +97,6 @@
                 </a>
 
                 <div class="footer-select bravo_topbar d-flex align-items-center">
-
-                    <div class="mr-3">
-
-                        @include('Language::frontend.switcher')
-
-                    </div>
 
                     @include('Core::frontend.currency-switcher')
 

@@ -61,7 +61,7 @@ class CategoryController extends AdminController
                     'url'  => route('tour.admin.index')
                 ],
                 [
-                    'name'  => __('Category'),
+                    'name'  => __('Categoria'),
                     'class' => 'active'
                 ],
             ]
