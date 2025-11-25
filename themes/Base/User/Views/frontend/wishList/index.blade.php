@@ -25,6 +25,6 @@
             </div>
         </div>
     @else
-        {{__("No Items")}}
+        {{__("Sem Items")}}
     @endif
 @endsection

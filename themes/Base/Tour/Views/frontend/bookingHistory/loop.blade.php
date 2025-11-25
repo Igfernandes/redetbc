@@ -20,7 +20,7 @@
     <td class="a-hidden">{{display_date($booking->created_at)}}</td>
     <td class="a-hidden">
         {{__("Check in")}} : {{display_date($booking->start_date)}} <br>
-        {{__("Duration")}} : {{ $booking->getMeta("duration") ?? "1"  }} {{__("hours")}}
+        {{__("Duração")}} : {{ $booking->getMeta("duration") ?? "1"  }} {{__("horas")}}
     </td>
     <td>{{format_money($booking->total)}}</td>
     <td>{{format_money($booking->paid)}}</td>

@@ -1,12 +1,12 @@
 <div class="form-group">
-    <label>{{__("List Contact")}}</label>
+    <label>{{__("Lista de Contato")}}</label>
     <div class="form-controls">
         <div class="form-group-item">
             <div class="form-group-item">
                 <div class="g-items-header">
                     <div class="row">
                         <div class="col-md-4">{{__("Título")}}</div>
-                        <div class="col-md-7">{{__('Info Contact')}}</div>
+                        <div class="col-md-7">{{__('Informações de Contato')}}</div>
                         <div class="col-md-1"></div>
                     </div>
                 </div>
@@ -24,13 +24,13 @@
                                     <input type="text" name="page_contact_lists[{{$key}}][title]" class="form-control" value="{{$item['title']}}">
                                 </div>
                                 <div class="col-md-7">
-                                    <label for="">{{ __("Address") }}</label>
+                                    <label for="">{{ __("Endereço") }}</label>
                                     <input type="text" name="page_contact_lists[{{$key}}][address]" class="form-control" value="{{$item['address']}}">
                                     <label for="">{{ __("Celular") }}</label>
                                     <input type="text" name="page_contact_lists[{{$key}}][phone]" class="form-control" value="{{$item['phone']}}">
-                                    <label for="">{{ __("Email") }}</label>
+                                    <label for="">{{ __("E-mail") }}</label>
                                     <input type="text" name="page_contact_lists[{{$key}}][email]" class="form-control" value="{{$item['email']}}">
-                                    <label for="">{{ __("Link View on Map") }}</label>
+                                    <label for="">{{ __("Link Visualizar no Mapa") }}</label>
                                     <input type="text" name="page_contact_lists[{{$key}}][link_map]" class="form-control" value="{{$item['link_map']}}">
                                 </div>
                                 <div class="col-md-1">
@@ -47,17 +47,17 @@
                     <div class="item" data-number="__number__">
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="">{{ __("Address") }}</label>
+                                <label for="">{{ __("Título") }}</label>
                                 <input type="text" __name__="page_contact_lists[__number__][title]" class="form-control" value="">
                             </div>
                             <div class="col-md-7">
-                                <label for="">{{ __("Address") }}</label>
+                                <label for="">{{ __("Endereço") }}</label>
                                 <input type="text" __name__="page_contact_lists[__number__][address]" class="form-control" value="">
                                 <label for="">{{ __("Celular") }}</label>
                                 <input type="text" __name__="page_contact_lists[__number__][phone]" class="form-control" value="">
-                                <label for="">{{ __("Email") }}</label>
+                                <label for="">{{ __("E-mail") }}</label>
                                 <input type="text" __name__="page_contact_lists[__number__][email]" class="form-control" value="">
-                                <label for="">{{ __("Link View on Map") }}</label>
+                                <label for="">{{ __("Link Visualizar no Mapa") }}</label>
                                 <input type="text" __name__="page_contact_lists[__number__][link_map]" class="form-control" value="">
                             </div>
                             <div class="col-md-1">
@@ -71,7 +71,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="">{{__("Iframe google map")}}</label>
+    <label class="">{{__("Iframe mapa do Google")}}</label>
     <div class="form-controls">
         <input type="text" class="form-control" name="page_contact_iframe_google_map" value="{{ setting_item_with_lang('page_contact_iframe_google_map',request()->query('lang')) }}">
     </div>

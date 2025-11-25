@@ -27,7 +27,7 @@
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
         <button class="btn btn-primary form-submit" type="submit">
-            {{ __('Login') }}
+            {{ __('Entrar') }}
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
         </button>
     </div>

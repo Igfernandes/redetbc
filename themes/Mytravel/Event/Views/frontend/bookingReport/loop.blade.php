@@ -11,20 +11,20 @@
                 {{$service->title}}
             </a>
         @else
-            {{__("[Deleted]")}}
+            {{__("[Deletado]")}}
         @endif
     </td>
     <td class="a-hidden">{{display_date($booking->created_at)}}</td>
     <td class="a-hidden">
-        {{__("Start date")}} : {{display_date($booking->start_date)}} <br>
-        {{__("Duration")}} :
+        {{__("Data de Início")}} : {{display_date($booking->start_date)}} <br>
+        {{__("Duração")}} :
         @php $duration = $booking->getMeta("duration") @endphp
         {{duration_format($duration)}}
     </td>
     <td>
         <div>{{__("Total")}}: {{format_money_main($booking->total)}}</div>
-        <div>{{__("Paid")}}: {{format_money_main($booking->paid)}}</div>
-        <div>{{__("Remain")}}: {{format_money($booking->total - $booking->paid)}}</div>
+        <div>{{__("Pago")}}: {{format_money_main($booking->paid)}}</div>
+        <div>{{__("Restante")}}: {{format_money($booking->total - $booking->paid)}}</div>
     </td>
     <td>
         {{ format_money($booking->commission) }}
@@ -49,7 +49,7 @@
                 @if(!empty($statues))
                     @foreach($statues as $status)
                         <a href="{{ route("event.vendor.booking_report.bulk_edit" , ['id'=>$booking->id , 'status'=>$status]) }}">
-                            <i class="icofont-long-arrow-right"></i> {{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}
+                            <i class="icofont-long-arrow-right"></i> {{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}
                         </a>
                     @endforeach
                 @endif
@@ -57,7 +57,7 @@
         @endif
         @if(!empty(setting_item("event_allow_vendor_can_change_paid_amount")))
             <a class="btn btn-xs btn-info btn-info-booking mt-1" data-toggle="modal" data-target="#modal-paid-{{$booking->id}}">
-                <i class="fa fa-dollar"></i>{{__("Set Paid")}}
+                <i class="fa fa-dollar"></i>{{__("Definir Pago")}}
             </a>
             @include ($service->set_paid_modal_file ?? '')
         @endif

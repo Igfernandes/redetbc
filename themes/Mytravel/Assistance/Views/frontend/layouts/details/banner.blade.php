@@ -3,7 +3,7 @@
         <div class="container">
             <nav class="py-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
-                    <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="{{url('')}}">{{__('Home')}}</a></li>
+                    <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="{{url('')}}">{{__('Início')}}</a></li>
                     @foreach($breadcrumbs as $breadcrumb)
                         <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 {{$breadcrumb['class'] ?? ''}}">
                             @if(!empty($breadcrumb['url']))
@@ -39,7 +39,7 @@
                                         </path>
                                     </g>
                                 </svg>
-                            </i>{{__("Service Video")}}
+                            </i>{{__("Vídeo do Serviço")}}
                         </a>
                     @endif
                 </div>
@@ -52,7 +52,7 @@
                                 </button>
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item bravo_embed_video" src="" allowscriptaccess="always" allow="autoplay"></iframe>
-                                </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -61,4 +61,3 @@
         </div>
     </div>
 @endif
-

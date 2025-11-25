@@ -19,14 +19,14 @@ class FormSearchAllService extends BaseBlock
                 'id'        => 'title_for_'.$key,
                 'type'      => 'input',
                 'inputType' => 'text',
-                'label'     => __('Título for :service',['service'=>ucwords($key)])
+                'label'     => __('Título para :service',['service'=>ucwords($key)])
             ];
         }
         $arg[] = [
             'id'            => 'service_types',
             'type'          => 'checklist',
             'listBox'          => 'true',
-            'label'         => "<strong>".__('Service Type')."</strong>",
+            'label'         => "<strong>".__('Tipo de Serviço')."</strong>",
             'values'        => $list_service,
         ];
 
@@ -50,15 +50,15 @@ class FormSearchAllService extends BaseBlock
             'values'        => [
                 [
                     'value'   => '',
-                    'name' => __("Tab button Pills")
+                    'name' => __("Botão de aba Pílulas")
                 ],
                 [
                     'value'   => 'style_2',
-                    'name' => __("Tab button Boxed")
+                    'name' => __("Botão de aba Emoldurado")
                 ],
                 [
                     'value'   => 'style_3',
-                    'name' => __("Tab button Shadow")
+                    'name' => __("Botão de aba Sombra")
                 ],
                 [
                     'value'   => 'style_slider',
@@ -70,7 +70,7 @@ class FormSearchAllService extends BaseBlock
         $arg[] = [
             'id'    => 'bg_image',
             'type'  => 'uploader',
-            'label' => __('- Style 1: Background Image Uploader')
+            'label' => __('- Estilo 1: Carregador de Imagem de Fundo')
         ];
 
         $arg[] = [
@@ -89,7 +89,7 @@ class FormSearchAllService extends BaseBlock
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição')
                 ],
                 [
                     'id'    => 'bg_image',
@@ -108,7 +108,7 @@ class FormSearchAllService extends BaseBlock
 
         $arg[] = [
             'type'=> "checkbox",
-            'label'=>__("formulário de pesquisa único"),
+            'label'=>__("Formulário de pesquisa único"),
             'id'=> "single_form_search",
             'default'=>false
         ];

@@ -4,7 +4,7 @@ $userAuthData = Auth::user();
 $menus = [
     'dashboard'       => [
         'url'        => route("vendor.dashboard"),
-        'title'      => __("Dashboard"),
+        'title'      => __("Painel"),
         'icon'       => 'fa fa-home',
         'permission' => 'dashboard_vendor_access',
         'position'   => 10,
@@ -19,14 +19,14 @@ $menus = [
     ],
     "wishlist" => [
         'url'   => route("user.wishList.index"),
-        'title' => __("Lista de desejos"),
+        'title' => __("Lista de Desejos"),
         'icon'  => 'fa fa-heart-o',
         'position' => 21,
         'is_verified' => 1
     ],
     'network' => [
         'url'      => route("user.network"),
-        'title'    => __("Network"),
+        'title'    => __("Rede"),
         'icon'     => 'fa fa-sitemap',
         'position' => 22,
         'is_verified' => 1,
@@ -34,28 +34,28 @@ $menus = [
     ],
     'upgrade' => [
         'url'      => route("user.upgrade"),
-        'title'    => __("Upgrade Plan"),
+        'title'    => __("Plano de Upgrade"),
         'icon'     => 'fa fa-sitemap',
         'position' => 22,
         'is_verified' => 1
     ],
     'profile'         => [
         'url'      => route("user.profile.index"),
-        'title'    => __("Meu perfil"),
+        'title'    => __("Meu Perfil"),
         'icon'     => 'fa fa-cogs',
         'position' => 22,
         'is_verified' => 0
     ],
     'password'        => [
         'url'      => route("user.change_password"),
-        'title'    => __("Alterar senha"),
+        'title'    => __("Alterar Senha"),
         'icon'     => 'fa fa-lock',
         'position' => 100,
         'is_verified' => 0
     ],
     'admin'           => [
         'url'        => route('admin.index'),
-        'title'      => __("Admin Dashboard"),
+        'title'      => __("Painel de Administração"),
         'icon'       => 'icon ion-ios-ribbon',
         'permission' => 'dashboard_access',
         'position'   => 110,
@@ -195,7 +195,7 @@ foreach ($menus as $k => $menuItem) {
     </div>
     <div class="user-profile-plan">
         @if( !Auth::user()->role_id < 2)
-            <a href=" {{ route('user.upgrade')}}">{{ __("Seja Anfitrião") }}</a>
+            <a href=" {{ route('user.upgrade')}}">{{ __("Seja um Anfitrião") }}</a>
             @endif
     </div>
     <div class="sidebar-menu">
@@ -234,6 +234,6 @@ foreach ($menus as $k => $menuItem) {
         </a>
     </div>
     <div class="logout">
-        <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Voltar para início")}}</a>
+        <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Voltar para o Início")}}</a>
     </div>
 </div>

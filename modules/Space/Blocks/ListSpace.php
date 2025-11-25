@@ -15,7 +15,7 @@ class ListSpace extends BaseBlock
 
     public function getName()
     {
-        return __('Espaços: List Items');
+        return __('Espaços: Listar Itens');
     }
 
     public function getOptions()
@@ -32,7 +32,7 @@ class ListSpace extends BaseBlock
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição')
                 ],
                 [
                     'id'        => 'number',
@@ -124,7 +124,7 @@ class ListSpace extends BaseBlock
                     ])
                 ],
             ],
-            'category' => __("Service Space")
+            'category' => __("Serviço de Espaço")
         ];
     }
 

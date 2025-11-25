@@ -22,13 +22,13 @@ class ListTours extends BaseBlock
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição') // Traduzido: Desc
                 ],
                 [
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Item numérico')
+                    'label'     => __('Número de Itens') // Traduzido: Item numérico
                 ],
                 [
                     'id'            => 'style',
@@ -37,11 +37,11 @@ class ListTours extends BaseBlock
                     'values'        => [
                         [
                             'value'   => '',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1") // Traduzido: Style 1
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2") // Traduzido: Style 2
                         ],
                     ]
                 ],
@@ -63,7 +63,7 @@ class ListTours extends BaseBlock
                 [
                     'id'      => 'location_id',
                     'type'    => 'select2',
-                    'label'   => __('Filtrar por localização'),
+                    'label'   => __('Filtrar por Localização'), // Traduzido: Filtrar por localização
                     'select2' => [
                         'ajax'  => [
                             'url'      => url('/admin/module/location/getForSelect2'),
@@ -82,11 +82,11 @@ class ListTours extends BaseBlock
                     'values'        => [
                         [
                             'value'   => 'id',
-                            'name' => __("Data de Criação")
+                            'name' => __("Data de Criação") // Traduzido: Data de Criação
                         ],
                         [
                             'value'   => 'title',
-                            'name' => __("Título")
+                            'name' => __("Título") // Traduzido: Título
                         ],
                     ]
                 ],
@@ -107,14 +107,14 @@ class ListTours extends BaseBlock
                 ],
                 [
                     'type'=> "checkbox",
-                    'label'=>__("Somente itens em destaque?"),
+                    'label'=>__("Apenas itens em destaque?"), // Traduzido: Somente itens em destaque?
                     'id'=> "is_featured",
                     'default'=>true
                 ],
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('Listar passeios pelo IDs'),
+                    'label'        => __('Listar Passeios pelos IDs'), // Traduzido: Listar passeios pelo IDs
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('tour.admin.getForSelect2'),
@@ -128,13 +128,13 @@ class ListTours extends BaseBlock
                     ])
                 ]
             ],
-            'category'=>__("Blocos dos Passeio")
+            'category'=>__("Blocos de Passeio") // Traduzido: Blocos dos Passeio
         ]);
     }
 
     public function getName()
     {
-        return __('Passeios: List Items');
+        return __('Passeios: Listar Itens'); // Traduzido: Passeios: List Items
     }
 
     public function content($model = [])

@@ -20,12 +20,12 @@ class TwoCheckoutGateway extends \Modules\Booking\Gateways\BaseGateway
             [
                 'type'  => 'checkbox',
                 'id'    => 'enable',
-                'label' => __('Enable Two Checkout?')
+                'label' => __('Habilitar Two Checkout?')
             ],
             [
                 'type'  => 'input',
                 'id'    => 'name',
-                'label' => __('Custom Name'),
+                'label' => __('Nome Personalizado'),
                 'std'   => __("Two Checkout"),
                 'multi_lang' => "1"
             ],
@@ -37,23 +37,23 @@ class TwoCheckoutGateway extends \Modules\Booking\Gateways\BaseGateway
             [
                 'type'  => 'editor',
                 'id'    => 'html',
-                'label' => __('Custom HTML Description'),
+                'label' => __('Descrição HTML Personalizada'),
                 'multi_lang' => "1"
             ],
             [
                 'type'  => 'input',
                 'id'    => 'twocheckout_account_number',
-                'label' => __('Account Number'),
+                'label' => __('Número da Conta'),
             ],
             [
                 'type'  => 'input',
                 'id'    => 'twocheckout_secret_word',
-                'label' => __('Secret Word'),
+                'label' => __('Palavra Secreta'),
             ],
             [
                 'type'  => 'checkbox',
                 'id'    => 'twocheckout_enable_sandbox',
-                'label' => __('Enable Sandbox Mode'),
+                'label' => __('Habilitar Modo Sandbox'),
             ]
         ];
     }
@@ -66,10 +66,10 @@ class TwoCheckoutGateway extends \Modules\Booking\Gateways\BaseGateway
             $booking::CANCELLED
         ])) {
 
-            throw new Exception(__("Booking status does need to be paid"));
+            throw new Exception(__("O status da reserva não precisa ser pago"));
         }
         if (!$booking->total) {
-            throw new Exception(__("Booking total is zero. Can not process payment gateway!"));
+            throw new Exception(__("O total da reserva é zero. Não é possível processar o gateway de pagamento!"));
         }
         $payment = new Payment();
         $payment->booking_id = $booking->id;
@@ -180,7 +180,7 @@ class TwoCheckoutGateway extends \Modules\Booking\Gateways\BaseGateway
                 } catch (\Swift_TransportException $e) {
                     Log::warning($e->getMessage());
                 }
-                return redirect($booking->getDetailUrl())->with("error", __("Payment Failed"));
+                return redirect($booking->getDetailUrl())->with("error", __("Pagamento Falhou"));
             } else {
                 $payment = $booking->payment;
                 if ($payment) {
@@ -194,7 +194,7 @@ class TwoCheckoutGateway extends \Modules\Booking\Gateways\BaseGateway
                 } catch (\Swift_TransportException $e) {
                     Log::warning($e->getMessage());
                 }
-                return redirect($booking->getDetailUrl())->with("success", __("You payment has been processed successfully"));
+                return redirect($booking->getDetailUrl())->with("success", __("Seu pagamento foi processado com sucesso"));
             }
         }
         if (!empty($booking)) {
@@ -241,7 +241,7 @@ class TwoCheckoutGateway extends \Modules\Booking\Gateways\BaseGateway
                 // Refund without check status
                 $booking->tryRefundToWallet(false);
             }
-            return redirect($booking->getDetailUrl())->with("error", __("You cancelled the payment"));
+            return redirect($booking->getDetailUrl())->with("error", __("Você cancelou o pagamento"));
         }
         if (!empty($booking)) {
             return redirect($booking->getDetailUrl());

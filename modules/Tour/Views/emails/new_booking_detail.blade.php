@@ -2,11 +2,11 @@
 $translation = $service->translate();
 $lang_local = app()->getLocale();
 ?>
-<div class="b-panel-title">{{__('Passeios information')}}</div>
+<div class="b-panel-title">{{__('Informações do Passeio')}}</div>
 <div class="b-table-wrap">
     <table class="b-table" cellspacing="0" cellpadding="0">
         <tr>
-            <td class="label">{{__('Numero da Reserva')}}</td>
+            <td class="label">{{__('Número da Reserva')}}</td>
             <td class="val">#{{$booking->id}}</td>
         </tr>
         <tr>
@@ -21,7 +21,7 @@ $lang_local = app()->getLocale();
         @endif
         @if($booking->gatewayObj and $note = $booking->gatewayObj->getOption('payment_note'))
             <tr>
-                <td class="label">{{__('Payment Note')}}</td>
+                <td class="label">{{__('Nota de Pagamento')}}</td>
                 <td class="val">{!! clean($note) !!}</td>
             </tr>
         @endif
@@ -103,7 +103,7 @@ $lang_local = app()->getLocale();
 
                     @if(!empty($extra_price))
                         <tr>
-                            <td colspan="2" class="label-title"><strong>{{__("Extra Prices:")}}</strong></td>
+                            <td colspan="2" class="label-title"><strong>{{__("Preços Extras:")}}</strong></td>
                         </tr>
                         <tr class="">
                             <td colspan="2" class="no-r-padding no-b-border">
@@ -126,7 +126,7 @@ $lang_local = app()->getLocale();
                     @endphp
                     @if(!empty($discount_by_people))
                         <tr>
-                            <td colspan="2" class="label-title"><strong>{{__("Discounts:")}}</strong></td>
+                            <td colspan="2" class="label-title"><strong>{{__("Descontos:")}}</strong></td>
                         </tr>
                         <tr class="">
                             <td colspan="2" class="no-r-padding no-b-border">
@@ -135,9 +135,9 @@ $lang_local = app()->getLocale();
                                     <tr>
                                         <td class="label">
                                             @if(!$type['to'])
-                                                {{__('from :from guests',['from'=>$type['from']])}}
+                                                {{__('a partir de :from convidados',['from'=>$type['from']])}}
                                             @else
-                                                {{__(':from - :to guests',['from'=>$type['from'],'to'=>$type['to']])}}
+                                                {{__(':from - :to convidados',['from'=>$type['from'],'to'=>$type['to']])}}
                                             @endif
                                             :
                                         </td>
@@ -195,17 +195,17 @@ $lang_local = app()->getLocale();
             <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total)}}</strong></td>
         </tr>
         <tr>
-            <td class="label fsz21">{{__('Paid')}}</td>
+            <td class="label fsz21">{{__('Pago')}}</td>
             <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->paid)}}</strong></td>
         </tr>
         @if($booking->total > $booking->paid)
             <tr>
-                <td class="label fsz21">{{__('Remain')}}</td>
+                <td class="label fsz21">{{__('Restante')}}</td>
                 <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
             </tr>
         @endif
     </table>
 </div>
 <div class="text-center mt20">
-    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn btn-primary manage-booking-btn">{{__('Manage Bookings')}}</a>
+    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn btn-primary manage-booking-btn">{{__('Gerenciar Reservas')}}</a>
 </div>

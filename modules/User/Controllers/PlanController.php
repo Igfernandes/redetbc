@@ -28,7 +28,7 @@ class PlanController extends FrontendController
         $plansAnnual = \array_filter($plans->toArray(), fn($plan) => !empty($plan['annual_price']) && $plan['annual_price'] > 0);
 
         $data = [
-            'page_title' => __('Pricing Packages'),
+            'page_title' => __('Pacotes de Preços'),
             'plans' => $plans,
             'has_annual' => \count($plansAnnual) > 0,
             'user' => auth()->user(),
@@ -46,11 +46,11 @@ class PlanController extends FrontendController
         }
         $data = [
             'user' => auth()->user(),
-            'page_title'       => __("My Plan"),
+            'page_title'       => __("Meu Plano"),
             'menu_active' => 'my_plan',
             'breadcrumbs'      => [
                 [
-                    'name'  => __('My plans'),
+                    'name'  => __('Meus planos'),
                     'class' => 'active'
                 ]
             ]
@@ -71,11 +71,11 @@ class PlanController extends FrontendController
         $plan_page = route('plan');
 
         if ($user->role_id != $plan->role_id) {
-            return redirect()->to($plan_page)->with("warning", __("This plan is not suitable for your role."));
+            return redirect()->to($plan_page)->with("warning", __("Este plano não é adequado para sua função."));
         }
 
         if ($request->query('annual') and !$plan->annual_price) {
-            return redirect()->to($plan_page)->with("warning", __("This plan doesn't have annual pricing"));
+            return redirect()->to($plan_page)->with("warning", __("Este plano não tem preço anual"));
         }
 
         $asaas = new AsaasService();
@@ -85,7 +85,7 @@ class PlanController extends FrontendController
         } else
             $data = $asaas->subscribe($plan);
 
-        return \redirect()->to($data["link"] ?? $plan_page)->with("warning", __("We are experiencing technical issues to proceed with the payment. Please try again later."));
+        return \redirect()->to($data["link"] ?? $plan_page)->with("warning", __("Estamos enfrentando problemas técnicos para prosseguir com o pagamento. Por favor, tente novamente mais tarde."));
     }
 
     public function webhook(Request $request)

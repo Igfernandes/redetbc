@@ -18,7 +18,7 @@ class ModuleProvider extends \Modules\ModuleServiceProvider
     {
         return [
             'theme'=>[
-                'title'=>__("Themes"),
+                'title'=>__("Temas"),
                 'url'=>route("theme.admin.index"),
                 "permission"=>"theme_manage",
                 "position"=>70,

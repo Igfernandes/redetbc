@@ -40,9 +40,9 @@ if (isset($_GET['religion'])) {
             </p> &nbsp;
 
             @if(Auth::user() == null)
-            <a data-target="#register" data-toggle="modal">{{ __("Cadastra-se agora") }}</a>
+            <a data-target="#register" data-toggle="modal">{{ __("Cadastre-se agora") }}</a>
             @else
-            <a href="/plan">{{ __("Cadastra-se agora") }}</a>
+            <a href="/plan">{{ __("Cadastre-se agora") }}</a>
             @endif
         </div>
     </div>
@@ -52,9 +52,9 @@ if (isset($_GET['religion'])) {
     <div class="upgrade-plan ">
         <div class="content d-flex justify-content-center text-center py-2 bg-warning">
             <p class="mb-0">
-                {{ __("Your plan upgrade request has been approved.") }}
+                {{ __("Sua solicitação de atualização de plano foi aprovada.") }}
             </p> &nbsp;&nbsp;
-            <a href="{{route('user.upgrade_vendor_plans')}}">{{ __("Complete the plan upgrade") }}</a>
+            <a href="{{route('user.upgrade_vendor_plans')}}">{{ __("Complete a atualização do plano") }}</a>
         </div>
     </div>
     @endif
@@ -170,7 +170,7 @@ if (isset($_GET['religion'])) {
 
                                     @if(Auth::user()->hasPermission('dashboard_vendor_access'))
 
-                                    <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}</a></li>
+                                    <li><a href="{{route('vendor.dashboard')}}"><i class="icon ion-md-analytics"></i> {{__("Painel do Fornecedor")}}</a></li>
 
                                     @endif
 
@@ -192,7 +192,7 @@ if (isset($_GET['religion'])) {
 
                                     @if(Auth::user()->hasPermission('dashboard_access'))
 
-                                    <li class="menu-hr"><a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a></li>
+                                    <li class="menu-hr"><a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Painel do Administrador")}}</a></li>
 
                                     @endif
 
@@ -244,7 +244,7 @@ if (isset($_GET['religion'])) {
 
                         <li>
 
-                            <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
+                            <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Entrar')}}</a>
 
                         </li>
 
@@ -282,7 +282,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="{{route('vendor.dashboard')}}">
 
-                                <i class="icon ion-md-analytics"></i> {{__("Fornecedor Dashboard")}}
+                                <i class="icon ion-md-analytics"></i> {{__("Painel do Fornecedor")}}
 
                             </a>
 
@@ -294,7 +294,7 @@ if (isset($_GET['religion'])) {
 
                         <li>
 
-                            <a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a>
+                            <a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Painel do Administrador")}}</a>
 
                         </li>
 

@@ -22,10 +22,10 @@
                                         </div>
                                         <div class="ml-3">
                                             <h3 class="font-size-18 font-weight-bold text-dark mb-0 text-lh-sm">
-                                                {{__('Thank You. Your booking was submitted successfully!')}}
+                                                {{__('Obrigado. Sua reserva foi enviada com sucesso!')}}
                                             </h3>
                                             <p class="mb-0">
-                                                {{__('Booking details has been sent to:')}} <span>{{$booking->email}}</span>
+                                                {{__('Os detalhes da reserva foram enviados para:')}} <span>{{$booking->email}}</span>
                                             </p>
                                             @if($note = $gateway->getOption("payment_note"))
                                                 <p class="mb-0">
@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="ml-3">
                                             <h3 class="font-size-18 font-weight-bold text-dark mb-0 text-lh-sm">
-                                                {{__('Your booking status is: :status',['status'=>booking_status_to_text($booking->status)])}}
+                                                {{__('O status da sua reserva é: :status',['status'=>booking_status_to_text($booking->status)])}}
                                             </h3>
                                         </div>
                                     @break
@@ -49,7 +49,7 @@
                             </div>
                             @include ($service->booking_customer_info_file ?? 'Booking::frontend/booking/booking-customer-info')
                             <div class="text-right py-4 pr-4">
-                                <a href="{{route('user.booking_history')}}" class="btn btn-primary rounded-sm transition-3d-hover font-size-16 font-weight-bold py-3">{{__('Reservas')}}</a>
+                                <a href="{{route('user.booking_history')}}" class="btn btn-primary rounded-sm transition-3d-hover font-size-16 font-weight-bold py-3">{{__('Minhas Reservas')}}</a>
                             </div>
                         </div>
                     </div>

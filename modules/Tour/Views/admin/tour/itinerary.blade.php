@@ -1,10 +1,10 @@
 <div class="form-group-item">
-    <label class="control-label">{{__('Itinerary')}}</label>
+    <label class="control-label">{{__('Itinerário')}}</label>
     <div class="g-items-header">
         <div class="row">
-            <div class="col-md-2 text-left">{{__("Image")}}</div>
-            <div class="col-md-4 text-left">{{__("Title - Desc")}}</div>
-            <div class="col-md-5">{{__('Content')}}</div>
+            <div class="col-md-2 text-left">{{__("Imagem")}}</div>
+            <div class="col-md-4 text-left">{{__("Título - Desc")}}</div>
+            <div class="col-md-5">{{__('Conteúdo')}}</div>
             <div class="col-md-1"></div>
         </div>
     </div>
@@ -21,8 +21,8 @@
                             {!! \Modules\Media\Helpers\FileHelper::fieldUpload('itinerary['.$key.'][image_id]',$itinerary['image_id'] ?? '') !!}
                         </div>
                         <div class="col-md-4">
-                            <input type="text" name="itinerary[{{$key}}][title]" class="form-control" value="{{$itinerary['title'] ?? ""}}" placeholder="{{__('Título: Day 1')}}">
-                            <input type="text" name="itinerary[{{$key}}][desc]" class="form-control" value="{{$itinerary['desc'] ?? ""}}" placeholder="{{__('Desc: TP. HCM City')}}">
+                            <input type="text" name="itinerary[{{$key}}][title]" class="form-control" value="{{$itinerary['title'] ?? ""}}" placeholder="{{__('Título: Dia 1')}}">
+                            <input type="text" name="itinerary[{{$key}}][desc]" class="form-control" value="{{$itinerary['desc'] ?? ""}}" placeholder="{{__('Desc: Cidade de SP')}}">
                         </div>
                         <div class="col-md-5">
                             <textarea name="itinerary[{{$key}}][content]" class="form-control full-h" placeholder="...">{{$itinerary['content']}}</textarea>
@@ -45,8 +45,8 @@
                     {!! \Modules\Media\Helpers\FileHelper::fieldUpload('itinerary[__number__][image_id]','','__name__') !!}
                 </div>
                 <div class="col-md-4">
-                    <input type="text" __name__="itinerary[__number__][title]" class="form-control" placeholder="{{__('Título: Day 1')}}">
-                    <input type="text" __name__="itinerary[__number__][desc]" class="form-control" placeholder="{{__('Desc: TP. HCM City')}}">
+                    <input type="text" __name__="itinerary[__number__][title]" class="form-control" placeholder="{{__('Título: Dia 1')}}">
+                    <input type="text" __name__="itinerary[__number__][desc]" class="form-control" placeholder="{{__('Desc: Cidade de SP')}}">
                 </div>
                 <div class="col-md-5">
                     <textarea __name__="itinerary[__number__][content]" class="form-control full-h" placeholder="..."></textarea>

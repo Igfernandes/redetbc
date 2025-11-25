@@ -1,5 +1,5 @@
 <div class="form-section">
-    <h4 class="form-section-title">{{__('Select Payment Method')}}</h4>
+    <h4 class="form-section-title">{{__('Selecione a forma de pagamento')}}</h4>
     <div class="gateways-table accordion" id="accordionExample">
         @foreach($gateways as $k=>$gateway)
             <div class="card">

@@ -1,15 +1,15 @@
 <div class="booking-review">
-    <h4 class="booking-review-title">{{__('Your Information')}}</h4>
+    <h4 class="booking-review-title">{{__('Sua Informação')}}</h4>
     <div class="booking-review-content">
         <div class="review-section">
             <div class="info-form">
                 <ul>
                     <li class="info-first-name">
-                        <div class="label">{{__('First name')}}</div>
+                        <div class="label">{{__('Primeiro nome')}}</div>
                         <div class="val">{{$booking->first_name}}</div>
                     </li>
                     <li class="info-last-name">
-                        <div class="label">{{__('Last name')}}</div>
+                        <div class="label">{{__('Sobrenome')}}</div>
                         <div class="val">{{$booking->last_name}}</div>
                     </li>
                     <li class="info-email">
@@ -33,19 +33,19 @@
                         <div class="val">{{$booking->city}}</div>
                     </li>
                     <li class="info-state">
-                        <div class="label">{{__('State/Province/Region')}}</div>
+                        <div class="label">{{__('Estado/Província/Região')}}</div>
                         <div class="val">{{$booking->state}}</div>
                     </li>
                     <li class="info-zip-code">
-                        <div class="label">{{__('ZIP code/Postal code')}}</div>
+                        <div class="label">{{__('CEP/Código Postal')}}</div>
                         <div class="val">{{$booking->zip_code}}</div>
                     </li>
                     <li class="info-country">
-                        <div class="label">{{__('Country')}}</div>
+                        <div class="label">{{__('País')}}</div>
                         <div class="val">{{get_country_name($booking->country)}}</div>
                     </li>
                     <li class="info-notes">
-                        <div class="label">{{__('Special Requirements')}}</div>
+                        <div class="label">{{__('Requisitos Especiais')}}</div>
                         <div class="val">{{$booking->customer_notes}}</div>
                     </li>
                 </ul>

@@ -19,7 +19,7 @@ class Testimonial extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Item(ns) da Lista'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -31,18 +31,18 @@ class Testimonial extends BaseBlock
                         [
                             'id'    => 'desc',
                             'type'  => 'textArea',
-                            'label' => __('Desc')
+                            'label' => __('Descrição')
                         ],
                         [
                             'id'        => 'position',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Position')
+                            'label'     => __('Cargo')
                         ],
                         [
                             'id'    => 'avatar',
                             'type'  => 'uploader',
-                            'label' => __('Avatar Image')
+                            'label' => __('Imagem do Avatar')
                         ],
                     ]
                 ],
@@ -53,22 +53,22 @@ class Testimonial extends BaseBlock
                     'values' => [
                         [
                             'value'   => 'index',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                     ],
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outros Blocos")
         ]);
     }
 
     public function getName()
     {
-        return __('List Testimonial');
+        return __('Lista de Depoimentos');
     }
 
     public function content($model = [])

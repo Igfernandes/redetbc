@@ -5,7 +5,7 @@
         <div class="container">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{ __('Permission Matrix')}}</h1>
+                    <h1 class="title-bar">{{ __('Matriz de Permissões')}}</h1>
                 </div>
             </div>
             @include('admin.message')
@@ -54,7 +54,7 @@
                     <hr>
                     <div class="d-flex justify-content-between">
                         <span>&nbsp;</span>
-                        <button class="btn btn-primary" type="submit">{{ __('Save Change')}}</button>
+                        <button class="btn btn-primary" type="submit">{{ __('Salvar Alterações')}}</button>
                     </div>
                 </div>
             </div>

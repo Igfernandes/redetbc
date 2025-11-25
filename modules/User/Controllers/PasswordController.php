@@ -22,7 +22,7 @@ class PasswordController extends FrontendController
         $data = [
             'breadcrumbs' => [
                 [
-                    'name' => __('Setting'),
+                    'name' => __('Configuração'),
                     'url'  => route("user.profile.index")
                 ],
                 [
@@ -38,15 +38,15 @@ class PasswordController extends FrontendController
     public function changePasswordUpdate(Request $request)
     {
         if(is_demo_mode()){
-            return back()->with('error',"Demo mode: disabled");
+            return back()->with('error',__("Modo Demo: desabilitado"));
         }
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error", __("Your current password does not matches with the password you provided. Please try again."));
+            return redirect()->back()->with("error", __("Sua senha atual não corresponde à senha que você forneceu. Por favor, tente novamente."));
         }
         if (strcmp($request->get('current-password'), $request->get('new-password')) == 0) {
             //Current password and new password are same
-            return redirect()->back()->with("error", __("New Password cannot be same as your current password. Please choose a different password."));
+            return redirect()->back()->with("error", __("A Nova Senha não pode ser igual à sua senha atual. Por favor, escolha uma senha diferente."));
         }
         $request->validate([
             'current-password' => 'required',
@@ -65,7 +65,7 @@ class PasswordController extends FrontendController
         $user = Auth::user();
         $this->resetPassword($user,$request->input('new-password'));
 
-        return redirect()->back()->with('success', __('Password changed successfully !'));
+        return redirect()->back()->with('success', __('Senha alterada com sucesso!'));
     }
 
 }

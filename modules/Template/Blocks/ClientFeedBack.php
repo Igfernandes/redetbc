@@ -9,7 +9,7 @@ class ClientFeedBack extends BaseBlock
 
     public function getName()
     {
-        return __('Client Feedback');
+        return __('Feedback do Cliente');
     }
 
     public function getOptions()
@@ -19,12 +19,12 @@ class ClientFeedBack extends BaseBlock
                 [
                     'id'    => 'image_id',
                     'type'  => 'uploader',
-                    'label' => __('Featured Image')
+                    'label' => __('Imagem Destacada')
                 ],
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Item(s) da Lista'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -42,12 +42,12 @@ class ClientFeedBack extends BaseBlock
                         [
                             'id'    => 'desc',
                             'type'  => 'textArea',
-                            'label' => __('Desc')
+                            'label' => __('Descrição')
                         ],
                     ]
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

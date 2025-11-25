@@ -3,12 +3,12 @@
         <div class="text-paginate">
             <h2 class="text">
                 @if($rows->total() > 1)
-                    {{ __(":count services found",['count'=>$rows->total()]) }}
+                    {{ __(":count serviços encontrados",['count'=>$rows->total()]) }}
                 @else
-                    {{ __(":count service found",['count'=>$rows->total()]) }}
+                    {{ __(":count serviço encontrado",['count'=>$rows->total()]) }}
                 @endif
             </h2>
-            <span class="count-string">{{ __("Mostrando :from - :to of :total Services",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+            <span class="count-string">{{ __("Mostrando :from - :to de :total Serviços",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
         </div>
         <div class="list-item">
             <div class="row">
@@ -24,8 +24,8 @@
         </div>
     @else
         <div class="not-found-box">
-            <h3 class="n-title">{{__("We couldn't find any services.")}}</h3>
-            <p class="p-desc">{{__("Try changing your filter criteria")}}</p>
+            <h3 class="n-title">{{__("Não conseguimos encontrar nenhum serviço.")}}</h3>
+            <p class="p-desc">{{__("Tente mudar seus critérios de filtro")}}</p>
 
         </div>
     @endif

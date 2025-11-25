@@ -25,7 +25,7 @@
                 'avatar' =>  $user->avatar_url,
                 'link' => route('user.wallet'),
                 'type' => 'wallet_request',
-                'message' => __('Administrator has approved your Credit amount')
+                'message' => __('O administrador aprovou seu crédito.')
             ];
 
 

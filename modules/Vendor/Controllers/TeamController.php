@@ -16,11 +16,11 @@ class TeamController extends FrontendController
 
         $rows = auth()->user()->vendorTeams()->with('vendor')->paginate(30);
         $data = [
-            'page_title'=>__("Team members"),
+            'page_title'=>__("Membros da equipe"),
             'rows'=>$rows,
             'breadcrumbs'=>[
                 [
-                    'name'=>__("Team members")
+                    'name'=>__("Membros da equipe")
                 ]
             ]
         ];
@@ -39,18 +39,18 @@ class TeamController extends FrontendController
         $email = $request->input('email');
         $member = User::whereEmail($email)->first();
         if(!$member){
-            return back()->with('danger',__("Member does not exists"));
+            return back()->with('danger',__("Membro não existe"));
         }
 
         $currentUser = auth()->user();
 
         if($currentUser->email == $email){
-            return back()->with('danger',__("You can not add yourself"));
+            return back()->with('danger',__("Você não pode se adicionar"));
         }
 
         $check = $currentUser->members()->where('member_id',$member->id)->first();
         if($check){
-            return back()->with('danger',__("Request exists"));
+            return back()->with('danger',__("Solicitação existente"));
         }
 
         $check = new VendorTeam();
@@ -62,7 +62,7 @@ class TeamController extends FrontendController
 
         VendorTeamRequestCreatedEvent::dispatch($check);
 
-        return back()->with('success',__("Request created"));
+        return back()->with('success',__("Solicitação criada"));
 
     }
 

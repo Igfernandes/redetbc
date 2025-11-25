@@ -5,7 +5,7 @@ class Text extends BaseBlock
 
     public function getName()
     {
-        return __('Text');
+        return __('Texto');
     }
 
     public function getOptions()
@@ -34,17 +34,17 @@ class Text extends BaseBlock
                     'id'        => 'class',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label' => __('Wrapper Class (opt)'),
+                    'label' => __('Classe Wrapper (opc)'),
                     'tab'   => 'content'
                 ],
                 [
                     'id'    => 'padding',
                     'type'  => 'spacing',
-                    'label' => __('Padding'),
+                    'label' => __('Preenchimento'),
                     'tab'   => 'style'
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

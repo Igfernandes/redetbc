@@ -23,7 +23,7 @@ class UserWishListController extends FrontendController
             'rows' => $wishlist->paginate(5),
             'breadcrumbs'        => [
                 [
-                    'name'  => __('Wishlist'),
+                    'name'  => __('Lista de desejos'),
                     'class' => 'active'
                 ],
             ],
@@ -36,15 +36,15 @@ class UserWishListController extends FrontendController
         $object_model = $request->input('object_model');
         if(empty($object_id))
         {
-            return $this->sendError(__("Service ID is required"));
+            return $this->sendError(__("O ID do serviço é obrigatório"));
         }
         if(empty($object_model))
         {
-            return $this->sendError(__("Service type is required"));
+            return $this->sendError(__("O tipo de serviço é obrigatório"));
         }
         $allServices = get_bookable_services();
         if (empty($allServices[$object_model])) {
-            return $this->sendError(__('Service type not found'));
+            return $this->sendError(__('Tipo de serviço não encontrado'));
         }
         $meta = $this->userWishListClass::where("object_id",$object_id)
             ->where("object_model",$object_model)
@@ -66,8 +66,8 @@ class UserWishListController extends FrontendController
             ->first();
         if(!empty($meta)){
             $meta->delete();
-            return redirect()->back()->with('success', __('Delete success!'));
+            return redirect()->back()->with('success', __('Exclusão bem-sucedida!'));
         }
-        return redirect()->back()->with('success', __('Delete fail!'));
+        return redirect()->back()->with('success', __('Falha na exclusão!'));
     }
 }

@@ -76,7 +76,7 @@ class ModuleProvider extends ModuleServiceProvider
         $res['news'] = [
             "position"=>80.1,
             'url'        => route('news.vendor.index'),
-            'title'      => __("Manage News"),
+            'title'      => __("Gerenciar notícias"),
             'icon'       => 'ion-md-bookmarks',
             'permission' => 'news_view',
         ];

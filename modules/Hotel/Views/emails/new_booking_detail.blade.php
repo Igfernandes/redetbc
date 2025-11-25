@@ -169,5 +169,5 @@ $lang_local = app()->getLocale();
     </table>
 </div>
 <div class="text-center mt20">
-    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn btn-primary manage-booking-btn">{{__('Manage Bookings')}}</a>
+    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn b__('Gerenciar reservas')tn-primary manage-booking-btn">{{}}</a>
 </div>

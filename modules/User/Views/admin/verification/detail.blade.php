@@ -6,7 +6,7 @@
         <div class="container">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? 'Verify Request: '.$row->getDisplayName() : 'Add new user'}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Solicitação de Verificação: ').$row->getDisplayName() : __('Adicionar novo usuário')}}</h1>
                 </div>
             </div>
             @include('admin.message')
@@ -14,15 +14,15 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
                     <div class="panel">
-                        <div class="panel-title"><strong>{{ __('Data')}}</strong></div>
+                        <div class="panel-title"><strong>{{ __('Dados')}}</strong></div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>{{__('No')}}</th>
-                                            <th>{{__("Information")}}</th>
-                                            <th width="200px">{{__("Mark as verified")}}</th>
+                                            <th>{{__('Não')}}</th>
+                                            <th>{{__("Informação")}}</th>
+                                            <th width="200px">{{__("Marcar como verificado")}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -71,7 +71,7 @@
             <hr>
             <div class="d-flex justify-content-between">
                 <span></span>
-                <button class="btn btn-primary" type="submit">{{ __('Save Change')}}</button>
+                <button class="btn btn-primary" type="submit">{{ __('Salvar Alteração')}}</button>
             </div>
         </div>
     </form>

@@ -1,19 +1,17 @@
 <div class="modal fade" id="modal-booking-{{$booking->id}}">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">{{__("Booking ID")}}: #{{$booking->id}}</h4>
+                <h4 class="modal-title">{{__("ID da Reserva")}}: #{{$booking->id}}</h4>
             </div>
-            <!-- Modal body -->
             <div class="modal-body">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#booking-detail-{{$booking->id}}">{{__("Booking Detail")}}</a>
+                        <a class="nav-link active" data-toggle="tab" href="#booking-detail-{{$booking->id}}">{{__("Detalhes da Reserva")}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#booking-customer-{{$booking->id}}">
-                            {{__("Customer Information")}}
+                            {{__("Informação do Cliente")}}
                         </a>
                     </li>
                 </ul>
@@ -25,24 +23,24 @@
                                     <div class="info-form">
                                         <ul>
                                             <li>
-                                                <div class="label">{{__('Booking Status')}}</div>
+                                                <div class="label">{{__('Status da Reserva')}}</div>
                                                 <div class="val">{{$booking->statusName}}</div>
                                             </li>
                                             <li>
-                                                <div class="label">{{__('Booking Date')}}</div>
+                                                <div class="label">{{__('Data da Reserva')}}</div>
                                                 <div class="val">{{display_date($booking->created_at)}}</div>
                                             </li>
                                             @if(!empty($booking->gateway))
                                                 <?php $gateway = get_payment_gateway_obj($booking->gateway);?>
                                                 @if($gateway)
                                                     <li>
-                                                        <div class="label">{{__('Payment Method')}}</div>
+                                                        <div class="label">{{__('Método de Pagamento')}}</div>
                                                         <div class="val">{{$gateway->name}}</div>
                                                     </li>
                                                 @endif
                                                 @if($gateway and $note = $gateway->getOption('payment_note'))
                                                     <li>
-                                                        <div class="label">{{__('Payment Note')}}</div>
+                                                        <div class="label">{{__('Nota de Pagamento')}}</div>
                                                         <div class="val">{!! clean($note) !!}</div>
                                                     </li>
                                                 @endif
@@ -68,9 +66,8 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal footer -->
             <div class="modal-footer">
-                <span class="btn btn-secondary" data-dismiss="modal">{{__("Close")}}</span>
+                <span class="btn btn-secondary" data-dismiss="modal">{{__("Fechar")}}</span>
             </div>
         </div>
     </div>

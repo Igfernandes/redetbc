@@ -8,7 +8,7 @@
     <textarea name="content" cols="30" rows="5" class="form-control">{{old('content',$translation->content)}}</textarea>
 </div>
 <div class="form-group">
-    <label>{{__("For Role")}} <span class="text-danger">*</span></label>
+    <label>{{__("Para Cargo")}} <span class="text-danger">*</span></label>
     <select name="role_id" class="form-control">
         <option value="">{{__("-- Selecione --")}}</option>
         @foreach(\Modules\User\Models\Role::all() as $role)
@@ -20,7 +20,7 @@
 
 <div class="form-group">
     <label class="control-label">{{__("Preço")}} </label>
-    <input type="number" step="any" placeholder="{{__("Free")}}" value="{{old('price',$row->price)}}" name="price"
+    <input type="number" step="any" placeholder="{{__("Grátis")}}" value="{{old('price',$row->price)}}" name="price"
         class="form-control">
 </div>
 <div class="form-group">
@@ -50,7 +50,7 @@
         <option @if(old('duration_type',$row->duration_type) == 'day') selected
             @endif value="day">{{__("Dia")}}</option>
         <option @if(old('duration_type',$row->duration_type) == 'week') selected
-            @endif value="week">{{__("Week")}}</option>
+            @endif value="week">{{__("Semana")}}</option>
         <option @if(old('duration_type',$row->duration_type) == 'month') selected
             @endif value="month">{{__("Mês")}}</option>
         <option @if(old('duration_type',$row->duration_type) == 'year') selected
@@ -58,7 +58,7 @@
     </select>
 </div>
 <div class="form-group">
-    <label class="control-label">{{__("Max Serviços")}} </label>
+    <label class="control-label">{{__("Máx Serviços")}} </label>
     <input type="number" min="0" value="{{old('max_service',$row->max_service)}}" name="max_service"
         placeholder="{{__("Ilimitado")}}" class="form-control">
     <p><i>{{__("Quantos serviços publicados o usuário pode postar")}}</i></p>

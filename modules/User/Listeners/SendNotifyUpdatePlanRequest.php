@@ -16,9 +16,9 @@
         public function handle(UpdatePlanRequest $event)
         {
             $user = $event->user;
-            $message = __('Your plan request has been approved');
+            $message = __('Sua solicitação de plano foi aprovada');
             if(!empty($user->plan_status) && $user->plan_status == 'cancel'){
-                $message = __('Your plan request has been cancelled');
+                $message = __('Sua solicitação de plano foi cancelada');
             }
             $data = [
                 'id' =>  $user->id,
@@ -33,9 +33,9 @@
 
             $user->notify(new PrivateChannelServices($data));
 
-            $admin_message = $user->display_name.__(' plan request has been approved');
+            $admin_message = $user->display_name.__(' solicitação de plano foi aprovada');
             if(!empty($user->plan_status) && $user->plan_status == 'cancel'){
-                $admin_message = $user->display_name.__(' plan request has been cancelled');
+                $admin_message = $user->display_name.__(' solicitação de plano foi cancelada');
             }
             $data = [
                 'id' =>  $user->id,

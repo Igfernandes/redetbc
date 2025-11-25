@@ -4,7 +4,7 @@
         <div class="row justify-content-center bravo-login-form-page bravo-login-page">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Two Factor Authentication') }}</div>
+                    <div class="card-header">{{ __('Autenticação de Dois Fatores') }}</div>
                     <div class="card-body">
 
                         @include('Layout::admin.message')
@@ -14,11 +14,10 @@
                         @switch(request('type'))
                             @case("recovery_code")
                                 <div class="mb-4 text-sm text-gray-600">
-                                    {{ __('Please confirm access to your account by entering one of your emergency recovery codes.') }}
+                                    {{ __('Por favor, confirme o acesso à sua conta inserindo um dos seus códigos de recuperação de emergência.') }}
                                 </div>
-                                <!-- Password -->
                                 <div class="form-group row">
-                                    <label for="recovery_code" class="col-md-4 col-form-label text-md-right">{{ __('Recuperação Code') }}</label>
+                                    <label for="recovery_code" class="col-md-4 col-form-label text-md-right">{{ __('Código de Recuperação') }}</label>
                                     <div class="col-md-6">
                                         <input id="recovery_code" type="text" class="form-control{{ $errors->has('recovery_code') ? ' is-invalid' : '' }}" name="recovery_code"  required>
                                         @if ($errors->has('recovery_code'))
@@ -31,11 +30,10 @@
                             @break
                             @default
                                 <div class="mb-4 text-sm text-gray-600">
-                                    {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator application.') }}
+                                    {{ __('Por favor, confirme o acesso à sua conta inserindo o código de autenticação fornecido pelo seu aplicativo autenticador.') }}
                                 </div>
-                                <!-- Password -->
                                 <div class="form-group row">
-                                    <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Code') }}</label>
+                                    <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Código') }}</label>
                                     <div class="col-md-6">
                                         <input id="code" type="text" class="form-control{{ $errors->has('code') ? ' is-invalid' : '' }}" name="code"  required>
                                         @if ($errors->has('code'))
@@ -51,12 +49,12 @@
                                 <div class="form-group row mb-0">
                                     <div class="offset-md-4">
                                         @if(request('type') == 'recovery_code')
-                                            <a href="{{route('two-factor.login')}}" class="btn btn-link">{{__('Use an authentication code')}}</a>
+                                            <a href="{{route('two-factor.login')}}" class="btn btn-link">{{__('Usar um código de autenticação')}}</a>
                                         @else
-                                            <a href="{{route('two-factor.login',['type'=>'recovery_code'])}}" class="btn btn-link">{{__('Use a recovery code')}}</a>
+                                            <a href="{{route('two-factor.login',['type'=>'recovery_code'])}}" class="btn btn-link">{{__('Usar um código de recuperação')}}</a>
                                         @endif
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('Submit') }}
+                                            {{ __('Enviar') }}
                                         </button>
                                     </div>
                                 </div>

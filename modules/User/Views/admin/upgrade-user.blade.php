@@ -65,7 +65,7 @@
                                     <td class="status"><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>
                                     <td>
                                         @if($row->status!='approved')
-                                            <a class="btn btn-sm btn-info approve-user" data-id="{{$row->id}}"  href="{{route('user.admin.upgradeId',['id' => $row->id])}}">{{__('Approve')}}</a>
+                                            <a class="btn btn-sm btn-info approve-user" data-id="{{$row->id}}"  href="{{route('user.admin.upgradeId',['id' => $row->id])}}">{{__('Aprovar')}}</a>
                                         @endif
                                     </td>
                                 </tr>

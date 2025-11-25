@@ -2,13 +2,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("User Plans")}}</h1>
+            <h1 class="title-bar">{{__("Planos do Usuário")}}</h1>
         </div>
         @include('admin.message')
         <div class="row">
             <div class="col-md-4 mb40">
                 <div class="panel">
-                    <div class="panel-title">{{__("Add Plan")}}</div>
+                    <div class="panel-title">{{__("Adicionar Plano")}}</div>
                     <div class="panel-body">
                         <form action="{{route('user.admin.plan.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
@@ -52,11 +52,11 @@
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
                                     <th width="60px">{{__("ID")}}</th>
                                     <th>{{__("Nome")}}</th>
-                                    <th>{{__("For Role")}}</th>
+                                    <th>{{__("Para Perfil")}}</th>
                                     <th width="60px">{{__("Preço")}}</th>
-                                    <th width="60px">{{__("Annual Price")}}</th>
-                                    <th width="60px">{{__("Duration")}}</th>
-                                    <th width="60px">{{__("Max Services")}}</th>
+                                    <th width="60px">{{__("Preço Anual")}}</th>
+                                    <th width="60px">{{__("Duração")}}</th>
+                                    <th width="60px">{{__("Serviços Máx.")}}</th>
                                     <th width="60px">{{__("Status")}}</th>
                                     <th width="60px">{{__("Data")}}</th>
                                     <th width="100px"></th>
@@ -71,10 +71,10 @@
                                             <a href="{{route('user.admin.plan.edit',['id'=>$row->id])}}">{{$row->title}}</a>
                                         </td>
                                         <td>{{$row->role->name ?? ''}}</td>
-                                        <td class="">{{$row->price ? format_money($row->price) : __("Free")}}</td>
+                                        <td class="">{{$row->price ? format_money($row->price) : __("Grátis")}}</td>
                                         <td class="">{{$row->annual_price ? format_money($row->annual_price) : ''}}</td>
                                         <td class="">{{$row->duration_text}}</td>
-                                        <td class="">{{$row->max_service ? $row->max_service : __('Unlimited')}}</td>
+                                        <td class="">{{$row->max_service ? $row->max_service : __('Ilimitado')}}</td>
                                         <td><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>
                                         <td class="">{{ display_date($row->updated_at)}}</td>
                                         <td class="title">

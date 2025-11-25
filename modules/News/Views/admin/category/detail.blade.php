@@ -43,7 +43,7 @@
                                             </label>
                                         </div>
                                         <div>
-                                            <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{ __('Draft')}}
+                                            <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{ __('Rascunho')}}
                                             </label>
                                         </div>
                                     </div>

@@ -9,7 +9,7 @@ class VideoPlayer extends BaseBlock
 
     public function getName()
     {
-        return __('Video Player');
+        return __('Player de Vídeo');
     }
 
     public function getOptions()
@@ -26,15 +26,15 @@ class VideoPlayer extends BaseBlock
                     'id'        => 'youtube',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Youtube link')
+                    'label'     => __('Link do Youtube')
                 ],
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Carregador de Imagem de Fundo')
+                    'label' => __('Imagem de Fundo')
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outros Blocos")
         ];
     }
 

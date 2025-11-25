@@ -2,9 +2,9 @@
     <div class="bravo_banner">
         @if(!empty($breadcrumbs))
             <div class="container">
-                <nav class="py-3" aria-label="breadcrumb">
+                <nav class="py-3" aria-label="{{__('navegação de migalhas')}}">
                     <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
-                        <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="{{url('')}}">{{__('Home')}}</a></li>
+                        <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="{{url('')}}">{{__('Início')}}</a></li>
                         @foreach($breadcrumbs as $breadcrumb)
                             <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 {{$breadcrumb['class'] ?? ''}}">
                                 @if(!empty($breadcrumb['url']))
@@ -26,7 +26,7 @@
                         <div class="flex-horizontal-center">
                             @if($row->video)
                                 <a class="travel-fancybox btn btn-white transition-3d-hover py-2 px-md-4 px-3 shadow-6 mr-1" href="javascript:;" data-src="{{ handleVideoUrl($row->video) }}" data-speed="700">
-                                    <i class="flaticon-movie mr-md-2 font-size-18 text-primary"></i><span class="d-none d-md-inline">{{ __("Video") }}</span>
+                                    <i class="flaticon-movie mr-md-2 font-size-18 text-primary"></i><span class="d-none d-md-inline">{{ __("Vídeo") }}</span>
                                 </a>
                             @endif
                         </div>
@@ -36,4 +36,3 @@
         </div>
     </div>
 @endif
-

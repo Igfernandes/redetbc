@@ -75,11 +75,11 @@ class VerificationController extends AdminController
                     'url' => route('user.admin.index')
                 ],
                 [
-                    'name' => __("Verification Request"),
+                    'name' => __("Solicitação de Verificação"),
                     'url' => route('user.admin.verification.index')
                 ],
                 [
-                    'name' => __("Verify request: :email", ['email' => $row->email]),
+                    'name' => __("Solicitação de verificação: :email", ['email' => $row->email]),
                     'class' => 'active'
                 ],
             ]
@@ -130,7 +130,7 @@ class VerificationController extends AdminController
 
         event(new AdminUpdateVerificationData($row, $full));
 
-        return redirect()->back()->with("success", __("Updated"));
+        return redirect()->back()->with("success", __("Atualizado"));
     }
 
     public function bulkEdit(Request $request)
@@ -139,7 +139,7 @@ class VerificationController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids))
-            return redirect()->back()->with('error', __('Select at leas 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
         if (empty($action))
             return redirect()->back()->with('error', __('Selecione uma ação!'));
 

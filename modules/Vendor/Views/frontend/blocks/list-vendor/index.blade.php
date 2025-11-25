@@ -46,7 +46,7 @@
                                 </div>
                             @endif
                             <a href="{{route('user.profile',['id'=>$row->user_name ?? $row->id])}}" class="btn btn-primary">
-                                <span class="btn-title">{{ __("Visualizar Profile") }}</span>
+                                <span class="btn-title">{{ __("Visualizar Perfil") }}</span>
                             </a>
                         </div>
                     </div>

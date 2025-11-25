@@ -13,12 +13,12 @@
                 @php ($old = json_decode($field['data'],true))
                 @if(!empty($old))
                 <input type="hidden" accept=".png,.jpg,.jpge" name="verify_data_{{$field['id']}}" value="{{($field['data'])}}">
-                <a target="_blank" href="{{route('media.private.view',['path'=>$old['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("Visualizar document")}} &nbsp;&nbsp;<i class="fa fa-download"></i></a>
+                <a target="_blank" href="{{route('media.private.view',['path'=>$old['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("Visualizar documento")}} &nbsp;&nbsp;<i class="fa fa-download"></i></a>
 
                 @endif
             </div>
             @if(empty($only_show_data))
-            <span class="btn btn-primary btn-sm "><i class="fa fa-upload"></i>&nbsp;&nbsp;  {{__('Select File')}}
+            <span class="btn btn-primary btn-sm "><i class="fa fa-upload"></i>&nbsp;&nbsp;  {{__('Selecione o arquivo')}}
                 <input class="btn-upload-private-file" data-name="verify_data_{{$field['id']}}" data-multiple="" type="file">
             </span>
             @else

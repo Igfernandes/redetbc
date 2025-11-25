@@ -26,7 +26,7 @@ class SendNotifyUpdateVerificationData
             'avatar' =>  $user->avatar_url,
             'link' => route('user.verification.index'),
             'type' => 'user_verification_request',
-            'message' => __('Your account information was verified')
+            'message' => __('As informações da sua conta foram verificadas.')
         ];
 
         $user->notify(new PrivateChannelServices($data));

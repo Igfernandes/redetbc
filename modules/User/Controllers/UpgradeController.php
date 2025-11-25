@@ -31,7 +31,7 @@ class UpgradeController extends FrontendController
         $plansAnnual = \array_filter($plans->toArray(), fn($plan) => !empty($plan['annual_price']) && $plan['annual_price'] > 0);
 
         $data = [
-            'page_title' => __('Pricing Packages'),
+            'page_title' => __('Pacotes de Preços'),
             'plans' => $plans,
             'has_annual' => \count($plansAnnual) > 0,
             'user' => auth()->user(),
@@ -45,17 +45,17 @@ class UpgradeController extends FrontendController
 
         $plan = Plan::findOrFail((int) $id);
         if (!$plan)
-            return redirect()->back()->with("warning", __("This plan is not available."));;
+            return redirect()->back()->with("warning", __("Este plano não está disponível."));;
 
         $user = auth()->user();
         $plan_page = route('plan');
 
         if ($user->role_id === $plan->role_id) {
-            return redirect()->to($plan_page)->with("warning", __("This plan already used by you."));
+            return redirect()->to($plan_page)->with("warning", __("Você já está usando este plano."));
         }
 
         if ($request->query('annual') and !$plan->annual_price) {
-            return redirect()->to($plan_page)->with("warning", __("This plan doesn't have annual pricing"));
+            return redirect()->to($plan_page)->with("warning", __("Este plano não tem preço anual"));
         }
 
         $asaas = new AsaasService();
@@ -75,6 +75,6 @@ class UpgradeController extends FrontendController
         } else
             $data = $asaas->subscribe($plan, $options);
 
-        return \redirect()->to($data["link"] ?? $plan_page)->with("warning", __("We are experiencing technical issues to proceed with the payment. Please try again later."));
+        return \redirect()->to($data["link"] ?? $plan_page)->with("warning", __("Estamos enfrentando problemas técnicos para prosseguir com o pagamento. Por favor, tente novamente mais tarde."));
     }
 }

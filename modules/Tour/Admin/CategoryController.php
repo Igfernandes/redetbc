@@ -90,7 +90,7 @@ class CategoryController extends AdminController
 
         if ($res) {
             do_action(Hook::AFTER_SAVING_CATEGORY,$row,$request);
-            return back()->with('success',  __('Category saved') );
+            return back()->with('success',  __('Categoria salva') );
         }
     }
 

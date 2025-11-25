@@ -9,7 +9,7 @@ class FormSearchAllService extends BaseBlock
 {
     public function getName()
     {
-        return __('Form Search All Service');
+        return __('Formulário de Busca de Todos os Serviços');
     }
 
     public function getOptions()
@@ -23,14 +23,14 @@ class FormSearchAllService extends BaseBlock
                 'id'        => 'title_for_'.$key,
                 'type'      => 'input',
                 'inputType' => 'text',
-                'label'     => __('Título for :service',['service'=>ucwords($key)])
+                'label'     => __('Título para :service',['service'=>ucwords($key)])
             ];
         }
         $arg[] = [
             'id'            => 'service_types',
             'type'          => 'checklist',
             'listBox'          => 'true',
-            'label'         => "<strong>".__('Service Type')."</strong>",
+            'label'         => "<strong>".__('Tipo de Serviço')."</strong>",
             'values'        => $list_service,
         ];
 
@@ -62,11 +62,11 @@ class FormSearchAllService extends BaseBlock
                 ],
                 [
                     'value'   => 'carousel_v2',
-                    'name' => __("Slider Carousel Ver 2")
+                    'name' => __("Carrossel deslizante Ver 2")
                 ],
                 [
                     'value'   => 'bg_video',
-                    'name' => __("Background Video")
+                    'name' => __("Vídeo de Fundo")
                 ],
             ]
         ];
@@ -74,38 +74,38 @@ class FormSearchAllService extends BaseBlock
         $arg[] = [
             'id'    => 'bg_image',
             'type'  => 'uploader',
-            'label' => __('- Layout Normal: Carregador de Imagem de Fundo')
+            'label' => __('- Layout Normal: Uploader de Imagem de Fundo')
         ];
 
         $arg[] = [
             'id'        => 'video_url',
             'type'      => 'input',
             'inputType' => 'text',
-            'label' => __('- Layout Video: Youtube Url')
+            'label' => __('- Layout Vídeo: URL do Youtube')
         ];
 
         $arg[] = [
             'id'          => 'list_slider',
             'type'        => 'listItem',
-            'label'       => __('- Controle deslizante de layout: Listar item(ns)'),
+            'label'       => __('- Layout Slider: Listar Item(ns)'),
             'title_field' => 'title',
             'settings'    => [
                 [
                     'id'        => 'title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Título (using for slider ver 2)')
+                    'label'     => __('Título (usando para slider ver 2)')
                 ],
                 [
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc (using for slider ver 2)')
+                    'label'     => __('Desc (usando para slider ver 2)')
                 ],
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Carregador de Imagem de Fundo')
+                    'label' => __('Uploader de Imagem de Fundo')
                 ]
             ]
         ];
@@ -119,7 +119,7 @@ class FormSearchAllService extends BaseBlock
 
         return [
             'settings' => $arg,
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

@@ -34,7 +34,7 @@
                                             'dataType' => 'json'
                                         ],
                                         'allowClear'  => true,
-                                        'placeholder' => __('-- Select Employer --')
+                                        'placeholder' => __('-- Selecionar Empregador --')
                                     ]
                                 ], !empty($company->id) ? [
                                     $company->id,
@@ -43,7 +43,7 @@
                                 ?>
                             @endif
                                 <select name="plan_id" class="form-control">
-                                       <option value="">{{__(" All Plan ")}}</option>
+                                       <option value="">{{__(" Todos os Planos ")}}</option>
                                     @foreach($plans as $plan)
                                        <option @if(Request()->plan_id == $plan->id) selected @endif value="{{ $plan->id }}">{{ $plan->title }}</option>
                                     @endforeach
@@ -60,7 +60,7 @@
                                 <tr>
 {{--                                    <th width="60px"><input type="checkbox" class="check-all"></th>--}}
                                     <th>{{__("ID")}}</th>
-                                    <th>{{__("Customer")}}</th>
+                                    <th>{{__("Cliente")}}</th>
                                     <th>{{__("Nome do Plano")}}</th>
                                     <th>{{__("Expira em")}}</th>
                                     <th>{{__("Usado/Total")}}</th>
@@ -78,19 +78,19 @@
                                             <td>{{ $row->user ? $row->user->getDisplayName() : '' }}</td>
                                             <td class="trans-id">{{$row->plan->title ?? ''}}</td>
                                             <td class="total-jobs">{{display_datetime($row->end_date)}}</td>
-                                            <td class="used">@if(!$row->max_service) {{__("Unlimited")}} @else {{$row->used}}/{{$row->max_service}} @endif</td>
+                                            <td class="used">@if(!$row->max_service) {{__("Ilimitado")}} @else {{$row->used}}/{{$row->max_service}} @endif</td>
                                             <td class="remaining">{{format_money($row->price)}}</td>
                                             <td >
                                                 @if($row->status==0)
-                                                    <div class="text-warning mb-3">{{__('Pending')}}</div>
+                                                    <div class="text-warning mb-3">{{__('Pendente')}}</div>
                                                 @elseif($row->status==2)
-                                                    <div class="text-warning mb-3">{{__('Cancel')}}</div>
+                                                    <div class="text-warning mb-3">{{__('Cancelar')}}</div>
                                                 @elseif($row->is_valid)
-                                                    <span class="text-success">{{__('Active')}}</span>
+                                                    <span class="text-success">{{__('Ativo')}}</span>
                                                 @else
-                                                    <div class="text-danger mb-3">{{__('Expired')}}</div>
+                                                    <div class="text-danger mb-3">{{__('Expirado')}}</div>
                                                     <div>
-                                                        <a href="{{route('plan')}}" class="btn btn-warning">{{__('Renew')}}</a>
+                                                        <a href="{{route('plan')}}" class="btn btn-warning">{{__('Renovar')}}</a>
                                                     </div>
                                                 @endif
                                             </td>

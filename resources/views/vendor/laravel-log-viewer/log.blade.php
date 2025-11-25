@@ -52,7 +52,7 @@
   <div class="row">
     <div class="col sidebar mb-3">
 
-        <h5><i class="fa fa-calendar" aria-hidden="true"></i> {{__('System Log Viewer')}}</h5>
+        <h5><i class="fa fa-calendar" aria-hidden="true"></i> {{__('Visualizador de Log do Sistema')}}</h5>
         <br>
         <div class="list-group div-scroll">
                     @foreach($folders as $folder)
@@ -85,20 +85,20 @@
           <div class="panel-body">
               @if ($logs === null)
                   <div>
-                      {{__('Log file >50M, please download it.')}}
+                      {{__('Arquivo de log >50M, faça o download.')}}
                   </div>
               @else
                   <table id="table-log" class="table table-striped" data-ordering-index="{{ $standardFormat ? 2 : 0 }}">
                       <thead>
                       <tr>
                           @if ($standardFormat)
-                              <th>{{__('Level')}}</th>
-                              <th>{{__('Context')}}</th>
+                              <th>{{__('Nível')}}</th>
+                              <th>{{__('Contexto')}}</th>
                               <th>{{__('Data')}}</th>
                           @else
-                              <th>{{__('Line number')}}</th>
+                              <th>{{__('Número da linha')}}</th>
                           @endif
-                          <th>{{__('Content')}}</th>
+                          <th>{{__('Conteúdo')}}</th>
                       </tr>
                       </thead>
                       <tbody>
@@ -139,20 +139,20 @@
               <div class="p-3">
                   @if($current_file)
                       <a href="?dl={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}">
-                          <span class="fa fa-download"></span> Download file
+                          <span class="fa fa-download"></span> Baixar arquivo
                       </a>
                       -
                       <a id="clean-log" href="?clean={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}">
-                          <span class="fa fa-sync"></span> Clean file
+                          <span class="fa fa-sync"></span> Limpar arquivo
                       </a>
                       -
                       <a id="delete-log" href="?del={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}">
-                          <span class="fa fa-trash"></span> Delete file
+                          <span class="fa fa-trash"></span> Excluir arquivo
                       </a>
                       @if(count($files) > 1)
                           -
                           <a id="delete-all-log" href="?delall=true{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}">
-                              <span class="fa fa-trash-alt"></span> Delete all files
+                              <span class="fa fa-trash-alt"></span> Excluir todos os arquivos
                           </a>
                       @endif
                   @endif
@@ -166,7 +166,6 @@
 @endsection
 
 @section('script.body')
-    <!-- Datatables -->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script>

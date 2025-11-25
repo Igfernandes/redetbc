@@ -11,7 +11,7 @@ class ListFeaturedItem extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Item(s) da Lista'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -29,7 +29,7 @@ class ListFeaturedItem extends BaseBlock
                         [
                             'id'    => 'icon_image',
                             'type'  => 'uploader',
-                            'label' => __('Image Uploader')
+                            'label' => __('Upload de Imagem')
                         ],
                         [
                             'id'        => 'order',
@@ -50,30 +50,30 @@ class ListFeaturedItem extends BaseBlock
                         ],
                         [
                             'value'   => 'style2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                         [
                             'value'   => 'style3',
-                            'name' => __("Style 3")
+                            'name' => __("Estilo 3")
                         ],
                         [
                             'value'   => 'style4',
-                            'name' => __("Style 4")
+                            'name' => __("Estilo 4")
                         ],
                         [
                             'value'   => 'style5',
-                            'name' => __("Style 5")
+                            'name' => __("Estilo 5")
                         ]
                     ]
                 ]
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 
     public function getName()
     {
-        return __('List Featured Item');
+        return __('Item em Destaque da Lista');
     }
 
     public function content($model = [])

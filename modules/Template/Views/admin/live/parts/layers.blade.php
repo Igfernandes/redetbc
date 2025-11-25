@@ -15,7 +15,7 @@
                     d="M8.85 11.494.929 6a.124.124 0 0 1 0-.205L8.85.297a.265.265 0 0 1 .3 0l7.921 5.496a.124.124 0 0 1 0 .205L9.15 11.494a.265.265 0 0 1-.3 0Z"
                 ></path>
             </svg>
-            {{__("LAYERS")}}
+            {{__("CAMADAS")}}
         </h5>
     </div>
     <div class="flex-grow-1 overflow-auto mt-3">
@@ -28,6 +28,6 @@
         </draggable>
     </div>
     <div class="flex-shrink-0 p-2 border-top-1">
-        <a href="#" class="btn btn-info btn-block" @click.prevent="showAddBlock = true"><i class="fa fa-plus"></i> {{__("Add layer")}}</a>
+        <a href="#" class="btn btn-info btn-block" @click.prevent="showAddBlock = true"><i class="fa fa-plus"></i> {{__("Adicionar camada")}}</a>
     </div>
 </div>

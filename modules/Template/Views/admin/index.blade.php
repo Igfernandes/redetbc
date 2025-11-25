@@ -2,10 +2,10 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__('Template Management')}}</h1>
+            <h1 class="title-bar">{{__('Gerenciamento de Templates')}}</h1>
             <div class="title-actions">
-                <a href="{{route('template.admin.importTemplate')}}" class="btn btn-info">{{__('Import new Template')}}</a>
-                <a href="{{route('template.admin.create')}}" class="btn btn-primary">{{__('Add new Template')}}</a>
+                <a href="{{route('template.admin.importTemplate')}}" class="btn btn-info">{{__('Importar novo Template')}}</a>
+                <a href="{{route('template.admin.create')}}" class="btn btn-primary">{{__('Adicionar novo Template')}}</a>
             </div>
         </div>
         @include('admin.message')
@@ -31,7 +31,7 @@
         </div>
 
         <div class="panel">
-            <div class="panel-title">{{__('All templates')}}</div>
+            <div class="panel-title">{{__('Todos os templates')}}</div>
             <div class="panel-body">
                 <form action="" class="bravo-form-item">
                     <div class="table-responsive">
@@ -56,11 +56,11 @@
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                                    {{__('Actions')}}
+                                                    {{__('Ações')}}
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="{{route('template.admin.edit',[$row->id])}}"> <i class="fa fa-edit" aria-hidden="true"></i> {{__('Editar')}}</a>
-                                                    <a class="dropdown-item" href="{{route('template.admin.exportTemplate',[$row->id])}}"> <i class="fa fa-download" aria-hidden="true"></i> {{__('Export')}}</a>
+                                                    <a class="dropdown-item" href="{{route('template.admin.exportTemplate',[$row->id])}}"> <i class="fa fa-download" aria-hidden="true"></i> {{__('Exportar')}}</a>
                                                     <a class="dropdown-item" href="{{\Illuminate\Support\Facades\URL::signedRoute('template.admin.clone',[$row->id])}}"> <i class="fa fa-copy" aria-hidden="true"></i> {{__('Duplicar')}}</a>
                                                 </div>
                                             </div>

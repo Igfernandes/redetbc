@@ -22,7 +22,7 @@ class WalletController extends AdminController
 
         $data = [
             'row'=>$row,
-            'page_title'=>__("Add Credit"),
+            'page_title'=>__("Adicionar Crédito"),
             'breadcrumbs'=>[
                 [
                     'url'=>route('user.admin.index'),
@@ -30,7 +30,7 @@ class WalletController extends AdminController
                 ],
                 [
                     'url'=>'#',
-                    'name'=>__('Add credit for :name',['name'=>$row->display_name]),
+                    'name'=>__('Adicionar crédito para :name',['name'=>$row->display_name]),
                 ],
             ]
         ];
@@ -56,7 +56,7 @@ class WalletController extends AdminController
                 return redirect()->back()->with("error",$exception->getMessage());
             }
 
-            return redirect()->back()->with("success",__(":amount credito adicionado",['amount'=>$amount]));
+            return redirect()->back()->with("success",__(":amount crédito adicionado",['amount'=>$amount]));
         }
     }
 
@@ -71,7 +71,7 @@ class WalletController extends AdminController
 
         $data = [
             'rows'=>$query->paginate(20),
-            'page_title'=>__("Credit purchase report"),
+            'page_title'=>__("Relatório de compra de crédito"),
             'breadcrumbs'=>[
                 [
                     'url'=>route('user.admin.index'),
@@ -79,7 +79,7 @@ class WalletController extends AdminController
                 ],
                 [
                     'url'=>'#',
-                    'name'=>__('Crédito purchase report'),
+                    'name'=>__('Relatório de compra de crédito'),
                 ],
             ]
         ];
@@ -90,7 +90,7 @@ class WalletController extends AdminController
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids))
-            return redirect()->back()->with('error', __('Select at lease 1 item!'));
+            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
         if (empty($action))
             return redirect()->back()->with('error', __('Selecione uma ação!'));
         if ($action == 'delete') {
@@ -118,6 +118,6 @@ class WalletController extends AdminController
                 }
             }
         }
-        return redirect()->back()->with('success', __('Updated successfully!'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
     }
 }

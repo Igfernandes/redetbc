@@ -68,7 +68,7 @@ class AttributeController extends AdminController
                     'url'  => route('tour.admin.attribute.index')
                 ],
                 [
-                    'name'  => __('Attributes: :name', ['name' => $row->name]),
+                    'name'  => __('Atributos: :name', ['name' => $row->name]),
                     'class' => 'active'
                 ],
             ]
@@ -127,7 +127,7 @@ class AttributeController extends AdminController
         $this->checkPermission('tour_manage_attributes');
         $row = $this->attributesClass::find($attr_id);
         if (empty($row)) {
-            return redirect()->back()->with('error', __('Term not found!'));
+            return redirect()->back()->with('error', __('Termo não encontrado!'));
         }
         $listTerms = $this->termsClass::where("attr_id", $attr_id);
         if (!empty($search = $request->query('s'))) {
@@ -202,7 +202,7 @@ class AttributeController extends AdminController
         if ($id) {
             $row = $this->termsClass::find($id);
             if (empty($row)) {
-                return redirect()->back()->with('error', __('Term not found!'));
+                return redirect()->back()->with('error', __('Termo não encontrado!'));
             }
         } else {
             $row = new $this->termsClass($request->input());

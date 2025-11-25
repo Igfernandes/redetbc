@@ -51,7 +51,7 @@ class PopupController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Popup Management")
+            'page_title'        => __("Gerenciamento de Popup")
         ];
         return view('Popup::admin.index', $data);
     }
@@ -79,7 +79,7 @@ class PopupController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Recuperação Popup Management")
+            'page_title'        => __("Gerenciamento de Popup - Recuperação")
         ];
         return view('Popup::admin.index', $data);
     }
@@ -207,7 +207,7 @@ class PopupController extends AdminController
                         $row->forceDelete();
                     }
                 }
-                return redirect()->back()->with('success', __('Excluir permanentemente com sucesso!'));
+                return redirect()->back()->with('success', __('Excluído permanentemente com sucesso!'));
                 break;
             case "recovery":
                 foreach ($ids as $id) {
@@ -224,7 +224,7 @@ class PopupController extends AdminController
                 foreach ($ids as $id) {
                     (new $this->popup())->saveCloneByID($id);
                 }
-                return redirect()->back()->with('success', __('Duplicar realizado com sucesso!'));
+                return redirect()->back()->with('success', __('Duplicado com sucesso!'));
                 break;
             default:
                 // Change status

@@ -24,7 +24,7 @@ class LoginRequest extends \Laravel\Fortify\Http\Requests\LoginRequest
     public function messages()
     {
         return [
-            'g-recaptcha-response.required'=>__('Please verify the captcha'),
+            'g-recaptcha-response.required'=>__('Por favor, verifique o captcha.'),
         ];
     }
 }

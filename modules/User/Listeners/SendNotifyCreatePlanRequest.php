@@ -19,7 +19,7 @@
                 'avatar' =>  $user->avatar_url,
                 'link' => route('user.plan'),
                 'type' => 'plan',
-                'message' => __('Your has created a plan request')
+                'message' => __('Você criou uma solicitação de plano')
             ];
 
              $user->notify(new PrivateChannelServices($data));
@@ -32,7 +32,7 @@
                 'to'=>'admin',
                 'link' => route('user.admin.plan_report.index'),
                 'type' => 'plan',
-                'message' => $user->display_name.__(' has created a plan request'),
+                'message' => $user->display_name.__(' criou uma solicitação de plano'),
 
             ];
             $user->notify(new AdminChannelServices($data));

@@ -36,14 +36,14 @@ class NetworkController extends FrontendController
         $data = [
             'cards_report'       => $this->getCards($user_id),
             'earning_chart_data' => $this->getUserNetworkChartData(strtotime('monday this week'), time(), $user_id),
-            'page_title'         => __("Dashboard"),
+            'page_title'         => __("Painel"),
             'withdraws' =>   Payment::where([
                 "user_id" => $user_id,
                 "object_model" => "withdraw"
             ])->get(),
             'breadcrumbs'        => [
                 [
-                    'name'  => __('Network affiliate'),
+                    'name'  => __('Afiliado de rede'),
                     'class' => 'active'
                 ]
             ]
@@ -60,11 +60,11 @@ class NetworkController extends FrontendController
         $data = [
             'cards_report'       => $this->getCards($user_id),
             'earning_chart_data' => $this->getUserWithdrawChartDataReceived($from, $to, $user_id),
-            'page_title'         => __("Dashboard"),
+            'page_title'         => __("Painel"),
             'withdrawAccount' => WithdrawAccount::where("user_id", $user_id)->first(),
             'breadcrumbs'        => [
                 [
-                    'name'  => __('Network affiliate'),
+                    'name'  => __('Afiliado de rede'),
                     'class' => 'active'
                 ]
             ]

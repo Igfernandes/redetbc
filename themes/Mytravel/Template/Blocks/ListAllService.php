@@ -17,14 +17,14 @@ class ListAllService extends BaseBlock
                 'id'        => 'title_for_'.$key,
                 'type'      => 'input',
                 'inputType' => 'text',
-                'label'     => __('Título for :service',['service'=>ucwords($key)])
+                'label'     => __('Título para :service',['service'=>ucwords($key)])
             ];
         }
         $arg[] = [
             'id'            => 'service_types',
             'type'          => 'checklist',
             'listBox'          => 'true',
-            'label'         => "<strong>".__('Service Type')."</strong>",
+            'label'         => "<strong>".__('Tipo de Serviço')."</strong>",
             'values'        => $list_service,
         ];
 
@@ -42,7 +42,7 @@ class ListAllService extends BaseBlock
             'values'        => [
                 [
                     'value'   => '',
-                    'name' => __("Style 1")
+                    'name' => __("Estilo 1")
                 ],
             ]
         ];
@@ -51,7 +51,7 @@ class ListAllService extends BaseBlock
             'id'        => 'number',
             'type'      => 'input',
             'inputType' => 'number',
-            'label'     => __('Item numérico')
+            'label'     => __('Número de itens')
         ];
 
         $arg[] =  [
@@ -88,13 +88,13 @@ class ListAllService extends BaseBlock
 
         return ([
             'settings' => $arg,
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 
     public function getName()
     {
-        return __('List All Service');
+        return __('Listar Todos os Serviços');
     }
 
     public function content($model = [])

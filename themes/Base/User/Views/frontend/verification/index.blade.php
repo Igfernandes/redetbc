@@ -2,7 +2,7 @@
 
 @section('content')
 <h2 class="title-bar">
-    {{__("Verification data")}}
+    {{__("Dados de verificação")}}
 </h2>
 <div class="booking-history-manager">
     <div class="text">
@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-4">
-            <a href="{{route('user.verification.update')}}" class="btn btn-warning"> <i class="fa fa-edit"></i> &nbsp;&nbsp; {{__("Update verification data")}} </a>
+            <a href="{{route('user.verification.update')}}" class="btn btn-warning"> <i class="fa fa-edit"></i> &nbsp;&nbsp; {{__("Atualizar dados de verificação")}} </a>
         </div>
     </div>
 </div>

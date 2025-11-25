@@ -13,7 +13,7 @@
 			@if(empty($only_show_data))
 				<input type="text" class="form-control mb-1" id="phone_verify_field" name="verify_data_{{$field['id']}}" value="{{$field['data']}}">
 				@if(empty($field['is_verified']))
-					<span class="btn btn-sm btn-primary" onclick="sendCodeVerifyPhone('verify_data_{{$field["id"]}}','{{$fieldName}}')">{{__('Verify Phone')}}</span>
+					<span class="btn btn-sm btn-primary" onclick="sendCodeVerifyPhone('verify_data_{{$field["id"]}}','{{$fieldName}}')">{{__('Verifique o telefone')}}</span>
 				@else
 					<a class="badge badge-success" href="#" onclick="return false"><i>{{__("Verificado")}}</i></a>
 				

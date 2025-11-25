@@ -2,15 +2,15 @@
 @section('content')
     <div class="b-container">
         <div class="b-panel">
-            <h1>{{__("Hello Administrator")}}</h1>
+            <h1>{{__("Olá Administrador")}}</h1>
 
-            <p>{{__('An user has been submit their verification data.')}}</p>
+            <p>{{__('Um usuário enviou seus dados para verificação.')}}</p>
             <p>{{__('Nome: :name',['name'=>$user->business_name ? $user->business_name : $user->first_name])}}</p>
 
-            <p>{{__('You can approved the request here:')}} <a href="{{route('user.admin.verification.detail',['id'=>$user->id])}}">{{__('View request')}}</a></p>
+            <p>{{__('Você pode aprovar a solicitação aqui:')}} <a href="{{route('user.admin.verification.detail',['id'=>$user->id])}}">{{__('Visualizar solicitação')}}</a></p>
 
             <br>
-            <p>{{__('Regards')}},<br>{{setting_item('site_title')}}</p>
+            <p>{{__('Atenciosamente')}},<br>{{setting_item('site_title')}}</p>
         </div>
     </div>
 @endsection

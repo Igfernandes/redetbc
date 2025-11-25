@@ -22,7 +22,7 @@ class Template extends BaseModel
 
     public static function getModelName()
     {
-        return __("Template");
+        return __("Modelo");
     }
 
     public static function getAsMenuItem($id)

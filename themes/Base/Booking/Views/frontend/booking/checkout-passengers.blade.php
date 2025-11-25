@@ -45,7 +45,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{__("Celular")}} </label>
-                                        <input type="text" placeholder="{{__("Your Phone")}}" class="form-control"
+                                        <input type="text" placeholder="{{__("Seu Telefone")}}" class="form-control"
                                                value="{{$old_item['phone'] ?? ''}}" name="passengers[{{$i}}][phone]">
                                     </div>
                                 </div>

@@ -9,7 +9,7 @@
             <ul class="nav nav-tabs ht-nav-tabs">
                 <?php $status_type = Request::query('status'); ?>
                 <li class="@if(empty($status_type)) active @endif">
-                    <a href="{{route("user.booking_history")}}">{{__("All Booking")}}</a>
+                    <a href="{{route("user.booking_history")}}">{{__("Todas as Reservas")}}</a>
                 </li>
                 @if(!empty($statues))
                     @foreach($statues as $status)
@@ -27,11 +27,11 @@
                             <tr>
                                 <th width="2%">{{__("Tipo")}}</th>
                                 <th>{{__("Título")}}</th>
-                                <th class="a-hidden">{{__("Order Date")}}</th>
-                                <th class="a-hidden">{{__("Execution Time")}}</th>
+                                <th class="a-hidden">{{__("Data do Pedido")}}</th>
+                                <th class="a-hidden">{{__("Tempo de Execução")}}</th>
                                 <th>{{__("Total")}}</th>
-                                <th>{{__("Paid")}}</th>
-                                <th>{{__("Remain")}}</th>
+                                <th>{{__("Pago")}}</th>
+                                <th>{{__("Restante")}}</th>
                                 <th class="a-hidden">{{__("Status")}}</th>
                                 <th>{{__("Ação")}}</th>
                             </tr>
@@ -48,14 +48,14 @@
                     </div>
                 </div>
             @else
-                {{__("No Booking History")}}
+                {{__("Nenhum Histórico de Reserva")}}
             @endif
         </div>
         <div class="modal" tabindex="-1" id="modal_booking_detail">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{__('Booking ID: #')}} <span class="user_id"></span></h5>
+                        <h5 class="modal-title">{{__('ID da Reserva: #')}} <span class="user_id"></span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -86,4 +86,3 @@
         })
     </script>
 @endpush
-

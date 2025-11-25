@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__('Crédito Purchase Report')}}</h1>
+            <h1 class="title-bar">{{__('Relatório de Compra de Crédito')}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between">
@@ -11,8 +11,8 @@
                     <form method="post" action="{{route('user.admin.wallet.reportBulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Ações em Massa ")}}</option>
-                            <option value="completed">{{__("Mark as completed")}}</option>
+                            <option value="">{{__("Ações em Massa")}}</option>
+                            <option value="completed">{{__("Marcar como concluído")}}</option>
                         </select>
                         <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
                     </form>
@@ -22,9 +22,9 @@
                 <form method="get" action="" class="filter-form filter-form-right d-flex justify-content-end">
                     <select name="status" class="form-control">
                         <option value="">{{__("-- Status --")}}</option>
-                        <option @if(request()->query('status') == 'fail') selected @endif value="fail">{{__("Failed")}}</option>
-                        <option @if(request()->query('status') == 'processing') selected @endif value="processing">{{__("Processing")}}</option>
-                        <option @if(request()->query('status') == 'completed') selected @endif value="completed">{{__("Completed")}}</option>
+                        <option @if(request()->query('status') == 'fail') selected @endif value="fail">{{__("Falhou")}}</option>
+                        <option @if(request()->query('status') == 'processing') selected @endif value="processing">{{__("Processando")}}</option>
+                        <option @if(request()->query('status') == 'completed') selected @endif value="completed">{{__("Concluído")}}</option>
                     </select>
                     @csrf
                         <?php
@@ -36,36 +36,36 @@
                                     'dataType' => 'json'
                                 ],
                                 'allowClear'  => true,
-                                'placeholder' => __('-- User --')
+                                'placeholder' => __('-- Usuário --')
                             ]
                         ], !empty($user->id) ? [
                             $user->id,
                             $user->name_or_email . ' (#' . $user->id . ')'
                         ] : false)
                         ?>
-                    <button class="btn-info btn btn-icon" type="submit">{{__('Filter')}}</button>
+                    <button class="btn-info btn btn-icon" type="submit">{{__('Filtrar')}}</button>
                 </form>
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total itens',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel booking-history-manager">
-            <div class="panel-title">{{__('Purchase logs')}}</div>
+            <div class="panel-title">{{__('Registros de compra')}}</div>
             <div class="panel-body">
                 <form action="" class="bravo-form-item">
                     <table class="table table-hover bravo-list-item">
                         <thead>
                         <tr>
                             <th width="80px"><input type="checkbox" class="check-all"></th>
-                            <th>{{__('Customer')}}</th>
+                            <th>{{__('Cliente')}}</th>
 
-                            <th width="80px">{{__('Quantidade')}}</th>
+                            <th width="80px">{{__('Quantia')}}</th>
                             <th width="80px">{{__('Crédito')}}</th>
                             <th width="80px">{{__('Status')}}</th>
-                            <th width="150px">{{__('Payment Method')}}</th>
+                            <th width="150px">{{__('Método de Pagamento')}}</th>
                             <th width="120px">{{__('Criado em')}}</th>
-                            <th width="80px">{{__('Actions')}}</th>
+                            <th width="80px">{{__('Ações')}}</th>
                         </tr>
                         </thead>
                         <tbody>

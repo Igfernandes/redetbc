@@ -6,7 +6,7 @@
             <div class="col-md-5">
                 @include('Layout::admin.message')
                 <div class="">
-                    <h4 class="form-title">{{ __('Login') }}</h4>
+                    <h4 class="form-title">{{ __('Entrar') }}</h4>
                     @include('Layout::auth.login-form',['captcha_action'=>'login_normal'])
                 </div>
             </div>

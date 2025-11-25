@@ -8,7 +8,7 @@ class HowItWork extends BaseBlock
 {
     public function getName()
     {
-        return __('How It Works');
+        return __('Como Funciona');
     }
 
     public function getOptions()
@@ -24,7 +24,7 @@ class HowItWork extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Item(s) da Lista'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -42,7 +42,7 @@ class HowItWork extends BaseBlock
                         [
                             'id'    => 'icon_image',
                             'type'  => 'uploader',
-                            'label' => __('Image Uploader')
+                            'label' => __('Upload de Imagem')
                         ],
                         [
                             'id'        => 'order',
@@ -55,10 +55,10 @@ class HowItWork extends BaseBlock
                 [
                     'id'    => 'background_image',
                     'type'  => 'uploader',
-                    'label' => __('Image Uploader')
+                    'label' => __('Upload de Imagem')
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

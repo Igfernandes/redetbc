@@ -21,7 +21,7 @@ class ListLocations extends BaseBlock
                     'id'            => 'service_type',
                     'type'          => 'checklist',
                     'listBox'          => 'true',
-                    'label'         => "<strong>".__('Service Type')."</strong>",
+                    'label'         => "<strong>".__('Tipo de Serviço')."</strong>",
                     'values'        => $list_service,
                 ],
                 [
@@ -43,23 +43,23 @@ class ListLocations extends BaseBlock
                     'values'        => [
                         [
                             'value'   => 'style_1',
-                            'name' => __("First row 2 cards")
+                            'name' => __("Primeira linha 2 cartões")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 3 cards/ row")
+                            'name' => __("Estilo 3 cartões/ linha")
                         ],
                         [
                             'value'   => 'style_3',
-                            'name' => __("First row 3 cards")
+                            'name' => __("Primeira linha 3 cartões")
                         ],
                         [
                             'value'   => 'style_4',
-                            'name' => __("Slide 4 cards/slider")
+                            'name' => __("Slide 4 cartões/slider")
                         ],
                         [
                             'value'   => 'style_5',
-                            'name' => __("Style 5 cards/ row")
+                            'name' => __("Estilo 5 cartões/ linha")
                         ],
                     ]
                 ],
@@ -96,7 +96,7 @@ class ListLocations extends BaseBlock
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('List Location by IDs'),
+                    'label'        => __('Listar Localização por IDs'),
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('location.admin.getForSelect2'),
@@ -110,13 +110,13 @@ class ListLocations extends BaseBlock
                     ])
                 ]
             ],
-            'category'=>__("Localização Blocks")
+            'category'=>__("Blocos de Localização")
         ]);
     }
 
     public function getName()
     {
-        return __('List Locations');
+        return __('Listar Localizações');
     }
 
     public function content($model = [])

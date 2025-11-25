@@ -39,7 +39,7 @@
                     @if(!empty($rows) and $space_manage_others)
                         <div class="ml-3 position-relative">
                             <button class="btn btn-secondary dropdown-toggle bc-dropdown-toggle-filter" type="button" id="dropdown_filters">
-                                {{ __("Advanced") }}
+                                {{ __("Avançado") }}
                             </button>
                             <div class="dropdown-menu px-3 py-3 dropdown-menu-right" aria-labelledby="dropdown_filters">
                                 @include("Core::admin.global.advanced-filter")

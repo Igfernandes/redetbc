@@ -8,7 +8,7 @@ class FaqList extends BaseBlock
 
     public function getName()
     {
-        return __('FAQ List');
+        return __('Lista de FAQ');
     }
 
     public function getOptions()
@@ -22,11 +22,11 @@ class FaqList extends BaseBlock
                     'values'        => [
                         [
                             'value'   => '',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                     ]
                 ],
@@ -39,25 +39,25 @@ class FaqList extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Item(s) da Lista'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
                             'id'        => 'title',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Question')
+                            'label'     => __('Pergunta')
                         ],
                         [
                             'id'        => 'sub_title',
                             'type'      => 'editor',
                             'inputType' => 'textArea',
-                            'label'     => __('Answer')
+                            'label'     => __('Resposta')
                         ],
                     ]
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

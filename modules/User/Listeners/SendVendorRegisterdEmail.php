@@ -83,7 +83,7 @@ class SendVendorRegisterdEmail
     public function buttonVerify($event)
     {
         if (!$event->user->hasVerifiedEmail()) {
-            $text = __('Verify Email Address');
+            $text = __('Verifique o endereço de e-mail');
             $button = '<a style="border-radius: 3px;
                 color: #fff;
                 display: inline-block;

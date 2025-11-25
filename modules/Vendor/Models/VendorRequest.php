@@ -22,7 +22,7 @@ class VendorRequest extends BaseModel
 
     public static function getModelName()
     {
-        return __("User upgrade request");
+        return __("Solicitação de atualização do usuário");
     }
     public function user(){
         return $this->belongsTo(User::class)->withDefault();

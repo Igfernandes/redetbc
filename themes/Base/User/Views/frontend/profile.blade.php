@@ -46,12 +46,11 @@
                 </div>
             </div>
             <div class="row">
-                <!-- RELIGION -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>{{ __("Religião") }}</label>
                         <select name="religion" class="form-control">
-                            <option value="">{{ __("Select religion") }}</option>
+                            <option value="">{{ __("Selecione a religião") }}</option>
                             <option value="CATHOLIC" {{ old('religion', $dataUser->religion ?? '') == 'CATHOLIC' ? 'selected' : '' }}>
                                 {{ __("Católico") }}
                             </option>
@@ -66,7 +65,6 @@
                     </div>
                 </div>
 
-                <!-- SEX -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>{{ __("Sexo") }}</label>
@@ -76,7 +74,7 @@
                                 {{ __("Masculino") }}
                             </option>
                             <option value="FEMININE" {{ old('sex', $dataUser->sex ?? '') == 'FEMININE' ? 'selected' : '' }}>
-                                {{ __("Femino") }}
+                                {{ __("Feminino") }}
                             </option>
                         </select>
                         <i class="fa fa-venus-mars input-icon"></i>
@@ -104,10 +102,10 @@
                     <div class="input-group">
                         <span class="input-group-btn">
                             <span class="btn btn-default btn-file">
-                                {{__("Browse")}}… <input type="file">
+                                {{__("Procurar")}}… <input type="file">
                             </span>
                         </span>
-                        <input type="text" data-error="{{__("Error upload...")}}" data-loading="{{__("Carregando...")}}" class="form-control text-view" readonly value="{{ get_file_url( old('avatar_id',$dataUser->avatar_id) ) ?? $dataUser->getAvatarUrl()?? __("No Image")}}">
+                        <input type="text" data-error="{{__("Erro no upload...")}}" data-loading="{{__("Carregando...")}}" class="form-control text-view" readonly value="{{ get_file_url( old('avatar_id',$dataUser->avatar_id) ) ?? $dataUser->getAvatarUrl()?? __("Sem Imagem")}}">
                     </div>
                     <input type="hidden" class="form-control" name="avatar_id" value="{{ old('avatar_id',$dataUser->avatar_id)?? ""}}">
                     <img class="image-demo" src="{{ get_file_url( old('avatar_id',$dataUser->avatar_id) ) ??  $dataUser->getAvatarUrl() ?? ""}}" />
@@ -120,12 +118,12 @@
             </div>
             <div class="form-group">
                 <label>{{__("Endereço 1")}}</label>
-                <input type="text" value="{{old('address',$dataUser->address)}}" name="address" placeholder="{{__("Address")}}" class="form-control">
+                <input type="text" value="{{old('address',$dataUser->address)}}" name="address" placeholder="{{__("Endereço")}}" class="form-control">
                 <i class="fa fa-location-arrow input-icon"></i>
             </div>
             <div class="form-group">
                 <label>{{__("Endereço 2")}}</label>
-                <input type="text" value="{{old('address2',$dataUser->address2)}}" name="address2" placeholder="{{__("Address2")}}" class="form-control">
+                <input type="text" value="{{old('address2',$dataUser->address2)}}" name="address2" placeholder="{{__("Endereço2")}}" class="form-control">
                 <i class="fa fa-location-arrow input-icon"></i>
             </div>
             <div class="form-group">
@@ -165,20 +163,19 @@
 <div class="row">
     <div class="col-md-12">
         <h4 class="text-danger">
-            {{__("Delete account")}}
+            {{__("Excluir conta")}}
         </h4>
         <div class="mb-4 mt-2">
-            {!! clean(setting_item_with_lang('user_permanently_delete_content','',__('Your account will be permanently deleted. Once you delete your account, there is no going back. Please be certain.'))) !!}
+            {!! clean(setting_item_with_lang('user_permanently_delete_content','',__('Sua conta será permanentemente excluída. Depois de excluir sua conta, não há como voltar atrás. Por favor, tenha certeza.'))) !!}
         </div>
-        <a data-toggle="modal" data-target="#permanentlyDeleteAccount" class="btn btn-danger" href="">{{__('Delete your account')}}</a>
+        <a data-toggle="modal" data-target="#permanentlyDeleteAccount" class="btn btn-danger" href="">{{__('Excluir sua conta')}}</a>
     </div>
 
-    <!-- Modal -->
     <div class="modal  fade" id="permanentlyDeleteAccount" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content ">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{__('Confirm permanently delete account')}}</h5>
+                    <h5 class="modal-title">{{__('Confirmar exclusão permanente da conta')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -190,7 +187,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
-                    <a href="{{route('user.permanently.delete')}}" class="btn btn-danger">{{__('Confirm')}}</a>
+                    <a href="{{route('user.permanently.delete')}}" class="btn btn-danger">{{__('Confirmar')}}</a>
                 </div>
 
             </div>

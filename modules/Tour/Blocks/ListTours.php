@@ -28,13 +28,13 @@ class ListTours extends BaseBlock
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição')
                 ],
                 [
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Item numérico')
+                    'label'     => __('Número de Itens')
                 ],
                 [
                     'id'            => 'style',
@@ -47,22 +47,22 @@ class ListTours extends BaseBlock
                         ],
                         [
                             'value'   => 'carousel',
-                            'name' => __("Carrossel deslizante")
+                            'name' => __("Carrossel")
                         ],
                         [
                             'value'   => 'box_shadow',
-                            'name' => __("Box Shadow")
+                            'name' => __("Sombra da Caixa")
                         ],
                         [
                             'value'   => 'carousel_simple',
-                            'name' => __("Slider Carousel Simple")
+                            'name' => __("Carrossel Deslizante Simples")
                         ],
                     ]
                 ],
                 [
                     'id'      => 'category_id',
                     'type'    => 'select2',
-                    'label'   => __('Filter by Category'),
+                    'label'   => __('Filtrar por Categoria'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => route('tour.admin.category.category.getForSelect2'),
@@ -77,7 +77,7 @@ class ListTours extends BaseBlock
                 [
                     'id'      => 'location_id',
                     'type'    => 'select2',
-                    'label'   => __('Filtrar por localização'),
+                    'label'   => __('Filtrar por Localização'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => route('location.admin.getForSelect2'),
@@ -92,11 +92,11 @@ class ListTours extends BaseBlock
                 [
                     'id'            => 'order',
                     'type'          => 'radios',
-                    'label'         => __('Ordem'),
+                    'label'         => __('Ordenar por Campo'),
                     'values'        => [
                         [
                             'value'   => 'id',
-                            'name' => __("Data de Criação")
+                            'name' => __("ID")
                         ],
                         [
                             'value'   => 'title',
@@ -107,7 +107,7 @@ class ListTours extends BaseBlock
                 [
                     'id'            => 'order_by',
                     'type'          => 'radios',
-                    'label'         => __('Ordenar por'),
+                    'label'         => __('Ordem'),
                     'values'        => [
                         [
                             'value'   => 'asc',
@@ -121,14 +121,14 @@ class ListTours extends BaseBlock
                 ],
                 [
                     'type'=> "checkbox",
-                    'label'=>__("Somente itens em destaque?"),
+                    'label'=>__("Somente itens em Destaque?"),
                     'id'=> "is_featured",
                     'default'=>true
                 ],
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('Listar por IDs'),
+                    'label'        => __('Listar por IDs Personalizados'),
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('tour.admin.getForSelect2'),
@@ -143,7 +143,7 @@ class ListTours extends BaseBlock
                     ])
                 ],
             ],
-            'category'=>__("Service Tour")
+            'category'=>__("Serviço de Passeio")
         ];
     }
 

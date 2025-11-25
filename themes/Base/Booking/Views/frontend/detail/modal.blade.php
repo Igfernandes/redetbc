@@ -1,20 +1,20 @@
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#booking-detail-{{$booking->id}}">{{__("Booking Detail")}}</a>
+        <a class="nav-link active" data-toggle="tab" href="#booking-detail-{{$booking->id}}">{{__("Detalhes da Reserva")}}</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#booking-customer-{{$booking->id}}">
             @if(!empty($informationRole))
-                {{__("Customer Information")}}
+                {{__("Informação do Cliente")}}
             @else
-                {{__('Personal Information')}}
+                {{__('Informações Pessoais')}}
             @endif
         </a>
     </li>
     @if(count($booking->passengers))
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#booking-guests-{{$booking->id}}">
-                {{__('Guests Information')}}
+                {{__('Informações dos Hóspedes')}}
             </a>
         </li>
     @endif
@@ -27,18 +27,18 @@
                     <div class="info-form">
                         <ul>
                             <li>
-                                <div class="label">{{__('Booking Status')}}</div>
+                                <div class="label">{{__('Status da Reserva')}}</div>
                                 <div class="val">{{$booking->statusName}}</div>
                             </li>
                             <li>
-                                <div class="label">{{__('Booking Date')}}</div>
+                                <div class="label">{{__('Data da Reserva')}}</div>
                                 <div class="val">{{display_date($booking->created_at)}}</div>
                             </li>
                             @if(!empty($booking->gateway))
                                 <?php $gateway = get_payment_gateway_obj($booking->gateway);?>
                                 @if($gateway)
                                     <li>
-                                        <div class="label">{{__('Payment Method')}}</div>
+                                        <div class="label">{{__('Método de Pagamento')}}</div>
                                         <div class="val">{{$gateway->name}}</div>
                                     </li>
                                 @endif

@@ -40,7 +40,7 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
             {{--<input type="text" class="input-search form-control">--}}
 
-            <a href="{{url('/')}}" class="btn btn-link" target="_blank"><i class="fa fa-eye"></i> <span translate="no">{{__('Home')}} </span>
+            <a href="{{url('/')}}" class="btn btn-link" target="_blank"><i class="fa fa-eye"></i> <span translate="no">{{__('Inicio')}} </span>
 
             </a>
 
@@ -212,15 +212,15 @@ $theme = \Modules\Theme\ThemeManager::currentProvider();
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                <a class="dropdown-item" href="{{route('user.admin.detail',['id'=>$user->id])}}">{{__('Editar Profile')}}</a>
+                <a class="dropdown-item" href="{{route('user.admin.detail',['id'=>$user->id])}}">{{__('Editar Perfil')}}</a>
 
                 <a class="dropdown-item" href="{{route('user.admin.password',['id'=>$user->id])}}">{{__('Alterar Senha')}}</a>
 
                 <div class="dropdown-divider"></div>
 
-                <h6 class="dropdown-header">{{__("Fornecedor Dashboard")}}</h6>
+                <h6 class="dropdown-header">{{__("Fornecedor Painel")}}</h6>
 
-                <a href="{{route('vendor.dashboard')}}" class="dropdown-item">{{__("Dashboard")}}</a>
+                <a href="{{route('vendor.dashboard')}}" class="dropdown-item">{{__("Painel")}}</a>
 
                 <div class="dropdown-divider"></div>
 

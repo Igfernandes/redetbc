@@ -1,7 +1,7 @@
 @if(auth()->check() && $booking->status == 'draft' && empty(setting_item('wallet_module_disable')))
     <hr/>
     <div class="form-group-item">
-        <h5 class="form-section-title font-size-17 font-weight-bold">{{__("Credit want to pay?")}}</h5>
+        <h5 class="form-section-title font-size-17 font-weight-bold">{{__("Quer pagar com crédito?")}}</h5>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text border-width-1">{{__('Crédito')}} {{ !empty(auth()->user()) ? auth()->user()->balance : 0  }}</span>

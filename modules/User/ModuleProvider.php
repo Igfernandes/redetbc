@@ -65,7 +65,7 @@ class ModuleProvider extends ModuleServiceProvider
                 ],
                 'role' => [
                     'url'        => route('user.admin.role.index'),
-                    'title'      => __('Função Manager'),
+                    'title'      => __('Gerenciador de Funções'),
                     'permission' => 'role_view',
                     'icon'       => 'fa fa-lock',
                 ],
@@ -136,7 +136,7 @@ class ModuleProvider extends ModuleServiceProvider
                 'position'   => 85,
                 'icon'       => 'fa fa-money',
                 'url'        => route('user.wallet'),
-                'title'      => __("My Wallet"),
+                'title'      => __("Minha Carteira"),
             ];
         }
 
@@ -144,7 +144,7 @@ class ModuleProvider extends ModuleServiceProvider
         if (!empty($user->verification_fields) and $is_disable_verification_feature) {
             $res['verification'] = [
                 'url'        => route('user.verification.index'),
-                'title'      => __("Verifications"),
+                'title'      => __("Verificações"),
                 'icon'       => 'fa fa-handshake-o',
                 'position'   => 85,
                 'is_verified' => 0
@@ -157,7 +157,7 @@ class ModuleProvider extends ModuleServiceProvider
                 'position' => 90,
                 'icon' => 'fa fa-comments',
                 'url' => route('user.chat'),
-                'title' => __("Reservas :count", ['count' => $count ? sprintf('<span class="badge badge-danger">%d</span>', $count) : '']),
+                'title' => __("Chat :count", ['count' => $count ? sprintf('<span class="badge badge-danger">%d</span>', $count) : '']),
             ];
         }
         if (setting_item('user_enable_2fa')) {
@@ -165,7 +165,7 @@ class ModuleProvider extends ModuleServiceProvider
                 'position' => 110,
                 'icon' => 'fa fa-lock',
                 'url' => route('user.2fa'),
-                'title' => __("2F Authentication"),
+                'title' => __("Autenticação 2F"),
             ];
         }
 

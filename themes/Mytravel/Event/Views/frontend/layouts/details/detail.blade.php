@@ -136,7 +136,7 @@
         @if($row->duration)
             <li class="list-group-item text-lh-sm ">
                 <i class="icofont-infinite text-primary font-size-50 mb-1 "></i>
-                <div class="text-gray-1"> {{ __("Duration") }}: {{duration_format($row->duration)}} </div>
+                <div class="text-gray-1"> {{ __("Duração") }}: {{duration_format($row->duration)}} </div>
             </li>
         @endif
         @if(!empty($row->location->name))

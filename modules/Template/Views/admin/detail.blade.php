@@ -17,7 +17,7 @@
                     @if(!empty($row->id))
                         {{__("Editar Template:")}} @{{title}}
                     @else
-                        {{__('Create new template')}}
+                        {{__('Criar novo template')}}
                     @endif
                 </h1>
             </div>
@@ -33,7 +33,7 @@
             class="form-control"
             value="{{$row->title ?? ''}}"
             v-model="title"
-            placeholder="{{__('Template Name')}}"
+            placeholder="{{__('Nome do Template')}}"
         >
         <br>
         <br>
@@ -46,7 +46,7 @@
                             class="form-control"
                             value=""
                             v-model="s"
-                            placeholder="{{__('Search for block...')}}"
+                            placeholder="{{__('Procurar por bloco...')}}"
                         >
                         <hr>
                         <div
@@ -96,7 +96,7 @@
                 @include('Language::admin.navigation')
                 <div class="lang-content-box">
                     <div class="panel">
-                        <div class="panel-title">{{__('Template Content')}}</div>
+                        <div class="panel-title">{{__('Conteúdo do Template')}}</div>
                         <div class="panel-body">
                             <div class="templates-items-zone">
                                 <draggable v-model="items">
@@ -119,12 +119,12 @@
                                 :class="message.type ? 'success' : 'danger'"
                             >@{{message.content}}</span>
                             @if(empty($row->id) and app()->getLocale() != setting_item('site_locale'))
-                                {{__('You need to create the template at the Main-language tab first!')}}
+                                {{__('Você precisa criar o template na aba Idioma Principal primeiro!')}}
                             @else
                                 <span
                                     class="btn btn-success"
                                     @click="saveTemplate"
-                                >{{__("Save Template")}}
+                                >{{__("Salvar Template")}}
                                 <i
                                     class="fa fa-spin fa-spinner"
                                     v-show="onSaving"
@@ -203,10 +203,10 @@
 @push('css')
     <script>
         var template_i18n = {
-            cancel: '{{__('Cancel')}}',
+            cancel: '{{__('Cancelar')}}',
             save_changes: '{{__('Salvar alterações')}}',
-            delete_confirm: '{{__('Are you want to delete?')}}',
-            add_new: '{{__('Add New')}}',
+            delete_confirm: '{{__('Você deseja excluir?')}}',
+            add_new: '{{__('Adicionar Novo')}}',
         };
     </script>
 @endpush

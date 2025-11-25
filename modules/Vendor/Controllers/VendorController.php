@@ -63,16 +63,16 @@ class VendorController extends FrontendController
             'term'       => ['required'],
         ];
         $messages = [
-            'email.required'      => __('Email is required field'),
-            'email.email'         => __('Email invalidate'),
-            'password.required'   => __('Password is required field'),
-            'first_name.required' => __('The first name is required field'),
-            'last_name.required'  => __('The last name is required field'),
-            'business_name.required'  => __('The business name is required field'),
-            'term.required'       => __('The terms and conditions field is required'),
+            'email.required'      => __('Email é um campo obrigatório'),
+            'email.email'         => __('Email inválido'),
+            'password.required'   => __('Senha é um campo obrigatório'),
+            'first_name.required' => __('O primeiro nome é um campo obrigatório'),
+            'last_name.required'  => __('O último nome é um campo obrigatório'),
+            'business_name.required'  => __('O nome da empresa é um campo obrigatório'),
+            'term.required'       => __('O campo de termos e condições é obrigatório'),
         ];
         if (ReCaptchaEngine::isEnable() and setting_item("user_enable_register_recaptcha")) {
-            $messages['g-recaptcha-response.required'] = __('Please verify the captcha');
+            $messages['g-recaptcha-response.required'] = __('Por favor, verifique o captcha');
             $rules['g-recaptcha-response'] = ['required'];
         }
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -85,7 +85,7 @@ class VendorController extends FrontendController
             if (ReCaptchaEngine::isEnable() and setting_item("user_enable_register_recaptcha")) {
                 $codeCapcha = $request->input('g-recaptcha-response');
                 if (!ReCaptchaEngine::verify($codeCapcha)) {
-                    $errors = new MessageBag(['message_error' => __('Please verify the captcha')]);
+                    $errors = new MessageBag(['message_error' => __('Por favor, verifique o captcha')]);
                     return response()->json([
                         'error'    => true,
                         'messages' => $errors
@@ -106,7 +106,7 @@ class VendorController extends FrontendController
 
             $user->save();
             if (empty($user)) {
-                return $this->sendError(__("Can not register"));
+                return $this->sendError(__("Não é possível registrar"));
             }
 
             //                check vendor auto approved
@@ -136,7 +136,7 @@ class VendorController extends FrontendController
             } else {
                 return $this->sendSuccess([
                     'redirect' => url(app_get_locale(false, '/')),
-                ], __("Register success. Please wait for admin approval"));
+                ], __("Registro realizado com sucesso. Por favor, aguarde a aprovação do administrador"));
             }
         }
     }
@@ -148,11 +148,11 @@ class VendorController extends FrontendController
             'statues'     => config('booking.statuses'),
             'breadcrumbs' => [
                 [
-                    'name'  => __('Booking Report'),
+                    'name'  => __('Relatório de Reservas'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'  => __("Booking Report"),
+            'page_title'  => __("Relatório de Reservas"),
         ];
         return view('Vendor::frontend.bookingReport.index', $data);
     }

@@ -14,13 +14,13 @@
                 {!! clean($translation->title) !!}
             </a>
         @else
-            {{__("[Deleted]")}}
+            {{__("[Excluído]")}}
         @endif
     </td>
     <td class="a-hidden">{{display_date($booking->created_at)}}</td>
     <td class="a-hidden">
-        {{__("Start date")}} : {{display_date($booking->start_date)}} <br>
-        {{__("Duration")}} :
+        {{__("Data de início")}} : {{display_date($booking->start_date)}} <br>
+        {{__("Duração")}} :
         @php $duration = $booking->getMeta("duration") @endphp
         {{duration_format($duration)}}
     </td>
@@ -39,7 +39,7 @@
             <i class="fa fa-print"></i>{{__("Fatura")}}
         </a>
         <a href="{{route('user.booking.ticket',['code'=>$booking->code])}}" class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1" onclick="window.open(this.href); return false;">
-            <i class="fa fa-print"></i>{{__("Print Ticket")}}
+            <i class="fa fa-print"></i>{{__("Imprimir Bilhete")}}
         </a>
     </td>
 </tr>

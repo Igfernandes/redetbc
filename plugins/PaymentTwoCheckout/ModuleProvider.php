@@ -22,7 +22,7 @@ class ModuleProvider extends ModuleServiceProvider
     {
         return [
             'title'   => __('Gateway 2Checkout'),
-            'desc'    => __('Gateway 2Checkout is one of the best payment Gateway to accept online payments from buyers around the world which allow your customers to make purchases in many payment methods, 15 languages, 87 currencies, and more than 200 markets in the world.'),
+            'desc'    => __('Gateway 2Checkout é um dos melhores Gateways de pagamento para aceitar pagamentos online de compradores em todo o mundo, o que permite que seus clientes façam compras em muitos métodos de pagamento, 15 idiomas, 87 moedas e mais de 200 mercados no mundo.'),
             'author'  => "Booking Core",
             'version' => "1.0.0",
         ];

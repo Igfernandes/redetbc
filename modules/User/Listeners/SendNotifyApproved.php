@@ -21,7 +21,7 @@
                 'avatar' =>  $user->avatar_url,
                 'link' => route("vendor.dashboard"),
                 'type' => 'user_upgrade_request',
-                'message' => __('Your upgrade request has approved already')
+                'message' => __('Sua solicitação de atualização já foi aprovada.')
             ];
 
             $user->notify(new PrivateChannelServices($data));

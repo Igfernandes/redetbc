@@ -25,13 +25,13 @@ class ListEvent extends \Modules\Event\Blocks\ListEvent
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição')
                 ],
                 [
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Item numérico')
+                    'label'     => __('Número de itens')
                 ],
                 [
                     'id'            => 'style',
@@ -40,11 +40,11 @@ class ListEvent extends \Modules\Event\Blocks\ListEvent
                     'values'        => [
                         [
                             'value'   => '',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                     ]
                 ],
@@ -102,7 +102,7 @@ class ListEvent extends \Modules\Event\Blocks\ListEvent
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('List Event by IDs'),
+                    'label'        => __('Listar Eventos por IDs'),
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('event.admin.getForSelect2'),
@@ -116,12 +116,12 @@ class ListEvent extends \Modules\Event\Blocks\ListEvent
                     ])
                 ]
             ],
-            'category'=>__("Event Blocks")
+            'category'=>__("Blocos de Eventos")
         ];
     }
     public function getName()
     {
-        return __('Event: List Items');
+        return __('Evento: Listar Itens');
     }
 
     public function content($model = [])

@@ -4,13 +4,13 @@
     <div class="row align-items-center">
         <div class="col-12 col-md-6">
             <h2 class="title-bar no-border-bottom">
-                {{__("Network")}}
+                {{__("Rede")}}
             </h2>
         </div>
         <div class="col-12 col-md-6">
             <div class="text-right">
                 <a class="btn btn-success" href="{{route('user.network.wallet')}}">
-                    {{__("Request withdrawal")}}
+                    {{__("Solicitar saque")}}
                 </a>
             </div>
         </div>
@@ -42,12 +42,12 @@
 </div>
 <div class="bravo-user-link bg-white my-4">
     <div>
-        <p>{{__("Copy your unique link and share it with those you'd like to invite to your affiliate network. Track their activity and manage your earnings easily.")}}</p>
+        <p>{{__("Copie seu link exclusivo e compartilhe-o com aqueles que você gostaria de convidar para sua rede de afiliados. Acompanhe a atividade deles e gerencie seus ganhos facilmente.")}}</p>
         <div>
-            <label for="link" class="bg-info text-white py-1 px-3 rounded-1">{{__('Referral link')}}</label>
+            <label for="link" class="bg-info text-white py-1 px-3 rounded-1">{{__('Link de indicação')}}</label>
             <div class="d-flex align-items-center">
                 <input id="link" type="text" class="form-control" disabled value="{{url('/?rk='. \App\Helpers\Constants::RELATION_AFFILIATE_PREFIX.Auth::user()->id) }}">
-                <button id="btn-link" class="btn btn-info col-2">{{__('Copy Link')}}</button>
+                <button id="btn-link" class="btn btn-info col-2">{{__('Copiar Link')}}</button>
             </div>
         </div>
     </div>
@@ -161,7 +161,7 @@
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: '{{__("Timeline")}}'
+                                labelString: '{{__("Linha do Tempo")}}'
                             }
                         }],
                         yAxes: [{
@@ -169,7 +169,7 @@
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: '{{__("Currency: :currency_main",["currency_main "=>setting_item("currency_main ")])}}'
+                                labelString: '{{__("Moeda: :currency_main",["currency_main "=>setting_item("currency_main ")])}}'
                             },
                             ticks: {
                                 beginAtZero: true,
@@ -208,14 +208,14 @@
             "opens": "left",
             "showDropdowns": true,
             ranges: {
-                '{{__("Today")}}': [moment(), moment()],
-                '{{__("Simterday")}}': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                '{{__("Last 7 Days")}}': [moment().subtract(6, 'days'), moment()],
-                '{{__("Last 30 Days")}}': [moment().subtract(29, 'days'), moment()],
-                '{{__("This Month")}}': [moment().startOf('month'), moment().endOf('month')],
-                '{{__("Last Month")}}': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                '{{__("This Year")}}': [moment().startOf('year'), moment().endOf('year')],
-                '{{__("This Week")}}': [moment().startOf('week'), end]
+                '{{__("Hoje")}}': [moment(), moment()],
+                '{{__("Ontem")}}': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                '{{__("Últimos 7 dias")}}': [moment().subtract(6, 'days'), moment()],
+                '{{__("Últimos 30 dias")}}': [moment().subtract(29, 'days'), moment()],
+                '{{__("Este Mês")}}': [moment().startOf('month'), moment().endOf('month')],
+                '{{__("Mês Passado")}}': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                '{{__("Este Ano")}}': [moment().startOf('year'), moment().endOf('year')],
+                '{{__("Esta Semana")}}': [moment().startOf('week'), end]
             }
         }, cb).on('apply.daterangepicker', function(ev, picker) {
             $.ajax({

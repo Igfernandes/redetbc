@@ -14,17 +14,17 @@
                 {!! clean($translation->title) !!}
             </a>
         @else
-            {{__("[Deleted]")}}
+            {{__("[Apagado]")}}
         @endif
     </td>
     <td class="a-hidden">{{display_date($booking->created_at)}}</td>
     <td class="a-hidden">
-        {{__("Start date")}} : {{display_datetime($booking->start_date)}} <br>
-        {{__("End date")}} : {{display_datetime($booking->end_date)}} <br>
+        {{__("Data de início")}} : {{display_datetime($booking->start_date)}} <br>
+        {{__("Data de fim")}} : {{display_datetime($booking->end_date)}} <br>
         @if($booking->getMeta('type_date') == 'per_day')
-            {{__("Durations")}}: {{ $booking->duration_nights }} {{ Str::plural(__('dia'),$booking->duration_nights) }}
+            {{__("Duração")}}: {{ $booking->duration_nights }} {{ Str::plural(__('dia'),$booking->duration_nights) }}
         @else
-            {{__("Durations")}}: {{ $booking->duration_hours }} {{ Str::plural(__('hora'),$booking->duration_hours) }}
+            {{__("Duração")}}: {{ $booking->duration_hours }} {{ Str::plural(__('hora'),$booking->duration_hours) }}
         @endif
     </td>
     <td>{{format_money($booking->total)}}</td>

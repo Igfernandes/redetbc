@@ -1,6 +1,6 @@
 @php $lang_local = app()->getLocale() @endphp
 <div class="booking-review">
-	<h4 class="booking-review-title">{{__("Your Booking")}}</h4>
+	<h4 class="booking-review-title">{{__("Sua Reserva")}}</h4>
 	<div class="booking-review-content">
 		<div class="review-section">
 			<div class="service-info">
@@ -38,13 +38,13 @@
 			<ul class="review-list">
 				@if($booking->start_date)
 					<li>
-						<div class="label">{{__('Check in:')}}</div>
+						<div class="label">{{__('Check-in:')}}</div>
 						<div class="val">
 							{{display_date($booking->start_date)}}
 						</div>
 					</li>
 					<li>
-						<div class="label">{{__('Check out:')}}</div>
+						<div class="label">{{__('Check-out:')}}</div>
 						<div class="val">
 							{{display_date($booking->end_date)}}
 						</div>
@@ -102,7 +102,7 @@
 				@php $extra_price = $booking->getJsonMeta('extra_price') @endphp
 				@if(!empty($extra_price))
 					<li>
-						<div class="label-title"><strong>{{__("Extra Prices:")}}</strong></div>
+						<div class="label-title"><strong>{{__("Preços Extras:")}}</strong></div>
 					</li>
 					<li class="no-flex">
 						<ul>
@@ -199,4 +199,3 @@ $dateDetail = $service->detailBookingEachDate($booking);
 		</div>
 	</div>
 </div>
-

@@ -1,16 +1,16 @@
 @extends('layouts.user')
 @section('content')
     <h2 class="title-bar">
-        {{!empty($recovery) ?__('Recuperação Services') : __("Gerenciar Serviços")}}
+        {{!empty($recovery) ?__('Recuperação de Serviços') : __("Gerenciar Serviços")}}
         @if(Auth::user()->hasPermission('assistance_create') && empty($recovery))
-            <a href="{{ route("assistance.vendor.create") }}" class="btn-change-password">{{__("Add Service")}}</a>
+            <a href="{{ route("assistance.vendor.create") }}" class="btn-change-password">{{__("Adicionar Serviço")}}</a>
         @endif
     </h2>
     @include('admin.message')
     @if($rows->total() > 0)
         <div class="bravo-list-item">
             <div class="bravo-pagination">
-                <span class="count-string">{{ __("Mostrando :from - :to of :total Services",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                <span class="count-string">{{ __("Mostrando :from - :to de :total Serviços",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                 {{$rows->appends(request()->query())->links()}}
             </div>
             <div class="list-item">
@@ -23,11 +23,11 @@
                 </div>
             </div>
             <div class="bravo-pagination">
-                <span class="count-string">{{ __("Mostrando :from - :to of :total Services",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                <span class="count-string">{{ __("Mostrando :from - :to de :total Serviços",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                 {{$rows->appends(request()->query())->links()}}
             </div>
         </div>
     @else
-        {{__("No Service")}}
+        {{__("Nenhum Serviço")}}
     @endif
 @endsection

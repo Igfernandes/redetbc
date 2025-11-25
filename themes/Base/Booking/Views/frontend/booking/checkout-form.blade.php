@@ -8,7 +8,7 @@
                     <div class="form-group">
                         <label for="confirmRegister">
                             <input type="checkbox" name="confirmRegister" id="confirmRegister" value="1">
-                            {{__('Create a new account?')}}
+                            {{__('Criar uma nova conta?')}}
                         </label>
                     </div>
                 </div>
@@ -28,13 +28,13 @@
             <div class="col-md-6 field-email">
                 <div class="form-group">
                     <label >{{__("Email")}} <span class="required">*</span></label>
-                    <input type="email" placeholder="{{__("email@domain.com")}}" class="form-control" value="{{$user->email ?? ''}}" name="email">
+                    <input type="email" placeholder="{{__("email@dominio.com")}}" class="form-control" value="{{$user->email ?? ''}}" name="email">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label >{{__("Celular")}} <span class="required">*</span></label>
-                    <input type="text" placeholder="{{__("Your Phone")}}" class="form-control" value="{{$user->phone ?? ''}}" name="phone">
+                    <input type="text" placeholder="{{__("Seu Telefone")}}" class="form-control" value="{{$user->phone ?? ''}}" name="phone">
                 </div>
             </div>
 
@@ -77,7 +77,7 @@
             <div class="col-md-6 field-state">
                 <div class="form-group">
                     <label >{{__("Estado/Província/Região")}} </label>
-                    <input type="text" class="form-control" value="{{$user->state ?? ''}}" name="state" placeholder="{{__("State/Province/Region")}}">
+                    <input type="text" class="form-control" value="{{$user->state ?? ''}}" name="state" placeholder="{{__("Estado/Província/Região")}}">
                 </div>
             </div>
             <div class="col-md-6 field-zip-code">
@@ -98,8 +98,8 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <label >{{__("Special Requirements")}} </label>
-                <textarea name="customer_notes" cols="30" rows="6" class="form-control" placeholder="{{__('Special Requirements')}}"></textarea>
+                <label >{{__("Requisitos Especiais")}} </label>
+                <textarea name="customer_notes" cols="30" rows="6" class="form-control" placeholder="{{__('Requisitos Especiais')}}"></textarea>
             </div>
         </div>
     </div>
@@ -114,7 +114,7 @@
 
     <div class="form-group">
         <label class="term-conditions-checkbox">
-            <input type="checkbox" name="term_conditions"> {{__('I have read and accept the')}}  <a target="_blank" href="{{get_page_url($term_conditions)}}">{{__('terms and conditions')}}</a>
+            <input type="checkbox" name="term_conditions"> {{__('Eu li e aceito os')}}  <a target="_blank" href="{{get_page_url($term_conditions)}}">{{__('termos e condições')}}</a>
         </label>
     </div>
     @if(setting_item("booking_enable_recaptcha"))

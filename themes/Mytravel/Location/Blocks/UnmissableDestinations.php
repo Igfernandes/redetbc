@@ -18,31 +18,31 @@ class UnmissableDestinations extends BaseBlock
             'id'        => 'location_name',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Localização Name')
+            'label'     => __('Nome da Localização')
         ];
         $arg[] = [
             'id'        => 'location_desc',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Localização Desc')
+            'label'     => __('Descrição da Localização')
         ];
         $arg[] = [
             'id'        => 'location_btn',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Localização Button Text')
+            'label'     => __('Texto do Botão da Localização')
         ];
         $arg[] = [
             'id'        => 'location_link',
             'type'      => 'input',
             'inputType' => 'text',
-            'label'     => __('Localização Button Link')
+            'label'     => __('Link do Botão da Localização')
         ];
         $arg[] =  [
             'id'            => 'number_item',
             'type'          => 'input',
             'inputType'     => 'text',
-            'label'         => __('Item numérico (Default: 4)')
+            'label'         => __('Número de Itens (Padrão: 4)')
         ];
 
         $list_service = [];
@@ -53,25 +53,25 @@ class UnmissableDestinations extends BaseBlock
         $arg[] = [
             'id'            => 'service_types',
             'type'          => 'radios',
-            'label'         => "<strong>".__('Service Type')."</strong>",
+            'label'         => "<strong>".__('Tipo de Serviço')."</strong>",
             'values'        => $list_service,
         ];
 
         $arg[] = [
             'id'            => 'bg_image',
             'type'          => 'uploader',
-            'label'         => __('Background Image'),
+            'label'         => __('Imagem de Fundo'),
         ];
 
         return ([
             'settings' => $arg,
-            'category'=>__("Localização Blocks")
+            'category'=>__("Blocos de Localização")
         ]);
     }
 
     public function getName()
     {
-        return __('Unmissable Destinations');
+        return __('Destinos Imperdíveis');
     }
 
     public function content($model = [])

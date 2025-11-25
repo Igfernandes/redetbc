@@ -20,7 +20,7 @@ class ListLocations extends BaseBlock
                     'id'            => 'service_type',
                     'type'          => 'checklist',
                     'listBox'          => 'true',
-                    'label'         => "<strong>".__('Service Type')."</strong>",
+                    'label'         => "<strong>".__('Tipo de Serviço')."</strong>",
                     'values'        => $list_service,
                 ],
                 [
@@ -48,19 +48,19 @@ class ListLocations extends BaseBlock
                     'values'        => [
                         [
                             'value'   => 'style_1',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                         [
                             'value'   => 'style_3',
-                            'name' => __("Style 3")
+                            'name' => __("Estilo 3")
                         ],
                         [
                             'value'   => 'style_4',
-                            'name' => __("Style 4")
+                            'name' => __("Estilo 4")
                         ]
                     ]
                 ],
@@ -86,18 +86,18 @@ class ListLocations extends BaseBlock
                     'values'        => [
                         [
                             'value'   => 'asc',
-                            'name' => __("ASC")
+                            'name' => __("Crescente")
                         ],
                         [
                             'value'   => 'desc',
-                            'name' => __("DESC")
+                            'name' => __("Decrescente")
                         ],
                     ],
                 ],
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('List Location by IDs'),
+                    'label'        => __('Listar Localizações por IDs'),
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('location.admin.getForSelect2'),
@@ -112,7 +112,7 @@ class ListLocations extends BaseBlock
                 ],
                 [
                     'type'=> "checkbox",
-                    'label'=>__("Link to location detail page?"),
+                    'label'=>__("Link para a página de detalhes da localização?"),
                     'id'=> "to_location_detail",
                     'default'=>false
                 ]
@@ -123,7 +123,7 @@ class ListLocations extends BaseBlock
 
     public function getName()
     {
-        return __('List Locations');
+        return __('Listar Localizações');
     }
 
     public function content($model = [])

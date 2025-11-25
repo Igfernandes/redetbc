@@ -42,10 +42,10 @@ class UserController extends FrontendController
         $data = [
             'cards_report'       => $this->booking->getTopCardsReportForVendor($user_id),
             'earning_chart_data' => $this->booking->getEarningChartDataForVendor(strtotime('monday this week'), time(), $user_id),
-            'page_title'         => __("Fornecedor Dashboard"),
+            'page_title'         => __("Painel do Fornecedor"),
             'breadcrumbs'        => [
                 [
-                    'name'  => __('Dashboard'),
+                    'name'  => __('Painel'),
                     'class' => 'active'
                 ]
             ]
@@ -73,10 +73,10 @@ class UserController extends FrontendController
         $user = Auth::user();
         $data = [
             'dataUser'         => $user,
-            'page_title'       => __("Profile"),
+            'page_title'       => __("Perfil"),
             'breadcrumbs'      => [
                 [
-                    'name'  => __('Setting'),
+                    'name'  => __('Configurações'),
                     'class' => 'active'
                 ]
             ],
@@ -92,7 +92,7 @@ class UserController extends FrontendController
         }
         $user = Auth::user();
         $messages = [
-            'user_name.required'      => __('The User name field is required.'),
+            'user_name.required'      => __('O campo Nome de usuário é obrigatório.'),
         ];
         $request->validate([
             'first_name' => 'required|max:255',
@@ -122,7 +122,7 @@ class UserController extends FrontendController
         $user->birthday = date("Y-m-d", strtotime($user->birthday));
         $user->user_name = Str::slug($request->input('user_name'), "_");
         $user->save();
-        return redirect()->back()->with('success', __('Update successfully'));
+        return redirect()->back()->with('success', __('Atualizado com sucesso'));
     }
 
     public function bookingHistory(Request $request)
@@ -177,7 +177,7 @@ class UserController extends FrontendController
         $plansAnnual = \array_filter($plans->toArray(), fn($plan) => !empty($plan['annual_price']) && $plan['annual_price'] > 0);
 
         $data = [
-            'page_title' => __('Pricing Packages'),
+            'page_title' => __('Pacotes de Preços'),
             'plans' => $plans,
             'has_annual' => \count($plansAnnual) > 0,
             'user' => auth()->user(),
@@ -206,7 +206,7 @@ class UserController extends FrontendController
                 \DB::commit();
                 Auth::logout();
                 if (is_api()) {
-                    return $this->sendSuccess([], 'Deleted');
+                    return $this->sendSuccess([], 'Excluído');
                 }
                 return redirect(route('home'));
             } catch (\Exception $exception) {
@@ -214,8 +214,8 @@ class UserController extends FrontendController
             }
         }
         if (is_api()) {
-            return $this->sendError('Error. You can\'t permanently delete');
+            return $this->sendError('Erro. Você não pode excluir permanentemente');
         }
-        return back()->with('error', __('Error. You can\'t permanently delete'));
+        return back()->with('error', __('Erro. Você não pode excluir permanentemente'));
     }
 }

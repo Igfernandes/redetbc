@@ -51,7 +51,7 @@
 
                                 </a>
                                 <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                    <button type="button" class="btn btn-sm btn-icon text-white rounded-circle"  data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Save for later')}}">
+                                    <button type="button" class="btn btn-sm btn-icon text-white rounded-circle"  data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Salvar para mais tarde')}}">
                                         <span class="service-wishlist {{$item->isWishList()}}" data-id="{{$item->id}}" data-type="{{$item->type}}">
                                             <span class="flaticon-heart-1 font-size-20"></span>
                                         </span>

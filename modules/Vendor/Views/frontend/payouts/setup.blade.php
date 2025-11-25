@@ -8,18 +8,18 @@ $vendor_payout_methods = array_values(\Illuminate\Support\Arr::sort($vendor_payo
 
 $payout_accounts = $currentUser->payout_accounts;
 @endphp
-<h4>{{__('Setup your payment accounts')}}</h4>
+<h4>{{__('Configurar suas contas de pagamento')}}</h4>
 <div class="">
-    <a href="#vendor_payout_accounts" data-toggle="modal" class="btn btn-primary btn-sm">{{__("Setup accounts")}}</a>
+    <a href="#vendor_payout_accounts" data-toggle="modal" class="btn btn-primary btn-sm">{{__("Configurar contas")}}</a>
 </div>
 <br>
-<p><i>{{__("To create payout request, please setup your payment account first")}}</i></p>
+<p><i>{{__("Para criar uma solicitação de pagamento, configure sua conta de pagamento primeiro")}}</i></p>
 
 <div class="modal bravo-form" tabindex="-1" role="dialog" id="vendor_payout_accounts">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{__("Setup payout accounts")}}</h5>
+                <h5 class="modal-title">{{__("Configurar contas de pagamento")}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -29,8 +29,8 @@ $payout_accounts = $currentUser->payout_accounts;
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{__("Method")}}</th>
-                            <th>{{__("Your account")}}</th>
+                            <th>{{__("Método")}}</th>
+                            <th>{{__("Sua conta")}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +43,7 @@ $payout_accounts = $currentUser->payout_accounts;
                                     <div class="method-desc">{!! clean($method->desc) !!}</div>
                                 </td>
                                 <td>
-                                    <textarea name="payout_accounts[{{$method->id}}]" class="form-control" cols="30" rows="3" placeholder="{{__("Your account info")}}">{{$payout_accounts->$method_id ?? ''}}</textarea>
+                                    <textarea name="payout_accounts[{{$method->id}}]" class="form-control" cols="30" rows="3" placeholder="{{__("Informações da sua conta")}}">{{$payout_accounts->$method_id ?? ''}}</textarea>
                                 </td>
                             </tr>
                         @endforeach

@@ -29,7 +29,7 @@ $service = $row->service;
                 </div>
                 <div class="location">
                     <i class="icofont-license"></i>
-                    {{__("Service Type")}}: <span class="badge badge-info">{{$service->getModelName() ?? ''}}</span>
+                    {{__("Tipo de serviço")}}: <span class="badge badge-info">{{$service->getModelName() ?? ''}}</span>
                 </div>
                 <div class="location">
                     @if(!empty($service->location->name))
@@ -80,7 +80,7 @@ $service = $row->service;
                 @endif
                 <div class="control-action">
                     <a href="{{$service->getDetailUrl()}}" target="_blank" class="btn btn-info">{{__("Visualizar")}}</a>
-                    <a href="{{ route('user.wishList.remove',['id'=>$service->id , 'type' => $service->type]) }}" class="btn btn-warning">{{__("Remove")}}</a>
+                    <a href="{{ route('user.wishList.remove',['id'=>$service->id , 'type' => $service->type]) }}" class="btn btn-warning">{{__("Remover")}}</a>
                 </div>
             </div>
         </div>

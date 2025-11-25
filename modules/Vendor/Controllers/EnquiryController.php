@@ -31,11 +31,11 @@ class EnquiryController extends FrontendController
             'has_permission_enquiry_update' => $this->hasPermission('enquiry_update'),
             'breadcrumbs' => [
                 [
-                    'name'  => __('Enquiry Report'),
+                    'name'  => __('Relatório de Consulta'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'  => __("Enquiry Report"),
+            'page_title'  => __("Relatório de Consulta"),
         ];
         return view('Vendor::frontend.enquiry.index', $data);
     }
@@ -52,7 +52,7 @@ class EnquiryController extends FrontendController
                 $item->save();
                 return redirect()->back()->with('success', __('Atualização bem-sucedida'));
             }
-            return redirect()->back()->with('error', __('Enquiry not found!'));
+            return redirect()->back()->with('error', __('Consulta não encontrada!'));
         }
         return redirect()->back()->with('error', __('Falha na atualização!'));
     }
@@ -69,19 +69,19 @@ class EnquiryController extends FrontendController
 
             'breadcrumbs' => [
                 [
-                    'name' => __('Enquiry'),
+                    'name' => __('Consulta'),
                     'url'  => route('vendor.enquiry_report')
                 ],
                 [
-                    'name'  => __('Enquiry :name',['name'=>'#'.$enquiry->id.' - '.($enquiry->service->title ?? '')]),
+                    'name'  => __('Consulta :name',['name'=>'#'.$enquiry->id.' - '.($enquiry->service->title ?? '')]),
                     'url'=>'#'
                 ],
                 [
-                    'name'  => __('All Replies'),
+                    'name'  => __('Todas as Respostas'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Replies"),
+            'page_title'=>__("Respostas"),
             'enquiry'=>$enquiry
         ];
 
@@ -108,7 +108,7 @@ class EnquiryController extends FrontendController
 
         EnquiryReplyCreated::dispatch($reply,$enquiry);
 
-        return back()->with('success',__("Reply added"));
+        return back()->with('success',__("Resposta adicionada"));
     }
 
     public function delete($enquiry_id, Request $request)
@@ -118,8 +118,8 @@ class EnquiryController extends FrontendController
         $query = $this->enquiryClass::where("vendor_id", $user_id)->where("id", $enquiry_id)->first();
         if (!empty($query)) {
             $query->delete();
-            return back()->with('success',__("Delete success!"));
+            return back()->with('success',__("Exclusão bem-sucedida!"));
         }
-        return back()->with('error',__("Enquiry not found!"));
+        return back()->with('error',__("Consulta não encontrada!"));
     }
 }

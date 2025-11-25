@@ -53,14 +53,14 @@
                                         <td class="title">
                                             <a href="{{route('page.admin.edit',['id'=>$row->id])}}"> {{$row->title}}  </a>
                                             @if(setting_item('home_page_id') == $row->id)
-                                                <div class="badge badge-info">{{__("Homepage")}}</div>
+                                                <div class="badge badge-info">{{__("Página Inicial")}}</div>
                                             @endif
                                         </td>
                                         <td class="author">
                                             @if(!empty($row->author))
                                                 {{$row->author->getDisplayName()}}
                                             @else
-                                                {{__("[Author Deleted]")}}
+                                                {{__("[Autor Removido]")}}
                                             @endif
                                         </td>
                                         <td class="date">{{ display_date($row->updated_at)}}</td>
@@ -72,9 +72,9 @@
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a href="{{route('page.admin.edit',['id'=>$row->id])}}" class="dropdown-item"><i class="fa fa-edit"></i> {{__('Editar')}}</a>
-                                                    <a href="{{route('page.admin.builder',['id'=>$row->id])}}" class="dropdown-item"><i class="fa fa-paint-brush"></i> {{__('Template Builder')}}</a>
+                                                    <a href="{{route('page.admin.builder',['id'=>$row->id])}}" class="dropdown-item"><i class="fa fa-paint-brush"></i> {{__('Construtor de Template')}}</a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a href="{{route('page.detail',['slug'=>$row->slug])}}" class="dropdown-item"><i class="fa fa-eye"></i> {{__('View')}}</a>
+                                                    <a href="{{route('page.detail',['slug'=>$row->slug])}}" class="dropdown-item"><i class="fa fa-eye"></i> {{__('Visualizar')}}</a>
                                                 </div>
                                             </div>
                                         </td>

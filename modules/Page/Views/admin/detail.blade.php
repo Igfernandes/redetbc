@@ -15,7 +15,7 @@
             </div>
             <div class="">
                 @if($row->id)
-                <a class="btn btn-primary btn-sm" href="{{route('page.admin.builder',['id'=>$row->id])}}"><i class="fa fa-paint-brush"></i> {{ __('Template Builder')}}</a>
+                <a class="btn btn-primary btn-sm" href="{{route('page.admin.builder',['id'=>$row->id])}}"><i class="fa fa-paint-brush"></i> {{ __('Construtor de Template')}}</a>
                 @endif
                 @if($row->slug)
                 <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{ __('Visualização de página')}}</a>
@@ -31,7 +31,7 @@
                 <div class="col-md-9">
                     <div class="panel">
                         <div class="panel-title">
-                            <strong>{{ __('Página Content')}}</strong>
+                            <strong>{{ __('Conteúdo da Página')}}</strong>
                         </div>
                         <div class="panel-body">
                             <div class="form-group magic-field" data-id="title" data-type="title">

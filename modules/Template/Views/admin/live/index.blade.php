@@ -16,7 +16,7 @@
                         <i
                             class="ion ion-ios-play-circle"
                         ></i>
-                        {{__("Preview")}}
+                        {{__("Pré-visualizar")}}
                     </a>
                 @endif
             </div>
@@ -29,10 +29,10 @@
                     :class="message.type ? 'success' : 'danger'"
                 >@{{message.content}}</span>
                 @if(empty($row->id) and app()->getLocale() != setting_item('site_locale'))
-                    {{__('You need to create the template at the Main-language tab first!')}}
+                    {{__('Você precisa criar o template na aba Linguagem principal primeiro!')}}
                 @else
                 @endif
-                <span class="last_saved font-italic" v-if="lastSaved"> {{__("Last saved:")}} @{{ lastSaved }}</span>
+                <span class="last_saved font-italic" v-if="lastSaved"> {{__("Última salvaguarda:")}} @{{ lastSaved }}</span>
             </div>
         </div>
         <div class="d-flex flex-grow-1 position-relative overflow-auto">
@@ -61,11 +61,11 @@
         var template_id = {{$row->id ?? 0}};
         var current_menu_lang = '{{request()->query('lang',app()->getLocale())}}';
         var template_i18n = {
-            cancel: '{{__('Cancel')}}',
+            cancel: '{{__('Cancelar')}}',
             save_changes: '{{__('Salvar alterações')}}',
-            delete_confirm: '{{__('Are you want to delete?')}}',
-            add_new: '{{__('Add New')}}',
-            save_block: '{{__('Save Block')}}',
+            delete_confirm: '{{__('Você deseja deletar?')}}',
+            add_new: '{{__('Adicionar Novo')}}',
+            save_block: '{{__('Salvar Bloco')}}',
         };
     </script>
 @endsection

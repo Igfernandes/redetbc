@@ -2,16 +2,16 @@
     @php $languages = \Modules\Language\Models\Language::getActive(); @endphp
     <hr>
     <div class="panel">
-        <div class="panel-title"><strong>{{__("Form Search Fields")}}</strong></div>
+        <div class="panel-title"><strong>{{__("Campos de Pesquisa do Formulário")}}</strong></div>
         <div class="panel-body">
             <div class="form-group" >
-                <label class="" >{{__("Procurar Criteria")}}</label>
+                <label class="" >{{__("Critério de Pesquisa")}}</label>
                 <div class="form-controls">
                     <div class="form-group-item">
                         <div class="g-items-header">
                             <div class="row">
-                                <div class="col-md-7">{{__("Procurar Field")}}</div>
-                                <div class="col-md-4">{{__("Order")}}</div>
+                                <div class="col-md-7">{{__("Campo de Pesquisa")}}</div>
+                                <div class="col-md-4">{{__("Ordem")}}</div>
                                 <div class="col-md-1"></div>
                             </div>
                         </div>
@@ -19,9 +19,9 @@
                             @php
                             $space_search_fields = setting_item_array('space_search_fields');
                             $types = [
-                                'service_name'=>__("Service name"),
+                                'service_name'=>__("Nome do serviço"),
                                 'location'=>__("Localização"),
-                                'attr'=>__("Attribute"),
+                                'attr'=>__("Atributo"),
                                 'date'=>__("Data"),
                                 'guests'=>__("Convidados"),
                             ];
@@ -43,25 +43,25 @@
                                                 <input type="text" name="space_search_fields[{{$key}}][title]" value="{{$item['title']}}" class="form-control">
                                             @endif
                                             <select name="space_search_fields[{{$key}}][field]" class="custom-select">
-                                                <option value="">{{__("-- Select field type --")}}</option>
+                                                <option value="">{{__("-- Selecionar tipo de campo --")}}</option>
                                                 @foreach($types as $type=>$name)
                                                     <option @if($item['field'] == $type) selected @endif value="{{$type}}">{{$name}}</option>
                                                 @endforeach
                                             </select>
                                             <br>
                                             <select name="space_search_fields[{{$key}}][attr]" class="mt-2 custom-select">
-                                                <option value="">{{__("-- Select Attribute --")}}</option>
+                                                <option value="">{{__("-- Selecionar Atributo --")}}</option>
                                                 @foreach($attrs as $attr)
                                                     <option @if($item['attr'] ?? "" == $attr->id) selected @endif value="{{$attr->id}}">{{$attr->name}}</option>
                                                 @endforeach
                                             </select>
                                             <br>
                                             <select name="space_search_fields[{{$key}}][size]" class="mt-2 custom-select">
-                                                <option @if($item['size'] == 6) selected @endif value="6">{{ __("Size Column 6") }}</option>
-                                                <option @if($item['size'] == 4) selected @endif value="4">{{ __("Size Column 4") }}</option>
-                                                <option @if($item['size'] == 3) selected @endif value="3">{{ __("Size Column 3") }}</option>
-                                                <option @if($item['size'] == 2) selected @endif value="2">{{ __("Size Column 2") }}</option>
-                                                <option @if($item['size'] == 1) selected @endif value="1">{{ __("Size Column 1") }}</option>
+                                                <option @if($item['size'] == 6) selected @endif value="6">{{ __("Tamanho da Coluna 6") }}</option>
+                                                <option @if($item['size'] == 4) selected @endif value="4">{{ __("Tamanho da Coluna 4") }}</option>
+                                                <option @if($item['size'] == 3) selected @endif value="3">{{ __("Tamanho da Coluna 3") }}</option>
+                                                <option @if($item['size'] == 2) selected @endif value="2">{{ __("Tamanho da Coluna 2") }}</option>
+                                                <option @if($item['size'] == 1) selected @endif value="1">{{ __("Tamanho da Coluna 1") }}</option>
                                             </select>
                                         </div>
                                         <div class="col-md-4">
@@ -93,25 +93,25 @@
                                             <input type="text" __name__="space_search_fields[__number__][title]"  class="form-control">
                                         @endif
                                         <select __name__="space_search_fields[__number__][field]" class="custom-select">
-                                            <option value="">{{__("-- Select field type --")}}</option>
+                                            <option value="">{{__("-- Selecionar tipo de campo --")}}</option>
                                             @foreach($types as $type=>$name)
                                                 <option value="{{$type}}">{{$name}}</option>
                                             @endforeach
                                         </select>
                                         <br>
                                         <select __name__="space_search_fields[__number__][attr]" class="mt-2 custom-select">
-                                            <option value="">{{__("-- Select Attribute --")}}</option>
+                                            <option value="">{{__("-- Selecionar Atributo --")}}</option>
                                             @foreach($attrs as $attr)
                                                 <option value="{{$attr->id}}">{{$attr->name}}</option>
                                             @endforeach
                                         </select>
                                         <br>
                                         <select __name__="space_search_fields[__number__][size]" class="mt-2 custom-select">
-                                            <option value="6">{{ __("Size Column 6") }}</option>
-                                            <option value="4">{{ __("Size Column 4") }}</option>
-                                            <option value="3">{{ __("Size Column 3") }}</option>
-                                            <option value="2">{{ __("Size Column 2") }}</option>
-                                            <option value="1">{{ __("Size Column 1") }}</option>
+                                            <option value="6">{{ __("Tamanho da Coluna 6") }}</option>
+                                            <option value="4">{{ __("Tamanho da Coluna 4") }}</option>
+                                            <option value="3">{{ __("Tamanho da Coluna 3") }}</option>
+                                            <option value="2">{{ __("Tamanho da Coluna 2") }}</option>
+                                            <option value="1">{{ __("Tamanho da Coluna 1") }}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4">

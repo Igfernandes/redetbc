@@ -57,8 +57,8 @@
     <script>
         var bravo_booking_data = {!! json_encode($booking_data) !!}
             var bravo_booking_i18n = {
-            no_date_select:'{{__('Please select Start and End date')}}',
-            no_guest_select:'{{__('Please select at least one number')}}',
+            no_date_select:'{{__('Por favor, selecione a data de Início e Fim')}}',
+            no_guest_select:'{{__('Por favor, selecione pelo menos um número')}}',
             load_dates_url:'{{route('event.vendor.availability.loadDates')}}'
         };
     </script>

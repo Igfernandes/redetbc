@@ -1,21 +1,21 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Permanently delete account")}}</h3>
+        <h3 class="form-group-title">{{__("Excluir conta permanentemente")}}</h3>
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Permanently delete account")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Excluir conta permanentemente")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
                     @if(is_default_lang())
                         <div class="form-controls">
-                            <label><input type="checkbox" name="user_enable_permanently_delete" value="1" @if(setting_item('user_enable_permanently_delete')) checked @endif > {{__('Yes, please enable it')}}</label>
+                            <label><input type="checkbox" name="user_enable_permanently_delete" value="1" @if(setting_item('user_enable_permanently_delete')) checked @endif > {{__('Sim, por favor, habilite')}}</label>
                         </div>
-                        <p>{{__('Permanently delete account will delete all services of that user and that user')}}</p>
+                        <p>{{__('A exclusão permanente da conta excluirá todos os serviços desse usuário e o próprio usuário')}}</p>
                     @else
                         <div class="form-group">
-                            <label> <input type="checkbox" @if($settings['user_enable_permanently_delete'] ?? '' == 1) checked @endif disabled name="user_enable_permanently_delete" value="1"> {{__("Sim, please enable it")}}</label>
+                            <label> <input type="checkbox" @if($settings['user_enable_permanently_delete'] ?? '' == 1) checked @endif disabled name="user_enable_permanently_delete" value="1"> {{__("Sim, por favor, habilite")}}</label>
                         </div>
                         @if($settings['user_enable_permanently_delete'] != 1)
                             <p>{{__('Você deve habilitar no idioma principal.')}}</p>
@@ -40,8 +40,8 @@
 </div>
 <div class="row mt-4">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__('Content Email Permanently delete account')}}</h3>
-        <div class="form-group-desc">{{ __('Content email verify send when user permanently deleted.')}}
+        <h3 class="form-group-title">{{__('Conteúdo do E-mail de Exclusão Permanente de Conta')}}</h3>
+        <div class="form-group-desc">{{ __('Conteúdo do e-mail de verificação enviado quando o usuário é permanentemente excluído.')}}
             @foreach(\Modules\User\Emails\UserPermanentlyDelete::CODE as $item=>$value)
                 <div><code>{{$value}}</code></div>
             @endforeach
@@ -52,11 +52,11 @@
             <div class="panel-body">
                 @if(is_default_lang())
                     <div class="form-group">
-                        <label> <input type="checkbox" @if($settings['user_enable_permanently_delete_email'] ?? '' == 1) checked @endif name="user_enable_permanently_delete_email" value="1"> {{__("Enable?")}}</label>
+                        <label> <input type="checkbox" @if($settings['user_enable_permanently_delete_email'] ?? '' == 1) checked @endif name="user_enable_permanently_delete_email" value="1"> {{__("Habilitar?")}}</label>
                     </div>
                 @else
                     <div class="form-group">
-                        <label> <input type="checkbox" @if($settings['user_enable_permanently_delete'] ?? '' == 1) checked @endif disabled name="user_enable_permanently_delete" value="1"> {{__("Sim, please enable it")}}</label>
+                        <label> <input type="checkbox" @if($settings['user_enable_permanently_delete'] ?? '' == 1) checked @endif disabled name="user_enable_permanently_delete" value="1"> {{__("Sim, por favor, habilite")}}</label>
                     </div>
                     @if($settings['user_enable_permanently_delete'] != 1)
                         <p>{{__('Você deve habilitar no idioma principal.')}}</p>

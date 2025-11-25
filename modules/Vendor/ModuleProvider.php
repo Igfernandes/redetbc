@@ -49,7 +49,7 @@ class ModuleProvider extends ModuleServiceProvider
         $res = [];
         $res['booking_report']= [
             'url'        => route('vendor.bookingReport'),
-            'title'      => __("Booking Report"),
+            'title'      => __("Relatório de Reservas"),
             'icon'       => 'icon ion-ios-pie',
             'position'   => 81,
             'permission' => 'dashboard_vendor_access',
@@ -60,7 +60,7 @@ class ModuleProvider extends ModuleServiceProvider
             'position'   => 82,
             'icon'       => 'icofont-ebook',
             'url'        => route('vendor.enquiry_report'),
-            'title'      => __("Enquiry Report"),
+            'title'      => __("Relatório de Consultas"),
             'permission' => 'enquiry_view',
         ];
 
@@ -78,7 +78,7 @@ class ModuleProvider extends ModuleServiceProvider
 
             $res['team']= [
                 'url'        => route('vendor.team.index'),
-                'title'      => __("Teams"),
+                'title'      => __("Equipes"),
                 'icon'       => 'icon ion-ios-contacts',
                 'position'   => 100,
                 'permission' => 'dashboard_vendor_access',

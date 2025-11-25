@@ -2,13 +2,13 @@
 @section('content')
     <div class="b-container">
         <div class="b-panel">
-            <h1>{{__("Hello :name",['name'=>$user->first_name])}}</h1>
+            <h1>{{__("Olá :name",['name'=>$user->first_name])}}</h1>
 
-            <p>{{__('You are receiving this email because we approved your vendor registration request.')}}</p>
-            <p>{{__('You can check your dashboard here:')}} <a href="{{url('user/dashboard')}}">{{__('View dashboard')}}</a></p>
+            <p>{{__('Você está recebendo este e-mail porque aprovamos sua solicitação de registro de fornecedor.')}}</p>
+            <p>{{__('Você pode verificar seu painel aqui:')}} <a href="{{url('user/dashboard')}}">{{__('Ver painel')}}</a></p>
 
             <br>
-            <p>{{__('Regards')}},<br>{{setting_item('site_title')}}</p>
+            <p>{{__('Saudações')}},<br>{{setting_item('site_title')}}</p>
         </div>
     </div>
 @endsection

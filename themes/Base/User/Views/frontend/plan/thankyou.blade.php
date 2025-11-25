@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="sec-title text-center">
-                        <h2>{{ setting_item_with_lang('user_plans_page_title', app()->getLocale()) ?? __("Pricing Packages")}}</h2>
+                        <h2>{{ setting_item_with_lang('user_plans_page_title', app()->getLocale()) ?? __("Pacotes de Preços")}}</h2>
                         <div class="my-3">
                             @include('admin.message')
                         </div>
                         <p class="text-center">
-                            <a class="btn btn btn-primary" href="{{route('user.plan')}}">{{__('My plan')}}</a>
+                            <a class="btn btn btn-primary" href="{{route('user.plan')}}">{{__('Meu plano')}}</a>
                         </p>
                     </div>
                 </div>

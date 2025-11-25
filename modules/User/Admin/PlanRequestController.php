@@ -34,7 +34,7 @@ class PlanRequestController extends AdminController
 
         $data = [
             'rows'        => $query->paginate(20),
-            'page_title'  => __("Plan request management"),
+            'page_title'  => __("Gerenciamento de solicitações de plano"),
             'breadcrumbs' => [
                 [
                     'url'  => route('user.admin.index'),
@@ -61,7 +61,7 @@ class PlanRequestController extends AdminController
 //            foreach ($ids as $id) {
 //                $query = PlanPayment::query()->where("id", $id)->where('object_model','plan')->delete();
 //            }
-//            return redirect()->back()->with('success', __('Deleted successfully!'));
+//            return redirect()->back()->with('success', __('Excluído com sucesso!'));
         } else {
             foreach ($ids as $id) {
                 switch ($action) {

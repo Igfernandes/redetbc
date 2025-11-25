@@ -12,7 +12,7 @@ class BrandsList extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Brand Item(s)'),
+                    'label'       => __('Listar Item(ns) da Marca'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -24,18 +24,18 @@ class BrandsList extends BaseBlock
                         [
                             'id'    => 'image_id',
                             'type'  => 'uploader',
-                            'label' => __('Featured Image')
+                            'label' => __('Imagem Destacada')
                         ],
                     ]
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 
     public function getName()
     {
-        return __('Brands List');
+        return __('Lista de Marcas');
     }
 
     public function content($model = [])

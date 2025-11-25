@@ -26,7 +26,7 @@ class VendorTeamRequestCreatedEmail extends Mailable
 
     public function build()
     {
-        $subject = __('Request join team');
+        $subject = __('Solicitar adesão à equipe');
         return $this->subject($subject)->view('Vendor::emails.vendor-team-request-create', ['content' => $this->body()]);
     }
 

@@ -21,15 +21,15 @@
             <div class="panel-title"><strong>{{__("Amazon S3")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="">{{__("Key")}}</label>
+                    <label class="">{{__("Chave")}}</label>
                     <input type="text" class="form-control" autocomplete="none" name="filesystem_s3_key" value="{{setting_item('filesystem_s3_key')}}" />
                 </div>
                 <div class="form-group">
-                    <label class="">{{__("Secret access key")}}</label>
+                    <label class="">{{__("Chave de acesso secreta")}}</label>
                     <input type="text" class="form-control" autocomplete="none" name="filesystem_s3_secret_access_key" value="{{setting_item('filesystem_s3_secret_access_key')}}" />
                 </div>
                 <div class="form-group">
-                    <label class="">{{__("Default region")}}</label>
+                    <label class="">{{__("Região padrão")}}</label>
                     <input type="text" class="form-control" autocomplete="none" name="filesystem_s3_region" value="{{setting_item('filesystem_s3_region')}}" />
                 </div>
                 <div class="form-group">
@@ -42,7 +42,7 @@
             <div class="panel-title"><strong>{{__("Google Cloud Storage")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="">{{__("Project ID")}}</label>
+                    <label class="">{{__("ID do Projeto")}}</label>
                     <input type="text" class="form-control" autocomplete="none" name="gcs_project_id" value="{{setting_item('gcs_project_id')}}" />
                 </div>
                 <div class="form-group">
@@ -50,7 +50,7 @@
                     <input type="text" class="form-control" autocomplete="none" name="gcs_bucket" value="{{setting_item('gcs_bucket')}}" />
                 </div>
                 <div class="form-group">
-                    <label class="">{{__("Service Account Key File Name")}}</label>
+                    <label class="">{{__("Nome do arquivo da chave da conta de serviço")}}</label>
                     <input type="text" class="form-control" autocomplete="none" name="gcs_key_file" value="{{setting_item('gcs_key_file')}}" />
                 </div>
 
