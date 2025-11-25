@@ -33,7 +33,7 @@ class LiveEditorController extends AdminController
         }
 
         $data = [
-            'page_title' => __('Live Editor'),
+            'page_title' => __('Editor ao vivo'),
             'translation' => $translation,
             'row' => $template,
             'refLink' => $refLink,

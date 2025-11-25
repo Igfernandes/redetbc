@@ -1,6 +1,6 @@
 @php $lang_local = app()->getLocale() @endphp
 <div class="booking-review">
-    <h4 class="booking-review-title">{{__("Your Booking")}}</h4>
+    <h4 class="booking-review-title">{{__("Sua Reserva")}}</h4>
     <div class="booking-review-content">
         <div class="review-section">
             <div class="service-info">
@@ -34,7 +34,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="label">{{__('Duration:')}}</div>
+                        <div class="label">{{__('Duração:')}}</div>
                         <div class="val">
                             {{human_time_diff($booking->end_date,$booking->start_date)}}
                         </div>
@@ -85,7 +85,7 @@
                 @php $extra_price = $booking->getJsonMeta('extra_price') @endphp
                 @if(!empty($extra_price))
                     <li>
-                        <div class="label-title"><strong>{{__("Extra Prices:")}}</strong></div>
+                        <div class="label-title"><strong>{{__("Preços Extras:")}}</strong></div>
                     </li>
                     <li class="no-flex">
                         <ul>
@@ -103,7 +103,7 @@
                 @php $discount_by_people = $booking->getJsonMeta('discount_by_people')@endphp
                 @if(!empty($discount_by_people))
                     <li>
-                        <div class="label-title"><strong>{{__("Discounts:")}}</strong></div>
+                        <div class="label-title"><strong>{{__("Descontos:")}}</strong></div>
                     </li>
                     <li class="no-flex">
                         <ul>
@@ -111,9 +111,9 @@
                                 <li>
                                     <div class="label">
                                         @if(!$type['to'])
-                                            {{__('from :from guests',['from'=>$type['from']])}}
+                                            {{__('a partir de :from convidados',['from'=>$type['from']])}}
                                         @else
-                                            {{__(':from - :to guests',['from'=>$type['from'],'to'=>$type['to']])}}
+                                            {{__(':from - :to convidados',['from'=>$type['from'],'to'=>$type['to']])}}
                                         @endif
                                         :
                                     </div>

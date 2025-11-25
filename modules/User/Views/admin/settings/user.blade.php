@@ -31,7 +31,7 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__("Inbox System")}}</h3>
+            <h3 class="form-group-title">{{__("Sistema de Caixa de Entrada")}}</h3>
             <p class="form-group-desc">{{__('Opção de configuração da caixa de entrada')}}</p>
         </div>
         <div class="col-sm-8">
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="" >{{__("Permitir que o cliente envie mensagem para o vendedor na página de detalhes")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="inbox_enable" value="1" @if(!empty($settings['inbox_enable'])) checked @endif /> {{__("Sim please")}} </label>
+                            <label><input type="checkbox" name="inbox_enable" value="1" @if(!empty($settings['inbox_enable'])) checked @endif /> {{__("Sim, por favor")}} </label>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="form-group">
                         <label class="">{{__("Habilitar reCAPTCHA no formulário de login")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="user_enable_login_recaptcha" value="1" @if(!empty($settings['user_enable_login_recaptcha'])) checked @endif /> {{__("On")}} </label>
+                            <label><input type="checkbox" name="user_enable_login_recaptcha" value="1" @if(!empty($settings['user_enable_login_recaptcha'])) checked @endif /> {{__("Ligado")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("Ativar o modo para o formulário de login")}}</small>
                         </div>
@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <label class="">{{__("Habilitar reCAPTCHA no formulário de registro")}}</label>
                         <div class="form-controls">
-                            <label><input type="checkbox" name="user_enable_register_recaptcha" value="1" @if(!empty($settings['user_enable_register_recaptcha'])) checked @endif /> {{__("On")}} </label>
+                            <label><input type="checkbox" name="user_enable_register_recaptcha" value="1" @if(!empty($settings['user_enable_register_recaptcha'])) checked @endif /> {{__("Ligado")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("Ativar o modo para o formulário de registro")}}</small>
                         </div>
@@ -90,7 +90,7 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="form-controls">
-                            <label><input type="checkbox" name="user_disable_verification_feature" value="1" @if(setting_item('user_disable_verification_feature')) checked @endif > {{__('Yes, please disable it')}}</label>
+                            <label><input type="checkbox" name="user_disable_verification_feature" value="1" @if(setting_item('user_disable_verification_feature')) checked @endif > {{__('Sim, por favor desative')}}</label>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="form-controls">
-                            <label><input type="checkbox" name="user_enable_2fa" value="1" @if(setting_item('user_enable_2fa')) checked @endif > {{__('Yes, please enable it')}}</label>
+                            <label><input type="checkbox" name="user_enable_2fa" value="1" @if(setting_item('user_enable_2fa')) checked @endif > {{__('Sim, por favor habilite')}}</label>
                         </div>
                         <p>{{__('Quando a autenticação de dois fatores está ativada, o usuário precisa inserir um código numérico de seis dígitos durante o processo de autenticação. Esse código é gerado usando uma senha de uso único baseada em tempo (TOTP) que pode ser obtida em qualquer aplicativo de autenticação móvel compatível com TOTP, como o Google Authenticator.')}}</p>
                     </div>
@@ -121,8 +121,8 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__('Content Email User Registered')}}</h3>
-        <div class="form-group-desc">{{ __('Content email send to Customer or Administrator when user registered.')}}
+        <h3 class="form-group-title">{{__('Conteúdo do E-mail de Usuário Registrado')}}</h3>
+        <div class="form-group-desc">{{ __('Conteúdo do e-mail enviado ao Cliente ou Administrador quando o usuário se registra.')}}
             @foreach(\Modules\User\Listeners\SendMailUserRegisteredListen::CODE as $item=>$value)
                 <div><code>{{$value}}</code></div>
             @endforeach
@@ -133,11 +133,11 @@
             <div class="panel-body">
                 @if(is_default_lang())
                     <div class="form-group">
-                        <label> <input type="checkbox" @if($settings['enable_mail_user_registered'] ?? '' == 1) checked @endif name="enable_mail_user_registered" value="1"> {{__("Enable send email to customer when customer registered ?")}}</label>
+                        <label> <input type="checkbox" @if($settings['enable_mail_user_registered'] ?? '' == 1) checked @endif name="enable_mail_user_registered" value="1"> {{__("Habilitar envio de e-mail ao cliente quando o cliente se registrar ?")}}</label>
                     </div>
                 @else
                     <div class="form-group">
-                        <label> <input type="checkbox" @if($settings['enable_mail_user_registered'] ?? '' == 1) checked @endif disabled name="enable_mail_user_registered" value="1"> {{__("Enable send email to customer when customer registered ?")}}</label>
+                        <label> <input type="checkbox" @if($settings['enable_mail_user_registered'] ?? '' == 1) checked @endif disabled name="enable_mail_user_registered" value="1"> {{__("Habilitar envio de e-mail ao cliente quando o cliente se registrar ?")}}</label>
                     </div>
                     @if($settings['enable_mail_user_registered'] != 1)
                         <p>{{__('Você deve habilitar no idioma principal.')}}</p>
@@ -145,7 +145,7 @@
                 @endif
 
                 <div class="form-group" data-condition="enable_mail_user_registered:is(1)">
-                    <label>{{__("E-mail para conteúdo do cliente")}}</label>
+                    <label>{{__("Conteúdo do E-mail para o Cliente")}}</label>
                     <div class="form-controls">
                         <textarea name="user_content_email_registered" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('user_content_email_registered',request()->query('lang')) ?? '' }}</textarea>
                     </div>
@@ -154,18 +154,18 @@
 
                 @if(is_default_lang())
                     <div class="form-group">
-                        <label> <input type="checkbox" @if($settings['admin_enable_mail_user_registered'] ?? '' == 1) checked @endif name="admin_enable_mail_user_registered" value="1"> {{__("Enable send email to Administrator when customer registered ?")}}</label>
+                        <label> <input type="checkbox" @if($settings['admin_enable_mail_user_registered'] ?? '' == 1) checked @endif name="admin_enable_mail_user_registered" value="1"> {{__("Habilitar envio de e-mail ao Administrador quando o cliente se registrar ?")}}</label>
                     </div>
                 @else
                     <div class="form-group">
-                        <label> <input type="checkbox" @if($settings['admin_enable_mail_user_registered'] ?? '' == 1) checked @endif disabled name="admin_enable_mail_user_registered" value="1"> {{__("Enable send email to Administrator when customer registered ?")}}</label>
+                        <label> <input type="checkbox" @if($settings['admin_enable_mail_user_registered'] ?? '' == 1) checked @endif disabled name="admin_enable_mail_user_registered" value="1"> {{__("Habilitar envio de e-mail ao Administrador quando o cliente se registrar ?")}}</label>
                     </div>
                         @if($settings['admin_enable_mail_user_registered'] != 1)
                             <p>{{__('Você deve habilitar no idioma principal.')}}</p>
                         @endif
                 @endif
                 <div class="form-group" data-condition="admin_enable_mail_user_registered:is(1)">
-                    <label>{{__("-mail para conteúdo do Administrador")}}</label>
+                    <label>{{__("Conteúdo do E-mail para o Administrador")}}</label>
                     <div class="form-controls">
                         <textarea name="admin_content_email_user_registered" class="d-none has-ckeditor" cols="30" rows="10">{{setting_item_with_lang('admin_content_email_user_registered',request()->query('lang'))?? '' }}</textarea>
                     </div>
@@ -190,11 +190,11 @@
             <div class="panel-body">
                 @if(is_default_lang())
                     <div class="form-group">
-                        <label> <input type="checkbox" @if($settings['enable_verify_email_register_user'] ?? '' == 1) checked @endif name="enable_verify_email_register_user" value="1"> {{__("Enable must verify email when customer registered ?")}}</label>
+                        <label> <input type="checkbox" @if($settings['enable_verify_email_register_user'] ?? '' == 1) checked @endif name="enable_verify_email_register_user" value="1"> {{__("Habilitar deve verificar o e-mail quando o cliente se registrar ?")}}</label>
                     </div>
                 @else
                     <div class="form-group">
-                        <label> <input type="checkbox" @if($settings['enable_verify_email_register_user'] ?? '' == 1) checked @endif disabled name="enable_verify_email_register_user" value="1"> {{__("Enable must verify email when customer registered ?")}}</label>
+                        <label> <input type="checkbox" @if($settings['enable_verify_email_register_user'] ?? '' == 1) checked @endif disabled name="enable_verify_email_register_user" value="1"> {{__("Habilitar deve verificar o e-mail quando o cliente se registrar ?")}}</label>
                     </div>
                     @if($settings['enable_verify_email_register_user'] != 1)
                         <p>{{__('Você deve habilitar no idioma principal.')}}</p>
@@ -222,7 +222,7 @@
 
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__('Content Email User Forgot Password')}}</h3>
+        <h3 class="form-group-title">{{__('Conteúdo do E-mail de Senha Esquecida do Usuário')}}</h3>
         <div class="form-group-desc">
             @foreach(\Modules\User\Emails\ResetPasswordToken::CODE as $item=>$value)
                 <div><code>{{$value}}</code></div>

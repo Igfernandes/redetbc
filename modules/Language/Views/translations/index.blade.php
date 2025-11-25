@@ -39,8 +39,8 @@
                                         <td>{{$language->translated_number}}/{{$total_text}}</td>
                                         <td>{{$language->last_build_at ? display_datetime($language->last_build_at) : ''}}</td>
                                         <td>
-                                            <a href="{{route('language.admin.translations.detail',['id'=>$language->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> {{__("Translate")}}</a>
-                                            <a href="{{route('language.admin.translations.build',['id'=>$language->id])}}" class="btn btn-sm btn-info"><i class="fa fa-cubes"></i> {{__("Build")}}</a>
+                                            <a href="{{route('language.admin.translations.detail',['id'=>$language->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> {{__("Traduzir")}}</a>
+                                            <a href="{{route('language.admin.translations.build',['id'=>$language->id])}}" class="btn btn-sm btn-info"><i class="fa fa-cubes"></i> {{__("Construir")}}</a>
                                             <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown">
                                                 {{__("Mais")}}
                                             </button>

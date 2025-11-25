@@ -47,7 +47,7 @@ class PlanController extends AdminController
                         $row->meta()->save(new VendorPlanMeta($service));
                     }
                 }
-                return redirect(route('vendor.admin.plan.index'))->with('success', __('Plan created'));
+                return redirect(route('vendor.admin.plan.index'))->with('success', __('Plano criado'));
             }
         } else {
             $row = new VendorPlan();
@@ -63,7 +63,7 @@ class PlanController extends AdminController
                     'url'  => route('vendor.admin.plan.index')
                 ],
                 [
-                    'name'  => __('Add Plan'),
+                    'name'  => __('Adicionar Plano'),
                     'class' => 'active'
                 ],
             ]

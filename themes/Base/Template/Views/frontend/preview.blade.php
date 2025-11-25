@@ -13,11 +13,11 @@
                     <i class="icon fa fa-magic fa-5x"></i>
                 </div>
                 <div>
-                    <h3>{{__("There is no layer yet!")}}</h3>
-                    <p>{{__("Click button bellow to start adding layer")}}</p>
+                    <h3>{{__("Não há nenhuma camada ainda!")}}</h3>
+                    <p>{{__("Clique no botão abaixo para começar a adicionar uma camada")}}</p>
                 </div>
                 <div>
-                    <button class="btn btn-success " @click="showAddLayer">{{__("Add layer")}}</button>
+                    <button class="btn btn-success " @click="showAddLayer">{{__("Adicionar camada")}}</button>
                 </div>
             </div>
         </div>

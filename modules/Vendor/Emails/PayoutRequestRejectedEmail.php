@@ -29,10 +29,10 @@ class PayoutRequestRejectedEmail extends Mailable
         switch ($this->email_to)
         {
             case "admin":
-                $subject = __('A payout request has been rejected');
+                $subject = __('Um pedido de pagamento foi rejeitado');
                 break;
             case "vendor":
-                $subject = __('Your payout request has been rejected');
+                $subject = __('Seu pedido de pagamento foi rejeitado');
                 break;
         }
 

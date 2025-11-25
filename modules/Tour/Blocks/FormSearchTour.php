@@ -73,7 +73,7 @@ class  FormSearchTour extends BaseBlock
                     ]
                 ]
             ],
-            'category'=>__("Service Tour")
+            'category'=>__("Tour de serviço")
         ];
     }
 

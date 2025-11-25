@@ -56,7 +56,7 @@ class TemplateController extends AdminController
         \Debugbar::disable();
         $template = $this->templateClass::find($id);
         if (empty($template)) {
-            return redirect()->back()->with('warning', __('Template not found!'));
+            return redirect()->back()->with('warning', __('Template não encontrado!'));
         }
         $template->load('translation');
         $fileName = Str::slug($template->title, '_') . '_template.json';
@@ -68,7 +68,7 @@ class TemplateController extends AdminController
             $file = Storage::disk('uploads')->path($fullPath);
             return response()->download($file, $fileName, $headers);
         } else {
-            return redirect()->back()->with('warning', __('Template can\'t export. Please try again'));
+            return redirect()->back()->with('warning', __('Não foi possível exportar o template. Por favor, tente novamente'));
         }
     }
 
@@ -102,14 +102,14 @@ class TemplateController extends AdminController
                                     $template->translations()->save($templateTrans);
                                 }
                             }
-                            return redirect()->to(route("template.admin.index"))->with('success', __('Import template ' . @$dataInput['title'] . ' success!'));
+                            return redirect()->to(route("template.admin.index"))->with('success', __('Importação do template ' . @$dataInput['title'] . ' bem-sucedida!'));
                         }
                     } catch (\Exception $exception) {
                         return redirect()->back()->with('warning', __($exception->getMessage()));
 
                     }
                 } else {
-                    return redirect()->back()->with('warning', __('Only support json file'));
+                    return redirect()->back()->with('warning', __('Apenas arquivos json são suportados'));
                 }
             }
         }
@@ -155,7 +155,7 @@ class TemplateController extends AdminController
         return $this->sendSuccess([
             'url' => $request->input('id') ? '' : route('template.admin.edit', ['id' => $template->id]),
             'lastSaved'=>display_datetime(time())
-        ], __('Your template has been saved'));
+        ], __('Seu template foi salvo'));
     }
 
 }

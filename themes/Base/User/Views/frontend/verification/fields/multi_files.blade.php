@@ -15,14 +15,14 @@
                     @foreach($old as $file)
                         <div>
                             <input type="hidden" name="verify_data_{{$field['id']}}[]" value="{{json_encode($file)}}">
-                            <a target="_blank" href="{{route('media.private.view',['path'=>$file['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("Visualizar document")}}  &nbsp;&nbsp; <i class="fa fa-download"></i></a>
+                            <a target="_blank" href="{{route('media.private.view',['path'=>$file['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("Visualizar documento")}}  &nbsp;&nbsp; <i class="fa fa-download"></i></a>
                         </div>
                     @endforeach
                 @endif
             </div>
 
             @if(empty($only_show_data))
-                <span class="btn btn-primary btn-sm "><i class="fa fa-upload"></i> &nbsp;&nbsp; {{__('Select Files')}}
+                <span class="btn btn-primary btn-sm "><i class="fa fa-upload"></i> &nbsp;&nbsp; {{__('Selecionar arquivo')}}
                     <input class="btn-upload-private-file" multiple data-name="verify_data_{{$field['id']}}[]"  data-multiple="true" type="file" >
                 </span>
             @else

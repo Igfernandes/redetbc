@@ -28,7 +28,7 @@
 
         public function build()
         {
-            $subject = __('Reset Password');
+            $subject = __('Redefinir senha');
             if (!empty(setting_item('user_content_email_forget_password'))) {
                 $body = $this->replaceContentEmail(setting_item_with_lang('user_content_email_forget_password',app()->getLocale()));
             } else {

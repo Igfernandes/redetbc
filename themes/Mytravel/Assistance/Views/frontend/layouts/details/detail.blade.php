@@ -20,14 +20,14 @@
                     <div class="head">
                         <div class="left">
                             <span class="head-rating">{{$review_score['score_text']}}</span>
-                            <span class="text-rating">{{__("de :number reviews",['number'=>$review_score['total_review']])}}</span>
+                            <span class="text-rating">{{__("de :number avaliações",['number'=>$review_score['total_review']])}}</span>
                         </div>
                         <div class="score">
                             {{$review_score['score_total']}}<span>/5</span>
                         </div>
                     </div>
                     <div class="foot">
-                        {{__(":number% of guests recommend",['number'=>$row->recommend_percent])}}
+                        {{__(":number% dos hóspedes recomendam",['number'=>$row->recommend_percent])}}
                     </div>
                 </div>
             @endif
@@ -59,7 +59,7 @@
                         <i class="icofont-sail-assistance-alt-2"></i>
                     </div>
                     <div class="info">
-                        <h4 class="name">{{__("Cabin")}}</h4>
+                        <h4 class="name">{{__("Cabine")}}</h4>
                         <p class="value">
                             {{$row->cabin}}
                         </p>
@@ -74,7 +74,7 @@
                         <i class="icofont-yacht"></i>
                     </div>
                     <div class="info">
-                        <h4 class="name">{{__("Length Assistance")}}</h4>
+                        <h4 class="name">{{__("Comprimento da Assistência")}}</h4>
                         <p class="value">
                             {{$row->length}}
                         </p>
@@ -89,7 +89,7 @@
                         <i class="icofont-ship"></i>
                     </div>
                     <div class="info">
-                        <h4 class="name">{{__("Speed")}}</h4>
+                        <h4 class="name">{{__("Velocidade")}}</h4>
                         <p class="value">
                             {{$row->speed}}
                         </p>
@@ -146,7 +146,7 @@
 @include('Assistance::frontend.layouts.details.attributes')
 @if($translation->faqs)
 <div class="g-faq">
-    <h3> {{__("FAQs")}} </h3>
+    <h3> {{__("Perguntas Frequentes")}} </h3>
     @foreach($translation->faqs as $item)
         <div class="item">
             <div class="header">
@@ -155,7 +155,7 @@
                 <span class="arrow"><i class="fa fa-angle-down"></i></span>
             </div>
             <div class="body">
-                {{$item['content']}}
+                {{$item['content']}
             </div>
         </div>
     @endforeach
@@ -163,7 +163,7 @@
 @endif
 @if(!empty($translation->cancel_policy))
     <div class="g-overview">
-        <h3>{{__("Cancellation Policy")}}</h3>
+        <h3>{{__("Política de Cancelamento")}}</h3>
         <div class="description">
             <?php echo $translation->cancel_policy ?>
         </div>
@@ -171,7 +171,7 @@
 @endif
 @if(!empty($translation->terms_information))
     <div class="g-overview">
-        <h3>{{__("Additional Terms & Information")}}</h3>
+        <h3>{{__("Termos e Informações Adicionais")}}</h3>
         <div class="description">
             <?php echo $translation->terms_information ?>
         </div>

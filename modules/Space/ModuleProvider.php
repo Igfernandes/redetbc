@@ -105,7 +105,7 @@ class ModuleProvider extends ModuleServiceProvider
         if (Space::isEnable()) {
             $res['space'] = [
                 'url'        => route('space.vendor.index'),
-                'title'      => __("Manage Space"),
+                'title'      => __("Gerenciar espaço"),
                 'icon'       => Space::getServiceIconFeatured(),
                 'position'   => 50,
                 'permission' => 'space_view',

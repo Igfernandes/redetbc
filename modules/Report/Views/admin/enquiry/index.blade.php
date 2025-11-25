@@ -11,7 +11,7 @@
                     <form method="post" action="{{route('report.admin.enquiry.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         @csrf
                         <select name="action" class="form-control">
-                            <option value="">{{__("-- Bulk Actions --")}}</option>
+                            <option value="">{{__("-- Ações em massa --")}}</option>
                             @if(!empty($statues))
                                 @foreach($statues as $status)
                                     <option value="{{$status}}">{{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}</option>
@@ -25,16 +25,16 @@
             </div>
             <div class="col-left">
                 <form method="get" action="" class="filter-form filter-form-right d-flex justify-content-end">
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by email')}}" class="form-control">
-                    <button class="btn-info btn btn-icon" type="submit">{{__('Filter')}}</button>
+                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por email')}}" class="form-control">
+                    <button class="btn-info btn btn-icon" type="submit">{{__('Filtrar')}}</button>
                 </form>
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total itens',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel booking-history-manager">
-            <div class="panel-title">{{__('Enquiries')}}</div>
+            <div class="panel-title">{{__('Consultas')}}</div>
             <div class="panel-body">
                 <form action="" class="bravo-form-item">
                     <table class="table table-hover bravo-list-item">
@@ -64,7 +64,7 @@
                                                        target="_blank">{{ $service->author->getDisplayName() .' (#'.$service->author->id.')' }}</a>
                                                 @endif
                                             @else
-                                                {{__("[Deleted]")}}
+                                                {{__("[Excluído]")}}
                                             @endif
                                         </td>
                                         <td>
@@ -86,7 +86,7 @@
                                                     {{__("Ações")}}
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="{{route('report.admin.enquiry.reply',['enquiry'=>$row])}}">{{__("Reply")}}</a>
+                                                    <a class="dropdown-item" href="{{route('report.admin.enquiry.reply',['enquiry'=>$row])}}">{{__("Responder")}}</a>
                                                 </div>
                                             </div>
                                         </td>

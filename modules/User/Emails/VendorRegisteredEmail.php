@@ -29,7 +29,7 @@ class VendorRegisteredEmail extends Mailable
 
     public function build()
     {
-        $subject = __('New Vendor Registration');
+        $subject = __('Cadastro de novo fornecedor');
         return $this->subject($subject)->view('User::emails.vendor-registered')->with([
             'user'    => $this->user,
             'content' => $this->content,

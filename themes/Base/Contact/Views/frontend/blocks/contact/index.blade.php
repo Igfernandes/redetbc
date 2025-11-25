@@ -25,14 +25,14 @@
                                     <input type="text" value="" placeholder="{{ __('Telefone') }}" name="phone" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="message" cols="40" rows="10" class="form-control textarea" placeholder="{{ __('Message') }}"></textarea>
+                                    <textarea name="message" cols="40" rows="10" class="form-control textarea" placeholder="{{ __('Mensagem') }}"></textarea>
                                 </div>
                                 <div class="form-group">
                                     {{recaptcha_field('contact')}}
                                 </div>
                                 <p>
                                     <button class="submit btn btn-primary " type="submit">
-                                        {{ __('SEND MESSAGE') }}
+                                        {{ __('ENVIAR MENSAGEM') }}
                                         <i class="fa fa-spinner fa-pulse fa-fw"></i>
                                     </button>
                                 </p>

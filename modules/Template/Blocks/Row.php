@@ -4,7 +4,7 @@ class Row extends BaseBlock
 {
     public function getName()
     {
-        return __('Section');
+        return __('Seção');
     }
 
     public function getOptions()

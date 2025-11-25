@@ -46,7 +46,7 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             @endif
                             <li class=""><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
                             @if(is_admin())
-                            <li class=""><a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Admin Dashboard")}}</a></li>
+                            <li class=""><a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Painel de administração")}}</a></li>
                             @endif
                             <li class="">
                                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-topbar').submit();"><i class="fa fa-sign-out"></i> {{__("Sair")}}</a>

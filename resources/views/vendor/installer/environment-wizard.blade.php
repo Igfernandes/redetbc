@@ -33,7 +33,7 @@
 
                 <div class="form-group {{ $errors->has('app_name') ? ' has-error ' : '' }}">
                     <label for="app_name">
-                        {{ __("Site Name") }}
+                        {{ __("Nome do site") }}
                     </label>
                     <input type="text" name="app_name" id="app_name" value="Booking Core" placeholder="{{ trans('installer_messages.environment.wizard.form.app_name_placeholder') }}" />
                     @if ($errors->has('app_name'))
@@ -110,7 +110,7 @@
 
                 <div class="form-group {{ $errors->has('app_url') ? ' has-error ' : '' }}">
                     <label for="app_url">
-                        {{ __("Site url") }}
+                        {{ __("URL do site") }}
                     </label>
                     <input type="url" name="app_url" id="app_url" value="{{url('/')}}" placeholder="{{ trans('installer_messages.environment.wizard.form.app_url_placeholder') }}" />
                     @if ($errors->has('app_url'))
@@ -216,7 +216,7 @@
 
                 <div class="form-group {{ $errors->has('admin_email') ? ' has-error ' : '' }}">
                     <label for="admin_email">
-                        {{ __("Admin Email") }}
+                        {{ __("E-mail do administrador") }}
                     </label>
                     <input type="text" name="admin_email" id="admin_email" value="" required placeholder="{{ trans('installer_messages.environment.wizard.form.app_admin_email_placeholder') }}" />
                     @if ($errors->has('admin_email'))
@@ -229,7 +229,7 @@
 
                 <div class="form-group {{ $errors->has('admin_password') ? ' has-error ' : '' }}">
                     <label for="admin_password">
-                        {{ __("Admin Password") }}
+                        {{ __("Senha de administrador") }}
                     </label>
                     <input type="password" name="admin_password" id="admin_password" value="" required placeholder="{{ trans('installer_messages.environment.wizard.form.app_admin_password_placeholder') }}" />
                     @if ($errors->has('admin_password'))

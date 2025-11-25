@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
 <h2 class="title-bar">
-    {{__("Update verification data")}}
+    {{__("Atualizar dados de verificação")}}
 </h2>
 @include('admin.message')
 <div class="booking-history-manager">
@@ -12,7 +12,7 @@
         @case("email")
         @include('User::frontend.verification.fields.email')
         @break
-        @case("Celular")
+        @case("phone")
         @include('User::frontend.verification.fields.phone')
         @break
         @case("upload-image")
@@ -37,19 +37,18 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-4">
-                <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Save changes")}} </button>
+                <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Salvar alterações")}} </button>
             </div>
         </div>
     </form>
 </div>
 @endsection
 @push('js')
-<!-- Modal -->
 <div class="modal fade" id="modalVerifyPhone" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{__('Verify Phone')}}</h5>
+                <h5 class="modal-title">{{__('Verificar Telefone')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -60,7 +59,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
-                <button type="button" onclick="verifyPhone()" class="btn btn-primary">{{__('Verify')}}</button>
+                <button type="button" onclick="verifyPhone()" class="btn btn-primary">{{__('Verificar')}}</button>
             </div>
         </div>
     </div>

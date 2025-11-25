@@ -22,11 +22,11 @@ class UserSubscriberSubmitListeners
             'id' =>  $subscriber->id,
             'event'=>'UserSubscriberSubmit',
             'to'=>'admin',
-            'name' =>  __('Someone'),
+            'name' =>  __('Alguém'),
             'avatar' =>  '',
             'link' => route('user.admin.subscriber.index'),
             'type' => 'subscriber',
-            'message' => __('You have just gotten a new Subscriber')
+            'message' => __('Você acabou de receber um novo Assinante')
         ];
 
         $user = User::query()->select("users.*")->hasPermission("dashboard_access")->first();

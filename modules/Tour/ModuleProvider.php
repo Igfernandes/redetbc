@@ -105,7 +105,7 @@ class ModuleProvider extends ModuleServiceProvider
         if(Tour::isEnable()){
             $res['tour'] = [
                 'url'   => route('tour.vendor.index'),
-                'title'      => __("Manage Tour"),
+                'title'      => __("Gerenciar passeio"),
                 'icon'       => Tour::getServiceIconFeatured(),
                 'permission' => 'tour_view',
                 'position'   => 40,
@@ -148,7 +148,7 @@ class ModuleProvider extends ModuleServiceProvider
             ],
             [
                 'class' => \Modules\Tour\Models\TourCategory::class,
-                'name'  => __("Passeio Category"),
+                'name'  => __("Passeio Categoria"),
                 'items' => \Modules\Tour\Models\TourCategory::searchForMenu(),
                 'position'=>30
             ],

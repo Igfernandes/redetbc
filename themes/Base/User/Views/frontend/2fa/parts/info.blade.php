@@ -1,10 +1,10 @@
-<h4>{{__("You have enabled factor authentication")}}</h4>
+<h4>{{__("Você ativou a autenticação de dois fatores")}}</h4>
 <div class="mb-4 font-medium text-sm text-green-600">
-    {{__("When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.")}}
+    {{__("Quando a autenticação de dois fatores está ativada, será solicitado um token seguro e aleatório durante a autenticação. Você pode recuperar este token no aplicativo Google Authenticator do seu celular.")}}
 </div>
 @if (session('status') == 'two-factor-authentication-enabled')
     <div class="mb-4 font-medium text-sm text-green-600">
-        {{__("Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application.")}}
+        {{__("A autenticação de dois fatores está ativada. Escaneie o seguinte código QR usando o aplicativo autenticador do seu celular.")}}
     </div>
     {!! request()->user()->twoFactorQrCodeSvg() !!}
     <?php
@@ -13,7 +13,7 @@
     @if(!empty($codes))
         <hr>
         <div class="mt-3">
-            <p>{{__('Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.')}}</p>
+            <p>{{__('Armazene estes códigos de recuperação em um gerenciador de senhas seguro. Eles podem ser usados para recuperar o acesso à sua conta se seu dispositivo de autenticação de dois fatores for perdido.')}}</p>
             <div class="p-3" style="background: #f3f3f3">
                 @foreach($codes as $code)
                     <div class="mb-2 font-weight-medium">{{$code}}</div>
@@ -23,4 +23,4 @@
     @endif
 @endif
 <hr>
-<button class="btn btn-danger btn-xs btn-disable-2fa">{{__("Disable two factor authentication")}}</button>
+<button class="btn btn-danger btn-xs btn-disable-2fa">{{__("Desativar autenticação de dois fatores")}}</button>

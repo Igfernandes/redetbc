@@ -17,7 +17,7 @@ class Testimonial extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Item(ns) da Lista'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -29,29 +29,29 @@ class Testimonial extends BaseBlock
                         [
                             'id'    => 'desc',
                             'type'  => 'textArea',
-                            'label' => __('Desc')
+                            'label' => __('Descrição')
                         ],
                         [
                             'id'        => 'number_star',
                             'type'      => 'input',
                             'inputType' => 'number',
-                            'label'     => __('Number star')
+                            'label'     => __('Número de estrelas')
                         ],
                         [
                             'id'    => 'avatar',
                             'type'  => 'uploader',
-                            'label' => __('Avatar Image')
+                            'label' => __('Imagem do Avatar')
                         ],
                     ]
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 
     public function getName()
     {
-        return __('List Testimonial');
+        return __('Lista de Depoimentos');
     }
 
     public function content($model = [])

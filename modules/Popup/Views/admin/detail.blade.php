@@ -10,7 +10,7 @@
                 </div>
                 <div class="">
                     @if($row->id)
-                        <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("Preview")}}</a>
+                        <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("Pré-visualização")}}</a>
                     @endif
                 </div>
             </div>

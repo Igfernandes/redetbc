@@ -20,7 +20,7 @@
                                 <input type="text" value="{{old('name',$row->name)}}" placeholder="{{ __('Função Name')}}" name="name" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>{{ __('Code')}}</label>
+                                <label>{{ __('Código')}}</label>
                                 <input type="text" value="{{old('code',$row->name)}}" placeholder="{{ __('Função Code')}}" name="code" class="form-control">
                                 <p><i>{{__("Deverá inserir apenas letras")}}</i></p>
                             </div>
@@ -29,7 +29,7 @@
                     <hr>
                     <div class="d-flex justify-content-between">
                         <span>&nbsp;</span>
-                        <button class="btn btn-primary" type="submit">{{ __('Save Change')}}</button>
+                        <button class="btn btn-primary" type="submit">{{ __('Salvar alteração')}}</button>
                     </div>
                 </div>
             </div>

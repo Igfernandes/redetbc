@@ -55,11 +55,11 @@
                                             <i class="flaticon-share font-size-18 text-dark"></i>
                                         </a>
                                         <div id="shareDropdown{{$row->id}}" class="dropdown-menu dropdown-unfold dropdown-menu-right mt-0 px-3 min-width-3" aria-labelledby="shareDropdownInvoker{{$row->id}}">
-                                            <a class="btn btn-icon btn-pill btn-bg-transparent transition-3d-hover  btn-xs btn-soft-dark  facebook mb-3" href="https://www.facebook.com/sharer/sharer.php?u={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Facebook")}}">
+                                            <a class="btn btn-icon btn-pill btn-bg-transparent transition-3d-hover  btn-xs btn-soft-dark  facebook mb-3" href="https://www.facebook.com/sharer/sharer.php?u={{$row->getDetailUrl()}}&title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Facebook")}}">
                                                 <span class="font-size-15 fa fa-facebook-f btn-icon__inner"></span>
                                             </a>
                                             <br/>
-                                            <a class="btn btn-icon btn-pill btn-bg-transparent transition-3d-hover  btn-xs btn-soft-dark  twitter" href="https://twitter.com/share?url={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Twitter")}}">
+                                            <a class="btn btn-icon btn-pill btn-bg-transparent transition-3d-hover  btn-xs btn-soft-dark  twitter" href="https://twitter.com/share?url={{$row->getDetailUrl()}}&title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Twitter")}}">
                                                 <span class="font-size-15 fa fa-twitter btn-icon__inner"></span>
                                             </a>
                                         </div>
@@ -88,11 +88,11 @@
                                 <div class="border-bottom">
                                     @if($row->discount_percent)
                                         <div class="sale-box">
-                                            <div class="ribbon ribbon--red">{{ __("SALVAR :text",['text'=>$row->discount_percent]) }}</div>
+                                            <div class="ribbon ribbon--red">{{ __("ECONOMIZE :text",['text'=>$row->discount_percent]) }}</div>
                                         </div>
                                     @endif
                                     <div class="p-4">
-                                        <span class="font-size-14">{{ __("De") }}</span>
+                                        <span class="font-size-14">{{ __("A partir de") }}</span>
                                         <span class="font-size-24 text-gray-6 font-weight-bold ml-1">
                                             <small class="font-size-16 text-decoration-line-through text-danger">
                                                {{ $row->display_sale_price }}
@@ -106,7 +106,7 @@
                                     <div class="px-2 pt-2">
                                         @if($row->map_lat && $row->map_lng)
                                             <a target="_blank" href="https://www.google.com/maps/place/{{$row->map_lat}},{{$row->map_lng}}/{{'@'.$row->map_lat}},{{$row->map_lng}},{{!empty($row->map_zoom) ? $row->map_zoom : 12}}z" class="d-block border rounded mb-4">
-                                                <img class="img-fluid" src="{{  url("themes/mytravel/images/map.jpg") }}" alt="{{__('Address-Description')}}">
+                                                <img class="img-fluid" src="{{  url("themes/mytravel/images/map.jpg") }}" alt="{{__('Descrição do Endereço')}}">
                                             </a>
                                         @endif
                                     </div>
@@ -181,11 +181,11 @@
     <script>
         var bravo_booking_data = {!! json_encode($booking_data) !!}
             var bravo_booking_i18n = {
-            no_date_select:'{{__('Please select Start and End date')}}',
-            no_guest_select:'{{__('Please select at least one guest')}}',
+            no_date_select:'{{__('Por favor, selecione a data de Início e Fim')}}',
+            no_guest_select:'{{__('Por favor, selecione pelo menos um hóspede')}}',
             load_dates_url:'{{route('space.vendor.availability.loadDates')}}',
-            name_required:'{{ __("Nome is Required") }}',
-            email_required:'{{ __("Email is Required") }}',
+            name_required:'{{ __("Nome é obrigatório") }}',
+            email_required:'{{ __("Email é obrigatório") }}',
         };
     </script>
     <script type="text/javascript" src="{{ asset("libs/fotorama/fotorama.js") }}"></script>

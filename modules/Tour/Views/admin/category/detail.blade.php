@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->name : __('Add new category')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->name : __('Adicionar nova categoria')}}</h1>
                 </div>
                 <div class="">
                     @if($row->slug)

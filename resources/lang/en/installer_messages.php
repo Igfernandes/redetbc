@@ -5,12 +5,12 @@ return [
      * Shared translations.
      *
      */
-    'title'        => __('Laravel Installer'),
-    'next'         => __('Next Step'),
-    'back'         => __('Previous'),
-    'finish'       => __('Install'),
+    'title'        => __('Instalador Laravel'),
+    'next'         => __('Próxima Etapa'),
+    'back'         => __('Anterior'),
+    'finish'       => __('Instalar'),
     'forms'        => [
-        'errorTitle' => __('The Following errors occurred:'),
+        'errorTitle' => __('Os Seguintes erros ocorreram:'),
     ],
     /**
      *
@@ -18,10 +18,10 @@ return [
      *
      */
     'welcome'      => [
-        'templateTitle' => __('Welcome'),
-        'title'         => __('Laravel Installer'),
-        'message'       => __('Easy Installation and Setup Wizard.'),
-        'next'          => __('Check Requirements'),
+        'templateTitle' => __('Bem-vindo'),
+        'title'         => __('Instalador Laravel'),
+        'message'       => __('Assistente de Instalação e Configuração Fácil.'),
+        'next'          => __('Verificar Requisitos'),
     ],
     /**
      *
@@ -29,9 +29,9 @@ return [
      *
      */
     'requirements' => [
-        'templateTitle' => __('Step 1 | Server Requirements'),
-        'title'         => __('Server Requirements'),
-        'next'          => __('Check Permissions'),
+        'templateTitle' => __('Passo 1 | Requisitos do Servidor'),
+        'title'         => __('Requisitos do Servidor'),
+        'next'          => __('Verificar Permissões'),
     ],
     /**
      *
@@ -39,9 +39,9 @@ return [
      *
      */
     'permissions'  => [
-        'templateTitle' => __('Step 2 | Permissions'),
-        'title'         => __('Permissions'),
-        'next'          => __('Configure Environment'),
+        'templateTitle' => __('Passo 2 | Permissões'),
+        'title'         => __('Permissões'),
+        'next'          => __('Configurar Ambiente'),
     ],
     /**
      *
@@ -50,123 +50,123 @@ return [
      */
     'environment'  => [
         'menu'    => [
-            'templateTitle'  => __('Step 3 | Environment Settings'),
-            'title'          => __('Environment Settings'),
-            'desc'           => __('Please select how you want to configure the apps <code>.env</code> file.'),
-            'wizard-button'  => __('Form Wizard Setup'),
-            'classic-button' => __('Classic Text Editor'),
+            'templateTitle'  => __('Passo 3 | Configurações do Ambiente'),
+            'title'          => __('Configurações do Ambiente'),
+            'desc'           => __('Por favor, selecione como você deseja configurar o arquivo <code>.env</code> da aplicação.'),
+            'wizard-button'  => __('Configuração do Assistente de Formulário'),
+            'classic-button' => __('Editor de Texto Clássico'),
         ],
         'wizard'  => [
-            'templateTitle' => __('Step 3 | Environment Settings | Guided Wizard'),
-            'title'         => __('Guided <code>.env</code> Wizard'),
+            'templateTitle' => __('Passo 3 | Configurações do Ambiente | Assistente Guiado'),
+            'title'         => __('Assistente Guiado do <code>.env</code>'),
             'tabs'          => [
-                'environment' => __('Environment'),
-                'database'    => __('Database'),
-                'application' => __('Application')
+                'environment' => __('Ambiente'),
+                'database'    => __('Banco de Dados'),
+                'application' => __('Aplicação')
             ],
             'form'          => [
-                'name_required'                      => __('An environment name is required.'),
-                'app_name_label'                     => __('App Name'),
-                'app_name_placeholder'               => __('App Name'),
-                'app_environment_label'              => __('App Environment'),
+                'name_required'                      => __('Um nome de ambiente é obrigatório.'),
+                'app_name_label'                     => __('Nome da Aplicação'),
+                'app_name_placeholder'               => __('Nome da Aplicação'),
+                'app_environment_label'              => __('Ambiente da Aplicação'),
                 'app_environment_label_local'        => __('Local'),
-                'app_environment_label_developement' => __('Development'),
+                'app_environment_label_developement' => __('Desenvolvimento'),
                 'app_environment_label_qa'           => __('Qa'),
-                'app_environment_label_production'   => __('Production'),
-                'app_environment_label_other'        => __('Other'),
-                'app_environment_placeholder_other'  => __('Enter your environment...'),
-                'app_debug_label'                    => __('App Debug'),
-                'app_debug_label_true'               => __('True'),
-                'app_debug_label_false'              => __('False'),
-                'app_log_level_label'                => __('App Log Level'),
-                'app_log_level_label_debug'          => __('debug'),
-                'app_log_level_label_info'           => __('info'),
-                'app_log_level_label_notice'         => __('notice'),
-                'app_log_level_label_warning'        => __('warning'),
-                'app_log_level_label_error'          => __('error'),
-                'app_log_level_label_critical'       => __('critical'),
-                'app_log_level_label_alert'          => __('alert'),
-                'app_log_level_label_emergency'      => __('emergency'),
-                'app_url_label'                      => __('App Url'),
-                'app_url_placeholder'                => __('App Url'),
-                'app_admin_email_placeholder'        => __('Admin Email'),
-                'app_admin_password_placeholder'     => __('Admin Password'),
-                'db_connection_label'                => __('Database Connection'),
+                'app_environment_label_production'   => __('Produção'),
+                'app_environment_label_other'        => __('Outro'),
+                'app_environment_placeholder_other'  => __('Digite seu ambiente...'),
+                'app_debug_label'                    => __('Depuração da Aplicação'),
+                'app_debug_label_true'               => __('Verdadeiro'),
+                'app_debug_label_false'              => __('Falso'),
+                'app_log_level_label'                => __('Nível de Log da Aplicação'),
+                'app_log_level_label_debug'          => __('depuração'),
+                'app_log_level_label_info'           => __('informação'),
+                'app_log_level_label_notice'         => __('aviso'),
+                'app_log_level_label_warning'        => __('alerta'),
+                'app_log_level_label_error'          => __('erro'),
+                'app_log_level_label_critical'       => __('crítico'),
+                'app_log_level_label_alert'          => __('alerta'),
+                'app_log_level_label_emergency'      => __('emergência'),
+                'app_url_label'                      => __('Url da Aplicação'),
+                'app_url_placeholder'                => __('Url da Aplicação'),
+                'app_admin_email_placeholder'        => __('Email do Administrador'),
+                'app_admin_password_placeholder'     => __('Senha do Administrador'),
+                'db_connection_label'                => __('Conexão do Banco de Dados'),
                 'db_connection_label_mysql'          => __('mysql'),
                 'db_connection_label_sqlite'         => __('sqlite'),
                 'db_connection_label_pgsql'          => __('pgsql'),
                 'db_connection_label_sqlsrv'         => __('sqlsrv'),
-                'db_host_label'                      => __('Database Host'),
-                'db_host_placeholder'                => __('Database Host'),
-                'db_port_label'                      => __('Database Port'),
-                'db_port_placeholder'                => __('Database Port'),
-                'db_name_label'                      => __('Database Name'),
-                'db_name_placeholder'                => __('Database Name'),
-                'db_username_label'                  => __('Database User Name'),
-                'db_username_placeholder'            => __('Database User Name'),
-                'db_password_label'                  => __('Database Password'),
-                'db_password_placeholder'            => __('Database Password'),
+                'db_host_label'                      => __('Host do Banco de Dados'),
+                'db_host_placeholder'                => __('Host do Banco de Dados'),
+                'db_port_label'                      => __('Porta do Banco de Dados'),
+                'db_port_placeholder'                => __('Porta do Banco de Dados'),
+                'db_name_label'                      => __('Nome do Banco de Dados'),
+                'db_name_placeholder'                => __('Nome do Banco de Dados'),
+                'db_username_label'                  => __('Nome de Usuário do Banco de Dados'),
+                'db_username_placeholder'            => __('Nome de Usuário do Banco de Dados'),
+                'db_password_label'                  => __('Senha do Banco de Dados'),
+                'db_password_placeholder'            => __('Senha do Banco de Dados'),
                 'app_tabs' => [
-                    'more_info'                => __('More Info'),
-                    'broadcasting_title'       => __('Broadcasting, Caching, Session, &amp; Queue'),
-                    'broadcasting_label'       => __('Broadcast Driver'),
-                    'broadcasting_placeholder' => __('Broadcast Driver'),
-                    'cache_label'              => __('Cache Driver'),
-                    'cache_placeholder'        => __('Cache Driver'),
-                    'session_label'            => __('Session Driver'),
-                    'session_placeholder'      => __('Session Driver'),
-                    'queue_label'              => __('Queue Driver'),
-                    'queue_placeholder'        => __('Queue Driver'),
-                    'redis_label'              => __('Redis Driver'),
-                    'redis_host'               => __('Redis Host'),
-                    'redis_password'           => __('Redis Password'),
-                    'redis_port'               => __('Redis Port'),
-                    'mail_label'                  => __('Mail'),
-                    'mail_driver_label'           => __('Mail Driver'),
-                    'mail_driver_placeholder'     => __('Mail Driver'),
-                    'mail_host_label'             => __('Mail Host'),
-                    'mail_host_placeholder'       => __('Mail Host'),
-                    'mail_port_label'             => __('Mail Port'),
-                    'mail_port_placeholder'       => __('Mail Port'),
-                    'mail_username_label'         => __('Mail Username'),
-                    'mail_username_placeholder'   => __('Mail Username'),
-                    'mail_password_label'         => __('Mail Password'),
-                    'mail_password_placeholder'   => __('Mail Password'),
-                    'mail_encryption_label'       => __('Mail Encryption'),
-                    'mail_encryption_placeholder' => __('Mail Encryption'),
+                    'more_info'                => __('Mais Informações'),
+                    'broadcasting_title'       => __('Transmissão, Cache, Sessão e Fila'),
+                    'broadcasting_label'       => __('Driver de Transmissão'),
+                    'broadcasting_placeholder' => __('Driver de Transmissão'),
+                    'cache_label'              => __('Driver de Cache'),
+                    'cache_placeholder'        => __('Driver de Cache'),
+                    'session_label'            => __('Driver de Sessão'),
+                    'session_placeholder'      => __('Driver de Sessão'),
+                    'queue_label'              => __('Driver de Fila'),
+                    'queue_placeholder'        => __('Driver de Fila'),
+                    'redis_label'              => __('Driver Redis'),
+                    'redis_host'               => __('Host Redis'),
+                    'redis_password'           => __('Senha Redis'),
+                    'redis_port'               => __('Porta Redis'),
+                    'mail_label'                  => __('Email'),
+                    'mail_driver_label'           => __('Driver de Email'),
+                    'mail_driver_placeholder'     => __('Driver de Email'),
+                    'mail_host_label'             => __('Host de Email'),
+                    'mail_host_placeholder'       => __('Host de Email'),
+                    'mail_port_label'             => __('Porta de Email'),
+                    'mail_port_placeholder'       => __('Porta de Email'),
+                    'mail_username_label'         => __('Nome de Usuário de Email'),
+                    'mail_username_placeholder'   => __('Nome de Usuário de Email'),
+                    'mail_password_label'         => __('Senha de Email'),
+                    'mail_password_placeholder'   => __('Senha de Email'),
+                    'mail_encryption_label'       => __('Criptografia de Email'),
+                    'mail_encryption_placeholder' => __('Criptografia de Email'),
                     'pusher_label'                  => __('Pusher'),
-                    'pusher_app_id_label'           => __('Pusher App Id'),
-                    'pusher_app_id_palceholder'     => __('Pusher App Id'),
-                    'pusher_app_key_label'          => __('Pusher App Key'),
-                    'pusher_app_key_palceholder'    => __('Pusher App Key'),
-                    'pusher_app_secret_label'       => __('Pusher App Secret'),
-                    'pusher_app_secret_palceholder' => __('Pusher App Secret'),
+                    'pusher_app_id_label'           => __('Id do App Pusher'),
+                    'pusher_app_id_palceholder'     => __('Id do App Pusher'),
+                    'pusher_app_key_label'          => __('Chave do App Pusher'),
+                    'pusher_app_key_palceholder'    => __('Chave do App Pusher'),
+                    'pusher_app_secret_label'       => __('Segredo do App Pusher'),
+                    'pusher_app_secret_palceholder' => __('Segredo do App Pusher'),
                 ],
                 'buttons'  => [
-                    'setup_database'    => __('Setup Database'),
-                    'setup_application' => __('Setup Application'),
-                    'install'           => __('Install'),
+                    'setup_database'    => __('Configurar Banco de Dados'),
+                    'setup_application' => __('Configurar Aplicação'),
+                    'install'           => __('Instalar'),
                 ],
             ],
         ],
         'classic' => [
-            'templateTitle' => __('Step 3 | Environment Settings | Classic Editor'),
-            'title'         => __('Classic Environment Editor'),
-            'save'          => __('Save .env'),
-            'back'          => __('Use Form Wizard'),
-            'install'       => __('Save and Install'),
+            'templateTitle' => __('Passo 3 | Configurações do Ambiente | Editor Clássico'),
+            'title'         => __('Editor de Ambiente Clássico'),
+            'save'          => __('Salvar .env'),
+            'back'          => __('Usar Assistente de Formulário'),
+            'install'       => __('Salvar e Instalar'),
         ],
-        'success' => __('Your .env file settings have been saved.'),
-        'errors'  => __('Unable to save the .env file, Please create it manually.'),
+        'success' => __('Suas configurações do arquivo .env foram salvas.'),
+        'errors'  => __('Não foi possível salvar o arquivo .env, por favor, crie-o manualmente.'),
     ],
-    'install'   => __('Install'),
+    'install'   => __('Instalar'),
     /**
      *
      * Installed Log translations.
      *
      */
     'installed' => [
-        'success_log_message' => __('Laravel Installer successfully INSTALLED on '),
+        'success_log_message' => __('Instalador Laravel instalado com sucesso em '),
     ],
     /**
      *
@@ -174,14 +174,14 @@ return [
      *
      */
     'final'     => [
-        'title'         => __('Installation Finished'),
-        'templateTitle' => __('Installation Finished'),
-        'finished'      => __('Application has been successfully installed.'),
-        'migration'     => __('Migration &amp; Seed Console Output:'),
-        'console'       => __('Application Console Output:'),
-        'log'           => __('Installation Log Entry:'),
-        'env'           => __('Final .env File:'),
-        'exit'          => __('Click here to exit'),
+        'title'         => __('Instalação Finalizada'),
+        'templateTitle' => __('Instalação Finalizada'),
+        'finished'      => __('Aplicação foi instalada com sucesso.'),
+        'migration'     => __('Saída do Console de Migração e Seed:'),
+        'console'       => __('Saída do Console da Aplicação:'),
+        'log'           => __('Entrada do Log de Instalação:'),
+        'env'           => __('Arquivo .env Final:'),
+        'exit'          => __('Clique aqui para sair'),
     ],
     /**
      *
@@ -194,15 +194,15 @@ return [
          * Shared translations.
          *
          */
-        'title'    => __('Laravel Updater'),
+        'title'    => __('Atualizador Laravel'),
         /**
          *
          * Welcome page translations for update feature.
          *
          */
         'welcome'  => [
-            'title'   => __('Welcome To The Updater'),
-            'message' => __('Welcome to the update wizard.'),
+            'title'   => __('Bem-vindo ao Atualizador'),
+            'message' => __('Bem-vindo ao assistente de atualização.'),
         ],
         /**
          *
@@ -210,9 +210,9 @@ return [
          *
          */
         'overview' => [
-            'title'           => __('Overview'),
-            'message'         => __('There is 1 update.|There are :number updates.'),
-            'install_updates' => "Install Updates"
+            'title'           => __('Visão Geral'),
+            'message'         => __('Existe 1 atualização.|Existem :number atualizações.'),
+            'install_updates' => "Instalar Atualizações"
         ],
         /**
          *
@@ -220,12 +220,12 @@ return [
          *
          */
         'final'    => [
-            'title'    => __('Finished'),
-            'finished' => __('Application\'s database has been successfully updated.'),
-            'exit'     => __('Click here to exit'),
+            'title'    => __('Finalizado'),
+            'finished' => __('O banco de dados da Aplicação foi atualizado com sucesso.'),
+            'exit'     => __('Clique aqui para sair'),
         ],
         'log' => [
-            'success_message' => __('Laravel Installer successfully UPDATED on '),
+            'success_message' => __('Instalador Laravel ATUALIZADO com sucesso em '),
         ],
     ],
 ];

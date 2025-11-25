@@ -29,10 +29,10 @@ class PayoutRequestCreatedEmail extends Mailable
         switch ($this->email_to)
         {
             case "admin":
-                $subject = __('A vendor has been submitted a payout request');
+                $subject = __('Um fornecedor enviou uma solicitação de pagamento');
                 break;
             case "vendor":
-                $subject = __('Your payout request has been submitted');
+                $subject = __('Sua solicitação de pagamento foi enviada');
                 break;
         }
 

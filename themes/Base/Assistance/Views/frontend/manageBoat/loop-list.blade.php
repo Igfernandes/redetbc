@@ -3,7 +3,7 @@
         <div class="col-md-3">
             @if($row->is_featured == "1")
                 <div class="featured">
-                    {{__("Apresentou")}}
+                    {{__("Destaque")}}
                 </div>
             @endif
             <div class="thumb-image">
@@ -31,8 +31,8 @@
             </div>
             <div class="location">
                 <i class="icofont-money"></i>
-                {{__("Price per hour")}}: <span class="price">{{ format_money($row->price_per_hour) }}</span> -
-                {{__("Price per day")}}: <span class="price">{{ format_money($row->price_per_day) }}</span>
+                {{__("Preço por hora")}}: <span class="price">{{ format_money($row->price_per_hour) }}</span> -
+                {{__("Preço por dia")}}: <span class="price">{{ format_money($row->price_per_day) }}</span>
             </div>
             <div class="location">
                 <i class="icofont-ui-settings"></i>
@@ -45,22 +45,22 @@
             <div class="control-action">
                 <a href="{{$row->getDetailUrl()}}" target="_blank" class="btn btn-info">{{__("Visualizar")}}</a>
                 @if(!empty($recovery))
-                    <a href="{{ route("assistance.vendor.restore",[$row->id]) }}" class="btn btn-recovery btn-primary" data-confirm="{{__('"Você quer recuperar?"')}}">{{__("Recuperação")}}</a>
+                    <a href="{{ route("assistance.vendor.restore",[$row->id]) }}" class="btn btn-recovery btn-primary" data-confirm="{{__("Você quer recuperar?")}}">{{__("Recuperação")}}</a>
                     @if(Auth::user()->hasPermission('assistance_delete'))
-                        <a href="{{ route("assistance.vendor.delete",['id'=>$row->id,'permanently_delete'=>1]) }}" class="btn btn-danger" data-confirm="{{__('"Do you want to permanently delete?"')}}">{{__("Excluir")}}</a>
+                        <a href="{{ route("assistance.vendor.delete",['id'=>$row->id,'permanently_delete'=>1]) }}" class="btn btn-danger" data-confirm="{{__("Você quer excluir permanentemente?")}}">{{__("Excluir")}}</a>
                     @endif
                 @else
                     @if(Auth::user()->hasPermission('assistance_update'))
                         <a href="{{ route("assistance.vendor.edit",[$row->id]) }}" class="btn btn-warning">{{__("Editar")}}</a>
                     @endif
                     @if(Auth::user()->hasPermission('assistance_delete'))
-                        <a href="{{ route("assistance.vendor.delete",[$row->id]) }}" class="btn btn-danger" data-confirm="{{__('"Do you want to delete?"')}}">{{__("Excluir")}}</a>
+                        <a href="{{ route("assistance.vendor.delete",[$row->id]) }}" class="btn btn-danger" data-confirm="{{__("Você quer excluir?")}}">{{__("Excluir")}}</a>
                     @endif
                     @if($row->status == 'publish')
-                        <a href="{{ route("assistance.vendor.bulk_edit",[$row->id,'action' => "make-hide"]) }}" class="btn btn-secondary">{{__("Faça esconder")}}</a>
+                        <a href="{{ route("assistance.vendor.bulk_edit",[$row->id,'action' => "make-hide"]) }}" class="btn btn-secondary">{{__("Tornar oculto")}}</a>
                     @endif
                     @if($row->status == 'draft')
-                        <a href="{{ route("assistance.vendor.bulk_edit",[$row->id,'action' => "make-publish"]) }}" class="btn btn-success">{{__("Faça a publicação")}}</a>
+                        <a href="{{ route("assistance.vendor.bulk_edit",[$row->id,'action' => "make-publish"]) }}" class="btn btn-success">{{__("Tornar público")}}</a>
                     @endif
                 @endif
             </div>

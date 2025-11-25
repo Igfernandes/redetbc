@@ -17,16 +17,16 @@ class VendorPayout extends BaseModel
     public static function getAllStatuses(){
         return [
             'initial'=>[
-                'title'=>__("Initial")
+                'title'=>__("Inicial")
             ],
             'confirmed'=>[
-                'title'=>__("Confirmed")
+                'title'=>__("Confirmado")
             ],
             'paid'=>[
-                'title'=>__("Paid")
+                'title'=>__("Pago")
             ],
             'rejected'=>[
-                'title'=>__("Rejected")
+                'title'=>__("Rejeitado")
             ],
         ];
     }

@@ -33,7 +33,7 @@
                 <div class="left">
                     <div class="g-price">
                         <div class="prefix">
-                            <span class="fr_text">{{__("de")}}</span>
+                            <span class="fr_text">{{__("De")}}</span>
                         </div>
                         <div class="price">
                             <span class="onsale">{{ $row->display_sale_price }}</span>
@@ -78,7 +78,7 @@
                     @if($row->getBookingEnquiryType() === "book")
                         <a class="btn btn-primary bravo-button-book-mobile">{{__("Reserve agora")}}</a>
                     @else
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contacte-nos agora")}}</a>
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contate-nos agora")}}</a>
                    @endif
                 </div>
             </div>
@@ -111,8 +111,8 @@
     <script>
         var bravo_booking_data = {!! json_encode($booking_data) !!}
             var bravo_booking_i18n = {
-            no_date_select:'{{__("Please select Start date")}}',
-            no_guest_select:'{{__("Please select at least one guest")}}',
+            no_date_select:'{{__("Por favor, selecione a data de Início")}}',
+            no_guest_select:'{{__("Por favor, selecione pelo menos um hóspede")}}',
             load_dates_url:'{{route("tour.vendor.availability.loadDates")}}',
             name_required:'{{ __("Nome é obrigatório") }}',
             email_required:'{{ __("Email é obrigatório") }}',

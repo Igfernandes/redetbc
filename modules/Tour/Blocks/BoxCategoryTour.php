@@ -22,18 +22,18 @@ class BoxCategoryTour extends BaseBlock
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição')
                 ],
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Item(ns) da Lista'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
                             'id'      => 'category_id',
                             'type'    => 'select2',
-                            'label'   => __('Select Category'),
+                            'label'   => __('Selecionar Categoria'),
                             'select2' => [
                                 'ajax'  => [
                                     'url'      => route('tour.admin.category.category.getForSelect2'),
@@ -48,12 +48,12 @@ class BoxCategoryTour extends BaseBlock
                         [
                             'id'    => 'image_id',
                             'type'  => 'uploader',
-                            'label' => __('Image Background')
+                            'label' => __('Imagem de Fundo')
                         ],
                     ]
                 ],
             ],
-            'category'=>__("Service Tour")
+            'category'=>__("Serviço de Passeio")
         ];
     }
 

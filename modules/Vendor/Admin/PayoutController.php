@@ -39,10 +39,10 @@ class PayoutController extends AdminController
 
         $data = [
             'rows'               => $query->with(['vendor'])->paginate(20),
-            'page_title'=>__("Payout Management"),
+            'page_title'=>__("Gerenciamento de Pagamento"),
             'breadcrumbs'        => [
                 [
-                    'name'  => __('Payout Management'),
+                    'name'  => __('Gerenciamento de Pagamento'),
                     'class' => 'active'
                 ],
             ],

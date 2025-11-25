@@ -11,7 +11,7 @@
                     <form method="post" action="{{route('report.admin.booking.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         @csrf
                         <select name="action" class="form-control">
-                            <option value="">{{__("-- Bulk Actions --")}}</option>
+                            <option value="">{{__("-- Ações em Massa --")}}</option>
                             @if(!empty($statues))
                                 @foreach($statues as $status)
                                     <option value="{{$status}}">{{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}</option>
@@ -78,12 +78,12 @@
                                         <a href="{{$service->getDetailUrl()}}" target="_blank">{{$service->title ?? ''}}</a>
                                         @if($row->vendor)
                                             <br>
-                                            <span>{{__('by')}}</span>
+                                            <span>{{__('por')}}</span>
                                             <a href="{{route('user.admin.detail',['id'=>$row->vendor_id])}}"
                                                target="_blank">{{$row->vendor->name_or_email.' (#'.$row->vendor_id.')' }}</a>
                                         @endif
                                     @else
-                                        {{__("[Deleted]")}}
+                                        {{__("[Excluído]")}}
                                     @endif
                                 </td>
                                 <td>
@@ -102,12 +102,12 @@
                                 <td>
                                     @if($service = $row->service)
                                         <div class="dropdown">
-                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__('Actions')}}
+                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__('Ações')}}
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item btn-detail-booking" href="#modal_booking_detail" data-ajax="{{route('booking.modal',['booking'=>$booking])}}" data-toggle="modal" data-id="{{$booking->id}}" data-target="#modal_booking_detail">{{__('Detalhes')}}</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-paid-{{$row->id}}">{{__('Set Paid')}}</a>
-                                                <a class="dropdown-item" href="{{route('report.admin.booking.email_preview',['id'=>$row->id])}}">{{__('Email Preview')}}</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-paid-{{$row->id}}">{{__('Marcar como Pago')}}</a>
+                                                <a class="dropdown-item" href="{{route('report.admin.booking.email_preview',['id'=>$row->id])}}">{{__('Pré-visualizar Email')}}</a>
                                             </div>
                                         </div>
                                         @include ($service->set_paid_modal_file ?? '')

@@ -5,9 +5,9 @@
         <div class="container-fluid">
 
             <h2 class="title-bar d-flex justify-content-between align-items-center">
-                {{$row->id ? __('Editar post: ').$row->title : __('Add new Post')}}
+                {{$row->id ? __('Editar post: ').$row->title : __('Adicionar nova postagem')}}
                 @if($row->slug)
-                    <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("Visualizar Post")}}</a>
+                    <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("Visualizar Postagem")}}</a>
                 @endif
             </h2>
             @include('admin.message')
@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="panel">
-                            <div class="panel-title"><strong>{{ __('Notícias content')}}</strong></div>
+                            <div class="panel-title"><strong>{{ __('Conteúdo da notícia')}}</strong></div>
                             <div class="panel-body">
                                 @csrf
                                 @include('News::frontend.vendor.form',['row'=>$row])
@@ -30,8 +30,8 @@
                             <div class="panel-body">
                                 @if(is_default_lang())
                                     <select name="status" class="form-control">
-                                        <option @if($row->status=='draft') selected @endif value="draft">{{ __('Draft')}} </option>
-                                        <option @if($row->status=='pending') selected @endif value="pending">{{ __('Pending')}} </option>
+                                        <option @if($row->status=='draft') selected @endif value="draft">{{ __('Rascunho')}} </option>
+                                        <option @if($row->status=='pending') selected @endif value="pending">{{ __('Pendente')}} </option>
                                         @if(!setting_item('news_vendor_need_approve') or $row->status == 'publish')
                                             <option @if(setting_item('news_vendor_need_approve')) disabled @endif @if($row->status=='publish') selected @endif value="publish">{{ __('Publicar')}} </option>
                                         @endif
@@ -52,7 +52,7 @@
                                     <div class="form-group">
                                         <label>{{  __('Categoria')}} </label>
                                         <select name="cat_id" class="form-control">
-                                            <option value="">{{ __('-- Please Select --')}} </option>
+                                            <option value="">{{ __('-- Por favor, selecione --')}} </option>
                                             <?php
                                             $traverse = function ($categories, $prefix = '') use (&$traverse, $row) {
                                                 foreach ($categories as $category) {
@@ -70,7 +70,7 @@
                                     <div class="form-group">
                                         <label class="control-label"> {{ __('Tag')}}</label>
                                         <div class="">
-                                            <input type="text" data-role="tagsinput" value="{{$row->tag}}" placeholder="{{ __('Enter tag')}}" name="tag" class="form-control tag-input">
+                                            <input type="text" data-role="tagsinput" value="{{$row->tag}}" placeholder="{{ __('Digite a tag')}}" name="tag" class="form-control tag-input">
                                             <br>
                                             <div class="show_tags">
                                                 @if(!empty($tags))

@@ -18,7 +18,7 @@ class VendorPlan extends BaseModel
 
     public static function getModelName()
     {
-        return __("Fornecedor Plans");
+        return __("Fornecedor Planos");
     }
 
     public static function getAsMenuItem($id)

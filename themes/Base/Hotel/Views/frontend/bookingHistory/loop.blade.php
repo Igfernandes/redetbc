@@ -21,7 +21,7 @@
     <td class="a-hidden">
         {{__("Check in")}} : {{display_date($booking->start_date)}} <br>
         {{__("Check out")}} : {{display_date($booking->end_date)}} <br>
-        {{__("Duration")}} :
+        {{__("Duração")}} :
 
         @if($booking->duration_nights <= 1)
             {{__(':count night',['count'=>$booking->duration_nights])}}

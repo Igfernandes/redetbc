@@ -39,7 +39,7 @@
                             <a class="btn btn-warning btn-icon" href="{{route('user.admin.subscriber.export')}}" target="_blank" title="{{__("Exportar em excel")}}"><i class="icon ion-md-cloud-download"></i>&nbsp;{{__
                             ('Export')}}
                             </a>
-                            <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Procurar by name or email")}}">
+                            <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Procurar por nome ou e-mail")}}">
                             <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Procurar')}}</button>
                         </form>
                     </div>

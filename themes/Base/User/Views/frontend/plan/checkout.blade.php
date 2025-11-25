@@ -21,7 +21,7 @@
                 <div class="col-12">
                     @include('admin.message')
                     <div class="sec-title text-center mb-5">
-                        <h2>{{ setting_item_with_lang('user_plans_page_title', app()->getLocale()) ?? __("Pricing Packages")}}</h2>
+                        <h2>{{ setting_item_with_lang('user_plans_page_title', app()->getLocale()) ?? __("Pacotes de Preços")}}</h2>
                     </div>
                     <div class="pricing-tabs tabs-box">
                         <form method="post" action="{{route('user.plan.buyProcess',['id'=>$plan->id])}}" class="row">
@@ -46,7 +46,7 @@
                             <div class="form-actions col-12">
                                 <div class="form-group">
                                     <label class="term-conditions-checkbox">
-                                        <input type="checkbox" name="term_conditions"> {{__('I have read and accept the')}} <a target="_blank" href="{{get_page_url($term_conditions)}}">{{__('terms and conditions')}}</a>
+                                        <input type="checkbox" name="term_conditions"> {{__('Li e aceito os')}} <a target="_blank" href="{{get_page_url($term_conditions)}}">{{__('termos e condições')}}</a>
                                     </label>
                                 </div>
                                 @if(setting_item("booking_enable_recaptcha"))
@@ -54,7 +54,7 @@
                                         {{recaptcha_field('booking')}}
                                     </div>
                                 @endif
-                                <button type="submit" class="btn btn-danger">{{__('Submit')}} </button>
+                                <button type="submit" class="btn btn-danger">{{__('Enviar')}} </button>
                             </div>
                         </form>
 

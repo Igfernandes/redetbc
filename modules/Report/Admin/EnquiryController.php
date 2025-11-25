@@ -102,7 +102,7 @@ class EnquiryController extends AdminController
 
             'breadcrumbs' => [
                 [
-                    'name' => __('Enquiry'),
+                    'name' => __('Inquéritos'),
                     'url'  => route('report.admin.enquiry.index')
                 ],
                 [

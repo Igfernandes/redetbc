@@ -1,16 +1,16 @@
 @if(is_default_lang())
     <hr>
     <div class="panel">
-        <div class="panel-title"><strong>{{__("Map Search Fields")}}</strong></div>
+        <div class="panel-title"><strong>{{__("Campos de Pesquisa do Mapa")}}</strong></div>
         <div class="panel-body">
             <div class="form-group" >
-                <label class="" >{{__("Procurar Criteria")}}</label>
+                <label class="" >{{__("Critério de Pesquisa")}}</label>
                 <div class="form-controls">
                     <div class="form-group-item">
                         <div class="g-items-header">
                             <div class="row">
-                                <div class="col-md-7">{{__("Procurar Field")}}</div>
-                                <div class="col-md-4">{{__("Order")}}</div>
+                                <div class="col-md-7">{{__("Campo de Pesquisa")}}</div>
+                                <div class="col-md-4">{{__("Ordem")}}</div>
                                 <div class="col-md-1"></div>
                             </div>
                         </div>
@@ -19,10 +19,10 @@
                             $space_map_search_fields = setting_item_array('space_map_search_fields');
                             $types = [
                                 'location'=>__("Localização"),
-                                'attr'=>__("Attribute"),
+                                'attr'=>__("Atributo"),
                                 'date'=>__("Data"),
                                 'price'=>__("Preço"),
-                                'advance'=>__("Advance"),
+                                'advance'=>__("Avançado"),
                             ];
                             $attrs = \Modules\Core\Models\Attributes::where('service', 'space')->get();
                             @endphp
@@ -31,14 +31,14 @@
                                     <div class="row">
                                         <div class="col-md-7">
                                             <select name="space_map_search_fields[{{$key}}][field]" class="custom-select">
-                                                <option value="">{{__("-- Select field type --")}}</option>
+                                                <option value="">{{__("-- Selecionar tipo de campo --")}}</option>
                                                 @foreach($types as $type=>$name)
                                                     <option @if($item['field'] == $type) selected @endif value="{{$type}}">{{$name}}</option>
                                                 @endforeach
                                             </select>
                                             <br>
                                             <select name="space_map_search_fields[{{$key}}][attr]" class="mt-2 custom-select">
-                                                <option value="">{{__("-- Select Attribute --")}}</option>
+                                                <option value="">{{__("-- Selecionar Atributo --")}}</option>
                                                 @foreach($attrs as $attr)
                                                     <option @if($item['attr'] == $attr->id) selected @endif value="{{$attr->id}}">{{$attr->name}}</option>
                                                 @endforeach
@@ -64,13 +64,13 @@
                                 <div class="row">
                                     <div class="col-md-7">
                                         <select __name__="space_map_search_fields[__number__][field]" class="custom-select">
-                                            <option value="">{{__("-- Select field type --")}}</option>
+                                            <option value="">{{__("-- Selecionar tipo de campo --")}}</option>
                                             @foreach($types as $type=>$name)
                                                 <option value="{{$type}}">{{$name}}</option>
                                             @endforeach
                                         </select>
                                         <select __name__="space_map_search_fields[__number__][attr]" class=" mt-2  custom-select">
-                                            <option value="">{{__("-- Select Attribute --")}}</option>
+                                            <option value="">{{__("-- Selecionar Atributo --")}}</option>
                                             @foreach($attrs as $attr)
                                                 <option value="{{$attr->id}}">{{$attr->name}}</option>
                                             @endforeach

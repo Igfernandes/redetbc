@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="panel">
-                    <div class="panel-title"><strong>{{ __('User Info')}}</strong></div>
+                    <div class="panel-title"><strong>{{ __('Informações do Usuário')}}</strong></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -25,7 +25,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{ __('E-mail')}}</label>
-                                    <input type="email" required value="{{old('email',$row->email)}}" placeholder="{{ __('Email')}}" name="email" class="form-control">
+                                    <input type="email" required value="{{old('email',$row->email)}}" placeholder="{{ __('E-mail')}}" name="email" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -47,12 +47,11 @@
                                     <label>{{__("Sobrenome")}}</label>
                                     <input type="text" required value="{{old('last_name',$row->last_name)}}" name="last_name" placeholder="{{__("Sobrenome")}}" class="form-control">
                                 </div>
-                            </div><!-- RELIGION -->
-                            <div class="col-md-6">
+                            </div><div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __("Religião")  }}</label>
+                                    <label>{{ __("Religião")  }}</label>
                                     <select name="religion" class="form-control">
-                                        <option value="">{{ __("Select religion") }}</option>
+                                        <option value="">{{ __("Selecione a religião") }}</option>
                                         <option value="CATHOLIC" {{ old('religion', $booking_data->religion ?? '') == 'CATHOLIC' ? 'selected' : '' }}>
                                             {{ __("Católico") }}
                                         </option>
@@ -67,7 +66,6 @@
                                 </div>
                             </div>
 
-                            <!-- SEX -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>
@@ -78,33 +76,33 @@
                                             {{ __("Masculino") }}
                                         </option>
                                         <option value="FEMININE" {{ old('sex', $row->sex ?? '') === 'FEMININE' ? 'selected' : '' }}>
-                                            {{ __("Femino") }}
+                                            {{ __("Feminino") }}
                                         </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ ('Telefone')}}</label>
+                                    <label>{{ __('Telefone')}}</label>
                                     <input type="text" value="{{old('phone',$row->phone)}}" placeholder="{{ __('Telefone')}}" name="phone" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ __('Birthday')}}</label>
-                                    <input type="text" value="{{ old('birthday',$row->birthday ? date("Y/m/d",strtotime($row->birthday)) :'') }}" placeholder="{{ __('Birthday')}}" name="birthday" class="form-control has-datepicker input-group date">
+                                    <label>{{ __('Aniversário')}}</label>
+                                    <input type="text" value="{{ old('birthday',$row->birthday ? date("Y/m/d",strtotime($row->birthday)) :'') }}" placeholder="{{ __('Aniversário')}}" name="birthday" class="form-control has-datepicker input-group date">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ ('Endereço 1')}}</label>
-                                    <input type="text" value="{{old('address',$row->address)}}" placeholder="{{ __('Address')}}" name="address" class="form-control">
+                                    <label>{{ __('Endereço 1')}}</label>
+                                    <input type="text" value="{{old('address',$row->address)}}" placeholder="{{ __('Endereço')}}" name="address" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ ('Endereço 2')}}</label>
-                                    <input type="text" value="{{old('address2',$row->address2)}}" placeholder="{{ __('Address 2')}}" name="address2" class="form-control">
+                                    <label>{{ __('Endereço 2')}}</label>
+                                    <input type="text" value="{{old('address2',$row->address2)}}" placeholder="{{ __('Endereço 2')}}" name="address2" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -139,7 +137,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label">{{ __('Biographical')}}</label>
+                            <label class="control-label">{{ __('Biografia')}}</label>
                             <div class="">
                                 <textarea name="bio" class="d-none has-ckeditor" cols="30" rows="10">{{old('bio',$row->bio)}}</textarea>
                             </div>
@@ -154,7 +152,7 @@
                         <div class="form-group">
                             <label>{{__('Status')}}</label>
                             <select required class="custom-select" name="status">
-                                <option @if(old('status',$row->status) =='publish') selected @endif value="publish">{{ __('Publicar')}}</option>
+                                <option @if(old('status',$row->status) =='publish') selected @endif value="publish">{{ __('Publicado')}}</option>
                                 <option @if(old('status',$row->status) =='blocked') selected @endif value="blocked">{{ __('Bloqueado')}}</option>
                             </select>
                         </div>
@@ -171,20 +169,20 @@
                         </div>
                         @endif
                         <div class="form-group">
-                            <label>{{__('Email Verified?')}}</label>
+                            <label>{{__('E-mail Verificado?')}}</label>
                             <select class="form-control" name="is_email_verified">
-                                <option value="">{{ __('No')}}</option>
-                                <option @if(old('is_email_verified',$row->email_verified_at ? 1 : 0)) selected @endif value="1">{{__('Yes')}}</option>
+                                <option value="">{{ __('Não')}}</option>
+                                <option @if(old('is_email_verified',$row->email_verified_at ? 1 : 0)) selected @endif value="1">{{__('Sim')}}</option>
                             </select>
                         </div>
                         @endif
                     </div>
                 </div>
                 <div class="panel">
-                    <div class="panel-title"><strong>{{ __('Affiliate')}}</strong></div>
+                    <div class="panel-title"><strong>{{ __('Afiliado')}}</strong></div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label>{{__('Commission by networks')}}</label>
+                            <label>{{__('Comissão por redes')}}</label>
                             <div class="form-controls">
                                 <input type="number" class="form-control" name="commission_amount" value="{{old('commission_amount',($row->commission_amount ?? '')) }}">
                             </div>
@@ -204,7 +202,7 @@
         <hr>
         <div class="d-flex justify-content-between">
             <span></span>
-            <button class="btn btn-primary" type="submit">{{ __('Save Change')}}</button>
+            <button class="btn btn-primary" type="submit">{{ __('Salvar Alterações')}}</button>
         </div>
     </div>
 </form>

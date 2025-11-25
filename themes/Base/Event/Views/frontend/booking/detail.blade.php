@@ -1,6 +1,6 @@
 @php $lang_local = app()->getLocale() @endphp
 <div class="booking-review">
-    <h4 class="booking-review-title">{{__("Your Booking")}}</h4>
+    <h4 class="booking-review-title">{{__("Sua Reserva")}}</h4>
     <div class="booking-review-content">
         <div class="review-section">
             <div class="service-info">
@@ -40,7 +40,7 @@
                     </li>
                     @if($booking->getMeta("booking_type") == "ticket")
                         <li>
-                            <div class="label">{{__('Duration:')}}</div>
+                            <div class="label">{{__('Duração:')}}</div>
                             <div class="val">
                                 @php $duration = $booking->getMeta("duration") @endphp
                                 {{duration_format($duration)}}
@@ -49,14 +49,14 @@
                     @endif
                     @if($booking->getMeta("booking_type") == "time_slot")
                         <li>
-                            <div class="label">{{__('Duration:')}}</div>
+                            <div class="label">{{__('Duração:')}}</div>
                             <div class="val">
                                 {{ $booking->getMeta("duration")  }}
                                 {{ $booking->getMeta("duration_unit")  }}
                             </div>
                         </li>
                         <li class="flex-wrap">
-                            <div class="label w-100 mb-2">{{__('Start Time:')}}</div>
+                            <div class="label w-100 mb-2">{{__('Hora de Início:')}}</div>
                             <div class="val w-100">
                                 <div class="slots-wrapper d-flex justify-content-start flex-wrap">
                                     @if(!empty($timeSlots = $booking->time_slots))
@@ -113,7 +113,7 @@
                 @php $extra_price = $booking->getJsonMeta('extra_price') @endphp
                 @if(!empty($extra_price))
                     <li>
-                        <div class="label-title"><strong>{{__("Extra Prices:")}}</strong></div>
+                        <div class="label-title"><strong>{{__("Preços Extras:")}}</strong></div>
                     </li>
                     <li class="no-flex">
                         <ul>

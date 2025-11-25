@@ -35,7 +35,7 @@ class PlanController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'  => __("User Plan Management")
+            'page_title'  => __("Gerenciamento de Planos de Usuário")
         ];
         return view('User::admin.plan.index', $data);
     }
@@ -59,7 +59,7 @@ class PlanController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'        => __("Editar user plan")
+            'page_title'        => __("Editar plano de usuário")
         ];
         return view('User::admin.plan.detail', $data);
     }
@@ -105,7 +105,7 @@ class PlanController extends AdminController
         $res = $row->saveOriginOrTranslation($request->input('lang'));
 
         if ($res) {
-            return back()->with('success', __('Plan saved'));
+            return back()->with('success', __('Plano salvo'));
         }
     }
 

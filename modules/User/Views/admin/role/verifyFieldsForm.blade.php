@@ -1,10 +1,10 @@
 @if(empty($row['id']))
 <div class="form-group">
-    <label>{{__("Field ID")}} <span class="text-danger">*</span></label>
-    <input type="text" value="{{$row['id'] ?? ''}}" placeholder="{{__("Field ID ")}}" name="id" class="form-control" required>
-    <i>{{__('Must be unique. Only accept letter and number, dash, underscore, without space')}}</i>
+    <label>{{__("ID do Campo")}} <span class="text-danger">*</span></label>
+    <input type="text" value="{{$row['id'] ?? ''}}" placeholder="{{__("ID do Campo")}}" name="id" class="form-control" required>
+    <i>{{__('Deve ser único. Aceita apenas letras, números, traço e sublinhado, sem espaço')}}</i>
     <div class="invalid-feedback">
-        {{__('Please enter field id and make sure it unique')}}
+        {{__('Por favor, insira o ID do campo e certifique-se de que é único')}}
     </div>
 </div>
 @else
@@ -12,7 +12,7 @@
 @endif
 @php  $languages = \Modules\Language\Models\Language::getActive(); @endphp
 <div class="form-group form-group-item">
-    <label>{{__("Field Name")}} <span class="text-danger">*</span></label>
+    <label>{{__("Nome do Campo")}} <span class="text-danger">*</span></label>
     <div class="border p-2 rounded">
         @if(!empty($languages) && setting_item('site_enable_multi_lang') && setting_item('site_locale'))
             @foreach($languages as $language)
@@ -27,24 +27,24 @@
         @endif
     </div>
     <div class="invalid-feedback">
-        {{__('Please enter field name')}}
+        {{__('Por favor, insira o nome do campo')}}
     </div>
 </div>
 <div class="form-group">
     <label>{{__("Tipo")}} <span class="text-danger">*</span></label>
     <select class="custom-select" name="type" required>
-        <option value="text">{{__("Text")}}</option>
+        <option value="text">{{__("Texto")}}</option>
         <option {{($row['type'] ?? '') == 'phone' ? 'selected':''}} value="phone">{{__("Celular")}}</option>
         <option {{($row['type'] ?? '') == 'number' ? 'selected':''}} value="number">{{__("Número")}}</option>
         <option {{($row['type'] ?? '') == 'file' ? 'selected':''}} value="file">{{__("Anexo de arquivo")}}</option>
         <option {{($row['type'] ?? '') == 'multi_files' ? 'selected':''}} value="multi_files">{{__("Anexos múltiplos de arquivos")}}</option>
     </select>
     <div class="invalid-feedback">
-        {{__('Please enter field type')}}
+        {{__('Por favor, insira o tipo de campo')}}
     </div>
 </div>
 <div class="form-group">
-    <label>{{__("For Roles?")}} <span class="text-danger">*</span></label>
+    <label>{{__("Para Funções?")}} <span class="text-danger">*</span></label>
     <div class=" terms-scrollable">
         @foreach($roles as $role)
             <div>
@@ -59,17 +59,17 @@
     </div>
 </div>
 <div class="form-group">
-    <label>{{__("Is Required?")}}</label>
+    <label>{{__("É Obrigatório?")}}</label>
     <select class="custom-select" name="required">
-        <option value="">{{__("No")}}</option>
+        <option value="">{{__("Não")}}</option>
         <option {{($row['required'] ?? '') == 1 ? 'selected':''}} value="1">{{__("Sim")}}</option>
     </select>
 </div>
 <div class="form-group">
-    <label>{{__("Order")}}</label>
+    <label>{{__("Ordem")}}</label>
     <input type="text" value="{{$row['order'] ?? 0}}" placeholder="" name="order" class="form-control">
 </div>
 <div class="form-group">
-    <label>{{__("Icon code")}}</label>
-    <input type="text" value="{{$row['icon'] ?? ''}}" placeholder="{{__("Eg: fa fa-phone")}}" name="icon" class="form-control">
+    <label>{{__("Código do Ícone")}}</label>
+    <input type="text" value="{{$row['icon'] ?? ''}}" placeholder="{{__("Ex: fa fa-phone")}}" name="icon" class="form-control">
 </div>

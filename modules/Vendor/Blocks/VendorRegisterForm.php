@@ -34,13 +34,13 @@ class VendorRegisterForm extends BaseBlock
                     'label' => __('Carregador de Imagem de Fundo')
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 
     public function getName()
     {
-        return __('Fornecedor Register Form');
+        return __('Formulário de Cadastro de Fornecedor');
     }
 
     public function content($model = [])

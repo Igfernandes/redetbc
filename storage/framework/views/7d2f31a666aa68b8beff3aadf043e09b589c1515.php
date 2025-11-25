@@ -1,7 +1,7 @@
 <?php if(!empty($location_category) and !empty($translation->surrounding)): ?>
     <div class="g-surrounding py-4 border-bottom">
         <div class="location-title">
-            <h3 class="font-size-21 font-weight-bold text-dark mb-4"><?php echo e(__("What's Nearby")); ?></h3>
+            <h3 class="font-size-21 font-weight-bold text-dark mb-4"><?php echo e(__("O que há por perto")); ?></h3>
             <?php $__currentLoopData = $location_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <h6 class="font-weight-bold mb-3"><i class="<?php echo e(clean($category->icon_class)); ?> "></i> <?php echo e($category->location_category_translations->name??$category->name); ?></h6>
                 <?php if(!empty($translation->surrounding[$category->id])): ?>

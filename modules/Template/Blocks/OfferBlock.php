@@ -9,7 +9,7 @@ class OfferBlock extends BaseBlock
 {
     public function getName()
     {
-        return __('Offer Block');
+        return __('Bloco de Oferta');
     }
 
     public function getOptions()
@@ -19,7 +19,7 @@ class OfferBlock extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Item(ns) da Lista'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -32,7 +32,7 @@ class OfferBlock extends BaseBlock
                             'id'        => 'desc',
                             'type'      => 'textArea',
                             'inputType' => 'textArea',
-                            'label'     => __('Desc')
+                            'label'     => __('Descrição')
                         ],
                         [
                             'id'    => 'background_image',
@@ -43,31 +43,31 @@ class OfferBlock extends BaseBlock
                             'id'        => 'link_title',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Título Link More')
+                            'label'     => __('Título do Link Mais')
                         ],
                         [
                             'id'        => 'link_more',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Link More')
+                            'label'     => __('Link Mais')
                         ],
                         [
                             'id'        => 'featured_text',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Featured text')
+                            'label'     => __('Texto em destaque')
                         ],
                         [
                             'id'        => 'featured_icon',
                             'type'      => 'input',
                             'inputType' => 'text',
-                            'label'     => __('Featured icon (find icon class in : https://icofont.com/icons)')
+                            'label'     => __('Ícone em destaque (encontre a classe do ícone em : https://icofont.com/icons)')
                         ],
                     ]
                 ],
 
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ];
     }
 

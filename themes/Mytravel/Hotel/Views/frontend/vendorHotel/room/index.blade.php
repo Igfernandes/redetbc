@@ -3,16 +3,16 @@
     <h2 class="title-bar">
         {{__("Gerenciar Quartos")}}
         <div class="title-action">
-            <a href="{{route('hotel.vendor.edit',['id'=>$hotel->id])}}" class="btn btn-info"><i class="fa fa-hand-o-right"></i> {{__("Back to hotel")}}</a>
-            <a href="{{route('hotel.vendor.room.availability.index',['hotel_id'=>$hotel->id])}}" class="btn btn-warning"><i class="fa fa-calendar"></i> {{__("Availability Rooms")}}</a>
-            <a href="{{ route("hotel.vendor.room.create",['hotel_id'=>$hotel->id]) }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> {{__("Add Room")}}</a>
+            <a href="{{route('hotel.vendor.edit',['id'=>$hotel->id])}}" class="btn btn-info"><i class="fa fa-hand-o-right"></i> {{__("Voltar para o hotel")}}</a>
+            <a href="{{route('hotel.vendor.room.availability.index',['hotel_id'=>$hotel->id])}}" class="btn btn-warning"><i class="fa fa-calendar"></i> {{__("Disponibilidade de Quartos")}}</a>
+            <a href="{{ route("hotel.vendor.room.create",['hotel_id'=>$hotel->id]) }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> {{__("Adicionar Quarto")}}</a>
         </div>
     </h2>
     @include('admin.message')
     @if($rows->total() > 0)
         <div class="bravo-list-item">
             <div class="bravo-pagination">
-                <span class="count-string">{{ __("Mostrando :from - :to of :total Rooms",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                <span class="count-string">{{ __("Mostrando :from - :to de :total Quartos",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                 {{$rows->appends(request()->query())->links()}}
             </div>
             <div class="list-item">
@@ -25,11 +25,11 @@
                 </div>
             </div>
             <div class="bravo-pagination">
-                <span class="count-string">{{ __("Mostrando :from - :to of :total Rooms",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                <span class="count-string">{{ __("Mostrando :from - :to de :total Quartos",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                 {{$rows->appends(request()->query())->links()}}
             </div>
         </div>
     @else
-        {{__("No Room")}}
+        {{__("Nenhum Quarto")}}
     @endif
 @endsection

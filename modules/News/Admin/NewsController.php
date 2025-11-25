@@ -65,7 +65,7 @@ class NewsController extends AdminController
                     'url'  => route('news.admin.index')
                 ],
                 [
-                    'name'  => __('Add News'),
+                    'name'  => __('Adicionar notícias'),
                     'class' => 'active'
                 ],
             ],

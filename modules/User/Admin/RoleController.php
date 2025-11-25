@@ -50,7 +50,7 @@ class RoleController extends AdminController
                     'url'  => route('user.admin.index')
                 ],
                 [
-                    'name' => __("Roles"),
+                    'name' => __("Funções"),
                 ],
             ]
         ];
@@ -92,7 +92,7 @@ class RoleController extends AdminController
 
     public function store(Request $request, $id){
         if(is_demo_mode()){
-            return back()->with('danger',  __('DEMO Mode: You can not do this') );
+            return back()->with('danger',  __('Modo DEMO: Você não pode fazer isso') );
         }
         $rules = [
             'name'=>'required',
@@ -120,7 +120,7 @@ class RoleController extends AdminController
             if($id > 0 ){
                 return back()->with('success',  __('Função atualizada') );
             }else{
-                return redirect(route('user.admin.role.detail',['id' => $row->id]))->with('success', __('Função created') );
+                return redirect(route('user.admin.role.detail',['id' => $row->id]))->with('success', __('Função criada') );
             }
         }
     }
@@ -135,15 +135,15 @@ class RoleController extends AdminController
             'fields'=>setting_item_array('role_verify_fields'),
             'breadcrumbs' => [
                 [
-                    'name' => __('User'),
+                    'name' => __('Usuário'),
                     'url'  => route('user.admin.index')
                 ],
                 [
-                    'name' => __('Função Management'),
+                    'name' => __('Gerenciamento de Funções'),
                     'url'  => route('user.admin.role.index')
                 ],
                 [
-                    'name' => __('Verificar Configurações'),
+                    'name' => __('Configurações de Verificação'),
                     'url'  => route('user.admin.role.verifyFields'),
                     'active'=>1
                 ],
@@ -170,7 +170,7 @@ class RoleController extends AdminController
             'row'=>$row,
             'breadcrumbs' => [
                 [
-                    'name' => __('User'),
+                    'name' => __('Usuário'),
                     'url'  => route('user.admin.index')
                 ],
                 [
@@ -193,7 +193,7 @@ class RoleController extends AdminController
 
     public function verifyFieldsStore(){
         if(is_demo_mode()){
-            return back()->with('danger',  __('DEMO Mode: You can not do this') );
+            return back()->with('danger',  __('Modo DEMO: Você não pode fazer isso') );
         }
 
         $this->checkPermission('role_manage');
@@ -226,20 +226,20 @@ class RoleController extends AdminController
 
         setting_update_item('role_verify_fields',$all);
 
-        return redirect()->back()->with('success', $isAdd? __("Field created") : __("Field saved"));
+        return redirect()->back()->with('success', $isAdd? __("Campo criado") : __("Campo salvo"));
     }
 
 	public function bulkEdit(Request $request)
 	{
         if(is_demo_mode()){
-            return back()->with('error',"Demo mode: disabled");
+            return back()->with('error',"Modo Demo: desabilitado");
         }
         $this->checkPermission('role_manage');
 
 		$ids = $request->input('ids');
 		$action = $request->input('action');
 		if (empty($ids))
-			return redirect()->back()->with('error', __('Select at leas 1 item!'));
+			return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
 		if (empty($action))
 			return redirect()->back()->with('error', __('Selecione uma ação!'));
 		if ($action == 'delete') {
@@ -247,7 +247,7 @@ class RoleController extends AdminController
 			$new = Arr::except($all,$ids);
 			setting_update_item('role_verify_fields',$new);
 		}
-		return redirect()->back()->with('success', __('Updated successfully!'));
+		return redirect()->back()->with('success', __('Atualizado com sucesso!'));
 	}
 
 
@@ -295,11 +295,11 @@ class RoleController extends AdminController
                     'url'  => route('user.admin.index')
                 ],
                 [
-                    'name' => __("Roles"),
+                    'name' => __("Funções"),
                     'url'  => route('user.admin.role.index')
                 ],
                 [
-                    'name' => __("Permission Matrix"),
+                    'name' => __("Matriz de Permissões"),
                 ],
             ]
         ];
@@ -309,7 +309,7 @@ class RoleController extends AdminController
     public function save_permissions(Request $request)
     {
         if(is_demo_mode()){
-            return back()->with('danger',  __('DEMO Mode: You can not do this') );
+            return back()->with('danger',  __('Modo DEMO: Você não pode fazer isso') );
         }
         $this->checkPermission('role_manage');
 

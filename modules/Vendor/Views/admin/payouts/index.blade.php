@@ -11,7 +11,7 @@
                     <label >{{__("Selecionado com")}}</label>
                     <div  class="filter-form filter-form-left d-flex justify-content-start">
                         <button class="btn-info btn btn-icon dungdt-form-payout-btn" type="button">{{__('Selecionar Ação')}}</button>
-                        <button class="has-loading btn-danger btn btn-icon dungdt-form-payout-delete" type="button">{{__('Delete')}}
+                        <button class="has-loading btn-danger btn btn-icon dungdt-form-payout-delete" type="button">{{__('Deletar')}}
                             <i class="fa fa-spinner fa-spin fa-fw"></i>
                         </button>
                     </div>
@@ -29,7 +29,7 @@
                                     'dataType' => 'json'
                                 ],
                                 'allowClear'  => true,
-                                'placeholder' => __('-- Vendor --')
+                                'placeholder' => __('-- Fornecedor --')
                             ]
                         ], !empty($user->id) ? [
                             $user->id,
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="text-right">
-            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
+            <p><i>{{__('Encontrado :total itens',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">
             <div class="panel-body">
@@ -55,7 +55,7 @@
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
                                 <th  width="80px"> {{ __('ID')}}</th>
                                 <th> {{ __('Fornecedor')}}</th>
-                                <th>{{__("Note")}}</th>
+                                <th>{{__("Nota")}}</th>
                                 <th width="200px"> {{ __('Quantidade')}}</th>
                                 <th width="230px"> {{ __('Método de Pagamento')}}</th>
                                 <th width="130px"> {{ __('Criado em')}}</th>
@@ -74,19 +74,19 @@
                                         </td>
                                         <td>
                                             @if($payout->note_to_admin)
-                                                <label ><strong>{{__("To admin:")}}</strong></label>
+                                                <label ><strong>{{__("Para o admin:")}}</strong></label>
                                                 <br>
                                                 <div>{{$payout->note_to_admin}}</div>
                                             @endif
                                             @if($payout->note_to_vendor)
-                                                <label ><strong>{{__("To vendor:")}}</strong></label>
+                                                <label ><strong>{{__("Para o fornecedor:")}}</strong></label>
                                                 <br>
                                                 <div>{{$payout->note_to_vendor}}</div>
                                             @endif
                                         </td>
                                         <td>{{format_money($payout->amount)}}</td>
                                         <td>
-                                            {{__(':name to :info',['name'=>$payout->payout_method_name,'info'=>$payout->account_info])}}
+                                            {{__(':name para :info',['name'=>$payout->payout_method_name,'info'=>$payout->account_info])}}
                                         </td>
                                         <td>{{display_date($payout->created_at)}}</td>
                                         <td>{{$payout->status_text}}</td>
@@ -112,7 +112,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{__("Payout request bulk action")}}</h5>
+                    <h5 class="modal-title">{{__("Ação em massa para solicitação de pagamento")}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -129,13 +129,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">{{__('Pay date')}}</label>
+                        <label for="">{{__('Data de pagamento')}}</label>
                         <div>
-                            <input type="text" name="pay_date" class="form-control has-datepicker" placeholder="{{__('YYYY/MM/DD')}}">
+                            <input type="text" name="pay_date" class="form-control has-datepicker" placeholder="{{__('AAAA/MM/DD')}}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">{{__('Note to vendor')}}</label>
+                        <label for="">{{__('Nota para o fornecedor')}}</label>
                         <div>
                             <textarea name="note_to_vendor" cols="30" rows="5" class="form-control"></textarea>
                         </div>
@@ -180,7 +180,7 @@
                 return $(this).val();
             }).get();
             if(!ids || !ids.length){
-                bookingCoreApp.showError("{{__('Please select at lease one item')}}")
+                bookingCoreApp.showError("{{__('Selecione pelo menos um item')}}")
                 return;
             }
             $('#bulkActionModal').modal('show');
@@ -198,11 +198,11 @@
                 return $(this).val();
             }).get();
             if(!ids || !ids.length){
-                bookingCoreApp.showError("{{__('Please select at lease one item')}}")
+                bookingCoreApp.showError("{{__('Selecione pelo menos um item')}}")
                 return;
             }
             bookingCoreApp.showConfirm({
-                message:'{{__('Do you want to delete those items?')}}',
+                message:'{{__('Deseja excluir esses itens?')}}',
                 callback:function (result) {
                     if(result){
                         btn.addClass('loading');
@@ -237,14 +237,14 @@
             var form = $(this).closest('.modal');
             var status = form.find('[name=action]').val();
             if(!status){
-                bookingCoreApp.showError("{{__("Status is empty")}}");
+                bookingCoreApp.showError("{{__("O status está vazio")}}");
                 return;
             }
             var ids = $('.check-item:checked').map(function(){
                 return $(this).val();
             }).get();
             if(!ids || !ids.length){
-                bookingCoreApp.showError("{{__('Please select at lease one item')}}")
+                bookingCoreApp.showError("{{__('Selecione pelo menos um item')}}")
                 return;
             }
 

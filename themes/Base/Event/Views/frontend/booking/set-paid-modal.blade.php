@@ -1,11 +1,9 @@
 <div class="modal fade" id="modal-paid-{{$booking->id}}">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">{{__("Booking ID")}}: #{{$booking->id}}</h4>
+                <h4 class="modal-title">{{__("ID da Reserva")}}: #{{$booking->id}}</h4>
             </div>
-            <!-- Modal body -->
             <div class="modal-body">
                 <div class="booking-review">
                     <div class="booking-review-content">
@@ -23,7 +21,7 @@
                                         </div>
                                         @if($booking->paid < $booking->total )
                                             <div class="d-flex justify-content-between">
-                                                <div class="label">{{__("Permanecer:")}}</div>
+                                                <div class="label">{{__("Restante:")}}</div>
                                                 <div class="val">{{currency_symbol()}}<input class="text-right" type="number" min="0" max="{{$booking->total}}" id="set_paid_input" value="{{($booking->total - $booking->paid)}}" />
                                                 </div>
                                             </div>
@@ -35,10 +33,9 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal footer -->
             <div class="modal-footer">
-                <span class="btn btn btn-primary" id="set_paid_btn" data-id="{{$booking->id}}">{{__("Save")}}</span>
-                <span class="btn btn-secondary" data-dismiss="modal">{{__("Close")}}</span>
+                <span class="btn btn btn-primary" id="set_paid_btn" data-id="{{$booking->id}}">{{__("Salvar")}}</span>
+                <span class="btn btn-secondary" data-dismiss="modal">{{__("Fechar")}}</span>
             </div>
         </div>
     </div>

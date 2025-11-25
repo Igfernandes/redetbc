@@ -29,10 +29,10 @@ class PayoutRequestDeletedEmail extends Mailable
         switch ($this->email_to)
         {
             case "admin":
-                $subject = __('A payout request has been deleted');
+                $subject = __('Uma solicitação de pagamento foi excluída');
                 break;
             case "vendor":
-                $subject = __('Your payout request has been deleted');
+                $subject = __('Sua solicitação de pagamento foi excluída');
                 break;
         }
 

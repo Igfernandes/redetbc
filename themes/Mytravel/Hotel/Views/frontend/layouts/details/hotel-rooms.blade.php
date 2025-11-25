@@ -1,6 +1,6 @@
 <div id="hotel-rooms" class="hotel_rooms_form mt-4" v-cloak="" :class="{'d-none':enquiry_type!='book'}">
     <h5 class="font-size-21 font-weight-bold text-dark mb-4">
-        {{__("Select Your Room")}}
+        {{__("Selecione Seu Quarto")}}
     </h5>
     <div class="nav-enquiry" v-if="is_form_enquiry_and_book">
         <div class="enquiry-item active" >
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <i class="fa fa-angle-down arrow"></i>
                         <div class="form-content dropdown-toggle" data-toggle="dropdown">
-                            <label class="form-label">{{__('Hospedes')}}</label>
+                            <label class="form-label">{{__('Hóspedes')}}</label>
                             <div class="render">
                                 <span class="adults" >
                                     <span class="one" >@{{adults}}
@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-3">
                                 <div class="image" @click="showGallery($event,room.id,room.gallery)">
-                                    <img class="w-100" :src="room.image" alt="{{ __("Room") }}">
+                                    <img class="w-100" :src="room.image" alt="{{ __("Quarto") }}">
                                     <div class="count-gallery" v-if="typeof room.gallery !='undefined' && room.gallery && room.gallery.length > 1">
                                         <i class="fa fa-picture-o"></i>
                                         @{{ room.gallery.length}}
@@ -124,25 +124,25 @@
                                     <h3 class="room-name">@{{room.title}}</h3>
                                     <ul class="room-meta">
                                         <li v-if="room.size_html">
-                                            <div class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Room Footage')}}">
+                                            <div class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Metragem do Quarto')}}">
                                                 <i class="input-icon field-icon flaticon-plans"></i>
                                                 <span v-html="room.size_html"></span>
                                             </div>
                                         </li>
                                         <li v-if="room.beds_html">
-                                            <div class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('No. Beds')}}">
+                                            <div class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Nº de Camas')}}">
                                                 <i class="input-icon field-icon flaticon-bed-1"></i>
                                                 <span v-html="room.beds_html"></span>
                                             </div>
                                         </li>
                                         <li v-if="room.adults_html">
-                                            <div class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('No. Adults')}}">
+                                            <div class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Nº de Adultos')}}">
                                                 <i class="input-icon field-icon icofont-users-alt-4"></i>
                                                 <span v-html="room.adults_html"></span>
                                             </div>
                                         </li>
                                         <li v-if="room.children_html">
-                                            <div class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('No. Children')}}">
+                                            <div class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{__('Nº de Crianças')}}">
                                                 <i class="input-icon field-icon fa-child fa"></i>
                                                 <span v-html="room.children_html"></span>
                                             </div>
@@ -193,7 +193,7 @@
                     <div class="extra-price-wrap d-flex justify-content-between">
                         <div class="flex-grow-1">
                             <label>
-                                {{__("Total Room")}}:
+                                {{__("Total Quarto")}}:
                             </label>
                         </div>
                         <div class="flex-shrink-0">
@@ -246,10 +246,8 @@
         </div>
         <div class="end_room_sticky"></div>
         <div class="alert alert-warning" v-if="!firstLoad && !rooms.length">
-            {{__("No room available with your selected date. Please change your search critical")}}
+            {{__("Nenhum quarto disponível com a data selecionada. Por favor, mude seu critério de busca")}}
         </div>
     </div>
 </div>
 @include("Booking::frontend.global.enquiry-form",['service_type'=>'hotel'])
-
-

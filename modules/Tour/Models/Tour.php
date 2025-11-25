@@ -142,7 +142,7 @@ class Tour extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Procurar Tours");
+        $meta['seo_title'] = __("Procurar Passeios");
         if (!empty($title = setting_item_with_lang("tour_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("tour_page_search_title"))) {
@@ -342,10 +342,10 @@ class Tour extends Bookable
 
         $start_date = new \DateTime($request->input('start_date'));
         if (empty($start_date)) {
-            return $this->sendError(__("Start date is not a valid date"));
+            return $this->sendError(__("A data de início não é uma data válida"));
         }
         if (!$this->checkBusyDate($start_date)) {
-            return $this->sendError(__("Start date is not a valid date"));
+            return $this->sendError(__("A data de início não é uma data válida"));
         }
 
         //Buyer Fees for Admin
@@ -450,7 +450,7 @@ class Tour extends Bookable
     {
         $maxGuests = $this->getNumberAvailableBooking($booking->start_date);
         if ($booking->total_guests > $maxGuests) {
-            return $this->sendError(__("There are :maxGuests guests available for your selected date", ['maxGuests' => $maxGuests]));
+            return $this->sendError(__("Existem :maxGuests hóspedes disponíveis para a data selecionada", ['maxGuests' => $maxGuests]));
         }
     }
 
@@ -507,12 +507,12 @@ class Tour extends Bookable
 
         if ($this->isFixedDate()) {
             if (Carbon::parse($request->start_date . ' 00:00:00') <= $this->last_booking_date) {
-                return $this->sendError(__("This tour is not available at selected dates"));
+                return $this->sendError(__("Este passeio não está disponível nas datas selecionadas"));
             }
         } else {
             // Validate Date and Booking
             if (!$this->isAvailableInRanges($start_date)) {
-                return $this->sendError(__("This tour is not available at selected dates"));
+                return $this->sendError(__("Este passeio não está disponível nas datas selecionadas"));
             }
 
             if ($meta) {
@@ -521,7 +521,7 @@ class Tour extends Bookable
                     $open_hours = $meta->open_hours;
                     $nDate = date('N', strtotime($start_date));
                     if (!isset($open_hours[$nDate]) or empty($open_hours[$nDate]['enable'])) {
-                        return $this->sendError(__("This tour is not open on your selected day"));
+                        return $this->sendError(__("Este passeio não está aberto no dia selecionado"));
                     }
                 }
             }
@@ -543,7 +543,7 @@ class Tour extends Bookable
         }
         $numberGuestsCanBook = $this->getNumberAvailableBooking($start_date);
         if ($totalGuests > $numberGuestsCanBook) {
-            return $this->sendError(__("There are :numberGuestsCanBook guests available for your selected date", ['numberGuestsCanBook' => $numberGuestsCanBook]));
+            return $this->sendError(__("Existem :numberGuestsCanBook hóspedes disponíveis para a data selecionada", ['numberGuestsCanBook' => $numberGuestsCanBook]));
         }
         return true;
     }
@@ -583,7 +583,7 @@ class Tour extends Bookable
             'duration'                 => $this->duration,
             'buyer_fees'               => [],
             'start_date'               => request()->input('start') ?? "",
-            'start_date_html'          => request()->input('start') ? display_date(request()->input('start')) : __('Please select date!'),
+            'start_date_html'          => request()->input('start') ? display_date(request()->input('start')) : __('Por favor selecione a data!'),
             'end_date'                 => request()->input('end') ?? "",
             'end_date_html'            => request()->input('end') ? display_date(request()->input('end')) : "",
             'deposit'                  => $this->isDepositEnable(),
@@ -635,7 +635,7 @@ class Tour extends Bookable
                                 break;
                         }
                         if (!empty($type['per_person'])) {
-                            $type['price_type'] .= '/' . __('convidado');
+                            $type['price_type'] .= '/' . __('hóspede');
                         }
                     }
                 }
@@ -652,7 +652,7 @@ class Tour extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('convidado');
+                    $item['price_type'] .= '/' . __('hóspede');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -663,7 +663,7 @@ class Tour extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('convidado');
+                    $item['price_type'] .= '/' . __('hóspede');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -821,9 +821,9 @@ class Tour extends Bookable
         if (empty($number))
             return false;
         if ($number > 1) {
-            return __(":number Tours", ['number' => $number]);
+            return __(":number Passeios", ['number' => $number]);
         }
-        return __(":number Tour", ['number' => $number]);
+        return __(":number Passeio", ['number' => $number]);
     }
 
     public function getReviewList()
@@ -1159,7 +1159,7 @@ class Tour extends Bookable
                 "max" => "5",
             ],
             [
-                "title"    => __("Passeio Type"),
+                "title"    => __("Tipo de Passeio"),
                 "field"    => "cat_id",
                 "position" => "3",
                 "data" => $category->map(function ($category) {

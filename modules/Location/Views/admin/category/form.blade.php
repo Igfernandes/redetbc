@@ -9,7 +9,7 @@
         <input type="text" value="{{$row->icon_class}}"  name="icon_class" class="form-control">
     </div>
     <div class="form-group d-none">
-        <label>{{__("Parent")}}</label>
+        <label>{{__("Parente ")}}</label>
         <select name="parent_id" class="form-control">
             <option value="">{{__("-- Selecione --")}}</option>
             <?php

@@ -55,12 +55,12 @@
     <script>
         var bravo_booking_data = {!! json_encode($booking_data) !!}
         var bravo_booking_i18n = {
-			no_date_select:'{{__('Please select start date')}}',
-            no_guest_select:'{{__('Please select at least one number')}}',
+			no_date_select:'{{__('Por favor, selecione a data de início')}}',
+            no_guest_select:'{{__('Por favor, selecione pelo menos um número')}}',
             load_dates_url:'{{route('Assistance.vendor.availability.loadDates')}}',
             availability_booking_url:'{{route('Assistance.vendor.availability.availabilityBooking')}}',
-            name_required:'{{ __("Nome is Required") }}',
-            email_required:'{{ __("Email is Required") }}',
+            name_required:'{{ __("Nome é obrigatório") }}',
+            email_required:'{{ __("E-mail é obrigatório") }}',
         };
     </script>
     <script type="text/javascript" src="{{ asset("libs/ion_rangeslider/js/ion.rangeSlider.min.js") }}"></script>

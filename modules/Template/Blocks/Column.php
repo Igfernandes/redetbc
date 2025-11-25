@@ -4,7 +4,7 @@ class Column extends BaseBlock
 {
     public function getName()
     {
-        return __('Column');
+        return __('Coluna');
     }
     public function getOptions()
     {

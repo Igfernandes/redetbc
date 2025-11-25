@@ -21,13 +21,13 @@ class ListSpace extends BaseBlock
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição')
                 ],
                 [
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Item numérico')
+                    'label'     => __('Número de Itens')
                 ],
                 [
                     'id'            => 'style',
@@ -36,18 +36,18 @@ class ListSpace extends BaseBlock
                     'values'        => [
                         [
                             'value'   => '',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                     ]
                 ],
                 [
                     'id'      => 'location_id',
                     'type'    => 'select2',
-                    'label'   => __('Filtrar por localização'),
+                    'label'   => __('Filtrar por Localização'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => url('/admin/module/location/getForSelect2'),
@@ -81,24 +81,24 @@ class ListSpace extends BaseBlock
                     'values'        => [
                         [
                             'value'   => 'asc',
-                            'name' => __("ASC")
+                            'name' => __("Crescente")
                         ],
                         [
                             'value'   => 'desc',
-                            'name' => __("DESC")
+                            'name' => __("Decrescente")
                         ],
                     ]
                 ],
                 [
                     'type'=> "checkbox",
-                    'label'=>__("Somente itens em destaque?"),
+                    'label'=>__("Apenas itens em destaque?"),
                     'id'=> "is_featured",
                     'default'=>true
                 ],
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('List Space by IDs'),
+                    'label'        => __('Listar Espaços por IDs'),
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('space.admin.getForSelect2'),
@@ -112,13 +112,13 @@ class ListSpace extends BaseBlock
                     ])
                 ]
             ],
-            'category'=>__("Space Blocks")
+            'category'=>__("Blocos de Espaços")
         ]);
     }
 
     public function getName()
     {
-        return __('Espaços: List Items');
+        return __('Espaços: Listar Itens');
     }
 
     public function content($model = [])

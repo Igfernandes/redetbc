@@ -21,9 +21,9 @@
         {{$post->content}}
     </div>
     <div class="post-action nav-pills nav nav-fill">
-        <div class="nav-item"><span class="nav-link"><i class="fa fa-thumbs-up"></i> {{__('Like')}}</span></div>
-        <div class="nav-item"><span class="nav-link"><i class="fa fa-comments"></i> {{__('Comments')}}</span></div>
-        <div class="nav-item"><span class="nav-link"><i class="fa fa-share"></i> {{__('Share')}}</span></div>
+        <div class="nav-item"><span class="nav-link"><i class="fa fa-thumbs-up"></i> {{__('Curtir')}}</span></div>
+        <div class="nav-item"><span class="nav-link"><i class="fa fa-comments"></i> {{__('Comentários')}}</span></div>
+        <div class="nav-item"><span class="nav-link"><i class="fa fa-share"></i> {{__('Compartilhar')}}</span></div>
 
     </div>
 </div>

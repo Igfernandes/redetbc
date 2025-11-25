@@ -26,18 +26,18 @@ class VideoPlayer extends BaseBlock
                     'id'        => 'youtube',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Youtube link')
+                    'label'     => __('Link do Youtube')
                 ],
                 [
                     'id'        => 'caption',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Video Caption')
+                    'label'     => __('Legenda do Vídeo')
                 ],
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Carregador de Imagem de Fundo')
+                    'label' => __('Imagem de Fundo')
                 ],
                 [
                     'id'    => 'bg_gradient',
@@ -46,22 +46,22 @@ class VideoPlayer extends BaseBlock
                     'values' => [
                         [
                             'value'   => 'gradient_overlay_half_bg_grayish_blue',
-                            'name' => __("Grayish Blue")
+                            'name' => __("Azul Acinzentado")
                         ],
                         [
                             'value'   => 'gradient_overlay_half_bg_blue_light',
-                            'name' => __("Blue Light")
+                            'name' => __("Azul Claro")
                         ],
                     ],
                 ],
             ],
-            'category'=>__("Outro Bloco")
+            'category'=>__("Outros Blocos")
         ]);
     }
 
     public function getName()
     {
-        return __('Video Player');
+        return __('Player de Vídeo');
     }
 
     public function content($model = [])

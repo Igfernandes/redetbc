@@ -75,13 +75,13 @@ class ListVendor extends BaseBlock
                     ])
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outro Bloco")
         ]);
     }
 
     public function getName()
     {
-        return __('List Vendor');
+        return __('Listar fornecedor');
     }
 
     public function content($model = [])

@@ -27,8 +27,8 @@
     </td>
     <td>
         <div>{{__("Total")}}: {{format_money_main($booking->total)}}</div>
-        <div>{{__("Paid")}}: {{format_money_main($booking->paid)}}</div>
-        <div>{{__("Remain")}}: {{format_money($booking->total - $booking->paid)}}</div>
+        <div>{{__("Pago")}}: {{format_money_main($booking->paid)}}</div>
+        <div>{{__("Permanecer")}}: {{format_money($booking->total - $booking->paid)}}</div>
     </td>
     <td>
         {{ format_money($booking->commission) }}
@@ -61,7 +61,7 @@
         @endif
         @if(!empty(setting_item("hotel_allow_vendor_can_change_paid_amount")))
             <a class="btn btn-xs btn-info btn-info-booking mt-1" data-toggle="modal" data-target="#modal-paid-{{$booking->id}}">
-                <i class="fa fa-dollar"></i>{{__("Set Paid")}}
+                <i class="fa fa-dollar"></i>{{__("Definir pago")}}
             </a>
             @include ($service->set_paid_modal_file ?? '')
         @endif

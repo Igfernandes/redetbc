@@ -14,7 +14,7 @@ class TwoFactorController extends FrontendController
             return redirect('/');
         }
         $data = [
-            'page_title'=>__("Two Factor Authentication")
+            'page_title'=>__("Autenticação de dois fatores")
         ];
         return view('User::frontend.2fa.index',$data);
     }

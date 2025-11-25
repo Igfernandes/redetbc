@@ -18,7 +18,7 @@
     </div>
     @if($row->is_featured == "1")
         <div class="featured">
-            {{ __("Apresentou") }}
+            {{ __("Destaque") }}
         </div>
     @endif
     <div class="location">
@@ -63,7 +63,7 @@
             </span>
         @endif
         @if($row->cabin)
-            <span class="amenity bed" data-toggle="tooltip" title="{{__("Cabin")}}">
+            <span class="amenity bed" data-toggle="tooltip" title="{{__("Cabine")}}">
                 <i class="input-icon field-icon icofont-sail-assistance-alt-2"></i>
                 <span class="text">
                     {{$row->cabin}}
@@ -71,7 +71,7 @@
             </span>
         @endif
         @if($row->length)
-            <span class="amenity bath" data-toggle="tooltip" title="{{__("Length Service")}}" >
+            <span class="amenity bath" data-toggle="tooltip" title="{{__("Comprimento do Serviço")}}" >
                 <i class="input-icon field-icon icofont-yacht"></i>
                 <span class="text">
                     {{$row->length}}
@@ -79,7 +79,7 @@
             </span>
         @endif
         @if($row->speed)
-            <span class="amenity size" data-toggle="tooltip" title="{{__("Speed")}}" >
+            <span class="amenity size" data-toggle="tooltip" title="{{__("Velocidade")}}" >
                 <i class="input-icon field-icon icofont-speed-meter"></i>
                 <span class="text">
                     {{$row->speed}}
@@ -90,7 +90,7 @@
     <div class="info">
         <div class="g-price">
             <div class="prefix">
-                <span class="fr_text">{{__("de")}}</span>
+                <span class="fr_text">{{__("a partir de")}}</span>
             </div>
             <div class="price">
                 <span class="text-price">{{ format_money($row->min_price) }}</span>

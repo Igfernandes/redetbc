@@ -31,7 +31,7 @@
                 @php $layouts = config('news.layouts') @endphp
                 @if(!empty($layouts))
                 <div class="form-group">
-                    <label class="">{{__("Buscar Layout")}}</label>
+                    <label class="">{{__("Selecionar Layout")}}</label>
                     <div class="form-controls">
                         <select name="news_layout_search" class="form-control">
                             @foreach(config('news.layouts') as $id=>$name)
@@ -49,25 +49,25 @@
                             <a class="nav-link active" data-toggle="tab" href="#seo_1">{{__("Opções Gerais")}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#seo_2">{{__("Compartilhar Facebook")}}</a>
+                            <a class="nav-link" data-toggle="tab" href="#seo_2">{{__("Compartilhar no Facebook")}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#seo_3">{{__("Compartilhar Twitter")}}</a>
+                            <a class="nav-link" data-toggle="tab" href="#seo_3">{{__("Compartilhar no Twitter")}}</a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="seo_1">
                             <div class="form-group">
                                 <label class="control-label">{{__("Título do SEO")}}</label>
-                                <input type="text" name="news_page_list_seo_title" class="form-control" placeholder="{{__("Enter title...")}}" value="{{ setting_item_with_lang('news_page_list_seo_title',request()->query('lang'),$settings['news_page_list_seo_title'] ?? "")}}">
+                                <input type="text" name="news_page_list_seo_title" class="form-control" placeholder="{{__("Digite o título...")}}" value="{{ setting_item_with_lang('news_page_list_seo_title',request()->query('lang'),$settings['news_page_list_seo_title'] ?? "")}}">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">{{__("Descrição do SEO")}}</label>
-                                <input type="text" name="news_page_list_seo_desc" class="form-control" placeholder="{{__("Enter description...")}}" value="{{setting_item_with_lang('news_page_list_seo_desc',request()->query('lang'),$settings['news_page_list_seo_desc'] ?? "")}}">
+                                <input type="text" name="news_page_list_seo_desc" class="form-control" placeholder="{{__("Digite a descrição...")}}" value="{{setting_item_with_lang('news_page_list_seo_desc',request()->query('lang'),$settings['news_page_list_seo_desc'] ?? "")}}">
                             </div>
                             @if(is_default_lang())
                             <div class="form-group form-group-image">
-                                <label class="control-label">{{__("Imagem do Apresentou")}}</label>
+                                <label class="control-label">{{__("Imagem do SEO")}}</label>
                                 {!! \Modules\Media\Helpers\FileHelper::fieldUpload('news_page_list_seo_image', $settings['news_page_list_seo_image'] ?? "" ) !!}
                             </div>
                             @endif
@@ -78,11 +78,11 @@
                         <div class="tab-pane" id="seo_2">
                             <div class="form-group">
                                 <label class="control-label">{{__("Título do Facebook")}}</label>
-                                <input type="text" name="news_page_list_seo_share[facebook][title]" class="form-control" placeholder="{{__("Enter title...")}}" value="{{$seo_share['facebook']['title'] ?? "" }}">
+                                <input type="text" name="news_page_list_seo_share[facebook][title]" class="form-control" placeholder="{{__("Digite o título...")}}" value="{{$seo_share['facebook']['title'] ?? "" }}">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">{{__("Descrição do Facebook")}}</label>
-                                <input type="text" name="news_page_list_seo_share[facebook][desc]" class="form-control" placeholder="{{__("Enter description...")}}" value="{{$seo_share['facebook']['desc'] ?? "" }}">
+                                <input type="text" name="news_page_list_seo_share[facebook][desc]" class="form-control" placeholder="{{__("Digite a descrição...")}}" value="{{$seo_share['facebook']['desc'] ?? "" }}">
                             </div>
                             @if(is_default_lang())
                             <div class="form-group form-group-image">
@@ -94,11 +94,11 @@
                         <div class="tab-pane" id="seo_3">
                             <div class="form-group">
                                 <label class="control-label">{{__("Título do Twitter")}}</label>
-                                <input type="text" name="news_page_list_seo_share[twitter][title]" class="form-control" placeholder="{{__("Enter title...")}}" value="{{$seo_share['twitter']['title'] ?? "" }}">
+                                <input type="text" name="news_page_list_seo_share[twitter][title]" class="form-control" placeholder="{{__("Digite o título...")}}" value="{{$seo_share['twitter']['title'] ?? "" }}">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">{{__("Descrição do Twitter")}}</label>
-                                <input type="text" name="news_page_list_seo_share[twitter][desc]" class="form-control" placeholder="{{__("Enter description...")}}" value="{{$seo_share['twitter']['title'] ?? "" }}">
+                                <input type="text" name="news_page_list_seo_share[twitter][desc]" class="form-control" placeholder="{{__("Digite a descrição...")}}" value="{{$seo_share['twitter']['title'] ?? "" }}">
                             </div>
                             @if(is_default_lang())
                             <div class="form-group form-group-image">
@@ -149,9 +149,9 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <select class="form-control" name="news_sidebar[{{$key}}][type]">
-                                                    <option @if(!empty($item->type) && $item->type=='search_form') selected @endif value="search_form">{{__("Procurar Form")}}</option>
+                                                    <option @if(!empty($item->type) && $item->type=='search_form') selected @endif value="search_form">{{__("Formulário de Pesquisa")}}</option>
                                                     <option @if(!empty($item->type) && $item->type=='recent_news') selected @endif value="recent_news">{{__("Notícias Recentes")}}</option>
-                                                    <option @if(!empty($item->type) && $item->type=='featured_listings') selected @endif value="featured_listings">{{__("Apresentou Listagens")}}</option>
+                                                    <option @if(!empty($item->type) && $item->type=='featured_listings') selected @endif value="featured_listings">{{__("Listagens em Destaque")}}</option>
                                                     <option @if(!empty($item->type) && $item->type=='category') selected @endif value="category">{{__("Categoria")}}</option>
                                                     <option @if(!empty($item->type) && $item->type=='tag') selected @endif value="tag">{{__("Tags")}}</option>
                                                     <option @if(!empty($item->type) && $item->type=='content_text') selected @endif value="content_text">{{__("Texto do Conteúdo")}}</option>
@@ -172,12 +172,12 @@
                                 <div class="item" data-number="__number__">
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <input type="text" __name__="news_sidebar[__number__][title]" class="form-control" placeholder="{{__('Título: About Us')}}">
+                                            <input type="text" __name__="news_sidebar[__number__][title]" class="form-control" placeholder="{{__('Título: Sobre nós')}}">
                                             <textarea __name__="news_sidebar[__number__][content]" rows="3" class="form-control" placeholder="{{__("Conteúdo")}}"></textarea>
                                         </div>
                                         <div class="col-md-3">
                                             <select class="form-control" __name__="news_sidebar[__number__][type]">
-                                                <option value="search_form">{{__("Procurar Form")}}</option>
+                                                <option value="search_form">{{__("Formulário de Pesquisa")}}</option>
                                                 <option value="recent_news">{{__("Notícias Recentes")}}</option>
                                                 <option value="category">{{__("Categoria")}}</option>
                                                 <option value="tag">{{__("Tags")}}</option>
@@ -200,15 +200,15 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Notícias Anfitrião")}}</h3>
+        <h3 class="form-group-title">{{__("Notícias do Fornecedor")}}</h3>
         <p class="form-group-desc">{{__('Configuração para fornecedor')}}</p>
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Notícias Anfitrião")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Notícias do Fornecedor")}}</strong></div>
             <div class="panel-body">
                 <div>
-                    <label><input type="checkbox" name="news_vendor_need_approve" value="1" @if(setting_item('news_vendor_need_approve')) checked @endif> {{__("Admin need approve news to be publish")}}</label>
+                    <label><input type="checkbox" name="news_vendor_need_approve" value="1" @if(setting_item('news_vendor_need_approve')) checked @endif> {{__("O administrador precisa aprovar a notícia para ser publicada")}}</label>
                 </div>
             </div>
         </div>

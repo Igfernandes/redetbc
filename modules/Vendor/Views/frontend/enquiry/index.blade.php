@@ -13,10 +13,10 @@
                             <thead>
                             <tr>
                                 <th width="2%">{{__("Tipo")}}</th>
-                                <th>{{__('Service Info')}}</th>
-                                <th>{{__('Customer Info')}}</th>
+                                <th>{{__('Informações do Serviço')}}</th>
+                                <th>{{__('Informações do Cliente')}}</th>
                                 <th width="80px">{{__('Status')}}</th>
-                                <th width="80px">{{__('Replies')}}</th>
+                                <th width="80px">{{__('Respostas')}}</th>
                                 <th width="180px">{{__('Criado em')}}</th>
                                 <th>{{__("Ação")}}</th>
                             </tr>
@@ -35,14 +35,14 @@
                                             @if($service = $row->service)
                                                 <a href="{{$service->getDetailUrl()}}" target="_blank">{{$service->title ?? ''}}</a>
                                             @else
-                                                {{__("[Deleted]")}}
+                                                {{__("[Excluído]")}}
                                             @endif
                                         </td>
                                         <td>
                                             <div>{{__("Nome:")}} {{$row->name}}</div>
-                                            <div>{{__("Email:")}} {{$row->email}}</div>
+                                            <div>{{__("E-mail:")}} {{$row->email}}</div>
                                             <div>{{__("Celular:")}} {{$row->phone}}</div>
-                                            <div>{{__("Notes:")}} {{$row->note}}</div>
+                                            <div>{{__("Notas:")}} {{$row->note}}</div>
                                         </td>
                                         <td>
                                             <span class="label label-{{$row->status}}">{{$row->statusName}}</span>
@@ -56,12 +56,12 @@
                                                     {{__("Ação")}}
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a href="{{route('vendor.enquiry_report.reply',['enquiry'=>$row])}}"><i class="icofont-long-arrow-right"></i> {{__("Add Reply")}}</a>
+                                                    <a href="{{route('vendor.enquiry_report.reply',['enquiry'=>$row])}}"><i class="icofont-long-arrow-right"></i> {{__("Adicionar Resposta")}}</a>
                                                     <div class="dropdown-divider"></div>
                                                     @if(!empty($statues))
                                                         @foreach($statues as $status)
                                                             <a href="{{ \Illuminate\Support\Facades\URL::signedRoute("vendor.enquiry_report.bulk_edit" , ['id'=>$row->id , 'status'=>$status]) }}">
-                                                                <i class="icofont-long-arrow-right"></i> {{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}
+                                                                <i class="icofont-long-arrow-right"></i> {{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}
                                                             </a>
                                                         @endforeach
                                                     @endif

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__('Other Settings')}}</h3>
+        <h3 class="form-group-title">{{__('Outras Configurações')}}</h3>
     </div>
     <div class="col-sm-8">
         <div class="panel">
@@ -14,7 +14,7 @@
                             <div class="g-items-header">
                                 <div class="row">
                                     <div class="col-md-3">{{__("Título")}}</div>
-                                    <div class="col-md-8">{{__('Ícone de classe')}}</div>
+                                    <div class="col-md-8">{{__('Classe do Ícone')}}</div>
                                     <div class="col-md-1"></div>
                                 </div>
                             </div>
@@ -26,12 +26,12 @@
                                             <div class="col-md-7">
                                                 <label>{{__("Título")}}</label>
                                                 <div>
-                                                    <input type="text" name="booking_why_book_with_us[{{$key}}][title]" placeholder="{{ __("Customer care available 24/7") }}" class="form-control" value="{{$item['title'] ?? ""}}">
+                                                    <input type="text" name="booking_why_book_with_us[{{$key}}][title]" placeholder="{{ __("Suporte ao cliente disponível 24/7") }}" class="form-control" value="{{$item['title'] ?? ""}}">
                                                     <input type="text" name="booking_why_book_with_us[{{$key}}][link]" placeholder="{{ __("#") }}" class="form-control" value="{{$item['link'] ?? ""}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label>{{__("Icon")}}</label>
+                                                <label>{{__("Ícone")}}</label>
                                                 <div>
                                                     <input type="text" name="booking_why_book_with_us[{{$key}}][icon]"placeholder="fa fa-phone" class="form-control" value="{{$item['icon'] ?? ""}}">
                                                 </div>
@@ -50,14 +50,14 @@
                                 <div class="item" data-number="__number__">
                                     <div class="row">
                                         <div class="col-md-7">
-                                            <label>{{__("Title - Link info")}}</label>
+                                            <label>{{__("Título - Informação do Link")}}</label>
                                             <div>
-                                                <input type="text" __name__="booking_why_book_with_us[__number__][title]" placeholder="{{ __("Customer care available 24/7") }}" class="form-control" value="">
+                                                <input type="text" __name__="booking_why_book_with_us[__number__][title]" placeholder="{{ __("Suporte ao cliente disponível 24/7") }}" class="form-control" value="">
                                                 <input type="text" __name__="booking_why_book_with_us[__number__][link]" placeholder="{{ __("#") }}" class="form-control" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>{{__("Icon")}}</label>
+                                            <label>{{__("Ícone")}}</label>
                                             <div>
                                                 <input type="text" __name__="booking_why_book_with_us[__number__][icon]"placeholder="fa fa-phone" class="form-control" value="">
                                             </div>

@@ -1,15 +1,15 @@
 @if(is_default_lang())
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__("Disable Wallet module?")}}</h3>
+            <h3 class="form-group-title">{{__("Desativar o módulo de Carteira?")}}</h3>
         </div>
         <div class="col-sm-8">
             <div class="panel">
-                <div class="panel-title"><strong>{{__("Disable wallet module")}}</strong></div>
+                <div class="panel-title"><strong>{{__("Desativar o módulo de carteira")}}</strong></div>
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="form-controls">
-                            <label><input type="checkbox" name="wallet_module_disable" value="1" @if(setting_item('wallet_module_disable')) checked @endif > {{__('Yes, please disable it')}}</label>
+                            <label><input type="checkbox" name="wallet_module_disable" value="1" @if(setting_item('wallet_module_disable')) checked @endif > {{__('Sim, por favor, desative')}}</label>
                         </div>
                     </div>
                 </div>
@@ -19,16 +19,16 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__("Credit Options")}}</h3>
+            <h3 class="form-group-title">{{__("Opções de Crédito")}}</h3>
         </div>
         <div class="col-sm-8">
             <div class="panel">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label class="" >{{__("Credit exchange rate")}}</label>
+                        <label class="" >{{__("Taxa de câmbio de crédito")}}</label>
                         <div class="form-controls">
                             <input type="number" class="form-control" name="wallet_credit_exchange_rate" min="0" step="0.1" value="{{setting_item('wallet_credit_exchange_rate',1)}}"/>
-                            <p><i>{{__("Exchange rate will be used in checkout page. Example: Credit * Exchange rate = Money")}}</i></p>
+                            <p><i>{{__("A taxa de câmbio será usada na página de checkout. Exemplo: Crédito * Taxa de câmbio = Dinheiro")}}</i></p>
                         </div>
                     </div>
                 </div>
@@ -38,25 +38,25 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__("Deposit Options")}}</h3>
+            <h3 class="form-group-title">{{__("Opções de Depósito")}}</h3>
         </div>
         <div class="col-sm-8">
             <div class="panel">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label >{{__("Deposit type")}}</label>
+                        <label >{{__("Tipo de depósito")}}</label>
                         <select name="wallet_deposit_type" class="form-control">
-                            <option value="">{{__('User input')}}</option>
-                            <option value="list" {{setting_item('wallet_deposit_type') == 'list' ? 'selected' : ''}} >{{__('Select from lists')}}</option>
+                            <option value="">{{__('Entrada do usuário')}}</option>
+                            <option value="list" {{setting_item('wallet_deposit_type') == 'list' ? 'selected' : ''}} >{{__('Selecionar de listas')}}</option>
                         </select>
                     </div>
                     <div class="form-group" data-condition="wallet_deposit_type:is()">
-                        <label >{{__("Deposit rate")}}</label>
+                        <label >{{__("Taxa de depósito")}}</label>
                         <input type="number" class="form-control" name="wallet_deposit_rate" min="0" step="0.1" value="{{setting_item('wallet_deposit_rate',1)}}"/>
-                        <p><i>{{__("Example: Money * Deposit rate = Credit")}}</i></p>
+                        <p><i>{{__("Exemplo: Dinheiro * Taxa de depósito = Crédito")}}</i></p>
                     </div>
                     <div class="form-group" data-condition="wallet_deposit_type:is(list)">
-                        <label class="" >{{__("Deposit lists")}}</label>
+                        <label class="" >{{__("Listas de depósito")}}</label>
 
                         <div class="form-controls">
                                 <div class="form-group-item">
@@ -65,7 +65,7 @@
                                             <div class="row">
                                                 <div class="col-md-5">{{__("Nome")}}</div>
                                                 <div class="col-md-3">{{__('Quantidade')}}</div>
-                                                <div class="col-md-3">{{__('Earn credit')}}</div>
+                                                <div class="col-md-3">{{__('Crédito ganho')}}</div>
                                                 <div class="col-md-1"></div>
                                             </div>
                                         </div>
@@ -94,7 +94,7 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                        <p><i>{{__("All amount will be in main currency")}}</i></p>
+                                        <p><i>{{__("Todos os valores estarão na moeda principal")}}</i></p>
                                         <div class="text-right">
                                             <span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Adicionar item')}}</span>
                                         </div>
@@ -129,7 +129,7 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("New Credit Purchase Email Template")}}</h3>
+        <h3 class="form-group-title">{{__("Modelo de E-mail de Nova Compra de Crédito")}}</h3>
         <div class="form-group-desc">
             @foreach(\Modules\User\Emails\CreditPaymentEmail::CODE as $item=>$value)
                 <div><code>{{$value}}</code></div>
@@ -138,7 +138,7 @@
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Email for Admin")}}</strong></div>
+            <div class="panel-title"><strong>{{__("E-mail para o Administrador")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
                     <label class="" >{{__("Assunto")}}</label>
@@ -155,7 +155,7 @@
             </div>
         </div>
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Email para o Cliente")}}</strong></div>
+            <div class="panel-title"><strong>{{__("E-mail para o Cliente")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
                     <label class="" >{{__("Assunto")}}</label>
@@ -186,7 +186,7 @@
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Email para o Administrador")}}</strong></div>
+            <div class="panel-title"><strong>{{__("E-mail para o Administrador")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
                     <label class="" >{{__("Assunto")}}</label>
@@ -203,7 +203,7 @@
             </div>
         </div>
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Email para o Cliente")}}</strong></div>
+            <div class="panel-title"><strong>{{__("E-mail para o Cliente")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
                     <label class="" >{{__("Assunto")}}</label>

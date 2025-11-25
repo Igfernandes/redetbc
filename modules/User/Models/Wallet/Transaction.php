@@ -26,7 +26,7 @@ class Transaction extends BaseModel
 
     public function getStatusNameAttribute(){
         if($this->confirmed){
-            return __("Confirmed");
+            return __("Confirmado");
         }
         if(!$this->payment_id || !$this->payment){
             return __("Pendentes");

@@ -24,13 +24,13 @@ class CallToAction extends BaseBlock
                     'id'        => 'link_title',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Título Link More')
+                    'label'     => __('Título do Link Mais')
                 ],
                 [
                     'id'        => 'link_more',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Link More')
+                    'label'     => __('Link Mais')
                 ],
                 [
                     'id'            => 'style',
@@ -39,15 +39,15 @@ class CallToAction extends BaseBlock
                     'values'        => [
                         [
                             'value'   => '',
-                            'name' => __("Style Normal")
+                            'name' => __("Estilo Normal")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                         [
                             'value'   => 'style_3',
-                            'name' => __("Style 3")
+                            'name' => __("Estilo 3")
                         ],
                     ]
                 ],
@@ -55,22 +55,22 @@ class CallToAction extends BaseBlock
                     'id'        => 'bg_color',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('- Layout Normal: Background Color - get code in <a href="https://html-color-codes.info" target="_blank">https://html-color-codes.info</a>'),
+                    'label'     => __('- Layout Normal: Cor de Fundo - pegue o código em <a href="https://html-color-codes.info" target="_blank">https://html-color-codes.info</a>'),
                     'placeholder'=> "#f6b756",
                 ],
                 [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('- Layout 2&3 : Background Image Uploader')
+                    'label' => __('- Layout 2&3 : Upload de Imagem de Fundo')
                 ],
             ],
-            'category'=>__("Other Block")
+            'category'=>__("Outros Blocos")
         ];
     }
 
     public function getName()
     {
-        return __('Call To Action');
+        return __('Chamada para Ação');
     }
 
     public function content($model = [])

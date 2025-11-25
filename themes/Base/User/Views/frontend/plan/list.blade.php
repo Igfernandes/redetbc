@@ -1,11 +1,11 @@
 <div class="sec-title text-center">
-    <h2>{{ setting_item_with_lang('user_plans_page_title', app()->getLocale()) ?? __("Pricing Packages")}}</h2>
-    <div class="text">{{ setting_item_with_lang('user_plans_page_sub_title', app()->getLocale()) ?? __("Choose your pricing plan") }}</div>
+    <h2>{{ setting_item_with_lang('user_plans_page_title', app()->getLocale()) ?? __("Pacotes de Preços")}}</h2>
+    <div class="text">{{ setting_item_with_lang('user_plans_page_sub_title', app()->getLocale()) ?? __("Escolha seu plano de preços") }}</div>
 </div>
 <div class="pricing-tabs tabs-box" data-client='{{Auth()->user()->gateway_customer_id}}'>
     @if($has_annual)
     <div class="tab-buttons">
-        <h4>{{ setting_item_with_lang('user_plans_sale_text', app()->getLocale()) ?? __('Save up to 10%') }}</h4>
+        <h4>{{ setting_item_with_lang('user_plans_sale_text', app()->getLocale()) ?? __('Economize até 10%') }}</h4>
         <ul class="tab-btns">
             <li data-tab="#monthly" class="tab-btn active-btn">{{__('Mensal')}}</li>
             <li data-tab="#annual" class="tab-btn">{{__('Anual')}}</li>
@@ -23,10 +23,10 @@
                     <div class="pricing-table col-lg-4 col-md-6 col-sm-12">
                         <div class="inner-box">
                             @if($plan->is_recommended)
-                            <span class="tag">{{__('Recommended')}}</span>
+                            <span class="tag">{{__('Recomendado')}}</span>
                             @endif
                             <div class="title">{{$translate->title}}</div>
-                            <div class="price">{{$plan->price ? format_money($plan->price) : __('Free')}}
+                            <div class="price">{{$plan->price ? format_money($plan->price) : __('Grátis')}}
                                 @if($plan->price)
                                 <span class="duration">/ {{$plan->duration > 1 ? $plan->duration : ''}} {{$plan->duration_type_text}}</span>
                                 @endif
@@ -38,16 +38,16 @@
                                 @if($user and $user_plan = $user->user_plan and $user_plan->plan_id == $plan->id)
                                 @if($user_plan->is_valid)
                                 <div class="d-flex text-center">
-                                    <a href="{{ route('user.plan') }}" class="theme-btn btn-style-one mr-2">{{__("Current Plan")}}</a>
+                                    <a href="{{ route('user.plan') }}" class="theme-btn btn-style-one mr-2">{{__("Plano Atual")}}</a>
                                     @if(setting_item_with_lang('enable_multi_user_plans'))
-                                    <a href="{{route('user.plan.buy',['id'=>$plan->id])}}" class="btn btn-warning">{{__('Repurchase')}}</a>
+                                    <a href="{{route('user.plan.buy',['id'=>$plan->id])}}" class="btn btn-warning">{{__('Recomprar')}}</a>
                                     @endif
                                 </div>
                                 @else
-                                <a href="{{route('user.plan.buy',['id'=>$plan->id])}}" class="btn btn-warning">{{__('Repurchase')}}</a>
+                                <a href="{{route('user.plan.buy',['id'=>$plan->id])}}" class="btn btn-warning">{{__('Recomprar')}}</a>
                                 @endif
                                 @else
-                                <a href="{{route('user.plan.buy',['id'=>$plan->id])}}" class="btn btn-primary">{{__('Start Now')}}</a>
+                                <a href="{{route('user.plan.buy',['id'=>$plan->id])}}" class="btn btn-primary">{{__('Comece Agora')}}</a>
                                 @endif
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                     <div class="pricing-table col-lg-4 col-md-6 col-sm-12">
                         <div class="inner-box">
                             @if($plan->is_recommended)
-                            <span class="tag">{{__('Recommended')}}</span>
+                            <span class="tag">{{__('Recomendado')}}</span>
                             @endif
                             <div class="title">{{$plan->title}}</div>
                             <div class="price">{{format_money($plan->annual_price)}} <span class="duration">/ {{__("Ano")}}</span></div>
@@ -76,16 +76,16 @@
                                 @if($user and $user_plan = $user->user_plan and $user_plan->plan_id == $plan->id)
                                 @if($user_plan->is_valid)
                                 <div class="d-flex text-center">
-                                    <a href="{{ route('user.plan') }}" class="theme-btn btn-style-one mr-2">{{__("Current Plan")}}</a>
+                                    <a href="{{ route('user.plan') }}" class="theme-btn btn-style-one mr-2">{{__("Plano Atual")}}</a>
                                     @if(setting_item_with_lang('enable_multi_user_plans'))
-                                    <a href="{{route('user.plan.buy',['id'=>$plan->id])}}" class="btn btn-warning">{{__('Repurchase')}}</a>
+                                    <a href="{{route('user.plan.buy',['id'=>$plan->id])}}" class="btn btn-warning">{{__('Recomprar')}}</a>
                                     @endif
                                 </div>
                                 @else
-                                <a href="{{route('user.plan.buy',['id'=>$plan->id,'annual'=>1])}}" class="btn btn-warning">{{__('Repurchase')}}</a>
+                                <a href="{{route('user.plan.buy',['id'=>$plan->id,'annual'=>1])}}" class="btn btn-warning">{{__('Recomprar')}}</a>
                                 @endif
                                 @else
-                                <a href="{{route('user.plan.buy',['id'=>$plan->id,'annual'=>1])}}" class="btn btn-primary">{{__('Select')}}</a>
+                                <a href="{{route('user.plan.buy',['id'=>$plan->id,'annual'=>1])}}" class="btn btn-primary">{{__('Selecionar')}}</a>
                                 @endif
                             </div>
                         </div>

@@ -20,7 +20,7 @@
                     <input type="text" class="form-control" name="enquiry_phone" placeholder="{{ __("Celular") }}">
                 </div>
                 <div class="form-group" v-if="!enquiry_is_submit">
-                    <textarea class="form-control" placeholder="{{ __("Note") }}" name="enquiry_note"></textarea>
+                    <textarea class="form-control" placeholder="{{ __("Nota") }}" name="enquiry_note"></textarea>
                 </div>
                 @if(setting_item("booking_enquiry_enable_recaptcha"))
                     <div class="form-group">

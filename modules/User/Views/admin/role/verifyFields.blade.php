@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{ __('Manage Fields')}}</h1>
+            <h1 class="title-bar">{{ __('Gerenciar Campos')}}</h1>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-end ">
@@ -11,7 +11,7 @@
                     <form method="post" action="{{route('user.admin.role.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-end">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
-                            <option value="">{{__(" Ações em Massa ")}}</option>
+                            <option value="">{{__("Ações em Massa")}}</option>
                             {{--<option value="publish">{{__(" Publicado ")}}</option>--}}
                             {{--<option value="draft">{{__(" Mover para Rascunho ")}}</option>--}}
                             <option value="delete">{{__("Excluir")}}</option>
@@ -48,12 +48,12 @@
                             <tr>
                                 <th width="60px"><input type="checkbox" class="check-all"></th>
                                 <th>{{ __('ID')}}</th>
-                                <th>{{ __('Icon')}}</th>
+                                <th>{{ __('Ícone')}}</th>
                                 <th>{{ __('Nome')}}</th>
-                                <th>{{ __('Type')}}</th>
-                                <th>{{ __('For roles')}}</th>
+                                <th>{{ __('Tipo')}}</th>
+                                <th>{{ __('Para funções')}}</th>
                                 <th>{{ __('Ordem')}}</th>
-                                <th>{{ __('Required')}}</th>
+                                <th>{{ __('Obrigatório')}}</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -76,7 +76,7 @@
                                         @endphp
                                     </td>
                                     <th>{{$row['order'] ?? 0}}</th>
-                                    <td>{{$row['required'] ? __("Sim") : 'No'}}</td>
+                                    <td>{{$row['required'] ? __("Sim") : __('Não')}}</td>
                                     <th><a href="{{route('user.admin.role.verifyFieldsEdit',['id'=>$id])}}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i>  {{__('Editar')}}</a></th>
                                 </tr>
                             @endforeach

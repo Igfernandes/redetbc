@@ -7,7 +7,7 @@
         $payout_accounts = $currentUser->payout_accounts;
     @endphp
     <h2 class="title-bar">
-        {{__("Fornecedor Payouts")}}
+        {{__("Pagamentos do Fornecedor")}}
     </h2>
     @include('admin.message')
 
@@ -24,21 +24,21 @@
                 </div>
             </div>
         @else
-            <div class="alert alert-warning">{{__("No payout methods available. Please contact administrator")}}</div>
+            <div class="alert alert-warning">{{__("Nenhum método de pagamento disponível. Por favor, entre em contato com o administrador")}}</div>
         @endif
         @if(count($payouts))
         <hr>
-        <h4>{{__("Payout history")}}</h4>
+        <h4>{{__("Histórico de pagamentos")}}</h4>
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-booking-history">
                 <thead>
                     <tr>
                         <th width="2%">{{__("#")}}</th>
-                        <th>{{__("Quantidade")}}</th>
+                        <th>{{__("Valor")}}</th>
                         <th>{{__("Método de Pagamento")}}</th>
-                        <th>{{__("Date Request")}}</th>
-                        <th>{{__("Notes")}}</th>
-                        <th>{{__("Date Processed")}}</th>
+                        <th>{{__("Data da Solicitação")}}</th>
+                        <th>{{__("Notas")}}</th>
+                        <th>{{__("Data Processada")}}</th>
                         <th>{{__("Status")}}</th>
                     </tr>
                 </thead>
@@ -48,17 +48,17 @@
                             <td>#{{$payout->id}}</td>
                             <th>{{format_money($payout->amount)}}</th>
                             <td>
-                                {{__(':name to :info',['name'=>$payout->payout_method_name,'info'=>$payout->account_info])}}
+                                {{__(':name para :info',['name'=>$payout->payout_method_name,'info'=>$payout->account_info])}}
                             </td>
                             <td>{{display_date($payout->created_at)}}</td>
                             <td>
                                 @if($payout->note_to_admin)
-                                    <label ><strong>{{__("To admin:")}}</strong></label>
+                                    <label ><strong>{{__("Para o administrador:")}}</strong></label>
                                     <br>
                                     <div>{{$payout->note_to_admin}}</div>
                                 @endif
                                 @if($payout->note_to_vendor)
-                                    <label ><strong>{{__("To vendor:")}}</strong></label>
+                                    <label ><strong>{{__("Para o fornecedor:")}}</strong></label>
                                     <br>
                                     <div>{{$payout->note_to_vendor}}</div>
                                 @endif

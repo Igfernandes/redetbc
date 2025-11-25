@@ -33,28 +33,28 @@ trait CardsNetwork
         $res[] = [
             'title'  => __("Membros Diretos"),
             'amount' => $usersLinked->count(),
-            'desc'   => __("Members direct"),
+            'desc'   => __("Membros Diretos"),
             'class'  => 'purple',
             'icon'   => 'icon ion-ios-cart'
         ];
         $res[] = [
             'title'  => __("Membros Indiretos"),
             'amount' => $usersIndirectLinked->count(),
-            'desc'   => __("Members Indirect"),
+            'desc'   => __("Membros Indiretos"),
             'class'  => 'info',
             'icon'   => 'icon ion-ios-gift'
         ];
         $res[] = [
             'title'  => __("Saldo Pendente"),
             'amount' => format_money_main($pendentAmount < 0 ? 0 : $pendentAmount),
-            'desc'   => __("Total pendents"),
+            'desc'   => __("Total pendentes"),
             'class'  => 'info',
             'icon'   => 'icon ion-ios-gift'
         ];
         $res[] = [
             'title'  => __("Saldo Debitado"),
             'amount' => format_money_main($received ?? 0),
-            'desc'   => __("Total earnings"),
+            'desc'   => __("Ganhos totais"),
             'class'  => 'info',
             'icon'   => 'icon ion-ios-gift'
         ];

@@ -2,7 +2,7 @@
 @section('content')
 
     <h2 class="title-bar no-border-bottom">
-        {{__("Booking Report")}}
+        {{__("Relatório de Reserva")}}
     </h2>
     @include('admin.message')
     <div class="booking-history-manager">
@@ -10,7 +10,7 @@
             <ul class="nav nav-tabs ht-nav-tabs">
                 <?php $status_type = Request::query('status'); ?>
                 <li class="@if(empty($status_type)) active @endif">
-                    <a href="{{route("vendor.bookingReport")}}">{{__("All Booking")}}</a>
+                    <a href="{{route("vendor.bookingReport")}}">{{__("Todas as Reservas")}}</a>
                 </li>
                 @if(!empty($statues))
                     @foreach($statues as $status)
@@ -28,10 +28,10 @@
                             <tr>
                                 <th width="2%">{{__("Tipo")}}</th>
                                 <th>{{__("Título")}}</th>
-                                <th class="a-hidden">{{__("Order Date")}}</th>
-                                <th class="a-hidden">{{__("Execution Time")}}</th>
-                                <th width="15%">{{__("Payment Detail")}}</th>
-                                <th>{{__("Commission")}}</th>
+                                <th class="a-hidden">{{__("Data do Pedido")}}</th>
+                                <th class="a-hidden">{{__("Tempo de Execução")}}</th>
+                                <th width="15%">{{__("Detalhe do Pagamento")}}</th>
+                                <th>{{__("Comissão")}}</th>
                                 <th class="a-hidden">{{__("Status")}}</th>
                                 <th>{{__("Ação")}}</th>
                             </tr>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             @else
-                {{__("No Booking History")}}
+                {{__("Nenhum Histórico de Reserva")}}
             @endif
         </div>
     </div>

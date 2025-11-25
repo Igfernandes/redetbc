@@ -137,7 +137,7 @@
                                     </div>
                             @endif
                         </td>
-                        <td><div class="label"><i class="fa fa-user"></i> {{__("Customer")}}</div>
+                        <td><div class="label"><i class="fa fa-user"></i> {{__("Cliente")}}</div>
                             <div class="val">{{$booking->first_name}} {{$booking->last_name}}
                                 <br>
                                 {{$booking->email}}<br>
@@ -148,7 +148,7 @@
                 </table>
             </div>
             <div class="ticket-footer">
-                <div class="text-center">{{__("Show QR Code at the counter")}}</div>
+                <div class="text-center">{{__("Apresente o código QR no balcão.")}}</div>
 
                 <div class="qr-content text-center">
                     {!! QrCode::size(200)->generate($booking->id.'.'.\Illuminate\Support\Facades\Hash::make($booking->id)); !!}

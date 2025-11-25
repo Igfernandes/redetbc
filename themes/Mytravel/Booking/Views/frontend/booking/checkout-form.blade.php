@@ -3,7 +3,7 @@
     <div class="mb-5 shadow-soft bg-white rounded-sm">
         <div class="pt-4 pb-5 px-5">
             <h5 id="scroll-description" class="font-size-21 font-weight-bold text-dark mb-4">
-                {{ __("Let us know who you are") }}
+                {{ __("Diga-nos quem você é") }}
             </h5>
             <div class="row">
                 @if(is_enable_guest_checkout() && is_enable_registration())
@@ -11,7 +11,7 @@
                         <div class="form-group">
                             <label for="confirmRegister">
                                 <input type="checkbox" name="confirmRegister" id="confirmRegister" value="1">
-                                {{__('Create a new account?')}}
+                                {{__('Criar uma nova conta?')}}
                             </label>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group ">
-                                    <label class="form-label" >{{__('Password confirmation')}} <span class="required">*</span></label>
+                                    <label class="form-label" >{{__('Confirmação de Senha')}} <span class="required">*</span></label>
                                     <input type="password" class="form-control" name="password_confirmation" autocomplete="off">
                                 </div>
                             </div>
@@ -51,13 +51,13 @@
                     <label class="form-label">
                         {{ __("Email") }}
                     </label>
-                    <input type="email" placeholder="{{__("email@domain.com")}}" class="form-control" value="{{$user->email ?? ''}}" name="email">
+                    <input type="email" placeholder="{{__("email@dominio.com")}}" class="form-control" value="{{$user->email ?? ''}}" name="email">
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
                         {{ __("Celular") }}
                     </label>
-                    <input type="text" placeholder="{{__("Your Phone")}}" class="form-control" value="{{$user->phone ?? ''}}" name="phone">
+                    <input type="text" placeholder="{{__("Seu Telefone")}}" class="form-control" value="{{$user->phone ?? ''}}" name="phone">
                 </div>
                 <div class="w-100"></div>
                 <div class="col-sm-6 mb-4">
@@ -74,15 +74,15 @@
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
-                        {{ __("State/Province/Region") }}
+                        {{ __("Estado/Província/Região") }}
                     </label>
-                    <input type="text" class="form-control" value="{{$user->state ?? ''}}" name="state" placeholder="{{__("State/Province/Region")}}">
+                    <input type="text" class="form-control" value="{{$user->state ?? ''}}" name="state" placeholder="{{__("Estado/Província/Região")}}">
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label class="form-label">
-                        {{ __("ZIP code/Postal code") }}
+                        {{ __("CEP/Código Postal") }}
                     </label>
-                    <input type="text" class="form-control" value="{{$user->zip_code ?? ''}}" name="zip_code" placeholder="{{__("ZIP code/Postal code")}}">
+                    <input type="text" class="form-control" value="{{$user->zip_code ?? ''}}" name="zip_code" placeholder="{{__("CEP/Código Postal")}}">
                 </div>
                 <div class="col-sm-6 mb-4">
 
@@ -100,16 +100,16 @@
                     <label class="form-label">
                         {{ __("Cidade") }}
                     </label>
-                    <input type="text" class="form-control" value="{{$user->city ?? ''}}" name="city" placeholder="{{__("Your City")}}">
+                    <input type="text" class="form-control" value="{{$user->city ?? ''}}" name="city" placeholder="{{__("Sua Cidade")}}">
                 </div>
                 <div class="w-100"></div>
                 <div class="col">
                     <div class="mb-6">
                         <label class="form-label">
-                            {{ __("Special Requirements") }}
+                            {{ __("Requisitos Especiais") }}
                         </label>
                         <div class="input-group">
-                            <textarea name="customer_notes" cols="30" rows="6" class="form-control" placeholder="{{__('Special Requirements')}}"></textarea>
+                            <textarea name="customer_notes" cols="30" rows="6" class="form-control" placeholder="{{__('Requisitos Especiais')}}"></textarea>
                         </div>
                     </div>
                 </div>
@@ -128,8 +128,8 @@
                             <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="term_conditions">
                             <label class="custom-control-label" for="termsCheckbox">
                                 <small>
-                                    {{__('By continuing, you agree to the')}}
-                                    <a target="_blank" class="link-muted" href="{{get_page_url($term_conditions)}}">{{__('Terms and Conditions')}}</a>
+                                    {{__('Ao continuar, você concorda com os')}}
+                                    <a target="_blank" class="link-muted" href="{{get_page_url($term_conditions)}}">{{__('Termos e Condições')}}</a>
                                 </small>
                             </label>
                         </div>
@@ -141,7 +141,7 @@
                     </div>
                     <div class="html_before_actions"></div>
                     <p class="alert-text mt10" v-show=" message.content" v-html="message.content" :class="{'danger':!message.type,'success':message.type}"></p>
-                    <button class="btn btn-primary w-100 rounded-sm transition-3d-hover font-size-16 font-weight-bold py-3" @click="doCheckout">{{__('CONFIRM BOOKING')}}
+                    <button class="btn btn-primary w-100 rounded-sm transition-3d-hover font-size-16 font-weight-bold py-3" @click="doCheckout">{{__('CONFIRMAR RESERVA')}}
                         <i class="fa fa-spin fa-spinner" v-show="onSubmit"></i>
                     </button>
                 </div>

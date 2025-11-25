@@ -11,27 +11,27 @@
                 {{$service->title}}
             </a>
             <small>
-                <div>{{ __("Customer Info") }}</div>
+                <div>{{ __("Informações do Cliente") }}</div>
                 <div>
-                    {{ __("Primeiro Nome") }}: {{ $booking->first_name }}
+                    {{ __("Nome") }}: {{ $booking->first_name }}
                 </div>
                 <div>
                     {{ __("Sobrenome") }}: {{ $booking->last_name }}
                 </div>
             </small>
         @else
-            {{__("[Deleted]")}}
+            {{__("[Excluído]")}}
         @endif
     </td>
     <td class="a-hidden">{{display_date($booking->created_at)}}</td>
     <td class="a-hidden">
-        {{__("Check in")}} : {{display_date($booking->start_date)}} <br>
-        {{__("Duration")}} : {{ $booking->getMeta("duration") ?? "1"  }} {{__("hours")}}
+        {{__("Check-in")}} : {{display_date($booking->start_date)}} <br>
+        {{__("Duração")}} : {{ $booking->getMeta("duration") ?? "1"  }} {{__("horas")}}
     </td>
     <td>
         <div>{{__("Total")}}: {{format_money_main($booking->total)}}</div>
-        <div>{{__("Paid")}}: {{format_money_main($booking->paid)}}</div>
-        <div>{{__("Remain")}}: {{format_money($booking->total - $booking->paid)}}</div>
+        <div>{{__("Pago")}}: {{format_money_main($booking->paid)}}</div>
+        <div>{{__("Restante")}}: {{format_money($booking->total - $booking->paid)}}</div>
     </td>
     <td>
         {{ format_money($booking->commission) }}
@@ -55,7 +55,7 @@
                 @if(!empty($statues))
                     @foreach($statues as $status)
                         <a href="{{ route("tour.vendor.booking_report.bulk_edit" , ['id'=>$booking->id , 'status'=>$status]) }}">
-                            <i class="icofont-long-arrow-right"></i> {{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}
+                            <i class="icofont-long-arrow-right"></i> {{__('Marcar como: :name',['name'=>booking_status_to_text($status)])}}
                         </a>
                     @endforeach
                 @endif
@@ -63,7 +63,7 @@
         @endif
         @if(!empty(setting_item("tour_allow_vendor_can_change_paid_amount")))
             <a class="btn btn-xs btn-info btn-info-booking mt-1" data-toggle="modal" data-target="#modal-paid-{{$booking->id}}">
-                <i class="fa fa-dollar"></i>{{__("Set Paid")}}
+                <i class="fa fa-dollar"></i>{{__("Definir Pago")}}
             </a>
             @include ($service->set_paid_modal_file ?? '')
         @endif

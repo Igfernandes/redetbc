@@ -6,27 +6,27 @@ $lang_local = app()->getLocale();
 <div class="b-table-wrap">
     <table class="b-table" cellspacing="0" cellpadding="0">
         <tr>
-            <td class="label">{{__('Booking Number')}}</td>
+            <td class="label">{{__('Número da Reserva')}}</td>
             <td class="val">#{{$booking->id}}</td>
         </tr>
         <tr>
-            <td class="label">{{__('Booking Status')}}</td>
+            <td class="label">{{__('Status da Reserva')}}</td>
             <td class="val">{{$booking->statusName}}</td>
         </tr>
         @if($booking->gatewayObj)
             <tr>
-                <td class="label">{{__('Payment method')}}</td>
+                <td class="label">{{__('Método de Pagamento')}}</td>
                 <td class="val">{{$booking->gatewayObj->getOption('name')}}</td>
             </tr>
         @endif
         @if($booking->gatewayObj and $note = $booking->gatewayObj->getOption('payment_note'))
             <tr>
-                <td class="label">{{__('Payment Note')}}</td>
+                <td class="label">{{__('Nota de Pagamento')}}</td>
                 <td class="val">{!! clean($note) !!}</td>
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Espaços name')}}</td>
+            <td class="label">{{__('Nome do Espaço')}}</td>
             <td class="val">
                 <a href="{{$service->getDetailUrl()}}">{!! clean($translation->title) !!}</a>
             </td>
@@ -34,7 +34,7 @@ $lang_local = app()->getLocale();
         </tr>
         <tr>
             @if($translation->address)
-                <td class="label">{{__('Address')}}</td>
+                <td class="label">{{__('Endereço')}}</td>
                 <td class="val">
                     {{$translation->address}}
                 </td>
@@ -42,7 +42,7 @@ $lang_local = app()->getLocale();
         </tr>
         @if($booking->start_date && $booking->end_date)
             <tr>
-                <td class="label">{{__('Start date')}}</td>
+                <td class="label">{{__('Data de Início')}}</td>
                 <td class="val">{{display_date($booking->start_date)}}</td>
             </tr>
             <tr>
@@ -91,7 +91,7 @@ $lang_local = app()->getLocale();
                 <table class="pricing-list" width="100%">
                     <tr>
                         <td class="label">
-                             {{ __("Preço do Aluguel") }}
+                            {{ __("Preço do Aluguel") }}
                         </td>
                         <td class="val">
                             @php
@@ -104,7 +104,7 @@ $lang_local = app()->getLocale();
 
                     @if(!empty($extra_price))
                         <tr>
-                            <td colspan="2" class="label-title"><strong>{{__("Extra Prices:")}}</strong></td>
+                            <td colspan="2" class="label-title"><strong>{{__("Preços Extras:")}}</strong></td>
                         </tr>
                         <tr class="">
                             <td colspan="2" class="no-r-padding no-b-border">
@@ -167,17 +167,17 @@ $lang_local = app()->getLocale();
             <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total)}}</strong></td>
         </tr>
         <tr>
-            <td class="label fsz21">{{__('Paid')}}</td>
+            <td class="label fsz21">{{__('Pago')}}</td>
             <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->paid)}}</strong></td>
         </tr>
         @if($booking->total > $booking->paid)
             <tr>
-                <td class="label fsz21">{{__('Remain')}}</td>
+                <td class="label fsz21">{{__('Restante')}}</td>
                 <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
             </tr>
         @endif
     </table>
 </div>
 <div class="text-center mt20">
-    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn btn-primary manage-booking-btn">{{__('Manage Bookings')}}</a>
+    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn btn-primary manage-booking-btn">{{__('Gerenciar Reservas')}}</a>
 </div>

@@ -21,7 +21,7 @@ class ListNews extends BaseBlock
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição')
                 ],
                 [
                     'id'        => 'number',
@@ -66,11 +66,11 @@ class ListNews extends BaseBlock
                     'values'        => [
                         [
                             'value'   => 'asc',
-                            'name' => __("ASC")
+                            'name' => __("Crescente")
                         ],
                         [
                             'value'   => 'desc',
-                            'name' => __("DESC")
+                            'name' => __("Decrescente")
                         ],
                     ]
                 ]
@@ -81,7 +81,7 @@ class ListNews extends BaseBlock
 
     public function getName()
     {
-        return __('Notícias: List Items');
+        return __('Notícias: Listar Itens');
     }
 
     public function content($model = [])

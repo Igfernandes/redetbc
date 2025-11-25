@@ -19,7 +19,7 @@ class ListFeaturedItem extends BaseBlock
                 [
                     'id'          => 'list_item',
                     'type'        => 'listItem',
-                    'label'       => __('List Item(s)'),
+                    'label'       => __('Lista de Item(ns)'),
                     'title_field' => 'title',
                     'settings'    => [
                         [
@@ -43,13 +43,13 @@ class ListFeaturedItem extends BaseBlock
                         [
                             'id'    => 'icon_image',
                             'type'  => 'uploader',
-                            'label' => __('- Style 1 : Image Uploader')
+                            'label' => __('- Estilo 1 : Upload de Imagem')
                         ],
                         [
                             'id'    => 'icon',
                             'type'  => 'input',
                             'inputType' => 'text',
-                            'label' => __('- Style 2, Style 3 : Icon Class')
+                            'label' => __('- Estilo 2, Estilo 3 : Classe de Ícone')
                         ],
                         [
                             'id'        => 'order',
@@ -66,15 +66,15 @@ class ListFeaturedItem extends BaseBlock
                     'values'        => [
                         [
                             'value'   => '',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                         [
                             'value'   => 'style_3',
-                            'name' => __("Style 3")
+                            'name' => __("Estilo 3")
                         ]
                     ]
                 ],
@@ -85,13 +85,13 @@ class ListFeaturedItem extends BaseBlock
                     'values'        => false,
                 ]
             ],
-            'category'=>__("Outro Bloco")
+            'category'=>__("Outros Blocos")
         ]);
     }
 
     public function getName()
     {
-        return __('List Featured Item');
+        return __('Listar Item em Destaque');
     }
 
     public function content($model = [])

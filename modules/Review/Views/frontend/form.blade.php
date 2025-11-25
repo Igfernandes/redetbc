@@ -126,7 +126,7 @@
         @if(Auth::id())
             <div class="review-form">
                 <div class="title-form">
-                    {{__("Write a review")}}
+                    {{__("Escreva um comentário")}}
                 </div>
                 <div class="form-wrapper">
                     @include('admin.message')
@@ -208,7 +208,7 @@
                         <div class="text-center">
                             <input type="hidden" name="review_service_id" value="{{$row->id}}">
                             <input type="hidden" name="review_service_type" value="{{$row->type}}">
-                            <input id="submit" type="submit" name="submit" class="btn" value="{{__("Leave a Review")}}">
+                            <input id="submit" type="submit" name="submit" class="btn" value="{{__("Deixe um comentário")}}">
                         </div>
                     </form>
                 </div>

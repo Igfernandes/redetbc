@@ -1,6 +1,6 @@
 <div class="form-section">
     <h5 id="scroll-description" class="font-size-21 font-weight-bold text-dark mb-4">
-        {{ __("Your Card Information") }}
+        {{ __("Informações do seu cartão") }}
     </h5>
     <div class="gateways-table accordion" id="accordionExample">
         @foreach($gateways as $k=>$gateway)

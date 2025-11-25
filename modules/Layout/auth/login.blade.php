@@ -5,7 +5,7 @@
     <div class="row justify-content-center bravo-login-form-page bravo-login-page">
         <div class="col-md-5">
             <div class="">
-                <h4 class="form-title">{{ __('Login') }}</h4>
+                <h4 class="form-title">{{ __('Entrar') }}</h4>
                 @include('Layout::auth.login-form',['captcha_action'=>'login_normal'])
             </div>
         </div>

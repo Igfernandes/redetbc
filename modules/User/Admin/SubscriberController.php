@@ -33,7 +33,7 @@ class SubscriberController extends AdminController
             'row'         => new Subscriber(),
             'breadcrumbs' => [
                 [
-                    'name' => __('User'),
+                    'name' => __('Usuário'),
                     'url'  => route('user.admin.index')
                 ],
                 [
@@ -56,7 +56,7 @@ class SubscriberController extends AdminController
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __('User'),
+                    'name' => __('Usuário'),
                     'url'  => route('user.admin.index')
                 ],
                 [
@@ -87,7 +87,7 @@ class SubscriberController extends AdminController
         }
         $check = Subscriber::where('email', $request->input('email'))->first();
         if ($check and $check->id != $request->input('id')) {
-            return redirect()->back()->with('error', __('Email exists'));
+            return redirect()->back()->with('error', __('E-mail já existe'));
         }
         $row->fill($request->input());
         if ($row->save()) {

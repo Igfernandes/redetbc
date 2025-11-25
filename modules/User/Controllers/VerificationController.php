@@ -24,7 +24,7 @@ class VerificationController extends FrontendController
             'hasPlan' =>  !empty($user->user_plan),
             'breadcrumbs'    => [
                 [
-                    'name'  => __('Verification'),
+                    'name'  => __('Verificação'),
                     'class' => 'active'
                 ],
             ],
@@ -41,11 +41,11 @@ class VerificationController extends FrontendController
             'fields'      => $user->verification_fields,
             'breadcrumbs' => [
                 [
-                    'name' => __('Verification'),
+                    'name' => __('Verificação'),
                     'url'  => route('user.verification.index')
                 ],
                 [
-                    'name'  => __('Update Verification Data'),
+                    'name'  => __('Atualizar dados de verificação'),
                     'class' => 'active'
                 ],
             ],
@@ -126,7 +126,7 @@ class VerificationController extends FrontendController
             $user->save();
             event(new UserVerificationSubmit($user));
         }
-        return redirect()->back()->with('success', __("Verification data saved. Please wait for admin approval"));
+        return redirect()->back()->with('success', __("Dados de verificação salvos. Aguarde a aprovação do administrador."));
     }
 
     public function sendCodeVerifyPhone(Request $request)
@@ -211,7 +211,7 @@ class VerificationController extends FrontendController
             return response()->json([
                 'status'   => 0,
                 'verified' => 0,
-                'message'  => __('Verify code do not match')
+                'message'  => __('O código de verificação não corresponde.')
             ]);
         }
     }

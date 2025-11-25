@@ -1,6 +1,6 @@
 @php $lang_local = app()->getLocale() @endphp
 <div class="booking-review">
-    <h4 class="booking-review-title">{{__("Your Booking")}}</h4>
+    <h4 class="booking-review-title">{{__("Sua Reserva")}}</h4>
     <div class="booking-review-content">
         <div class="review-section">
             <div class="service-info">
@@ -49,7 +49,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="label">{{__('Durations:')}}</div>
+                        <div class="label">{{__('Durações:')}}</div>
                         <div class="val">
                             @if($booking->getMeta('type_date') == 'per_hour')
                                 {{$booking->duration_hours}} {{ Str::plural(__('hora'),$booking->duration_hours) }}
@@ -88,7 +88,7 @@
                 @php $extra_price = $booking->getJsonMeta('extra_price') @endphp
                 @if(!empty($extra_price))
                     <li>
-                        <div class="label-title"><strong>{{__("Extra Prices:")}}</strong></div>
+                        <div class="label-title"><strong>{{__("Preços Extras:")}}</strong></div>
                     </li>
                     <li class="no-flex">
                         <ul>

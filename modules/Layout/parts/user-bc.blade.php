@@ -6,7 +6,7 @@
 <div class="breadcrumb-page-bar" aria-label="breadcrumb">
     <ul class="page-breadcrumb">
         <li class="">
-            <a href="{{url('/')}}"><i class='fa fa-home'></i> {{__('Home')}}</a>
+            <a href="{{url('/')}}"><i class='fa fa-home'></i> {{__('Inicio')}}</a>
             <i class="fa fa-angle-right"></i>
         </li>
         @foreach($breadcrumbs as $breadcrumb)

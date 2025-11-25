@@ -10,19 +10,19 @@
                     @include('admin.message')
                     <div class="d-flex justify-content-between mb20">
                         <div class="">
-                            <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->email : __('Add new subscriber')}}</h1>
+                            <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->email : __('Adicionar novo assinante')}}</h1>
                         </div>
                     </div>
                     <div class="panel">
                         <div class="panel-body">
-                            <h3 class="panel-body-title">{{__("Subscriber Info")}}</h3>
+                            <h3 class="panel-body-title">{{__("Informações do Assinante")}}</h3>
                             @include('User::newsletter/subscriber/form')
                         </div>
 
                     </div>
                     <hr>
                     <div class="text-right">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__("Save changes")}}</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__("Salvar alterações")}}</button>
                     </div>
                 </div>
             </div>

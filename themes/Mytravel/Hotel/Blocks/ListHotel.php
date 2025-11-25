@@ -21,13 +21,13 @@ class ListHotel extends BaseBlock
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição')
                 ],
                 [
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Item numérico'),
+                    'label'     => __('Número de Itens'),
                     "default" => "5",
                 ],
                 [
@@ -37,18 +37,18 @@ class ListHotel extends BaseBlock
                     'values'        => [
                         [
                             'value'   => '',
-                            'name' => __("Style 1")
+                            'name' => __("Estilo 1")
                         ],
                         [
                             'value'   => 'style_2',
-                            'name' => __("Style 2")
+                            'name' => __("Estilo 2")
                         ],
                     ]
                 ],
                 [
                     'id'      => 'location_id',
                     'type'    => 'select2',
-                    'label'   => __('Filtrar por localização'),
+                    'label'   => __('Filtrar por Localização'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => url('/admin/module/location/getForSelect2'),
@@ -95,14 +95,14 @@ class ListHotel extends BaseBlock
                 ],
                 [
                     'type'=> "checkbox",
-                    'label'=>__("Somente itens em destaque?"),
+                    'label'=>__("Apenas itens em destaque?"),
                     'id'=> "is_featured",
                     'default'=>true
                 ],
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('List Hotel by IDs'),
+                    'label'        => __('Listar Hotéis por IDs'),
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('hotel.admin.getForSelect2'),
@@ -116,13 +116,13 @@ class ListHotel extends BaseBlock
                     ])
                 ]
             ],
-            'category'=>__("Hotel Blocks")
+            'category'=>__("Blocos de Hotel")
         ]);
     }
 
     public function getName()
     {
-        return __('Hotel: List Items');
+        return __('Hotel: Listar Itens');
     }
 
     public function content($model = [])

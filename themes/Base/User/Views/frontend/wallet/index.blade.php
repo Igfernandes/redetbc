@@ -2,7 +2,7 @@
 @section('content')
     <h2 class="title-bar">
         {{__('Carteira')}}
-        <a href="{{route('user.wallet.buy')}}" class="btn-change-password">{{__("Buy credits")}}</a>
+        <a href="{{route('user.wallet.buy')}}" class="btn-change-password">{{__("Comprar créditos")}}</a>
     </h2>
     @include('admin.message')
     <div class="bravo-user-dashboard">
@@ -40,7 +40,7 @@
         </div>
 
         <div class="panel">
-            <div class="panel-title"><strong >{{__("Latest Transactions")}}</strong></div>
+            <div class="panel-title"><strong >{{__("Últimas transações")}}</strong></div>
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-bordered">

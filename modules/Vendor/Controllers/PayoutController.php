@@ -30,10 +30,10 @@ class PayoutController extends FrontendController
 
         $this->checkPermission('dashboard_vendor_access');
         $data = [
-            'page_title'=>__("Pagamentos Management"),
+            'page_title'=>__("Gerenciamento de Pagamentos"),
             'breadcrumbs'=>[
                 [
-                    'name'  => __('Fornecedor dashboard'),
+                    'name'  => __('Painel do Fornecedor'),
                     'url'=>route('vendor.dashboard')
                 ],
                 [
@@ -58,7 +58,7 @@ class PayoutController extends FrontendController
         $user->addMeta('vendor_payout_accounts',request()->input('payout_accounts'));
 
         return $this->sendSuccess([
-            "message"=>__("Your account information has been saved")
+            "message"=>__("Suas informações de conta foram salvas")
         ]);
 
     }
@@ -69,7 +69,7 @@ class PayoutController extends FrontendController
 
         $vendor_payout_methods = json_decode(setting_item('vendor_payout_methods'));
         if(!is_array($vendor_payout_methods) or empty($vendor_payout_methods)){
-            return $this->sendError(__("Sorry! No method available at the moment"));
+            return $this->sendError(__("Desculpe! Nenhum método disponível no momento"));
         }
 
         $user = Auth::user();
@@ -83,17 +83,17 @@ class PayoutController extends FrontendController
         $user_available_methods = $user->available_payout_methods;
 
         if(empty($user_available_methods) or empty($user_available_methods[$payout_method])){
-            return $this->sendError(__("You does not select payout method or you need to enter account info for that method"));
+            return $this->sendError(__("Você não selecionou um método de pagamento ou precisa inserir as informações da conta para esse método"));
         }
 
         if($user->available_payout_amount < $amount){
-            return $this->sendError(__("You don not have enough :amount for payout",['amount'=>format_money($amount)]));
+            return $this->sendError(__("Você não tem :amount suficiente para pagamento",['amount'=>format_money($amount)]));
         }
 
         $method_detail = $user_available_methods[$payout_method];
 
         if(!empty($method_detail->min) and $method_detail->min > $amount){
-            return $this->sendError(__("Minimum amount to pay is :amount",["amount"=>format_money($method_detail->min)]));
+            return $this->sendError(__("O valor mínimo para pagamento é :amount",["amount"=>format_money($method_detail->min)]));
         }
 
         $payout = new VendorPayout();
@@ -108,10 +108,10 @@ class PayoutController extends FrontendController
         {
             event(new PayoutRequestEvent('insert',$payout));
 
-            return $this->sendSuccess([],__("Payout request has been created"));
+            return $this->sendSuccess([],__("A solicitação de pagamento foi criada"));
 
         }else{
-            return $this->sendSuccess([],__("Can not create vendor message"));
+            return $this->sendSuccess([],__("Não foi possível criar a mensagem do fornecedor"));
         }
 
     }

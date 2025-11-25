@@ -2,7 +2,7 @@
 
 @section ('content')
     <h2 class="title-bar no-border-bottom">
-        {{ __("Availability Rooms") }}
+        {{ __("Disponibilidade de Quartos") }}
         <div class="title-action">
             <a class="btn btn-info" href="{{route('hotel.vendor.room.index',['hotel_id'=>$hotel->id])}}">
                 <i class="fa fa-hand-o-right"></i> {{__("Gerenciar Quartos")}}
@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-right">
                     @if($rows->total() > 0)
-                        <span class="count-string">{{ __("Mostrando :from - :to of :total rooms",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                        <span class="count-string">{{ __("Mostrando :from - :to de :total quartos",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                     @endif
                 </div>
             </div>
@@ -84,13 +84,13 @@
                         </div>
                         <div class="col-md-6" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Number of room')}}</label>
+                                <label >{{__('Número de quartos')}}</label>
                                 <input type="number"  v-model="form.number" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6 d-none" v-show="form.active">
                             <div class="form-group">
-                                <label >{{__('Instant Booking?')}}</label>
+                                <label >{{__('Reserva Instantânea?')}}</label>
                                 <br>
                                 <label><input true-value=1 false-value=0  type="checkbox"  v-model="form.is_instant" > {{__("Habilitar reserva instantânea")}}</label>
                             </div>

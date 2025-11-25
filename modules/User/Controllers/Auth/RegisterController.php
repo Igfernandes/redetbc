@@ -23,7 +23,7 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
     public function register(Request $request)
     {
         if (!is_enable_registration()) {
-            return $this->sendError(__("You are not allowed to register"));
+            return $this->sendError(__("Você não tem permissão para se registrar"));
         }
         $rules = [
             'first_name' => [
@@ -65,19 +65,19 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
             'term'       => ['required']
         ];
         $messages = [
-            'phone.required'      => __('Telefone is required field'),
-            'email.required'      => __('Email is required field'),
-            'email.email'         => __('Email invalidate'),
-            'password.required'   => __('Password is required field'),
-            'role.exists'             => __('The role is options invalid'),
-            'first_name.required' => __('The first name is required field'),
-            'last_name.required'  => __('The last name is required field'),
-            'term.required'       => __('The terms and conditions field is required'),
+            'phone.required'      => __('Telefone é um campo obrigatório'),
+            'email.required'      => __('Email é um campo obrigatório'),
+            'email.email'         => __('Email inválido'),
+            'password.required'   => __('Senha é um campo obrigatório'),
+            'role.exists'             => __('A opção de função é inválida'),
+            'first_name.required' => __('O primeiro nome é um campo obrigatório'),
+            'last_name.required'  => __('O sobrenome é um campo obrigatório'),
+            'term.required'       => __('O campo de termos e condições é obrigatório'),
         ];
         if (ReCaptchaEngine::isEnable() and setting_item("user_enable_register_recaptcha")) {
             $codeCapcha = $request->input('g-recaptcha-response');
             if (!$codeCapcha or !ReCaptchaEngine::verify($codeCapcha)) {
-                $errors = new MessageBag(['message_error' => __('Please verify the captcha')]);
+                $errors = new MessageBag(['message_error' => __('Por favor, verifique o captcha')]);
                 return response()->json([
                     'error'    => true,
                     'messages' => $errors
