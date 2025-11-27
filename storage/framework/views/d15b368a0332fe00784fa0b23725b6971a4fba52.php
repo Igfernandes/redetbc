@@ -41,9 +41,9 @@ if (isset($_GET['religion'])) {
             </p> &nbsp;
 
             <?php if(Auth::user() == null): ?>
-            <a data-target="#register" data-toggle="modal"><?php echo e(__("Cadastra-se agora")); ?></a>
+            <a data-target="#register" data-toggle="modal"><?php echo e(__("Cadastre-se agora")); ?></a>
             <?php else: ?>
-            <a href="/plan"><?php echo e(__("Cadastra-se agora")); ?></a>
+            <a href="/plan"><?php echo e(__("Cadastre-se agora")); ?></a>
             <?php endif; ?>
         </div>
     </div>
@@ -53,10 +53,10 @@ if (isset($_GET['religion'])) {
     <div class="upgrade-plan ">
         <div class="content d-flex justify-content-center text-center py-2 bg-warning">
             <p class="mb-0">
-                <?php echo e(__("Your plan upgrade request has been approved.")); ?>
+                <?php echo e(__("Sua solicitação de atualização de plano foi aprovada.")); ?>
 
             </p> &nbsp;&nbsp;
-            <a href="<?php echo e(route('user.upgrade_vendor_plans')); ?>"><?php echo e(__("Complete the plan upgrade")); ?></a>
+            <a href="<?php echo e(route('user.upgrade_vendor_plans')); ?>"><?php echo e(__("Complete a atualização do plano")); ?></a>
         </div>
     </div>
     <?php endif; ?>
@@ -136,7 +136,7 @@ if (isset($_GET['religion'])) {
 
                             <li class="login-item">
 
-                                <a href="#login" data-toggle="modal" data-target="#login" class="login"><?php echo e(__('Login')); ?></a>
+                                <a href="#login" data-toggle="modal" data-target="#login" class="login"><?php echo e(__('Conectar-se')); ?></a>
 
                             </li>
 
@@ -175,7 +175,7 @@ if (isset($_GET['religion'])) {
 
                                     <?php if(Auth::user()->hasPermission('dashboard_vendor_access')): ?>
 
-                                    <li><a href="<?php echo e(route('vendor.dashboard')); ?>"><i class="icon ion-md-analytics"></i> <?php echo e(__("Fornecedor Dashboard")); ?></a></li>
+                                    <li><a href="<?php echo e(route('vendor.dashboard')); ?>"><i class="icon ion-md-analytics"></i> <?php echo e(__("Painel do Fornecedor")); ?></a></li>
 
                                     <?php endif; ?>
 
@@ -197,7 +197,7 @@ if (isset($_GET['religion'])) {
 
                                     <?php if(Auth::user()->hasPermission('dashboard_access')): ?>
 
-                                    <li class="menu-hr"><a href="<?php echo e(url('/admin')); ?>"><i class="icon ion-ios-ribbon"></i> <?php echo e(__("Admin Dashboard")); ?></a></li>
+                                    <li class="menu-hr"><a href="<?php echo e(url('/admin')); ?>"><i class="icon ion-ios-ribbon"></i> <?php echo e(__("Painel do Administrador")); ?></a></li>
 
                                     <?php endif; ?>
 
@@ -250,7 +250,7 @@ if (isset($_GET['religion'])) {
 
                         <li>
 
-                            <a href="#login" data-toggle="modal" data-target="#login" class="login"><?php echo e(__('Login')); ?></a>
+                            <a href="#login" data-toggle="modal" data-target="#login" class="login"><?php echo e(__('Entrar')); ?></a>
 
                         </li>
 
@@ -290,7 +290,7 @@ if (isset($_GET['religion'])) {
 
                             <a href="<?php echo e(route('vendor.dashboard')); ?>">
 
-                                <i class="icon ion-md-analytics"></i> <?php echo e(__("Fornecedor Dashboard")); ?>
+                                <i class="icon ion-md-analytics"></i> <?php echo e(__("Painel do Fornecedor")); ?>
 
 
                             </a>
@@ -303,7 +303,7 @@ if (isset($_GET['religion'])) {
 
                         <li>
 
-                            <a href="<?php echo e(url('/admin')); ?>"><i class="icon ion-ios-ribbon"></i> <?php echo e(__("Admin Dashboard")); ?></a>
+                            <a href="<?php echo e(url('/admin')); ?>"><i class="icon ion-ios-ribbon"></i> <?php echo e(__("Painel do Administrador")); ?></a>
 
                         </li>
 

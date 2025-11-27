@@ -40,7 +40,7 @@
 <?php if($errors->any()): ?>
     <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">×</button>
-        <?php echo e(__("Please check the form below for errors")); ?>
+        <?php echo e(__("Por favor, verifique o formulário abaixo para erros")); ?>
 
         <ul>
             <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -48,5 +48,4 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
     </div>
-<?php endif; ?>
-<?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\resources\views/admin/message.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\resources\views/admin/message.blade.php ENDPATH**/ ?>

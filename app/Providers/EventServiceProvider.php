@@ -39,8 +39,8 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         SendMailUserRegistered::class => [
-            SendMailUserRegisteredListen::class,
-            SendNotifyRegisteredListen::class
+            // SendMailUserRegisteredListen::class,
+            // SendNotifyRegisteredListen::class
         ],
         VendorApproved::class => [
             SendVendorApprovedMail::class,

@@ -14,7 +14,7 @@
             <?php endif; ?>
         </a>
         <div class="position-absolute top-0 right-0 pt-3 pr-3">
-            <button type="button" class="btn btn-sm btn-icon text-white rounded-circle"  data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo e(__('Save for later')); ?>">
+            <button type="button" class="btn btn-sm btn-icon text-white rounded-circle"  data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo e(__('Salvar para mais tarde')); ?>">
                 <span class="service-wishlist <?php echo e($row->isWishList()); ?>" data-id="<?php echo e($row->id); ?>" data-type="<?php echo e($row->type); ?>">
                     <span class="flaticon-heart-1 font-size-20"></span>
                 </span>

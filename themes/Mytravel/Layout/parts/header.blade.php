@@ -132,7 +132,7 @@ if (isset($_GET['religion'])) {
 
                             <li class="login-item">
 
-                                <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Login')}}</a>
+                                <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Conectar-se')}}</a>
 
                             </li>
 
