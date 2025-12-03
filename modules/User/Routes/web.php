@@ -90,5 +90,5 @@ Route::get('/user/my-plan', 'PlanController@myPlan')->name('user.plan')->middlew
 Route::get('/plan', 'PlanController@index')->name('plan');
 Route::post('/asaas/webhook', [AsaasController::class, "webhook"])->name('plan.webhook');
 Route::get('/plan/thank-you', 'PlanController@thankYou')->name('user.plan.thank-you');
-Route::get('/user/plan/buy/{id}', 'PlanController@buy')->name('user.plan.buy')->middleware(['auth', 'verified']);
-Route::post('/user/plan/buyProcess/{id}', 'PlanController@buyProcess')->name('user.plan.buyProcess')->middleware(['auth', 'verified']);
+Route::get('/user/plan/buy/{id}', 'PlanController@buy')->name('user.plan.buy')->middleware(['auth']);
+Route::post('/user/plan/buyProcess/{id}', 'PlanController@buyProcess')->name('user.plan.buyProcess')->middleware(['auth']);

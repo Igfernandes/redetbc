@@ -187,67 +187,70 @@ foreach ($menus as $k => $menuItem) {
 <div class="sidebar-user">
     <div class="bravo-close-menu-user"><i class="icofont-scroll-left"></i></div>
     <div class="logo">
-        @if($avatar_url = $userAuthData->getAvatarUrl())
-        <div class="avatar avatar-cover" style="background-image: url('{{$userAuthData->getAvatarUrl()}}')"></div>
-        @else
-        <span class="avatar-text">{{ucfirst($userAuthData->getDisplayName()[0])}}</span>
-        @endif
+        <?php if($avatar_url = $userAuthData->getAvatarUrl()): ?>
+        <div class="avatar avatar-cover" style="background-image: url('<?php echo e($userAuthData->getAvatarUrl()); ?>')"></div>
+        <?php else: ?>
+        <span class="avatar-text"><?php echo e(ucfirst($userAuthData->getDisplayName()[0])); ?></span>
+        <?php endif; ?>
     </div>
     <div class="user-profile-avatar">
         <div class="info-new">
-            @php
+            <?php
             $roleName = [
             "presenter" => "Anfitrião",
             "customer" => "Cliente",
             "hotel" => "Hotel"
             ];
-            @endphp
-            <span class="role-name badge badge-info">{{$roleName[$userAuthData->role->code] ?? "Viajante"}}</span>
-            <h5>{{$userAuthData->getDisplayName()}}</h5>
-            <p>{{ __("Membro desde :time",["time"=> date("M Y",strtotime($userAuthData->created_at))]) }}</p>
+            ?>
+            <span class="role-name badge badge-info"><?php echo e($roleName[$userAuthData->role->code] ?? "Viajante"); ?></span>
+            <h5><?php echo e($userAuthData->getDisplayName()); ?></h5>
+            <p><?php echo e(__("Membro desde :time",["time"=> date("M Y",strtotime($userAuthData->created_at))])); ?></p>
         </div>
     </div>
     <div class="user-profile-plan">
-        @if( !Auth::user()->role_id < 2 && $userAuthData->role->code == "customer")
-            <a href=" {{ route('user.upgrade')}}">{{ __("Seja um Anfitrião") }}</a>
-            @endif
+        <?php if( !Auth::user()->role_id < 2 && $userAuthData->role->code == "customer"): ?>
+            <a href=" <?php echo e(route('user.upgrade')); ?>"><?php echo e(__("Seja um Anfitrião")); ?></a>
+            <?php endif; ?>
     </div>
     <div class="sidebar-menu">
         <ul class="main-menu">
-            @foreach($menus as $menuItem)
-            <li class="{{$menuItem['class']}}" position="{{$menuItem['position'] ?? ""}}">
-                <a href="{{ url($menuItem['url']) }}">
-                    @if(!empty($menuItem['icon']))
-                    <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
-                    @endif
-                    {!! clean($menuItem['title']) !!}
+            <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menuItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li class="<?php echo e($menuItem['class']); ?>" position="<?php echo e($menuItem['position'] ?? ""); ?>">
+                <a href="<?php echo e(url($menuItem['url'])); ?>">
+                    <?php if(!empty($menuItem['icon'])): ?>
+                    <span class="icon text-center"><i class="<?php echo e($menuItem['icon']); ?>"></i></span>
+                    <?php endif; ?>
+                    <?php echo clean($menuItem['title']); ?>
+
                 </a>
-                @if(!empty($menuItem['children']))
+                <?php if(!empty($menuItem['children'])): ?>
                 <i class="caret"></i>
-                @endif
-                @if(!empty($menuItem['children']))
+                <?php endif; ?>
+                <?php if(!empty($menuItem['children'])): ?>
                 <ul class="children">
-                    @foreach($menuItem['children'] as $menuItem2)
-                    <li class="{{$menuItem2['class']}}"><a href="{{ url($menuItem2['url']) }}">
-                            @if(!empty($menuItem2['icon']))
-                            <i class="{{$menuItem2['icon']}}"></i>
-                            @endif
-                            {!! clean($menuItem2['title']) !!}</a></li>
-                    @endforeach
+                    <?php $__currentLoopData = $menuItem['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menuItem2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li class="<?php echo e($menuItem2['class']); ?>"><a href="<?php echo e(url($menuItem2['url'])); ?>">
+                            <?php if(!empty($menuItem2['icon'])): ?>
+                            <i class="<?php echo e($menuItem2['icon']); ?>"></i>
+                            <?php endif; ?>
+                            <?php echo clean($menuItem2['title']); ?></a></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
-                @endif
+                <?php endif; ?>
             </li>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
     </div>
     <div class="logout">
-        <form id="logout-form-vendor" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
+        <form id="logout-form-vendor" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+            <?php echo e(csrf_field()); ?>
+
         </form>
-        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i class="fa fa-sign-out"></i> {{__("Sair")}}
+        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i class="fa fa-sign-out"></i> <?php echo e(__("Sair")); ?>
+
         </a>
     </div>
     <div class="logout">
-        <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Voltar para o Início")}}</a>
+        <a href="<?php echo e(url('/')); ?>" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> <?php echo e(__("Voltar para o Início")); ?></a>
     </div>
-</div>
+</div><?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\themes/Base/User/Views/frontend/layouts/sidebar.blade.php ENDPATH**/ ?>

@@ -50,7 +50,7 @@ trait Subscribe
         } else {
             $dateMoreOneMonth = date("Y-m-d H:i:s");
         }
-
+        
         $checkoutToken = "redetbc" . uniqid();
         $host = env('APP_URL');
 
@@ -89,11 +89,15 @@ trait Subscribe
             'access_token' => env('GATEWAY_ACCESS_TOKEN'), // se precisar de token
         ])->post(env('GATEWAY_API_URL') . "/checkouts", $payload);
 
+
         $data = $response->json();
         $plan_page = route('plan');
-
-        if (empty($data) || !isset($data['id']))
-            redirect()->to($plan_page)->with("warning", __("Estamos com problemas técnicos para prosseguir com o pagamento. Tente novamente mais tarde."));
+        if (empty($data) || !isset($data['id'])) {
+            redirect()->to($plan_page)
+                ->with("warning", __("Estamos com problemas técnicos para prosseguir com o pagamento. Tente novamente mais tarde."))
+                ->send();
+            exit; // garante que o script pare
+        }
 
         $userPlan = new UserPlan();
         $userPlan->store($plan, [

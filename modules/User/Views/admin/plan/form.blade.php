@@ -37,7 +37,7 @@
     <input type="number" min="0" value="{{old('days_gratuity',max(0,$row->days_gratuity))}}" name="days_gratuity" class="form-control">
 </div>
 <div class="form-group">
-    <label class="control-label">{{__("Snippet")}} <span class="text-danger">*</span></label>
+    <label class="control-label">{{__("Breve Descrição")}} <span class="text-danger">*</span></label>
     <input type="text" maxlength="130" value="{{old('snippet',$row->snippet)}}" name="snippet" class="form-control">
 </div>
 <div class="form-group">

@@ -1,5 +1,4 @@
 <style>
-
     .js-header-fix-moment {
         box-shadow: 1px 1px 4px #dddddd;
     }
@@ -10,6 +9,51 @@
 
     .js-header-fix-moment .filter-key i {
         color: #003583;
+    }
+
+
+    .bravo_wrap .subscribe-plan .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffa636;
+        font-weight: 500;
+        padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .bravo_wrap .subscribe-plan .content {
+            display: block;
+        }
+    }
+
+    .bravo_wrap .subscribe-plan .content p {
+        display: inline;
+        color: #fff;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .bravo_wrap .subscribe-plan .content p {
+            width: 100%;
+        }
+    }
+
+    .bravo_wrap .subscribe-plan .content a {
+        text-decoration: underline;
+        margin-left: 4px;
+    }
+
+    @media (max-width: 768px) {
+        .bravo_wrap .subscribe-plan .content a {
+            display: inline;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .bravo_wrap .bravo_topbar {
+            display: none;
+        }
     }
 </style>
 <?php
@@ -35,15 +79,22 @@ if (isset($_GET['religion'])) {
     <?php if(Auth::user() == null || !Auth::user()->user_plan): ?>
     <div class="subscribe-plan">
         <div class="content">
+            <?php if(Auth::user() && Auth::user()->user_plan): ?>
             <p>
                 <?php echo e(__("Junte-se ao clube: escolha seu plano e tenha acesso completo.")); ?>
 
             </p> &nbsp;
+            <?php else: ?>
+            <p>
+                <?php echo e(__("Junte-se ao clube: Faça o seu cadastro para ter acesso completo.")); ?>
+
+            </p> &nbsp;
+            <?php endif; ?>
 
             <?php if(Auth::user() == null): ?>
             <a data-target="#register" data-toggle="modal"><?php echo e(__("Cadastre-se agora")); ?></a>
             <?php else: ?>
-            <a href="/plan"><?php echo e(__("Cadastre-se agora")); ?></a>
+            <a href="/plan"><?php echo e(__("Escolha seu plano")); ?></a>
             <?php endif; ?>
         </div>
     </div>

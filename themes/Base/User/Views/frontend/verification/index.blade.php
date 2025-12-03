@@ -37,7 +37,7 @@
     <hr>
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <a href="{{route('user.verification.update')}}" class="btn btn-warning"> <i class="fa fa-edit"></i> &nbsp;&nbsp; {{__("Atualizar dados de verificação")}} </a>
         </div>
     </div>
