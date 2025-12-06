@@ -317,22 +317,44 @@ if (isset($_GET['religion'])) {
 
                             <a href="<?php echo e(route('user.profile.index')); ?>">
 
-                                <i class="icofont-user-suited"></i> <?php echo e(__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])); ?>
+                                </i> <?php echo e(__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])); ?>
 
 
                             </a>
 
                         </li>
 
-                        <li>
+                        <li style="margin-top: 2rem;">
 
                             <a href="<?php echo e(route('user.profile.index')); ?>">
-
                                 <i class="icon ion-md-construct"></i> <?php echo e(__("Meu perfil")); ?>
 
-
                             </a>
+                        </li>
+                        <li>
+                            <a href="/user/verification">
+                                <span class="icon text-center"><i class="fa fa-id-card-o"></i></span>
+                                Minhas Verificações
+                            </a>
+                        </li>
 
+                        <li>
+                            <a href="/user/network">
+                                <span class="icon text-center"><i class="fa fa-sitemap"></i></span>
+                                Minha Rede
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:8000/user/booking-history">
+                                <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
+                                Minhas Reservas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:8000/user/chat">
+                                <span class="icon text-center"><i class="fa fa-comments"></i></span>
+                                Minhas Mensagens
+                            </a>
                         </li>
 
                         <?php if(Auth::user()->hasPermission('dashboard_vendor_access')): ?>
@@ -360,7 +382,7 @@ if (isset($_GET['religion'])) {
 
                         <?php endif; ?>
 
-                        <li>
+                        <li style="margin-top: 2rem;">
 
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
 

@@ -14,23 +14,23 @@ class VerificationController extends FrontendController
 {
     public function index()
     {
-        if (setting_item('user_disable_verification_feature')) {
-            return redirect(route("user.profile.index"));
-        }
         $user = Auth::user();
         $data = [
-            'fields'         => $user->verification_fields,
-            'only_show_data' => 1,
-            'hasPlan' =>  !empty($user->user_plan),
-            'breadcrumbs'    => [
+            'user'        => $user,
+            'fields'      => $user->verification_fields,
+            'breadcrumbs' => [
                 [
-                    'name'  => __('Verificação'),
+                    'name' => __('Verificação'),
+                    'url'  => route('user.verification.index')
+                ],
+                [
+                    'name'  => __('Atualizar dados de verificação'),
                     'class' => 'active'
                 ],
             ],
         ];
 
-        return view('User::frontend.verification.index', $data);
+        return view('User::frontend.verification.update', $data);
     }
 
     public function update()

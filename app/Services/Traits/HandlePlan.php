@@ -2,6 +2,8 @@
 
 namespace App\Services\Traits;
 
+use Illuminate\Support\Facades\Mail;
+use Modules\User\Emails\PaymentReceivedEmail;
 use Modules\User\Events\CreatePlanRequest;
 use Modules\User\Models\PlanPayment;
 use Modules\User\Models\UserPlan;
@@ -35,12 +37,17 @@ trait HandlePlan
             "code" => $checkoutId
         ])->first();
 
+
+        $user = $userPlan->user;
         switch ((string)$payment['status']) {
             case "CONFIRMED":
                 $this->updatePlan($userPlan);
+                break;
             case "ACTIVE":
                 if ($plan->days_gratuity && $plan->days_gratuity > 0) {
                     $this->updatePlan($userPlan);
+                    $content = "Seu pagamento foi confirmado. Seu Plano está ativo!";
+                    Mail::to($user->email)->send(new PaymentReceivedEmail($user, $content, $user->email));
                 }
                 break;
         }
