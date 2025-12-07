@@ -193,21 +193,12 @@ foreach ($menus as $k => $menuItem) {
         <span class="avatar-text"><?php echo e(ucfirst($userAuthData->getDisplayName()[0])); ?></span>
         <?php endif; ?>
     </div>
-    <div class="user-profile-avatar">
-        <div class="info-new">
-            <?php
-            $roleName = [
-            "presenter" => "Anfitrião",
-            "customer" => "Cliente",
-            "hotel" => "Hotel"
-            ];
-            ?>
-            <span class="role-name badge badge-info"><?php echo e($roleName[$userAuthData->role->code] ?? "Viajante"); ?></span>
-            <h5><?php echo e($userAuthData->getDisplayName()); ?></h5>
-            <p><?php echo e(__("Membro desde :time",["time"=> date("M Y",strtotime($userAuthData->created_at))])); ?></p>
+    <div class="user-profile-avatar mb-0 mt-3">
+        <div>
+            <p class="mb-0">Oi, <?php echo e($userAuthData->getDisplayName()); ?>!</p>
         </div>
     </div>
-    <div class="user-profile-plan">
+    <div class="user-profile-plan ">
         <?php if( !Auth::user()->role_id < 2 && $userAuthData->role->code == "customer"): ?>
             <a href=" <?php echo e(route('user.upgrade')); ?>"><?php echo e(__("Seja um Anfitrião")); ?></a>
             <?php endif; ?>

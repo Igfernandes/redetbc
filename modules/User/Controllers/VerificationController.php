@@ -57,6 +57,7 @@ class VerificationController extends FrontendController
     public function store()
     {
 
+        app()->setLocale('pt_BR');
         /**
          * @var $user User
          */
@@ -69,20 +70,20 @@ class VerificationController extends FrontendController
         foreach ($fields as $field) {
             if (!empty($field['required'])) {
                 $rules[$field['field_id']][] = 'required';
-                $messages[$field['field_id'] . '.required'] = __("The :name is required", ['name' => $field['name']]);
+                $messages[$field['field_id'] . '.required'] = __("A :name é obrigatória", ['name' => $field['name']]);
             }
             switch ($field['type']) {
                 case "file":
                     if (!empty($input[$field['field_id']])) {
                         $rules[$field['field_id'] . '.path'][] = 'required';
-                        $messages[$field['field_id'] . '.path.required'] = __("The :name path is required", ['name' => $field['name']]);
+                        $messages[$field['field_id'] . '.path.required'] = __("O caminho para :name é obrigatório", ['name' => $field['name']]);
                         $input[$field['field_id']] = json_decode($input[$field['field_id']], true);
                     }
                     break;
                 case "multi_files":
                     if (!empty($input[$field['field_id']])) {
                         $rules[$field['field_id'] . '.*.path'][] = 'required';
-                        $messages[$field['field_id'] . '.*.path.required'] = __("The :name path is required", ['name' => $field['name']]);
+                        $messages[$field['field_id'] . '.*.path.required'] = __("O caminho para :name é obrigatório", ['name' => $field['name']]);
                         foreach ($input[$field['field_id']] as $k => $val) {
                             $input[$field['field_id']][$k] = json_decode($val, true);
                         }

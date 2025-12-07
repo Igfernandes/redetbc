@@ -193,21 +193,12 @@ foreach ($menus as $k => $menuItem) {
         <span class="avatar-text">{{ucfirst($userAuthData->getDisplayName()[0])}}</span>
         @endif
     </div>
-    <div class="user-profile-avatar">
-        <div class="info-new">
-            @php
-            $roleName = [
-            "presenter" => "Anfitrião",
-            "customer" => "Cliente",
-            "hotel" => "Hotel"
-            ];
-            @endphp
-            <span class="role-name badge badge-info">{{$roleName[$userAuthData->role->code] ?? "Viajante"}}</span>
-            <h5>{{$userAuthData->getDisplayName()}}</h5>
-            <p>{{ __("Membro desde :time",["time"=> date("M Y",strtotime($userAuthData->created_at))]) }}</p>
+    <div class="user-profile-avatar mb-0 mt-3">
+        <div>
+            <p class="mb-0">Oi, {{$userAuthData->getDisplayName()}}!</p>
         </div>
     </div>
-    <div class="user-profile-plan">
+    <div class="user-profile-plan ">
         @if( !Auth::user()->role_id < 2 && $userAuthData->role->code == "customer")
             <a href=" {{ route('user.upgrade')}}">{{ __("Seja um Anfitrião") }}</a>
             @endif

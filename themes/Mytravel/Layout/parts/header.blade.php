@@ -336,13 +336,13 @@ if (isset($_GET['religion'])) {
                             </a>
                         </li>
                         <li>
-                            <a href="http://localhost:8000/user/booking-history">
+                            <a href="/user/booking-history">
                                 <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
                                 Minhas Reservas
                             </a>
                         </li>
                         <li>
-                            <a href="http://localhost:8000/user/chat">
+                            <a href="/user/chat">
                                 <span class="icon text-center"><i class="fa fa-comments"></i></span>
                                 Minhas Mensagens
                             </a>

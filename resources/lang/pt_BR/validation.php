@@ -53,7 +53,9 @@ return [
     'enum' => 'O valor selecionado em :attribute é inválido.',
     'exists' => 'O valor selecionado em :attribute é inválido.',
     'file' => 'O campo :attribute deve ser um arquivo.',
-    'filled' => 'O campo :attribute deve ter um valor.',
+    'filled' => 'O campo :attribute deve ter um valor.',   
+    "Please check the form below for errors" => "Por favor, verifique o formulário abaixo em busca de erros",
+    'form_has_errors' => 'Por favor, verifique o formulário abaixo para corrigir os erros.',
     'gt' => [
         'array' => 'O campo :attribute deve ter mais de :value itens.',
         'file' => 'O campo :attribute deve ser maior que :value kilobytes.',

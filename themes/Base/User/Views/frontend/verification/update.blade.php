@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
 <h2 class="title-bar">
-    {{__("Atualizar dados de verificação")}}
+    {{__("Dados de verificação")}}
 </h2>
 @include('admin.message')
 <div class="booking-history-manager">
