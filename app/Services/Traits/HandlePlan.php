@@ -30,12 +30,11 @@ trait HandlePlan
 
         $plan = $userPlan->plan;
 
-        $planPayment = new PlanPayment();
-        $savedPlan = $planPayment->where([
-            "object_id" => (string)$plan->id,
-            "user_id" => $userPlan->user_id,
-            "code" => $checkoutId
-        ])->first();
+        $savedPlan = PlanPayment::where([
+            'object_id' => (string)$plan->id,
+            'user_id'   => $userPlan->user_id,
+            'code'      => $checkoutId
+        ])->firstOrNew();
 
 
         $user = $userPlan->user;
@@ -55,7 +54,7 @@ trait HandlePlan
         $planPayment = !empty($savedPlan) ? $savedPlan : new PlanPayment();
         $planPayment->object_model = 'plan';
         $planPayment->code = $checkoutId;
-        $planPayment->meta = $payment['id'];
+        $planPayment->meta = json_encode($payment);
         $planPayment->object_id = $plan->id;
         $planPayment->status = 'publish';
         $planPayment->payment_gateway = "Asaas";

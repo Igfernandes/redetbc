@@ -56,7 +56,7 @@ class ModuleProvider extends ModuleServiceProvider
                     'attribute'=>[
                         'url'        => route('assistance.admin.attribute.index'),
                         'title'      => __('Atributos'),
-                        'permission' => 'assistance_manage_attributes',
+                        'permission' => 'assistance_create',
                     ],
                     'availability'=>[
                         'url'        => route('assistance.admin.availability.index'),

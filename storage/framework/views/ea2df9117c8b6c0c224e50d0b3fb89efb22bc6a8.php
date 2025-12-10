@@ -40,6 +40,9 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             <li class="<?php if(is_vendor()): ?>  <?php endif; ?>">
                                 <a href="<?php echo e(route('user.profile.index')); ?>"><i class="icon ion-md-construct"></i> <?php echo e(__("Meu perfil")); ?></a>
                             </li>
+                            <li class="<?php if(is_vendor()): ?>  <?php endif; ?>">
+                                <a href="<?php echo e(route('user.verification.index')); ?>"><i class="fa fa-id-card-o"></i> <?php echo e(__("Verificação")); ?></a>
+                            </li>
                             <?php if(auth()->user()->is_verified): ?>
                             <li class=""><a href="<?php echo e(route('user.chat')); ?>"><i class="fa fa-comments"></i> <?php echo e(__("Reservas")); ?></a></li>
                             <?php endif; ?>

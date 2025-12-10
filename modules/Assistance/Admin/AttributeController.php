@@ -36,7 +36,7 @@ class AttributeController extends AdminController
 
     public function index(Request $request)
     {
-        $this->checkPermission('assistance_manage_attributes');
+        $this->checkPermission('assistance_create');
         $listAttr = $this->attributesClass::where("service", 'assistance');
         if (!empty($search = $request->query('s'))) {
             $listAttr->where('name', 'LIKE', '%' . $search . '%');

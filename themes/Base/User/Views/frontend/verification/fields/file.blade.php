@@ -8,7 +8,7 @@
             @endif
             :
         </label>
-        <div class="col-md-{{$value_col_size ?? 4}} btn-upload-private-wrap">
+        <div class="col-md-8 btn-upload-private-wrap">
             <div class="private-file-lists mb-2" style="word-break: break-all;">
                 @php ($old = json_decode($field['data'],true))
                 @if(!empty($old))

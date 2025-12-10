@@ -38,6 +38,9 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             <li class="@if(is_vendor())  @endif">
                                 <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("Meu perfil")}}</a>
                             </li>
+                            <li class="@if(is_vendor())  @endif">
+                                <a href="{{route('user.verification.index')}}"><i class="fa fa-id-card-o"></i> {{__("Verificação")}}</a>
+                            </li>
                             @if(auth()->user()->is_verified)
                             <li class=""><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Reservas")}}</a></li>
                             @endif
