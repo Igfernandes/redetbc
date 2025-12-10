@@ -243,12 +243,12 @@
   color: #687882;
   opacity: 0.6;
 }
+.bravo_wrap .bravo_search_service .bravo-list-item .list-item .item-loop .service-review .rate {
+  color: #5191FA;
+}
 .bravo_wrap .bravo_search_service .bravo-list-item .list-item .item-loop .service-review {
   margin: 0 15px 0;
   font-size: 13px;
-}
-.bravo_wrap .bravo_search_service .bravo-list-item .list-item .item-loop .service-review .rate {
-  color: #5191FA;
 }
 .bravo_wrap .bravo_search_service .bravo-list-item .list-item .item-loop .service-review .review {
   margin-left: 15px;
@@ -1028,12 +1028,12 @@
   color: #687882;
   opacity: 0.6;
 }
+.bravo_wrap .bravo_detail_service .bravo-list-assistance-related .item-loop .service-review .rate {
+  color: #5191FA;
+}
 .bravo_wrap .bravo_detail_service .bravo-list-assistance-related .item-loop .service-review {
   margin: 0 15px 0;
   font-size: 13px;
-}
-.bravo_wrap .bravo_detail_service .bravo-list-assistance-related .item-loop .service-review .rate {
-  color: #5191FA;
 }
 .bravo_wrap .bravo_detail_service .bravo-list-assistance-related .item-loop .service-review .review {
   margin-left: 15px;
@@ -2133,12 +2133,12 @@
   color: #687882;
   opacity: 0.6;
 }
+.has-search-map .bravo_search_map .results_map .item-loop .service-review .rate {
+  color: #5191FA;
+}
 .has-search-map .bravo_search_map .results_map .item-loop .service-review {
   margin: 0 15px 0;
   font-size: 13px;
-}
-.has-search-map .bravo_search_map .results_map .item-loop .service-review .rate {
-  color: #5191FA;
 }
 .has-search-map .bravo_search_map .results_map .item-loop .service-review .review {
   margin-left: 15px;

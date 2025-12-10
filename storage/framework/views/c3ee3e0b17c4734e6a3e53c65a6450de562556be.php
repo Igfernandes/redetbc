@@ -1,0 +1,74 @@
+<div class="form-group">
+    <label><?php echo e(__("Nome")); ?> <span class="text-danger">*</span></label>
+    <input type="text" required value="<?php echo e(old('title',$translation->title)); ?>" placeholder="<?php echo e(__("Nome")); ?>" name="title"
+        class="form-control">
+</div>
+<div class="form-group">
+    <label><?php echo e(__("Descrição")); ?> </label>
+    <textarea name="content" cols="30" rows="5" class="form-control"><?php echo e(old('content',$translation->content)); ?></textarea>
+</div>
+<div class="form-group">
+    <label><?php echo e(__("Para Cargo")); ?> <span class="text-danger">*</span></label>
+    <select name="role_id" class="form-control">
+        <option value=""><?php echo e(__("-- Selecione --")); ?></option>
+        <?php $__currentLoopData = \Modules\User\Models\Role::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <option <?php if(old('role_id',$row->role_id) == $role->id): ?> selected
+            <?php endif; ?> value="<?php echo e($role->id); ?>"><?php echo e($role->name); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </select>
+</div>
+
+<div class="form-group">
+    <label class="control-label"><?php echo e(__("Preço")); ?> </label>
+    <input type="number" step="any" placeholder="<?php echo e(__("Grátis")); ?>" value="<?php echo e(old('price',$row->price)); ?>" name="price"
+        class="form-control">
+</div>
+<div class="form-group">
+    <label class="control-label"><?php echo e(__("Preço Anual")); ?></label>
+    <input type="number" step="any" value="<?php echo e(old('annual_price',$row->annual_price)); ?>" name="annual_price"
+        class="form-control">
+</div>
+<div class="form-group">
+    <label class="control-label"><?php echo e(__("Duração")); ?> <span class="text-danger">*</span></label>
+    <input type="number" min="1" value="<?php echo e(old('duration',max(1,$row->duration))); ?>" name="duration" class="form-control">
+</div>
+<div class="form-group">
+    <label class="control-label"><?php echo e(__("Dias Gratuitos")); ?> <span class="text-danger">*</span></label>
+    <input type="number" min="0" value="<?php echo e(old('days_gratuity',max(0,$row->days_gratuity))); ?>" name="days_gratuity" class="form-control">
+</div>
+<div class="form-group">
+    <label class="control-label"><?php echo e(__("Breve Descrição")); ?> <span class="text-danger">*</span></label>
+    <input type="text" maxlength="130" value="<?php echo e(old('snippet',$row->snippet)); ?>" name="snippet" class="form-control">
+</div>
+<div class="form-group">
+    <label class="control-label"><?php echo e(__("Comissão")); ?> <span class="text-danger"></span></label>
+    <input type="number" min="0" value="<?php echo e(old('commission',$row->commission)); ?>" name="commission" class="form-control">
+</div>
+<div class="form-group">
+    <label class="control-label"><?php echo e(__("Tipo de Duração")); ?> <span class="text-danger">*</span></label>
+    <select name="duration_type" class="form-control" required>
+        <option <?php if(old('duration_type',$row->duration_type) == 'day'): ?> selected
+            <?php endif; ?> value="day"><?php echo e(__("Dia")); ?></option>
+        <option <?php if(old('duration_type',$row->duration_type) == 'week'): ?> selected
+            <?php endif; ?> value="week"><?php echo e(__("Semana")); ?></option>
+        <option <?php if(old('duration_type',$row->duration_type) == 'month'): ?> selected
+            <?php endif; ?> value="month"><?php echo e(__("Mês")); ?></option>
+        <option <?php if(old('duration_type',$row->duration_type) == 'year'): ?> selected
+            <?php endif; ?> value="year"><?php echo e(__("Ano")); ?></option>
+    </select>
+</div>
+<div class="form-group">
+    <label class="control-label"><?php echo e(__("Máx Serviços")); ?> </label>
+    <input type="number" min="0" value="<?php echo e(old('max_service',$row->max_service)); ?>" name="max_service"
+        placeholder="<?php echo e(__("Ilimitado")); ?>" class="form-control">
+    <p><i><?php echo e(__("Quantos serviços publicados o usuário pode postar")); ?></i></p>
+</div>
+
+<div class="form-group">
+    <label class="control-label"><?php echo e(__("Status")); ?></label>
+    <select name="status" class="form-control">
+        <option value="publish"><?php echo e(__("Publicar")); ?></option>
+        <option <?php if(old('status',$row->status) == 'draft'): ?> selected <?php endif; ?> value="draft"><?php echo e(__("Rascunho")); ?></option>
+    </select>
+</div>
+<?php do_action(\Modules\User\Hook::PLAN_FORM_AFTER_STATUS,$row) ?><?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\modules/User/Views/admin/plan/form.blade.php ENDPATH**/ ?>

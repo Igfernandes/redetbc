@@ -87,13 +87,9 @@ class UserController extends FrontendController
 
     public function profileUpdate(Request $request)
     {
-        if (is_demo_mode()) {
-            return back()->with('error', "Demo mode: disabled");
-        }
+      
         $user = Auth::user();
-        $messages = [
-            'user_name.required'      => __('O campo Nome de usuário é obrigatório.'),
-        ];
+        
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name'  => 'required|max:255',
@@ -103,24 +99,17 @@ class UserController extends FrontendController
                 'max:255',
                 Rule::unique('users')->ignore($user->id)
             ],
-            'user_name' => [
-                'required',
-                'max:255',
-                'min:4',
-                'string',
-                'alpha_dash',
-                Rule::unique('users')->ignore($user->id)
-            ],
             'phone'       => [
                 'required',
                 Rule::unique('users')->ignore($user->id)
             ],
-        ], $messages);
+        ]);
+        
         $input = $request->except('bio');
         $user->fill($input);
         $user->bio = clean($request->input('bio'));
         $user->birthday = date("Y-m-d", strtotime($user->birthday));
-        $user->user_name = Str::slug($request->input('user_name'), "_");
+        $user->user_name = Str::slug($request->input('first_name'), "_");
         $user->save();
         return redirect()->back()->with('success', __('Atualizado com sucesso'));
     }

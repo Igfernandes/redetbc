@@ -89,6 +89,7 @@ class PlanController extends FrontendController
         return \redirect()->to($data["link"] ?? $plan_page)->with("warning", __("Estamos enfrentando problemas técnicos para prosseguir com o pagamento. Por favor, tente novamente mais tarde."));
     }
 
+ 
     public function webhook(Request $request)
     {
         // Pega todo o payload enviado pelo Asaas

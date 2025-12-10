@@ -1,12 +1,13 @@
 <?php
+
 namespace Modules\Media\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Media\Models\MediaFile;
 
@@ -17,57 +18,101 @@ class MediaController extends Controller
         return redirect(FileHelper::url($id, $size));
     }
 
+
     public function privateFileStore(Request $request)
     {
-        if(!$user_id = Auth::id()){
+        if (!$user_id = Auth::id()) {
             return $this->sendError(__("Por favor, faça login"));
         }
 
-        $fileName = 'file';
-
-        $file = $request->file($fileName);
+        $file = $request->file('file');
 
         try {
-            $this->validatePrivateFile($file,$request->input('type','default'));
+            $this->validatePrivateFile($file, $request->input('type', 'default'));
         } catch (\Exception $exception) {
             return $this->sendError($exception->getMessage());
         }
 
-        $folder = 'private/'.$user_id.'/';
-        $folder = $folder . date('Y/m/d');
+        // Pasta privada
+        $folder = 'private/' . $user_id . '/' . date('Y/m/d');
 
-        $newFileName = md5(microtime(true).rand(0,999));
+        // Gerar nome único
+        $newFileName = md5(microtime(true) . rand(0, 999));
 
+        // Extensão
+        $ext = strtolower($file->getClientOriginalExtension());
+        $isImage = in_array($ext, ['png', 'jpg', 'jpeg', 'gif', 'bmp']);
+
+        // Procurar nome livre
         $i = 0;
         do {
             $newFileName2 = $newFileName . ($i ? $i : '');
-            $testPath = $folder . '/' . $newFileName2 . '.' . $file->getClientOriginalExtension();
+            $finalPath = $folder . '/' . $newFileName2 . '.' . $ext;
             $i++;
-        } while (Storage::disk('local')->exists($testPath));
+        } while (Storage::disk('local')->exists($finalPath));
 
-        $check = $file->storeAs( $folder, $newFileName2 . '.' . $file->getClientOriginalExtension(),'local');
 
-        if ($check) {
+        /*
+    |--------------------------------------------------------------------------
+    | PROCESSAMENTO DE IMAGEM (RESIZE + ORIENTATE)
+    |--------------------------------------------------------------------------
+    */
+        if ($isImage) {
+
+            $originalPath = $file->getRealPath();
+
+            $img = Image::make($originalPath)
+                ->orientate()
+                ->resize(2500, 2500, function ($c) {
+                    $c->aspectRatio();
+                    $c->upsize();
+                });
+
+            // Salvar no disco privado
+            Storage::disk('local')->put($finalPath, (string) $img->encode($ext, 90));
+
+            $finalStored = $finalPath;
+        } else {
+            /*
+        |--------------------------------------------------------------------------
+        | ARQUIVO NORMAL (PDF, ZIP, DOC...)
+        |--------------------------------------------------------------------------
+        */
+            $finalStored = $file->storeAs($folder, $newFileName2 . '.' . $ext, 'local');
+        }
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | RESPOSTA FINAL
+    |--------------------------------------------------------------------------
+    */
+
+        if ($finalStored) {
             try {
-                $path = str_replace('private/','',$check);
-                return $this->sendSuccess(['data' => [
-                    'path'=>$path,
-                    'name'=>Str::slug($file->getClientOriginalName()),
-                    'size'=>$file->getSize(),
-                    'file_type'=>$file->getMimeType(),
-                    'file_extension'=> $file->getClientOriginalExtension(),
-                    'download'=>route('media.private.view',['path'=>$path]),
-                ]]);
 
+                $path = str_replace('private/', '', $finalStored);
+
+                return $this->sendSuccess([
+                    'data' => [
+                        'path'          => $path,
+                        'name'          => Str::slug($file->getClientOriginalName()),
+                        'size'          => $file->getSize(),
+                        'file_type'     => $file->getMimeType(),
+                        'file_extension' => $ext,
+                        'download'      => route('media.private.view', ['path' => $path]),
+                    ]
+                ]);
             } catch (\Exception $exception) {
 
-                Storage::disk('local')->delete($check);
-
+                Storage::disk('local')->delete($finalStored);
                 return $this->sendError($exception->getMessage());
             }
         }
+
         return $this->sendError(__("Não foi possível enviar o arquivo"));
     }
+
 
     /**
      * @param $file UploadedFile
@@ -116,15 +161,15 @@ class MediaController extends Controller
             'default' => [
                 'types'    => $allowedExts,
                 "max_size" => 20000000,
-                "max_width"=>2500,
-                "max_height"=>2500,
+                "max_width" => 5000,
+                "max_height" => 2500,
                 // 20MB
             ],
-            'image'=>[
+            'image' => [
                 'types'    => $allowedExtsImage,
                 "max_size" => 20000000,
-                "max_width"=>2500,
-                "max_height"=>2500
+                "max_width" => 2500,
+                "max_height" => 2500
             ]
         ];
         $config = isset($uploadConfigs[$group]) ? $uploadConfigs[$group] : $uploadConfigs['default'];
@@ -136,18 +181,12 @@ class MediaController extends Controller
             throw new \Exception(__("O tamanho máximo do arquivo para upload é :max_size B", ['max_size' => $config['max_size']]));
         }
 
-        if(in_array($file_extension = strtolower($file->getClientOriginalExtension()), $allowedExtsImage)) {
+        if (in_array($file_extension = strtolower($file->getClientOriginalExtension()), $allowedExtsImage)) {
 
             if (!empty($config['max_width']) or !empty($config['max_width'])) {
                 $imagedata = getimagesize($file->getPathname());
                 if (empty($imagedata)) {
                     throw new \Exception(__("Não foi possível obter as dimensões da imagem"));
-                }
-                if (!empty($config['max_width']) and $imagedata[0] > $config['max_width']) {
-                    throw new \Exception(__("A largura máxima permitida é: :number mb", ['number' => $config['max_width']]));
-                }
-                if (!empty($config['max_height']) and $imagedata[1] > $config['max_height']) {
-                    throw new \Exception(__("A altura máxima permitida é: :number mb", ['number' => $config['max_height']]));
                 }
             }
         }
@@ -155,11 +194,12 @@ class MediaController extends Controller
         return true;
     }
 
-    public function privateFileView(){
+    public function privateFileView()
+    {
 
-        $path = 'private/'.\request()->get('path');
+        $path = 'private/' . \request()->get('path');
 
-        if(Storage::disk('local')->exists($path)) {
+        if (Storage::disk('local')->exists($path)) {
 
             header('Content-Type: ' . mime_content_type(Storage::disk('local')->path($path)));
 
@@ -170,7 +210,8 @@ class MediaController extends Controller
         abort(404);
     }
 
-    public function editImage(Request $request){
+    public function editImage(Request $request)
+    {
         $validate = [
             'image'     => 'required',
             'image_id'  => 'required',
@@ -180,7 +221,7 @@ class MediaController extends Controller
         if (!Auth::user()->hasPermission("media_upload")) {
             $result = [
                 'message' => __('403'),
-                'status'=>0
+                'status' => 0
             ];
             return $result;
         }

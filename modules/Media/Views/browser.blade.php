@@ -1,4 +1,4 @@
-<div id="cdn-browser-modal" class="modal fade">
+<div id="cdn-browser-modal" class="modal fade col-12">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div id="cdn-browser" class="cdn-browser d-flex flex-column" v-cloak :class="{is_loading:isLoading}">
@@ -25,12 +25,13 @@
                         <div class="col-right">
                             <i class="fa-spin fa fa-spinner icon-loading active" v-show="isLoading"></i>
                             <button class="btn btn-primary mr-2" @click="addFolder">
-                                <span><i class="fa fa-folder"></i> {{__("Adicionar Pasta")}}</span>
+                                <span><i class="fa fa-folder"></i> {{__("Pasta")}}</span>
                             </button>
                             <button class="btn btn-success btn-pick-files">
                                 <span><i class="fa fa-upload"></i> {{__("Upload")}}</span>
                                 <input multiple :accept="accept_type" type="file" name="files[]" ref="files">
                             </button>
+                            <button class="btn btn-danger mr-2" data-dismiss="modal">{{__("Fechar")}}</button>
                         </div>
                     </div>
                 </div>
@@ -41,7 +42,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a @click="toFolderRoot" href="#">{{__("Home")}}</a></li>
-                            <li v-for="(item,index) in breadcrumbs"  class="breadcrumb-item active" aria-current="page"><a @click.prevent="showFolder(item,index)" href="#">@{{ item.name }}</a></li>
+                            <li v-for="(item,index) in breadcrumbs" class="breadcrumb-item active" aria-current="page"><a @click.prevent="showFolder(item,index)" href="#">@{{ item.name }}</a></li>
                         </ol>
                     </nav>
                     <div class="border-top border-left mb-3 px-3" v-if="viewType == 'list'">
@@ -67,7 +68,8 @@
                                     <a class="page-link" href="#" v-if="filter.page > 1" v-on:click="changePage(filter.page-1,$event)">{{__("Anterior")}}</a>
                                 </li>
                                 <li class="page-item" v-if="p >= (filter.page-3) && p <= (filter.page+3)" :class="{active: p == filter.page}" v-for="p in totalPage" @click="changePage(p,$event)">
-                                    <a class="page-link" href="#">@{{p}}</a></li>
+                                    <a class="page-link" href="#">@{{p}}</a>
+                                </li>
                                 <li class="page-item" :class="{disabled:filter.page >= totalPage}">
                                     <a v-if="filter.page >= totalPage" class="page-link">{{__("Próximo")}}</a>
                                     <a href="#" class="page-link" v-if="filter.page < totalPage" v-on:click="changePage(filter.page+1,$event)">{{__("Próximo")}}</a>

@@ -25,9 +25,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{ __("Razão Social") }}</label>
-                                    <input type="text" required name="business_name"
-                                           value="{{ old('business_name', $row->business_name ?? '') }}"
-                                           placeholder="{{ __('Razão Social') }}" class="form-control">
+                                    <input type="text" name="business_name"
+                                        value="{{ old('business_name', $row->business_name ?? '') }}"
+                                        placeholder="{{ __('Razão Social') }}" class="form-control">
                                 </div>
                             </div>
 
@@ -36,20 +36,11 @@
                                 <div class="form-group">
                                     <label>{{ __('E-mail') }}</label>
                                     <input type="email" required name="email"
-                                           value="{{ old('email', $row->email ?? '') }}"
-                                           placeholder="{{ __('E-mail') }}" class="form-control">
+                                        value="{{ old('email', $row->email ?? '') }}"
+                                        placeholder="{{ __('E-mail') }}" class="form-control">
                                 </div>
                             </div>
 
-                            <!-- Nome de Acesso -->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{ __("Nome de Acesso") }}</label>
-                                    <input type="text" required name="user_name"
-                                           value="{{ old('user_name', $row->user_name ?? '') }}"
-                                           placeholder="{{ __("Nome de Acesso") }}" class="form-control">
-                                </div>
-                            </div>
                         </div>
 
                         <div class="row">
@@ -59,8 +50,8 @@
                                 <div class="form-group">
                                     <label>{{ __("Primeiro Nome") }}</label>
                                     <input type="text" required name="first_name"
-                                           value="{{ old('first_name', $row->first_name ?? '') }}"
-                                           placeholder="{{ __("Primeiro Nome") }}" class="form-control">
+                                        value="{{ old('first_name', $row->first_name ?? '') }}"
+                                        placeholder="{{ __("Primeiro Nome") }}" class="form-control">
                                 </div>
                             </div>
 
@@ -69,8 +60,8 @@
                                 <div class="form-group">
                                     <label>{{ __("Sobrenome") }}</label>
                                     <input type="text" required name="last_name"
-                                           value="{{ old('last_name', $row->last_name ?? '') }}"
-                                           placeholder="{{ __("Sobrenome") }}" class="form-control">
+                                        value="{{ old('last_name', $row->last_name ?? '') }}"
+                                        placeholder="{{ __("Sobrenome") }}" class="form-control">
                                 </div>
                             </div>
 
@@ -81,9 +72,9 @@
                                     <select name="religion" class="form-control">
                                         <option value="">{{ __("Selecione a religião") }}</option>
                                         @foreach(['CATHOLIC' => 'Católico', 'EVANGELICAL' => 'Evangélico', 'BOTH' => 'Ambos'] as $key => $label)
-                                            <option value="{{ $key }}" {{ old('religion', $row->religion ?? '') == $key ? 'selected' : '' }}>
-                                                {{ __($label) }}
-                                            </option>
+                                        <option value="{{ $key }}" {{ old('religion', $row->religion ?? '') == $key ? 'selected' : '' }}>
+                                            {{ __($label) }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -110,8 +101,8 @@
                                 <div class="form-group">
                                     <label>{{ __('Telefone') }}</label>
                                     <input type="text" required name="phone"
-                                           value="{{ old('phone', $row->phone ?? '') }}"
-                                           placeholder="{{ __('Telefone') }}" class="form-control">
+                                        value="{{ old('phone', $row->phone ?? '') }}"
+                                        placeholder="{{ __('Telefone') }}" class="form-control">
                                 </div>
                             </div>
 
@@ -120,9 +111,9 @@
                                 <div class="form-group">
                                     <label>{{ __('Aniversário') }}</label>
                                     <input type="text" name="birthday"
-                                           value="{{ old('birthday', isset($row->birthday) ? date('Y/m/d', strtotime($row->birthday)) : '') }}"
-                                           placeholder="{{ __('Aniversário') }}"
-                                           class="form-control has-datepicker input-group date">
+                                        value="{{ old('birthday', isset($row->birthday) ? date('Y/m/d', strtotime($row->birthday)) : '') }}"
+                                        placeholder="{{ __('Aniversário') }}"
+                                        class="form-control has-datepicker input-group date">
                                 </div>
                             </div>
 
@@ -131,8 +122,8 @@
                                 <div class="form-group">
                                     <label>{{ __('Endereço 1') }}</label>
                                     <input type="text" name="address" class="form-control"
-                                           value="{{ old('address', $row->address ?? '') }}"
-                                           placeholder="{{ __('Endereço 1') }}">
+                                        value="{{ old('address', $row->address ?? '') }}"
+                                        placeholder="{{ __('Endereço 1') }}">
                                 </div>
                             </div>
 
@@ -140,8 +131,8 @@
                                 <div class="form-group">
                                     <label>{{ __('Endereço 2') }}</label>
                                     <input type="text" name="address2" class="form-control"
-                                           value="{{ old('address2', $row->address2 ?? '') }}"
-                                           placeholder="{{ __('Endereço 2') }}">
+                                        value="{{ old('address2', $row->address2 ?? '') }}"
+                                        placeholder="{{ __('Endereço 2') }}">
                                 </div>
                             </div>
 
@@ -150,15 +141,52 @@
                                 <div class="form-group">
                                     <label>{{ __("Cidade") }}</label>
                                     <input type="text" name="city" class="form-control"
-                                           value="{{ old('city', $row->city ?? '') }}" placeholder="{{ __("Cidade") }}">
+                                        value="{{ old('city', $row->city ?? '') }}" placeholder="{{ __("Cidade") }}">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{ __("Estado") }}</label>
-                                    <input type="text" name="state" class="form-control"
-                                           value="{{ old('state', $row->state ?? '') }}" placeholder="{{ __("Estado") }}">
+                                  <select name="state" id="state"  class="form-control">
+                                    <option value="">{{ __('-- Selecione --') }}</option>
+                                    @php 
+                                        $states = [
+                                            'AC' => 'Acre',
+                                            'AL' => 'Alagoas',
+                                            'AP' => 'Amapá',
+                                            'AM' => 'Amazonas',
+                                            'BA' => 'Bahia',
+                                            'CE' => 'Ceará',
+                                            'DF' => 'Distrito Federal',
+                                            'ES' => 'Espírito Santo',
+                                            'GO' => 'Goiás',
+                                            'MA' => 'Maranhão',
+                                            'MT' => 'Mato Grosso',
+                                            'MS' => 'Mato Grosso do Sul',
+                                            'MG' => 'Minas Gerais',
+                                            'PA' => 'Pará',
+                                            'PB' => 'Paraíba',
+                                            'PR' => 'Paraná',
+                                            'PE' => 'Pernambuco',
+                                            'PI' => 'Piauí',
+                                            'RJ' => 'Rio de Janeiro',
+                                            'RN' => 'Rio Grande do Norte',
+                                            'RS' => 'Rio Grande do Sul',
+                                            'RO' => 'Rondônia',
+                                            'RR' => 'Roraima',
+                                            'SC' => 'Santa Catarina',
+                                            'SP' => 'São Paulo',
+                                            'SE' => 'Sergipe',
+                                            'TO' => 'Tocantins'
+                                        ];
+                                    @endphp
+                                    @foreach($states as $id => $name)
+                                    <option value="{{ $id }}" {{ old('state', $row->state ?? '') == $id ? 'selected' : '' }}>
+                                        {{ $name }}
+                                    </option>
+                                    @endforeach
+                                  </select>
                                 </div>
                             </div>
 
@@ -169,9 +197,9 @@
                                     <select name="country" required class="form-control">
                                         <option value="">{{ __('-- Selecione --') }}</option>
                                         @foreach(get_country_lists() as $id => $name)
-                                            <option value="{{ $id }}" {{ old('country', $row->country ?? '') == $id ? 'selected' : '' }}>
-                                                {{ $name }}
-                                            </option>
+                                        <option value="{{ $id }}" {{ old('country', $row->country ?? '') == $id ? 'selected' : '' }}>
+                                            {{ $name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -182,8 +210,8 @@
                                 <div class="form-group">
                                     <label>{{ __("CEP") }}</label>
                                     <input type="text" name="zip_code"
-                                           value="{{ old('zip_code', $row->zip_code ?? '') }}"
-                                           placeholder="{{ __("CEP") }}" class="form-control">
+                                        value="{{ old('zip_code', $row->zip_code ?? '') }}"
+                                        placeholder="{{ __("CEP") }}" class="form-control">
                                 </div>
                             </div>
 
@@ -193,7 +221,7 @@
                         <div class="form-group">
                             <label class="control-label">{{ __('Biografia') }}</label>
                             <textarea name="bio" class="d-none has-ckeditor" cols="30" rows="10">
-                                {{ old('bio', $row->bio ?? '') }}
+                            {{ old('bio', $row->bio ?? '') }}
                             </textarea>
                         </div>
 
@@ -223,34 +251,34 @@
                         </div>
 
                         @if(is_admin())
-                            @if(empty($user_type) || $user_type != 'vendor')
-                                <!-- Função -->
-                                <div class="form-group">
-                                    <label>{{ __('Função') }} <span class="text-danger">*</span></label>
-                                    <select required name="role_id" class="form-control">
-                                        <option value="">{{ __('-- Selecione --') }}</option>
-                                        @foreach($roles as $role)
-                                            <option value="{{ $role->id }}"
-                                                {{ old('role_id', $row->role_id ?? '') == $role->id ? 'selected' : '' }}>
-                                                {{ ucfirst($role->name) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            @endif
+                        @if(empty($user_type) || $user_type != 'vendor')
+                        <!-- Função -->
+                        <div class="form-group">
+                            <label>{{ __('Função') }} <span class="text-danger">*</span></label>
+                            <select required name="role_id" class="form-control">
+                                <option value="">{{ __('-- Selecione --') }}</option>
+                                @foreach($roles as $role)
+                                <option value="{{ $role->id }}"
+                                    {{ old('role_id', $row->role_id ?? '') == $role->id ? 'selected' : '' }}>
+                                    {{ ucfirst($role->name) }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
 
-                            <!-- Email Verificado -->
-                            <div class="form-group">
-                                <label>{{ __('E-mail Verificado?') }}</label>
-                                <select name="is_email_verified" class="form-control">
-                                    <option value="0" {{ old('is_email_verified', $row->email_verified_at ? 1 : 0) == 0 ? 'selected' : '' }}>
-                                        {{ __('Não') }}
-                                    </option>
-                                    <option value="1" {{ old('is_email_verified', $row->email_verified_at ? 1 : 0) == 1 ? 'selected' : '' }}>
-                                        {{ __('Sim') }}
-                                    </option>
-                                </select>
-                            </div>
+                        <!-- Email Verificado -->
+                        <div class="form-group">
+                            <label>{{ __('E-mail Verificado?') }}</label>
+                            <select name="is_email_verified" class="form-control">
+                                <option value="0" {{ old('is_email_verified', $row->email_verified_at ? 1 : 0) == 0 ? 'selected' : '' }}>
+                                    {{ __('Não') }}
+                                </option>
+                                <option value="1" {{ old('is_email_verified', $row->email_verified_at ? 1 : 0) == 1 ? 'selected' : '' }}>
+                                    {{ __('Sim') }}
+                                </option>
+                            </select>
+                        </div>
                         @endif
                     </div>
                 </div>
@@ -262,7 +290,18 @@
                         <div class="form-group">
                             <label>{{ __('Comissão por redes') }}</label>
                             <input type="number" name="commission_amount" class="form-control"
-                                   value="{{ old('commission_amount', $row->commission_amount ?? '') }}">
+                                value="{{ old('commission_amount', $row->commission_amount ?? '') }}">
+                        </div>
+                        <div class="form-group">
+                            <label>{{ __('É afiliado') }}</label>
+                            <select name="is_affiliate" class="form-control">
+                                <option value="0" {{ old('is_affiliate', $row->is_affiliate ?? 0) == 0 ? 'selected' : '' }}>
+                                    {{ __('Não') }}
+                                </option>
+                                <option value="1" {{ old('is_affiliate', $row->is_affiliate ?? 0) == 1 ? 'selected' : '' }}>
+                                    {{ __('Sim') }}
+                                </option>
+                            </select>
                         </div>
                     </div>
                 </div>

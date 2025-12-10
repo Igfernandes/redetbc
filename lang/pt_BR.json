@@ -1,4 +1,9 @@
 {
+    "presenter": "Anfitrião",
+    "traveler": "Viajante",
+    "Both": "Ambos",
+    "administrator": "Administrador",
+    "vendor": "Vendedor",
     "Sign in or Register": "Entrar ou Registrar",
     "Verification data": "Dados de verificação",
     "Photos of front document": "Fotos da frente do documento",

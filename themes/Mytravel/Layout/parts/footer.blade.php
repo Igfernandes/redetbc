@@ -268,7 +268,7 @@ setting_item('tour_location_search_style')=='autocompletePlace' || setting_item(
 
 @if(setting_item('cookie_agreement_enable')==1 and request()->cookie('booking_cookie_agreement_enable') !=1 and !is_api() and !isset($_COOKIE['booking_cookie_agreement_enable']))
 
-<div class="booking_cookie_agreement p-3 fixed-bottom">
+<!-- <div class="booking_cookie_agreement p-3 fixed-bottom">
 
     <div class="container d-flex ">
 
@@ -278,7 +278,7 @@ setting_item('tour_location_search_style')=='autocompletePlace' || setting_item(
 
     </div>
 
-</div>
+</div> -->
 
 <script>
     var save_cookie_url = "{{route('core.cookie.check')}}";

@@ -34,10 +34,11 @@ $menus = [
     ],
     'upgrade' => [
         'url'      => route("user.upgrade"),
-        'title'    => __("Plano de Upgrade"),
+        'title'    => __("Meu Plano"),
         'icon'     => 'fa fa-sitemap',
         'position' => 22,
-        'is_verified' => 1
+        'is_verified' => 0,
+        'is_affiliate' => 1
     ],
     'profile'         => [
         'url'      => route("user.profile.index"),
@@ -95,6 +96,7 @@ if (!empty($custom_modules)) {
         }
     }
 }
+
 
 // Plugins Menu
 $plugins_modules = \Plugins\ServiceProvider::getModules();
@@ -183,62 +185,100 @@ foreach ($menus as $k => $menuItem) {
         }
     }
 }
-?>
+
+?><script src="/libs/jquery-3.6.3.min.js"></script>
 <div class="sidebar-user">
-    <div class="bravo-close-menu-user"><i class="icofont-scroll-left"></i></div>
-    <div class="logo">
-        @if($avatar_url = $userAuthData->getAvatarUrl())
-        <div class="avatar avatar-cover" style="background-image: url('{{$userAuthData->getAvatarUrl()}}')"></div>
-        @else
-        <span class="avatar-text">{{ucfirst($userAuthData->getDisplayName()[0])}}</span>
-        @endif
-    </div>
-    <div class="user-profile-avatar mb-0 mt-3">
+    <div class="bravo-close-menu-user text-right py-2 mx-2"><i class="icofont-scroll-left"></i></div>
+    <div class="bg-theme pt-1 px-2 px-md-3" style="padding-bottom: 10rem;">
+        <div class="user-profile-avatar bg-theme pt-0 mb-0 mt-3">
+            <div>
+                <p class="bg-theme mb-0">Oi, {{$userAuthData->getDisplayName()}}!</p>
+            </div>
+        </div>
+        <div class="user-profile-plan ">
+            @if( !Auth::user()->role_id < 2 && $userAuthData->role->code == "customer")
+                <a href=" {{ route('user.upgrade')}}">{{ __("Seja um Anfitrião") }}</a>
+                @endif
+        </div>
+        <div class="sidebar-menu">
+            <ul class="main-menu">
+                @foreach($menus as $menuItem)
+                <li class="{{$menuItem['class']}}" position="{{$menuItem['position'] ?? ""}}">
+                    <a href="{{ url($menuItem['url']) }}">
+                        @if(!empty($menuItem['icon']))
+                        <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
+                        @endif
+                        {!! clean($menuItem['title']) !!}
+                    </a>
+                    @if(!empty($menuItem['children']))
+                    <i class="caret"></i>
+                    @endif
+                    @if(!empty($menuItem['children']))
+                    <ul class="children">
+                        @foreach($menuItem['children'] as $menuItem2)
+                        <li class="{{$menuItem2['class']}}"><a href="{{ url($menuItem2['url']) }}">
+                                @if(!empty($menuItem2['icon']))
+                                <i class="{{$menuItem2['icon']}}"></i>
+                                @endif
+                                {!! clean($menuItem2['title']) !!}</a></li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </li>
+                @endforeach
+            </ul>
+        </div>
         <div>
-            <p class="mb-0">Oi, {{$userAuthData->getDisplayName()}}!</p>
+            <div class="g-menu">
+
+                <ul class="main-menu menu-generated">
+                    <li class=" depth-0"><a target="" href="/">Início</a></li>
+                    <li class=" depth-0"><a>Acomodações <i class="caret fa fa-angle-down"></i></a>
+                        <ul class="children-menu menu-dropdown">
+                            <li class=" depth-1"><a target="" href="/page/home-hotel">Hotéis</a></li>
+                            <li class=" depth-1"><a target="" href="http://localhost:8000/page/home-space">Casas</a></li>
+                        </ul>
+                    </li>
+                    <li class=" depth-0"><a>Experiências <i class="caret fa fa-angle-down"></i></a>
+                        <ul class="children-menu menu-dropdown">
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=11">Casais com Fé</a></li>
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=10">Terapia Natural e Descanso</a></li>
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=9">Cultura Cristã</a></li>
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=6">História e Fé</a></li>
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=5">Consagração</a></li>
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=4">Passeio pela Cidade</a></li>
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=3">Escorted tour</a></li>
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=2">Esporte</a></li>
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=1">Motivacional</a></li>
+                        </ul>
+                    </li>
+                    <li class=" depth-0"><a target="" href="/page/eventos">Eventos</a></li>
+                    <li class=" depth-0"><a target="" href="/page/noticias">Notícias</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="logout">
+            <form id="logout-form-vendor" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i class="fa fa-sign-out"></i> {{__("Sair")}}
+            </a>
+        </div>
+        <div class="logout">
+            <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Voltar para o Início")}}</a>
         </div>
     </div>
-    <div class="user-profile-plan ">
-        @if( !Auth::user()->role_id < 2 && $userAuthData->role->code == "customer")
-            <a href=" {{ route('user.upgrade')}}">{{ __("Seja um Anfitrião") }}</a>
-            @endif
-    </div>
-    <div class="sidebar-menu">
-        <ul class="main-menu">
-            @foreach($menus as $menuItem)
-            <li class="{{$menuItem['class']}}" position="{{$menuItem['position'] ?? ""}}">
-                <a href="{{ url($menuItem['url']) }}">
-                    @if(!empty($menuItem['icon']))
-                    <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
-                    @endif
-                    {!! clean($menuItem['title']) !!}
-                </a>
-                @if(!empty($menuItem['children']))
-                <i class="caret"></i>
-                @endif
-                @if(!empty($menuItem['children']))
-                <ul class="children">
-                    @foreach($menuItem['children'] as $menuItem2)
-                    <li class="{{$menuItem2['class']}}"><a href="{{ url($menuItem2['url']) }}">
-                            @if(!empty($menuItem2['icon']))
-                            <i class="{{$menuItem2['icon']}}"></i>
-                            @endif
-                            {!! clean($menuItem2['title']) !!}</a></li>
-                    @endforeach
-                </ul>
-                @endif
-            </li>
-            @endforeach
-        </ul>
-    </div>
-    <div class="logout">
-        <form id="logout-form-vendor" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-        </form>
-        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i class="fa fa-sign-out"></i> {{__("Sair")}}
-        </a>
-    </div>
-    <div class="logout">
-        <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Voltar para o Início")}}</a>
-    </div>
 </div>
+<script>
+    $(".sidebar-user .g-menu ul li").on("click", function(e) {
+        e.preventDefault();
+        $(this).closest("li").toggleClass("active");
+    });
+    $(".sidebar-user").each(function() {
+        var h_profile = $(this).find(".user-profile").height();
+        var h1_main = $(window).height();
+        $(this)
+            .find(".g-menu")
+            .css("max-height", h1_main - h_profile - 15);
+    });
+</script>

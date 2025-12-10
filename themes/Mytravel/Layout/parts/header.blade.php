@@ -214,9 +214,7 @@ if (isset($_GET['religion'])) {
 
                                 </a>
 
-                                <ul class="dropdown-menu text-left">
-
-
+                                <ul data-menu="navbar" class="dropdown-menu text-left">
 
                                     @if(Auth::user()->hasPermission('dashboard_vendor_access'))
 
@@ -243,6 +241,7 @@ if (isset($_GET['religion'])) {
                                     @if(Auth::user()->hasPermission('dashboard_access'))
 
                                     <li class="menu-hr"><a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Painel do Administrador")}}</a></li>
+
 
                                     @endif
 
@@ -288,7 +287,8 @@ if (isset($_GET['religion'])) {
 
                     <div class="avatar"></div>
 
-                    <ul>
+                    <ul style="
+                    overflow: scroll;height: 46vh;">
 
                         @if(!Auth::id() || Auth::user() === null )
 
@@ -328,13 +328,19 @@ if (isset($_GET['religion'])) {
                                 Minhas Verificações
                             </a>
                         </li>
-
+                        <li>
+                            <a href="/user/plan">
+                                <span class="icon text-center"><i class="fa fa-list-alt"></i></span>
+                                Meu Plano
+                            </a>
+                        </li>
                         <li>
                             <a href="/user/network">
                                 <span class="icon text-center"><i class="fa fa-sitemap"></i></span>
                                 Minha Rede
                             </a>
                         </li>
+
                         <li>
                             <a href="/user/booking-history">
                                 <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
@@ -348,6 +354,7 @@ if (isset($_GET['religion'])) {
                             </a>
                         </li>
 
+                        @include('Layout::parts.authmenu')
                         @if(Auth::user()->hasPermission('dashboard_vendor_access'))
 
                         <li>

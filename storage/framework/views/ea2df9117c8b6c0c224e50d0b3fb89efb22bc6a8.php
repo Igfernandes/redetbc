@@ -50,6 +50,8 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             <?php if(is_admin()): ?>
                             <li class=""><a href="<?php echo e(url('/admin')); ?>"><i class="icon ion-ios-ribbon"></i> <?php echo e(__("Painel de administração")); ?></a></li>
                             <?php endif; ?>
+
+
                             <li class="">
                                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-topbar').submit();"><i class="fa fa-sign-out"></i> <?php echo e(__("Sair")); ?></a>
                             </li>

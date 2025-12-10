@@ -170,7 +170,7 @@
   bottom: 10px;
   color: #fff;
   font-size: 14px;
-  background-color: #c47a1d;
+  background-color: #ffa636;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,7 +181,7 @@
   position: absolute;
   top: 15px;
   left: 15px;
-  background: #c47a1d;
+  background: #ffa636;
   display: inline-block;
   padding: 0 10px;
   color: #fff;
@@ -236,11 +236,11 @@
   position: relative;
   font-size: 16px;
 }
-.bravo_wrap .bravo_search_event .bravo-list-item .list-item .item-loop .service-review {
-  margin: 0 15px 0;
-}
 .bravo_wrap .bravo_search_event .bravo-list-item .list-item .item-loop .service-review .rate {
   color: #c47a1d;
+}
+.bravo_wrap .bravo_search_event .bravo-list-item .list-item .item-loop .service-review {
+  margin: 0 15px 0;
 }
 .bravo_wrap .bravo_search_event .bravo-list-item .list-item .item-loop .service-review .review {
   margin-left: 30px;
@@ -877,7 +877,7 @@
   bottom: 10px;
   color: #fff;
   font-size: 14px;
-  background-color: #c47a1d;
+  background-color: #ffa636;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -888,7 +888,7 @@
   position: absolute;
   top: 15px;
   left: 15px;
-  background: #c47a1d;
+  background: #ffa636;
   display: inline-block;
   padding: 0 10px;
   color: #fff;
@@ -943,11 +943,11 @@
   position: relative;
   font-size: 16px;
 }
-.bravo_wrap .bravo_detail_event .bravo-list-space-related .item-loop .service-review {
-  margin: 0 15px 0;
-}
 .bravo_wrap .bravo_detail_event .bravo-list-space-related .item-loop .service-review .rate {
   color: #c47a1d;
+}
+.bravo_wrap .bravo_detail_event .bravo-list-space-related .item-loop .service-review {
+  margin: 0 15px 0;
 }
 .bravo_wrap .bravo_detail_event .bravo-list-space-related .item-loop .service-review .review {
   margin-left: 30px;
@@ -1953,7 +1953,7 @@
   bottom: 10px;
   color: #fff;
   font-size: 14px;
-  background-color: #c47a1d;
+  background-color: #ffa636;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1964,7 +1964,7 @@
   position: absolute;
   top: 15px;
   left: 15px;
-  background: #c47a1d;
+  background: #ffa636;
   display: inline-block;
   padding: 0 10px;
   color: #fff;
@@ -2019,11 +2019,11 @@
   position: relative;
   font-size: 16px;
 }
-.has-search-map .bravo_search_map .results_map .item-loop .service-review {
-  margin: 0 15px 0;
-}
 .has-search-map .bravo_search_map .results_map .item-loop .service-review .rate {
   color: #c47a1d;
+}
+.has-search-map .bravo_search_map .results_map .item-loop .service-review {
+  margin: 0 15px 0;
 }
 .has-search-map .bravo_search_map .results_map .item-loop .service-review .review {
   margin-left: 30px;

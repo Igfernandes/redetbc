@@ -220,9 +220,7 @@ if (isset($_GET['religion'])) {
 
                                 </a>
 
-                                <ul class="dropdown-menu text-left">
-
-
+                                <ul data-menu="navbar" class="dropdown-menu text-left">
 
                                     <?php if(Auth::user()->hasPermission('dashboard_vendor_access')): ?>
 
@@ -249,6 +247,7 @@ if (isset($_GET['religion'])) {
                                     <?php if(Auth::user()->hasPermission('dashboard_access')): ?>
 
                                     <li class="menu-hr"><a href="<?php echo e(url('/admin')); ?>"><i class="icon ion-ios-ribbon"></i> <?php echo e(__("Painel do Administrador")); ?></a></li>
+
 
                                     <?php endif; ?>
 
@@ -295,7 +294,8 @@ if (isset($_GET['religion'])) {
 
                     <div class="avatar"></div>
 
-                    <ul>
+                    <ul style="
+                    overflow: scroll;height: 46vh;">
 
                         <?php if(!Auth::id() || Auth::user() === null ): ?>
 
@@ -337,13 +337,19 @@ if (isset($_GET['religion'])) {
                                 Minhas Verificações
                             </a>
                         </li>
-
+                        <li>
+                            <a href="/user/plan">
+                                <span class="icon text-center"><i class="fa fa-list-alt"></i></span>
+                                Meu Plano
+                            </a>
+                        </li>
                         <li>
                             <a href="/user/network">
                                 <span class="icon text-center"><i class="fa fa-sitemap"></i></span>
                                 Minha Rede
                             </a>
                         </li>
+
                         <li>
                             <a href="/user/booking-history">
                                 <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
@@ -357,6 +363,7 @@ if (isset($_GET['religion'])) {
                             </a>
                         </li>
 
+                        <?php echo $__env->make('Layout::parts.authmenu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         <?php if(Auth::user()->hasPermission('dashboard_vendor_access')): ?>
 
                         <li>

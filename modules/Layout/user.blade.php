@@ -184,7 +184,7 @@
         <div class="bravo_user_profile">
             <div class="container-fluid">
                 <div class="row row-eq-height">
-                    <div class="col-md-3">
+                    <div class="col-md-3 px-0">
                         @include('User::frontend.layouts.sidebar')
                     </div>
                     <div class="col-md-9">

@@ -38,7 +38,7 @@ $roles[strtolower($role['name'])] = $role['id'];
             </div>
             <ul>
                 @if(isset($roles['traveler']))
-                <li>
+                <li class="mx-1">
                     <input type="radio" name="role" value="{{$roles['traveler']}}">
                     <div class="text">
                         <i class="icofont-travelling"></i>
@@ -47,7 +47,7 @@ $roles[strtolower($role['name'])] = $role['id'];
                 </li>
                 @endif
                 @if(isset($roles['presenter']))
-                <li>
+                <li class="mx-1">
                     <input type="radio" name="role" value="{{$roles['presenter']}}">
                     <div class="text">
                         <i class="icofont-hotel-boy-alt"></i>
@@ -56,7 +56,7 @@ $roles[strtolower($role['name'])] = $role['id'];
                 </li>
                 @endif
                 @if(isset($roles['hotel']))
-                <li>
+                <li class="mx-1">
                     <input type="radio" name="role" value="{{$roles['hotel']}}">
                     <div class="text">
                         <i class="icofont-building-alt"></i>

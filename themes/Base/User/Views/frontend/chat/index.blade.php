@@ -1,17 +1,33 @@
-@extends('Layout::user')
+@extends('layouts.user')
 
 @section('content')
+<style>
+    .box-message {
+        height: 80vh;
+        overflow-y: auto;
+    }
+
+    @media (max-width: 768px) {
+        .content-solicitations{
+            margin-bottom: 1rem;
+        }
+        .box-message {
+            max-height: 40vh;
+        }
+
+    }
+</style>
 <div class="container my-5" style="position: sticky; top: 0;left: 0;">
     <div class="row">
         {{-- Sidebar --}}
-        <div class="col-12 col-md-4" style="height: 80vh; overflow-y: auto;">
+        <div class="col-12 col-md-4 content-solicitations">
             <div class="card shadow-sm">
                 <div class="card-header bg-info text-white">
                     <div>
                         <h5 class="mb-0">{{ __('Minhas Solicitações') }}</h5>
                     </div>
                 </div>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush  box-message">
                     @foreach($bookings as $booking)
                     @php
                     $isVendor = $booking->vendor_id === $userId;
@@ -21,7 +37,7 @@
                     'draft' => 'warning',
                     };
                     @endphp
-                    <li class="list-group-item booking-item"  style="cursor:pointer;">
+                    <li class="list-group-item booking-item" style="cursor:pointer;">
 
                         <div class="row mb-1">
                             <div class="col-12 col-md-8">
@@ -47,6 +63,11 @@
                         </div>
                     </li>
                     @endforeach
+                    @if(count($bookings) === 0)
+                    <li class="list-group-item text-center text-muted">
+                        {{ __('Nenhuma solicitação encontrada.') }}
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -58,7 +79,7 @@
                     <h5 class="mb-0" id="chatTitle">{{ __('Chat da Solicitação') }}</h5>
                 </div>
                 <div class="card-body" id="chatBox" style="height:400px; overflow-y:auto;">
-                    <div class="text-center text-muted mt-5">{{ __('Selecione uma solicitação à esquerda.') }}</div>
+                    <div class="text-center text-muted mt-5">{{ __('Selecione uma solicitação na lista.') }}</div>
                 </div>
                 <div class="card-footer">
                     <form id="chatForm" class="d-flex">

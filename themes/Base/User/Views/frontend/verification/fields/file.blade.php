@@ -9,7 +9,7 @@
             :
         </label>
         <div class="col-md-{{$value_col_size ?? 4}} btn-upload-private-wrap">
-            <div class="private-file-lists mb-2"  style="word-break: break-all;">
+            <div class="private-file-lists mb-2" style="word-break: break-all;">
                 @php ($old = json_decode($field['data'],true))
                 @if(!empty($old))
                 <input type="hidden" name="verify_data_{{$field['id']}}" value="{{($field['data'])}}">
@@ -18,9 +18,18 @@
                 @endif
             </div>
             @if(empty($only_show_data))
-            <span class="btn btn-primary btn-sm "><i class="fa fa-upload"></i>&nbsp;&nbsp;  {{__('Selecionar arquivo')}}
-                <input class="btn-upload-private-file" data-name="verify_data_{{$field['id']}}" data-multiple="" type="file">
-            </span>
+            <div class="file-group">
+                <div class="not_loading">
+                    <span class="btn btn-primary btn-sm "><i class="fa fa-upload"></i>&nbsp;&nbsp; {{__('Selecione o arquivo')}}
+                        <input class="btn-upload-private-file" data-name="verify_data_{{$field['id']}}" data-multiple="" type="file">
+                    </span>
+                </div>
+                <div class="is_loading">
+                    <span class="btn btn-primary btn-sm px-4">
+                        <i class="fa fa-spinner fa-spin"></i> {{__('Carregando...')}}
+                    </span>
+                </div>
+            </div>
             @else
             @if(empty($field['data']))
             <div><strong>{{__('N/A')}}</strong></div>

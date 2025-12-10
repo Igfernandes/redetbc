@@ -35,7 +35,7 @@
                                 {{$isVerification}}
                                 <a href="{{route('user.profile.index')}}"><i class="icon ion-md-construct"></i> {{__("Meu perfil")}}</a>
                             </li>
-                            @if(setting_item('inbox_enable')  && $isVerification)
+                            @if(setting_item('inbox_enable') && $isVerification)
                             <li class="menu-hr">
                                 <a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Reservas")}}
                                     @if($count = auth()->user()->unseen_message_count)
@@ -44,6 +44,7 @@
                                 </a>
                             </li>
                             @endif
+
                             <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
                             <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 

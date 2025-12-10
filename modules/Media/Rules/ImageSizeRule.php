@@ -55,11 +55,11 @@ class ImageSizeRule implements Rule
             return false;
         }
         if (!empty($this->maxWidth) and $imagedata[0] > $this->maxWidth) {
-            $this->lastError = __("A largura máxima permitida é: :number mb", ['number' => $this->maxWidth]);
+            $this->lastError = __("A largura máxima permitida é: :number ", ['number' => $imagedata[0]]);
             return false;
         }
         if (!empty($this->maxHeight) and $imagedata[1] > $this->maxHeight) {
-            $this->lastError = __("A altura máxima permitida é: :number mb", ['number' => $this->maxHeight]);
+            $this->lastError = __("A altura máxima permitida é: :number ", ['number' => $imagedata[1]]);
             return false;
         }
         return true;

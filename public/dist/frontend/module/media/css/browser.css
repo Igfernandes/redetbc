@@ -155,7 +155,7 @@
 }
 
 .cdn-browser .clear-selected {
-  color: #003583;
+  color: red;
   font-size: 14px;
   cursor: pointer;
 }
@@ -163,7 +163,7 @@
 .cdn-browser .no-files-text {
   padding: 20px;
   font-size: 20px;
-  color: #003583;
+  color: red;
 }
 
 .cdn-browser .upload-new .filepond--root {

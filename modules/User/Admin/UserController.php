@@ -154,10 +154,6 @@ class UserController extends AdminController
 
     public function store(Request $request, $id)
     {
-        if (is_demo_mode()) {
-            return back()->with('danger',  __('DEMO Mode: You can not do this'));
-        }
-
         if ($id and $id > 0) {
             $this->checkPermission('user_update');
             $row = User::find($id);
@@ -184,14 +180,6 @@ class UserController extends AdminController
                 'max:255',
                 $id > 0 ? Rule::unique('users')->ignore($row->id) : Rule::unique('users')
             ],
-            'user_name' => [
-                'required',
-                'max:255',
-                'min:4',
-                'string',
-                'alpha_dash',
-                $id > 0 ? Rule::unique('users')->ignore($row->id) : Rule::unique('users')
-            ],
         ];
 
         $request->validate($rules);
@@ -199,7 +187,7 @@ class UserController extends AdminController
         $data = [
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
-            'user_name' => $request->input('user_name'),
+            'user_name' => $request->input('first_name'),
             'phone' => $request->input('phone'),
             'birthday' => $request->input('birthday') ? date("Y-m-d", strtotime($request->input('birthday'))) : null,
             'bio' => $request->input('bio'),

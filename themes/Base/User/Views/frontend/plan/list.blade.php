@@ -33,9 +33,18 @@
                             </div>
                             <div class="table-content">
                                 {!! clean($translate->content) !!}
+                                <div class="annual-price-value"
+                                    style="text-align: center; font-size: 1.8rem; font-weight: 700; color: #1b1b1b;margin-top: 1rem;">
+                                    <span style="font-size: 0.85rem; font-weight: 500; color: #888;">Total de &nbsp;</span>
+                                    <span style="color: #003583;"> {{ $plan->price ? format_money($plan->price * 12) : __('Grátis') }}</span>
+                                    <span style="font-size: 0.85rem; font-weight: 500; color: #888;">
+                                        / {{ __('Ano') }}
+                                    </span>
+                                </div>
                             </div>
                             <div class="table-footer">
-                                @if($user and $user_plan = $user->user_plan and $user_plan->plan_id == $plan->id)
+
+                                @if($user and $user_plan=$user->user_plan and $user_plan->plan_id == $plan->id)
                                 @if($user_plan->is_valid)
                                 <div class="d-flex text-center">
                                     <a href="{{ route('user.plan') }}" class="theme-btn btn-style-one mr-2">{{__("Plano Atual")}}</a>

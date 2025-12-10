@@ -276,17 +276,7 @@ setting_item('tour_location_search_style')=='autocompletePlace' || setting_item(
 
 <?php if(setting_item('cookie_agreement_enable')==1 and request()->cookie('booking_cookie_agreement_enable') !=1 and !is_api() and !isset($_COOKIE['booking_cookie_agreement_enable'])): ?>
 
-<div class="booking_cookie_agreement p-3 fixed-bottom">
 
-    <div class="container d-flex ">
-
-        <div class="content-cookie"><?php echo setting_item_with_lang('cookie_agreement_content'); ?></div>
-
-        <button class="btn save-cookie"><?php echo setting_item_with_lang('cookie_agreement_button_text'); ?></button>
-
-    </div>
-
-</div>
 
 <script>
     var save_cookie_url = "<?php echo e(route('core.cookie.check')); ?>";

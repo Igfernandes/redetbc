@@ -55,13 +55,13 @@ trait Checkout
 
         $payload = [
             "billingTypes" => ["CREDIT_CARD", "PIX"],
-            "chargeTypes" => ["DETACHED"], 
+            "chargeTypes" => ["DETACHED"],
             "minutesToExpire" => 120,
             "callback" => $options['callback'],
             "items" => [
                 [
                     "name" => "Plano " . $plan->title,
-                    "description" => strip_tags($plan->content),
+                    "description" => "Solicitaçao de adesão ao plano " . $plan->title,
                     "quantity" => 1,
                     "value" => $plan->annual_price
                 ]
@@ -70,7 +70,7 @@ trait Checkout
 
         if (isset($options['customer']) && !empty($options['customer']))
             $payload['customer'] = $options['customer'];
-        
+
         $response = Http::withHeaders([
             'access_token' => env('GATEWAY_ACCESS_TOKEN'), // se precisar de token
         ])->post(env('GATEWAY_API_URL') . "/checkouts", $payload);
@@ -78,7 +78,7 @@ trait Checkout
         $data = $response->json();
         $plan_page = route('plan');
 
-        if (empty($data))
+        if (empty($data) || !isset($data['id']) || $response->failed())
             redirect()->to($plan_page)->with("warning", __("Estamos com problemas técnicos para prosseguir com o pagamento. Tente novamente mais tarde."));
 
         $userPlan = new UserPlan();

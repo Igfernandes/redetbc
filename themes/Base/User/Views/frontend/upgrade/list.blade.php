@@ -32,6 +32,9 @@
                                 {!! clean($translate->content) !!}
                             </div>
                             <div class="table-footer">
+                                <div>
+                                    <div class="price-subtitle">{{__('Total:')}} <strong>{{ $plan->price ? format_money($plan->price * 12) : __('Grátis')}}</strong></div>
+                                </div>
                                 @if($user and $user_plan = $user->user_plan and $user_plan->plan_id == $plan->id)
                                 @if($user_plan->is_valid)
                                 <div class="d-flex text-center">

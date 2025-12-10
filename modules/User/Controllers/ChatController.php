@@ -23,13 +23,27 @@ class ChatController extends FrontendController
             })
             ->orderByDesc('id')
             ->get();
-
-        return view("User::frontend.chat.index", [
+        $user = Auth::user();
+        $data = [
+            'user'        => $user,
+            'fields'      => $user->verification_fields,
             'page_title' => __("Mensagens"),
             'bookings'   => $bookings,
             'bookingTarget' => $request->get('bk'),
             'userId'     => $userId,
-        ]);
+            'breadcrumbs' => [
+                [
+                    'name' => __('Verificação'),
+                    'url'  => route('user.verification.index')
+                ],
+                [
+                    'name'  => __('Atualizar dados de verificação'),
+                    'class' => 'active'
+                ],
+            ],
+        ];
+        
+        return view("User::frontend.chat.index", $data);
     }
 
     // Carrega mensagens do chat

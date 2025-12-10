@@ -75,9 +75,9 @@
                                         <td class="status">{{$row->verify_submit_status}}</td>
                                         <td>
                                             @if($row->verify_submit_status == "completed")
-                                                <a class="btn btn-sm btn-info" href="{{route('user.admin.verification.detail',['id'=>$row->id])}}">{{__('Ver verificação')}}</a>
+                                                <a class="btn btn-sm btn-success" href="{{route('user.admin.verification.detail',['id'=>$row->id])}}">{{__('Ver verificação')}}</a>
                                             @else
-                                                <a class="btn btn-sm btn-primary" href="{{route('user.admin.verification.detail',['id'=>$row->id])}}">{{__('Ver solicitação')}}</a>
+                                                <a class="btn btn-sm btn-warning" href="{{route('user.admin.verification.detail',['id'=>$row->id])}}">{{__('Ver solicitação')}}</a>
                                             @endif
                                         </td>
                                     </tr>

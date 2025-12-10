@@ -1,20 +1,20 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/laravel-mix/src/builder/mock-entry.js":
-/*!************************************************************!*\
-  !*** ./node_modules/laravel-mix/src/builder/mock-entry.js ***!
-  \************************************************************/
+/***/ "../../../node_modules/laravel-mix/src/builder/mock-entry.js":
+/*!*******************************************************************!*\
+  !*** ../../../node_modules/laravel-mix/src/builder/mock-entry.js ***!
+  \*******************************************************************/
 /***/ (() => {
 
 
 
 /***/ }),
 
-/***/ "../../module/user/scss/profile.scss":
-/*!*******************************************!*\
-  !*** ../../module/user/scss/profile.scss ***!
-  \*******************************************/
+/***/ "../../module/assistance/scss/assistance.scss":
+/*!****************************************************!*\
+  !*** ../../module/assistance/scss/assistance.scss ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -24,10 +24,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../module/tour/scss/tour.scss":
-/*!****************************************!*\
-  !*** ../../module/tour/scss/tour.scss ***!
-  \****************************************/
+/***/ "../../module/booking/scss/checkout.scss":
+/*!***********************************************!*\
+  !*** ../../module/booking/scss/checkout.scss ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../../module/event/scss/event.scss":
+/*!******************************************!*\
+  !*** ../../module/event/scss/event.scss ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -40,45 +53,6 @@ __webpack_require__.r(__webpack_exports__);
 /***/ "../../module/hotel/scss/hotel.scss":
 /*!******************************************!*\
   !*** ../../module/hotel/scss/hotel.scss ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "../../module/news/scss/news.scss":
-/*!****************************************!*\
-  !*** ../../module/news/scss/news.scss ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "../../module/media/scss/browser.scss":
-/*!********************************************!*\
-  !*** ../../module/media/scss/browser.scss ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "../../module/space/scss/space.scss":
-/*!******************************************!*\
-  !*** ../../module/space/scss/space.scss ***!
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -102,10 +76,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../module/event/scss/event.scss":
-/*!******************************************!*\
-  !*** ../../module/event/scss/event.scss ***!
-  \******************************************/
+/***/ "../../module/media/scss/browser.scss":
+/*!********************************************!*\
+  !*** ../../module/media/scss/browser.scss ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../../module/news/scss/news.scss":
+/*!****************************************!*\
+  !*** ../../module/news/scss/news.scss ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -128,11 +115,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-
-/***/ "../../module/assistance/scss/assistance.scss":
-/*!****************************************!*\
-  !*** ../../module/assistance/scss/assistance.scss ***!
-  \****************************************/
+/***/ "../../module/space/scss/space.scss":
+/*!******************************************!*\
+  !*** ../../module/space/scss/space.scss ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -146,6 +132,45 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ../../module/support/scss/support.scss ***!
   \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../../module/tour/scss/tour.scss":
+/*!****************************************!*\
+  !*** ../../module/tour/scss/tour.scss ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../../module/user/scss/profile.scss":
+/*!*******************************************!*\
+  !*** ../../module/user/scss/profile.scss ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../../module/user/scss/user.scss":
+/*!****************************************!*\
+  !*** ../../module/user/scss/user.scss ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -181,19 +206,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../sass/rtl.scss":
-/*!***************************!*\
-  !*** ../../sass/rtl.scss ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "../../sass/notification.scss":
 /*!************************************!*\
   !*** ../../sass/notification.scss ***!
@@ -207,23 +219,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../module/booking/scss/checkout.scss":
-/*!***********************************************!*\
-  !*** ../../module/booking/scss/checkout.scss ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "../../module/user/scss/user.scss":
-/*!****************************************!*\
-  !*** ../../module/user/scss/user.scss ***!
-  \****************************************/
+/***/ "../../sass/rtl.scss":
+/*!***************************!*\
+  !*** ../../sass/rtl.scss ***!
+  \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -383,5 +382,28 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	
 /************************************************************************/
 /******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../../node_modules/laravel-mix/src/builder/mock-entry.js")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../sass/contact.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../sass/rtl.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../sass/notification.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/booking/scss/checkout.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/user/scss/user.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/user/scss/profile.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/tour/scss/tour.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/hotel/scss/hotel.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/news/scss/news.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/media/scss/browser.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/space/scss/space.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/location/scss/location.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/event/scss/event.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/social/scss/social.scss")))
+/******/ 	__webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/assistance/scss/assistance.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["module/user/css/user","module/booking/css/checkout","css/notification","css/rtl","css/contact","css/app","module/support/css/support","module/assistance/css/assistance","module/social/css/social","module/event/css/event","module/location/css/location","module/space/css/space","module/media/css/browser","module/news/css/news","module/hotel/css/hotel","module/tour/css/tour","module/user/css/profile"], () => (__webpack_require__("../../module/support/scss/support.scss")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
-/******/ })();
+/******/ })()
+;

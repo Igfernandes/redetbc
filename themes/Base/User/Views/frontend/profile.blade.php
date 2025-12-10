@@ -45,6 +45,35 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label>{{ __("Estado Civil") }}</label>
+                <select name="civil_status" class="form-control">
+                    <option value="">{{ __("Selecione") }}</option>
+                    <option value="SINGLE" {{ old('civil_status', $dataUser->civil_status ?? '') == 'SINGLE' ? 'selected' : '' }}>
+                        {{ __("Solteiro") }}
+                    </option>
+                    <option value="MARRIED" {{ old('civil_status', $dataUser->civil_status ?? '') == 'MARRIED' ? 'selected' : '' }}>
+                        {{ __("Casado") }}
+                    </option>
+                </select>
+                <i class="fa fa-church input-icon"></i>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Nome do Conjugue")}}</label>
+                        <input type="text" value="{{old('conjugue_name',$dataUser->conjugue_name)}}" name="conjugue_name" placeholder="{{__("Nome do Conjugue")}}" class="form-control">
+                        <i class="fa fa-user input-icon"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Telefone do Conjugue")}}</label>
+                        <input type="text" value="{{old('conjugue_phone',$dataUser->conjugue_phone)}}" name="conjugue_phone" placeholder="{{__("Telefone do Conjugue")}}" class="form-control">
+                        <i class="fa fa-phone input-icon"></i>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
