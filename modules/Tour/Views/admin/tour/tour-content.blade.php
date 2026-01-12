@@ -108,7 +108,7 @@
                 <div class="item" data-number="{{$key}}">
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="text" name="faqs[{{$key}}][title]" class="form-control" value="{{$faq['title']}}" placeholder="{{__('Ex: Quando e onde o passeio termina?')}}">
+                            <input type="text" name="faqs[{{$key}}][title]" class="form-control" value="{{$faq['title']}}" placeholder="{{__('Ex: Quando e onde o Passeio termina?')}}">
                         </div>
                         <div class="col-md-6">
                             <textarea name="faqs[{{$key}}][content]" class="form-control full-h" placeholder="...">{{$faq['content']}}</textarea>
@@ -128,7 +128,7 @@
                 <div class="item" data-number="__number__">
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="text" __name__="faqs[__number__][title]" class="form-control" placeholder="{{__('Ex: Quando e onde o passeio termina?')}}">
+                            <input type="text" __name__="faqs[__number__][title]" class="form-control" placeholder="{{__('Ex: Quando e onde o Passeio termina?')}}">
                         </div>
                         <div class="col-md-6">
                             <textarea __name__="faqs[__number__][content]" class="form-control full-h" placeholder="..."></textarea>

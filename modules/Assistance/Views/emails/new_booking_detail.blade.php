@@ -2,31 +2,31 @@
 $translation = $service->translate();
 $lang_local = app()->getLocale();
 ?>
-<div class="b-panel-title">{{__('Informações de serviço')}}</div>
+<div class="b-panel-title">{{__('Informações do Serviço')}}</div>
 <div class="b-table-wrap">
     <table class="b-table" cellspacing="0" cellpadding="0">
         <tr>
-            <td class="label">{{__('Número de reserva')}}</td>
+            <td class="label">{{__('Número da Reserva')}}</td>
             <td class="val">#{{$booking->id}}</td>
         </tr>
         <tr>
-            <td class="label">{{__('Estado da reserva')}}</td>
+            <td class="label">{{__('Status da Reserva')}}</td>
             <td class="val">{{$booking->statusName}}</td>
         </tr>
         @if($booking->gatewayObj)
             <tr>
-                <td class="label">{{__('Método de pagamento')}}</td>
+                <td class="label">{{__('Método de Pagamento')}}</td>
                 <td class="val">{{$booking->gatewayObj->getOption('name')}}</td>
             </tr>
         @endif
         @if($booking->gatewayObj and $note = $booking->gatewayObj->getOption('payment_note'))
             <tr>
-                <td class="label">{{__('Nota de pagamento')}}</td>
+                <td class="label">{{__('Nota de Pagamento')}}</td>
                 <td class="val">{!! clean($note) !!}</td>
             </tr>
         @endif
         <tr>
-            <td class="label">{{__('Nome do serviço')}}</td>
+            <td class="label">{{__('Nome do Serviço')}}</td>
             <td class="val">
                 <a href="{{$service->getDetailUrl()}}">{!! clean($translation->title) !!}</a>
             </td>
@@ -42,37 +42,63 @@ $lang_local = app()->getLocale();
         </tr>
         @if($booking->start_date && $booking->end_date)
             <tr>
-                <td class="label">{{__('Data de início')}}</td>
-                <td class="val">{{display_datetime($booking->start_date)}}</td>
+                <td class="label">{{__('Data de Início')}}</td>
+                <td class="val">{{display_date($booking->start_date)}}</td>
             </tr>
+
             <tr>
-                <td class="label">{{__('Data de término:')}}</td>
+                <td class="label">{{__('Duração:')}}</td>
                 <td class="val">
-                    {{display_datetime($booking->end_date)}}
-                </td>
-            </tr>
-            <tr>
-                <td class="label">{{__('Durações:')}}</td>
-                <td class="val">
-                    @if($booking->getMeta('type_date') == 'per_hour')
-                        {{$booking->duration_hours}} {{ Str::plural(__('hora'),$booking->duration_hours) }}
-                    @else
-                        {{$booking->duration_nights}} {{ Str::plural(__('dia'),$booking->duration_nights) }}
-                    @endif
+                    {{human_time_diff($booking->end_date,$booking->start_date)}}
                 </td>
             </tr>
         @endif
 
+        @php $person_types = $booking->getJsonMeta('person_types')
+        @endphp
+
+        @if(!empty($person_types))
+            @foreach($person_types as $type)
+                <tr>
+                    <td class="label">{{$type['name']}}:</td>
+                    <td class="val">
+                        <strong>{{$type['number']}}</strong>
+                    </td>
+                </tr>
+            @endforeach
+        @else
+            <tr>
+                <td class="label">{{__("Convidados")}}:</td>
+                <td class="val">
+                    <strong>{{$booking->total_guests}}</strong>
+                </td>
+            </tr>
+        @endif
         <tr>
             <td class="label">{{__('Preços')}}</td>
-            <td class="val">
+            <td class="val no-r-padding">
                 <table class="pricing-list" width="100%">
-                    <tr>
-                        <td class="label">{{ __("Preço de aluguel:") }}</td>
-                        <td class="val no-r-padding">
-                            <strong>{{format_money($booking->total_before_fees)}}</strong>
-                        </td>
-                    </tr>
+                    @php $person_types = $booking->getJsonMeta('person_types')
+                    @endphp
+
+                    @if(!empty($person_types))
+                        @foreach($person_types as $type)
+                            <tr>
+                                <td class="label">{{$type['name']}}: {{$type['number']}} * {{format_money($type['price'])}}</td>
+                                <td class="val no-r-padding">
+                                    <strong>{{format_money($type['price'] * $type['number'])}}</strong>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td class="label">{{__("Convidados")}}: {{$booking->total_guests}} {{format_money($booking->getMeta('base_price'))}}</td>
+                            <td class="val no-r-padding">
+                                <strong>{{format_money($booking->getMeta('base_price') * $booking->total_guests)}}</strong>
+                            </td>
+                        </tr>
+                    @endif
+
                     @php $extra_price = $booking->getJsonMeta('extra_price')@endphp
 
                     @if(!empty($extra_price))
@@ -82,18 +108,47 @@ $lang_local = app()->getLocale();
                         <tr class="">
                             <td colspan="2" class="no-r-padding no-b-border">
                                 <table width="100%">
-                                    @foreach($extra_price as $type)
-                                        <tr>
-                                            <td class="label">{{$type['name']}}:</td>
-                                            <td class="val no-r-padding">
-                                                <strong>{{format_money($type['total'] ?? 0)}}</strong>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                @foreach($extra_price as $type)
+                                    <tr>
+                                        <td class="label">{{$type['name']}}:</td>
+                                        <td class="val no-r-padding">
+                                            <strong>{{format_money($type['total'] ?? 0)}}</strong>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </table>
                             </td>
                         </tr>
 
+                    @endif
+
+                    @php $discount_by_people = $booking->getJsonMeta('discount_by_people')
+                    @endphp
+                    @if(!empty($discount_by_people))
+                        <tr>
+                            <td colspan="2" class="label-title"><strong>{{__("Descontos:")}}</strong></td>
+                        </tr>
+                        <tr class="">
+                            <td colspan="2" class="no-r-padding no-b-border">
+                                <table width="100%">
+                                @foreach($discount_by_people as $type)
+                                    <tr>
+                                        <td class="label">
+                                            @if(!$type['to'])
+                                                {{__('a partir de :from convidados',['from'=>$type['from']])}}
+                                            @else
+                                                {{__(':from - :to convidados',['from'=>$type['from'],'to'=>$type['to']])}}
+                                            @endif
+                                            :
+                                        </td>
+                                        <td class="val no-r-padding">
+                                            <strong>- {{format_money($type['total'] ?? 0)}}</strong>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </table>
+                            </td>
+                        </tr>
                     @endif
 
                     @php
@@ -144,13 +199,13 @@ $lang_local = app()->getLocale();
             <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->paid)}}</strong></td>
         </tr>
         @if($booking->total > $booking->paid)
-        <tr>
-            <td class="label fsz21">{{__('Permanecer')}}</td>
-            <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
-        </tr>
+            <tr>
+                <td class="label fsz21">{{__('Restante')}}</td>
+                <td class="val fsz21"><strong style="color: #FA5636">{{format_money($booking->total - $booking->paid)}}</strong></td>
+            </tr>
         @endif
     </table>
 </div>
 <div class="text-center mt20">
-    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn btn-primary manage-booking-btn">{{__('Gerenciar reservas')}}</a>
+    <a href="{{ route("user.booking_history") }}" target="_blank" class="btn btn-primary manage-booking-btn">{{__('Gerenciar Reservas')}}</a>
 </div>

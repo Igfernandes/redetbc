@@ -236,12 +236,12 @@ foreach ($menus as $k => $menuItem) {
                     <li class=" depth-0"><a>Acomodações <i class="caret fa fa-angle-down"></i></a>
                         <ul class="children-menu menu-dropdown">
                             <li class=" depth-1"><a target="" href="/page/home-hotel">Hotéis</a></li>
-                            <li class=" depth-1"><a target="" href="http://localhost:8000/page/home-space">Casas</a></li>
+                            <li class=" depth-1"><a target="" href="http://localhost:8000/page/home-space">Espaços</a></li>
                         </ul>
                     </li>
-                    <li class=" depth-0"><a>Experiências <i class="caret fa fa-angle-down"></i></a>
+                    <li class=" depth-0"><a>Passeios <i class="caret fa fa-angle-down"></i></a>
                         <ul class="children-menu menu-dropdown">
-                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=11">Casais com Fé</a></li>
+                            <li class=" depth-1"><a target="" href="/tour?cat_id[]=11">espaçois com Fé</a></li>
                             <li class=" depth-1"><a target="" href="/tour?cat_id[]=10">Terapia Natural e Descanso</a></li>
                             <li class=" depth-1"><a target="" href="/tour?cat_id[]=9">Cultura Cristã</a></li>
                             <li class=" depth-1"><a target="" href="/tour?cat_id[]=6">História e Fé</a></li>
@@ -252,7 +252,7 @@ foreach ($menus as $k => $menuItem) {
                             <li class=" depth-1"><a target="" href="/tour?cat_id[]=1">Motivacional</a></li>
                         </ul>
                     </li>
-                    <li class=" depth-0"><a target="" href="/page/eventos">Eventos</a></li>
+                    <!-- <li class=" depth-0"><a target="" href="/page/eventos">Eventos</a></li> -->
                     <li class=" depth-0"><a target="" href="/page/noticias">Notícias</a></li>
                 </ul>
             </div>

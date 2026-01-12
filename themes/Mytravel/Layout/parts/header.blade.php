@@ -55,6 +55,111 @@
             display: none;
         }
     }
+
+    .menu-main-mobile::-webkit-scrollbar {
+        width: 10px;
+        /* largura da barra vertical */
+        height: 10px;
+        /* altura da barra horizontal */
+    }
+
+    .menu-main-mobile::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        /* fundo da barra */
+        border-radius: 4px;
+    }
+
+    .menu-main-mobile::-webkit-scrollbar-thumb {
+        background-color: #1a2b48;
+        /* cor da barra de rolagem */
+        border-radius: 4px;
+        border: 2px solid #f1f1f1;
+        /* espaço entre thumb e track */
+    }
+
+    .menu-main-mobile::-webkit-scrollbar-thumb {
+        background-color: #16203a;
+        /* cor ao passar o mouse */
+    }
+
+    /* Para Firefox */
+    .menu-main-mobile {
+        scrollbar-width: thin;
+        /* "thin" ou "auto" */
+        scrollbar-color: #1a2b48 #f1f1f1;
+        /* thumb e track */
+    }
+
+    .menu-main-content {
+        position: relative;
+    }
+
+    .menu-main-content .arrows .arrow {
+        transform: rotate(90deg);
+        color: #1a2b48;
+        text-shadow: 0 0 BLACK;
+        font-size: 1.2rem;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 55px;
+        height: 28px;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #2196F3;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
 </style>
 <?php
 $religion = null;
@@ -79,18 +184,18 @@ if (isset($_GET['religion'])) {
     @if(Auth::user() == null || !Auth::user()->user_plan)
     <div class="subscribe-plan">
         <div class="content">
-            @if(Auth::user() && Auth::user()->user_plan)
+            @if(Auth::user() && !Auth::user()->user_plan)
             <p>
                 {{ __("Junte-se ao clube: escolha seu plano e tenha acesso completo.") }}
             </p> &nbsp;
             @else
             <p>
-                {{ __("Junte-se ao clube: Faça o seu cadastro para ter acesso completo.") }}
+                {{ __("Viaje com 0 taxas. Seja Membro.") }} 
             </p> &nbsp;
             @endif
 
             @if(Auth::user() == null)
-            <a data-target="#register" data-toggle="modal">{{ __("Cadastre-se agora") }}</a>
+            <a data-target="#register" data-toggle="modal">{{ __("Cadastre-se Agora") }}</a>
             @else
             <a href="/plan">{{ __("Escolha seu plano") }}</a>
             @endif
@@ -147,18 +252,31 @@ if (isset($_GET['religion'])) {
 
                             </a>
 
-                            <div class="filter-key  ml-2">
-                                <a href="./?religion=CATHOLIC">
+                            <div class="filter-key d-flex  ml-2" style="align-items: center;">
+                                <a class="mb-2" href="./?religion=CATHOLIC">
                                     <span class="text" @if($religion==="CATHOLIC" ) style="color: #ffa636;" @endif>
-                                        {{ __('Católico') }}
+                                        <strong> {{ __('Católico') }}</strong>
                                     </span>
                                 </a>
-                                <i class="icofont-key"></i>
-                                <a href="./?religion=EVANGELIC">
+                                <label class="switch mx-2">
+                                    <input type="checkbox" {{ $religion==="EVANGELIC" ? 'checked' : '' }}>
+                                    <span class="slider round"></span>
+                                </label>
+                                <a class="mb-2" href="./?religion=EVANGELIC">
                                     <span class="text" @if($religion==="EVANGELIC" ) style="color: #ffa636;" @endif>
-                                        {{ __('Evangélico') }}
+                                        <strong>{{ __('Evangélico') }}</strong>
                                     </span>
                                 </a>
+                                <script>
+                                    const switcher = document.querySelector('.switch input');
+                                    switcher.addEventListener('change', function() {
+                                        if (this.checked) {
+                                            window.location.href = './?religion=EVANGELIC';
+                                        } else {
+                                            window.location.href = './?religion=CATHOLIC';
+                                        }
+                                    });
+                                </script>
                             </div>
                         </div>
 
@@ -287,119 +405,126 @@ if (isset($_GET['religion'])) {
 
                     <div class="avatar"></div>
 
-                    <ul style="
-                    overflow: scroll;height: 46vh;">
 
-                        @if(!Auth::id() || Auth::user() === null )
+                    <div class="menu-main-content">
+                        <div class="arrows">
+                            <span class="arrow">
+                                < </span>
+                                    <span> ></span>
+                        </div>
+                        <ul class="menu-main-mobile" style="overflow: scroll;height: 46vh;">
 
-                        <li>
+                            @if(!Auth::id() || Auth::user() === null )
 
-                            <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Entrar')}}</a>
+                            <li>
 
-                        </li>
+                                <a href="#login" data-toggle="modal" data-target="#login" class="login">{{__('Entrar')}}</a>
 
-                        <li>
+                            </li>
 
-                            <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Cadastrar-se')}}</a>
+                            <li>
 
-                        </li>
+                                <a href="#register" data-toggle="modal" data-target="#register" class="signup">{{__('Cadastrar-se')}}</a>
 
-                        @else
+                            </li>
 
-                        <li>
+                            @else
 
-                            <a href="{{route('user.profile.index')}}">
+                            <li>
 
-                                </i> {{__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                                <a href="{{route('user.profile.index')}}">
 
-                            </a>
+                                    </i> {{__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])}}
 
-                        </li>
+                                </a>
 
-                        <li style="margin-top: 2rem;">
+                            </li>
 
-                            <a href="{{route('user.profile.index')}}">
-                                <i class="icon ion-md-construct"></i> {{__("Meu perfil")}}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/verification">
-                                <span class="icon text-center"><i class="fa fa-id-card-o"></i></span>
-                                Minhas Verificações
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/plan">
-                                <span class="icon text-center"><i class="fa fa-list-alt"></i></span>
-                                Meu Plano
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/network">
-                                <span class="icon text-center"><i class="fa fa-sitemap"></i></span>
-                                Minha Rede
-                            </a>
-                        </li>
+                            <li style="margin-top: 2rem;">
 
-                        <li>
-                            <a href="/user/booking-history">
-                                <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
-                                Minhas Reservas
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/chat">
-                                <span class="icon text-center"><i class="fa fa-comments"></i></span>
-                                Minhas Mensagens
-                            </a>
-                        </li>
+                                <a href="{{route('user.profile.index')}}">
+                                    <i class="icon ion-md-construct"></i> {{__("Meu perfil")}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/verification">
+                                    <span class="icon text-center"><i class="fa fa-id-card-o"></i></span>
+                                    Minhas Verificações
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/plan">
+                                    <span class="icon text-center"><i class="fa fa-list-alt"></i></span>
+                                    Meu Plano
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/network">
+                                    <span class="icon text-center"><i class="fa fa-sitemap"></i></span>
+                                    Minha Rede
+                                </a>
+                            </li>
 
-                        @include('Layout::parts.authmenu')
-                        @if(Auth::user()->hasPermission('dashboard_vendor_access'))
+                            <li>
+                                <a href="/user/booking-history">
+                                    <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
+                                    Minhas Reservas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/chat">
+                                    <span class="icon text-center"><i class="fa fa-comments"></i></span>
+                                    Minhas Mensagens
+                                </a>
+                            </li>
 
-                        <li>
+                            @include('Layout::parts.authmenu')
+                            @if(Auth::user()->hasPermission('dashboard_vendor_access'))
 
-                            <a href="{{route('vendor.dashboard')}}">
+                            <li>
 
-                                <i class="icon ion-md-analytics"></i> {{__("Painel do Fornecedor")}}
+                                <a href="{{route('vendor.dashboard')}}">
 
-                            </a>
+                                    <i class="icon ion-md-analytics"></i> {{__("Painel do Fornecedor")}}
 
-                        </li>
+                                </a>
 
-                        @endif
+                            </li>
 
-                        @if(Auth::user()->hasPermission('dashboard_access'))
+                            @endif
 
-                        <li>
+                            @if(Auth::user()->hasPermission('dashboard_access'))
 
-                            <a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Painel do Administrador")}}</a>
+                            <li>
 
-                        </li>
+                                <a href="{{url('/admin')}}"><i class="icon ion-ios-ribbon"></i> {{__("Painel do Administrador")}}</a>
 
-                        @endif
+                            </li>
 
-                        <li style="margin-top: 2rem;">
+                            @endif
 
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
+                            <li style="margin-top: 2rem;">
 
-                                <i class="fa fa-sign-out"></i> {{__("Sair")}}
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
 
-                            </a>
+                                    <i class="fa fa-sign-out"></i> {{__("Sair")}}
 
-                            <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                </a>
 
-                                {{ csrf_field() }}
+                                <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
 
-                            </form>
+                                    {{ csrf_field() }}
 
-                        </li>
+                                </form>
+
+                            </li>
 
 
 
-                        @endif
+                            @endif
 
-                    </ul>
+                        </ul>
+                    </div>
 
                     <ul class="multi-lang">
 

@@ -8,7 +8,7 @@
             @endforeach
         @else
             <div class="col-lg-12">
-                {{__("Espaço não encontrado")}}
+                {{__("espaço não encontrado")}}
             </div>
         @endif
     </div>

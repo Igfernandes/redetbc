@@ -117,7 +117,7 @@ class TourController extends AdminController
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
-                    'name' => __('Passeioss'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
@@ -145,7 +145,7 @@ class TourController extends AdminController
             'translation'       => new $this->tourTranslationClass(),
             'breadcrumbs'       => [
                 [
-                    'name' => __('Passeioss'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [
@@ -181,7 +181,7 @@ class TourController extends AdminController
             'enable_multi_lang' => true,
             'breadcrumbs'       => [
                 [
-                    'name' => __('Passeioss'),
+                    'name' => __('Passeios'),
                     'url'  => route('tour.admin.index')
                 ],
                 [

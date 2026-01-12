@@ -1,18 +1,23 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: Admin
+ * Date: 7/2/2019
+ * Time: 10:26 AM
+ */
 namespace  Modules\Assistance;
 
 use Modules\Core\Abstracts\BaseSettingsClass;
-use Modules\Core\Models\Settings;
+use Modules\Assistance\Hook;
 
 class SettingClass extends BaseSettingsClass
 {
     public static function getSettingPages()
     {
-        return [
-            [
+        $configs = [
+            'assistance' => [
                 'id'   => 'assistance',
-                'title' => __("Configurações de serviços"),
+                'title' => __("Configurações de Serviço"),
                 'position'=>20,
                 'view'=>"Assistance::admin.settings.assistance",
                 "keys"=>[
@@ -22,18 +27,15 @@ class SettingClass extends BaseSettingsClass
                     'assistance_layout_search',
                     'assistance_location_search_style',
                     'assistance_page_limit_item',
-
                     'assistance_enable_review',
                     'assistance_review_approved',
                     'assistance_enable_review_after_booking',
                     'assistance_review_number_per_page',
                     'assistance_review_stats',
-
                     'assistance_page_list_seo_title',
                     'assistance_page_list_seo_desc',
                     'assistance_page_list_seo_image',
                     'assistance_page_list_seo_share',
-
                     'assistance_booking_buyer_fees',
                     'assistance_vendor_create_service_must_approved_by_admin',
                     'assistance_allow_vendor_can_change_their_booking_status',
@@ -50,7 +52,6 @@ class SettingClass extends BaseSettingsClass
 
                     'assistance_layout_map_option',
                     'assistance_icon_marker_map',
-
                     'assistance_map_lat_default',
                     'assistance_map_lng_default',
                     'assistance_map_zoom_default',
@@ -60,10 +61,9 @@ class SettingClass extends BaseSettingsClass
                 ],
                 'html_keys'=>[
 
-                ],
-                'filter_demo_mode'=>[
                 ]
             ]
         ];
+        return apply_filters(Hook::ASSISTANCE_SETTING_CONFIG,$configs);
     }
 }

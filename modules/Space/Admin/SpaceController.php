@@ -146,11 +146,11 @@ class SpaceController extends AdminController
                     'url'  => route('space.admin.index')
                 ],
                 [
-                    'name'  => __('Adicionar Espaço'),
+                    'name'  => __('Adicionar espaço'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'     => __("Adicionar novo Espaço")
+            'page_title'     => __("Adicionar novo espaço")
         ];
         return view('Space::admin.detail', $data);
     }
@@ -182,7 +182,7 @@ class SpaceController extends AdminController
                     'url'  => route('space.admin.index')
                 ],
                 [
-                    'name'  => __('Editar Espaço'),
+                    'name'  => __('Editar espaço'),
                     'class' => 'active'
                 ],
             ],

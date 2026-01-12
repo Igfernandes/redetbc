@@ -18,9 +18,9 @@
                 @case("price_high_low")
                 {{ __("Preço (do mais alto para o mais baixo)") }}
                 @break
-{{--                @case("rate_high_low")--}}
-{{--                {{ __("Classificação (de alta a baixa)") }}--}}
-{{--                @break--}}
+                @case("rate_high_low")
+                {{ __("Classificação (de alta a baixa)") }}
+                @break
                 @default
                 {{ __("Recomendado") }}
             @endswitch
@@ -32,8 +32,8 @@
             <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Preço (do menor para o maior)") }}</a>
             @php $param['orderby'] = "price_high_low" @endphp
             <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Preço (do mais alto para o mais baixo)") }}</a>
-{{--            @php $param['orderby'] = "rate_high_low" @endphp--}}
-{{--            <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Classificação (de alta a baixa)") }}</a>--}}
+            @php $param['orderby'] = "rate_high_low" @endphp
+            <a class="dropdown-item" href="{{ route("assistance.search",$param) }}">{{ __("Classificação (de alta a baixa)") }}</a>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="item filter-item dropdown filter-simple">
     <div class="border-bottom border-width-2 border-color-1 mb-0 form-content dropdown-toggle" data-toggle="dropdown">
-        <h3 class="filter-title">{{__('Filtro de preço')')}} <i class="fa fa-angle-down"></i></h3>
+        <h3 class="filter-title">{{__('Filtro de preço')}} <i class="fa fa-angle-down"></i></h3>
     </div>
     <div class="filter-dropdown dropdown-menu dropdown-menu-right">
         <div class="bravo-filter-price">

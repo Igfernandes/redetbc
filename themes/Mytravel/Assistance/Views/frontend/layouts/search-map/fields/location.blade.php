@@ -31,7 +31,7 @@
                         $traverse($location->children, $prefix.'-');
                     }
                 };
-                $traverse($list_location);
+                $traverse($assistance_location);
                 ?>
                 <div class="smart-search border-0 p-0 form-control  height-40">
                     <input type="text" class="smart-search-location parent_text  font-weight-bold font-size-16 shadow-none hero-form font-weight-bold border-0 p-0" {{ ( empty(setting_item("assistance_location_search_style")) or setting_item("assistance_location_search_style") == "normal" ) ? "readonly" : ""  }} placeholder="{{__("Onde você está indo?")}}" value="{{ $location_name }}" data-onLoad="{{__("Carregando...")}}"

@@ -90,27 +90,27 @@
             fitBounds: true,
             center: [{
                 {
-                    $row - > map_lat ?? setting_item('map_lat_default')
+                    $row->map_lat ?? setting_item('map_lat_default')
                 }
             }, {
                 {
-                    $row - > map_lng ?? setting_item('map_lng_default')
+                    $row->map_lng ?? setting_item('map_lng_default')
                 }
             }],
             zoom: {
                 {
-                    $row - > map_zoom ?? "8"
+                    $row->map_zoom ?? "8"
                 }
             },
             ready: function(engineMap) {
-                @if($row - > map_lat && $row - > map_lng)
+                @if($row->map_lat && $row->map_lng)
                 engineMap.addMarker([{
                     {
-                        $row - > map_lat
+                        $row->map_lat
                     }
                 }, {
                     {
-                        $row - > map_lng
+                        $row->map_lng
                     }
                 }], {
                     icon_options: {}

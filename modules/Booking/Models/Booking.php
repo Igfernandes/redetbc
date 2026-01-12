@@ -375,8 +375,7 @@ class Booking extends BaseModel
             "tour" => "Passeios",
             "hotel" => "Hotéis",
             "assistance" => "Serviços",
-            "space" => "Espaços",
-            "event" => "Eventos"
+            "space" => "Espaços"
         ];
 
         foreach ($servicesAmount as $title => $serviceAmount) {

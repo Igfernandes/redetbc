@@ -55,6 +55,111 @@
             display: none;
         }
     }
+
+    .menu-main-mobile::-webkit-scrollbar {
+        width: 10px;
+        /* largura da barra vertical */
+        height: 10px;
+        /* altura da barra horizontal */
+    }
+
+    .menu-main-mobile::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        /* fundo da barra */
+        border-radius: 4px;
+    }
+
+    .menu-main-mobile::-webkit-scrollbar-thumb {
+        background-color: #1a2b48;
+        /* cor da barra de rolagem */
+        border-radius: 4px;
+        border: 2px solid #f1f1f1;
+        /* espaço entre thumb e track */
+    }
+
+    .menu-main-mobile::-webkit-scrollbar-thumb {
+        background-color: #16203a;
+        /* cor ao passar o mouse */
+    }
+
+    /* Para Firefox */
+    .menu-main-mobile {
+        scrollbar-width: thin;
+        /* "thin" ou "auto" */
+        scrollbar-color: #1a2b48 #f1f1f1;
+        /* thumb e track */
+    }
+
+    .menu-main-content {
+        position: relative;
+    }
+
+    .menu-main-content .arrows .arrow {
+        transform: rotate(90deg);
+        color: #1a2b48;
+        text-shadow: 0 0 BLACK;
+        font-size: 1.2rem;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 55px;
+        height: 28px;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #2196F3;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
 </style>
 <?php
 $religion = null;
@@ -79,20 +184,19 @@ if (isset($_GET['religion'])) {
     <?php if(Auth::user() == null || !Auth::user()->user_plan): ?>
     <div class="subscribe-plan">
         <div class="content">
-            <?php if(Auth::user() && Auth::user()->user_plan): ?>
+            <?php if(Auth::user() && !Auth::user()->user_plan): ?>
             <p>
                 <?php echo e(__("Junte-se ao clube: escolha seu plano e tenha acesso completo.")); ?>
 
             </p> &nbsp;
             <?php else: ?>
             <p>
-                <?php echo e(__("Junte-se ao clube: Faça o seu cadastro para ter acesso completo.")); ?>
-
+                <?php echo e(__("Viaje com 0 taxas. Seja Membro.")); ?> 
             </p> &nbsp;
             <?php endif; ?>
 
             <?php if(Auth::user() == null): ?>
-            <a data-target="#register" data-toggle="modal"><?php echo e(__("Cadastre-se agora")); ?></a>
+            <a data-target="#register" data-toggle="modal"><?php echo e(__("Cadastre-se Agora")); ?></a>
             <?php else: ?>
             <a href="/plan"><?php echo e(__("Escolha seu plano")); ?></a>
             <?php endif; ?>
@@ -150,20 +254,31 @@ if (isset($_GET['religion'])) {
 
                             </a>
 
-                            <div class="filter-key  ml-2">
-                                <a href="./?religion=CATHOLIC">
+                            <div class="filter-key d-flex  ml-2" style="align-items: center;">
+                                <a class="mb-2" href="./?religion=CATHOLIC">
                                     <span class="text" <?php if($religion==="CATHOLIC" ): ?> style="color: #ffa636;" <?php endif; ?>>
-                                        <?php echo e(__('Católico')); ?>
-
+                                        <strong> <?php echo e(__('Católico')); ?></strong>
                                     </span>
                                 </a>
-                                <i class="icofont-key"></i>
-                                <a href="./?religion=EVANGELIC">
+                                <label class="switch mx-2">
+                                    <input type="checkbox" <?php echo e($religion==="EVANGELIC" ? 'checked' : ''); ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                                <a class="mb-2" href="./?religion=EVANGELIC">
                                     <span class="text" <?php if($religion==="EVANGELIC" ): ?> style="color: #ffa636;" <?php endif; ?>>
-                                        <?php echo e(__('Evangélico')); ?>
-
+                                        <strong><?php echo e(__('Evangélico')); ?></strong>
                                     </span>
                                 </a>
+                                <script>
+                                    const switcher = document.querySelector('.switch input');
+                                    switcher.addEventListener('change', function() {
+                                        if (this.checked) {
+                                            window.location.href = './?religion=EVANGELIC';
+                                        } else {
+                                            window.location.href = './?religion=CATHOLIC';
+                                        }
+                                    });
+                                </script>
                             </div>
                         </div>
 
@@ -294,124 +409,131 @@ if (isset($_GET['religion'])) {
 
                     <div class="avatar"></div>
 
-                    <ul style="
-                    overflow: scroll;height: 46vh;">
 
-                        <?php if(!Auth::id() || Auth::user() === null ): ?>
+                    <div class="menu-main-content">
+                        <div class="arrows">
+                            <span class="arrow">
+                                < </span>
+                                    <span> ></span>
+                        </div>
+                        <ul class="menu-main-mobile" style="overflow: scroll;height: 46vh;">
 
-                        <li>
+                            <?php if(!Auth::id() || Auth::user() === null ): ?>
 
-                            <a href="#login" data-toggle="modal" data-target="#login" class="login"><?php echo e(__('Entrar')); ?></a>
+                            <li>
 
-                        </li>
+                                <a href="#login" data-toggle="modal" data-target="#login" class="login"><?php echo e(__('Entrar')); ?></a>
 
-                        <li>
+                            </li>
 
-                            <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Cadastrar-se')); ?></a>
+                            <li>
 
-                        </li>
+                                <a href="#register" data-toggle="modal" data-target="#register" class="signup"><?php echo e(__('Cadastrar-se')); ?></a>
 
-                        <?php else: ?>
+                            </li>
 
-                        <li>
+                            <?php else: ?>
 
-                            <a href="<?php echo e(route('user.profile.index')); ?>">
+                            <li>
 
-                                </i> <?php echo e(__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])); ?>
+                                <a href="<?php echo e(route('user.profile.index')); ?>">
 
-
-                            </a>
-
-                        </li>
-
-                        <li style="margin-top: 2rem;">
-
-                            <a href="<?php echo e(route('user.profile.index')); ?>">
-                                <i class="icon ion-md-construct"></i> <?php echo e(__("Meu perfil")); ?>
-
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/verification">
-                                <span class="icon text-center"><i class="fa fa-id-card-o"></i></span>
-                                Minhas Verificações
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/plan">
-                                <span class="icon text-center"><i class="fa fa-list-alt"></i></span>
-                                Meu Plano
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/network">
-                                <span class="icon text-center"><i class="fa fa-sitemap"></i></span>
-                                Minha Rede
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/user/booking-history">
-                                <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
-                                Minhas Reservas
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/chat">
-                                <span class="icon text-center"><i class="fa fa-comments"></i></span>
-                                Minhas Mensagens
-                            </a>
-                        </li>
-
-                        <?php echo $__env->make('Layout::parts.authmenu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                        <?php if(Auth::user()->hasPermission('dashboard_vendor_access')): ?>
-
-                        <li>
-
-                            <a href="<?php echo e(route('vendor.dashboard')); ?>">
-
-                                <i class="icon ion-md-analytics"></i> <?php echo e(__("Painel do Fornecedor")); ?>
+                                    </i> <?php echo e(__("Oi, :Name",['name'=>Auth::user()->getDisplayName()])); ?>
 
 
-                            </a>
+                                </a>
 
-                        </li>
+                            </li>
 
-                        <?php endif; ?>
+                            <li style="margin-top: 2rem;">
 
-                        <?php if(Auth::user()->hasPermission('dashboard_access')): ?>
+                                <a href="<?php echo e(route('user.profile.index')); ?>">
+                                    <i class="icon ion-md-construct"></i> <?php echo e(__("Meu perfil")); ?>
 
-                        <li>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/verification">
+                                    <span class="icon text-center"><i class="fa fa-id-card-o"></i></span>
+                                    Minhas Verificações
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/plan">
+                                    <span class="icon text-center"><i class="fa fa-list-alt"></i></span>
+                                    Meu Plano
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/network">
+                                    <span class="icon text-center"><i class="fa fa-sitemap"></i></span>
+                                    Minha Rede
+                                </a>
+                            </li>
 
-                            <a href="<?php echo e(url('/admin')); ?>"><i class="icon ion-ios-ribbon"></i> <?php echo e(__("Painel do Administrador")); ?></a>
+                            <li>
+                                <a href="/user/booking-history">
+                                    <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
+                                    Minhas Reservas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/chat">
+                                    <span class="icon text-center"><i class="fa fa-comments"></i></span>
+                                    Minhas Mensagens
+                                </a>
+                            </li>
 
-                        </li>
+                            <?php echo $__env->make('Layout::parts.authmenu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                            <?php if(Auth::user()->hasPermission('dashboard_vendor_access')): ?>
 
-                        <?php endif; ?>
+                            <li>
 
-                        <li style="margin-top: 2rem;">
+                                <a href="<?php echo e(route('vendor.dashboard')); ?>">
 
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
-
-                                <i class="fa fa-sign-out"></i> <?php echo e(__("Sair")); ?>
-
-
-                            </a>
-
-                            <form id="logout-form-mobile" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-
-                                <?php echo e(csrf_field()); ?>
-
-
-                            </form>
-
-                        </li>
+                                    <i class="icon ion-md-analytics"></i> <?php echo e(__("Painel do Fornecedor")); ?>
 
 
+                                </a>
 
-                        <?php endif; ?>
+                            </li>
 
-                    </ul>
+                            <?php endif; ?>
+
+                            <?php if(Auth::user()->hasPermission('dashboard_access')): ?>
+
+                            <li>
+
+                                <a href="<?php echo e(url('/admin')); ?>"><i class="icon ion-ios-ribbon"></i> <?php echo e(__("Painel do Administrador")); ?></a>
+
+                            </li>
+
+                            <?php endif; ?>
+
+                            <li style="margin-top: 2rem;">
+
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
+
+                                    <i class="fa fa-sign-out"></i> <?php echo e(__("Sair")); ?>
+
+
+                                </a>
+
+                                <form id="logout-form-mobile" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+
+                                    <?php echo e(csrf_field()); ?>
+
+
+                                </form>
+
+                            </li>
+
+
+
+                            <?php endif; ?>
+
+                        </ul>
+                    </div>
 
                     <ul class="multi-lang">
 

@@ -43,7 +43,7 @@
                 <table class="vec-view-container" width="100%" cellpadding="0" cellspacing="0">
                     <thead class="vec-head">
                     <tr>
-                        <th width="300px" class="vec-event-header">{{__('Passeioss')}}</th>
+                        <th width="300px" class="vec-event-header">{{__('Passeios')}}</th>
                         <th class="vec-divider"></th>
                         <th class="vc-time-area">
                             <div class="vec-scroll-flip">

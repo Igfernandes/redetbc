@@ -8,7 +8,7 @@
     </div>
     <div class="g-items">
         @if(!empty($translation->include))
-            @php if(!is_array($translation->include)) $translation->include = json_decode($translation->include); @endphp
+            @php if(!is_array($translation->include)) $translation->include = json_decode( old('include',$translation->include)); @endphp
             @foreach($translation->include as $key=>$include)
                 <div class="item" data-number="{{$key}}">
                     <div class="row">
@@ -49,7 +49,7 @@
     </div>
     <div class="g-items">
         @if(!empty($translation->exclude))
-            @php if(!is_array($translation->exclude)) $translation->exclude = json_decode($translation->exclude); @endphp
+            @php if(!is_array($translation->exclude)) $translation->exclude = json_decode( old('exclude',$translation->exclude) ); @endphp
             @foreach($translation->exclude as $key=>$exclude)
                 <div class="item" data-number="{{$key}}">
                     <div class="row">

@@ -105,7 +105,7 @@ class ManageTourController extends FrontendController
         if(!empty($query)){
             $query->restore();
         }
-        return redirect(route('tour.vendor.recovery'))->with('success', __('Restauração do passeio bem-sucedida!'));
+        return redirect(route('tour.vendor.recovery'))->with('success', __('Restauração do Passeio bem-sucedida!'));
     }
 
     public function createTour(Request $request)
@@ -278,7 +278,7 @@ class ManageTourController extends FrontendController
                 $query->delete();
             }
         }
-        return redirect(route('tour.vendor.index'))->with('success', __('Exclusão do passeio bem-sucedida!'));
+        return redirect(route('tour.vendor.index'))->with('success', __('Exclusão do Passeio bem-sucedida!'));
     }
 
     public function bulkEditTour($id, Request $request)
@@ -368,7 +368,7 @@ class ManageTourController extends FrontendController
                     }
                 }
             }
-            return redirect()->back()->with('success', __('O clone do passeio foi bem-sucedido'));
+            return redirect()->back()->with('success', __('O clone do Passeio foi bem-sucedido'));
         } catch (\Exception $exception) {
             $clone->delete();
             return redirect()->back()->with('warning', __($exception->getMessage()));

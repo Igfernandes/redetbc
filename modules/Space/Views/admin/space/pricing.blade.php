@@ -12,13 +12,13 @@ $languages = \Modules\Language\Models\Language::getActive();
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label class="control-label">{{ __("Preço") }}</label>
-                        <input type="number" step="any" min="0" name="price" class="form-control" value="{{ $row->price }}" placeholder="{{ __("Preço do Espaço") }}">
+                        <input type="number" step="any" min="0" name="price" class="form-control" value="{{ $row->price }}" placeholder="{{ __("Preço do espaço") }}">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label class="control-label">{{ __("Preço de Venda") }}</label>
-                        <input type="number" step="any" name="sale_price" class="form-control" value="{{ $row->sale_price }}" placeholder="{{ __("Preço de Venda do Espaço") }}">
+                        <input type="number" step="any" name="sale_price" class="form-control" value="{{ $row->sale_price }}" placeholder="{{ __("Preço de Venda do espaço") }}">
                         <span><i>{{ __("Se o preço normal for menor que o desconto, o preço normal será exibido.") }}</i></span>
                     </div>
                 </div>

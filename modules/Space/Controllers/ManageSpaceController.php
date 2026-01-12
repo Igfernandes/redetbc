@@ -238,7 +238,7 @@ class ManageSpaceController extends FrontendController
         $row = $this->spaceClass::where("author_id", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('space.vendor.index'))->with('warning', __('Espaço não encontrado!'));
+            return redirect(route('space.vendor.index'))->with('warning', __('espaço não encontrado!'));
         }
         $translation = $row->translate($request->query('lang'));
         $data = [
@@ -339,7 +339,7 @@ class ManageSpaceController extends FrontendController
 		$row = $this->spaceClass::where("author_id", $user_id);
 		$row = $row->find($id);
 		if (empty($row)) {
-			return redirect(route('space.vendor.index'))->with('warning', __('Espaço não encontrado!'));
+			return redirect(route('space.vendor.index'))->with('warning', __('espaço não encontrado!'));
 		}
 		try{
 			$clone = $row->replicate();

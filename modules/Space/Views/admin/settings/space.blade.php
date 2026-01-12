@@ -188,7 +188,7 @@
     <div class="row">
         <div class="col-sm-4">
             <h3 class="form-group-title">{{__("Configurações de Avaliação")}}</h3>
-            <p class="form-group-desc">{{__('Configurar avaliações para espaços')}}</p>
+            <p class="form-group-desc">{{__('Configurar avaliações para Espaços')}}</p>
         </div>
         <div class="col-sm-8">
             <div class="panel">
@@ -198,7 +198,7 @@
                         <div class="form-controls">
                             <label><input type="checkbox" name="space_enable_review" value="1" @if(!empty($settings['space_enable_review'])) checked @endif /> {{__("Sim, por favor ative")}} </label>
                             <br>
-                            <small class="form-text text-muted">{{__("Ativar o modo de avaliação para espaços")}}</small>
+                            <small class="form-text text-muted">{{__("Ativar o modo de avaliação para Espaços")}}</small>
                         </div>
                     </div>
                     <div class="form-group" data-condition="space_enable_review:is(1)">
@@ -300,7 +300,7 @@
     <div class="row">
         <div class="col-sm-4">
             <h3 class="form-group-title">{{__("Configurações de Reserva")}}</h3>
-            <p class="form-group-desc">{{__('Configurar reservas para espaços')}}</p>
+            <p class="form-group-desc">{{__('Configurar reservas para Espaços')}}</p>
         </div>
         <div class="col-sm-8">
             <div class="panel">
@@ -310,8 +310,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <select name="space_booking_type" class="form-control">
-                                    <option value="by_day" {{($settings['space_booking_type'] ?? '') == 'by_day' ? 'selected' : ''  }}> {{__("Espaço por dia")}}</option>
-                                    <option value="by_night" {{($settings['space_booking_type'] ?? '') == 'by_night' ? 'selected' : ''  }}> {{__("Espaço por noite")}}</option>
+                                    <option value="by_day" {{($settings['space_booking_type'] ?? '') == 'by_day' ? 'selected' : ''  }}> {{__("espaço por dia")}}</option>
+                                    <option value="by_night" {{($settings['space_booking_type'] ?? '') == 'by_night' ? 'selected' : ''  }}> {{__("espaço por noite")}}</option>
                                 </select>
                             </div>
                         </div>
@@ -432,13 +432,13 @@
     <div class="row">
         <div class="col-sm-4">
             <h3 class="form-group-title">{{__("Configurações do Fornecedor")}}</h3>
-            <p class="form-group-desc">{{__('Configurações do fornecedor para espaços')}}</p>
+            <p class="form-group-desc">{{__('Configurações do fornecedor para Espaços')}}</p>
         </div>
         <div class="col-sm-8">
             <div class="panel">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label class="" >{{__("Espaço criado por fornecedor deve ser aprovado pelo administrador")}}</label>
+                        <label class="" >{{__("espaço criado por fornecedor deve ser aprovado pelo administrador")}}</label>
                         <div class="form-controls">
                             <label><input type="checkbox" name="space_vendor_create_service_must_approved_by_admin" value="1" @if(!empty($settings['space_vendor_create_service_must_approved_by_admin'])) checked @endif /> {{__("Sim por favor")}} </label>
                             <br>
@@ -528,11 +528,11 @@
 <hr>
 <div class="row">
     <div class="col-sm-4">
-        <h3 class="form-group-title">{{__("Desativar módulo de espaços?")}}</h3>
+        <h3 class="form-group-title">{{__("Desativar módulo de Espaços?")}}</h3>
     </div>
     <div class="col-sm-8">
         <div class="panel">
-            <div class="panel-title"><strong>{{__("Desativar módulo de espaços")}}</strong></div>
+            <div class="panel-title"><strong>{{__("Desativar módulo de Espaços")}}</strong></div>
             <div class="panel-body">
                 <div class="form-group">
                     <div class="form-controls">

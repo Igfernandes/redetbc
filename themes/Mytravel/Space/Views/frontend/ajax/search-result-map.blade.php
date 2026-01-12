@@ -3,7 +3,7 @@
         <div class="text-paginate">
             <h2 class="text">
                 @if($rows->total() > 1)
-                    {{ __(":count espaços encontrados",['count'=>$rows->total()]) }}
+                    {{ __(":count Espaços encontrados",['count'=>$rows->total()]) }}
                 @else
                     {{ __(":count espaço encontrado",['count'=>$rows->total()]) }}
                 @endif

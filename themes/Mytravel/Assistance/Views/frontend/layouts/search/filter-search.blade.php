@@ -11,7 +11,7 @@
         {{--Map--}}
         <div class="item pb-4 mb-2">
             <a href="{{ route("assistance.search",['_layout'=>'map']) }}" class="d-block border border-color-1 rounded-xs">
-                <img src="{{ url("/themes/mytravel/images/map.jpg") }}" alt="" width="100%">
+                <img src="{{ asset("/themes/mytravel/images/map.jpg") }}" alt="" width="100%">
             </a>
         </div>
         <form action="{{url(app_get_locale(false,false,'/').config('assistance.assistance_route_prefix'))}}" class="bravo_form_filter">
@@ -34,6 +34,7 @@
             @endif
             {{--Filter--}}
             <div class="sidenav border border-color-8 rounded-xs">
+
                 <div id="bravo-filter-price" class="accordion shadow-none bravo-filter-price border-bottom">
                     <?php
                     $price_min = $pri_from = floor(App\Currency::convertPrice($assistance_min_max_price[0]));
@@ -50,7 +51,7 @@
                                 <button type="button" class="btn btn-link btn-block card-btn py-2  text-lh-3 collapsed" data-toggle="collapse" data-target="#context-filter-price" aria-expanded="false" aria-controls="context-filter-price">
                                     <span class="row align-items-center">
                                         <span class="col-9">
-                                            <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark">{{ __("Faixa de Preço") }} ({{$currency['symbol'] ?? ''}})</span>
+                                            <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark">{{ __("Faixa de preço") }} ({{$currency['symbol'] ?? ''}})</span>
                                         </span>
                                         <span class="col-3 text-right">
                                             <span class="card-btn-arrow">
@@ -86,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion rounded-0 shadow-none">
+                <div class="accordion rounded-0 shadow-none border-bottom">
                     <div class="border-0">
                         <div class="card-collapse">
                             <h3 class="mb-0">
@@ -135,7 +136,7 @@
                 $translate = $item->translate();
                 @endphp
                 {{--Term--}}
-                <div id="attr_{{$item->id}}" class="accordion rounded-0 shadow-none border-top">
+                <div id="attr_{{$item->id}}" class="accordion rounded-0 shadow-none">
                     <div class="border-0">
                         <div class="card-collapse" id="cityCategoryHeadingOne">
                             <h3 class="mb-0">
@@ -167,7 +168,7 @@
                                     </div>
                                     @endif
                                     @endforeach
-                                    <div class="collapse" id="more_term_{{$term->id}}">
+                                    <div class="collapse" id="more_term_{{$item->id}}">
                                         @foreach($item->terms as $key => $term)
                                         @if($key > 2 )
                                         @php $translate = $term->translate(); @endphp
@@ -181,7 +182,7 @@
                                         @endif
                                         @endforeach
                                     </div>
-                                    <a class="link link-collapse small font-size-1 mt-2" data-toggle="collapse" href="#more_term_{{$term->id}}" role="button" aria-expanded="false" aria-controls="more_term_{{$term->id}}">
+                                    <a class="link link-collapse small font-size-1 mt-2" data-toggle="collapse" href="#more_term_{{$item->id}}" role="button" aria-expanded="false" aria-controls="more_term_{{$item->id}}">
                                         <span class="link-collapse__default font-size-14">{{__("Mostrar tudo") }}</span>
                                         <span class="link-collapse__active font-size-14">{{ __("Mostrar menos") }}</span>
                                     </a>

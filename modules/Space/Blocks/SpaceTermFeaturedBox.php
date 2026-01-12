@@ -45,7 +45,7 @@ class SpaceTermFeaturedBox extends BaseBlock
                     ])
                 ],
             ],
-            'category'=>__("Serviço Espaço")
+            'category'=>__("Serviço espaço")
         ];
     }
 

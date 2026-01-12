@@ -49,7 +49,7 @@ class ModuleProvider extends ModuleServiceProvider
                 'children'   => [
                     'add'=>[
                         'url'        => route('space.admin.index'),
-                        'title'      => __('Todos os espaços'),
+                        'title'      => __('Todos os Espaços'),
                         'permission' => 'space_view',
                     ],
                     'create'=>[
@@ -116,7 +116,7 @@ class ModuleProvider extends ModuleServiceProvider
                     ],
                     [
                         'url'        => route('space.vendor.create'),
-                        'title'      => __("Adicionar Espaço"),
+                        'title'      => __("Adicionar espaço"),
                         'permission' => 'space_create',
                     ],
                     [

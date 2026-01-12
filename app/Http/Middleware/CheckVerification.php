@@ -42,7 +42,6 @@ class CheckVerification
             'user/profile',
             'user/verification',
             'news',
-            'page/eventos',
             'page/noticias',
             'webhook/*',
             '/asaas/webhook'

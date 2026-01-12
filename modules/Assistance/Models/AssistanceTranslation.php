@@ -1,49 +1,38 @@
 <?php
-
 namespace Modules\Assistance\Models;
 
-use Modules\Assistance\Models\Assistance;
+use App\BaseModel;
 
-class AssistanceTranslation extends Assistance
+class AssistanceTranslation extends BaseModel
 {
-    protected $table = 'bravo_assistances_translations';
-
+    protected $table = 'bravo_assistance_translations';
     protected $fillable = [
         'title',
         'content',
-        'faqs',
-        'specs',
+        'short_desc',
         'address',
-        'cancel_policy',
-        'terms_information',
+        'faqs',
+        'include',
+        'exclude',
+        'itinerary',
+        'surrounding',
     ];
-
     protected $slugField     = false;
     protected $seo_type = 'assistance_translation';
-
     protected $cleanFields = [
         'content'
     ];
     protected $casts = [
-        'faqs'    => 'array',
-        'specs'   => 'array',
+        'faqs' => 'array',
         'include' => 'array',
         'exclude' => 'array',
+        'itinerary' => 'array',
+        'surrounding' => 'array',
     ];
-
     public function getSeoType(){
         return $this->seo_type;
     }
     public function getRecordRoot(){
         return $this->belongsTo(Assistance::class,'origin_id');
     }
-
-    public static function boot() {
-		parent::boot();
-		static::saving(function($table)  {
-			unset($table->extra_price);
-			unset($table->price);
-			unset($table->sale_price);
-		});
-	}
 }

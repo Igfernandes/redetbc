@@ -23,7 +23,7 @@
                     @php $types = get_bookable_services() @endphp
                     @if(!empty($types))
                         <div class="w-md-80 w-lg-50 text-center mx-md-auto my-3">
-                            <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">{{ __('Principais Experiências em :name',['name' => $translation->name]) }}</h2>
+                            <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">{{ __('Principais Passeios em :name',['name' => $translation->name]) }}</h2>
                         </div>
                         <ul class="nav tab-nav-pill flex-nowrap pb-4 pb-lg-5 tab-nav justify-content-lg-center" role="tablist">
                           

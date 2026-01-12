@@ -1,15 +1,18 @@
 <div class="item-list">
+    @if($row->discount_percent)
+        <div class="sale_info">{{$row->discount_percent}}</div>
+    @endif
     <div class="row">
         <div class="col-md-3">
             @if($row->is_featured == "1")
                 <div class="featured">
-                    {{__("Apresentado")}}
+                    {{__("Apresentou")}}
                 </div>
             @endif
             <div class="thumb-image">
                 <a href="{{$row->getDetailUrl()}}" target="_blank">
                     @if($row->image_url)
-                        <img src="{{$row->image_url}}" class="img-responsive" alt="">
+                        <img src="{{$row->image_url}}" class="img-responsive" alt="{{$row->title}}">
                     @endif
                 </a>
                 <div class="service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}">
@@ -31,8 +34,7 @@
             </div>
             <div class="location">
                 <i class="icofont-money"></i>
-                {{__("Preço por hora")}}: <span class="price">{{ format_money($row->price_per_hour) }}</span> -
-                {{__("Preço por dia")}}: <span class="price">{{ format_money($row->price_per_day) }}</span>
+                {{__("Preço")}}: <span class="sale-price">{{ $row->display_sale_price_admin }}</span> <span class="price">{{ $row->display_price_admin }}</span>
             </div>
             <div class="location">
                 <i class="icofont-ui-settings"></i>
@@ -43,18 +45,20 @@
                 {{__("Última atualização")}}: {{ display_datetime($row->updated_at ?? $row->created_at) }}
             </div>
             <div class="control-action">
-                <a href="{{$row->getDetailUrl()}}" target="_blank" class="btn btn-info">{{__("Visualizar")}}</a>
                 @if(!empty($recovery))
-                    <a href="{{ route("assistance.vendor.restore",[$row->id]) }}" class="btn btn-recovery btn-primary" data-confirm="{{__("Você quer recuperar?")}}">{{__("Recuperação")}}</a>
+                    <a href="{{ route("assistance.vendor.restore",[$row->id]) }}" class="btn btn-recovery btn-primary" data-confirm="{{__('"Você quer recuperar?"')}}">{{__("Recuperação")}}</a>
                     @if(Auth::user()->hasPermission('assistance_delete'))
-                        <a href="{{ route("assistance.vendor.delete",['id'=>$row->id,'permanently_delete'=>1]) }}" class="btn btn-danger" data-confirm="{{__("Você quer deletar permanentemente?")}}">{{__("Excluir")}}</a>
+                        <a href="{{ route("assistance.vendor.delete",['id'=>$row->id,'permanently_delete'=>1]) }}" class="btn btn-danger" data-confirm="<?php echo e(__("Deseja excluir permanentemente?")); ?>">{{__("Excluir")}}</a>
                     @endif
                 @else
+                    <a href="{{route('assistance.vendor.clone',[$row->id])}}" target="_blank" class="btn btn-primary">{{__("Clone")}}</a>
+                    <a href="{{$row->getDetailUrl()}}" target="_blank" class="btn btn-info">{{__("Visualizar")}}</a>
+
                     @if(Auth::user()->hasPermission('assistance_update'))
                         <a href="{{ route("assistance.vendor.edit",[$row->id]) }}" class="btn btn-warning">{{__("Editar")}}</a>
                     @endif
                     @if(Auth::user()->hasPermission('assistance_delete'))
-                        <a href="{{ route("assistance.vendor.delete",[$row->id]) }}" class="btn btn-danger" data-confirm="{{__("Você quer deletar?")}}">{{__("Excluir")}}</a>
+                        <a href="{{ route("assistance.vendor.delete",[$row->id]) }}" class="btn btn-danger" data-confirm="<?php echo e(__("Você quer apagar?")); ?>">{{__("Excluir")}}</a>
                     @endif
                     @if($row->status == 'publish')
                         <a href="{{ route("assistance.vendor.bulk_edit",[$row->id,'action' => "make-hide"]) }}" class="btn btn-secondary">{{__("Faça esconder")}}</a>

@@ -114,7 +114,7 @@ class ListTours extends BaseBlock
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('Listar Passeios pelos IDs'), // Traduzido: Listar passeios pelo IDs
+                    'label'        => __('Listar Passeios pelos IDs'), // Traduzido: Listar Passeios pelo IDs
                     'select2'      => [
                         'ajax'     => [
                             'url'      => route('tour.admin.getForSelect2'),

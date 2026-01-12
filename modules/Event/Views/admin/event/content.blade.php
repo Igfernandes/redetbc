@@ -83,7 +83,7 @@
                 <div class="item" data-number="{{$key}}">
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="text" name="faqs[{{$key}}][title]" class="form-control" value="{{$faq['title']}}" placeholder="{{__('Por exemplo: Quando e onde termina o passeio?')}}">
+                            <input type="text" name="faqs[{{$key}}][title]" class="form-control" value="{{$faq['title']}}" placeholder="{{__('Por exemplo: Quando e onde termina o Passeio?')}}">
                         </div>
                         <div class="col-md-6">
                             <textarea name="faqs[{{$key}}][content]" class="form-control" placeholder="...">{{$faq['content']}}</textarea>

@@ -78,8 +78,8 @@ class SpaceController extends Controller
                 "markers" => $markers,
                 'fragments'=>[
                     '.ajax-search-result'=>view('Space::frontend.ajax.search-result'.($for_map ? '-map' : ''), $data)->render(),
-                    '.result-count'=>$list->total() ? ($list->total() > 1 ? __(":count espaços encontrados",['count'=>$list->total()]) : __(":count space found",['count'=>$list->total()])) : '',
-                    '.count-string'=> $list->total() ? __("Mostrando :from - :to de :total espaços",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
+                    '.result-count'=>$list->total() ? ($list->total() > 1 ? __(":count Espaços encontrados",['count'=>$list->total()]) : __(":count space found",['count'=>$list->total()])) : '',
+                    '.count-string'=> $list->total() ? __("Mostrando :from - :to de :total Espaços",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
                 ]
             ]);
         }

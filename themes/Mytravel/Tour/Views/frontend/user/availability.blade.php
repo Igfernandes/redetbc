@@ -42,7 +42,7 @@
         </div>
     </div>
     @else
-        <div class="alert alert-warning">{{__("Nenhum passeio encontrado")}}</div>
+        <div class="alert alert-warning">{{__("Nenhum Passeio encontrado")}}</div>
     @endif
     <div class="d-flex justify-content-center">
         {{$rows->appends($request->query())->links()}}

@@ -4,26 +4,26 @@ namespace Modules\Assistance\Models;
 
 use App\Currency;
 use App\Scopes\CreatedByUserScope;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Modules\Booking\Models\Bookable;
 use Modules\Booking\Models\Booking;
-use Modules\Booking\Models\Service;
 use Modules\Booking\Traits\CapturesService;
-use Modules\Core\Models\Attributes;
-use Modules\Core\Models\SEO;
 use Modules\Core\Models\Terms;
-use Modules\Media\Helpers\FileHelper;
-use Modules\Review\Models\Review;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Assistance\Models\AssistanceTranslation;
-use Modules\Booking\Events\BookingConfirmEvent;
-use Modules\Booking\Models\BookingMessage;
-use Modules\User\Models\UserWishList;
 use Modules\Location\Models\Location;
+use Modules\Review\Models\Review;
+use Illuminate\Support\Facades\Cache;
+use Validator;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Booking\Events\BookingConfirmEvent;
+use Modules\Booking\Events\BookingSendEvent;
+use Modules\Booking\Models\BookingMessage;
+use Modules\Core\Models\SEO;
+use Modules\User\Models\UserWishList;
+use Modules\Core\Models\Attributes;
 
 class Assistance extends Bookable
 {
@@ -31,85 +31,108 @@ class Assistance extends Bookable
     use SoftDeletes;
     use CapturesService;
 
-    protected $table = 'bravo_assistances';
-    public $type = 'assistance';
-    public $checkout_booking_detail_file       = 'Assistance::frontend/booking/detail';
-    public $checkout_booking_detail_modal_file = 'Assistance::frontend/booking/detail-modal';
-    public $set_paid_modal_file                = 'Assistance::frontend/booking/set-paid-modal';
-    public $email_new_booking_file             = 'Assistance::emails.new_booking_detail';
-    public $availabilityClass = AssistanceDate::class;
+    protected $table                              = 'bravo_assistances';
+    public    $checkout_booking_detail_file       = 'Assistance::frontend/booking/detail';
+    public    $checkout_booking_detail_modal_file = 'Assistance::frontend/booking/detail-modal';
+    public    $set_paid_modal_file                = 'Assistance::frontend/booking/set-paid-modal';
+    public    $email_new_booking_file             = 'Assistance::emails.new_booking_detail';
+    public    $type                               = 'assistance';
+    public    $availabilityClass                  = AssistanceDate::class;
     protected $translation_class = AssistanceTranslation::class;
 
-    protected $fillable = [
+    protected $fillable                           = [
         'title',
         'content',
+        'image_id',
+        'banner_image_id',
+        'short_desc',
+        'category_id',
+        'location_id',
+        'address',
+        'map_lat',
+        'map_lng',
+        'map_zoom',
+        'is_featured',
+        'gallery',
+        'religion',
+        'price',
+        'sale_price',
+        //Tour type
+        'duration',
+        'max_people',
+        'min_people',
+        //Extra Info
+        'faqs',
         'status',
-        'faqs'
+        'include',
+        'exclude',
+        'itinerary',
+        'surrounding',
+        'min_day_before_booking',
+        'enable_fixed_date',
+        'start_date',
+        'end_date',
+        'last_booking_date',
     ];
-    protected $slugField     = 'slug';
-    protected $slugFromField = 'title';
-    protected $seo_type = 'assistance';
+    protected $slugField                          = 'slug';
+    protected $slugFromField                      = 'title';
+    protected $seo_type                           = 'assistance';
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
     protected $casts = [
-        'faqs'        => 'array',
-        'specs'       => 'array',
-        'extra_price' => 'array',
+        'faqs'      => 'array',
+        'include'   => 'array',
+        'exclude'   => 'array',
+        'itinerary' => 'array',
         'service_fee' => 'array',
-        'price'       => 'float',
-        'sale_price'  => 'float',
-        'include'     => 'array',
-        'exclude'     => 'array',
+        'surrounding' => 'array',
+        'start_date' => 'date',
+        'end_date' => 'date',
+        'last_booking_date'   => 'date',
+
     ];
-    /**
-     * @var Booking
-     */
+
+    public static function getModelName()
+    {
+        return __("Passeio");
+    }
+
     protected $bookingClass;
-    /**
-     * @var Review
-     */
-    protected $reviewClass;
-
-    /**
-     * @var AssistanceDate
-     */
-    protected $assistanceDateClass;
-
-    /**
-     * @var AssistanceTerm
-     */
     protected $assistanceTermClass;
-
     protected $assistanceTranslationClass;
+    protected $assistanceMetaClass;
+    protected $assistanceDateClass;
     protected $userWishListClass;
-
-    protected $tmp_price = 0;
-    protected $tmp_dates = [];
+    protected $reviewClass;
 
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
         $this->bookingClass = Booking::class;
-        $this->reviewClass = Review::class;
-        $this->assistanceDateClass = AssistanceDate::class;
         $this->assistanceTermClass = AssistanceTerm::class;
         $this->assistanceTranslationClass = AssistanceTranslation::class;
+        $this->assistanceMetaClass = AssistanceMeta::class;
+        $this->assistanceDateClass = AssistanceDate::class;
         $this->userWishListClass = UserWishList::class;
+        $this->reviewClass = Review::class;
     }
-
     protected static function booted()
     {
         static::addGlobalScope(new CreatedByUserScope);
     }
 
-    public static function getModelName()
+    /**
+     * Get Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function category_assistance()
     {
-        return __("Serviços");
+        return $this->hasOne("Modules\Assistance\Models\AssistanceCategory", "id", 'category_id')->with(['translation']);
     }
-
-    public static function getTableName()
-    {
-        return with(new static)->table;
-    }
-
 
     /**
      * Get SEO fop page list
@@ -118,7 +141,7 @@ class Assistance extends Bookable
      */
     static public function getSeoMetaForPageList()
     {
-        $meta['seo_title'] = __("Buscar Assistências");
+        $meta['seo_title'] = __("Procurar Passeios");
         if (!empty($title = setting_item_with_lang("assistance_page_list_seo_title", false))) {
             $meta['seo_title'] = $title;
         } else if (!empty($title = setting_item_with_lang("assistance_page_search_title"))) {
@@ -136,18 +159,36 @@ class Assistance extends Bookable
         return $meta;
     }
 
-
-    public function terms()
+    /**
+     * Get Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function meta()
     {
-        return $this->hasMany($this->assistanceTermClass, "target_id");
+        return $this->hasOne($this->assistanceMetaClass, "assistance_id");
+    }
+
+    /**
+     * Get Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function assistance_term()
+    {
+        return $this->hasMany($this->assistanceTermClass, "assistance_id");
     }
 
     public function getDetailUrl($include_param = true)
     {
         $param = [];
         if ($include_param) {
-            if (!empty($date = request()->input('start'))) {
-                $param['start'] = $date;
+            if (!empty($date = request()->input('date'))) {
+                $dates = explode(" - ", $date);
+                if (!empty($dates)) {
+                    $param['start'] = $dates[0] ?? "";
+                    $param['end'] = $dates[1] ?? "";
+                }
             }
         }
         $urlDetail = app_get_locale(false, false, '/') . config('assistance.assistance_route_prefix') . "/" . $this->slug;
@@ -165,7 +206,30 @@ class Assistance extends Bookable
 
     public function getEditUrl()
     {
-        return url(route('assistance.admin.edit', ['id' => $this->id]));
+        return route('assistance.admin.edit', ['id' => $this->id]);
+    }
+
+    public function getDiscountPercentAttribute()
+    {
+        if (!empty($this->price) and $this->price > 0 and !empty($this->sale_price) and $this->sale_price > 0 and $this->price > $this->sale_price) {
+            $percent = 100 - ceil($this->sale_price / ($this->price / 100));
+            return $percent . "%";
+        }
+    }
+
+    public function saveMeta(\Illuminate\Http\Request $request)
+    {
+        $meta = $this->assistanceMetaClass::where('assistance_id', $this->id)->first();
+        if (!$meta) {
+            $meta = new $this->assistanceMetaClass();
+            $meta->assistance_id = $this->id;
+        }
+        $arg = $request->input();
+        if (!empty($arg['person_types'])) {
+            $arg['person_types'] = array_values($arg['person_types']);
+        }
+        $meta->fill($arg);
+        return $meta->save();
     }
 
     public function fill(array $attributes)
@@ -188,26 +252,60 @@ class Assistance extends Bookable
     public function addToCart(Request $request)
     {
         $res = $this->addToCartValidate($request);
+        if ($res !== true)
+            return $res;
 
-        if ($res !== true) return $res;
         // Add Booking
+        // get Price Availability Calendar
+        $dataPriceAvailability = $this->getDataPriceAvailabilityInRanges($request->input('start_date'));
+        $total = 0;
+        $total_guests = 0;
+        $discount = 0;
+        $base_price = ($this->sale_price && $this->sale_price > 0 && $this->sale_price < $this->price) ? $this->sale_price : $this->price;
+        // for Availability Calendar
+        $base_price = $dataPriceAvailability['base_price'] ?? $base_price;
 
-        // Get price in range
-        $number = $request->input('number', 1);
-        $total = $this->tmp_price * $number;
-
-        // Extra Price
-        $extra_price_input = $request->input('extra_price');
         $extra_price = [];
-        if ($this->enable_extra_price and !empty($this->extra_price)) {
-            if (!empty($this->extra_price)) {
-                foreach (array_values($this->extra_price) as $k => $type) {
-                    if (isset($extra_price_input[$k]) and !empty($extra_price_input[$k]['enable'])) {
+        $extra_price_input = $request->input('extra_price');
+        $person_types = [];
+        $person_types_input = $request->input('person_types');
+        $discount_by_people = [];
+        $meta = $this->meta;
+
+        if ($meta) {
+            // for Availability Calendar
+            $meta->person_types = $dataPriceAvailability['person_types'] ?? $meta->person_types;
+            if ($meta->enable_person_types && !empty($meta->person_types)) {
+                foreach ($meta->person_types as $k => $type) {
+                    if (isset($person_types_input[$k]) && $person_types_input[$k]['number']) {
+                        $type['number'] = $person_types_input[$k]['number'];
+                        $person_types[] = $type;
+                        $total += $type['price'] * $type['number'];
+                        $total_guests += $type['number'];
+                    }
+                }
+            } else {
+                $total += $base_price * $request->input('guests');
+                $total_guests += $request->input('guests');
+            }
+
+            if ($meta->enable_extra_price && !empty($meta->extra_price)) {
+                foreach ($meta->extra_price as $k => $type) {
+                    if (isset($extra_price_input[$k]) && !empty($extra_price_input[$k]['enable'])) {
                         $type_total = 0;
                         switch ($type['type']) {
                             case "one_time":
-                                $type_total = $type['price'] * $number;
+                                $type_total = $type['price'];
                                 break;
+                            case "per_hour":
+                                $type_total = $type['price'] * $this->duration;
+                                break;
+                            case "per_day":
+                                $type_total = $type['price'] * ceil($this->duration / 24);
+                                break;
+                        }
+                        if (!empty($type['per_person'])) {
+                            $type_total *= $total_guests;
                         }
                         $type['total'] = $type_total;
                         $total += $type_total;
@@ -215,6 +313,38 @@ class Assistance extends Bookable
                     }
                 }
             }
+
+            if ($meta->discount_by_people && !empty($meta->discount_by_people)) {
+                foreach ($meta->discount_by_people as $type) {
+                    if ($type['from'] <= $total_guests && (!$type['to'] || $type['to'] >= $total_guests)) {
+                        $type_total = 0;
+                        switch ($type['type']) {
+                            case "fixed":
+                                $type_total = $type['amount'];
+                                break;
+                            case "percent":
+                                $type_total = $total / 100 * $type['amount'];
+                                break;
+                        }
+                        $total -= $type_total;
+                        $discount += $type_total;
+                        $type['total'] = $type_total;
+                        $discount_by_people[] = $type;
+                    }
+                }
+            }
+        } else {
+            // Default
+            $total += $base_price * $request->input('guests');
+            $total_guests += $request->input('guests');
+        }
+
+        $start_date = new \DateTime($request->input('start_date'));
+        if (empty($start_date)) {
+            return $this->sendError(__("A data de início não é uma data válida"));
+        }
+        if (!$this->checkBusyDate($start_date)) {
+            return $this->sendError(__("A data de início não é uma data válida"));
         }
 
         //Buyer Fees for Admin
@@ -222,14 +352,14 @@ class Assistance extends Bookable
         $total_buyer_fee = 0;
         if (!empty($list_buyer_fees = setting_item('assistance_booking_buyer_fees'))) {
             $list_fees = json_decode($list_buyer_fees, true);
-            $total_buyer_fee = $this->calculateServiceFees($list_fees, $total_before_fees, 1);
+            $total_buyer_fee = $this->calculateServiceFees($list_fees, $total_before_fees, $total_guests);
             $total += $total_buyer_fee;
         }
 
         //Service Fees for Vendor
         $total_service_fee = 0;
-        if (!empty($this->enable_service_fee) and !empty($list_service_fee = $this->service_fee)) {
-            $total_service_fee = $this->calculateServiceFees($list_service_fee, $total_before_fees, 1);
+        if (!empty($this->enable_service_fee) && !empty($list_service_fee = $this->service_fee)) {
+            $total_service_fee = $this->calculateServiceFees($list_service_fee, $total_before_fees, $total_guests);
             $total += $total_service_fee;
         }
 
@@ -240,9 +370,10 @@ class Assistance extends Bookable
         $booking->vendor_id = $this->author_id;
         $booking->customer_id = Auth::id();
         $booking->total = $total;
-        $booking->total_guests = 1;
-        $booking->start_date = $this->tmp_start_date;
-        $booking->end_date = $this->tmp_end_date;
+        $booking->total_guests = $total_guests;
+        $booking->start_date = $start_date->format('Y-m-d H:i:s');
+        $start_date->modify('+ ' . max(1, $this->duration) . ' hours');
+        $booking->end_date = $start_date->format('Y-m-d H:i:s');
 
         $booking->vendor_service_fee_amount = $total_service_fee ?? '';
         $booking->vendor_service_fee = $list_service_fee ?? '';
@@ -250,30 +381,39 @@ class Assistance extends Bookable
         $booking->total_before_fees = $total_before_fees;
         $booking->total_before_discount = $total_before_fees;
 
+        if ($this->isFixedDate()) {
+            $booking->start_date = $this->start_date;
+            $booking->end_date = $this->end_date;
+        }
+
         $booking->calculateCommission();
-        $booking->number = $number;
 
         $check = $booking->save();
         if ($check) {
-
             $this->bookingClass::clearDraftBookings();
-
-            $booking->addMeta('base_price', $this->tmp_price);
+            $booking->addMeta('duration', $this->duration);
+            $booking->addMeta('base_price', $base_price);
+            $booking->addMeta('guests', max($total_guests, $request->input('guests')));
             $booking->addMeta('extra_price', $extra_price);
-            $booking->addMeta('type_date', $this->tmp_type_date);
-            $booking->addMeta('tmp_dates', $this->tmp_dates);
-            $booking->addMeta('start_time', $request->input('start_time'));
-            $booking->addMeta('day', $request->input('day'));
-            $booking->addMeta('hour', $request->input('hour'));
+            $booking->addMeta('person_types', $person_types);
+            $booking->addMeta('discount_by_people', $discount_by_people);
 
-            $bookingId = $request->input('bk');
+            if ($this->isFixedDate()) {
+                $booking->addMeta('enable_fixed_date', 1);
+                $booking->addMeta('fixed_date_data', [
+                    'start_date' => $this->start_date,
+                    'end_date' => $this->end_date,
+                    'last_booking_date' => $this->last_booking_date
+                ]);
+            }
 
-            $booking = Booking::where('id', $bookingId)->first();
+
+            $booking = Booking::where('id', $booking->id)->first();
             $booking->status = 'draft';
             $booking->save();
 
             BookingMessage::create([
-                'booking_id' => $bookingId,
+                'booking_id' =>  $booking->id,
                 'sender_id' => Auth::id(),
                 'message' => "Olá! Acabei de solicitar a reserva. Aguardando confirmação do proprietário.",
             ]);
@@ -281,18 +421,78 @@ class Assistance extends Bookable
             event(new BookingConfirmEvent($booking));
 
             return $this->sendSuccess([
-                'url' => "user/chat?bk=$bookingId",
+                'url' => "user/chat?bk=$booking->id",
             ]);
         }
+
         return $this->sendError(__("Não é possível verificar a disponibilidade"));
+    }
+
+
+    public function getDataPriceAvailabilityInRanges($start_date)
+    {
+        $datesRaw = $this->assistanceDateClass::getDatesInRanges($start_date, $this->id);
+        $dates = [
+            'base_price'   => null,
+            'person_types' => null,
+        ];
+        if (!empty($datesRaw)) {
+            $dates = [
+                'base_price'   => $datesRaw->price,
+                'person_types' => is_array($datesRaw->person_types) ? $datesRaw->person_types : false,
+            ];
+        }
+        return $dates;
+    }
+
+    public function beforeCheckout(Request $request, $booking)
+    {
+        $maxGuests = $this->getNumberAvailableBooking($booking->start_date);
+        if ($booking->total_guests > $maxGuests) {
+            return $this->sendError(__("Existem :maxGuests hóspedes disponíveis para a data selecionada", ['maxGuests' => $maxGuests]));
+        }
+    }
+
+    public function getNumberAvailableBooking($start_date)
+    {
+        $assistanceDate = $this->assistanceDateClass::where('target_id', $this->id)->where('start_date', $start_date)->where('active', 1)->first();
+        $totalGuests = $this->bookingClass::where('object_id', $this->id)->where('start_date', $start_date)->whereNotIn('status', $this->bookingClass::$notAcceptedStatus)->sum('total_guests');
+        $maxGuests = !empty($assistanceDate->max_guests) ? $assistanceDate->max_guests : $this->max_people;
+        $number = $maxGuests - $totalGuests;
+        return $number > 0 ? $number : 0;
     }
 
     public function addToCartValidate(Request $request)
     {
+        $meta = $this->meta;
         $rules = [
-            'start_date' => 'required|date_format:Y-m-d',
+            'guests'     => 'required|integer|min:1',
+            'start_date' => 'required|date_format:Y-m-d'
         ];
+        $start_date = $request->input('start_date');
+        if ($meta) {
 
+            // Percent Types
+            if ($meta->enable_person_types) {
+                unset($rules['guests']);
+                $rules['person_types'] = 'required';
+                $person_types_configs = $meta->person_types;
+                if (!empty($person_types_configs) and is_array($person_types_configs)) {
+                    foreach ($person_types_configs as $k => $person_type) {
+                        $ruleStr = 'integer';
+                        if ($person_type['min']) {
+                            $ruleStr .= '|min:' . $person_type['min'];
+                        }
+                        if ($person_type['max']) {
+                            $ruleStr .= '|max:' . $person_type['max'];
+                        }
+                        if ($ruleStr) {
+                            $rules['person_types.' . $k . '.number'] = $ruleStr;
+                        }
+                    }
+                }
+            }
+        }
         // Validation
         if (!empty($rules)) {
             $validator = Validator::make($request->all(), $rules);
@@ -300,190 +500,150 @@ class Assistance extends Bookable
                 return $this->sendError('', ['errors' => $validator->errors()]);
             }
         }
-        $total_number = $request->input('number', 1);
-
-        $start_date = $request->input('start_date');
         if (strtotime($start_date) < strtotime(date('Y-m-d 00:00:00'))) {
             return $this->sendError(__("As datas selecionadas não são válidas"));
         }
 
-        if (!empty($this->min_day_before_booking)) {
-            $minday_before = strtotime("today +" . $this->min_day_before_booking . " days");
-            if (strtotime($start_date) < $minday_before) {
-                return $this->sendError(__("Você deve reservar o serviço com :number dias de antecedência", ["number" => $this->min_day_before_booking]));
+        if ($this->isFixedDate()) {
+            if (Carbon::parse($request->start_date . ' 00:00:00') <= $this->last_booking_date) {
+                return $this->sendError(__("Este serviço não está disponível nas datas selecionadas"));
+            }
+        } else {
+            // Validate Date and Booking
+            if (!$this->isAvailableInRanges($start_date)) {
+                return $this->sendError(__("Este serviço não está disponível nas datas selecionadas"));
+            }
+
+            if ($meta) {
+                // Open Hours
+                if ($meta->enable_open_hours) {
+                    $open_hours = $meta->open_hours;
+                    $nDate = date('N', strtotime($start_date));
+                    if (!isset($open_hours[$nDate]) or empty($open_hours[$nDate]['enable'])) {
+                        return $this->sendError(__("Este serviço não está aberto no dia selecionado"));
+                    }
+                }
+            }
+
+            if (!empty($this->min_day_before_booking)) {
+                $minday_before = strtotime("today +" . $this->min_day_before_booking . " days");
+                if (strtotime($start_date) < $minday_before) {
+                    return $this->sendError(__("Você deve reservar o serviço com :number dias de antecedência", ["number" => $this->min_day_before_booking]));
+                }
             }
         }
 
-        $hour = $request->input('hour', 0);
-        $day = $request->input('day', 0);
-        $start_time = $request->input('start_time');
 
-        if (empty($hour) and empty($day)) {
-            return $this->sendError(__("Você não selecionou o dia ou horário de retorno"));
-        }
 
-        if (!empty($this->start_time_booking)) {
-            if (strtotime($start_time) < strtotime($this->start_time_booking)) {
-                return $this->sendError(__("Horário de início da reserva: :time", ['time' => $this->start_time_booking]));
-            }
+        if (!empty($request->person_types)) {
+            $totalGuests = array_sum(Arr::pluck($request->person_types, 'number')) ?? 0;
+        } else {
+            $totalGuests = $request->guests;
         }
-        if (!empty($this->end_time_booking)) {
-            if (strtotime($start_time) > strtotime($this->end_time_booking)) {
-                return $this->sendError(__("Horário de término da reserva: :time", ['time' => $this->end_time_booking]));
-            }
-        }
-        $type = empty($day) ? "per_hour" : "per_day";
-        $start_date_time = $start_date . " " . $start_time;
-        if ($type == 'per_hour') {
-            $end_date_time = date('Y-m-d H:i', strtotime($start_date_time . " +" . $hour . "hours"));
-            if (strtotime($end_date_time) > strtotime($start_date . " +1day")) {
-                return $this->sendError(__("Você precisa de assistência para devolução no mesmo dia"));
-            }
-        }
-        if ($type == 'per_day') {
-            $end_date_time = date('Y-m-d H:i', strtotime($start_date_time . " +" . $day . "days"));
-        }
-
-        if (!$this->isAvailableInRanges($start_date_time, $end_date_time, $type, $hour, $total_number)) {
-            return $this->sendError(__("Esta assistência não está disponível nas datas selecionadas"));
+        $numberGuestsCanBook = $this->getNumberAvailableBooking($start_date);
+        if ($totalGuests > $numberGuestsCanBook) {
+            return $this->sendError(__("Existem :numberGuestsCanBook hóspedes disponíveis para a data selecionada", ['numberGuestsCanBook' => $numberGuestsCanBook]));
         }
         return true;
     }
 
-    public function beforeCheckout(Request $request, $booking)
+    public function isAvailableInRanges($start_date)
     {
-        if (!$this->isAvailableInRanges($booking->start_date, $booking->end_date, $booking->getMeta("type_date"), $booking->getMeta("hour"), $booking->number)) {
-            return $this->sendError(__("Esta assistência não está disponível nas datas selecionadas"));
-        }
-    }
 
-    public function isAvailableInRanges($start_date_time, $end_date_time, $type, $hour, $number = 1)
-    {
-        $allDates = [];
-        if ($type == 'per_hour') {
-            $start_date =  date('Y-m-d', strtotime($start_date_time));
-            $base_price = $this->price_per_hour;
-            $allDates[$start_date] = [
-                'number' => $this->number,
-                'price' => $base_price * $hour,
-                'status' => $this->default_state
-            ];
-            $datesData = $this->getDatesInRange($start_date, $start_date);
-            if (!empty($datesData)) {
-                foreach ($datesData as $date) {
-                    $allDates[$start_date] = [
-                        'number' => $date->number,
-                        'price' => $date->price_per_hour * $hour,
-                        'status' => $date->active
-                    ];
-                }
-            }
-            if (empty($allDates[$start_date]['status'])) {
-                return false;
-            }
+        if ($this->default_state) {
+            $notAvailableDates = $this->assistanceDateClass::query()->where([
+                ['start_date', '>=', $start_date],
+                ['end_date', '<=', $start_date],
+                ['active', '0'],
+                ['target_id', '=', $this->id],
+            ])->count('id');
+            if ($notAvailableDates) return false;
+        } else {
+            $availableDates = $this->assistanceDateClass::query()->where([
+                ['start_date', '>=', $start_date],
+                ['end_date', '<=', $start_date],
+                ['active', '=', 1],
+                ['target_id', '=', $this->id],
+            ])->count('id');
+            if ($availableDates < 1) return false;
         }
-        if ($type == 'per_day') {
-            $base_price = $this->price_per_day;
-            $period = periodDate($start_date_time, $end_date_time, true);
-            foreach ($period as $dt) {
-                $allDates[$dt->format('Y-m-d')] = [
-                    'number' => $this->number,
-                    'price' => $base_price,
-                    'status' => $this->default_state
-                ];
-            }
-            $datesData = $this->getDatesInRange($start_date_time, $end_date_time);
-            if (!empty($datesData)) {
-                foreach ($datesData as $date) {
-                    if (empty($allDates[date('Y-m-d', strtotime($date->start_date))])) continue;
-                    $allDates[date('Y-m-d', strtotime($date->start_date))] = [
-                        'number' => $date->number,
-                        'price' => $date->price_per_day,
-                        'status' => $date->active
-                    ];
-                }
-            }
-            foreach ($allDates as $date => $data) {
-                if (empty($data['status'])) {
-                    return false;
-                }
-            }
-            // Remove ngay cuoi tra assistance
-            array_pop($allDates);
-        }
-        $bookingData = $this->getBookingsInRange($start_date_time, $end_date_time);
-        if (!empty($bookingData) and $bookingData->count() > 0) {
-            return false;
-        }
-
-        $this->tmp_price = array_sum(array_column($allDates, 'price'));
-        $this->tmp_dates = $allDates;
-
-        $this->tmp_start_date = $start_date_time;
-        $this->tmp_end_date = $end_date_time;
-        $this->tmp_type_date = $type;
-
         return true;
-    }
-    public function getDatesInRange($start_date, $end_date)
-    {
-        $query = $this->assistanceDateClass::query();
-        $query->where('target_id', $this->id);
-        $query->where('start_date', '>=', date('Y-m-d', strtotime($start_date)));
-        $query->where('end_date', '<=', date('Y-m-d', strtotime($end_date)));
-        return $query->take(100)->get();
     }
 
     public function getBookingData()
     {
-        if (!empty($start = request()->input('start'))) {
-            $start = date("Y-m-d", strtotime($start));
-        }
         $booking_data = [
-            'id'              => $this->id,
-            'extra_price'     => [],
-            'minDate'         => date('m/d/Y'),
-            'max_number'      => $this->number ?? 1,
-            'buyer_fees'      => [],
-            'start_date'      => $start ?? "",
-            'start_date_html' => request()->input('start') ? display_date(request()->input('start')) : __('Por favor selecione'),
-            'deposit' => $this->isDepositEnable(),
-            'deposit_type' => $this->getDepositType(),
-            'deposit_amount' => $this->getDepositAmount(),
-            'deposit_fomular' => $this->getDepositFomular(),
+            'id'                       => $this->id,
+            'person_types'             => [],
+            'max'                      => 0,
+            'open_hours'               => [],
+            'extra_price'              => [],
+            'minDate'                  => date('m/d/Y'),
+            'duration'                 => $this->duration,
+            'buyer_fees'               => [],
+            'start_date'               => request()->input('start') ?? "",
+            'start_date_html'          => request()->input('start') ? display_date(request()->input('start')) : __('Por favor selecione a data!'),
+            'end_date'                 => request()->input('end') ?? "",
+            'end_date_html'            => request()->input('end') ? display_date(request()->input('end')) : "",
+            'deposit'                  => $this->isDepositEnable(),
+            'deposit_type'             => $this->getDepositType(),
+            'deposit_amount'           => $this->getDepositAmount(),
+            'deposit_fomular'          => $this->getDepositFomular(),
             'is_form_enquiry_and_book' => $this->isFormEnquiryAndBook(),
-            'enquiry_type' => $this->getBookingEnquiryType(),
-            'start_time' => $this->start_time_booking ?? "00:00",
+            'enquiry_type'             => $this->getBookingEnquiryType(),
+            'is_fixed_date'            => false,
         ];
+        $meta = $this->meta ?? false;
         $lang = app()->getLocale();
-        if ($this->enable_extra_price) {
-            $booking_data['extra_price'] = $this->extra_price;
-            if (!empty($booking_data['extra_price'])) {
-                foreach ($booking_data['extra_price'] as $k => &$type) {
-                    if (!empty($lang) and !empty($type['name_' . $lang])) {
-                        $type['name'] = $type['name_' . $lang];
+        if ($meta) {
+            if ($meta->enable_person_types) {
+                $booking_data['person_types'] = $meta->person_types;
+                if (!empty($booking_data['person_types'])) {
+                    foreach ($booking_data['person_types'] as $k => &$type) {
+                        if (!empty($lang)) {
+                            $type['name'] = !empty($type['name_' . $lang]) ? $type['name_' . $lang] : $type['name'];
+                            $type['desc'] = !empty($type['desc_' . $lang]) ? $type['desc_' . $lang] : $type['desc'];
+                        }
+                        $type['min'] = (int)$type['min'];
+                        $type['max'] = (int)$type['max'];
+                        $type['number'] = $type['min'];
+                        $type['display_price'] = format_money($type['price']);
                     }
-                    $type['number'] = 0;
-                    $type['enable'] = 0;
-                    $type['price_html'] = format_money($type['price']);
-                    $type['price_type'] = '';
-                    switch ($type['type']) {
-                        case "per_day":
-                            $type['price_type'] .= '/' . __('dia');
-                            break;
-                        case "per_hour":
-                            $type['price_type'] .= '/' . __('hora');
-                            break;
-                    }
-                    if (!empty($type['per_person'])) {
-                        $type['price_type'] .= '/' . __('convidado');
-                    }
+                    $booking_data['person_types'] = array_values((array)$booking_data['person_types']);
+                } else {
+                    $booking_data['person_types'] = [];
                 }
             }
-
-            $booking_data['extra_price'] = array_values((array)$booking_data['extra_price']);
+            if ($meta->enable_extra_price) {
+                $booking_data['extra_price'] = $meta->extra_price;
+                if (!empty($booking_data['extra_price'])) {
+                    foreach ($booking_data['extra_price'] as $k => &$type) {
+                        if (!empty($lang) and !empty($type['name_' . $lang])) {
+                            $type['name'] = $type['name_' . $lang];
+                        }
+                        $type['number'] = 0;
+                        $type['enable'] = 0;
+                        $type['price_html'] = format_money($type['price']);
+                        $type['price_type'] = '';
+                        switch ($type['type']) {
+                            case "per_day":
+                                $type['price_type'] .= '/' . __('dia');
+                                break;
+                            case "per_hour":
+                                $type['price_type'] .= '/' . __('hora');
+                                break;
+                        }
+                        if (!empty($type['per_person'])) {
+                            $type['price_type'] .= '/' . __('hóspede');
+                        }
+                    }
+                }
+                $booking_data['extra_price'] = array_values((array)$booking_data['extra_price']);
+            }
+            if ($meta->enable_open_hours) {
+                $booking_data['open_hours'] = $meta->open_hours;
+            }
         }
-
         $list_fees = setting_item_array('assistance_booking_buyer_fees');
         if (!empty($list_fees)) {
             foreach ($list_fees as $item) {
@@ -491,7 +651,7 @@ class Assistance extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('convidado');
+                    $item['price_type'] .= '/' . __('hóspede');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -502,11 +662,23 @@ class Assistance extends Bookable
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('convidado');
+                    $item['price_type'] .= '/' . __('hóspede');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
         }
+
+        if ($this->isFixedDate()) {
+            $booking_data['is_fixed_date'] = true;
+            $booking_data['start_date'] = $this->start_date->format('Y-m-d');
+            $booking_data['start_date_html'] = display_date($this->start_date);
+            $booking_data['end_date_html'] = display_date($this->end_date);
+            $booking_data['end_date'] = $this->end_date;
+            $booking_data['last_booking_date'] = $this->last_booking_date;
+            $booking_data['last_booking_date_html'] = display_date($this->last_booking_date);
+            $booking_data['open_hours'] = [];
+        }
+
         return $booking_data;
     }
 
@@ -523,8 +695,8 @@ class Assistance extends Bookable
 
     public static function getMinMaxPrice()
     {
-        $model = parent::selectRaw('MIN( min_price ) AS min_price ,
-                                    MAX( min_price ) AS max_price ')->where("status", "publish")->first();
+        $model = parent::selectRaw('MIN( CASE WHEN sale_price > 0 THEN sale_price ELSE ( price ) END ) AS min_price ,
+                                    MAX( CASE WHEN sale_price > 0 THEN sale_price ELSE ( price ) END ) AS max_price ')->where("status", "publish")->first();
         if (empty($model->min_price) and empty($model->max_price)) {
             return [
                 0,
@@ -586,10 +758,10 @@ class Assistance extends Bookable
             'total_review' => 0,
             'rate_score'   => [],
         ];
-        $dataTotalReview = $this->reviewClass::selectRaw(" AVG(rate_number) as score_total , COUNT(id) as total_review ")->where('object_id', $this->id)->where('object_model', $this->type)->where("status", "approved")->first();
+        $dataTotalReview = $this->reviewClass::selectRaw(" AVG(rate_number) as score_total , COUNT(id) as total_review ")->where('object_id', $this->id)->where('object_model', "assistance")->where("status", "approved")->first();
         if (!empty($dataTotalReview->score_total)) {
             $list_score['score_total'] = number_format($dataTotalReview->score_total, 1);
-            $list_score['score_text'] = Review::getDisplayTextScoreByLever(round($list_score['score_total']));
+            $list_score['score_text'] = $this->reviewClass::getDisplayTextScoreByLever(round($list_score['score_total']));
         }
         if (!empty($dataTotalReview->total_review)) {
             $list_score['total_review'] = $dataTotalReview->total_review;
@@ -617,20 +789,18 @@ class Assistance extends Bookable
     /**
      * Get Score Review
      *
-     * Using for loop space
+     * Using for loop assistance
      */
     public function getScoreReview()
     {
         $assistance_id = $this->id;
         $list_score = Cache::rememberForever('review_' . $this->type . '_' . $assistance_id, function () use ($assistance_id) {
             $dataReview = $this->reviewClass::selectRaw(" AVG(rate_number) as score_total , COUNT(id) as total_review ")->where('object_id', $assistance_id)->where('object_model', "assistance")->where("status", "approved")->first();
-            $score_total = !empty($dataReview->score_total) ? number_format($dataReview->score_total, 1) : 0;
             return [
-                'score_total'  => $score_total,
+                'score_total'  => !empty($dataReview->score_total) ? number_format($dataReview->score_total, 1) : 0,
                 'total_review' => !empty($dataReview->total_review) ? $dataReview->total_review : 0,
             ];
         });
-        $list_score['review_text'] =  $list_score['score_total'] ? Review::getDisplayTextScoreByLever(round($list_score['score_total'])) : __("Não classificado");
         return $list_score;
     }
 
@@ -639,24 +809,31 @@ class Assistance extends Bookable
         return $this->reviewClass::countReviewByServiceID($this->id, false, $status, $this->type) ?? 0;
     }
 
-    public function getReviewList()
-    {
-        return $this->reviewClass::select(['id', 'title', 'content', 'rate_number', 'author_ip', 'status', 'created_at', 'vendor_id', 'author_id'])->where('object_id', $this->id)->where('object_model', 'assistance')->where("status", "approved")->orderBy("id", "desc")->with('author')->paginate(setting_item('assistance_review_number_per_page', 5));
-    }
-
     public function getNumberServiceInLocation($location)
     {
         $number = 0;
         if (!empty($location)) {
             $number = parent::join('bravo_locations', function ($join) use ($location) {
-                $join->on('bravo_locations.id', '=', $this->table . '.location_id')->where('bravo_locations._lft', '>=', $location->_lft)->where('bravo_locations._rgt', '<=', $location->_rgt);
-            })->where($this->table . ".status", "publish")->with(['translation'])->count($this->table . ".id");
+                $join->on('bravo_locations.id', '=', 'bravo_assistances.location_id')->where('bravo_locations._lft', '>=', $location->_lft)->where('bravo_locations._rgt', '<=', $location->_rgt);
+            })->where("bravo_assistances.status", "publish")->with(['translation'])->count("bravo_assistances.id");
         }
-        if (empty($number)) return false;
+        if (empty($number))
+            return false;
         if ($number > 1) {
-            return __(":number Assistências", ['number' => $number]);
+            return __(":number Serviços", ['number' => $number]);
         }
-        return __(":number Assistência", ['number' => $number]);
+        return __(":number Serviço", ['number' => $number]);
+    }
+
+    public function getReviewList()
+    {
+        return $this->reviewClass::select(['id', 'title', 'content', 'rate_number', 'author_ip', 'status', 'created_at', 'vendor_id', 'author_id'])
+            ->where('object_id', $this->id)
+            ->where('object_model', 'assistance')
+            ->where("status", "approved")
+            ->orderBy("id", "desc")
+            ->with('author')
+            ->paginate(setting_item('assistance_review_number_per_page', 5));
     }
 
     /**
@@ -668,20 +845,19 @@ class Assistance extends Bookable
     {
 
         $query = $this->bookingClass::query();
-        $query->whereNotIn('status', $this->bookingClass::$notAcceptedStatus);
-        $query->where('start_date', '<', $to)->where('end_date', '>', $from)->take(100);
-
+        $query->whereNotIn('status', ['draft']);
+        $query->where('start_date', '<=', $to)->where('end_date', '>=', $from)->take(50);
         $query->where('object_id', $this->id);
-        $query->where('object_model', $this->type);
-
+        $query->where('object_model', 'assistance');
         return $query->orderBy('id', 'asc')->get();
     }
 
     public function saveCloneByID($clone_id)
     {
         $old = parent::find($clone_id);
-        if (empty($old)) return false;
-        $selected_terms = $old->terms->pluck('term_id');
+        if (empty($old))
+            return false;
+        $selected_terms = $old->assistance_term->pluck('term_id');
         $old->title = $old->title . " - Copy";
         $new = $old->replicate();
         $new->save();
@@ -689,7 +865,7 @@ class Assistance extends Bookable
         foreach ($selected_terms as $term_id) {
             $this->assistanceTermClass::firstOrCreate([
                 'term_id' => $term_id,
-                'target_id' => $new->id
+                'assistance_id' => $new->id
             ]);
         }
         //Language
@@ -714,6 +890,13 @@ class Assistance extends Bookable
             $metaSeoNew->object_id = $new->id;
             $metaSeoNew->save();
         }
+        //Meta
+        $metaAssistance = $this->assistanceMetaClass::where('assistance_id', $old->id)->first();
+        if (!empty($metaAssistance)) {
+            $metaAssistanceNew = $metaAssistance->replicate();
+            $metaAssistanceNew->assistance_id = $new->id;
+            $metaAssistanceNew->save();
+        }
     }
 
     public function hasWishList()
@@ -730,9 +913,10 @@ class Assistance extends Bookable
         }
         return '';
     }
+
     public static function getServiceIconFeatured()
     {
-        return "icofont-ship";
+        return "icofont-island-alt";
     }
 
     public static function isEnable()
@@ -740,75 +924,24 @@ class Assistance extends Bookable
         return setting_item('assistance_disable') == false;
     }
 
-
-    public function getBookingInRanges($object_id, $object_model, $from, $to, $object_child_id = false)
-    {
-
-        $query = $this->bookingClass::selectRaw(" * , SUM( number ) as total_numbers ")->where([
-            'object_id' => $object_id,
-            'object_model' => $object_model,
-        ])->whereNotIn('status', $this->bookingClass::$notAcceptedStatus)
-            ->where('end_date', '>', $from)
-            ->where('start_date', '<', $to)
-            ->groupBy('start_date')
-            ->take(200);
-
-        if ($object_child_id) {
-            $query->where('object_child_id', $object_child_id);
-        }
-
-        return $query->get();
-    }
-
     public function isDepositEnable()
     {
         return (setting_item('assistance_deposit_enable') and setting_item('assistance_deposit_amount'));
     }
+
     public function getDepositAmount()
     {
         return setting_item('assistance_deposit_amount');
     }
+
     public function getDepositType()
     {
         return setting_item('assistance_deposit_type');
     }
+
     public function getDepositFomular()
     {
         return setting_item('assistance_deposit_fomular', 'default');
-    }
-    public function detailBookingEachDate($booking)
-    {
-        $startDate = $booking->start_date;
-        $endDate = $booking->end_date;
-        $rowDates = json_decode($booking->getMeta('tmp_dates'));
-
-        $allDates = [];
-        $period = periodDate($startDate, $endDate, false);
-        foreach ($period as $dt) {
-            $price = 0;
-            $date['price'] = $price;
-            $date['price_html'] = format_money($price);
-            $date['from'] = $dt->getTimestamp();
-            $date['from_html'] = $dt->format('d/m/Y');
-            $date['to'] = $dt->getTimestamp();
-            $date['to_html'] = $dt->format('d/m/Y');
-            $allDates[$dt->format(('Y-m-d'))] = $date;
-        }
-
-        if (!empty($rowDates)) {
-            foreach ($rowDates as $item => $row) {
-                $startDate = strtotime($item);
-                $price = $row->price;
-                $date['price'] = $price;
-                $date['price_html'] = format_money($price);
-                $date['from'] = $startDate;
-                $date['from_html'] = date('d/m/Y', $startDate);
-                $date['to'] = $startDate;
-                $date['to_html'] = date('d/m/Y', ($startDate));
-                $allDates[date('Y-m-d', $startDate)] = $date;
-            }
-        }
-        return $allDates;
     }
 
     public static function isEnableEnquiry()
@@ -818,6 +951,7 @@ class Assistance extends Bookable
         }
         return false;
     }
+
     public static function isFormEnquiryAndBook()
     {
         $check = setting_item('booking_enquiry_for_assistance');
@@ -826,6 +960,7 @@ class Assistance extends Bookable
         }
         return false;
     }
+
     public static function getBookingEnquiryType()
     {
         $check = setting_item('booking_enquiry_for_assistance');
@@ -837,109 +972,152 @@ class Assistance extends Bookable
         return "book";
     }
 
-
+    /**
+     * @param $request
+     * [location_id] -> number
+     * [s] -> keyword
+     * @return array|\Illuminate\Database\Eloquent\Builder
+     */
     public function search($request)
     {
-        $query = parent::query()->select("bravo_assistances.*");
-        $query->where("bravo_assistances.status", "publish");
-        if (!empty($location_id = $request["location_id"] ?? "")) {
-            $location = Location::query()->where('id', $location_id)->where("status", "publish")->first();
+        $model_Assistance = parent::query()->select("bravo_assistances.*");
+        $model_Assistance->where("bravo_assistances.status", "publish");
+        if (!empty($location_id = $request['location_id'] ?? "")) {
+            $location = Location::where('id', $location_id)->where("status", "publish")->first();
             if (!empty($location)) {
-                $query->join('bravo_locations', function ($join) use ($location) {
-                    $join->on('bravo_locations.id', '=', 'bravo_assistances.location_id')
-                        ->where('bravo_locations._lft', '>=', $location->_lft)
-                        ->where('bravo_locations._rgt', '<=', $location->_rgt);
+                $model_Assistance->join('bravo_locations', function ($join) use ($location) {
+                    $join->on('bravo_locations.id', '=', 'bravo_assistances.location_id')->where('bravo_locations._lft', '>=', $location->_lft)->where('bravo_locations._rgt', '<=', $location->_rgt);
                 });
             }
         }
-        if (!empty($price_range = $request["price_range"] ?? "")) {
+        if (!empty($price_range = $request['price_range'] ?? "")) {
             $pri_from = Currency::convertPriceToMain(explode(";", $price_range)[0]);
             $pri_to =  Currency::convertPriceToMain(explode(";", $price_range)[1]);
-            $raw_sql_min_max = "( bravo_assistances.min_price >= ? ) AND ( bravo_assistances.min_price <= ? )";
-            $query->WhereRaw($raw_sql_min_max, [$pri_from, $pri_to]);
+            $raw_sql_min_max = "( (IFNULL(bravo_assistances.sale_price,0) > 0 and bravo_assistances.sale_price >= ? ) OR (IFNULL(bravo_assistances.sale_price,0) <= 0 and bravo_assistances.price >= ?) )
+								AND ( (IFNULL(bravo_assistances.sale_price,0) > 0 and bravo_assistances.sale_price <= ? ) OR (IFNULL(bravo_assistances.sale_price,0) <= 0 and bravo_assistances.price <= ?) )";
+            $model_Assistance->WhereRaw($raw_sql_min_max, [
+                $pri_from,
+                $pri_from,
+                $pri_to,
+                $pri_to
+            ]);
         }
 
+        $category_ids = $request['cat_id'] ?? [];
+        if (!is_array($category_ids)) $category_ids = [$category_ids];
+        $category_ids = array_filter(array_values($category_ids));
+        $list_cat = AssistanceCategory::whereIn('slug', $category_ids)->orWhereIn('id', $category_ids)->where("status", "publish")->get();
+        foreach ($list_cat as $index => $cat) {
+            $model_Assistance->join('bravo_assistance_category as tc' . $index, function ($join) use ($cat, $index) {
+                $join->on('tc' . $index . '.id', '=', 'bravo_assistances.category_id')
+                    ->where('tc' . $index . '._lft', '>=', $cat->_lft)
+                    ->where('tc' . $index . '._rgt', '<=', $cat->_rgt);
+            });
+        }
 
         if (!empty($request['attrs'])) {
-            $this->filterAttrs($query, $request['attrs'], 'bravo_assistances_term');
+            $model_Assistance = $this->filterAttrs($model_Assistance, $request['attrs'], 'bravo_assistance_term', 'assistance_id');
         }
 
-        $review_scores = $request['review_score'] ?? "";
+        $review_scores = $request["review_score"] ?? "";
         if (is_array($review_scores)) $review_scores = array_filter($review_scores);
         if (!empty($review_scores) && count($review_scores)) {
-            $this->filterReviewScore($query, $review_scores);
+            $model_Assistance = $this->filterReviewScore($model_Assistance, $review_scores);
         }
 
-        if (!empty($service_name = $request["service_name"] ?? "")) {
+        if (!empty($service_name = $request['service_name'] ?? [])) {
             if (setting_item('site_enable_multi_lang') && setting_item('site_locale') != app()->getLocale()) {
-                $query->leftJoin('bravo_assistances_translations', function ($join) {
-                    $join->on('bravo_assistances.id', '=', 'bravo_assistances_translations.origin_id');
+                $model_Assistance->leftJoin('bravo_assistance_translations', function ($join) {
+                    $join->on('bravo_assistances.id', '=', 'bravo_assistance_translations.origin_id');
                 });
-                $query->where('bravo_assistances_translations.title', 'LIKE', '%' . $service_name . '%');
+                $model_Assistance->where('bravo_assistance_translations.title', 'LIKE', '%' . $service_name . '%');
             } else {
-                $query->where('bravo_assistances.title', 'LIKE', '%' . $service_name . '%');
+                $model_Assistance->where('bravo_assistances.title', 'LIKE', '%' . $service_name . '%');
             }
         }
         if (!empty($lat = $request["map_lat"] ?? "") and !empty($lgn = $request["map_lgn"] ?? "") and !empty($request["map_place"] ?? "")) {
-            $this->filterLatLng($query, $lat, $lgn);
+            $model_Assistance = $this->filterLatLng($model_Assistance   , $lat, $lgn);
         }
         if (!empty($request['is_featured'])) {
-            $query->where('bravo_assistances.is_featured', 1);
+            $model_Assistance->where('bravo_assistances.is_featured', 1);
         }
         if (!empty($request['custom_ids']) and !empty($ids = array_filter($request['custom_ids']))) {
-            $query->whereIn("bravo_assistances.id", $ids);
-            $query->orderByRaw('FIELD (id, ' . implode(', ', $ids) . ') ASC');
+            $model_Assistance->whereIn("bravo_assistances.id", $ids);
+            $model_Assistance->orderByRaw('FIELD (id, ' . implode(', ', $ids) . ') ASC');
         }
         $orderby = $request['orderby'] ?? "";
         switch ($orderby) {
             case "price_low_high":
-                $query->orderBy("min_price", "asc");
+                $raw_sql = "CASE WHEN IFNULL( bravo_assistances.sale_price, 0 ) > 0 THEN bravo_assistances.sale_price ELSE bravo_assistances.price END AS tmp_min_price";
+                $model_Assistance->selectRaw($raw_sql);
+                $model_Assistance->orderBy("tmp_min_price", "asc");
                 break;
             case "price_high_low":
-                $query->orderBy("min_price", "desc");
+                $raw_sql = "CASE WHEN IFNULL( bravo_assistances.sale_price, 0 ) > 0 THEN bravo_assistances.sale_price ELSE bravo_assistances.price END AS tmp_min_price";
+                $model_Assistance->selectRaw($raw_sql);
+                $model_Assistance->orderBy("tmp_min_price", "desc");
                 break;
             case "rate_high_low":
-                $query->orderBy("review_score", "desc");
+                $model_Assistance->orderBy($model_Assistance->qualifyColumn("review_score"), "desc");
                 break;
             default:
                 if (!empty($request['order']) and !empty($request['order_by'])) {
-                    $query->orderBy("bravo_assistances." . $request['order'], $request['order_by']);
+                    $model_Assistance->orderBy($model_Assistance->qualifyColumn($request['order']), $request['order_by']);
                 } else {
-                    $query->orderBy("is_featured", "desc");
-                    $query->orderBy("id", "desc");
+                    $model_Assistance->orderBy($model_Assistance->qualifyColumn("is_featured"), "desc");
+                    $model_Assistance->orderBy($model_Assistance->qualifyColumn("id"), "desc");
                 }
         }
 
-        $query->groupBy("bravo_assistances.id");
-
-
-        return $query->with(['location', 'hasWishList', 'translation']);
+        $model_Assistance->groupBy($model_Assistance->qualifyColumn("id"));
+        return $model_Assistance->with([
+            'location',
+            'hasWishList',
+            'translation'
+        ]);
     }
 
     public function dataForApi($forSingle = false)
     {
         $data = parent::dataForApi($forSingle);
-        $data['max_guest'] = $this->max_guest;
-        $data['cabin'] = $this->cabin;
-        $data['length'] = $this->length;
-        $data['speed'] = $this->speed;
-        $data['price'] = $this->min_price;
+        $data['duration'] = duration_format($this->duration);
         if ($forSingle) {
             $data['review_score'] = $this->getReviewDataAttribute();
             $data['review_stats'] = $this->getReviewStats();
             $data['review_lists'] = $this->getReviewList();
-
+            $data['category'] = AssistanceCategory::selectRaw("id,name")->find($this->category_id) ?? null;
+            $data['min_people'] = $this->min_people;
+            $data['max_people'] = $this->max_people;
             $data['faqs'] = $this->faqs;
-            $data['cancel_policy'] = $this->cancel_policy;
-            $data['terms_information'] = $this->terms_information;
-            $data['min_day_before_booking'] = $this->min_day_before_booking;
-            $data['is_instant'] = $this->is_instant;
-
-            $data['number'] = $this->number;
-            $data['price_per_hour'] = $this->price_per_hour;
-            $data['price_per_day'] = $this->price_per_day;
-
-            $data['default_state'] = $this->default_state;
+            $data['include'] = $this->include;
+            $data['exclude'] = $this->exclude;
+            $data["itinerary"] = null;
+            if (!empty($this->itinerary)) {
+                $itinerary = $this->itinerary;
+                foreach ($itinerary as &$item) {
+                    $item['image'] = get_file_url($item['image_id'], 'full');
+                }
+                $data["itinerary"] = $itinerary;
+            }
+            $meta = $this->meta;
+            if ($meta->enable_extra_price and !empty($meta->extra_price)) {
+                $data["enable_extra_price"] = $meta->enable_extra_price ?? 0;
+                $data["extra_price"] = $meta->extra_price ?? null;
+            }
+            $data["person_types"] = null;
+            if (!empty($meta->person_types)) {
+                $data["person_types"] = $meta->person_types;
+            }
+            $data["discount_by_people"] = null;
+            if (!empty($meta->discount_by_people)) {
+                $data["person_types"] = $meta->discount_by_people;
+            }
+            $data["enable_open_hours"] = 0;
+            $data["open_hours"] = null;
+            if (!empty($meta->enable_open_hours)) {
+                $data["enable_open_hours"] = $meta->enable_open_hours;
+                $data["open_hours"] = $meta->open_hours;
+            }
             $data['booking_fee'] = setting_item_array('assistance_booking_buyer_fees');
             if (!empty($location_id = $this->location_id)) {
                 $related =  parent::query()->where('location_id', $location_id)->where("status", "publish")->take(4)->whereNotIn('id', [$this->id])->with(['location', 'translation', 'hasWishList'])->get();
@@ -947,7 +1125,7 @@ class Assistance extends Bookable
                     return $related->dataForApi();
                 }) ?? null;
             }
-            $data['terms'] = Terms::getTermsByIdForAPI($this->terms->pluck('term_id'));
+            $data['terms'] = Terms::getTermsByIdForAPI($this->assistance_term->pluck('term_id'));
         } else {
             $data['review_score'] = $this->getScoreReview();
         }
@@ -961,7 +1139,9 @@ class Assistance extends Bookable
 
     static public function getFiltersSearch()
     {
+
         $min_max_price = self::getMinMaxPrice();
+        $category = AssistanceCategory::selectRaw("id,name,slug")->where('status', 'publish')->with(['translation'])->get()->toTree();
         return [
             [
                 "title"    => __("Filtrar Preço"),
@@ -978,9 +1158,17 @@ class Assistance extends Bookable
                 "max" => "5",
             ],
             [
+                "title"    => __("Tipo de Passeio"),
+                "field"    => "cat_id",
+                "position" => "3",
+                "data" => $category->map(function ($category) {
+                    return $category->dataForApi();
+                })
+            ],
+            [
                 "title"    => __("Atributos"),
                 "field"    => "terms",
-                "position" => "3",
+                "position" => "4",
                 "data" => Attributes::getAllAttributesForApi("assistance")
             ]
         ];
@@ -1008,17 +1196,9 @@ class Assistance extends Bookable
         return $search_fields;
     }
 
-    public function capturesService($event)
+    public function isFixedDate(): bool
     {
-        if (in_array($event, ['saved', 'created', 'updated'])) {
-            $this->price = $this->min_price;
-            Service::cloneService($this, $event);
-        }
-        if ($event == 'deleted') {
-            Service::deleteService($this);
-        }
-        if ($event == 'restored') {
-            Service::restoreService($this);
-        }
+        if (!empty($this->enable_fixed_date) and $this->last_booking_date >= Carbon::today()) return    true;
+        return false;
     }
 }

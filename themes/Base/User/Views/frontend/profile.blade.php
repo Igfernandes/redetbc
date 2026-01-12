@@ -53,7 +53,7 @@
                         {{ __("Solteiro") }}
                     </option>
                     <option value="MARRIED" {{ old('civil_status', $dataUser->civil_status ?? '') == 'MARRIED' ? 'selected' : '' }}>
-                        {{ __("Casado") }}
+                        {{ __("espaçodo") }}
                     </option>
                 </select>
                 <i class="fa fa-church input-icon"></i>
