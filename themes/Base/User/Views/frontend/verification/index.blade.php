@@ -2,7 +2,7 @@
 
 @section('content')
 <h2 class="title-bar">
-    {{__("Dados de verificação")}}
+    {{__("Dados de verificação - Titular")}}
 </h2>
 <div class="booking-history-manager">
     <div class="text">

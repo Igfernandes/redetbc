@@ -80,7 +80,20 @@
                             <span class="tag"><?php echo e(__('Recomendado')); ?></span>
                             <?php endif; ?>
                             <div class="title"><?php echo e($plan->title); ?></div>
-                            <div class="price"><?php echo e(format_money($plan->annual_price)); ?> <span class="duration">/ <?php echo e(__("Ano")); ?></span></div>
+                            <div class="price">
+                                <div>
+                                    <?php echo e(format_money($plan->annual_price)); ?>
+
+                                    <span class="duration">/ <?php echo e(__("Ano")); ?> ( <?php echo e(number_format((1 - ($plan->annual_price / ($plan->price * 12))) * 100, 0)); ?>% OFF )</span>
+                                    <div>
+                                        <p style="line-height: 1rem;font-size: .9rem">
+                                           <br>
+                                            Economize até <?php echo e(format_money(($plan->price * 12) - $plan->annual_price)); ?>
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="table-content">
                                 <?php echo clean($plan->content); ?>
 

@@ -44,7 +44,7 @@
                                     class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">{{__("Religião")}}</label>
+                                <label class="control-label">{{__("Religião Alvo")}}</label>
                                 <select name="religion" class="form-control">
                                     <option value="">Selecione a religião</option>
                                     <option value="CATHOLIC" @if($row->religion == "CATHOLIC") selected @endif > {{__("Evangélico")}}</option>

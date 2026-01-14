@@ -77,7 +77,18 @@
                             <span class="tag">{{__('Recomendado')}}</span>
                             @endif
                             <div class="title">{{$plan->title}}</div>
-                            <div class="price">{{format_money($plan->annual_price)}} <span class="duration">/ {{__("Ano")}}</span></div>
+                            <div class="price">
+                                <div>
+                                    {{ format_money($plan->annual_price) }}
+                                    <span class="duration">/ {{ __("Ano") }} ( {{ number_format((1 - ($plan->annual_price / ($plan->price * 12))) * 100, 0) }}% OFF )</span>
+                                    <div>
+                                        <p style="line-height: 1rem;font-size: .9rem">
+                                           <br>
+                                            Economize até {{ format_money(($plan->price * 12) - $plan->annual_price) }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="table-content">
                                 {!! clean($plan->content) !!}
                             </div>

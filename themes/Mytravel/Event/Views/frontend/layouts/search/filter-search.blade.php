@@ -18,7 +18,7 @@
             <input type="hidden" name="location_id" value="{{Request::query('location_id')}}">
             @endif
             <div class="form-group">
-                <label class="control-label">{{__("Religião")}}</label>
+                <label class="control-label">{{__("Religião Alvo")}}</label>
                 <select name="religion" class="form-control">
                     <option value="">Selecione a religião</option>
                     <option value="CATHOLIC" @if(Request::query('location_id')=="CATHOLIC" ) selected @endif> {{__("Evangélico")}}</option>

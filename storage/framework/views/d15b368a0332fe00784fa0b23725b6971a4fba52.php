@@ -191,7 +191,8 @@ if (isset($_GET['religion'])) {
             </p> &nbsp;
             <?php else: ?>
             <p>
-                <?php echo e(__("Viaje com 0 taxas. Seja Membro.")); ?> 
+                <?php echo e(__("Viaje com 0 taxas. Seja Membro.")); ?>
+
             </p> &nbsp;
             <?php endif; ?>
 
@@ -228,33 +229,40 @@ if (isset($_GET['religion'])) {
 
                     <div class="header-left">
 
-                        <div class="d-flex align-items-center" style="cursor: pointer;">
-                            <a href="<?php echo e(url(app_get_locale(false,'/'))); ?>" class="bravo-logo navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white mr-0 mr-xl-5">
+                        <div class="box-content d-flex  align-items-center " style="cursor: pointer;">
+                            <div class="col-12 col-lg-6 d-flex justify-content-between">
+                                <a href="<?php echo e(url(app_get_locale(false,'/'))); ?>" class="bravo-logo navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white mr-0 mr-xl-5">
 
-                                <?php if($logo_id = setting_item("logo_id")): ?>
+                                    <?php if($logo_id = setting_item("logo_id")): ?>
 
-                                <?php $logo = get_file_url($logo_id, 'full') ?>
+                                    <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                                <img src="<?php echo e($logo); ?>" alt="<?php echo e(setting_item("site_title")); ?>">
+                                    <img src="<?php echo e($logo); ?>" alt="<?php echo e(setting_item("site_title")); ?>">
 
-                                <?php endif; ?>
+                                    <?php endif; ?>
 
-                            </a>
+                                </a>
+                                <a class="bravo-logo navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll" href="<?php echo e(url(app_get_locale(false,'/'))); ?>">
 
-                            <a class="bravo-logo navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll" href="<?php echo e(url(app_get_locale(false,'/'))); ?>">
+                                    <?php if($logo_id = setting_item("logo_id_2")): ?>
 
-                                <?php if($logo_id = setting_item("logo_id_2")): ?>
+                                    <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                                <?php $logo = get_file_url($logo_id, 'full') ?>
+                                    <img src="<?php echo e($logo); ?>" alt="<?php echo e(setting_item("site_title")); ?>">
 
-                                <img src="<?php echo e($logo); ?>" alt="<?php echo e(setting_item("site_title")); ?>">
-
-                                <?php endif; ?>
+                                    <?php endif; ?>
 
 
-                            </a>
+                                </a>
+                                <button class="bravo-more-menu">
 
-                            <div class="filter-key d-flex  ml-2" style="align-items: center;">
+                                    <i class="fa fa-bars"></i>
+
+                                </button>
+                            </div>
+
+
+                            <div class="filter-key d-flex  ml-2 mt-3 mt-md-0" style="align-items: center;">
                                 <a class="mb-2" href="./?religion=CATHOLIC">
                                     <span class="text" <?php if($religion==="CATHOLIC" ): ?> style="color: #ffa636;" <?php endif; ?>>
                                         <strong> <?php echo e(__('Católico')); ?></strong>
@@ -389,11 +397,7 @@ if (isset($_GET['religion'])) {
 
                         <?php endif; ?>
 
-                        <button class="bravo-more-menu">
 
-                            <i class="fa fa-bars"></i>
-
-                        </button>
 
                     </div>
 

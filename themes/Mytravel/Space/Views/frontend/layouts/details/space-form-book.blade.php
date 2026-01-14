@@ -20,7 +20,7 @@
                 </div>
                 <div class="nav-enquiry" v-if="is_form_enquiry_and_book">
                     <div class="enquiry-item active" >
-                        <span>{{ __("Livro") }}</span>
+                        <span>{{ __("Anuncio") }}</span>
                     </div>
                     <div class="enquiry-item" data-toggle="modal" data-target="#enquiry_form_modal">
                         <span>{{ __("Consulta") }}</span>

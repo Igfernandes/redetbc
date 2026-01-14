@@ -807,17 +807,17 @@ class RunUpdater
         if (LocationCategory::query()->count() == 0) {
             $argv = [
                 [
-                    'name'       => 'Education',
+                    'name'       => 'Educação',
                     'icon_class' => 'icofont-education',
                     'status'     => 'publish'
                 ],
                 [
-                    'name'       => 'Health',
+                    'name'       => 'Bem Estar',
                     'icon_class' => 'fa fa-hospital-o',
                     'status'     => 'publish'
                 ],
                 [
-                    'name'       => 'Transportation',
+                    'name'       => 'Transporte',
                     'icon_class' => 'fa fa-subway',
                     'status'     => 'publish'
                 ],

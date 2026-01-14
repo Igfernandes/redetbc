@@ -1833,7 +1833,7 @@ Pricing Section
   text-transform: uppercase;
   text-align: center;
   font-weight: bold;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1490196078);
   letter-spacing: -2px;
   display: block;
   width: 3rem;
@@ -45497,7 +45497,41 @@ ol {
 @media (max-width: 991px) {
   .bravo_wrap .bravo_header .content .header-left {
     flex: initial;
+    width: 100%;
   }
+}
+@media (max-width: 991px) {
+  .bravo_wrap .bravo_header .content .header-left .box-content {
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+}
+.bravo_wrap .bravo_header .content .header-left .box-content .filter-key {
+  margin-left: 7% !important;
+}
+.bravo_wrap .bravo_header .content .header-left .bravo-more-menu {
+  border: none;
+  background: transparent;
+  font-size: 32px;
+  padding: 0px 10px;
+  float: right;
+  display: none;
+  color: #003583;
+}
+@media (max-width: 991px) {
+  .bravo_wrap .bravo_header .content .header-left .bravo-more-menu {
+    display: block;
+    float: right;
+  }
+}
+.bravo_wrap .bravo_header .content .header-left .bravo-more-menu {
+  transition: all 0.3s;
+}
+.bravo_wrap .bravo_header .content .header-left .bravo-more-menu.active {
+  background: #1a2b48;
+  color: #fff;
+  border-radius: 5px;
 }
 .bravo_wrap .bravo_header .content .header-left .bravo-menu {
   padding-left: 20px;

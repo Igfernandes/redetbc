@@ -30,7 +30,7 @@
                         </select>
                     </div>
                 </div>
-                <?php do_action(\Modules\Assistance\Hook::assistance_SETTING_AFTER_LAYOUT_SEARCH) ?>
+                <?php do_action(\Modules\Assistance\Hook::ASSISTANCE_SETTING_AFTER_LAYOUT_SEARCH) ?>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

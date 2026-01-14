@@ -190,7 +190,7 @@ if (isset($_GET['religion'])) {
             </p> &nbsp;
             @else
             <p>
-                {{ __("Viaje com 0 taxas. Seja Membro.") }} 
+                {{ __("Viaje com 0 taxas. Seja Membro.") }}
             </p> &nbsp;
             @endif
 
@@ -226,33 +226,40 @@ if (isset($_GET['religion'])) {
 
                     <div class="header-left">
 
-                        <div class="d-flex align-items-center" style="cursor: pointer;">
-                            <a href="{{url(app_get_locale(false,'/'))}}" class="bravo-logo navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white mr-0 mr-xl-5">
+                        <div class="box-content d-flex  align-items-center " style="cursor: pointer;">
+                            <div class="col-12 col-lg-6 d-flex justify-content-between">
+                                <a href="{{url(app_get_locale(false,'/'))}}" class="bravo-logo navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white mr-0 mr-xl-5">
 
-                                @if($logo_id = setting_item("logo_id"))
+                                    @if($logo_id = setting_item("logo_id"))
 
-                                <?php $logo = get_file_url($logo_id, 'full') ?>
+                                    <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                                <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
+                                    <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
 
-                                @endif
+                                    @endif
 
-                            </a>
+                                </a>
+                                <a class="bravo-logo navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll" href="{{url(app_get_locale(false,'/'))}}">
 
-                            <a class="bravo-logo navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll" href="{{url(app_get_locale(false,'/'))}}">
+                                    @if($logo_id = setting_item("logo_id_2"))
 
-                                @if($logo_id = setting_item("logo_id_2"))
+                                    <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                                <?php $logo = get_file_url($logo_id, 'full') ?>
+                                    <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
 
-                                <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
-
-                                @endif
+                                    @endif
 
 
-                            </a>
+                                </a>
+                                <button class="bravo-more-menu">
 
-                            <div class="filter-key d-flex  ml-2" style="align-items: center;">
+                                    <i class="fa fa-bars"></i>
+
+                                </button>
+                            </div>
+
+
+                            <div class="filter-key d-flex  ml-2 mt-3 mt-md-0" style="align-items: center;">
                                 <a class="mb-2" href="./?religion=CATHOLIC">
                                     <span class="text" @if($religion==="CATHOLIC" ) style="color: #ffa636;" @endif>
                                         <strong> {{ __('Católico') }}</strong>
@@ -385,11 +392,7 @@ if (isset($_GET['religion'])) {
 
                         @endif
 
-                        <button class="bravo-more-menu">
 
-                            <i class="fa fa-bars"></i>
-
-                        </button>
 
                     </div>
 
