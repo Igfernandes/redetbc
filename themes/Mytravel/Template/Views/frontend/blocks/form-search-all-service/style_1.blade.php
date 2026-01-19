@@ -6,53 +6,97 @@
                 <p class="font-size-20 font-weight-normal text-white">{{$sub_title ?? ''}}</p>
             </div>
         </div>
-        @if(empty($hide_form_search))
-            <div class="mb-lg-n1">
-                <ul class="nav tab-nav-rounded flex-nowrap pb-2 pb-md-4 tab-nav @if(!empty($single_form_search)) d-none @endif" role="tablist">
-                    @if(!empty($service_types))
-                        @php $number = 0; @endphp
-                        @foreach ($service_types as $service_type)
-                            @php
-                                $allServices = get_bookable_services();
-                                if(empty($allServices[$service_type])) continue;
-                                $module = new $allServices[$service_type];
-                            @endphp
-                            <li class="nav-item" role="bravo_{{$service_type}}">
-                                <a class="nav-link font-weight-medium @if($number == 0) active @endif pl-md-5 pl-3" id="bravo_{{$service_type}}-tab" data-toggle="pill" href="#bravo_{{$service_type}}" role="tab" aria-controls="bravo_{{$service_type}}" aria-selected="true">
-                                    <div class=" position-relative text-white align-items-center">
-                                        <figure class="ie-height-40 d-md-block mr-md-3">
-                                            <i class="icon {{ $module->getServiceIconFeatured() }} font-size-3"></i>
-                                        </figure>
-                                        <span class="tabtext mt-2 mt-md-0 font-weight-semi-bold">
-                                              {{ !empty($modelBlock["title_for_".$service_type]) ? $modelBlock["title_for_".$service_type] : $module->getModelName() }}
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            @php $number++; @endphp
-                        @endforeach
-                    @endif
-                </ul>
-                <div class="tab-content hero-tab-pane">
-                    @if(!empty($service_types))
-                        @php $number = 0; @endphp
-                        @foreach ($service_types as $service_type)
-                            @php
-                                $allServices = get_bookable_services();
-                                if(empty($allServices[$service_type])) continue;
-                            @endphp
-                            <div class="tab-pane fade @if($number == 0) active show @endif" id="bravo_{{$service_type}}" role="tabpanel" aria-labelledby="bravo_{{$service_type}}-tab">
-                                <div class="card border-0 tab-shadow">
-                                    <div class="card-body">
-                                        @include(ucfirst($service_type).'::frontend.layouts.search.form-search')
-                                    </div>
-                                </div>
+        <div class=" mb-lg-n1">
+            <ul class="nav nav-list flex-nowrap tab-nav-shadow  @if(!empty($single_form_search)) d-none @endif" role="tablist">
+                <li class="nav-item" role="bravo_hotel">
+                    <a class="font-weight-medium"
+                        id="bravo_hotel-tab"
+                        href="/page/hotel">
+                        <div class="text-center position-relative align-items-center">
+                            <div
+                                class="nav-icon ie-height-40 d-md-block">
+                                <img style="width: 100%;height:100%; border-radius: 100%;" src="{{asset('images/icons/features/hotels-icon.png')}}" alt="">
                             </div>
-                            @php $number++; @endphp
-                        @endforeach
-                    @endif
-                </div>
-            </div>
-        @endif
+
+                            <span class="tabtext mt-2 mt-md-0 font-weight-semi-bold">
+                                {{__('Hotéis')}}
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item" role="bravo_space">
+                    <a class="font-weight-medium"
+                        id="bravo_space-tab"
+                        href="/page/space">
+
+                        <div class="text-center position-relative align-items-center">
+                            <div
+                                class="nav-icon ie-height-40 d-md-block">
+                                <img style="width: 100%;height:100%; border-radius: 100%;"
+                                    src="{{asset('images/icons/features/spaces-icon.png')}}" alt="">
+                            </div>
+
+                            <span class="tabtext mt-2 mt-md-0 font-weight-semi-bold">
+                                {{__('Espaços')}}
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item" role="bravo_tour">
+                    <a class="font-weight-medium"
+                        id="bravo_tour-tab"
+                        href="/page/tour">
+
+                        <div class="text-center position-relative align-items-center">
+                            <div
+                                class="nav-icon ie-height-40 d-md-block">
+                                <img style="width: 100%;height:100%; border-radius: 100%;"
+                                    src="{{asset('images/icons/features/tours-icon.png')}}" alt="">
+                            </div>
+
+                            <span class="tabtext mt-2 mt-md-0 font-weight-semi-bold">
+                                {{__('Passeios')}}
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item" role="bravo_assistances">
+                    <a class="font-weight-medium"
+                        id="bravo_assistances-tab"
+                        href="/page/service">
+
+                        <div class="text-center position-relative align-items-center">
+                            <div
+                                class="nav-icon ie-height-40 d-md-block">
+                                <img style="width: 100%;height:100%; border-radius: 100%;"
+                                    src="{{asset('images/icons/features/services-icon.png')}}" alt="">
+                            </div>
+
+                            <span class="tabtext mt-2 mt-md-0 font-weight-semi-bold">
+                                {{__('Serviços')}}
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item" role="bravo_blog">
+                    <a class="font-weight-medium"
+                        id="bravo_blog-tab"
+                        href="/page/blog">
+
+                        <div class="text-center position-relative align-items-center">
+                            <div
+                                class="nav-icon ie-height-40 d-md-block">
+                                <img style="width: 100%;height:100%; border-radius: 100%;"
+                                    src="{{asset('images/icons/features/blogs-icon.png')}}" alt="">
+                            </div>
+
+                            <span class="tabtext mt-2 mt-md-0 font-weight-semi-bold">
+                                {{__('Blogs')}}
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

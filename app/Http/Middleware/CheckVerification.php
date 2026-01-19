@@ -20,8 +20,8 @@ class CheckVerification
 
         $user = Auth::user();
 
-        $isRouteException = $request->is('api/*', 'webhook/*', 'asaas/webhook')
-            ||  \array_search($request->path(), ["/", "login", "register"]) !== false;
+        $isRouteException = $request->is('api/*', 'webhook/*', 'reset-password', 'asaas/webhook', 'reset-password/*')
+            ||  \array_search($request->path(), ["/", "login", "forgot-password", "register"]) !== false;
 
         if (is_admin() ||  $isRouteException)
             return $next($request);
@@ -37,6 +37,7 @@ class CheckVerification
             'logout',          // logout
             'login',           // login
             'register',        // registro
+            '/forgot-password', // esqueceu a senha
             'plan',           // tela de planos,
             'user/plan/*',
             'user/profile',

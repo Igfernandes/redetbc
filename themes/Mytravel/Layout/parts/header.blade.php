@@ -12,44 +12,6 @@
     }
 
 
-    .bravo_wrap .subscribe-plan .content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #ffa636;
-        font-weight: 500;
-        padding: 10px;
-    }
-
-    @media (max-width: 768px) {
-        .bravo_wrap .subscribe-plan .content {
-            display: block;
-        }
-    }
-
-    .bravo_wrap .subscribe-plan .content p {
-        display: inline;
-        color: #fff;
-        margin: 0;
-    }
-
-    @media (max-width: 768px) {
-        .bravo_wrap .subscribe-plan .content p {
-            width: 100%;
-        }
-    }
-
-    .bravo_wrap .subscribe-plan .content a {
-        text-decoration: underline;
-        margin-left: 4px;
-    }
-
-    @media (max-width: 768px) {
-        .bravo_wrap .subscribe-plan .content a {
-            display: inline;
-        }
-    }
-
     @media (max-width: 768px) {
         .bravo_wrap .bravo_topbar {
             display: none;
@@ -259,7 +221,27 @@ if (isset($_GET['religion'])) {
 
                                 </button>
                             </div>
+                            @if(Auth::user() == null || !Auth::user()->user_plan)
+                            <div class="subscribe-plan-mobile">
+                                <div class="content">
+                                    @if(Auth::user() && !Auth::user()->user_plan)
+                                    <p>
+                                        {{ __("Junte-se ao clube: escolha seu plano e tenha acesso completo.") }}
+                                    </p> &nbsp;
+                                    @else
+                                    <p>
+                                        {{ __("Viaje com 0 taxas. Seja Membro.") }}
+                                    </p> &nbsp;
+                                    @endif
 
+                                    @if(Auth::user() == null)
+                                    <a data-target="#register" data-toggle="modal">{{ __("Cadastre-se Agora") }}</a>
+                                    @else
+                                    <a href="/plan">{{ __("Escolha seu plano") }}</a>
+                                    @endif
+                                </div>
+                            </div>
+                            @endif
 
                             <div class="filter-key d-flex  ml-2 mt-3 mt-md-0" style="align-items: center;">
                                 <a class="mb-2" href="./?religion=CATHOLIC">
@@ -393,13 +375,8 @@ if (isset($_GET['religion'])) {
                         </ul>
 
                         @endif
-
-
-
                     </div>
-
                 </div>
-
             </div>
 
             <div class="bravo-menu-mobile" style="display:none;">
@@ -412,11 +389,11 @@ if (isset($_GET['religion'])) {
 
 
                     <div class="menu-main-content">
-                        <div class="arrows">
+                        <!-- <div class="arrows">
                             <span class="arrow">
                                 < </span>
                                     <span> ></span>
-                        </div>
+                        </div> -->
                         <ul class="menu-main-mobile" style="overflow: scroll;height: 46vh;">
 
                             @if(!Auth::id() || Auth::user() === null )
