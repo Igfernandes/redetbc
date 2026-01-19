@@ -45500,15 +45500,21 @@ ol {
     width: 100%;
   }
 }
+.bravo_wrap .bravo_header .content .header-left .box-content .filter-key {
+  margin-left: 7% !important;
+}
 @media (max-width: 991px) {
   .bravo_wrap .bravo_header .content .header-left .box-content {
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
   }
+  .bravo_wrap .bravo_header .content .header-left .box-content .filter-key {
+    margin-left: 0% !important;
+  }
 }
-.bravo_wrap .bravo_header .content .header-left .box-content .filter-key {
-  margin-left: 7% !important;
+.bravo_wrap .bravo_header .content .header-left .box-content img {
+  width: 100%;
 }
 .bravo_wrap .bravo_header .content .header-left .bravo-more-menu {
   border: none;

@@ -182,13 +182,19 @@
                     width: 100%;
                 }
                 .box-content {
+                    .filter-key {
+                        margin-left: 7% !important;
+                    }
                     @media (max-width: 991px) {
                         flex-wrap: wrap;
                         width: 100%;
                         justify-content: center;
+                        .filter-key {
+                            margin-left: 0% !important;
+                        }
                     }
-                    .filter-key {
-                        margin-left: 7% !important;
+                    img{
+                        width: 100%;
                     }
                 }
 

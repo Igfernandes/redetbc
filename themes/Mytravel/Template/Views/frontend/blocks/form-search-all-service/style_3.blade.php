@@ -1,6 +1,6 @@
 <div class="bravo-form-search-all hero-block hero-v1 bg-img-hero-bottom gradient-overlay-half-black-gradient text-center z-index-2">
     <div class="container space-2 space-top-xl-4">
-        <div class="row justify-content-center pb-xl-8 banner-home-page">
+        <div class="row justify-content-center pb-xl-8 py-5 banner-home-page">
             <div class="py-8 py-xl-10 pb-5">
                 <h1 class="font-size-60 font-size-xs-30 font-weight-bold">{{$title ?? ''}}</h1>
                 <p class="font-size-20 font-weight-normal ">{{$sub_title ?? ''}}</p>

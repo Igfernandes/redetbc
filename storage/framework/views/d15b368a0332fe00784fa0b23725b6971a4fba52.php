@@ -230,31 +230,33 @@ if (isset($_GET['religion'])) {
                     <div class="header-left">
 
                         <div class="box-content d-flex  align-items-center " style="cursor: pointer;">
-                            <div class="col-12 col-lg-6 d-flex justify-content-between">
-                                <a href="<?php echo e(url(app_get_locale(false,'/'))); ?>" class="bravo-logo navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white mr-0 mr-xl-5">
+                            <div class="col-12 col-lg-6 px-0 d-flex justify-content-between">
+                                <div class="w-100 d-flex justify-content-between align-items-center">
+                                    <a href="<?php echo e(url(app_get_locale(false,'/'))); ?>" class="bravo-logo navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white mr-0 mr-xl-5">
 
-                                    <?php if($logo_id = setting_item("logo_id")): ?>
+                                        <?php if($logo_id = setting_item("logo_id")): ?>
 
-                                    <?php $logo = get_file_url($logo_id, 'full') ?>
+                                        <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                                    <img src="<?php echo e($logo); ?>" alt="<?php echo e(setting_item("site_title")); ?>">
+                                        <img src="<?php echo e($logo); ?>" alt="<?php echo e(setting_item("site_title")); ?>">
 
-                                    <?php endif; ?>
+                                        <?php endif; ?>
 
-                                </a>
-                                <a class="bravo-logo navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll" href="<?php echo e(url(app_get_locale(false,'/'))); ?>">
+                                    </a>
+                                    <a class="bravo-logo navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll" href="<?php echo e(url(app_get_locale(false,'/'))); ?>">
 
-                                    <?php if($logo_id = setting_item("logo_id_2")): ?>
+                                        <?php if($logo_id = setting_item("logo_id_2")): ?>
 
-                                    <?php $logo = get_file_url($logo_id, 'full') ?>
+                                        <?php $logo = get_file_url($logo_id, 'full') ?>
 
-                                    <img src="<?php echo e($logo); ?>" alt="<?php echo e(setting_item("site_title")); ?>">
+                                        <img src="<?php echo e($logo); ?>" alt="<?php echo e(setting_item("site_title")); ?>">
 
-                                    <?php endif; ?>
+                                        <?php endif; ?>
 
 
-                                </a>
-                                <button class="bravo-more-menu">
+                                    </a>
+                                </div>
+                                <button class="ml-2 bravo-more-menu">
 
                                     <i class="fa fa-bars"></i>
 
