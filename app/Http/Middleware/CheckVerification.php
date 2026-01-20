@@ -41,6 +41,7 @@ class CheckVerification
             'plan',           // tela de planos,
             'user/plan/*',
             'user/profile',
+            'user/profile/*',
             'user/verification',
             'news',
             'page/noticias',

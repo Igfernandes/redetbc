@@ -114,7 +114,7 @@ class BookingController extends \App\Http\Controllers\Controller
         event(new BookingConfirmEvent($booking));
 
         return $this->sendSuccess([
-            'url' => "user/chat?bk=$bookingId",
+            'url' => "/user/chat?bk=$bookingId",
         ]);
     }
 

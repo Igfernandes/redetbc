@@ -42,7 +42,7 @@ class AttributeController extends AdminController
                 ],
             ]
         ];
-        return view('assistance::admin.attribute.index', $data);
+        return view('Assistance::admin.attribute.index', $data);
     }
 
     public function edit(Request $request, $id)
@@ -73,7 +73,7 @@ class AttributeController extends AdminController
                 ],
             ]
         ];
-        return view('assistance::admin.attribute.detail', $data);
+        return view('Assistance::admin.attribute.detail', $data);
     }
 
     public function store(Request $request)
@@ -154,7 +154,7 @@ class AttributeController extends AdminController
                 ],
             ]
         ];
-        return view('assistance::admin.terms.index', $data);
+        return view('Assistance::admin.terms.index', $data);
     }
 
     public function term_edit(Request $request, $id)
@@ -189,7 +189,7 @@ class AttributeController extends AdminController
                 ],
             ]
         ];
-        return view('assistance::admin.terms.detail', $data);
+        return view('Assistance::admin.terms.detail', $data);
     }
 
     public function term_store(Request $request)

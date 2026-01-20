@@ -9,7 +9,7 @@
                 <div class="col-md-6">
                     <div class="d-flex justify-content-between mb20">
                         <div class="">
-                            <h1 class="titl__('Adicionar novo atributo')e-bar">{{$row->id ? __('Editar: ').$row->name : }}</h1>
+                            <h1 class="title-bar">{{$row->id ? __('Editar: '). $row->name : __('Adicionar novo atributo')}}</h1>
                         </div>
                     </div>
                     @include('admin.message')

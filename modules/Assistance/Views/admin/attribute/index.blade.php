@@ -12,7 +12,7 @@
                     <div class="panel-body">
                         <form action="{{route('assistance.admin.attribute.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
-                            @include('assistance::admin/attribute/form',['parents'=>$rows])
+                            @include('Assistance::admin/attribute/form',['parents'=>$rows])
                             <div class="">
                                 <button class="btn btn-primary" type="submit">{{__("Adicionar novo")}}</button>
                             </div>

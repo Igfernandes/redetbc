@@ -1,7 +1,9 @@
 <?php
+
 namespace Modules\Tour\Controllers;
 
 use App\Notifications\AdminChannelServices;
+use Carbon\Carbon;
 use Modules\Booking\Events\BookingUpdatedEvent;
 use Modules\Core\Events\CreatedServicesEvent;
 use Modules\FrontendController;
@@ -102,7 +104,7 @@ class ManageTourController extends FrontendController
         $this->checkPermission('tour_delete');
         $user_id = Auth::id();
         $query = $this->tourClass::onlyTrashed()->where("author_id", $user_id)->where("id", $id)->first();
-        if(!empty($query)){
+        if (!empty($query)) {
             $query->restore();
         }
         return redirect(route('tour.vendor.recovery'))->with('success', __('Restauração do Passeio bem-sucedida!'));
@@ -118,7 +120,7 @@ class ManageTourController extends FrontendController
             'tour_category' => $this->tourCategoryClass::get()->toTree(),
             'tour_location' => $this->locationClass::where("status", "publish")->get()->toTree(),
             'attributes'    => $this->attributesClass::where('service', 'tour')->get(),
-            'location_category'=>$this->locationCategoryClass::where("status", "publish")->get(),
+            'location_category' => $this->locationCategoryClass::where("status", "publish")->get(),
 
             'breadcrumbs'   => [
                 [
@@ -150,7 +152,7 @@ class ManageTourController extends FrontendController
             'row'            => $row,
             'tour_category'  => $this->tourCategoryClass::where("status", "publish")->get()->toTree(),
             'tour_location'  => $this->locationClass::where("status", "publish")->get()->toTree(),
-            'location_category'=>$this->locationCategoryClass::where("status", "publish")->get(),
+            'location_category' => $this->locationCategoryClass::where("status", "publish")->get(),
             'attributes'     => $this->attributesClass::where('service', 'tour')->get(),
             "selected_terms" => $row->tour_term->pluck('term_id'),
             'breadcrumbs'    => [
@@ -170,8 +172,8 @@ class ManageTourController extends FrontendController
 
     public function store(Request $request, $id)
     {
-        if(is_demo_mode()){
-            return redirect()->back()->with('danger',__("MODO DEMO: não é possível adicionar dados"));
+        if (is_demo_mode()) {
+            return redirect()->back()->with('danger', __("MODO DEMO: não é possível adicionar dados"));
         }
         if ($id > 0) {
             $this->checkPermission('tour_update');
@@ -191,6 +193,26 @@ class ManageTourController extends FrontendController
             }
             $row->author_id = Auth::id();
         }
+
+        $input = $request->all();
+        foreach (['start_date', 'end_date', 'last_booking_date'] as $field) {
+
+            if (empty($input[$field])) {
+                continue;
+            }
+
+            // Se já estiver no formato Y-m-d
+            if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $input[$field])) {
+                continue;
+            }
+
+            // Se estiver no formato d/m/Y
+            if (preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $input[$field])) {
+                $input[$field] = Carbon::createFromFormat('d/m/Y', $input[$field])
+                    ->format('Y-m-d');
+            }
+        }
+        
         $row->fillByAttr([
             'title',
             'content',
@@ -224,10 +246,9 @@ class ManageTourController extends FrontendController
             'start_date',
             'end_date',
             'last_booking_date',
+        ], $input);
 
-        ], $request->input());
-
-        if(!auth()->user()->checkUserPlan() and $row->status == "publish") {
+        if (!auth()->user()->checkUserPlan() and $row->status == "publish") {
             return redirect(route('user.plan'));
         }
         $row->ical_import_url = $request->ical_import_url;
@@ -237,7 +258,7 @@ class ManageTourController extends FrontendController
                 $this->saveTerms($row, $request);
                 $row->saveMeta($request);
             }
-            do_action(Hook::AFTER_SAVING,$row,$request);
+            do_action(Hook::AFTER_SAVING, $row, $request);
             if ($id > 0) {
                 return back()->with('success', __('Passeios atualizado'));
             } else {
@@ -267,12 +288,12 @@ class ManageTourController extends FrontendController
     {
         $this->checkPermission('tour_delete');
         $user_id = Auth::id();
-        if(\request()->query('permanently_delete')){
+        if (\request()->query('permanently_delete')) {
             $query = $this->tourClass::where("author_id", $user_id)->where("id", $id)->withTrashed()->first();
             if (!empty($query)) {
                 $query->forceDelete();
             }
-        }else {
+        } else {
             $query = $this->tourClass::where("author_id", $user_id)->where("id", $id)->first();
             if (!empty($query)) {
                 $query->delete();
@@ -302,7 +323,7 @@ class ManageTourController extends FrontendController
                 break;
             case "make-publish":
                 $query->status = "publish";
-                if(!auth()->user()->checkUserPlan() ) {
+                if (!auth()->user()->checkUserPlan()) {
                     return redirect(route('user.plan'));
                 }
                 break;
@@ -322,7 +343,7 @@ class ManageTourController extends FrontendController
                 $item->status = $status;
                 $item->save();
 
-                if($status == Booking::CANCELLED) $item->tryRefundToWallet();
+                if ($status == Booking::CANCELLED) $item->tryRefundToWallet();
 
                 event(new BookingUpdatedEvent($item));
                 return redirect()->back()->with('success', __('Atualização bem-sucedida'));

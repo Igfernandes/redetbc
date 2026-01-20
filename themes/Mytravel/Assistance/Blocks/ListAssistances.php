@@ -1,6 +1,7 @@
 <?php
 namespace Themes\Mytravel\Assistance\Blocks;
 
+use Modules\Assistance\Models\Assistance;
 use Modules\Template\Blocks\BaseBlock;
 use Modules\Assistance\Models\AssistanceCategory;
 use Modules\Location\Models\Location;

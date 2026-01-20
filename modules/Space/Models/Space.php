@@ -315,7 +315,7 @@ class Space extends Bookable
             event(new BookingConfirmEvent($booking));
 
             return $this->sendSuccess([
-                'url' => "user/chat?bk=$booking->id",
+                'url' => "/user/chat?bk=$booking->id",
             ]);
         }
 
