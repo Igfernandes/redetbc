@@ -47,9 +47,9 @@
         </div>
         <div class="right">
             @if($row->getBookingEnquiryType() === "book")
-                <a class="btn btn-primary bravo-button-book-mobile">{{__("Reserve agora")}}</a>
+                <a class="btn btn-primary text-white bravo-button-book-mobile">{{__("Reserve agora")}}</a>
             @else
-                <a class="btn btn-primary" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contacte-nos agora")}}</a>
+                <a class="btn btn-primary text-white" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contacte-nos agora")}}</a>
             @endif
         </div>
     </div>

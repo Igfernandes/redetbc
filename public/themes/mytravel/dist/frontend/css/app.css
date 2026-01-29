@@ -4006,7 +4006,6 @@ Pricing Section
   outline: none !important;
 }
 .bravo_wrap .bravo_form .g-field-search {
-  flex: 0 0 80%;
   max-width: 80%;
   flex-grow: 1;
   padding: 0 15px;
@@ -4021,9 +4020,6 @@ Pricing Section
   margin-bottom: 0 !important;
 }
 .bravo_wrap .bravo_form .g-button-submit {
-  flex: 0 0 20%;
-  max-width: 20%;
-  flex-grow: 1;
   position: relative;
 }
 @media (max-width: 1023px) {

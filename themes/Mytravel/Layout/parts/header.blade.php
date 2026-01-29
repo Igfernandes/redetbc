@@ -9,6 +9,7 @@
 
     .js-header-fix-moment .filter-key i {
         color: #003583;
+        text-shadow: 0 0 BLACK;
     }
 
     .subscribe-plan-mobile {
@@ -347,7 +348,7 @@ if (isset($_GET['religion'])) {
 
                             <div class="filter-key d-flex  ml-2 mt-3 mt-md-0" style="align-items: center;">
                                 <a class="mb-2" href="./?religion=CATHOLIC">
-                                    <span class="text" @if($religion==="CATHOLIC" ) style="color: #ffa636;" @endif>
+                                    <span class="text" @if($religion==="CATHOLIC" ) style="color: #fff;" @endif>
                                         <strong> {{ __('Católico') }}</strong>
                                     </span>
                                 </a>
@@ -356,7 +357,7 @@ if (isset($_GET['religion'])) {
                                     <span class="slider round"></span>
                                 </label>
                                 <a class="mb-2" href="./?religion=EVANGELIC">
-                                    <span class="text" @if($religion==="EVANGELIC" ) style="color: #ffa636;" @endif>
+                                    <span class="text" @if($religion==="EVANGELIC" ) style="color: #fff;" @endif>
                                         <strong>{{ __('Evangélico') }}</strong>
                                     </span>
                                 </a>
