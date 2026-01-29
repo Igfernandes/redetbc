@@ -69,12 +69,12 @@
             @endif
             <tr>
                 <td style="text-align: center;border-bottom: 10px solid #ececec;padding: 35px 0;">
-                    <div>
+                    <!-- <div>
                         <h2>{{ __('Se preferir, ligue diretamente para o anunciante.') }}</h2>
                         <a href="tel:{{ $vendor['phone'] }}" target="_blank" rel="noopener noreferrer">
                             {{ __('Ligar para o anunciante') }}
                         </a>
-                    </div>
+                    </div> -->
                     <div>
                         <div>
                             <img src="" alt="">

@@ -122,7 +122,7 @@
                 <i class="fa fa-birthday-cake input-icon"></i>
             </div>
             <div class="form-group">
-                <label>{{__("Sobre Você")}}</label>
+                <label>{{__("Sobre Você (Apresentação)")}}</label>
                 <textarea name="bio" rows="5" class="form-control">{{old('bio',$dataUser->bio)}}</textarea>
             </div>
             <div class="form-group">
@@ -179,7 +179,44 @@
                 <input type="text" value="{{old('zip_code',$dataUser->zip_code)}}" name="zip_code" placeholder="{{__("CEP")}}" class="form-control">
                 <i class="fa fa-map-pin input-icon"></i>
             </div>
+            <div class="form-group bg-white p-4 text-justify shadow">
+                @if(!!$dataUser->religion && ($dataUser->role_id === 2 || $dataUser->role_id === 3))
+                <div class="mb-3">
+                    <h6>{{__("Exemplo de Apresentação")}}</h6>
+                </div>
+                @endif
+                <p>
+                    @if($dataUser->role_id === 3 && $dataUser->religion == 'CATHOLIC')
+                    "Olá, irmãos! Somos a família Silva (Ricardo, Maria e o pequeno Lucas). Somos paroquianos ativos da Paróquia Nossa Senhora das Graças em Belo Horizonte. Buscamos o clube porque valorizamos a segurança de nos hospedar em lares que compartilham dos princípios cristãos e da moral da Igreja.
 
+                    <br>
+                    <br>
+                    O que buscamos: Lugares tranquilos e familiares. Gostamos de indicações de horários de missas locais e paróquias próximas.
+                    Como somos como hóspedes: Somos muito zelosos com a casa do próximo, não fumamos e prezamos pelo silêncio. Adoramos conhecer a história da comunidade local e, se o anfitrião permitir, compartilhar um café e uma boa conversa sobre a fé!
+                    @elseif($dataUser->role_id === 3 && $dataUser->religion == 'EVANGELICAL')
+                    "A paz do Senhor! Meu nome é André, sou membro da Igreja Presbiteriana há 10 anos. Utilizo o clube para viagens de trabalho e lazer com minha esposa. Escolhemos o clube 'irmão hospedando irmão' por acreditar que o corpo de Cristo pode se ajudar mutuamente também no turismo."
+
+                    <br>
+                    <br>
+                    O que buscamos: Um ambiente limpo, respeitoso e livre de bebidas alcoólicas ou fumo. Damos preferência para anfitriões que também prezam por um ambiente bíblico e saudável.
+                    Como somos como hóspedes: Somos organizados e discretos. Respeitamos 100% as regras da casa e deixamos o ambiente exatamente como encontramos. Se você é anfitrião e quer receber alguém que vai abençoar o seu lar com uma conduta correta, conte conosco!"
+                    @elseif($dataUser->role_id === 2 && $dataUser->religion == 'CATHOLIC')
+                    "Salve Maria! Sou a Cláudia e abro as portas da minha casa para acolher irmãos que buscam um pouso seguro e abençoado em Curitiba. Sou membra da Renovação Carismática e prezo muito pela hospitalidade cristã.
+
+                    <br>
+                    <br>
+                    O que ofereço: Um ambiente extremamente familiar e tranquilo. Minha casa é decorada com nossos símbolos de devoção e temos um cantinho de oração que os hóspedes podem usar. Conheço todas as paróquias e santuários da região e terei o maior prazer em indicar horários de missas e locais de peregrinação.
+                    Regras de Ouro: Não é permitido fumar no imóvel. Recebemos famílias com crianças com muito carinho. Prezamos pelo respeito e pela caridade mútua. Sinta-se em casa!"
+                    @elseif($dataUser->role_id === 2 && $dataUser->religion == 'EVANGELICAL')
+                    "A paz do Senhor! Sou o Pastor Marcos e, junto com minha esposa, disponibilizamos nossa suíte de hóspedes para irmãos de todo o Brasil. Nosso objetivo com este clube é servir ao corpo de Cristo e fazer novas amizades no Reino.
+                    <br>
+                    <br>
+
+                    O que ofereço: Um lar cristão, livre de álcool, fumo e músicas seculares. O ambiente é silencioso e perfeito para quem viaja a trabalho ou lazer com a família. Se o hóspede desejar, será um prazer compartilhar um café e orarmos juntos antes da partida.
+                    Regras de Ouro: Pedimos que o hóspede respeite os valores bíblicos dentro do nosso lar. Não permitimos festas ou comportamento inadequado. Aqui você terá a paz de estar na casa de um irmão!"
+                    @endif
+                </p>
+            </div>
         </div>
         <div class="col-md-12">
             <hr>

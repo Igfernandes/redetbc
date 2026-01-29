@@ -1,6 +1,7 @@
 <?php
 namespace Modules\Assistance\Blocks;
 
+use Modules\Assistance\Models\AssistanceCategory;
 use Modules\Template\Blocks\BaseBlock;
 use Modules\Location\Models\Location;
 use Modules\Media\Helpers\FileHelper;

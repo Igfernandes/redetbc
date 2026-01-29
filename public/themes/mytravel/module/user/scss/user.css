@@ -1,3 +1,35 @@
+.bravo_wrap .subscribe-plan .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffa636;
+  font-weight: 500;
+  padding: 10px;
+}
+@media (max-width: 768px) {
+  .bravo_wrap .subscribe-plan .content {
+    display: block;
+  }
+}
+.bravo_wrap .subscribe-plan .content p {
+  display: inline;
+  color: #fff;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .bravo_wrap .subscribe-plan .content p {
+    width: 100%;
+  }
+}
+.bravo_wrap .subscribe-plan .content a {
+  text-decoration: underline;
+  margin-left: 4px;
+}
+@media (max-width: 768px) {
+  .bravo_wrap .subscribe-plan .content a {
+    display: inline;
+  }
+}
 .bravo_wrap .bravo_user_profile {
   background: #f5f7f9;
   padding: 0 100px;

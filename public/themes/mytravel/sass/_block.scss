@@ -891,8 +891,6 @@
             flex-grow: 1;
             padding: 0 15px;
             @media (max-width: 1023px) {
-                flex: 0 0 100% !important;
-                max-width: 100% !important;
                 [class*="col-"] {
                     flex: 0 0 100% !important;
                     max-width: 100% !important;
@@ -908,8 +906,6 @@
             flex-grow: 1;
             position: relative;
             @media (max-width: 1023px) {
-                flex: 0 0 100% !important;
-                max-width: 100% !important;
                 text-align: right;
             }
         }

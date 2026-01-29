@@ -48,7 +48,7 @@
                 @if(!empty($recovery))
                     <a href="{{ route("tour.vendor.restore",[$row->id]) }}" class="btn btn-recovery btn-primary" data-confirm="{{__('"Você quer recuperar?"')}}">{{__("Recuperação")}}</a>
                     @if(Auth::user()->hasPermission('tour_delete'))
-                        <a href="{{ route("tour.vendor.delete",['id'=>$row->id,'permanently_delete'=>1]) }}" class="btn btn-danger" data-confirm="<?php echo e(__("Deseja excluir permanentemente?"))); ?>">{{__("Excluir")}}</a>
+                        <a href="{{ route("tour.vendor.delete",['id'=>$row->id,'permanently_delete'=>1]) }}" class="btn btn-danger" data-confirm="<?php echo e(__("Deseja excluir permanentemente?")); ?>">{{__("Excluir")}}</a>
                     @endif
                 @else
                     <a href="{{route('tour.vendor.clone',[$row->id])}}" target="_blank" class="btn btn-primary">{{__("Clone")}}</a>

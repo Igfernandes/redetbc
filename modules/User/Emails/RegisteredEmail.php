@@ -25,7 +25,10 @@
         public function build()
         {
             $subject = $this->user->getDisplayName().' has registered.';
-            return $this->subject($subject)->view('User::emails.registered')->with([
+
+            $email =  $this->user->role_id === 3 ? 'User::emails.registered-traveled' : 'User::emails.registered';
+
+            return $this->subject($subject)->view($email)->with([
                 'user'    => $this->user,
                 'content' => $this->content,
                 'to'      => $this->to_address,

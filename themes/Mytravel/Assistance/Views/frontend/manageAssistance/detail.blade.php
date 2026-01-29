@@ -53,19 +53,19 @@
                             </div>
                         </div>
                     </div>
-                    @include('Assistance::admin/assistance/assistance-pricing')
+                    @include('Assistance::admin/assistance/pricing')
                 </div>
 
                 <div class="tab-pane fade" id="nav-assistance-availability">
-                    @include('Assistance::admin/assistance/assistance-availability')
+                    @include('Assistance::admin/assistance/availability')
                 </div>
 
                 <div class="tab-pane fade" id="nav-assistance-attribute">
-                    @include('Assistance::admin/assistance/assistance-attributes')
+                    @include('Assistance::admin/assistance/attributes')
                 </div>
 
                 <div class="tab-pane fade" id="nav-assistance-ical">
-                    @include('Assistance::admin/assistance/assistance-ical')
+                    @include('Assistance::admin/assistance/ical')
                 </div>
                 @endif
             </div>

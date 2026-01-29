@@ -11,6 +11,108 @@
         color: #003583;
     }
 
+    .subscribe-plan-mobile {
+        display: none;
+    }
+
+    @media (max-width: 700px) {
+        .subscribe-plan {
+            display: none;
+        }
+
+        .subscribe-plan-mobile {
+            display: block;
+        }
+    }
+
+    .subscribe-plan .content,
+    .subscribe-plan-mobile .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffa636;
+        font-weight: 500;
+        padding: 10px;
+    }
+
+    .subscribe-plan .content a,
+    .subscribe-plan-mobile .content a {
+        margin-left: 4px;
+    }
+
+    .subscribe-plan .content a:hover,
+    .subscribe-plan-mobile .content a:hover {
+        color: #fff;
+    }
+
+    @media (max-width: 768px) {
+
+        .subscribe-plan .content a,
+        .subscribe-plan-mobile .content a {
+            width: 41%;
+            font-size: 0.7rem;
+            background: #19427f;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 3px;
+        }
+    }
+
+    @media (max-width: 380px) {
+
+        .subscribe-plan .content a,
+        .subscribe-plan-mobile .content a {
+            font-size: 0.65rem;
+        }
+    }
+
+    @media (max-width: 330px) {
+
+        .subscribe-plan .content a,
+        .subscribe-plan-mobile .content a {
+            font-size: 0.6rem;
+            width: 37%;
+        }
+    }
+
+    .subscribe-plan .content p,
+    .subscribe-plan-mobile .content p {
+        color: #fff;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+
+        .subscribe-plan .content p,
+        .subscribe-plan-mobile .content p {
+            width: 53%;
+            font-size: 0.75rem;
+        }
+    }
+
+    @media (max-width: 380px) {
+
+        .subscribe-plan .content p,
+        .subscribe-plan-mobile .content p {
+            font-size: 0.65rem;
+        }
+    }
+
+    @media (max-width: 330px) {
+
+        .subscribe-plan .content p,
+        .subscribe-plan-mobile .content p {
+            font-size: 0.6rem;
+            width: 56%;
+        }
+    }
+
+    .subscribe-plan-mobile {
+        width: 100%;
+    }
 
     @media (max-width: 768px) {
         .bravo_wrap .bravo_topbar {
