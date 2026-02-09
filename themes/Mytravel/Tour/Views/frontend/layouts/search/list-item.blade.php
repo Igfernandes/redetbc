@@ -7,9 +7,9 @@
             <div class="d-flex justify-content-between align-items-center mb-4 topbar-search">
                 <h3 class="font-size-21 font-weight-bold mb-0 text-lh-1 result-count">
                     @if($rows->total() > 1)
-                        {{ __(":count de tours encontrados",['count'=>$rows->total()]) }}
+                        {{ __(":count de passeios encontrados",['count'=>$rows->total()]) }}
                     @else
-                        {{ __(":count de tour encontrado",['count'=>$rows->total()]) }}
+                        {{ __(":count de passeio encontrado",['count'=>$rows->total()]) }}
                     @endif
                 </h3>
                 <div class="control">

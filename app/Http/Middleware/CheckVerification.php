@@ -20,8 +20,8 @@ class CheckVerification
 
         $user = Auth::user();
 
-        $isRouteException = $request->is('api/*', 'webhook/*', 'reset-password', 'asaas/webhook', 'reset-password/*')
-            ||  \array_search($request->path(), ["/", "login", "forgot-password", "register"]) !== false;
+        $isRouteException = $request->is('api/*', 'webhook/*', 'news/*', 'reset-password', 'asaas/webhook', 'reset-password/*')
+            ||  \array_search($request->path(), ["/", "login", 'page/blog', "forgot-password", "register"]) !== false;
 
         if (is_admin() ||  $isRouteException)
             return $next($request);

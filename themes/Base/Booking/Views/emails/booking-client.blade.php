@@ -27,7 +27,7 @@
                         </span>
                     </div>
                     <div style="padding: 0 30px;">
-                        <h1><strong>{{ __('Você recebeu uma resposta sobre o imóvel em :immobile', ['immobile' => $immobile['name']]) }}</strong></h1>
+                        <h1><strong>{{ __('Você recebeu uma resposta sobre o :immobile', ['immobile' => $immobile['name']]) }}</strong></h1>
                     </div>
                 </th>
             </tr>
@@ -40,9 +40,6 @@
                     </div>
                     <div>
                         <p style="font-size: 1.1rem;">{{ __('Olá :name, tudo bem?', ['name'=> $client['name']]) }}</p>
-                    </div>
-                    <div>
-                        <p style="margin-top: 40px;">{{ __('Infelizmente o imóvel está indisponível no período consultado.') }}</p>
                     </div>
                     <div>
                         <div>

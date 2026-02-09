@@ -429,6 +429,7 @@ class Assistance extends Bookable
     }
 
 
+
     public function getDataPriceAvailabilityInRanges($start_date)
     {
         $datesRaw = $this->assistanceDateClass::getDatesInRanges($start_date, $this->id);
@@ -1036,7 +1037,7 @@ class Assistance extends Bookable
             }
         }
         if (!empty($lat = $request["map_lat"] ?? "") and !empty($lgn = $request["map_lgn"] ?? "") and !empty($request["map_place"] ?? "")) {
-            $model_Assistance = $this->filterLatLng($model_Assistance   , $lat, $lgn);
+            $model_Assistance = $this->filterLatLng($model_Assistance, $lat, $lgn);
         }
         if (!empty($request['is_featured'])) {
             $model_Assistance->where('bravo_assistances.is_featured', 1);

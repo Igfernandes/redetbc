@@ -1,154 +1,166 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <form action="{{route('assistance.admin.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
-        @csrf
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between mb20">
-                <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Adicionar novo serviço')}}</h1>
-                    @if($row->slug)
-                        <p class="item-url-demo">{{__("Link permanente")}}: {{ url(config('assistance.assistance_route_prefix') ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
-                        </p>
-                    @endif
-                </div>
-                <div class="">
-                    @if($row->slug)
-                        <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("Visualizar Serviços")}}</a>
-                    @endif
-                </div>
+<form action="{{route('assistance.admin.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
+    @csrf
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between mb20">
+            <div class="">
+                <h1 class="title-bar">{{$row->id ? __('Editar: ').$row->title : __('Adicionar novo serviço')}}</h1>
+                @if($row->slug)
+                <p class="item-url-demo">{{__("Link permanente")}}: {{ url(config('assistance.assistance_route_prefix') ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
+                </p>
+                @endif
             </div>
-            @include('admin.message')
-            @if($row->id)
-                @include('Language::admin.navigation')
-            @endif
-            <div class="lang-content-box">
-                <div class="row">
-                    <div class="col-md-9">
-                        @include('Assistance::admin/assistance/assistance-content')
-                        @include('Assistance::admin/assistance/assistance-location')
-                        @include('Hotel::admin.hotel.surrounding')
+            <div class="">
+                @if($row->slug)
+                <a class="btn btn-primary btn-sm" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("Visualizar Serviços")}}</a>
+                @endif
+            </div>
+        </div>
+        @include('admin.message')
+        @if($row->id)
+        @include('Language::admin.navigation')
+        @endif
+        <div class="lang-content-box">
+            <div class="row">
+                <div class="col-md-9">
+                    @include('Assistance::admin/assistance/assistance-content')
+                    @include('Assistance::admin/assistance/assistance-location')
+                    @include('Hotel::admin.hotel.surrounding')
 
+                    @include('Assistance::admin/assistance/pricing')
+                    @include('Assistance::admin/assistance/availability')
+
+                    @include('Core::admin/seo-meta/seo-meta')
+                </div>
+                <div class="col-md-3">
+                    <div class="panel">
+                        <div class="panel-title"><strong>{{__('Publicar')}}</strong></div>
+                        <div class="panel-body">
+                            @if(is_default_lang())
+                            <div>
+                                <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publicar")}}
+                                </label>
+                            </div>
+                            <div>
+                                <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Rascunho")}}
+                                </label>
+                            </div>
+                            @endif
+                            <div class="text-right">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
+                            </div>
+                        </div>
+                    </div>
                     @if(is_default_lang())
-                            @include('Assistance::admin/assistance/pricing')
-                            @include('Assistance::admin/assistance/availability')
-                        @endif
-                        @include('Core::admin/seo-meta/seo-meta')
+                    <div class="panel">
+                        <div class="panel-title"><strong>{{__("Configuração do Autor")}}</strong></div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <?php
+                                $user = $row->author;
+                                \App\Helpers\AdminForm::select2('author_id', [
+                                    'configs' => [
+                                        'ajax'        => [
+                                            'url' => route('user.admin.getForSelect2'),
+                                            'dataType' => 'json'
+                                        ],
+                                        'allowClear'  => true,
+                                        'placeholder' => __('-- Selecione Usuário --')
+                                    ]
+                                ], !empty($user->id) ? [
+                                    $user->id,
+                                    $user->getDisplayName() . ' (#' . $user->id . ')'
+                                ] : false)
+                                ?>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="panel">
-                            <div class="panel-title"><strong>{{__('Publicar')}}</strong></div>
-                            <div class="panel-body">
-                                @if(is_default_lang())
-                                    <div>
-                                        <label><input @if($row->status=='publish') checked @endif type="radio" name="status" value="publish"> {{__("Publicar")}}
-                                        </label></div>
-                                    <div>
-                                        <label><input @if($row->status=='draft') checked @endif type="radio" name="status" value="draft"> {{__("Rascunho")}}
-                                        </label></div>
-                                @endif
-                                <div class="text-right">
-                                    <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> {{__('Salvar alterações')}}</button>
-                                </div>
+                    @endif
+                    @if(is_default_lang())
+                    <div class="panel">
+                        <div class="panel-title"><strong>{{__("Serviço Destaque")}}</strong></div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <input type="checkbox" name="is_featured" @if($row->is_featured) checked @endif value="1"> {{__("Habilitar destaque")}}
+                            </div>
+                            <div class="form-group">
+                                <label>{{__('Estado Padrão')}}</label>
+                                <br>
+                                <select name="default_state" class="custom-select">
+                                    <option value="1" @if(old('default_state',$row->default_state ?? -1) == 1) selected @endif>{{__("Sempre disponível")}}</option>
+                                    <option value="0" @if(old('default_state',$row->default_state ?? -1) == 0) selected @endif>{{__("Disponível apenas em datas específicas")}}</option>
+                                </select>
                             </div>
                         </div>
-                        @if(is_default_lang())
-                        <div class="panel">
-                            <div class="panel-title"><strong>{{__("Configuração do Autor")}}</strong></div>
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    <?php
-                                    $user = $row->author;
-                                    \App\Helpers\AdminForm::select2('author_id', [
-                                        'configs' => [
-                                            'ajax'        => [
-                                                'url' => route('user.admin.getForSelect2'),
-                                                'dataType' => 'json'
-                                            ],
-                                            'allowClear'  => true,
-                                            'placeholder' => __('-- Selecione Usuário --')
-                                        ]
-                                    ], !empty($user->id) ? [
-                                        $user->id,
-                                        $user->getDisplayName() . ' (#' . $user->id . ')'
-                                    ] : false)
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                        @if(is_default_lang())
-                            <div class="panel">
-                                <div class="panel-title"><strong>{{__("Serviço Destaque")}}</strong></div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <input type="checkbox" name="is_featured" @if($row->is_featured) checked @endif value="1"> {{__("Habilitar destaque")}}
-                                    </div>
-                                    <div class="form-group">
-                                        <label >{{__('Estado Padrão')}}</label>
-                                        <br>
-                                        <select name="default_state" class="custom-select">
-                                            <option value="1" @if(old('default_state',$row->default_state ?? -1) == 1) selected @endif>{{__("Sempre disponível")}}</option>
-                                            <option value="0" @if(old('default_state',$row->default_state ?? -1) == 0) selected @endif>{{__("Disponível apenas em datas específicas")}}</option>
-                                        </select>
-                                    </div>
-                                </div>
 
-                            </div>
-                            @include('Assistance::admin/assistance/attributes')
-                            <div class="panel">
-                                <div class="panel-title"><strong>{{__('Imagem em destaque')}}</strong></div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
-                                    </div>
-                                </div>
-                            </div>
-                            @include('Assistance::admin/assistance/ical')
-                        @endif
                     </div>
+                    @include('Assistance::admin/assistance/attributes')
+                    <div class="panel">
+                        <div class="panel-title"><strong>{{__('Imagem em destaque')}}</strong></div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
+                            </div>
+                        </div>
+                    </div>
+                    @include('Assistance::admin/assistance/ical')
+                    @endif
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+</form>
 @endsection
 @push('js')
-    {!! App\Helpers\MapEngine::scripts() !!}
-    <script>
-        jQuery(function ($) {
-            new BravoMapEngine('map_content', {
-                disableScripts: true,
-                fitBounds: true,
-                center: [{{$row->map_lat ?? setting_item('map_lat_default',51.505 ) }}, {{$row->map_lng ?? setting_item('map_lng_default',-0.09 ) }}],
-                zoom:{{$row->map_zoom ?? "8"}},
-                ready: function (engineMap) {
-                    @if($row->map_lat && $row->map_lng)
-                    engineMap.addMarker([{{$row->map_lat}}, {{$row->map_lng}}], {
+{!! App\Helpers\MapEngine::scripts() !!}
+<script>
+    jQuery(function($) {
+        new BravoMapEngine('map_content', {
+            disableScripts: true,
+            fitBounds: true,
+            center: [{
+                {
+                    $row -> map_lat ?? setting_item('map_lat_default', 51.505)
+                }
+            }, {
+                {
+                    $row -> map_lng ?? setting_item('map_lng_default', -0.09)
+                }
+            }],
+            zoom: {
+                {
+                    $row -> map_zoom ?? "8"
+                }
+            },
+            ready: function(engineMap) {
+                @if($row -> map_lat && $row -> map_lng)
+                engineMap.addMarker([{
+                    {
+                        $row -> map_lat
+                    }
+                }, {
+                    {
+                        $row -> map_lng
+                    }
+                }], {
+                    icon_options: {}
+                });
+                @endif
+                engineMap.on('click', function(dataLatLng) {
+                    engineMap.clearMarkers();
+                    engineMap.addMarker(dataLatLng, {
                         icon_options: {}
                     });
-                    @endif
-                    engineMap.on('click', function (dataLatLng) {
-                        engineMap.clearMarkers();
-                        engineMap.addMarker(dataLatLng, {
-                            icon_options: {}
-                        });
-                        $("input[name=map_lat]").attr("value", dataLatLng[0]);
-                        $("input[name=map_lng]").attr("value", dataLatLng[1]);
-                    });
-                    engineMap.on('zoom_changed', function (zoom) {
-                        $("input[name=map_zoom]").attr("value", zoom);
-                    });
-                    if(bookingCore.map_provider === "gmap"){
-                        engineMap.searchBox($('#customPlaceAddress'),function (dataLatLng) {
-                            engineMap.clearMarkers();
-                            engineMap.addMarker(dataLatLng, {
-                                icon_options: {}
-                            });
-                            $("input[name=map_lat]").attr("value", dataLatLng[0]);
-                            $("input[name=map_lng]").attr("value", dataLatLng[1]);
-                        });
-                    }
-                    engineMap.searchBox($('.bravo_searchbox'),function (dataLatLng) {
+                    $("input[name=map_lat]").attr("value", dataLatLng[0]);
+                    $("input[name=map_lng]").attr("value", dataLatLng[1]);
+                });
+                engineMap.on('zoom_changed', function(zoom) {
+                    $("input[name=map_zoom]").attr("value", zoom);
+                });
+                if (bookingCore.map_provider === "gmap") {
+                    engineMap.searchBox($('#customPlaceAddress'), function(dataLatLng) {
                         engineMap.clearMarkers();
                         engineMap.addMarker(dataLatLng, {
                             icon_options: {}
@@ -157,7 +169,16 @@
                         $("input[name=map_lng]").attr("value", dataLatLng[1]);
                     });
                 }
-            });
-        })
-    </script>
+                engineMap.searchBox($('.bravo_searchbox'), function(dataLatLng) {
+                    engineMap.clearMarkers();
+                    engineMap.addMarker(dataLatLng, {
+                        icon_options: {}
+                    });
+                    $("input[name=map_lat]").attr("value", dataLatLng[0]);
+                    $("input[name=map_lng]").attr("value", dataLatLng[1]);
+                });
+            }
+        });
+    })
+</script>
 @endpush

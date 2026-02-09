@@ -227,11 +227,11 @@
     }
 </style>
 <?php
-$religion = null;
+$religion = session('FILTER_RELIGION');
 
 if (isset($_GET['religion'])) {
     session(['FILTER_RELIGION' => $_GET['religion']]);
-    $religion = session('FILTER_RELIGION');
+    $religion =  $_GET['religion'];
 }
 ?>
 <header id="header"
@@ -246,10 +246,10 @@ if (isset($_GET['religion'])) {
         @endif"
 
     data-header-fix-moment="500" data-header-fix-effect="slide">
-    @if(Auth::user() == null || !Auth::user()->user_plan)
+    @if(Auth::user() == null || (Auth::user()->user_plan && Auth::user()->user_plan->status != 1))
     <div class="subscribe-plan">
         <div class="content">
-            @if(Auth::user() && !Auth::user()->user_plan)
+            @if(Auth::user() && (!Auth::user()->user_plan || Auth::user()->user_plan->status != 1))
             <p>
                 {{ __("Junte-se ao clube: escolha seu plano e tenha acesso completo.") }}
             </p> &nbsp;
@@ -324,7 +324,7 @@ if (isset($_GET['religion'])) {
 
                                 </button>
                             </div>
-                            @if(Auth::user() == null || !Auth::user()->user_plan)
+                            @if(Auth::user() == null || (Auth::user()->user_plan && Auth::user()->user_plan->status != 1))
                             <div class="subscribe-plan-mobile">
                                 <div class="content">
                                     @if(Auth::user() && !Auth::user()->user_plan)
@@ -347,31 +347,31 @@ if (isset($_GET['religion'])) {
                             @endif
 
                             <div class="filter-key d-flex  ml-2 mt-3 mt-md-0" style="align-items: center;">
-                                <a class="mb-2" href="./?religion=CATHOLIC">
-                                    <span class="text" @if($religion==="CATHOLIC" ) style="color: #fff;" @endif>
+                                <a class="mb-2" href="<?= url()->current() ?>?religion=CATHOLIC">
+                                    <span class="text" @if($religion==="CATHOLIC" ) style="color: #ffae00;" @endif>
                                         <strong> {{ __('Católico') }}</strong>
                                     </span>
                                 </a>
                                 <label class="switch mx-2">
-                                    <input type="checkbox" {{ $religion==="EVANGELIC" ? 'checked' : '' }}>
+                                    <input type="checkbox" {{ $religion==="EVANGELICAL" ? 'checked' : '' }}>
                                     <span class="slider round"></span>
                                 </label>
-                                <a class="mb-2" href="./?religion=EVANGELIC">
-                                    <span class="text" @if($religion==="EVANGELIC" ) style="color: #fff;" @endif>
+                                <a class="mb-2" href="<?= url()->current() ?>?religion=EVANGELICAL">
+                                    <span class="text" @if($religion==="EVANGELICAL" ) style="color: #ffae00;" @endif>
                                         <strong>{{ __('Evangélico') }}</strong>
                                     </span>
                                 </a>
-                                <script>
-                                    const switcher = document.querySelector('.switch input');
-                                    switcher.addEventListener('change', function() {
-                                        if (this.checked) {
-                                            window.location.href = './?religion=EVANGELIC';
-                                        } else {
-                                            window.location.href = './?religion=CATHOLIC';
-                                        }
-                                    });
-                                </script>
                             </div>
+                            <script>
+                                const switcher = document.querySelector('.switch input');
+                                switcher.addEventListener('change', function() {
+                                    if (this.checked) {
+                                        window.location.href = '<?= url()->current() ?>?religion=EVANGELICAL';
+                                    } else {
+                                        window.location.href = '<?= url()->current() ?>?religion=CATHOLIC';
+                                    }
+                                });
+                            </script>
                         </div>
 
                         <div class="bravo-menu">

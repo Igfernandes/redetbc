@@ -1,4 +1,52 @@
-<div class="bravo-form-search-all hero-block hero-v1 bg-img-hero-bottom gradient-overlay-half-black-gradient text-center z-index-2" style="background-image: url('{{$bg_image_url}}') !important;">
+<style>
+    .nav-list {
+        justify-content: center;
+    }
+
+    .nav-list li a {
+        color: #003583;
+        border-color: #1a2b47;
+        padding: 7px 25px;
+        border-radius: 3px 3px 0 0;
+        font-size: 14px;
+        margin-right: 1px;
+        text-decoration: none;
+        display: block;
+    }
+
+    @media (max-width: 766px) {
+        .nav-list li a {
+            padding: 7px 20px;
+        }
+    }
+
+    @media (max-width: 460px) {
+        .nav-list li a {
+            padding: 7px 0px;
+        }
+    }
+
+    .nav-list li a .nav-icon {
+        height: 60px;
+        width: 60px;
+        border: 7px solid #fff;
+        box-shadow: 1px 1px 5px black;
+        border-radius: 100%;
+        background: #003583;
+        margin: 0 auto;
+        color: #fff;
+    }
+
+    @media (max-width: 460px) {
+        .nav-list li a .nav-icon {
+            height: 45px;
+            width: 45px;
+            border: 4px solid #fff;
+        }
+    }
+</style>
+<div class="bravo-form-search-all hero-block hero-v1 bg-img-hero-bottom gradient-overlay-half-black-gradient text-center z-index-2" 
+style="background-image: url('{{$bg_image_url}}') !important;">
     <div class="container space-2 space-top-xl-4">
         <div class="row justify-content-center py-5 pb-xl-8">
             <div class="py-8 py-xl-10 pb-5">

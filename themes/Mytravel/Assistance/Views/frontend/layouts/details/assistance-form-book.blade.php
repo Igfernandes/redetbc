@@ -1,3 +1,5 @@
+
+
 <div class="mb-4">
     <div class="bravo_single_book_wrap">
         <div id="bravo_assistance_book_app" class="bravo_single_book " v-cloak>

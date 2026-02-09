@@ -75,6 +75,7 @@ class BookingController extends AdminController
         $page_title = __('Histórico de Reservas de Serviços');
         return view('Assistance::admin.booking.index',compact('rows','assistance_categories','breadcrumbs','current_month','page_title','request','prev_url','next_url'));
     }
+    
     public function test(){
         $d = new \DateTime('2019-07-04 00:00:00');
 
