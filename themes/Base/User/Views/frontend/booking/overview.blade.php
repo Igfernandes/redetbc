@@ -60,18 +60,18 @@
                             <td>
                                 @php
                                 $status = [
-                                'draft' => [
-                                'color' => 'warning',
-                                'text' => 'Pendente'
-                                ],
-                                'published' => [
-                                'color' => 'success',
-                                'text' => 'Finalizada'
-                                ],
-                                'refused' => [
-                                'color' => 'danger',
-                                'text' => $booking->vendor_id != Auth::user()->id ? 'Cancelada' ?'Recusada'
-                                ]
+                                    'draft' => [
+                                    'color' => 'warning',
+                                    'text' => 'Pendente'
+                                    ],
+                                    'published' => [
+                                    'color' => 'success',
+                                    'text' => 'Finalizada'
+                                    ],
+                                    'refused' => [
+                                    'color' => 'danger',
+                                    'text' => $booking->vendor_id != Auth::user()->id ? 'Cancelada' : 'Recusada'
+                                    ]
                                 ];
                                 @endphp
                                 <span class="badge bg-{{ $status[$booking->status ?? 'draft']['color'] }}">

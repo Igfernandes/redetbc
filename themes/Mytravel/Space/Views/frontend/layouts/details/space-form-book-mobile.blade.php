@@ -11,6 +11,13 @@
                 </div>
             </div>
 
+            <div class="right">
+                @if($row->getBookingEnquiryType() === "book")
+                <a class="btn btn-primary text-white bravo-button-book-mobile">{{__("Reserve agora")}}</a>
+                @else
+                <a class="btn btn-primary text-white" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contacte-nos agora")}}</a>
+                @endif
+            </div>
             @if(setting_item('space_enable_review'))
             <?php
             $reviewData = $row->getScoreReview();
@@ -36,20 +43,13 @@
                     </div>
                 </div>
                 <span class="review">
-                        @if($reviewData['total_review'] > 1)
-                        {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
+                    @if($reviewData['total_review'] > 1)
+                    {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
                     @else
-                        {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
+                    {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
                     @endif
-                    </span>
+                </span>
             </div>
-            @endif
-        </div>
-        <div class="right">
-            @if($row->getBookingEnquiryType() === "book")
-                <a class="btn btn-primary text-white bravo-button-book-mobile">{{__("Reserve agora")}}</a>
-            @else
-                <a class="btn btn-primary text-white" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contacte-nos agora")}}</a>
             @endif
         </div>
     </div>
