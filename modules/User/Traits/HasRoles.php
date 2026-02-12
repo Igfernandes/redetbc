@@ -84,7 +84,7 @@ trait HasRoles
             $role = Role::query()->where('name',$role_id)->first();
         }
 
-        return $this->role_id == $role->id;
+        return !empty($role) && $this->role_id == $role->id;
     }
 
     public function scopeHasPermission($query,$permission){

@@ -9,8 +9,111 @@
 
     .js-header-fix-moment .filter-key i {
         color: #003583;
+        text-shadow: 0 0 BLACK;
     }
 
+    .subscribe-plan-mobile {
+        display: none;
+    }
+
+    @media (max-width: 700px) {
+        .subscribe-plan {
+            display: none;
+        }
+
+        .subscribe-plan-mobile {
+            display: block;
+        }
+    }
+
+    .subscribe-plan .content,
+    .subscribe-plan-mobile .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffa636;
+        font-weight: 500;
+        padding: 10px;
+    }
+
+    .subscribe-plan .content a,
+    .subscribe-plan-mobile .content a {
+        margin-left: 4px;
+    }
+
+    .subscribe-plan .content a:hover,
+    .subscribe-plan-mobile .content a:hover {
+        color: #fff;
+    }
+
+    @media (max-width: 768px) {
+
+        .subscribe-plan .content a,
+        .subscribe-plan-mobile .content a {
+            width: 41%;
+            font-size: 0.7rem;
+            background: #19427f;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 3px;
+        }
+    }
+
+    @media (max-width: 380px) {
+
+        .subscribe-plan .content a,
+        .subscribe-plan-mobile .content a {
+            font-size: 0.65rem;
+        }
+    }
+
+    @media (max-width: 330px) {
+
+        .subscribe-plan .content a,
+        .subscribe-plan-mobile .content a {
+            font-size: 0.6rem;
+            width: 37%;
+        }
+    }
+
+    .subscribe-plan .content p,
+    .subscribe-plan-mobile .content p {
+        color: #fff;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+
+        .subscribe-plan .content p,
+        .subscribe-plan-mobile .content p {
+            width: 53%;
+            font-size: 0.75rem;
+        }
+    }
+
+    @media (max-width: 380px) {
+
+        .subscribe-plan .content p,
+        .subscribe-plan-mobile .content p {
+            font-size: 0.65rem;
+        }
+    }
+
+    @media (max-width: 330px) {
+
+        .subscribe-plan .content p,
+        .subscribe-plan-mobile .content p {
+            font-size: 0.6rem;
+            width: 56%;
+        }
+    }
+
+    .subscribe-plan-mobile {
+        width: 100%;
+    }
 
     @media (max-width: 768px) {
         .bravo_wrap .bravo_topbar {
@@ -124,11 +227,11 @@
     }
 </style>
 <?php
-$religion = null;
+$religion = session('FILTER_RELIGION');
 
 if (isset($_GET['religion'])) {
     session(['FILTER_RELIGION' => $_GET['religion']]);
-    $religion = session('FILTER_RELIGION');
+    $religion =  $_GET['religion'];
 }
 ?>
 <header id="header"
@@ -143,10 +246,10 @@ if (isset($_GET['religion'])) {
         <?php endif; ?>"
 
     data-header-fix-moment="500" data-header-fix-effect="slide">
-    <?php if(Auth::user() == null || !Auth::user()->user_plan): ?>
+    <?php if(Auth::user() == null || (Auth::user()->user_plan && Auth::user()->user_plan->status != 1)): ?>
     <div class="subscribe-plan">
         <div class="content">
-            <?php if(Auth::user() && !Auth::user()->user_plan): ?>
+            <?php if(Auth::user() && (!Auth::user()->user_plan || Auth::user()->user_plan->status != 1)): ?>
             <p>
                 <?php echo e(__("Junte-se ao clube: escolha seu plano e tenha acesso completo.")); ?>
 
@@ -224,7 +327,7 @@ if (isset($_GET['religion'])) {
 
                                 </button>
                             </div>
-                            <?php if(Auth::user() == null || !Auth::user()->user_plan): ?>
+                            <?php if(Auth::user() == null || (Auth::user()->user_plan && Auth::user()->user_plan->status != 1)): ?>
                             <div class="subscribe-plan-mobile">
                                 <div class="content">
                                     <?php if(Auth::user() && !Auth::user()->user_plan): ?>
@@ -249,31 +352,31 @@ if (isset($_GET['religion'])) {
                             <?php endif; ?>
 
                             <div class="filter-key d-flex  ml-2 mt-3 mt-md-0" style="align-items: center;">
-                                <a class="mb-2" href="./?religion=CATHOLIC">
-                                    <span class="text" <?php if($religion==="CATHOLIC" ): ?> style="color: #ffa636;" <?php endif; ?>>
+                                <a class="mb-2" href="<?= url()->current() ?>?religion=CATHOLIC">
+                                    <span class="text" <?php if($religion==="CATHOLIC" ): ?> style="color: #ffae00;" <?php endif; ?>>
                                         <strong> <?php echo e(__('Católico')); ?></strong>
                                     </span>
                                 </a>
                                 <label class="switch mx-2">
-                                    <input type="checkbox" <?php echo e($religion==="EVANGELIC" ? 'checked' : ''); ?>>
+                                    <input type="checkbox" <?php echo e($religion==="EVANGELICAL" ? 'checked' : ''); ?>>
                                     <span class="slider round"></span>
                                 </label>
-                                <a class="mb-2" href="./?religion=EVANGELIC">
-                                    <span class="text" <?php if($religion==="EVANGELIC" ): ?> style="color: #ffa636;" <?php endif; ?>>
+                                <a class="mb-2" href="<?= url()->current() ?>?religion=EVANGELICAL">
+                                    <span class="text" <?php if($religion==="EVANGELICAL" ): ?> style="color: #ffae00;" <?php endif; ?>>
                                         <strong><?php echo e(__('Evangélico')); ?></strong>
                                     </span>
                                 </a>
-                                <script>
-                                    const switcher = document.querySelector('.switch input');
-                                    switcher.addEventListener('change', function() {
-                                        if (this.checked) {
-                                            window.location.href = './?religion=EVANGELIC';
-                                        } else {
-                                            window.location.href = './?religion=CATHOLIC';
-                                        }
-                                    });
-                                </script>
                             </div>
+                            <script>
+                                const switcher = document.querySelector('.switch input');
+                                switcher.addEventListener('change', function() {
+                                    if (this.checked) {
+                                        window.location.href = '<?= url()->current() ?>?religion=EVANGELICAL';
+                                    } else {
+                                        window.location.href = '<?= url()->current() ?>?religion=CATHOLIC';
+                                    }
+                                });
+                            </script>
                         </div>
 
                         <div class="bravo-menu">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AsaasController;
 use \Illuminate\Support\Facades\Route;
+use Modules\User\Controllers\ChatController;
 use Modules\User\Controllers\UpgradeController;
 use Modules\User\Controllers\UserBookingController;
 
@@ -54,6 +55,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verified']], functio
 
     Route::get('chat', 'ChatController@index')->name('user.chat');
     Route::get('/chat', 'ChatController@index')->name('user.chat');
+    Route::get('/booking/{id}/accept', [ChatController::class, 'accept'])
+        ->name('user.accept');
+    Route::get('/booking/{id}/refuse', [ChatController::class, 'refuse'])
+        ->name('user.refuse');
     Route::get('/chat/messages/{booking}', 'ChatController@getMessages');
     Route::post('/chat/send', 'ChatController@sendMessage');
 

@@ -8,9 +8,10 @@
     }
 
     @media (max-width: 768px) {
-        .content-solicitations{
+        .content-solicitations {
             margin-bottom: 1rem;
         }
+
         .box-message {
             max-height: 40vh;
         }
@@ -32,10 +33,23 @@
                     @php
                     $isVendor = $booking->vendor_id === $userId;
                     $partner = $isVendor ? $booking->customer : $booking->vendor;
-                    $statusBadge = match($booking->status) {
-                    'published' => 'success',
-                    'draft' => 'warning',
-                    };
+                    @endphp
+
+                    @php
+                    $status = [
+                    'draft' => [
+                    'color' => 'warning',
+                    'text' => 'Pendente'
+                    ],
+                    'published' => [
+                    'color' => 'success',
+                    'text' => 'Aprovada'
+                    ],
+                    'refused' => [
+                    'color' => 'danger',
+                    'text' => 'Recusada'
+                    ]
+                    ];
                     @endphp
                     <li class="list-group-item booking-item" style="cursor:pointer;">
 
@@ -44,7 +58,7 @@
                                 <div class="fw-bold">{{ $booking->service->title ?? 'Serviço' }}</div>
                             </div>
                             <div class="col-12 col-md-4">
-                                <div><span class="badge bg-{{ $statusBadge }}">{{ ucfirst($booking->status == "draft" ? "Pendente" : "Finalizada") }}</span></div>
+                                <div><span class="badge text-white bg-{{ $status[$booking->status]['color'] }}">{{ ucfirst($status[$booking->status]['text']) }}</span></div>
                             </div>
                         </div>
                         <div>
@@ -52,11 +66,13 @@
                         </div>
                         <small>{{ $isVendor ? 'Cliente: ' : 'Proprietário: ' }}{{ $partner->name ?? 'Usuário' }}</small>
                         <div class="row mt-2">
+                            @if($booking->status !== "refused")
                             <div class="col-12 col-md-6">
                                 <button class="btn btn-success see-chat" chat-initial='{{($bookingTarget ?? 0) === $booking->id}}' data-booking-id="{{ $booking->id }}">
                                     {{__('Conversar')}}
                                 </button>
                             </div>
+                            @endif
                             <div class="col-12 col-md-6">
                                 <a class="btn btn-info" href="{{route('user.booking_history.request', ['bk' => $booking->id ])}}">{{__('Revisar')}}</a>
                             </div>
