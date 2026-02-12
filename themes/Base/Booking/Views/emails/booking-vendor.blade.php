@@ -27,7 +27,7 @@
                         </span>
                     </div>
                     <div style="padding: 0 30px;">
-                        <h1><strong>{{ __('Você recebeu uma solicitação sobre o imóvel em :immobile', ['immobile' => $immobile['name']]) }}</strong></h1>
+                        <h1><strong>{{ __('Você recebeu uma solicitação sobre o '.$immobile['type'].' em :immobile', ['immobile' => $immobile['name']]) }}</strong></h1>
                     </div>
                 </th>
             </tr>
@@ -65,33 +65,6 @@
                 </td>
             </tr>
             <tr>
-                <td style="padding: 30px;border-bottom: 10px solid #ececec;">
-                    <div>
-                        <span style="font-size: 1.4rem;"><strong>{{ __('O imóvel consultado') }}</strong></span>
-                        <a style="border: 1px solid #9d9c9c;float: right;font-size: .8rem;text-decoration: none;color: black;padding: 5px 10px;border-radius: 17px;" href="{{ url('/hotel/'.$immobile['id']) }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Ver imóvel >') }}
-                        </a>
-                    </div>
-                    <div style="margin: 15px 0;">
-                        <a href="{{ url('/hotel/'.$immobile['id']) }}" target="_blank" rel="noopener noreferrer">
-                            @if(!empty($immobile['image']['file_path']))
-                            <img src="{{ asset('uploads/'.$immobile['image']['file_path']) }}" alt="{{ __('Imagem do imóvel') }}">
-                            @endif
-                            <p></p>
-                        </a>
-                    </div>
-                    <div>
-                        <p style="font-size: 1.3rem;"><strong>{{ $booking['start_date'] }} até {{ $booking['end_date'] }}</strong></p>
-                        <p>{{ $booking['guest'] }} {{ Str::plural(__('hóspede'), $booking['guest']) }}</p>
-                    </div>
-                    <div style="text-align: center;margin: 30px 0 20px;">
-                        <a style="background: #50a6fb;color: #ffff;text-decoration: none;padding: 16px 34px;border-radius: 10px;display: inline-block;" href="{{ url('/hotel/'.$immobile['id']) }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Ver imóvel →') }}
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
                 <td style="border-bottom: 10px solid #ececec;padding: 50px 0;text-align: center;">
                     <p style="font-size: 1.2rem;color: gray;margin-bottom: 20px;">{{ __('Veja a conversa inteira no site do') }} <span>{{ __('RedeTBC') }}</span></p>
                     <div>
@@ -114,7 +87,7 @@
                             </a> e
                             <a href="https://facebook.com/sua_conta" target="_blank">
                                 Facebook
-                            </a>, {{ __('postamos diariamente sugestões de imóveis sensacionais.') }} <br><br>
+                            </a>, {{ __('postamos diariamente sugestões de '.$immobile['type'].' sensacionais.') }} <br><br>
                             {{ __('No') }}
                             <a href="{{ url('') }}" target="_blank" rel="noopener noreferrer">
                                 {{ __('Blog do TemporadaLivre') }}

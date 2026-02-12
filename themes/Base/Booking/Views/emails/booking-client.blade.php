@@ -27,7 +27,7 @@
                         </span>
                     </div>
                     <div style="padding: 0 30px;">
-                        <h1><strong>{{ __('Você recebeu uma resposta sobre o :immobile', ['immobile' => $immobile['name']]) }}</strong></h1>
+                        <h1><strong>{{ __('Você recebeu uma resposta sobre o '.$immobile['type'].' :immobile', ['immobile' => $immobile['name']]) }}</strong></h1>
                     </div>
                 </th>
             </tr>
@@ -86,15 +86,15 @@
             <tr>
                 <td style="padding: 30px;border-bottom: 10px solid #ececec;">
                     <div>
-                        <span style="font-size: 1.4rem;"><strong>{{ __('O imóvel consultado') }}</strong></span>
+                        <span style="font-size: 1.4rem;"><strong>{{ __('O '.$immobile['type'].' consultado') }}</strong></span>
                         <a style="border: 1px solid #9d9c9c;float: right;font-size: .8rem;text-decoration: none;color: black;padding: 5px 10px;border-radius: 17px;" href="{{ url('/hotel/'.$immobile['id']) }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Ver imóvel >') }}
+                            {{ __('Ver '.$immobile['type'].' >') }}
                         </a>
                     </div>
                     <div style="margin: 15px 0;">
                         <a href="{{ url('/hotel/'.$immobile['id']) }}" target="_blank" rel="noopener noreferrer">
                             @if(!empty($immobile['image']['file_path']))
-                            <img src="{{ asset('uploads/'.$immobile['image']['file_path']) }}" alt="{{ __('Imagem do imóvel') }}">
+                            <img src="{{ asset('uploads/'.$immobile['image']['file_path']) }}" alt="{{ __('Imagem do '.$immobile['type']) }}">
                             @endif
                             <p></p>
                         </a>
@@ -105,7 +105,7 @@
                     </div>
                     <div style="text-align: center;margin: 30px 0 20px;">
                         <a style="background: #50a6fb;color: #ffff;text-decoration: none;padding: 16px 34px;border-radius: 10px;display: inline-block;" href="{{ url('/hotel/'.$immobile['id']) }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Ver imóvel →') }}
+                            {{ __('Ver '.$immobile['type'].' →') }}
                         </a>
                     </div>
                 </td>
@@ -133,7 +133,7 @@
                             </a> e
                             <a href="https://facebook.com/sua_conta" target="_blank">
                                 Facebook
-                            </a>, {{ __('postamos diariamente sugestões de imóveis sensacionais.') }} <br><br>
+                            </a>, {{ __('postamos diariamente sugestões sensacionais.') }} <br><br>
                             {{ __('No') }}
                             <a href="{{ url('') }}" target="_blank" rel="noopener noreferrer">
                                 {{ __('Blog do TemporadaLivre') }}

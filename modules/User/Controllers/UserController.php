@@ -3,6 +3,7 @@
 namespace Modules\User\Controllers;
 
 use App\Models\User;
+use DateTime;
 use Illuminate\Validation\Rule;
 use Matrix\Exception;
 use Modules\Assistance\Models\Assistance;
@@ -87,9 +88,9 @@ class UserController extends FrontendController
 
     public function profileUpdate(Request $request)
     {
-      
+
         $user = Auth::user();
-        
+
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name'  => 'required|max:255',
@@ -104,12 +105,15 @@ class UserController extends FrontendController
                 Rule::unique('users')->ignore($user->id)
             ],
         ]);
-        
+
         $input = $request->except('bio');
+      
         $user->fill($input);
         $user->bio = clean($request->input('bio'));
-        $user->birthday = date("Y-m-d", strtotime($user->birthday));
+        $birthday = DateTime::createFromFormat('d/m/Y', $input['birthday']);
+        $user->birthday = $birthday?->format('Y-m-d');
         $user->user_name = Str::slug($request->input('first_name'), "_");
+
         $user->save();
         return redirect()->back()->with('success', __('Atualizado com sucesso'));
     }
@@ -160,7 +164,7 @@ class UserController extends FrontendController
 
     public function upgradeVendorPlans()
     {
-        
+
         $plans = User::query()->whereStatus('publish')->get();
 
         $plansAnnual = \array_filter($plans->toArray(), fn($plan) => !empty($plan['annual_price']) && $plan['annual_price'] > 0);

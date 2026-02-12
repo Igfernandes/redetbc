@@ -80,11 +80,17 @@ class BookingReplySendEmail extends Mailable
             'end_date' => optional($booking->end_date)->format('d/m/Y'),
             'guest' => $booking->total_guests,
         ];
+        $titles = [
+            "hotel" => "Hotel",
+            "assistance" => "Serviço",
+            "space" => "Espaço",
+            "tour" => "Passeio"
+        ];
 
-      
         $this->immobile = [
             'id' => $immobile->id ?? $booking->object_id,
             'name' => $immobile->title ?? 'Imóvel',
+            "type" => $titles[$booking->object_model ?? "hotel"],
             'image' => [
                 'file_path' => method_exists($immobile, 'getImageUrl')
                     ? $immobile->getImageUrl()
