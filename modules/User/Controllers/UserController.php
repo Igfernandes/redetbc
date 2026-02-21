@@ -94,20 +94,36 @@ class UserController extends FrontendController
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name'  => 'required|max:255',
+            'facebook' => 'nullable|url|max:255',
+            'instagram' => 'nullable|url|max:255',
+            'twitter' => 'nullable|url|max:255',
+            'whatsapp' => 'nullable|url|max:255',
             'email'      => [
                 'required',
                 'email',
                 'max:255',
                 Rule::unique('users')->ignore($user->id)
             ],
+            'purposes' => 'required|array|min:3',
+            'purposes.*' => 'string',
             'phone'       => [
                 'required',
                 Rule::unique('users')->ignore($user->id)
             ],
+        ], [
+            'purposes.required' => 'Selecione pelo menos 3 finalidades.',
+            'purposes.min' => 'Você precisa escolher no mínimo :min finalidades.',
+            'purposes.array' => 'Selecione opções válidas.',
         ]);
 
+        if ($request->input('facebook') == null && $request->input('instagram') == null) {
+            return redirect()->back()->with('error', 'É obrigatório colocar o link de pelo menos do facebook ou instagram');
+        }
+
         $input = $request->except('bio');
-      
+        $purposes = $request->input('purposes', []);
+        $input['purposes'] = implode(',', $purposes);
+
         $user->fill($input);
         $user->bio = clean($request->input('bio'));
         $birthday = DateTime::createFromFormat('d/m/Y', $input['birthday']);

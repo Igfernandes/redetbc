@@ -174,6 +174,12 @@ class UserController extends AdminController
             'business_name'              => 'nullable|max:255',
             'status'              => 'required|max:50',
             'role_id'              => 'required|max:11',
+            'purposes' => 'required|array|min:3',
+            'purposes.*' => 'string',
+            'facebook'      => 'nullable|url|max:255',
+            'instagram'     => 'nullable|url|max:255',
+            'twitter'       => 'nullable|url|max:255',
+            'whatsapp'      => 'nullable|url|max:255',
             'email'              => [
                 'required',
                 'email',
@@ -182,18 +188,34 @@ class UserController extends AdminController
             ],
         ];
 
-        $request->validate($rules);
+        $request->validate($rules, [
+            'purposes.required' => 'Selecione pelo menos 3 finalidades.',
+            'purposes.min' => 'Você precisa escolher no mínimo :min finalidades.',
+            'purposes.array' => 'Selecione opções válidas.',
+        ]);
+
+        $purposes = $request->input('purposes', []);
+        $purposes = implode(',', $purposes);
+        
+        if ($request->input('facebook') == null && $request->input('instagram') == null) {
+            return redirect()->back()->with('error', 'É obrigatório colocar o link de pelo menos do facebook ou instagram');
+        }
 
         $data = [
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'user_name' => $request->input('first_name'),
+            'purposes' => $purposes,
             'phone' => $request->input('phone'),
             'birthday' => $request->input('birthday') ? date("Y-m-d", strtotime($request->input('birthday'))) : null,
             'bio' => $request->input('bio'),
             'status' => $request->input('status'),
             'avatar_id' => $request->input('avatar_id'),
             'email' => $request->input('email'),
+            'facebook' => $request->input('facebook'),
+            'instagram' => $request->input('instagram'),
+            'twitter' => $request->input('twitter'),
+            'whatsapp' => $request->input('whatsapp'),
             'business_name' => $request->input('business_name'),
             'name' => $request->input('name'),
             'address' => $request->input('address'),

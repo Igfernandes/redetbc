@@ -148,45 +148,45 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{ __("Estado") }}</label>
-                                  <select name="state" id="state"  class="form-control">
-                                    <option value="">{{ __('-- Selecione --') }}</option>
-                                    @php 
+                                    <select name="state" id="state" class="form-control">
+                                        <option value="">{{ __('-- Selecione --') }}</option>
+                                        @php
                                         $states = [
-                                            'AC' => 'Acre',
-                                            'AL' => 'Alagoas',
-                                            'AP' => 'Amapá',
-                                            'AM' => 'Amazonas',
-                                            'BA' => 'Bahia',
-                                            'CE' => 'Ceará',
-                                            'DF' => 'Distrito Federal',
-                                            'ES' => 'Espírito Santo',
-                                            'GO' => 'Goiás',
-                                            'MA' => 'Maranhão',
-                                            'MT' => 'Mato Grosso',
-                                            'MS' => 'Mato Grosso do Sul',
-                                            'MG' => 'Minas Gerais',
-                                            'PA' => 'Pará',
-                                            'PB' => 'Paraíba',
-                                            'PR' => 'Paraná',
-                                            'PE' => 'Pernambuco',
-                                            'PI' => 'Piauí',
-                                            'RJ' => 'Rio de Janeiro',
-                                            'RN' => 'Rio Grande do Norte',
-                                            'RS' => 'Rio Grande do Sul',
-                                            'RO' => 'Rondônia',
-                                            'RR' => 'Roraima',
-                                            'SC' => 'Santa Catarina',
-                                            'SP' => 'São Paulo',
-                                            'SE' => 'Sergipe',
-                                            'TO' => 'Tocantins'
+                                        'AC' => 'Acre',
+                                        'AL' => 'Alagoas',
+                                        'AP' => 'Amapá',
+                                        'AM' => 'Amazonas',
+                                        'BA' => 'Bahia',
+                                        'CE' => 'Ceará',
+                                        'DF' => 'Distrito Federal',
+                                        'ES' => 'Espírito Santo',
+                                        'GO' => 'Goiás',
+                                        'MA' => 'Maranhão',
+                                        'MT' => 'Mato Grosso',
+                                        'MS' => 'Mato Grosso do Sul',
+                                        'MG' => 'Minas Gerais',
+                                        'PA' => 'Pará',
+                                        'PB' => 'Paraíba',
+                                        'PR' => 'Paraná',
+                                        'PE' => 'Pernambuco',
+                                        'PI' => 'Piauí',
+                                        'RJ' => 'Rio de Janeiro',
+                                        'RN' => 'Rio Grande do Norte',
+                                        'RS' => 'Rio Grande do Sul',
+                                        'RO' => 'Rondônia',
+                                        'RR' => 'Roraima',
+                                        'SC' => 'Santa Catarina',
+                                        'SP' => 'São Paulo',
+                                        'SE' => 'Sergipe',
+                                        'TO' => 'Tocantins'
                                         ];
-                                    @endphp
-                                    @foreach($states as $id => $name)
-                                    <option value="{{ $id }}" {{ old('state', $row->state ?? '') == $id ? 'selected' : '' }}>
-                                        {{ $name }}
-                                    </option>
-                                    @endforeach
-                                  </select>
+                                        @endphp
+                                        @foreach($states as $id => $name)
+                                        <option value="{{ $id }}" {{ old('state', $row->state ?? '') == $id ? 'selected' : '' }}>
+                                            {{ $name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -216,7 +216,38 @@
                             </div>
 
                         </div>
-
+                        <div class="form-title mb-3">
+                            <strong>{{__("Redes Sociais")}}</strong>
+                            <div>
+                                <small class="d-inline-block" style="line-height: normal;">É obrigatório colocar o link de pelo menos do facebook ou instagram.</small>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{__("Facebook")}}</label>
+                                    <input type="url" maxlength="255" value="{{ old('facebook',$row->facebook ?? '') }}" name="facebook" placeholder="{{__("Link Facebook")}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{__("Instagram")}}</label>
+                                    <input type="url" maxlength="255" value="{{ old('instagram',$row->instagram ?? '') }}" name="instagram" placeholder="{{__("Link Instagram")}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{__("Twitter")}}</label>
+                                    <input type="url" maxlength="255" value="{{ old('twitter',$row->twitter ?? '') }}" name="twitter" placeholder="{{__("Link Twitter")}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{__("Whatsapp")}} <span class="text-danger">*</span></label>
+                                    <input type="url" required="true" maxlength="255" value="{{ old('whatsapp',$row->whatsapp ?? '') }}" name="whatsapp" placeholder="{{__("Link Whatsapp")}}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                         <!-- BIO -->
                         <div class="form-group">
                             <label class="control-label">{{ __('Biografia') }}</label>
@@ -224,7 +255,28 @@
                             {{ old('bio', $row->bio ?? '') }}
                             </textarea>
                         </div>
+                        <div>
+                            <div class="form-title">
+                                <strong>{{__("Afinalidades")}}</strong>
+                            </div>
 
+                            <div class="form-group">
+                                <ul class="row bg-white px-1 py-3  shadow-sm" style="list-style: none;">
+                                    @foreach(config('icons') as $key=>$item)
+                                    <li class="col-4 col-md-6">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox"
+                                                name="purposes[]"
+                                                value="{{ $key }}"
+                                                @if(in_array($key, old('purposes', isset($row->purposes) ? explode(',', $row->purposes) : []))) checked @endif>
+                                            <span class="icon">{!! $item !!}</span>
+                                            <small class="text">{{$key}}</small>
+                                        </label>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -125,6 +125,43 @@
                 <label>{{__("Sobre Você (Apresentação)")}}</label>
                 <textarea name="bio" rows="5" class="form-control">{{old('bio',$dataUser->bio)}}</textarea>
             </div>
+            <div class="form-title">
+                <strong>{{__("Redes Sociais")}}</strong>
+                <div>
+                    <small class="d-inline-block" style="line-height: normal;">É obrigatório colocar o link de pelo menos do facebook ou instagram.</small>
+                </div>
+            </div>
+            <div class="row justify-content-between px-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Facebook")}}</label>
+                        <input type="url" maxlength="255" value="{{ old('facebook',$dataUser->facebook ?? '') }}" name="facebook" placeholder="{{__("Link Facebook")}}" class="form-control">
+                        <i class="fa fa-facebook input-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Instagram")}}</label>
+                        <input type="url" maxlength="255" value="{{ old('instagram',$dataUser->instagram ?? '') }}" name="instagram" placeholder="{{__("Link Instagram")}}" class="form-control">
+                        <i class="fa fa-instagram input-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Twitter")}}</label>
+                        <input type="url" maxlength="255" value="{{ old('twitter',$dataUser->twitter ?? '') }}" name="twitter" placeholder="{{__("Link Twitter")}}" class="form-control">
+                        <i class="fa fa-twitter input-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Whatsapp")}} <span class="text-danger">*</span></label>
+                        <input type="url" required="true" maxlength="255" value="{{ old('whatsapp',$dataUser->whatsapp ?? '') }}" name="whatsapp" placeholder="{{__("Link Whatsapp")}}" class="form-control">
+                        <i class="fa fa-whatsapp input-icon"></i>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label>{{__("Avatar")}}</label>
                 <div class="upload-btn-wrapper">
@@ -142,6 +179,28 @@
             </div>
         </div>
         <div class="col-md-6">
+            <div>
+                <div class="form-title">
+                    <strong>{{__("Afinalidades")}}</strong>
+                </div>
+
+                <div class="form-group">
+                    <ul class="row bg-white px-1 py-3  shadow-sm" style="list-style: none;">
+                        @foreach(config('icons') as $key=>$item)
+                        <li class="col-md-6">
+                            <label class="checkbox-inline">
+                                <input type="checkbox"
+                                    name="purposes[]"
+                                    value="{{ $key }}"
+                                    @if(in_array($key, old('purposes', isset($dataUser->purposes) ? explode(',', $dataUser->purposes) : []))) checked @endif>
+                                <span class="icon">{!! $item !!}</span>
+                                <small class="text">{{$key}}</small>
+                            </label>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
             <div class="form-title">
                 <strong>{{__("Informações Localização")}}</strong>
             </div>
@@ -179,6 +238,7 @@
                 <input type="text" value="{{old('zip_code',$dataUser->zip_code)}}" name="zip_code" placeholder="{{__("CEP")}}" class="form-control">
                 <i class="fa fa-map-pin input-icon"></i>
             </div>
+            @if(empty($dataUser->religion) && $dataUser->role_id > 1)
             <div class="form-group bg-white p-4 text-justify shadow">
                 @if(!!$dataUser->religion && ($dataUser->role_id === 2 || $dataUser->role_id === 3))
                 <div class="mb-3">
@@ -217,6 +277,7 @@
                     @endif
                 </p>
             </div>
+            @endif
         </div>
         <div class="col-md-12">
             <hr>

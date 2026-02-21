@@ -92,32 +92,32 @@
 <script>
     jQuery(function($) {
         "use strict"
-        @if($row - > map_lat && $row - > map_lng)
+        @if($row -> map_lat && $row -> map_lng)
         new BravoMapEngine('map_content', {
             disableScripts: true,
             fitBounds: true,
             center: [{
                 {
-                    $row - > map_lat
+                    $row -> map_lat
                 }
             }, {
                 {
-                    $row - > map_lng
+                    $row -> map_lng
                 }
             }],
             zoom: {
                 {
-                    $row - > map_zoom ?? "8"
+                    $row -> map_zoom ?? "8"
                 }
             },
             ready: function(engineMap) {
                 engineMap.addMarker([{
                     {
-                        $row - > map_lat
+                        $row -> map_lat
                     }
                 }, {
                     {
-                        $row - > map_lng
+                        $row -> map_lng
                     }
                 }], {
                     icon_options: {
