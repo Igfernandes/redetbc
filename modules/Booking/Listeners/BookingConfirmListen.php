@@ -19,7 +19,17 @@ class BookingConfirmListen
      */
     public function handle(BookingSendEvent|BookingConfirmEvent $event)
     {
-        Mail::to(User::find($event->booking->customer_id))->send(new NewBookingClientEmail($event->booking));
-        Mail::to(User::find($event->booking->vendor_id))->send(new NewBookingVendorEmail($event->booking));
+        $customer = User::find($event->booking->customer_id);
+        $vendor   = User::find($event->booking->vendor_id);
+
+        if ($customer && $customer->email) {
+            Mail::to($customer->email)
+                ->send(new NewBookingClientEmail($event->booking));
+        }
+
+        if ($vendor && $vendor->email) {
+            Mail::to($vendor->email)
+                ->send(new NewBookingVendorEmail($event->booking));
+        }
     }
 }
