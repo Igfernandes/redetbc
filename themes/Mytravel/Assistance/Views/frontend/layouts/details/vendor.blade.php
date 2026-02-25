@@ -126,11 +126,6 @@ $vendor = $row->author;
             background: #1DA1F2;
         }
 
-        /* WhatsApp */
-        .social-icon.whatsapp {
-            background: #25D366;
-        }
-
         /* Hover effect */
         .social-icon:hover {
             color: #fff;
@@ -165,71 +160,17 @@ $vendor = $row->author;
             </li>
             @endif
 
-            @if($vendor->whatsapp)
-            <li>
-                <a href="{{ $vendor->whatsapp }}" target="_blank" class="social-icon whatsapp">
-                    <i class="fa fa-whatsapp"></i>
-                </a>
-            </li>
-            @endif
-
         </ul>
     </div>
     <hr>
 
-    {{-- Finalidades --}}
-    <div>
-        <h5 class="mb-0" style="font-size:1rem;color:#033480;">
-            <strong>Meus ícones de Finalidades</strong>
-        </h5>
-        <p style="font-size:.8rem;">
-            <strong>Convivência e Regras</strong>
-        </p>
-    </div>
-
-    <ul class="list-none row mb-4 p-0" style="list-style:none;">
-        @foreach(explode(',', $vendor->purposes ?? "") as $purpose)
-        @if(empty($purpose)) @continue @endif
-
-        @php
-        $isPurpose = Auth::check() &&
-        strpos(Auth::user()->purposes ?? '', $purpose) !== false;
-        @endphp
-
-        <li class="col-4 col-md-6 px-0 p-relative" style="padding:3px 0;">
-            <div class="d-flex py-1 align-items-center shadow bg-white mx-1"
-                style="border:2px solid {{ $isPurpose ? '#ebd07d' : '#c9c9c9' }};
-                            border-radius:11px;">
-
-                <span class="col-4 px-0" style="font-size:1.5rem;">
-                    {!! config("icons.$purpose") !!}
-                </span>
-
-                <small class="col-md-8 px-0"
-                    style="line-height:normal;font-weight:600;">
-                    {{ $purpose }}
-                </small>
-            </div>
-
-            @if($isPurpose)
-            <div class="text-white d-inline-block py-0 px-1 text-right"
-                style="background-color:#ebd07d;
-                                border-radius:4px;
-                                float:right;
-                                margin-top:-6px;
-                                line-height:normal;">
-                <small style="font-size:.7rem;">Finalidade!</small>
-            </div>
-            @endif
-        </li>
-        @endforeach
-    </ul>
-    @if(!empty($user->facebook))
+    <x-purposes :user="$vendor" />
+    @if(!empty($vendor->facebook))
     @php
     $facebookId = null;
 
-    if (!empty($user->facebook)) {
-    $parsedUrl = parse_url($user->facebook);
+    if (!empty($vendor->facebook)) {
+    $parsedUrl = parse_url($vendor->facebook);
 
     if (isset($parsedUrl['query'])) {
     parse_str($parsedUrl['query'], $queryParams);

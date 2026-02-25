@@ -130,6 +130,7 @@ class UserController extends FrontendController
         $user->birthday = $birthday?->format('Y-m-d');
         $user->user_name = Str::slug($request->input('first_name'), "_");
 
+        $user->is_verified = 1;
         $user->save();
         return redirect()->back()->with('success', __('Atualizado com sucesso'));
     }

@@ -153,13 +153,6 @@
                         <i class="fa fa-twitter input-icon"></i>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>{{__("Whatsapp")}} <span class="text-danger">*</span></label>
-                        <input type="url" required="true" maxlength="255" value="{{ old('whatsapp',$dataUser->whatsapp ?? '') }}" name="whatsapp" placeholder="{{__("Link Whatsapp")}}" class="form-control">
-                        <i class="fa fa-whatsapp input-icon"></i>
-                    </div>
-                </div>
             </div>
 
             <div class="form-group">
@@ -186,15 +179,18 @@
 
                 <div class="form-group">
                     <ul class="row bg-white px-1 py-3  shadow-sm" style="list-style: none;">
-                        @foreach(config('icons') as $key=>$item)
+                        @php
+                        $roleId = $dataUser->role_id != 3 ? 2 : 3;
+                        @endphp
+                        @foreach(config('icons.'.$roleId) as $item)
                         <li class="col-md-6">
                             <label class="checkbox-inline">
                                 <input type="checkbox"
                                     name="purposes[]"
-                                    value="{{ $key }}"
-                                    @if(in_array($key, old('purposes', isset($dataUser->purposes) ? explode(',', $dataUser->purposes) : []))) checked @endif>
-                                <span class="icon">{!! $item !!}</span>
-                                <small class="text">{{$key}}</small>
+                                    value="{{ $item['label'] }}"
+                                    @if(in_array($item['label'], old('purposes', isset($dataUser->purposes) ? explode(',', $dataUser->purposes) : []))) checked @endif>
+                                <span class="icon">{!! $item['icon'] !!}</span>
+                                <small class="text">{{$item['label']}}</small>
                             </label>
                         </li>
                         @endforeach

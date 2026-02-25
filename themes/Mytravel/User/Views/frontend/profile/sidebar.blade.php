@@ -143,8 +143,37 @@
     <hr>
     <ul class="meta-info style2">
         <li class="is_vendor">
-            <i class="icon ion-ios-ribbon"></i>
-            {{__('Anfitrião')}}
+            <i class="icon ion-md-ribbon text-warning"></i>
+            {{ __('Anfitrião') }}
+        </li>
+
+        <li class="is_vendor">
+            <i class="icon ion-md-person text-primary"></i>
+            {{ __('Sexo:') }}
+            {{ $user->sex === "MASCULINE" ? "Masculino" : "Feminino" }}
+        </li>
+
+        <li class="is_vendor">
+            <i class="icon ion-md-heart text-danger"></i>
+            {{ __('Estado Civil:') }}
+            {{ $user->civil_status === "SINGLE" ? "Solteiro(a)" : "Casado(a)" }}
+        </li>
+
+        <li class="is_vendor">
+            <i class="icon ion-md-book text-success"></i>
+            {{ __('Religião:') }}
+            {{
+        $user->religion === "CATHOLIC"
+            ? "Católico(a)"
+            : ($user->religion === "EVANGELICAL"
+                ? "Evangélico(a)"
+                : "Católico(a) e Evangélico(a)")
+    }}
+        </li>
+
+        <li>
+            <i class="icon ion-md-pin text-secondary"></i>
+            {{ __('Cidade:') }} {{ $user->city }}
         </li>
         <li class="review_count">
             <i class="icon ion-ios-thumbs-up"></i>
@@ -174,29 +203,7 @@
     </ul>
     @endif
     <hr>
-    <div>
-        <h5 class="mb-0" style="font-size: 1rem;color: #033480;"><strong>Meus ícones de Finalidades</strong></h5>
-        <p style="font-size: .8rem;"><strong>Convivência e Regras</strong></p>
-    </div>
-    <ul class="list-none row mb-4 p-0" style="list-style:none;">
-        @foreach(explode(',', $user->purposes ?? "") as $purpose)
-        @if(empty($purpose)) @continue @endif
-        @php $isPurpose= strpos(Auth::user()->purposes, $purpose) !== false; @endphp
-        <li class="col-4 col-md-6 px-0 p-relative" style="padding: 3px 0;">
-            <div class="d-flex py-1 align-items-center shadow bg-white mx-1"
-                style="border: 2px solid {{ $isPurpose ? '#ebd07d' : '#c9c9c9' }};border-radius: 11px;">
-                <span class="col-4 px-0" style="font-size: 1.5rem;">{!! config("icons.$purpose") !!}</span>
-                <small style="line-height: normal; font-weight: 600;" class="col-md-8 px-0"> {{ $purpose }}</small>
-            </div>
-            @if($isPurpose)
-            <div class="text-white d-inline-block py-0 px-1  text-right"
-                style="background-color: #ebd07d; border-radius: 4px; float:right;margin-top: -6px;line-height: normal;">
-                <small style="font-size: .7rem; line-height: normal;">Finalidade!</small>
-            </div>
-            @endif
-        </li>
-        @endforeach
-    </ul>
+    <x-purposes :user="$user" />
 
     @if(!empty($user->facebook))
     @php

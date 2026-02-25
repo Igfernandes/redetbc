@@ -28,6 +28,19 @@
             </a>
         </div>
     </div>
+
+    <div class="informations-about-extract my-4 bg-white p-2 shadow">
+        <p class="text-justify pt-2">
+            Os saques realizados para conta da Asaas são processados de forma totalmente automática pelo sistema, garantindo mais rapidez na liberação dos valores.
+
+            Já os saques feitos para outras contas ou meios de pagamento podem levar um pouco mais de tempo, pois passam por processamento manual.
+
+            Para receber seus valores de forma automática, crie sua conta Asaas através do link abaixo:
+            👉 <a href="https://www.asaas.com/r/6ed5495f-33ee-41d2-99c3-3f1342eaadcd" target="_blank">
+                https://www.asaas.com/r/6ed5495f-33ee-41d2-99c3-3f1342eaadcd
+            </a>
+        </p>
+    </div>
     <div class="form-group">
         <label>{{ __("Nome do Titular") }} <span class="text-danger">*</span></label>
         <input type="text" name="owner_name" value="{{ old('owner_name', $withdrawAccount->owner_name ?? '') }}" class="form-control" required>

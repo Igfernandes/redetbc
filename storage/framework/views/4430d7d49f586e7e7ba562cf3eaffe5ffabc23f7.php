@@ -2,8 +2,8 @@
 use Modules\User\Models\Role;
 
 $roles = [];
-foreach (Role::all(['id', 'name'])->toArray() as $role) {
-$roles[strtolower($role['name'])] = $role['id'];
+foreach (Role::all(['id', 'code'])->toArray() as $role) {
+$roles[strtolower($role['code'])] = $role['id'];
 }
 ?>
 

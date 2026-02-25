@@ -196,7 +196,7 @@ class UserController extends AdminController
 
         $purposes = $request->input('purposes', []);
         $purposes = implode(',', $purposes);
-        
+
         if ($request->input('facebook') == null && $request->input('instagram') == null) {
             return redirect()->back()->with('error', 'É obrigatório colocar o link de pelo menos do facebook ou instagram');
         }
@@ -228,6 +228,7 @@ class UserController extends AdminController
             'vendor_commission_amount' => $request->input('vendor_commission_amount'),
             'commission_amount' => $request->input('commission_amount'),
         ];
+
         $row->role_id = $request->input('role_id');
         if ($request->input('is_email_verified')) {
             if (!$row->email_verified_at) $row->email_verified_at = date('Y-m-d H:i:s');

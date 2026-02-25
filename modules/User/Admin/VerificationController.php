@@ -120,7 +120,6 @@ class VerificationController extends AdminController
 
         if ($full) {
             $row->verify_submit_status = 'completed';
-            $row->is_verified = 1;
         } else {
             $row->verify_submit_status = 'partial';
             $row->is_verified = 0;

@@ -127,11 +127,6 @@ $vendor = $row->author;
             background: #1DA1F2;
         }
 
-        /* WhatsApp */
-        .social-icon.whatsapp {
-            background: #25D366;
-        }
-
         /* Hover effect */
         .social-icon:hover {
             color: #fff;
@@ -162,14 +157,6 @@ $vendor = $row->author;
             <li>
                 <a href="{{ $vendor->twitter }}" target="_blank" class="social-icon twitter">
                     <i class="fa fa-twitter"></i>
-                </a>
-            </li>
-            @endif
-
-            @if($vendor->whatsapp)
-            <li>
-                <a href="{{ $vendor->whatsapp }}" target="_blank" class="social-icon whatsapp">
-                    <i class="fa fa-whatsapp"></i>
                 </a>
             </li>
             @endif

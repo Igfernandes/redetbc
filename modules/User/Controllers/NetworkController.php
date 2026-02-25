@@ -177,8 +177,8 @@ class NetworkController extends FrontendController
             description: "Saque solicitado em " . now()->format('d/m/Y')
         );
 
-        if (!$response) {
-            return back()->with('error', 'Erro ao solicitar o saque.');
+        if (isset($response['error']) && !empty($response['error'])) {
+            return back()->with('error', $response['error'] ?? 'Erro ao solicitar o saque.');
         }
 
         return back()->with('success', 'Saque solicitado com sucesso!');

@@ -1,6 +1,51 @@
 @extends('Layout::user')
 
 @section('content')
+
+{{-- FontAwesome --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    .social-links ul {
+        list-style: none;
+        gap: 15px;
+    }
+
+    .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .social-icon.facebook {
+        background: #1877F2;
+    }
+
+    .social-icon.instagram {
+        background: radial-gradient(circle at 30% 107%,
+                #fdf497 0%, #fdf497 5%,
+                #fd5949 45%, #d6249f 60%,
+                #285AEB 90%);
+    }
+
+    .social-icon.twitter {
+        background: #1DA1F2;
+    }
+
+    .social-icon:hover {
+        color: #fff;
+        transform: translateY(-4px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+</style>
+
 <div class="container my-5">
 
     @php
@@ -16,12 +61,6 @@
     }elseif($customer && $authId == $customer->id){
     $profileUser = $vendor;
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 🔁 MAPAS DE TRADUÇÃO LOCAL
-    |--------------------------------------------------------------------------
-    */
 
     $civilStatusMap = [
     'SINGLE' => 'Solteiro(a)',
@@ -39,14 +78,12 @@
     'FEMININE' => 'Feminino',
     ];
 
-    // Status do usuário
     $userStatusMap = [
     'draft' => 'Rascunho',
     'published' => 'Publicado',
     'refused' => 'Recusado',
     ];
 
-    // Status da reserva (ajuste se tiver mais status no seu sistema)
     $bookingStatusMap = [
     'draft' => 'Rascunho',
     'published' => 'Confirmado',
@@ -54,16 +91,13 @@
     ];
     @endphp
 
-
     <div class="text-end mb-3">
         <a href="{{route('user.chat', ['bk' => $booking->id])}}" class="btn btn-info">
             Retornar a conversa
         </a>
     </div>
 
-    {{-- ================= TABS ================= --}}
     <ul class="nav nav-tabs mb-4" role="tablist">
-
         <li class="nav-item">
             <button class="nav-link active"
                 data-bs-toggle="tab"
@@ -96,16 +130,14 @@
         @endif
     </ul>
 
-
     <div class="tab-content">
 
-        {{-- ================= DETALHES ================= --}}
+        {{-- DETALHES --}}
         <div class="tab-pane fade show active" id="booking-detail-{{ $booking->id }}">
 
             @php
             $translatedBookingStatus = $bookingStatusMap[$booking->status] ?? $booking->status;
 
-            // Cor automática do badge
             $bookingBadgeColor = match($booking->status){
             'published' => 'success',
             'draft' => 'warning',
@@ -144,11 +176,9 @@
                     </ul>
                 </div>
             </div>
-
         </div>
 
-
-        {{-- ================= PERFIL ================= --}}
+        {{-- PERFIL --}}
         @if($profileUser)
         <div class="tab-pane fade" id="booking-profile-{{ $booking->id }}">
 
@@ -168,8 +198,8 @@
 
                             <h5>{{ $profileUser->getDisplayName(true) }}</h5>
 
-                            <span class="badge text-white px-4 py-1 bg-{{ $profileUser->status === 'publish' ? 'success' : 'secondary' }}">
-                                {{ $translatedUserStatus === "publish" ? "Ativo": "Inativo" }}
+                            <span class="badge text-white px-4 py-1 bg-{{ $profileUser->status === 'published' ? 'success' : 'secondary' }}">
+                                {{ $translatedUserStatus }}
                             </span>
                         </div>
 
@@ -183,23 +213,17 @@
 
                                 <div class="col-md-6 mb-3">
                                     <strong>Sexo:</strong><br>
-                                    {{ $profileUser->sex 
-                                        ? ($sexMap[$profileUser->sex] ?? $profileUser->sex) 
-                                        : '-' }}
+                                    {{ $profileUser->sex ? ($sexMap[$profileUser->sex] ?? $profileUser->sex) : '-' }}
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <strong>Estado Civil:</strong><br>
-                                    {{ $profileUser->civil_status 
-                                        ? ($civilStatusMap[$profileUser->civil_status] ?? $profileUser->civil_status) 
-                                        : '-' }}
+                                    {{ $profileUser->civil_status ? ($civilStatusMap[$profileUser->civil_status] ?? $profileUser->civil_status) : '-' }}
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <strong>Religião:</strong><br>
-                                    {{ $profileUser->religion 
-                                        ? ($religionMap[$profileUser->religion] ?? $profileUser->religion) 
-                                        : '-' }}
+                                    {{ $profileUser->religion ? ($religionMap[$profileUser->religion] ?? $profileUser->religion) : '-' }}
                                 </div>
 
                                 <div class="col-md-12 mb-3">
@@ -216,6 +240,48 @@
                                     <p class="mb-0">{{ $profileUser->bio }}</p>
                                 </div>
                                 @endif
+
+                                {{-- Redes Sociais --}}
+                                @if($profileUser->facebook || $profileUser->instagram || $profileUser->twitter)
+                                <div class="col-md-12 mt-4">
+                                    <hr>
+                                    <div class="social-links">
+                                        <ul class="d-flex justify-content-center p-0 m-0">
+
+                                            @if($profileUser->facebook)
+                                            <li>
+                                                <a href="{{ $profileUser->facebook }}" target="_blank" class="social-icon facebook">
+                                                    <i class="fa-brands fa-facebook-f"></i>
+                                                </a>
+                                            </li>
+                                            @endif
+
+                                            @if($profileUser->instagram)
+                                            <li>
+                                                <a href="{{ $profileUser->instagram }}" target="_blank" class="social-icon instagram">
+                                                    <i class="fa-brands fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                            @endif
+
+                                            @if($profileUser->twitter)
+                                            <li>
+                                                <a href="{{ $profileUser->twitter }}" target="_blank" class="social-icon twitter">
+                                                    <i class="fa-brands fa-x-twitter"></i>
+                                                </a>
+                                            </li>
+                                            @endif
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                @endif
+
+                                {{-- Propósitos --}}
+                                <div class="col-md-12 mt-4">
+                                    <hr>
+                                    <x-purposes :user="$profileUser" />
+                                </div>
 
                             </div>
                         </div>

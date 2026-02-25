@@ -46,7 +46,7 @@ trait Withdrawal
             }
 
             // Agenda 30 dias à frente se não informado
-            $payload['scheduleDate'] = $scheduleDate ?? now()->addDays(30)->format('Y-m-d');
+            // $payload['scheduleDate'] = $scheduleDate ?? now()->addDays(30)->format('Y-m-d');
 
             // Chamada à API Asaas
             $response = Http::withHeaders([
@@ -59,7 +59,10 @@ trait Withdrawal
                     'payload' => $payload,
                     'response' => $response->body()
                 ]);
-                return false;
+                $data = json_decode($response->body(), true);
+                return  [
+                    "error" => $data['errors'][0]['description'] ?? 'Erro ao solicitar o saque.'
+                ];
             }
 
             $user = auth()->user();
@@ -77,8 +80,8 @@ trait Withdrawal
             $planPayment->save();
 
             return $response->json();
-
         } catch (\Throwable $th) {
+
             Log::error('Erro interno ao criar saque', ['error' => $th->getMessage()]);
             return false;
         }
