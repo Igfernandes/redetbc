@@ -28,7 +28,6 @@
             </a>
         </div>
     </div>
-
     <div class="informations-about-extract my-4 bg-white p-2 shadow">
         <p class="text-justify pt-2">
             Os saques realizados para conta da Asaas são processados de forma totalmente automática pelo sistema, garantindo mais rapidez na liberação dos valores.

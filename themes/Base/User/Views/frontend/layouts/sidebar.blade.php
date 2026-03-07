@@ -34,11 +34,12 @@ $menus = [
     ],
     'upgrade' => [
         'url'      => route("user.upgrade"),
-        'title'    => __("Meu Plano"),
+        'title'    => __("Atualizar Plano"),
         'icon'     => 'fa fa-sitemap',
         'position' => 22,
         'is_verified' => 0,
-        'is_affiliate' => 1
+        'is_affiliate' => 1,
+        'is_plan' => 3
     ],
     'profile'         => [
         'url'      => route("user.profile.index"),
@@ -169,6 +170,11 @@ foreach ($menus as $k => $menuItem) {
     }
 
     if (isset($menuItem['is_affiliate']) && $userAuthData->is_affiliate != $menuItem['is_affiliate']) {
+        unset($menus[$k]);
+        continue;
+    }
+
+    if (isset($menuItem['is_plan']) && !empty($menuItem['is_plan']) && $userAuthData->user_plan_id !== 3) {
         unset($menus[$k]);
         continue;
     }

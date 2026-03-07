@@ -46,7 +46,7 @@ trait Withdrawal
             }
 
             // Agenda 30 dias à frente se não informado
-            // $payload['scheduleDate'] = $scheduleDate ?? now()->addDays(30)->format('Y-m-d');
+            $payload['scheduleDate'] = $scheduleDate ?? now()->addDays(30)->format('Y-m-d');
 
             // Chamada à API Asaas
             $response = Http::withHeaders([

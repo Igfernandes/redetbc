@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-between mb20">
             <h1 class="title-bar">
                 @if(!empty($row->id))
-                    {{__("Editarar menu:")}} @{{name}}
+                    {{__("Editar menu:")}} @{{name}}
                 @else
                     {{__('Criar novo menu')}}
                 @endif

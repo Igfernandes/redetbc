@@ -28,61 +28,97 @@
                 </div>
             </div>
         </div>
-        <div class="bravo-more-book-mobile">
-            <div class="container">
-                <div class="left">
-                    <div class="g-price">
-                        <div class="prefix">
-                            <span class="fr_text">{{__("De")}}</span>
-                        </div>
-                        <div class="price">
-                            <span class="onsale">{{ $row->display_sale_price }}</span>
-                            <span class="text-price">{{ $row->display_price }}</span>
+      <div class="bravo-more-book-mobile py-3 border-top bg-white shadow-sm fixed-bottom">
+    <div class="container">
+        <div class="row align-items-center">
+
+            {{-- LEFT --}}
+            <div class="col-7">
+                
+                {{-- PRICE --}}
+                    <div class="g-price mb-2">
+                        <small class="text-muted d-block">{{ __("De") }}</small>
+
+                        <div class="h5 mb-0 font-weight-bold">
+                            @if($row->display_sale_price)
+                                <span class="text-muted mr-2" style="text-decoration: line-through;">
+                                    {{ $row->display_sale_price }}
+                                </span>
+
+                                <span class="text-muted mx-1">
+                                    {{ __("Por") }}
+                                </span>
+                            @endif
+
+                            <span class="text-primary">
+                                {{ $row->display_price }}
+                            </span>
                         </div>
                     </div>
-                    @if(setting_item('assistance_enable_review'))
-                    <?php
-                    $reviewData = $row->getScoreReview();
-                    $score_total = $reviewData['score_total'];
-                    ?>
+
+                {{-- REVIEW --}}
+                @if(setting_item('assistance_enable_review'))
+                    @php
+                        $reviewData = $row->getScoreReview();
+                        $score_total = $reviewData['score_total'] ?? 0;
+                        $percent = $score_total * 20; // 5 estrelas = 100%
+                    @endphp
+
                     <div class="service-review d-flex align-items-center assistance-review-{{$score_total}}">
-                        <div class="list-star">
-                            <ul class="booking-item-rating-stars">
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
+                        
+                        <div class="list-star position-relative mr-2">
+                            
+                            {{-- Estrelas base --}}
+                            <ul class="booking-item-rating-stars list-inline m-0 text-muted">
+                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
                             </ul>
-                            <div class="booking-item-rating-stars-active" style="width: {{  $score_total * 2 * 10 ?? 0  }}%">
-                                <ul class="booking-item-rating-stars">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
+
+                            {{-- Estrelas ativas --}}
+                            <div class="booking-item-rating-stars-active position-absolute top-0 left-0 overflow-hidden"
+                                 style="width: {{ $percent }}%;">
+                                <ul class="booking-item-rating-stars list-inline m-0 text-warning">
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
                                 </ul>
                             </div>
                         </div>
-                        <span class="review">
-                        @if($reviewData['total_review'] > 1)
-                                {{ __(":number Avaliações",["number"=>$reviewData['total_review'] ]) }}
-                            @else
-                                {{ __(":number Avaliação",["number"=>$reviewData['total_review'] ]) }}
-                            @endif
-                    </span>
+
+                        <span class="review small text-muted">
+                            {{ $reviewData['total_review'] }}
+                            {{ $reviewData['total_review'] > 1 ? __('Avaliações') : __('Avaliação') }}
+                        </span>
+
                     </div>
-                    @endif
-                </div>
-                <div class="right">
-                    @if($row->getBookingEnquiryType() === "book")
-                        <a href="/assistance/booking/{{ $row->id }}" class="btn btn-primary text-white">{{__("Reserve agora")}}</a>
-                    @else
-                        <a class="btn btn-primary text-white" data-toggle="modal" data-target="#enquiry_form_modal">{{__("Contate-nos agora")}}</a>
-                   @endif
-                </div>
+                @endif
+
             </div>
+
+            {{-- RIGHT --}}
+            <div class="col-5">
+                @if($row->getBookingEnquiryType() === "book")
+                    <a href="/assistance/booking/{{ $row->id }}"
+                       class="btn btn-primary btn-block font-weight-bold">
+                        {{ __("Reserve agora") }}
+                    </a>
+                @else
+                    <button class="btn btn-primary btn-block font-weight-bold"
+                            data-toggle="modal"
+                            data-target="#enquiry_form_modal">
+                        {{ __("Contate-nos agora") }}
+                    </button>
+                @endif
+            </div>
+
         </div>
+    </div>
+</div>
     </div>
 @endsection
 

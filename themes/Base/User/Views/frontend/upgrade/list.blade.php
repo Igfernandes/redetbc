@@ -17,6 +17,7 @@
             <div class="content">
                 <div class="row @if(!$has_annual) justify-content-center @endif;">
                     @foreach($plans as $plan)
+                    @continue($plan->id > 3)
                     @php
                     $translate = $plan->translate();
                     @endphp
@@ -61,7 +62,7 @@
             <div class="content">
                 <div class="row">
                     @foreach($plans as $plan)
-                    @continue(!$plan->annual_price)
+                    @continue(!$plan->annual_price || $plan->id > 3)
                     <div class="pricing-table col-lg-4 col-md-6 col-sm-12">
                         <div class="inner-box">
                             <div class="title">{{$plan->title}}</div>

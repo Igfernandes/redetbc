@@ -176,6 +176,7 @@ class NetworkController extends FrontendController
             scheduleDate: now()->addDays(30)->format('Y-m-d'),
             description: "Saque solicitado em " . now()->format('d/m/Y')
         );
+        
 
         if (isset($response['error']) && !empty($response['error'])) {
             return back()->with('error', $response['error'] ?? 'Erro ao solicitar o saque.');

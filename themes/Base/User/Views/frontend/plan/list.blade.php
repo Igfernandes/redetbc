@@ -38,7 +38,7 @@
                                     <span style="font-size: 0.85rem; font-weight: 500; color: #888;">Total de &nbsp;</span>
                                     <span style="color: #003583;"> {{ $plan->price ? format_money($plan->price * 12) : __('Grátis') }}</span>
                                     <span style="font-size: 0.85rem; font-weight: 500; color: #888;">
-                                        / {{ __('Ano') }}
+                                        / {{ __('Mês') }}
                                     </span>
                                 </div>
                             </div>

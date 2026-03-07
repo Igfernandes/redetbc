@@ -8,9 +8,6 @@
         <div class="col-lg-12">
             <div class="ls-widget">
                 <div class="tabs-box">
-                    <div class="widget-title">
-                        <h4>{{__("Meu Plano Atual")}}</h4>
-                    </div>
                     <div class="widget-content">
                         @php
                             $user_plans = $user->userPlans;

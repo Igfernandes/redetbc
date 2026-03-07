@@ -46,7 +46,7 @@ $roles[strtolower($role['code'])] = $role['id'];
                     </div>
                 </li>
                 <?php endif; ?>
-                <?php if(isset($roles['presenter'])): ?>
+                <?php if(isset($roles['member'])): ?>
                 <li class="mx-1">
                     <input type="radio" name="role" value="<?php echo e($roles['presenter']); ?>">
                     <div class="text">
@@ -55,7 +55,7 @@ $roles[strtolower($role['code'])] = $role['id'];
                     </div>
                 </li>
                 <?php endif; ?>
-                <?php if(isset($roles['hotel'])): ?>
+                <?php if(false): ?>
                 <li class="mx-1">
                     <input type="radio" name="role" value="<?php echo e($roles['hotel']); ?>">
                     <div class="text">

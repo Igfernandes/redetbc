@@ -47,23 +47,57 @@
                                             </span>
                                         </div>
                                     </li>
-                                    <li class="list-group-item px-1 py-0">
-                                        <a id="shareDropdownInvoker{{$row->id}}"
-                                           class="dropdown-nav-link dropdown-toggle d-flex height-45 width-45 border rounded border-width-2 flex-content-center"
-                                           href="javascript:;" role="button" aria-controls="shareDropdown{{$row->id}}" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover"
-                                           data-unfold-target="#shareDropdown{{$row->id}}" data-unfold-type="css-animation" data-unfold-duration="300" data-unfold-delay="300" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut">
-                                            <i class="flaticon-share font-size-18 text-dark"></i>
+                                      <li class="list-group-item px-1 border-0 dropdown">
+                                    <a id="shareDropdownInvoker{{$row->id}}" class="dropdown-nav-link dropdown-toggle d-flex height-45 width-45 border rounded border-width-2 flex-content-center" href="javascript:;" role="button" aria-controls="shareDropdown{{$row->id}}" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#shareDropdown{{$row->id}}" data-unfold-type="css-animation" data-unfold-duration="300" data-unfold-delay="300" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut" data-toggle="dropdown">
+                                        <i class="flaticon-share font-size-18 text-dark"></i>
+                                    </a>
+
+                                    <div id="shareDropdown{{$row->id}}" class="dropdown-menu dropdown-unfold dropdown-menu-right mt-0 px-3 min-width-3" aria-labelledby="shareDropdownInvoker{{$row->id}}">
+
+                                        <!-- Facebook -->
+                                        <a class="btn btn-icon btn-pill btn-bg-transparent transition-3d-hover btn-xs btn-soft-dark facebook mb-3"
+                                            href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($row->getDetailUrl()) }}"
+                                            target="_blank"
+                                            rel="noopener"
+                                            title="{{__('Facebook')}}">
+                                            <span class="font-size-15 fa fa-facebook-f btn-icon__inner"></span>
                                         </a>
-                                        <div id="shareDropdown{{$row->id}}" class="dropdown-menu dropdown-unfold dropdown-menu-right mt-0 px-3 min-width-3" aria-labelledby="shareDropdownInvoker{{$row->id}}">
-                                            <a class="btn btn-icon btn-pill btn-bg-transparent transition-3d-hover  btn-xs btn-soft-dark  facebook mb-3" href="https://www.facebook.com/sharer/sharer.php?u={{$row->getDetailUrl()}}&title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Facebook")}}">
-                                                <span class="font-size-15 fa fa-facebook-f btn-icon__inner"></span>
-                                            </a>
-                                            <br/>
-                                            <a class="btn btn-icon btn-pill btn-bg-transparent transition-3d-hover  btn-xs btn-soft-dark  twitter" href="https://twitter.com/share?url={{$row->getDetailUrl()}}&title={{$translation->title}}" target="_blank" rel="noopener" original-title="{{__("Twitter")}}">
-                                                <span class="font-size-15 fa fa-twitter btn-icon__inner"></span>
-                                            </a>
-                                        </div>
-                                    </li>
+
+                                        <br />
+
+                                        <!-- WhatsApp -->
+                                        <a class="btn btn-icon btn-pill btn-bg-transparent transition-3d-hover btn-xs btn-soft-dark whatsapp mb-3"
+                                            href="https://wa.me/?text={{ urlencode($translation->title . ' ' . $row->getDetailUrl()) }}"
+                                            target="_blank"
+                                            rel="noopener"
+                                            title="WhatsApp">
+                                            <span class="font-size-15 fa fa-whatsapp btn-icon__inner"></span>
+                                        </a>
+
+                                        <br />
+
+                                        <!-- Instagram -->
+                                        <button class="btn btn-icon btn-pill btn-bg-transparent transition-3d-hover btn-xs btn-soft-dark instagram"
+                                            onclick="shareInstagram('{{$translation->title}}','{{$row->getDetailUrl()}}')"
+                                            title="Instagram">
+                                            <span class="font-size-15 fa fa-instagram btn-icon__inner"></span>
+                                        </button>
+
+                                    </div>
+                                    <script>
+                                        function shareInstagram(title, url) {
+                                            if (navigator.share) {
+                                                navigator.share({
+                                                    title: title,
+                                                    text: title,
+                                                    url: url
+                                                });
+                                            } else {
+                                                alert("Seu dispositivo não suporta compartilhamento direto.");
+                                            }
+                                        }
+                                    </script>
+                                </li>
                                 </ul>
                                 @if($row->getReviewEnable())
                                     @if($review_score)

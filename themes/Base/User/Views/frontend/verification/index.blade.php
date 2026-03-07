@@ -7,6 +7,7 @@
 <div class="booking-history-manager">
     <div class="text">
         <p class="text-justify">Para que possamos garantir a segurança das informações, a legitimidade dos usuários e o uso adequado de todos os recursos da plataforma, será necessário realizar um processo de verificação de identidade. Esse processo tem como objetivo confirmar que o cadastro está sendo feito por uma pessoa real e que os documentos apresentados são autênticos.</p>
+        <p>logo após a validação da sua identidade suas informações são excluídas de nosso Banco de Dados.</p>
     </div>
     @foreach($fields as $field)
     @switch($field['type'])

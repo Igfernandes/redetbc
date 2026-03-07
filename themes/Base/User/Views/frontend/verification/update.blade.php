@@ -3,6 +3,8 @@
 <h2 class="title-bar">
     {{__("Dados de verificação")}}
 </h2>
+<p>logo após a validação da sua identidade suas informações são excluídas de nosso Banco de Dados
+</p>
 @include('admin.message')
 <div class="booking-history-manager">
     <form action="{{route('user.verification.store')}}" method="post">
@@ -20,7 +22,7 @@
         @break
         @case("file")
         @include('User::frontend.verification.fields.file')
-        @break 
+        @break
         @case("select")
         @include('User::frontend.verification.fields.select')
         @break
