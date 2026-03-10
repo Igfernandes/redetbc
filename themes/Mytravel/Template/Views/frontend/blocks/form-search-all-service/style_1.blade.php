@@ -56,7 +56,7 @@ style="background-image: url('{{$bg_image_url}}') !important;">
         </div>
         <div class=" mb-lg-n1">
             <ul class="nav nav-list flex-nowrap tab-nav-shadow  @if(!empty($single_form_search)) d-none @endif" role="tablist">
-                <li class="nav-item" role="bravo_hotel">
+                <!-- <li class="nav-item" role="bravo_hotel">
                     <a class="font-weight-medium"
                         id="bravo_hotel-tab"
                         href="/page/hotel">
@@ -71,7 +71,7 @@ style="background-image: url('{{$bg_image_url}}') !important;">
                             </span>
                         </div>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item" role="bravo_space">
                     <a class="font-weight-medium"
                         id="bravo_space-tab"

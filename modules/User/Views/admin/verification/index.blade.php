@@ -67,16 +67,7 @@
                                 <td>{{$row->email}}</td>
                                 <td>{{$row->phone}}</td>
                                 <td>
-                                    @php
-                                    $rolesTranslated = [
-                                    'customer' => 'Cliente',
-                                    'vendor' => 'Fornecedor',
-                                    'administrator' => 'Administrador',
-                                    'traveler' => 'Viajante',
-                                    'presenter' => 'Anfitrião',
-                                    'visa' => 'Visitante',
-                                    ];
-                                    echo e(ucfirst( $rolesTranslated[strtolower($row->role_name)] ?? $row->role_name ));
+                                    echo e(ucfirst( $row->role_name ));
                                     @endphp
                                 </td>
                                 <td>{{ display_date($row->created_at)}}</td>

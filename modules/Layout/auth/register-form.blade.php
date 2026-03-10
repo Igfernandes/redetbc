@@ -37,16 +37,16 @@ $roles[strtolower($role['code'])] = $role['id'];
                 <span class="invalid-feedback error error-role"></span>
             </div>
             <ul>
-                @if(isset($roles['traveler']))
+                @if(isset($roles['member']))
                 <li class="mx-1">
-                    <input type="radio" name="role" value="{{$roles['traveler']}}">
+                    <input type="radio" name="role" value="{{$roles['member']}}">
                     <div class="text">
                         <i class="icofont-travelling"></i>
                         <span>{{__('Viajante')}}</span>
                     </div>
                 </li>
                 @endif
-                @if(isset($roles['member']))
+                @if(isset($roles['presenter']))
                 <li class="mx-1">
                     <input type="radio" name="role" value="{{$roles['presenter']}}">
                     <div class="text">

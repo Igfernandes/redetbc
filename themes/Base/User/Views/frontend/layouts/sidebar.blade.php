@@ -241,7 +241,7 @@ foreach ($menus as $k => $menuItem) {
                     <li class=" depth-0"><a target="" href="/">Início</a></li>
                     <li class=" depth-0"><a>Acomodações <i class="caret fa fa-angle-down"></i></a>
                         <ul class="children-menu menu-dropdown">
-                            <li class=" depth-1"><a target="" href="/page/home-hotel">Hotéis</a></li>
+                            <!-- <li class=" depth-1"><a target="" href="/page/home-hotel">Hotéis</a></li> -->
                             <li class=" depth-1"><a target="" href="http://localhost:8000/page/home-space">Espaços</a></li>
                         </ul>
                     </li>

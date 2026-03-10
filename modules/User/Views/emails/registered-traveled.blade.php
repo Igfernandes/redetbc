@@ -24,7 +24,7 @@
                 <th style="border-bottom: 10px solid #ececec;">
                     <div style="margin: 30px 0 20px;">
                         <span style="font-size: 20px;font-weight: 600;color: #333;">
-                            Prezado(a) Viajante,
+                            Prezado(a) Membro,
                         </span>
                     </div>
 
