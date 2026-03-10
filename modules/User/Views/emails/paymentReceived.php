@@ -109,7 +109,7 @@
             <tr>
                 <td style="padding: 30px;text-align: center;color: gray;">
                     <p style="margin: 10px 0 5px;">{{ __('O maior portal nacional de aluguel de temporada do Brasil.') }}</p>
-                    <span>{{ __('Servindo milhões de viajantes e anunciantes desde 2025.') }}</span>
+                    <span>{{ __('Servindo milhões de Membros e anunciantes desde 2025.') }}</span>
                 </td>
             </tr>
         </tfoot>

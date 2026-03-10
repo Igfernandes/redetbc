@@ -11,6 +11,7 @@ use Modules\Booking\Models\Booking;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Modules\Booking\Models\Enquiry;
 use Modules\Booking\Models\Payment;
+use Modules\User\Models\PlanPayment;
 use Modules\User\Models\WithdrawAccount;
 use Modules\User\Traits\Network\CardsNetwork;
 use Modules\User\Traits\Network\GraphicNetwork;
@@ -89,6 +90,11 @@ class NetworkController extends FrontendController
         $from = strtotime(date('Y-m-01 00:00:00'));
         $to   = strtotime(date('Y-m-t 23:59:59'));
 
+        $solicitations = PlanPayment::where([
+            "object_model" => 'withdraw',
+            'user_id' => $user_id
+        ])->get();
+
         $data = [
             'cards_report'       => $this->getCards($user_id),
             'earning_chart_data' => $this->getUserWithdrawChartDataReceived($from, $to, $user_id),
@@ -99,8 +105,10 @@ class NetworkController extends FrontendController
                     'name'  => __('Afiliado de rede'),
                     'class' => 'active'
                 ]
-            ]
+            ],
+            'solicitations' =>  $solicitations
         ];
+
         return view('User::frontend.network.wallet', $data);
     }
 
@@ -158,6 +166,7 @@ class NetworkController extends FrontendController
             "user_id" => $user_id,
             "object_model" => "withdraw"
         ])->get();
+        
         $pendents = Payment::whereIn("user_id", [...$usersLinkedIds, ...$usersIndirectLinkedIds])->where([
             "object_model" => "plan"
         ])->get()->sum('amount');
@@ -176,7 +185,7 @@ class NetworkController extends FrontendController
             scheduleDate: now()->addDays(30)->format('Y-m-d'),
             description: "Saque solicitado em " . now()->format('d/m/Y')
         );
-        
+
 
         if (isset($response['error']) && !empty($response['error'])) {
             return back()->with('error', $response['error'] ?? 'Erro ao solicitar o saque.');

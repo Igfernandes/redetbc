@@ -67,6 +67,7 @@
                                 <td>{{$row->email}}</td>
                                 <td>{{$row->phone}}</td>
                                 <td>
+                                    @php
                                     echo e(ucfirst( $row->role_name ));
                                     @endphp
                                 </td>

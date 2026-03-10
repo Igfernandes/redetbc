@@ -42,7 +42,7 @@ $roles[strtolower($role['code'])] = $role['id'];
                     <input type="radio" name="role" value="{{$roles['member']}}">
                     <div class="text">
                         <i class="icofont-travelling"></i>
-                        <span>{{__('Viajante')}}</span>
+                        <span>{{__('Membro')}}</span>
                     </div>
                 </li>
                 @endif

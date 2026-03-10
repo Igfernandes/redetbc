@@ -143,10 +143,10 @@
                     </div>
                     <div style="text-align: center;margin-top: 40px;border-top: 4px solid #ececec;padding-top: 35px;">
                         <a style="color: #0076ff;margin: 0 15px;" href="{{ url('/?action=register') }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Sua Área do Viajante') }}
+                            {{ __('Sua Área do Membro') }}
                         </a>
                         <a style="color: #0076ff;margin: 0 15px;" href="{{ url('page/noticias') }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Dicas para viajantes') }}
+                            {{ __('Dicas para membros') }}
                         </a>
                     </div>
                 </td>
@@ -154,7 +154,7 @@
             <tr>
                 <td style="padding: 30px;text-align: center;color: gray;">
                     <p style="margin: 10px 0 5px;">{{ __('O maior portal nacional de aluguel de temporada do Brasil.') }}</p>
-                    <span>{{ __('Servindo milhões de viajantes e anunciantes desde 2025.') }}</span>
+                    <span>{{ __('Servindo milhões de membros e anunciantes desde 2025.') }}</span>
                     <div>
                         <!-- SVGs mantidos como estão -->
                     </div>

@@ -85,16 +85,7 @@
                                 </td>
                                 <td>{{$row->phone}}</td>
                                 <td>
-                                    @php
-                                    $rolesName = [
-                                    'presenter'=>__('Anfitrião'),
-                                    'traveler'=>__('Viajante'),
-                                    'Both'=>__('Ambos'),
-                                    'administrator'=>__('Administrador'),
-                                    'vendor'=>__('Vendedor'),
-                                    ]
-                                    @endphp
-                                    {{$rolesName[strtolower($row->role_name)] ?? $row->role_name}}
+                                    {{$row->role_name}}
                                 </td>
                                 <td>{{ display_date($row->created_at)}}</td>
                                 {{--<td class="status">{{$row->status}}</td>--}}

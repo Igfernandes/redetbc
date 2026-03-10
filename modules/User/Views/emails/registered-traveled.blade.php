@@ -27,7 +27,6 @@
                             Prezado(a) Membro,
                         </span>
                     </div>
-
                     <div style="padding: 0 30px;">
                         <p style="font-size: 16px;color:#666;line-height:1.6;">
                             Seja bem-vindo(a) ao <strong>Clube TBC</strong>.
@@ -65,7 +64,7 @@
                             2. Evite pagamentos 100% adiantados
                         </h3>
                         <p style="font-size: 14px;color:#555;line-height:1.6;">
-                            Por segurança, o Clube TBC não recomenda que o viajante realize o pagamento integral antecipado
+                            Por segurança, o Clube TBC não recomenda que o membro realize o pagamento integral antecipado
                             da reserva. Sempre que possível, priorize acordos que envolvam sinal ou pagamento parcial,
                             conforme combinado diretamente com o anfitrião.
                         </p>
@@ -111,7 +110,7 @@
                         O maior portal nacional de aluguel de temporada do Brasil.
                     </p>
                     <span>
-                        Servindo milhões de viajantes e anunciantes desde 2025.
+                        Servindo milhões de membros e anunciantes desde 2025.
                     </span>
                 </td>
             </tr>
