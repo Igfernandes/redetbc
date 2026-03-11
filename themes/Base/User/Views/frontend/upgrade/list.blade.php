@@ -3,7 +3,7 @@
     <div class="text">{{ setting_item_with_lang('user_plans_page_sub_title', app()->getLocale()) ?? __("Escolha seu plano de preços") }}</div>
 </div>
 <div class="pricing-tabs tabs-box" data-client='{{Auth()->user()->gateway_customer_id}}'>
-    @if($has_annual)
+    <!-- @if($has_annual)
     <div class="tab-buttons">
         <h4>{{ setting_item_with_lang('user_plans_sale_text', app()->getLocale()) ?? __('Economize até 10%') }}</h4>
         <ul class="tab-btns">
@@ -11,9 +11,9 @@
             <li data-tab="#annual" class="tab-btn">{{__('Anual')}}</li>
         </ul>
     </div>
-    @endif;
+    @endif; -->
     <div class="tabs-content">
-        <div class="tab active-tab" id="monthly">
+        <div class="tab" id="monthly">
             <div class="content">
                 <div class="row @if(!$has_annual) justify-content-center @endif;">
                     @foreach($plans as $plan)
@@ -58,7 +58,7 @@
             </div>
         </div>
         @if($has_annual)
-        <div class="tab" id="annual">
+        <div class="tab active-tab" id="annual">
             <div class="content">
                 <div class="row">
                     @foreach($plans as $plan)

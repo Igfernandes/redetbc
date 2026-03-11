@@ -205,12 +205,10 @@
 
                         <div class="col-md-9">
                             <div class="row">
-
                                 <div class="col-md-6 mb-3">
-                                    <strong>Nascimento:</strong><br>
-                                    {{ $profileUser->birthday ? display_date($profileUser->birthday) : '-' }}
+                                    <strong>Idade:</strong><br>
+                                    {{ $profileUser->birthday ? (new DateTime($profileUser->birthday))->diff(new DateTime())->y : '-' }}
                                 </div>
-
                                 <div class="col-md-6 mb-3">
                                     <strong>Sexo:</strong><br>
                                     {{ $profileUser->sex ? ($sexMap[$profileUser->sex] ?? $profileUser->sex) : '-' }}
@@ -224,13 +222,6 @@
                                 <div class="col-md-6 mb-3">
                                     <strong>Religião:</strong><br>
                                     {{ $profileUser->religion ? ($religionMap[$profileUser->religion] ?? $profileUser->religion) : '-' }}
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <strong>Endereço:</strong><br>
-                                    {{ $profileUser->address }} {{ $profileUser->address2 }}<br>
-                                    {{ $profileUser->city }} - {{ $profileUser->state }}<br>
-                                    {{ $profileUser->country }} - {{ $profileUser->zip_code }}
                                 </div>
 
                                 @if($profileUser->bio)
