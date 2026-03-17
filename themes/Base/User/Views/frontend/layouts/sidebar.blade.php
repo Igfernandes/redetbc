@@ -26,7 +26,7 @@ $menus = [
     ],
     'network' => [
         'url'      => route("user.network"),
-        'title'    => __("Rede"),
+        'title'    => __("Minha Rede"),
         'icon'     => 'fa fa-sitemap',
         'position' => 22,
         'is_verified' => 1,
@@ -50,7 +50,7 @@ $menus = [
     ],
     'verify'         => [
         'url'      => route("user.verification.index"),
-        'title'    => __("Verificação"),
+        'title'    => __("Minhas Verificações"),
         'icon'     => 'fa fa-id-card-o',
         'position' => 22,
         'is_verified' => 0
@@ -236,7 +236,6 @@ foreach ($menus as $k => $menuItem) {
         </div>
         <div>
             <div class="g-menu">
-
                 <ul class="main-menu menu-generated">
                     <li class=" depth-0"><a target="" href="/">Início</a></li>
                     <li class=" depth-0"><a>Acomodações <i class="caret fa fa-angle-down"></i></a>
@@ -258,7 +257,7 @@ foreach ($menus as $k => $menuItem) {
                             <li class=" depth-1"><a target="" href="/tour?cat_id[]=1">Motivacional</a></li>
                         </ul>
                     </li>
-                    <!-- <li class=" depth-0"><a target="" href="/page/eventos">Eventos</a></li> -->
+                    <li class=" depth-0"><a target="" href="/page/service">Serviços</a></li>
                     <li class=" depth-0"><a target="" href="/page/noticias">Notícias</a></li>
                 </ul>
             </div>

@@ -166,7 +166,7 @@ class NetworkController extends FrontendController
             "user_id" => $user_id,
             "object_model" => "withdraw"
         ])->get();
-        
+
         $pendents = Payment::whereIn("user_id", [...$usersLinkedIds, ...$usersIndirectLinkedIds])->where([
             "object_model" => "plan"
         ])->get()->sum('amount');

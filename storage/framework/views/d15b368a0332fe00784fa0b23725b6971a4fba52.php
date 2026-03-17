@@ -452,8 +452,9 @@ if (isset($_GET['religion'])) {
 
                                     <?php endif; ?>
 
+                                    <?php if(Auth::user()->is_verified === 1): ?>
                                     <li class="menu-hr"><a href="<?php echo e(route('user.booking_history')); ?>"><i class="fa fa-clock-o"></i> <?php echo e(__("Histórico de Reservas")); ?></a></li>
-
+                                    <?php endif; ?>
                                     <li class="menu-hr"><a href="<?php echo e(route('user.change_password')); ?>"><i class="fa fa-lock"></i> <?php echo e(__("Alterar senha")); ?></a></li>
 
                                     <?php if(Auth::user()->hasPermission('dashboard_access')): ?>
@@ -540,37 +541,14 @@ if (isset($_GET['religion'])) {
 
                                 </a>
                             </li>
+                            <?php if(Auth::user()->is_verified === 1): ?>
                             <li>
-                                <a href="/user/verification">
-                                    <span class="icon text-center"><i class="fa fa-id-card-o"></i></span>
-                                    Minhas Verificações
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/plan">
+                                <a href="<?php echo e(route('user.plan')); ?>">
                                     <span class="icon text-center"><i class="fa fa-list-alt"></i></span>
                                     Meu Plano
                                 </a>
                             </li>
-                            <li>
-                                <a href="/user/network">
-                                    <span class="icon text-center"><i class="fa fa-sitemap"></i></span>
-                                    Minha Rede
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="/user/booking-history">
-                                    <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
-                                    Minhas Reservas
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/chat">
-                                    <span class="icon text-center"><i class="fa fa-comments"></i></span>
-                                    Minhas Mensagens
-                                </a>
-                            </li>
+                            <?php endif; ?>
 
                             <?php echo $__env->make('Layout::parts.authmenu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             <?php if(Auth::user()->hasPermission('dashboard_vendor_access')): ?>

@@ -21,21 +21,22 @@ class CheckVerification
         $user = Auth::user();
 
         $isRouteException = $request->is('api/*', 'webhook/*', 'news/*', 'reset-password', 'asaas/webhook', 'reset-password/*')
-            ||  \array_search($request->path(), ["/", "login", 'page/blog', "forgot-password", "register"]) !== false;
+            ||  \array_search($request->path(), ["/", "homepage", "login", 'page/blog', "forgot-password", "register"]) !== false;
 
         if (is_admin() ||  $isRouteException)
             return $next($request);
 
         // Usuário não logado → redireciona para registro/login
-        if (!$user && $request->path() !== "/") {
-            return redirect('/?action=register');
+        if (!$user && $request->path() !== "/homepage") {
+            return redirect('/homepage/?action=register');
         }
 
         // Defina as rotas/paths que DEVEM ser liberadas mesmo sem verificação
         $except = [
-            '/',               // home
+            '/',               // home,
+            '/homepage',
             'logout',          // logout
-            'login',           // login
+            '/login',           // login
             'register',        // registro
             '/forgot-password', // esqueceu a senha
             'plan',           // tela de planos,

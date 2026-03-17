@@ -1,0 +1,452 @@
+/* ========================================
+           VARIÁVEIS
+        ======================================== */
+:root {
+    --azul-principal: #003583;
+    --azul-escuro: #002a5c;
+    --azul-medio: #004aa3;
+    --laranja-vibrante: #ffa636;
+    --laranja-quente: #ff8800;
+    --branco: #ffffff;
+    --cinza-texto: #4a5568;
+}
+
+
+/* ========================================
+           SEÇÃO CTA FINAL (CONVERSÃO)
+        ======================================== */
+.cta-final-conversao {
+    position: relative;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem;
+    overflow: hidden;
+}
+
+/* Container dos Backgrounds (2 imagens) - FIXO */
+.cta-final-backgrounds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Garante que fique fixo */
+    transform: none !important;
+}
+
+/* Background Anfitrião - CORRIGIDO */
+.bg-anfitriao-final {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/anfitriao-cta.png'); /* ADICIONE SUA IMAGEM */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    transition: opacity 0.6s ease;
+    /* Garante que fique no lugar */
+    transform: none !important;
+}
+
+/* Background Viajante - CORRIGIDO */
+.bg-viajante-final {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/cta-final-viajante.png'); /* ADICIONE SUA IMAGEM */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    transition: opacity 0.6s ease;
+    /* Garante que fique no lugar */
+    transform: none !important;
+}
+
+
+
+/* Overlay escuro para legibilidade */
+.cta-final-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+                rgba(0, 52, 131, 0.637) 0%, 
+                rgba(0, 41, 92, 0.808) 100%);
+    z-index: 1;
+}
+
+/* Container de conteúdo */
+.cta-final-container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    text-align: center;
+    color: var(--branco);
+}
+
+/* ========================================
+           BADGE DE URGÊNCIA
+        ======================================== */
+.cta-final-urgency-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 166, 54, 0.2);
+    border: 2px solid var(--laranja-vibrante);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--laranja-vibrante);
+    margin-bottom: 2rem;
+    box-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(255, 166, 54, 0.3);
+    animation: pulseFinal 2s ease-in-out infinite;
+}
+
+.cta-final-urgency-badge svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--laranja-vibrante);
+    fill: none;
+    stroke-width: 2.5;
+}
+
+@keyframes pulseFinal {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 
+            3px 3px 6px rgba(0, 0, 0, 0.2),
+            0 0 20px rgba(255, 166, 54, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 
+            4px 4px 8px rgba(0, 0, 0, 0.25),
+            0 0 30px rgba(255, 166, 54, 0.5);
+    }
+}
+
+/* ========================================
+           TÍTULO E DESCRIÇÃO
+        ======================================== */
+.cta-final-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cta-final-title span {
+    background:  var(--laranja-vibrante);
+    -webkit-background-clip: text;
+    color: #ffa636;
+    background-clip: text;
+    display: inline-block;
+}
+
+.cta-final-description {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-final-description strong {
+    color: var(--laranja-vibrante);
+    font-weight: 700;
+}
+
+/* ========================================
+           STATS BADGES
+        ======================================== */
+.cta-final-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.cta-final-stat-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        4px 4px 8px rgba(0, 0, 0, 0.15),
+        6px 6px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.cta-final-stat-badge:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.2),
+        10px 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.cta-final-stat-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.cta-final-stat-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.cta-final-stat-number {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: var(--laranja-vibrante);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.cta-final-stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+/* ========================================
+   BOTÕES PRINCIPAIS
+======================================== */
+
+.cta-final-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.cta-final-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.4rem 3rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-final-btn svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.5;
+    transition: transform 0.3s ease;
+}
+
+.cta-final-btn:hover svg {
+    transform: scale(1.15);
+}
+
+
+/* ========================================
+   BOTÃO ANFITRIÃO (PRINCIPAL)
+======================================== */
+
+.btn-anfitriao-final {
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-medio) 100%);
+    color: var(--branco);
+    box-shadow: 
+        4px 4px 8px rgba(0, 53, 131, 0.3),
+        6px 6px 16px rgba(0, 53, 131, 0.2);
+}
+
+.btn-anfitriao-final:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        6px 6px 12px rgba(0, 53, 131, 0.4),
+        10px 10px 24px rgba(0, 53, 131, 0.3);
+}
+
+
+/* ========================================
+   BOTÃO QUERO SER MEMBRO
+======================================== */
+
+.btn-viajante-final {
+    background: var(--laranja-vibrante);
+    color: var(--azul-principal);
+    
+    box-shadow: 
+        4px 4px 8px rgba(255, 255, 255, 0.2),
+        6px 6px 16px rgba(255, 255, 255, 0.15);
+}
+
+.btn-viajante-final:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-4px);
+    box-shadow: 
+        6px 6px 12px rgba(255, 255, 255, 0.3),
+        10px 10px 24px rgba(255, 255, 255, 0.2);
+}
+
+
+/* ========================================
+   BOTÃO JÁ SOU MEMBRO (LOGIN)
+======================================== */
+
+.btn-login-final {
+    background: #f8f3d7;
+    color: var(--azul-principal);
+    border: 2px solid rgba(255,255,255,0.6);
+    backdrop-filter: blur(4px);
+}
+
+.btn-login-final:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--branco);
+    transform: translateY(-4px);
+    box-shadow: 
+        6px 6px 12px rgba(0,0,0,0.2),
+        10px 10px 24px rgba(0,0,0,0.15);
+}
+/* ========================================
+           GARANTIAS (RODAPÉ)
+        ======================================== */
+.cta-final-guarantees {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.cta-final-guarantee-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.cta-final-guarantee-item svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--laranja-vibrante);
+    fill: none;
+    stroke-width: 2.5;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* ========================================
+           ANIMATIONS
+        ======================================== */
+@keyframes fadeInUpFinal {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+           RESPONSIVE
+        ======================================== */
+@media (max-width: 768px) {
+    .cta-final-conversao {
+        min-height: 600px;
+        padding: 4rem 1.5rem;
+    }
+
+    .cta-final-title {
+        margin-bottom: 1.25rem;
+    }
+
+    .cta-final-description {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .cta-final-stats {
+        gap: 1.25rem;
+    }
+
+    .cta-final-stat-badge {
+        padding: 1rem 1.5rem;
+    }
+
+    .cta-final-stat-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cta-final-stat-number {
+        font-size: 1.5rem;
+    }
+
+    .cta-final-buttons {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .cta-final-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1.3rem 2rem;
+    }
+
+    .cta-final-guarantees {
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-final-urgency-badge {
+        font-size: 0.85rem;
+        padding: 0.6rem 1.25rem;
+    }
+
+    .cta-final-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cta-final-stat-badge {
+        width: 100%;
+        justify-content: center;
+    }
+}

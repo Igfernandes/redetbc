@@ -37,16 +37,16 @@ $roles[strtolower($role['code'])] = $role['id'];
                 <span class="invalid-feedback error error-role"></span>
             </div>
             <ul>
-                <?php if(isset($roles['traveler'])): ?>
+                <?php if(isset($roles['member'])): ?>
                 <li class="mx-1">
-                    <input type="radio" name="role" value="<?php echo e($roles['traveler']); ?>">
+                    <input type="radio" name="role" value="<?php echo e($roles['member']); ?>">
                     <div class="text">
                         <i class="icofont-travelling"></i>
-                        <span><?php echo e(__('Viajante')); ?></span>
+                        <span><?php echo e(__('Membro')); ?></span>
                     </div>
                 </li>
                 <?php endif; ?>
-                <?php if(isset($roles['member'])): ?>
+                <?php if(isset($roles['presenter'])): ?>
                 <li class="mx-1">
                     <input type="radio" name="role" value="<?php echo e($roles['presenter']); ?>">
                     <div class="text">

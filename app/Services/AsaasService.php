@@ -49,6 +49,32 @@ class AsaasService
         return $response->json();
     }
 
+    public function findCustomerByEmail(string $email)
+    {
+        $response = $this->request('get', 'customers', [
+            'email' => $email
+        ]);
+
+        if (!empty($response['data'])) {
+            return $response['data'][0];
+        }
+
+        return null;
+    }
+
+    public function getOrCreateCustomer(array $data)
+    {
+        // tenta encontrar por email
+        $customer = $this->findCustomerByEmail($data['email']);
+
+        if ($customer) {
+            return $customer;
+        }
+
+        // se não encontrou cria
+        return $this->createCustomer($data);
+    }
+
     /**
      * Cria um cliente no Asaas
      *
@@ -77,8 +103,6 @@ class AsaasService
     {
         return $this->request('get', "customers", $queryParams);
     }
-
-
 
     /**
      * Consulta informações de um pagamento

@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Modules\Hotel\Models\Hotel;
-use Modules\Location\Models\LocationCategory;
 use Modules\Page\Models\Page;
 use Modules\News\Models\NewsCategory;
 use Modules\News\Models\Tag;
 use Modules\News\Models\News;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Modules\User\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -29,13 +26,47 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
+        if (empty($user)) {
+            return view('presentation/index');
+        } else {
+            $home_page_id = setting_item('home_page_id');
+
+            if ($home_page_id && $page = Page::where("id", $home_page_id)->where("status", "publish")->first()) {
+                $this->setActiveMenu($page);
+                $translation = $page->translate();
+                $seo_meta = $page->getSeoMetaWithTranslation(app()->getLocale(), $translation);
+                $seo_meta['full_url'] = url("/homepage");
+                $seo_meta['is_homepage'] = true;
+                $data = [
+                    'row' => $page,
+                    "seo_meta" => $seo_meta,
+                    'translation' => $translation,
+                    'is_home' => true
+                ];
+                return view('Page::frontend.detail', $data);
+            }
+        }
+
+        return view('presentation/index');
+    }
+
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function homepage()
+    {
         $home_page_id = setting_item('home_page_id');
 
         if ($home_page_id && $page = Page::where("id", $home_page_id)->where("status", "publish")->first()) {
             $this->setActiveMenu($page);
             $translation = $page->translate();
             $seo_meta = $page->getSeoMetaWithTranslation(app()->getLocale(), $translation);
-            $seo_meta['full_url'] = url("/");
+            $seo_meta['full_url'] = url("/homepage");
             $seo_meta['is_homepage'] = true;
             $data = [
                 'row' => $page,
@@ -45,7 +76,9 @@ class HomeController extends Controller
             ];
             return view('Page::frontend.detail', $data);
         }
+
         $model_News = News::where("status", "publish");
+
         $data = [
             'rows' => $model_News->paginate(5),
             'model_category'    => NewsCategory::where("status", "publish"),

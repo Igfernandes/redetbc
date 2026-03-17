@@ -54,7 +54,7 @@ trait Checkout
             ];
 
         $payload = [
-            "billingTypes" => ["CREDIT_CARD", "PIX"],
+            "billingTypes" => ["PIX"],
             "chargeTypes" => ["DETACHED"],
             "minutesToExpire" => 120,
             "callback" => $options['callback'],

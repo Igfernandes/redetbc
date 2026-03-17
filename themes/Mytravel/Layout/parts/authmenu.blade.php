@@ -26,7 +26,7 @@ $menus = [
     ],
     'network' => [
         'url'      => route("user.network"),
-        'title'    => __("Rede"),
+        'title'    => __("Minha Rede"),
         'icon'     => 'fa fa-sitemap',
         'position' => 22,
         'is_verified' => 1,

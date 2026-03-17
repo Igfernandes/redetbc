@@ -1,0 +1,339 @@
+/* ========================================
+           VARIÁVEIS
+        ======================================== */
+:root {
+    --azul-principal: #003583;
+    --azul-escuro: #002a5c;
+    --laranja-vibrante: #ffa636;
+    --laranja-quente: #ff8800;
+    --bege-suave: #f8f3d7;
+    --branco: #ffffff;
+    --cinza-texto: #4a5568;
+    --cinza-medio: #718096;
+    --cinza-escuro: #2d3748;
+}
+
+
+
+
+/* ========================================
+           SEÇÃO DEPOIMENTOS
+        ======================================== */
+.depoimentos-section {
+    padding: 8rem 0;
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background decorativo */
+.depoimentos-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 53, 131, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(255, 166, 54, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.depoimentos-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.depoimentos-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    padding: 0 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.depoimentos-label {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--laranja-vibrante) 0%, var(--laranja-quente) 100%);
+    color: var(--branco);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    box-shadow: 
+        3px 3px 6px rgba(255, 166, 54, 0.3),
+        5px 5px 12px rgba(255, 166, 54, 0.2);
+}
+
+.depoimentos-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    color: var(--azul-principal);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 8px rgba(0, 53, 131, 0.1);
+}
+
+.depoimentos-title span {
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--laranja-vibrante) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.depoimentos-subtitle {
+    font-size: 1.15rem;
+    color: var(--cinza-medio);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ========================================
+           INFINITE SCROLL HORIZONTAL
+        ======================================== */
+.testimonials-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Gradientes nas laterais */
+.testimonials-wrapper::before,
+.testimonials-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.testimonials-wrapper::before {
+    left: 0;
+    background: linear-gradient(90deg, #f8f9fa 0%, transparent 100%);
+}
+
+.testimonials-wrapper::after {
+    right: 0;
+    background: linear-gradient(270deg, #f8f9fa 0%, transparent 100%);
+}
+
+/* Track que se move */
+.testimonials-track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 40s linear infinite;
+    width: fit-content;
+}
+
+.testimonials-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% / 2));
+    }
+}
+
+/* ========================================
+           CARDS COM TILT 3D EFFECT
+        ======================================== */
+.testimonial-card {
+    min-width: 420px;
+    max-width: 420px;
+    background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+    padding: 3rem 2.5rem;
+    border-radius: 28px;
+    position: relative;
+    /* Sombra projetada PESADA */
+    box-shadow: 
+        8px 8px 16px rgba(0, 53, 131, 0.12),
+        12px 12px 32px rgba(0, 53, 131, 0.1),
+        16px 16px 48px rgba(0, 53, 131, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    /* Para o efeito 3D */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* Hover com elevação + tilt effect será controlado por JS */
+.testimonial-card:hover {
+    box-shadow: 
+        12px 12px 24px rgba(0, 53, 131, 0.18),
+        18px 18px 42px rgba(0, 53, 131, 0.15),
+        24px 24px 64px rgba(0, 53, 131, 0.12);
+}
+
+/* Brilho sutil no hover */
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+    border-radius: 28px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.testimonial-card:hover::before {
+    opacity: 1;
+}
+
+/* SVG Aspas 3D */
+.quote-icon {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 80px;
+    height: auto;
+    opacity: 1;
+    filter: drop-shadow(2px 2px 4px rgba(255, 166, 54, 0.15));
+}
+
+/* Foto */
+.testimonial-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    /* Sombra projetada na foto */
+    box-shadow: 
+        4px 4px 8px rgba(0, 53, 131, 0.15),
+        6px 6px 16px rgba(0, 53, 131, 0.1);
+    border: 3px solid var(--branco);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-photo {
+    transform: scale(1.08) translateZ(20px);
+    box-shadow: 
+        6px 6px 12px rgba(0, 53, 131, 0.2),
+        10px 10px 24px rgba(0, 53, 131, 0.15);
+}
+
+.testimonial-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Conteúdo */
+.testimonial-content {
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--cinza-escuro);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+/* Rating com estrelas 3D */
+.rating {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.star {
+    width: 20px;
+    height: 20px;
+    filter: drop-shadow(1px 1px 2px rgba(255, 166, 54, 0.3));
+    transition: all 0.2s ease;
+}
+
+.testimonial-card:hover .star {
+    transform: scale(1.1) translateZ(10px);
+}
+
+/* Autor */
+.testimonial-author h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--azul-principal);
+    margin-bottom: 0.25rem;
+}
+
+.testimonial-author p {
+    font-size: 0.9rem;
+    color: var(--cinza-medio);
+}
+
+/* ========================================
+           ANIMATIONS
+        ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+           RESPONSIVE
+        ======================================== */
+@media (max-width: 768px) {
+    .depoimentos-section {
+        padding: 5rem 0;
+    }
+
+    .depoimentos-header {
+        margin-bottom: 3rem;
+    }
+
+    .testimonial-card {
+        min-width: 340px;
+        max-width: 340px;
+        padding: 2.5rem 2rem;
+    }
+
+    .quote-icon {
+        width: 60px;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .testimonial-photo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .testimonials-wrapper::before,
+    .testimonials-wrapper::after {
+        width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-card {
+        min-width: 300px;
+        max-width: 300px;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+}

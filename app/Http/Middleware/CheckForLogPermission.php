@@ -18,7 +18,7 @@ class CheckForLogPermission
     public function handle($request, Closure $next, $guard = null)
     {
         if (!Auth::user()->hasPermission('system_log_view')) {
-            return redirect('/');
+            return redirect('/homepage');
         }
         set_active_menu('admin/module/core/tools');
         return $next($request);

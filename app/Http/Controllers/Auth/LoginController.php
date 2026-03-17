@@ -49,39 +49,39 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        if(Auth::user()->hasPermission('dashboard_access')){
+        if (Auth::user()->hasPermission('dashboard_access')) {
             return '/admin';
-        }else{
+        } else {
             return $this->redirectTo;
         }
     }
 
     public function showLoginForm()
     {
-        return view('auth.login',['page_title'=> __("Login")]);
+        return view('auth.login', ['page_title' => __("Login")]);
     }
 
     public function socialLogin($provider)
     {
         $this->initConfigs($provider);
-        $redirectTo = request()->server('HTTP_REFERER',url('/'));
-        session()->put('url.intended',$redirectTo);
+        $redirectTo = request()->server('HTTP_REFERER', url('/'));
+        session()->put('url.intended', $redirectTo);
 
         return Socialite::driver($provider)->redirect();
     }
 
     protected function initConfigs($provider)
     {
-        switch($provider){
+        switch ($provider) {
             case "facebook":
             case "google":
             case "twitter":
                 config()->set([
-                    'services.'.$provider.'.client_id'=>setting_item($provider.'_client_id'),
-                    'services.'.$provider.'.client_secret'=>setting_item($provider.'_client_secret'),
-                    'services.'.$provider.'.redirect'=>'/social-callback/'.$provider,
+                    'services.' . $provider . '.client_id' => setting_item($provider . '_client_id'),
+                    'services.' . $provider . '.client_secret' => setting_item($provider . '_client_secret'),
+                    'services.' . $provider . '.redirect' => '/social-callback/' . $provider,
                 ]);
-            break;
+                break;
         }
     }
 
@@ -111,7 +111,7 @@ class LoginController extends Controller
 
                 // if we can not get email, then fake email will be generated
                 $email = $user->getEmail();
-                $email = $email?:$user->getId().'@'.$provider;
+                $email = $email ?: $user->getId() . '@' . $provider;
 
                 $userByEmail = User::query()->where('email', $email)->first();
                 if (!empty($userByEmail)) {
@@ -147,7 +147,6 @@ class LoginController extends Controller
                 Auth::login($realUser);
 
                 return redirect($redirectTo);
-
             } else {
 
                 if ($existUser->deleted == 1) {
@@ -161,24 +160,23 @@ class LoginController extends Controller
 
                 return redirect($redirectTo);
             }
-        }catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             $message = $exception->getMessage();
-            if(empty($message) and request()->get('error_message')) $message = request()->get('error_message');
-            if(empty($message)) $message = $exception->getCode();
+            if (empty($message) and request()->get('error_message')) $message = request()->get('error_message');
+            if (empty($message)) $message = $exception->getCode();
 
-            return redirect()->route('login')->with('error',$message);
+            return redirect()->route('login')->with('error', $message);
         }
     }
 
-    public function getRedirectTo(){
-        $url = session()->get('url.intended', url('/'));
+    public function getRedirectTo()
+    {
+        $url = session()->get('url.intended', url('/homepage'));
         session()->forget('url.intended');
-        if($url == url('/') or $url ==route('login') or $url == route('auth.register')){
-            $url = url('/');
+        if ($url == url('/') or $url == route('login') or $url == route('auth.register')) {
+            $url = url('/homepage');
         }
+
         return $url;
     }
-
-
 }

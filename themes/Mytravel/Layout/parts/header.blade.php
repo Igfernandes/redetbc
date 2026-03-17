@@ -446,8 +446,9 @@ if (isset($_GET['religion'])) {
 
                                     @endif
 
+                                    @if(Auth::user()->is_verified === 1)
                                     <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
-
+                                    @endif
                                     <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 
                                     @if(Auth::user()->hasPermission('dashboard_access'))
@@ -531,31 +532,14 @@ if (isset($_GET['religion'])) {
                                     <i class="icon ion-md-construct"></i> {{__("Meu perfil")}}
                                 </a>
                             </li>
+                            @if(Auth::user()->is_verified === 1)
                             <li>
-                                <a href="/user/verification">
-                                    <span class="icon text-center"><i class="fa fa-id-card-o"></i></span>
-                                    Minhas Verificações
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/plan">
+                                <a href="{{route('user.plan')}}">
                                     <span class="icon text-center"><i class="fa fa-list-alt"></i></span>
                                     Meu Plano
                                 </a>
                             </li>
-                            <li>
-                                <a href="/user/network">
-                                    <span class="icon text-center"><i class="fa fa-sitemap"></i></span>
-                                    Minha Rede
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="/user/chat">
-                                    <span class="icon text-center"><i class="fa fa-comments"></i></span>
-                                    Minhas Mensagens
-                                </a>
-                            </li>
+                            @endif
 
                             @include('Layout::parts.authmenu')
                             @if(Auth::user()->hasPermission('dashboard_vendor_access'))

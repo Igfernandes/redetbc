@@ -4,7 +4,7 @@
     <div class="row align-items-center">
         <div class="col-12 col-md-6">
             <h2 class="title-bar no-border-bottom">
-                {{__("Rede")}}
+                {{__("Minha Rede")}}
             </h2>
         </div>
         <div class="col-12 col-md-6">

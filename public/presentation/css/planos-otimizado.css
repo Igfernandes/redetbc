@@ -1,0 +1,473 @@
+/* ========================================
+           VARIÁVEIS
+        ======================================== */
+:root {
+    --azul-principal: #003583;
+    --azul-escuro: #002a5c;
+    --azul-medio: #004aa3;
+    --laranja-vibrante: #ffa636;
+    --laranja-quente: #ff8800;
+    --laranja-escuro: #c47a1d;
+    --bege-suave: #f8f3d7;
+    --branco: #ffffff;
+    --cinza-texto: #4a5568;
+    --cinza-medio: #718096;
+    --cinza-escuro: #2d3748;
+    --cinza-claro: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--branco);
+    color: var(--cinza-escuro);
+}
+
+/* ========================================
+           SEÇÃO PLANOS
+        ======================================== */
+.planos-section {
+    padding: 8rem 2rem;
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.planos-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 53, 131, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 166, 54, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.planos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.planos-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.planos-label {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--laranja-vibrante) 0%, var(--laranja-escuro) 100%);
+    color: var(--branco);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    box-shadow: 
+        3px 3px 6px rgba(255, 166, 54, 0.3),
+        5px 5px 12px rgba(255, 166, 54, 0.2);
+}
+
+.planos-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    color: var(--azul-principal);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 8px rgba(0, 53, 131, 0.1);
+}
+
+.planos-title span {
+    background: linear-gradient(135deg, var(--laranja-vibrante) 0%, var(--laranja-vibrante) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.planos-subtitle {
+    font-size: 1.2rem;
+    color: var(--cinza-medio);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ========================================
+           GRID DE PLANOS
+        ======================================== */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto 5rem;
+}
+
+/* ========================================
+           CARD
+        ======================================== */
+.plan-card {
+    background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+    padding: 3rem 2.5rem;
+    border-radius: 32px;
+    box-shadow: 
+        8px 8px 16px rgba(0, 53, 131, 0.1),
+        12px 12px 32px rgba(0, 53, 131, 0.08);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+    width: 100%;
+}
+
+.plan-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        12px 12px 24px rgba(0, 53, 131, 0.15),
+        18px 18px 42px rgba(0, 53, 131, 0.12);
+}
+
+/* Card Destaque */
+.plan-card.destaque {
+    border-color: var(--laranja-vibrante);
+    border-width: 3px;
+    transform: translateY(40px) scale(1);
+    box-shadow: 
+        0 0 0 1px rgba(255, 166, 54, 0.2),
+        8px 8px 16px rgba(0, 53, 131, 0.12),
+        12px 12px 32px rgba(0, 53, 131, 0.1),
+        0 0 40px rgba(255, 166, 54, 0.15);
+}
+
+.plan-card.destaque:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 
+        0 0 0 1px rgba(255, 166, 54, 0.3),
+        12px 12px 24px rgba(0, 53, 131, 0.18),
+        18px 18px 42px rgba(0, 53, 131, 0.15),
+        0 0 60px rgba(255, 166, 54, 0.25);
+}
+
+/* Badge "Mais Popular" */
+.badge-destaque {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--laranja-vibrante) 0%, var(--laranja-escuro) 100%);
+    color: var(--branco);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
+    box-shadow: 
+        4px 4px 8px rgba(255, 166, 54, 0.35),
+        6px 6px 16px rgba(255, 166, 54, 0.25);
+    transition: all 0.3s ease;
+}
+
+.plan-card.destaque:hover .badge-destaque {
+    transform: translateX(-50%) translateY(-2px) scale(1.05);
+    box-shadow: 
+        5px 5px 10px rgba(255, 166, 54, 0.4),
+        8px 8px 20px rgba(255, 166, 54, 0.3);
+}
+
+/* SVG 3D do Plano */
+.plan-icon-3d {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 2rem;
+    display: block;
+    filter: drop-shadow(4px 4px 8px rgba(0, 53, 131, 0.2))
+            drop-shadow(2px 2px 4px rgba(0, 53, 131, 0.15));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.plan-card:hover .plan-icon-3d {
+    transform: translateY(-8px) scale(1.08);
+    filter: drop-shadow(6px 6px 12px rgba(0, 53, 131, 0.25))
+            drop-shadow(3px 3px 6px rgba(0, 53, 131, 0.2));
+}
+
+/* Informações do Plano */
+.plan-name {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--azul-principal);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.plan-tagline {
+    font-size: 0.95rem;
+    color: var(--cinza-medio);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Preço */
+.price-wrapper {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.75rem;
+    background: var(--bege-suave);
+    border-radius: 20px;
+    box-shadow: 
+        inset 2px 2px 4px rgba(0, 0, 0, 0.05),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.price {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.25rem;
+    line-height: 1;
+    color: var(--azul-principal);
+}
+
+.price-currency {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+.price-value {
+    font-size: 3.8rem;
+    font-weight: 900;
+}
+
+.price-period {
+    font-size: 1rem;
+    color: var(--cinza-medio);
+    margin-top: 1.5rem;
+}
+
+.price-daily {
+    font-size: 0.9rem;
+    color: var(--laranja-escuro);
+    font-weight: 600;
+    margin-top: 0.75rem;
+}
+
+/* Selo Fundador */
+.founder-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    padding: 5px 12px;
+    background: linear-gradient(135deg, #FFF8E7 0%, #FFF1CC 100%);
+    border: 1px solid #E8C547;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.founder-badge span {
+    font-size: 12px;
+    font-weight: 500;
+    color: #7A5A00;
+    white-space: nowrap;
+}
+
+/* Features */
+.features {
+    list-style: none;
+    margin-bottom: 2.5rem;
+}
+
+.features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(0, 53, 131, 0.05);
+    transition: all 0.2s ease;
+}
+
+.features li:hover {
+    background: rgba(0, 53, 131, 0.02);
+    padding-left: 0.5rem;
+    border-radius: 8px;
+}
+
+.features li:last-child {
+    border-bottom: none;
+}
+
+.features svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--laranja-vibrante);
+    fill: none;
+    stroke-width: 3;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    filter: drop-shadow(1px 1px 2px rgba(255, 166, 54, 0.2));
+}
+
+.features span {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--cinza-escuro);
+}
+
+.features strong {
+    color: var(--azul-principal);
+    font-weight: 700;
+}
+
+/* Botão CTA */
+.cta-btn {
+    display: block;
+    width: 100%;
+    padding: 1.3rem;
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-medio) 100%);
+    color: var(--branco);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 
+        4px 4px 8px rgba(0, 53, 131, 0.25),
+        6px 6px 16px rgba(0, 53, 131, 0.18);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: auto;
+}
+
+.cta-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        6px 6px 12px rgba(0, 53, 131, 0.3),
+        10px 10px 24px rgba(0, 53, 131, 0.22);
+}
+
+.plan-card.destaque .cta-btn {
+    background: linear-gradient(135deg, var(--azul-medio) 0%, var(--azul-principal) 100%);
+    box-shadow: 
+        4px 4px 8px rgba(255, 166, 54, 0.3),
+        6px 6px 16px rgba(255, 166, 54, 0.2);
+}
+
+.plan-card.destaque .cta-btn:hover {
+    box-shadow: 
+        6px 6px 12px rgba(255, 166, 54, 0.4),
+        10px 10px 24px rgba(255, 166, 54, 0.3);
+}
+
+/* ========================================
+           GARANTIA
+        ======================================== */
+.guarantee {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2.5rem 2rem;
+    background: rgba(0, 53, 131, 0.03);
+    border-radius: 24px;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(0, 53, 131, 0.08);
+}
+
+.guarantee p {
+    font-size: 1.05rem;
+    color: var(--cinza-medio);
+    line-height: 1.8;
+}
+
+.guarantee strong {
+    color: var(--azul-principal);
+    font-weight: 700;
+}
+
+/* ========================================
+           ANIMATIONS
+        ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+           RESPONSIVE
+        ======================================== */
+@media (max-width: 768px) {
+    .planos-section {
+        padding: 5rem 1.5rem;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .plan-card {
+        padding: 2.5rem 2rem;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .plan-card.destaque {
+        transform: translateY(40px) scale(0.95);
+    }
+
+    .plan-card.destaque:hover {
+        transform: translateY(-12px) scale(1);
+    }
+
+    .plan-icon-3d {
+        width: 90px;
+        height: 90px;
+    }
+
+    .guarantee {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-value {
+        font-size: 3.2rem;
+    }
+
+    .features li {
+        padding: 0.75rem 0;
+    }
+
+    .cta-btn {
+        padding: 1.2rem;
+        font-size: 1.05rem;
+    }
+}
