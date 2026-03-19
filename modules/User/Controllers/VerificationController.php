@@ -15,6 +15,7 @@ class VerificationController extends FrontendController
     public function index()
     {
         $user = Auth::user();
+        
         $data = [
             'user'        => $user,
             'fields'      => $user->verification_fields,

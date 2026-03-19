@@ -2,7 +2,7 @@
 <div class="bravo-list-all-service tabs-block tab-v1 ">
     <div class="container space-1">
         <div class="w-md-80 w-lg-50 text-center mx-md-auto my-3">
-            <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">Serviços</h2>
+            <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">O que você procura?</h2>
         </div>
         <ul class="nav tab-nav-pill flex-nowrap pb-4 pb-lg-5 tab-nav justify-content-lg-center" role="tablist">
             @if(!empty($service_types))

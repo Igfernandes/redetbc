@@ -41,22 +41,45 @@ class UserPlan extends BaseModel
         return 0;
     }
 
+    public function isValid(): int
+    {
+        return (int) UserPlan::where('user_id', auth()->id())
+            ->where('status', 1)
+            ->where(function ($query) {
+                $query->where('end_date', '>=', now())
+                    ->orWhereNull('end_date');
+            })
+            ->exists();
+    }
+    
     public function store(Plan $plan, array $options = [
         "status" => 1,
-        "gateway_key" => null
+        "gateway_key" => null,
+        "is_annuity" => 0
     ])
     {
         $user = auth()->user();
-        
+
         $userPlan = new UserPlan();
+
+        $currentPlan = UserPlan::where([
+            "user_id" => $user->id,
+            "status" => 0
+        ])->first();
+
+        if ($currentPlan) {
+            $userPlan = $currentPlan;
+        }
+
         $userPlan->plan_id = $plan->id;
-        $userPlan->price = $plan->price;
-        $userPlan->start_date = date('Y-m-d H:i:s');
-        $userPlan->end_date = date('Y-m-d H:i:s', strtotime('+ ' . $plan->duration . ' ' . $plan->duration_type));
+        $userPlan->price = $options['is_annuity'] === 1 ? $plan->annual_price : $plan->price;
+        $userPlan->start_date = now();
+        $userPlan->end_date = now()->add($plan->duration, $plan->duration_type);
         $userPlan->max_service = $plan->max_service;
-        $userPlan->checkout_session =  $options['gateway_key'];
+        $userPlan->checkout_session = $options['gateway_key'];
         $userPlan->user_id = $user->id;
         $userPlan->status = $options['status'];
+
         $userPlan->save();
 
         event(new UpdatePlanRequest($user));

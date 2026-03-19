@@ -41,11 +41,11 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             <li class="@if(is_vendor())  @endif">
                                 <a href="{{route('user.verification.index')}}"><i class="fa fa-id-card-o"></i> {{__("Verificação")}}</a>
                             </li>
-                            @if(auth()->user()->is_verified)
-                            <li class=""><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Reservas")}}</a></li>
-                            @endif
-                            @if( $isVerification)
+                            @if(auth()->user()->is_verified && auth()->user()->user_plan->isValid() === 1)
+                            <li class=""><a href="{{route('user.network')}}"><i class="fa fa-globe"></i> {{__("Minha Rede")}}</a></li>
                             <li class=""><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
+                            <li class=""><a href="{{route('user.chat')}}"><i class="fa fa-comments"></i> {{__("Chat")}}</a></li>
+                            <li class=""><a href="{{route('user.plan')}}"><i class="fa fa-list-alt"></i> {{__("Meu plano")}}</a></li>
                             @endif
                             <li class=""><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
                             @if(is_admin())

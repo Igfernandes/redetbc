@@ -71,7 +71,7 @@ class PlanController extends FrontendController
         $user = auth()->user();
         $plan_page = route('plan');
 
-        if ($user->role_id != $plan->role_id) {
+        if ($user->role_id != $plan->role_id && $request->query('is_upgrade') != 1) {
             return redirect()->to($plan_page)->with("warning", __("Este plano não é adequado para sua função."));
         }
         if ($request->query('annual') and !$plan->annual_price) {
@@ -89,7 +89,7 @@ class PlanController extends FrontendController
         return \redirect()->to($data["link"] ?? $plan_page)->with("warning", __("Estamos enfrentando problemas técnicos para prosseguir com o pagamento. Por favor, tente novamente mais tarde."));
     }
 
- 
+
     public function webhook(Request $request)
     {
         // Pega todo o payload enviado pelo Asaas

@@ -35,14 +35,6 @@ class CoreSettingsSeeder extends Seeder
                         "order"    => "0",
                         "icon"     => "fa fa-copyright",
                     ],
-                    "id_card_front" => [
-                        "name"     => "Foto segurando o documento",
-                        "type"     => "upload-image",
-                        "roles"    => ["2", "3", "4", "5"],
-                        "required" => "1",
-                        "order"    => "0",
-                        "icon"     => "fa fa-id-card",
-                    ],
                     "sex" => [
                         "name"     => "Selecione o Sexo",
                         "type"     => "select",

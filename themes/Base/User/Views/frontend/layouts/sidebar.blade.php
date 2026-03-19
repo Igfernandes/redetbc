@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Support\Facades\Auth;
+
 $userAuthData = Auth::user();
 
 $menus = [
@@ -15,31 +18,40 @@ $menus = [
         'title'    => __("Histórico de Reservas"),
         'icon'     => 'fa fa-clock-o',
         'position' => 20,
-        'is_verified' => 1
+        'is_verified' => 1,
+        'payed' => 1
     ],
     "wishlist" => [
         'url'   => route("user.wishList.index"),
         'title' => __("Lista de Desejos"),
         'icon'  => 'fa fa-heart-o',
         'position' => 21,
-        'is_verified' => 1
+        'is_verified' => 1,
+        'payed' => 1
     ],
     'network' => [
         'url'      => route("user.network"),
         'title'    => __("Minha Rede"),
+        'icon'     => 'fa fa-list-alt',
+        'position' => 22,
+        'is_verified' => 1,
+        'payed' => 1
+    ],
+    'plan' => [
+        'url'      => route("user.plan"),
+        'title'    => __("Meu Plano"),
         'icon'     => 'fa fa-sitemap',
         'position' => 22,
         'is_verified' => 1,
-        'is_affiliate' => 1
+        'is_affiliate' => 1,
     ],
     'upgrade' => [
         'url'      => route("user.upgrade"),
         'title'    => __("Atualizar Plano"),
         'icon'     => 'fa fa-sitemap',
         'position' => 22,
-        'is_verified' => 0,
-        'is_affiliate' => 1,
-        'is_plan' => 3
+        'is_verified' => 1,
+        'role' => 3
     ],
     'profile'         => [
         'url'      => route("user.profile.index"),
@@ -74,7 +86,8 @@ $menus = [
 
 // Modules
 $custom_modules = \Modules\ServiceProvider::getActivatedModules();
-if (!empty($custom_modules)) {
+$userPlan = Auth::user()->user_plan;
+if (!empty($custom_modules) && !empty($userPlan) && $userPlan->isValid() ===  1) {
     foreach ($custom_modules as $module) {
         $moduleClass = $module['class'];
         if (class_exists($moduleClass)) {
@@ -151,13 +164,17 @@ if (!empty($custom_modules)) {
     }
 }
 
+
 $currentUrl = url(Illuminate\Support\Facades\Route::current()->uri());
 if (!empty($menus))
     $menus = array_values(\Illuminate\Support\Arr::sort($menus, function ($value) {
         return $value['position'] ?? 100;
     }));
+
+
+$user = Auth::user();
 foreach ($menus as $k => $menuItem) {
-    if (!empty($menuItem['permission']) and !Auth::user()->hasPermission($menuItem['permission'])) {
+    if (!empty($menuItem['permission']) and !$user->hasPermission($menuItem['permission'])) {
         unset($menus[$k]);
         continue;
     }
@@ -169,21 +186,33 @@ foreach ($menus as $k => $menuItem) {
         }
     }
 
+    if (isset($menuItem['role']) && $user->role_id !== $menuItem['role']) {
+        unset($menus[$k]);
+        continue;
+    }
+
     if (isset($menuItem['is_affiliate']) && $userAuthData->is_affiliate != $menuItem['is_affiliate']) {
         unset($menus[$k]);
         continue;
     }
 
-    if (isset($menuItem['is_plan']) && !empty($menuItem['is_plan']) && $userAuthData->user_plan_id !== 3) {
+    if (isset($menuItem['is_plan']) && !empty($menuItem['is_plan']) && $user->user_plan->plan_id === 1) {
         unset($menus[$k]);
         continue;
     }
+
+
+    if (isset($menuItem['payed']) && !empty($menuItem['payed']) && $user->user_plan->isValid() !==  1) {
+        unset($menus[$k]);
+        continue;
+    }
+
 
     $menus[$k]['class'] = $currentUrl == url($menuItem['url']) ? 'active' : '';
     if (!empty($menuItem['children'])) {
         $menus[$k]['class'] .= ' has-children';
         foreach ($menuItem['children'] as $k2 => $menuItem2) {
-            if (!empty($menuItem2['permission']) and !Auth::user()->hasPermission($menuItem2['permission'])) {
+            if (!empty($menuItem2['permission']) and !$user->hasPermission($menuItem2['permission'])) {
                 unset($menus[$k]['children'][$k2]);
                 continue;
             }
@@ -209,7 +238,7 @@ foreach ($menus as $k => $menuItem) {
         <div class="sidebar-menu">
             <ul class="main-menu">
                 @foreach($menus as $menuItem)
-                <li class="{{$menuItem['class']}}" position="{{$menuItem['position'] ?? ""}}">
+                <li class="{{$menuItem['class'] ?? ''}}" position="{{$menuItem['position'] ?? ""}}">
                     <a href="{{ url($menuItem['url']) }}">
                         @if(!empty($menuItem['icon']))
                         <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
@@ -238,6 +267,7 @@ foreach ($menus as $k => $menuItem) {
             <div class="g-menu">
                 <ul class="main-menu menu-generated">
                     <li class=" depth-0"><a target="" href="/">Início</a></li>
+                    @if(Auth::user()->user_plan->isValid() === 1)
                     <li class=" depth-0"><a>Acomodações <i class="caret fa fa-angle-down"></i></a>
                         <ul class="children-menu menu-dropdown">
                             <!-- <li class=" depth-1"><a target="" href="/page/home-hotel">Hotéis</a></li> -->
@@ -258,6 +288,7 @@ foreach ($menus as $k => $menuItem) {
                         </ul>
                     </li>
                     <li class=" depth-0"><a target="" href="/page/service">Serviços</a></li>
+                    @endif
                     <li class=" depth-0"><a target="" href="/page/noticias">Notícias</a></li>
                 </ul>
             </div>

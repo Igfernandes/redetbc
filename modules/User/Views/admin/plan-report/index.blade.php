@@ -92,7 +92,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <select name="action[]" class="form-control">
+                                        <select name="action[{{$row->id}}]" class="form-control">
                                             <option value="">{{__("--")}}</option>
                                             <option value="gratuity">{{__("Atribuir Gratuidade")}}</option>
                                             <option value="delete">{{__("Excluir")}}</option>

@@ -151,7 +151,9 @@ class ModuleProvider extends ModuleServiceProvider
             ];
         }
 
-        if (setting_item('inbox_enable')) {
+        $isValid = !empty($user->user_plan) && $user->user_plan->isValid() === 1;
+
+        if (setting_item('inbox_enable') &&  $isValid) {
             $count = auth()->user()->unseen_message_count;
             $res['chat'] = [
                 'position' => 90,
@@ -168,17 +170,6 @@ class ModuleProvider extends ModuleServiceProvider
                 'title' => __("Autenticação 2F"),
             ];
         }
-
-        if (is_enable_plan())
-            $res['my_plan'] = [
-                'url' => 'user/my-plan',
-                'title' => __("Meus Planos"),
-                'icon' => 'fa fa-list-alt',
-                'permission' => 'dashboard_vendor_access',
-                'enable' => true,
-                'position' => 95,
-            ];
-
         return $res;
     }
 }

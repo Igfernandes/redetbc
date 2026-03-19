@@ -36,6 +36,7 @@
             <div class="col-7">
                 
                 {{-- PRICE --}}
+                @if( $row->display_sale_price  > 0)
                     <div class="g-price mb-2">
                         <small class="text-muted d-block">{{ __("De") }}</small>
 
@@ -55,6 +56,7 @@
                             </span>
                         </div>
                     </div>
+                    @endif
 
                 {{-- REVIEW --}}
                 @if(setting_item('assistance_enable_review'))
@@ -105,7 +107,7 @@
                 @if($row->getBookingEnquiryType() === "book")
                     <a href="/assistance/booking/{{ $row->id }}"
                        class="btn btn-primary btn-block font-weight-bold">
-                        {{ __("Reserve agora") }}
+                        {{ __( $row->display_sale_price > 0 ?  "Reserve agora" : "Solicitar Orçamento Agora") }}
                     </a>
                 @else
                     <button class="btn btn-primary btn-block font-weight-bold"

@@ -31,7 +31,14 @@
                                 @if($service = $booking->service)
                                 <i class="{{ $service->getServiceIconFeatured() }} fs-5"></i>
                                 @endif
-                                <small class="d-block text-muted">{{ ucfirst($booking->object_model ?? 'hotel') }}</small>
+                                @php
+                                $modules = [
+                                "assistance" => "Serviços",
+                                "tour" => "Experiências",
+                                "space" => "Espaços"
+                                ];
+                                @endphp
+                                <small class="d-block text-muted">{{ $modules[$booking->object_model ] ?? "Serviço" }}</small>
                             </td>
 
                             {{-- Serviço --}}
@@ -60,18 +67,22 @@
                             <td>
                                 @php
                                 $status = [
-                                    'draft' => [
-                                    'color' => 'warning',
-                                    'text' => 'Pendente'
-                                    ],
-                                    'published' => [
-                                    'color' => 'success',
-                                    'text' => 'Finalizada'
-                                    ],
-                                    'refused' => [
-                                    'color' => 'danger',
-                                    'text' => $booking->vendor_id != Auth::user()->id ? 'Cancelada' : 'Recusada'
-                                    ]
+                                'draft' => [
+                                'color' => 'warning',
+                                'text' => 'Pendente'
+                                ],
+                                'published' => [
+                                'color' => 'success',
+                                'text' => 'Finalizada'
+                                ],
+                                'refused' => [
+                                'color' => 'danger',
+                                'text' => $booking->vendor_id != Auth::user()->id ? 'Cancelada' : 'Recusada'
+                                ],
+                                'unpaid' => [
+                                'color' => 'warning',
+                                'text' => 'Não Pago'
+                                ]
                                 ];
                                 @endphp
                                 <span class="badge bg-{{ $status[$booking->status ?? 'draft']['color'] }}">

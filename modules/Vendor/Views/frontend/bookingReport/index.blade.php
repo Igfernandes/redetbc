@@ -33,7 +33,6 @@
                             <th class="a-hidden">{{__("Data do Pedido")}}</th>
                             <th class="a-hidden">{{__("Tempo de Execução")}}</th>
                             <th width="15%">{{__("Detalhe do Pagamento")}}</th>
-                            <th>{{__("Comissão")}}</th>
                             <th class="a-hidden">{{__("Status")}}</th>
                             <th>{{__("Ação")}}</th>
                         </tr>

@@ -118,8 +118,8 @@ class PlanController extends AdminController
             return back()->with('danger', __('Por favor, selecione pelo menos 1 item!'));
         }
 
-        foreach ($ids as $index => $id) {
-            if (!isset($actions[$index])) continue;
+        foreach ($ids as $id) {
+            if (!isset($actions[$id])) continue;
 
             $query = UserPlan::where("id", $id);
             $row = $query->first();
@@ -128,7 +128,7 @@ class PlanController extends AdminController
                 return back()->with('danger', __('Item não encontrado!'));
             }
 
-            switch ($actions[$index]) {
+            switch ($actions[$id]) {
                 case "delete":
                     foreach ($ids as $id) {
                         $query = UserPlan::where("id", $id);
@@ -145,6 +145,7 @@ class PlanController extends AdminController
                         $row = $query->first();
                         if (!empty($row)) {
                             $row->status = 1;
+                            $row->end_date = null;
                             $row->save();
                         }
                     }

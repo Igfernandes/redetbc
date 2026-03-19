@@ -268,6 +268,23 @@ if (isset($_GET['religion'])) {
     </div>
     @endif
 
+    @php
+    $authUser = Auth::user();
+    @endphp
+
+    @if( !empty($authUser) && !empty($authUser->user_plan))
+    @if( $authUser->user_plan->status === 1 && $authUser->user_plan->isValid() === 0)
+    <div class="subscribe-plan">
+        <div class="content">
+            <p>
+                {{ __("Seu plano expirou. Renove e continue fazendo parte da comunidade.") }}
+            </p> &nbsp;
+            <a href="{{route('user.plan')}}">{{ __("Renovar Agora") }}</a>
+        </div>
+    </div>
+    @endif
+    @endif
+
     @if(hasUpgradePlanRequest() && !Route::is('user.upgrade_vendor_plans'))
     <div class="upgrade-plan ">
         <div class="content d-flex justify-content-center text-center py-2 bg-warning">

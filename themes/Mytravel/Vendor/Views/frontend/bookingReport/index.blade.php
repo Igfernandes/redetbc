@@ -13,6 +13,10 @@
 <div class="booking-history-manager">
     <div class="tabbable">
         <ul class="nav nav-tabs ht-nav-tabs">
+            @php
+            if(!isset($status))
+            $status ="DRAFT";
+            @endphp
             <?php $status_type = Request::query('status'); ?>
             <li class="@if(empty($status_type)) active @endif">
                 <a href="{{route("vendor.bookingReport")}}">{{__("Todas as reservas")}}</a>
@@ -38,7 +42,6 @@
                             <th class="a-hidden">{{__("Data do pedido")}}</th>
                             <th class="a-hidden">{{__("Tempo de execução")}}</th>
                             <th width="15%">{{__("Detalhes de pagamento")}}</th>
-                            <th>{{__("Comissão")}}</th>
                             <th class="a-hidden">{{__("Status")}}</th>
                             <th>{{__("Ação")}}</th>
                         </tr>

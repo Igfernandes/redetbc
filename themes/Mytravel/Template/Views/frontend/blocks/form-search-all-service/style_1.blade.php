@@ -85,7 +85,7 @@ style="background-image: url('{{$bg_image_url}}') !important;">
                             </div>
 
                             <span class="tabtext mt-2 mt-md-0 font-weight-semi-bold">
-                                {{__('Espaços')}}
+                                {{__('Hospedagem')}}
                             </span>
                         </div>
                     </a>

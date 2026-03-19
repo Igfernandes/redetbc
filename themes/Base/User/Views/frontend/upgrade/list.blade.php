@@ -60,9 +60,8 @@
         @if($has_annual)
         <div class="tab active-tab" id="annual">
             <div class="content">
-                <div class="row">
+                <div class="row @if(count($plans) === 1) justify-content-center @endif">
                     @foreach($plans as $plan)
-                    @continue(!$plan->annual_price || $plan->id > 3)
                     <div class="pricing-table col-lg-4 col-md-6 col-sm-12">
                         <div class="inner-box">
                             <div class="title">{{$plan->title}}</div>
@@ -91,10 +90,10 @@
                                     @endif
                                 </div>
                                 @else
-                                <a href="{{route('user.plan.buy',['id'=>$plan->id,'annual'=>1])}}" class="btn btn-warning">{{__('Recomprar')}}</a>
+                                <a href="{{route('user.plan.buy',['id'=>$plan->id,'annual'=>1, 'is_upgrade' => 1])}}" class="btn btn-warning">{{__('Recomprar')}}</a>
                                 @endif
                                 @else
-                                <a href="{{route('user.plan.buy',['id'=>$plan->id,'annual'=>1])}}" class="btn btn-primary">{{__('Selecionar')}}</a>
+                                <a href="{{route('user.plan.buy',['id'=>$plan->id,'annual'=>1, 'is_upgrade' => 1])}}" class="btn btn-primary">{{__('Selecionar')}}</a>
                                 @endif
                             </div>
                         </div>

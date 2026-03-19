@@ -48,8 +48,8 @@
                             <li class="menu-hr"><a href="{{route('user.booking_history')}}"><i class="fa fa-clock-o"></i> {{__("Histórico de Reservas")}}</a></li>
                             <li class="menu-hr"><a href="{{route('user.change_password')}}"><i class="fa fa-lock"></i> {{__("Alterar senha")}}</a></li>
 
-                            @if(is_enable_plan() )
-                            <li class="menu-hr"><a href="{{route('user.plan')}}"><i class="fa fa-list-alt"></i> {{__("Meu plano")}}</a></li>
+                            @if(Auth::user()->is_verified === 1)
+                             <li class="menu-hr"><a href="{{route('user.plan')}}"><i class="fa fa-list-alt"></i> {{__("Meu plano")}}</a></li>
                             @endif
 
                             @if(isPro())

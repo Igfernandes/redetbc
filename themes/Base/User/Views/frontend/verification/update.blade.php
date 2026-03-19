@@ -39,7 +39,11 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-5">
-                <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Salvar alterações")}} </button>
+                @if(Auth::user()->is_verified)
+                    <span class="btn btn-warning"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Perfil Verificado")}} </span>
+                @else
+                    <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Salvar alterações")}} </button>
+                @endif
             </div>
         </div>
     </form>

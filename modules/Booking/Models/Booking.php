@@ -17,8 +17,12 @@ use Modules\Booking\Traits\HasPassenger;
 use Modules\Hotel\Models\HotelRoomBooking;
 use App\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Assistance\Models\Assistance;
 use Modules\User\Models\Wallet\Transaction;
 use Modules\Booking\Models\BookingTimeSlots;
+use Modules\Hotel\Models\Hotel;
+use Modules\Space\Models\Space;
+use Modules\Tour\Models\Tour;
 use Modules\User\Models\Plan;
 
 class Booking extends BaseModel
@@ -302,19 +306,13 @@ class Booking extends BaseModel
 
         $res = [];
         $total_service = 0;
-        $services = get_bookable_services();
+        $services = Booking::where("status", "published")->get();
         $affiliates = User::where("is_affiliate", 1)->get();
 
         $services = Booking::get();
 
         $servicesAmount = [];
 
-        foreach ($services as $service) {
-            if (!isset($servicesAmount[$service->object_model]))
-                $servicesAmount[$service->object_model] = 0;
-
-            $servicesAmount[$service->object_model] += 1;
-        }
 
         $total = Payment::where([
             'object_model' => 'plan',
@@ -371,23 +369,22 @@ class Booking extends BaseModel
             'icon'   => 'icon ion-ios-person'
         ];
 
-        $translates = [
-            "tour" => "Passeios",
-            "hotel" => "Hotéis",
-            "assistance" => "Serviços",
-            "space" => "Espaços"
+        $where = ["status" => "published"];
+        $servicesAmount = [
+            "Passeios" => Tour::where($where)->count(),
+            "Hotéis" =>  Hotel::where($where)->count(),
+            "Serviços" => Assistance::where($where)->count(),
+            "Espaços" => Space::where($where)->count()
         ];
 
         foreach ($servicesAmount as $title => $serviceAmount) {
-            if (!isset($translates[$title]))
-                continue;
 
             $res[] = [
                 'size'   => 6,
                 'size_md' => 3,
-                'title'  => __($translates[$title]),
+                'title'  => __($title),
                 'amount' => $serviceAmount,
-                'desc'   => __("Total de {$translates[$title]}"),
+                'desc'   => __("Total de {$title}"),
                 'class'  => 'purple',
                 'icon'   => 'icon ion-ios-flash'
             ];

@@ -39,9 +39,7 @@
         <div>{{__("Pago")}}: {{format_money_main($booking->paid)}}</div>
         <div>{{__("Restante")}}: {{format_money($booking->total - $booking->paid)}}</div>
     </td>
-    <td>
-        {{ format_money($booking->commission) }}
-    </td>
+
     <td class="{{$booking->status}} a-hidden">{{$booking->statusName}}</td>
     <td width="2%">
         @if($service = $booking->service)
@@ -50,9 +48,9 @@
             </a>
             @include ($service->checkout_booking_detail_modal_file ?? '')
         @endif
-        <a href="{{route('user.booking.invoice',['code'=>$booking->code])}}" class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1" onclick="window.open(this.href); return false;">
+        <!-- <a href="{{route('user.booking.invoice',['code'=>$booking->code])}}" class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1" onclick="window.open(this.href); return false;">
             <i class="fa fa-print"></i>{{__("Fatura")}}
-        </a>
+        </a> -->
         @if(!empty(setting_item("space_allow_vendor_can_change_their_booking_status")))
             <a class="btn btn-xs btn-info btn-make-as" data-toggle="dropdown">
                 <i class="icofont-ui-settings"></i>
