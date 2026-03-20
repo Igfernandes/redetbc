@@ -41,6 +41,10 @@
                     'color' => 'warning',
                     'text' => 'Pendente'
                     ],
+                    'unpaid' => [
+                    'color' => 'warning',
+                    'text' => 'Pendente'
+                    ],
                     'published' => [
                     'color' => 'success',
                     'text' => 'Aprovada'

@@ -910,10 +910,11 @@ function booking_status_to_text($status)
 {
     switch ($status) {
         case "draft":
-            return __('Rascunho');
+            return __('Pendente');
             break;
+        case "published":
         case "unpaid":
-            return __('Não pago');
+            return __('Aceita');
             break;
         case "paid":
             return __('Pago');
@@ -927,6 +928,7 @@ function booking_status_to_text($status)
         case "confirmed":
             return __('Confirmado');
             break;
+        case "refused":
         case "cancelled":
             return __('Cancelado');
             break;
