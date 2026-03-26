@@ -12,19 +12,19 @@ return [
         ],
         [
             'icon' => '&#128591;',
-            'label' => 'Ambiente ótimo para Orar com Irmãos',
+            'label' => 'Gosto de Orar com Irmãos',
         ],
         [
             'icon' => '&#128214;',
-            'label' => 'Ambiente Ótimo para leitura da Palavra',
+            'label' => 'Gosto de Ler a Palavra',
         ],
         [
             'icon' => '&#127925;',
-            'label' => 'Toca Louvor',
+            'label' => 'Amo Louvor',
         ],
         [
             'icon' => '&#129309;',
-            'label' => 'Ações de Caridade',
+            'label' => 'Participo de Ações de Caridade',
         ],
         [
             'icon' => '&#128692;',
@@ -32,11 +32,11 @@ return [
         ],
         [
             'icon' => '&#128685;',
-            'label' => 'Ambiente Sem Fumo',
+            'label' => 'Não Sou Fumante',
         ],
         [
             'icon' => '&#127863; &#128683;',
-            'label' => 'Ambiente sem Álcool',
+            'label' => 'Não Consumo Álcool',
         ],
         [
             'icon' => '&#127968;',
@@ -48,15 +48,15 @@ return [
         ],
         [
             'icon' => '&#128263;',
-            'label' => 'Espaço Silencioso',
+            'label' => 'Perfil Silencioso',
         ],
         [
             'icon' => '&#128062;',
-            'label' => 'Aceita Animais',
+            'label' => 'Aceito Animais',
         ],
         [
             'icon' => '&#127859;',
-            'label' => 'Cozinha para Irmãos',
+            'label' => 'Cozinho para Irmãos',
         ],
     ],
 

@@ -62,7 +62,6 @@ trait Withdrawal
                 'accept' => 'application/json'
             ])->post(env('GATEWAY_API_URL') . "/transfers", $payload);
 
-            dd($response->body(),  $payload);
             if ($response->failed()) {
                 Log::error('Erro ao solicitar saque', [
                     'payload' => $payload,
@@ -91,7 +90,6 @@ trait Withdrawal
             return $response->json();
         } catch (\Throwable $th) {
 
-            dd($th);
             Log::error('Erro interno ao criar saque', ['error' => $th->getMessage()]);
             return false;
         }

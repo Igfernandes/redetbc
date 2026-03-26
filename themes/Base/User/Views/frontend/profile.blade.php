@@ -174,7 +174,7 @@
         <div class="col-md-6">
             <div>
                 <div class="form-title">
-                    <strong>{{__("Afinalidades")}}</strong>
+                    <strong>{{__("Afinidades")}}</strong>
                 </div>
 
                 <div class="form-group">

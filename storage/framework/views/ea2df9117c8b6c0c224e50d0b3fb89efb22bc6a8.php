@@ -43,11 +43,11 @@ $isVerification = null !== auth()->user() ? is_admin() ?? auth()->user()->is_ver
                             <li class="<?php if(is_vendor()): ?>  <?php endif; ?>">
                                 <a href="<?php echo e(route('user.verification.index')); ?>"><i class="fa fa-id-card-o"></i> <?php echo e(__("Verificação")); ?></a>
                             </li>
-                            <?php if(auth()->user()->is_verified): ?>
-                            <li class=""><a href="<?php echo e(route('user.chat')); ?>"><i class="fa fa-comments"></i> <?php echo e(__("Reservas")); ?></a></li>
-                            <?php endif; ?>
-                            <?php if( $isVerification): ?>
+                            <?php if(auth()->user()->is_verified && auth()->user()->user_plan->isValid() === 1): ?>
+                            <li class=""><a href="<?php echo e(route('user.network')); ?>"><i class="fa fa-globe"></i> <?php echo e(__("Minha Rede")); ?></a></li>
                             <li class=""><a href="<?php echo e(route('user.booking_history')); ?>"><i class="fa fa-clock-o"></i> <?php echo e(__("Histórico de Reservas")); ?></a></li>
+                            <li class=""><a href="<?php echo e(route('user.chat')); ?>"><i class="fa fa-comments"></i> <?php echo e(__("Chat")); ?></a></li>
+                            <li class=""><a href="<?php echo e(route('user.plan')); ?>"><i class="fa fa-list-alt"></i> <?php echo e(__("Meu plano")); ?></a></li>
                             <?php endif; ?>
                             <li class=""><a href="<?php echo e(route('user.change_password')); ?>"><i class="fa fa-lock"></i> <?php echo e(__("Alterar senha")); ?></a></li>
                             <?php if(is_admin()): ?>

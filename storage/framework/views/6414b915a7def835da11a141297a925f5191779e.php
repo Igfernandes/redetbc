@@ -3,7 +3,7 @@
     <div class="text"><?php echo e(setting_item_with_lang('user_plans_page_sub_title', app()->getLocale()) ?? __("Escolha seu plano de preços")); ?></div>
 </div>
 <div class="pricing-tabs tabs-box" data-client='<?php echo e(Auth()->user()->gateway_customer_id); ?>'>
-    <?php if($has_annual): ?>
+    <!-- <?php if($has_annual): ?>
     <div class="tab-buttons">
         <h4><?php echo e(setting_item_with_lang('user_plans_sale_text', app()->getLocale()) ?? __('Economize até 10%')); ?></h4>
         <ul class="tab-btns">
@@ -11,9 +11,9 @@
             <li data-tab="#annual" class="tab-btn"><?php echo e(__('Anual')); ?></li>
         </ul>
     </div>
-    <?php endif; ?>;
+    <?php endif; ?>; -->
     <div class="tabs-content">
-        <div class="tab active-tab" id="monthly">
+        <div class="tab " id="monthly">
             <div class="content">
                 <div class="row <?php if(!$has_annual): ?> justify-content-center <?php endif; ?>;">
                     <?php $__currentLoopData = $plans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $plan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -40,7 +40,7 @@
                                     <span style="font-size: 0.85rem; font-weight: 500; color: #888;">Total de &nbsp;</span>
                                     <span style="color: #003583;"> <?php echo e($plan->price ? format_money($plan->price * 12) : __('Grátis')); ?></span>
                                     <span style="font-size: 0.85rem; font-weight: 500; color: #888;">
-                                        / <?php echo e(__('Ano')); ?>
+                                        / <?php echo e(__('Mês')); ?>
 
                                     </span>
                                 </div>
@@ -69,9 +69,9 @@
             </div>
         </div>
         <?php if($has_annual): ?>
-        <div class="tab" id="annual">
-            <div class="content">
-                <div class="row">
+        <div class="tab active-tab" id="annual">
+            <div class="content mt-3">
+                <div class="row <?php if(count($plans) === 1): ?> justify-content-center <?php endif; ?>">
                     <?php $__currentLoopData = $plans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $plan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php if(!$plan->annual_price) continue; ?>
                     <div class="pricing-table col-lg-4 col-md-6 col-sm-12">

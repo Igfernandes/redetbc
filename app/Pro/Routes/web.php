@@ -8,4 +8,6 @@ Route::prefix('pro')->name('pro.')->middleware(['web', 'auth', 'dashboard'])->gr
     Route::post('/buy', [\App\Pro\Controllers\BuyController::class, 'index'])->name('buy');
 });
 
-Route::get("homepage", [HomeController::class, "homepage"]);
+Route::middleware(['web'])->group(function () {
+    Route::get("homepage", [HomeController::class, "homepage"]);
+});

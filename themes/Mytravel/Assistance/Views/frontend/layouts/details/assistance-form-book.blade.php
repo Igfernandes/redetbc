@@ -1,27 +1,29 @@
-
-
 <div class="mb-4">
     <div class="bravo_single_book_wrap">
         <div id="bravo_assistance_book_app" class="bravo_single_book " v-cloak>
             <div class="border border-color-7 rounded mb-5">
                 <div class="border-bottom">
                     @if($row->discount_percent)
-                        <div class="sale-box">
-                            <div class="ribbon ribbon--red">{{ __("SALVAR :text",['text'=>$row->discount_percent]) }}</div>
-                        </div>
+                    <div class="sale-box">
+                        <div class="ribbon ribbon--red">{{ __("SALVAR :text",['text'=>$row->discount_percent]) }}</div>
+                    </div>
                     @endif
                     <div class="p-4">
+                        @if($row->price === 0)
+                        <span class="font-size-14">Solicite Orçamento</span>
+                        @else
                         <span class="font-size-14">{{ __("De") }}</span>
                         <span class="font-size-24 text-gray-6 font-weight-bold ml-1">
-                        <small class="font-size-16 text-decoration-line-through text-danger">
-                           {{ $row->display_sale_price }}
-                        </small>
-                        {{ $row->display_price }}
-                    </span>
+                            <small class="font-size-16 text-decoration-line-through text-danger">
+                                {{ $row->display_sale_price }}
+                            </small>
+                            {{ $row->display_price }}
+                        </span>
+                        @endif
                     </div>
                 </div>
                 <div class="nav-enquiry" v-if="is_form_enquiry_and_book">
-                    <div class="enquiry-item active" >
+                    <div class="enquiry-item active">
                         <span>{{ __("Anuncio") }}</span>
                     </div>
                     <div class="enquiry-item" data-toggle="modal" data-target="#enquiry_form_modal">
@@ -47,7 +49,7 @@
                         <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">{{ __("Data de início") }}</span>
                         <div class="mb-4">
                             <div class="border-bottom border-width-2 border-color-1 position-relative" data-format="{{get_moment_date_format()}}">
-                                <div  @click="openStartDate" class="start_date d-flex align-items-center w-auto height-40 font-size-16 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0">
+                                <div @click="openStartDate" class="start_date d-flex align-items-center w-auto height-40 font-size-16 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0">
                                     @{{start_date_html}}
                                 </div>
                                 <input type="text" class="start_date" ref="start_date" style="height: 1px;visibility: hidden;position: absolute;bottom: 0;width: 100%;">
@@ -68,7 +70,7 @@
                                                     <i class="fa fa-chevron-down"></i>
                                                 </a>
                                                 <input class="form-control h-auto width-30 font-weight-bold font-size-16 shadow-none bg-tranparent border-0 rounded p-0 mx-1 text-center"
-                                                       type="text" v-model="type.number" min="1" @change="changePersonType(type)">
+                                                    type="text" v-model="type.number" min="1" @change="changePersonType(type)">
                                                 <a class="font-size-10 text-dark" href="javascript:;" @click="addPersonType(type)">
                                                     <i class="fa fa-chevron-up"></i>
                                                 </a>
@@ -89,7 +91,7 @@
                                             <a class="font-size-10 text-dark" href="javascript:;" @click="minusGuestsType()">
                                                 <i class="fa fa-chevron-down"></i>
                                             </a>
-                                            <input class="form-control h-auto width-30 font-weight-bold font-size-16 shadow-none bg-tranparent border-0 rounded p-0 mx-1 text-center" type="text"  v-model="guests" min="1">
+                                            <input class="form-control h-auto width-30 font-weight-bold font-size-16 shadow-none bg-tranparent border-0 rounded p-0 mx-1 text-center" type="text" v-model="guests" min="1">
                                             <a class="font-size-10 text-dark" href="javascript:;" @click="addGuestsType()">
                                                 <i class="fa fa-chevron-up"></i>
                                             </a>
@@ -122,7 +124,7 @@
                                     <div class="unit" v-if='type.unit == "percent"'>
                                         @{{ type.price }}%
                                     </div>
-                                    <div class="unit" v-else >
+                                    <div class="unit" v-else>
                                         @{{ formatMoney(type.price) }}
                                     </div>
                                 </div>

@@ -111,8 +111,8 @@ class UserController extends FrontendController
                 Rule::unique('users')->ignore($user->id)
             ],
         ], [
-            'purposes.required' => 'Selecione pelo menos 3 finalidades.',
-            'purposes.min' => 'Você precisa escolher no mínimo :min finalidades.',
+            'purposes.required' => 'Selecione pelo menos 3 Afinidades.',
+            'purposes.min' => 'Você precisa escolher no mínimo :min Afinidades.',
             'purposes.array' => 'Selecione opções válidas.',
         ]);
 

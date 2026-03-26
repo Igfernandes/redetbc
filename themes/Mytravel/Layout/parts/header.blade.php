@@ -573,7 +573,7 @@ if (isset($_GET['religion'])) {
 
                             @endif
 
-                            @if(Auth::user()->hasPermission('dashboard_access'))
+                            @if(Auth::user()->hasPermission('dashboard_access') && Auth::user()->is_verified === 1)
 
                             <li>
 

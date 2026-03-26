@@ -140,7 +140,7 @@
     {{-- Ícones de Finalidades --}}
     <div>
         <h5 style="font-size: 1rem; color: #033480;">
-            <strong>Meus ícones de Finalidades</strong>
+            <strong>Meus ícones de Afinidade</strong>
         </h5>
         <small><strong>Convivência e Regras</strong></small>
     </div>

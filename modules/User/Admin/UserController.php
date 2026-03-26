@@ -189,8 +189,8 @@ class UserController extends AdminController
         ];
 
         $request->validate($rules, [
-            'purposes.required' => 'Selecione pelo menos 3 finalidades.',
-            'purposes.min' => 'Você precisa escolher no mínimo :min finalidades.',
+            'purposes.required' => 'Selecione pelo menos 3 Afinidades.',
+            'purposes.min' => 'Você precisa escolher no mínimo :min Afinidades.',
             'purposes.array' => 'Selecione opções válidas.',
         ]);
 

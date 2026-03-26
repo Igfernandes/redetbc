@@ -270,6 +270,24 @@ if (isset($_GET['religion'])) {
     </div>
     <?php endif; ?>
 
+    <?php
+    $authUser = Auth::user();
+    ?>
+
+    <?php if( !empty($authUser) && !empty($authUser->user_plan)): ?>
+    <?php if( $authUser->user_plan->status === 1 && $authUser->user_plan->isValid() === 0): ?>
+    <div class="subscribe-plan">
+        <div class="content">
+            <p>
+                <?php echo e(__("Seu plano expirou. Renove e continue fazendo parte da comunidade.")); ?>
+
+            </p> &nbsp;
+            <a href="<?php echo e(route('user.plan')); ?>"><?php echo e(__("Renovar Agora")); ?></a>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php endif; ?>
+
     <?php if(hasUpgradePlanRequest() && !Route::is('user.upgrade_vendor_plans')): ?>
     <div class="upgrade-plan ">
         <div class="content d-flex justify-content-center text-center py-2 bg-warning">
@@ -566,7 +584,7 @@ if (isset($_GET['religion'])) {
 
                             <?php endif; ?>
 
-                            <?php if(Auth::user()->hasPermission('dashboard_access')): ?>
+                            <?php if(Auth::user()->hasPermission('dashboard_access') && Auth::user()->is_verified === 1): ?>
 
                             <li>
 

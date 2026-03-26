@@ -2,7 +2,7 @@
     {{-- Finalidades --}}
     <div>
         <h5 class="mb-0" style="font-size:1rem;color:#033480;">
-            <strong>Meus ícones de Finalidades</strong>
+            <strong>Meus ícones de Afinidades</strong>
         </h5>
         <p style="font-size:.8rem;">
             <strong>Convivência e Regras</strong>

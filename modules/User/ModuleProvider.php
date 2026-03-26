@@ -140,16 +140,7 @@ class ModuleProvider extends ModuleServiceProvider
             ];
         }
 
-        $is_disable_verification_feature = !!setting_item('user_disable_verification_feature') || $user->is_verified === 0;
-        if (!empty($user->verification_fields) and $is_disable_verification_feature) {
-            $res['verification'] = [
-                'url'        => route('user.verification.index'),
-                'title'      => __("Verificações"),
-                'icon'       => 'fa fa-handshake-o',
-                'position'   => 85,
-                'is_verified' => 0
-            ];
-        }
+      
 
         $isValid = !empty($user->user_plan) && $user->user_plan->isValid() === 1;
 

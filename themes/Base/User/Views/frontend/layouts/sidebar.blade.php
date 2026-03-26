@@ -266,8 +266,8 @@ foreach ($menus as $k => $menuItem) {
         <div>
             <div class="g-menu">
                 <ul class="main-menu menu-generated">
-                    <li class=" depth-0"><a target="" href="/">Início</a></li>
-                    @if(Auth::user()->user_plan->isValid() === 1)
+                    <li class=" depth-1"><a target="" href="/">Início</a></li>
+                    @if(!empty(Auth::user()->user_plan) && Auth::user()->user_plan->isValid() === 1)
                     <li class=" depth-0"><a>Acomodações <i class="caret fa fa-angle-down"></i></a>
                         <ul class="children-menu menu-dropdown">
                             <!-- <li class=" depth-1"><a target="" href="/page/home-hotel">Hotéis</a></li> -->
@@ -287,9 +287,9 @@ foreach ($menus as $k => $menuItem) {
                             <li class=" depth-1"><a target="" href="/tour?cat_id[]=1">Motivacional</a></li>
                         </ul>
                     </li>
-                    <li class=" depth-0"><a target="" href="/page/service">Serviços</a></li>
+                    <li class=" depth-1"><a target="" href="/page/service">Serviços</a></li>
                     @endif
-                    <li class=" depth-0"><a target="" href="/page/noticias">Notícias</a></li>
+                    <li class=" depth-1"><a target="" href="/page/noticias">Notícias</a></li>
                 </ul>
             </div>
         </div>
@@ -306,7 +306,7 @@ foreach ($menus as $k => $menuItem) {
     </div>
 </div>
 <script>
-    $(".sidebar-user .g-menu ul li").on("click", function(e) {
+    $(".sidebar-user .g-menu ul li.depth-0").on("click", function(e) {
         e.preventDefault();
         $(this).closest("li").toggleClass("active");
     });

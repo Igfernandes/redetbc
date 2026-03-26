@@ -25,6 +25,7 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
         if (!is_enable_registration()) {
             return $this->sendError(__("Você não tem permissão para se registrar"));
         }
+
         $rules = [
             'first_name' => [
                 'required',

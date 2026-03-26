@@ -172,7 +172,7 @@ class NetworkController extends FrontendController
         ])->get()->sum('amount');
 
         $received = $payments->sum('amount');
-        $pendentAmount = ($pendents / $commission) - $received;
+        $pendentAmount = $commission > 0 && $pendents > 0 ? ($pendents / $commission) - $received  : 0;
 
         if ($pendentAmount <= 0)
             return back()->with('error', 'Não há saldo disponível para solicitar saque');
