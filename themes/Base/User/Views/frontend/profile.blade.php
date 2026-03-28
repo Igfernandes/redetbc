@@ -45,6 +45,35 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label>{{ __("Estado Civil") }}</label>
+                <select name="civil_status" class="form-control">
+                    <option value="">{{ __("Selecione") }}</option>
+                    <option value="SINGLE" {{ old('civil_status', $dataUser->civil_status ?? '') == 'SINGLE' ? 'selected' : '' }}>
+                        {{ __("Solteiro") }}
+                    </option>
+                    <option value="MARRIED" {{ old('civil_status', $dataUser->civil_status ?? '') == 'MARRIED' ? 'selected' : '' }}>
+                        {{ __("Casado") }}
+                    </option>
+                </select>
+                <i class="fa fa-church input-icon"></i>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Nome do Conjugue")}}</label>
+                        <input type="text" value="{{old('conjugue_name',$dataUser->conjugue_name)}}" name="conjugue_name" placeholder="{{__("Nome do Conjugue")}}" class="form-control">
+                        <i class="fa fa-user input-icon"></i>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Telefone do Conjugue")}}</label>
+                        <input type="text" value="{{old('conjugue_phone',$dataUser->conjugue_phone)}}" name="conjugue_phone" placeholder="{{__("Telefone do Conjugue")}}" class="form-control">
+                        <i class="fa fa-phone input-icon"></i>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -93,9 +122,39 @@
                 <i class="fa fa-birthday-cake input-icon"></i>
             </div>
             <div class="form-group">
-                <label>{{__("Sobre Você")}}</label>
+                <label>{{__("Sobre Você (Apresentação)")}}</label>
                 <textarea name="bio" rows="5" class="form-control">{{old('bio',$dataUser->bio)}}</textarea>
             </div>
+            <div class="form-title">
+                <strong>{{__("Redes Sociais")}}</strong>
+                <div>
+                    <small class="d-inline-block" style="line-height: normal;">É obrigatório colocar o link de pelo menos do facebook ou instagram.</small>
+                </div>
+            </div>
+            <div class="row justify-content-between px-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Facebook")}}</label>
+                        <input type="url" maxlength="255" value="{{ old('facebook',$dataUser->facebook ?? '') }}" name="facebook" placeholder="{{__("Link Facebook")}}" class="form-control">
+                        <i class="fa fa-facebook input-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Instagram")}}</label>
+                        <input type="url" maxlength="255" value="{{ old('instagram',$dataUser->instagram ?? '') }}" name="instagram" placeholder="{{__("Link Instagram")}}" class="form-control">
+                        <i class="fa fa-instagram input-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{__("Twitter")}}</label>
+                        <input type="url" maxlength="255" value="{{ old('twitter',$dataUser->twitter ?? '') }}" name="twitter" placeholder="{{__("Link Twitter")}}" class="form-control">
+                        <i class="fa fa-twitter input-icon"></i>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label>{{__("Avatar")}}</label>
                 <div class="upload-btn-wrapper">
@@ -113,6 +172,31 @@
             </div>
         </div>
         <div class="col-md-6">
+            <div>
+                <div class="form-title">
+                    <strong>{{__("Afinidades")}}</strong>
+                </div>
+
+                <div class="form-group">
+                    <ul class="row bg-white px-1 py-3  shadow-sm" style="list-style: none;">
+                        @php
+                        $roleId = $dataUser->role_id != 3 ? 2 : 3;
+                        @endphp
+                        @foreach(config('icons.'.$roleId) as $item)
+                        <li class="col-md-6">
+                            <label class="checkbox-inline">
+                                <input type="checkbox"
+                                    name="purposes[]"
+                                    value="{{ $item['label'] }}"
+                                    @if(in_array($item['label'], old('purposes', isset($dataUser->purposes) ? explode(',', $dataUser->purposes) : []))) checked @endif>
+                                <span class="icon">{!! $item['icon'] !!}</span>
+                                <small class="text">{{$item['label']}}</small>
+                            </label>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
             <div class="form-title">
                 <strong>{{__("Informações Localização")}}</strong>
             </div>
@@ -150,7 +234,46 @@
                 <input type="text" value="{{old('zip_code',$dataUser->zip_code)}}" name="zip_code" placeholder="{{__("CEP")}}" class="form-control">
                 <i class="fa fa-map-pin input-icon"></i>
             </div>
+            @if(empty($dataUser->religion) && $dataUser->role_id > 1)
+            <div class="form-group bg-white p-4 text-justify shadow">
+                @if(!!$dataUser->religion && ($dataUser->role_id === 2 || $dataUser->role_id === 3))
+                <div class="mb-3">
+                    <h6>{{__("Exemplo de Apresentação")}}</h6>
+                </div>
+                @endif
+                <p>
+                    @if($dataUser->role_id === 3 && $dataUser->religion == 'CATHOLIC')
+                    "Olá, irmãos! Somos a família Silva (Ricardo, Maria e o pequeno Lucas). Somos paroquianos ativos da Paróquia Nossa Senhora das Graças em Belo Horizonte. Buscamos o clube porque valorizamos a segurança de nos hospedar em lares que compartilham dos princípios cristãos e da moral da Igreja.
 
+                    <br>
+                    <br>
+                    O que buscamos: Lugares tranquilos e familiares. Gostamos de indicações de horários de missas locais e paróquias próximas.
+                    Como somos como hóspedes: Somos muito zelosos com a casa do próximo, não fumamos e prezamos pelo silêncio. Adoramos conhecer a história da comunidade local e, se o anfitrião permitir, compartilhar um café e uma boa conversa sobre a fé!
+                    @elseif($dataUser->role_id === 3 && $dataUser->religion == 'EVANGELICAL')
+                    "A paz do Senhor! Meu nome é André, sou membro da Igreja Presbiteriana há 10 anos. Utilizo o clube para viagens de trabalho e lazer com minha esposa. Escolhemos o clube 'irmão hospedando irmão' por acreditar que o corpo de Cristo pode se ajudar mutuamente também no turismo."
+
+                    <br>
+                    <br>
+                    O que buscamos: Um ambiente limpo, respeitoso e livre de bebidas alcoólicas ou fumo. Damos preferência para anfitriões que também prezam por um ambiente bíblico e saudável.
+                    Como somos como hóspedes: Somos organizados e discretos. Respeitamos 100% as regras da casa e deixamos o ambiente exatamente como encontramos. Se você é anfitrião e quer receber alguém que vai abençoar o seu lar com uma conduta correta, conte conosco!"
+                    @elseif($dataUser->role_id === 2 && $dataUser->religion == 'CATHOLIC')
+                    "Salve Maria! Sou a Cláudia e abro as portas da minha casa para acolher irmãos que buscam um pouso seguro e abençoado em Curitiba. Sou membra da Renovação Carismática e prezo muito pela hospitalidade cristã.
+
+                    <br>
+                    <br>
+                    O que ofereço: Um ambiente extremamente familiar e tranquilo. Minha casa é decorada com nossos símbolos de devoção e temos um cantinho de oração que os hóspedes podem usar. Conheço todas as paróquias e santuários da região e terei o maior prazer em indicar horários de missas e locais de peregrinação.
+                    Regras de Ouro: Não é permitido fumar no imóvel. Recebemos famílias com crianças com muito carinho. Prezamos pelo respeito e pela caridade mútua. Sinta-se em casa!"
+                    @elseif($dataUser->role_id === 2 && $dataUser->religion == 'EVANGELICAL')
+                    "A paz do Senhor! Sou o Pastor Marcos e, junto com minha esposa, disponibilizamos nossa suíte de hóspedes para irmãos de todo o Brasil. Nosso objetivo com este clube é servir ao corpo de Cristo e fazer novas amizades no Reino.
+                    <br>
+                    <br>
+
+                    O que ofereço: Um lar cristão, livre de álcool, fumo e músicas seculares. O ambiente é silencioso e perfeito para quem viaja a trabalho ou lazer com a família. Se o hóspede desejar, será um prazer compartilhar um café e orarmos juntos antes da partida.
+                    Regras de Ouro: Pedimos que o hóspede respeite os valores bíblicos dentro do nosso lar. Não permitimos festas ou comportamento inadequado. Aqui você terá a paz de estar na casa de um irmão!"
+                    @endif
+                </p>
+            </div>
+            @endif
         </div>
         <div class="col-md-12">
             <hr>

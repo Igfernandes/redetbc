@@ -55,8 +55,8 @@
         @endif
 
         <div class="form-group">
-            <label class="control-label">{{__("Endereço real do passeio")}}</label>
-            <input type="text" name="address" id="customPlaceAddress" class="form-control" placeholder="{{__("Endereço real do passeio")}}" value="{{$translation->address}}">
+            <label class="control-label">{{__("Endereço real do Passeio")}}</label>
+            <input type="text" name="address" id="customPlaceAddress" class="form-control" placeholder="{{__("Endereço real do Passeio")}}" value="{{$translation->address}}">
         </div>
 
         @if(is_default_lang())

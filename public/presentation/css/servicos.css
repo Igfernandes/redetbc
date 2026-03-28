@@ -1,0 +1,497 @@
+/* ========================================
+           SEÇÃO SERVIÇOS - HERO COM CARROSSEL SIMPLES
+======================================== */
+.servicos-hero {
+    position: relative;
+    padding: 0;
+    min-height: 650px;
+    background: linear-gradient(135deg, var(--bege-suave) 0%, rgba(248, 243, 215, 0.8) 100%);
+    overflow: hidden;
+}
+
+.servicos-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+}
+
+.servicos-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 6rem 2rem;
+}
+
+.servicos-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+/* ========================================
+           CONTEÚDO ESQUERDO
+======================================== */
+.servicos-content {
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+.servicos-badge {
+    display: inline-block;
+    background: var(--laranja-vibrante);
+    color: var(--branco);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    box-shadow: 
+        3px 3px 6px rgba(255, 166, 54, 0.3),
+        5px 5px 12px rgba(255, 166, 54, 0.2);
+}
+
+.servicos-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--azul-principal);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 8px rgba(0, 53, 131, 0.1);
+}
+
+.servicos-title span {
+    background: linear-gradient(135deg, var(--laranja-vibrante) 0%, var(--laranja-quente) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.servicos-description {
+    font-size: 1.15rem;
+    color: var(--cinza-texto);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.servicos-description strong {
+    color: var(--azul-principal);
+    font-weight: 700;
+}
+
+/* Badges */
+.servicos-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.servico-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(0, 53, 131, 0.1);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--azul-principal);
+    transition: all 0.3s ease;
+    box-shadow: 
+        3px 3px 6px rgba(0, 53, 131, 0.08),
+        5px 5px 12px rgba(0, 53, 131, 0.06);
+}
+
+.servico-badge:hover {
+    background: var(--branco);
+    border-color: var(--azul-principal);
+    transform: translateY(-2px);
+}
+
+.badge-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--azul-principal);
+}
+
+.servico-badge-more {
+    display: inline-flex;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-medio) 100%);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--branco);
+    box-shadow: 
+        4px 4px 8px rgba(0, 53, 131, 0.3),
+        6px 6px 16px rgba(0, 53, 131, 0.2);
+}
+
+.servicos-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.2rem 2.8rem;
+    background: var(--azul-principal);
+    color: var(--branco);
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 
+        4px 4px 8px rgba(0, 53, 131, 0.3),
+        6px 6px 16px rgba(0, 53, 131, 0.2);
+    transition: all 0.3s ease;
+}
+
+.servicos-cta-btn:hover {
+    background: var(--azul-medio);
+    transform: translateY(-4px);
+}
+
+.servicos-cta-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.5;
+}
+
+/* ========================================
+           CARROSSEL DESKTOP — coluna direita
+           Uma imagem por vez, simples
+======================================== */
+.servicos-carousel-wrapper {
+    position: relative;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Wrapper mobile dentro do conteúdo — oculto no desktop */
+.servicos-carousel-wrapper-mobile {
+    position: relative;
+    height: 550px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-3d {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   FIX DO BUG: usar opacity + visibility
+   em vez de display:none para permitir
+   transição suave entre imagens
+======================================== */
+.carousel-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 
+        8px 8px 16px rgba(0, 53, 131, 0.15),
+        12px 12px 32px rgba(0, 53, 131, 0.12);
+
+    /* Estado padrão: invisível, fora do fluxo de interação */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1;
+
+    /* Transição apenas em opacity — sem animar transform para evitar "puxão" */
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Apenas a imagem ativa (posição 0) aparece */
+.carousel-item[data-position="0"] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 3;
+}
+
+/* Card Flutuante */
+.servicos-floating-card {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 
+        6px 6px 12px rgba(0, 53, 131, 0.15),
+        10px 10px 24px rgba(0, 53, 131, 0.12);
+    animation: float 3s ease-in-out infinite;
+    z-index: 10;
+}
+
+.floating-card-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.floating-icon {
+    width: 40px;
+    height: 40px;
+    stroke: var(--azul-principal);
+    fill: none;
+    stroke-width: 2.5;
+}
+
+.floating-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.floating-number {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: var(--azul-principal);
+    line-height: 1;
+}
+
+.floating-label {
+    font-size: 0.85rem;
+    color: var(--cinza-medio);
+    font-weight: 500;
+}
+
+/* Controles do Carrossel */
+.carousel-controls {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.carousel-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--branco);
+    border: 2px solid var(--azul-principal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        3px 3px 6px rgba(0, 53, 131, 0.15),
+        5px 5px 12px rgba(0, 53, 131, 0.1);
+}
+
+.carousel-btn:hover {
+    background: var(--azul-principal);
+    transform: scale(1.1);
+}
+
+.carousel-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--azul-principal);
+    fill: none;
+    stroke-width: 2.5;
+    transition: stroke 0.3s ease;
+}
+
+.carousel-btn:hover svg {
+    stroke: var(--branco);
+}
+
+/* Dots — ocultos no desktop, visíveis no mobile */
+.carousel-dots {
+    display: none;
+}
+
+/* ========================================
+           ANIMATIONS
+======================================== */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+}
+
+/* ========================================
+           RESPONSIVE
+======================================== */
+@media (max-width: 1024px) {
+    .servicos-split {
+        gap: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .servicos-hero {
+        min-height: auto;
+    }
+
+    .servicos-container {
+        padding: 3rem 1.5rem;
+    }
+
+    .servicos-split {
+        grid-template-columns: 1fr;
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .servicos-content {
+        text-align: center;
+    }
+
+    .servicos-badge {
+        margin-bottom: 1rem;
+    }
+
+    .servicos-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .servicos-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .servicos-badges {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .servicos-cta-btn {
+        width: 100%;
+        justify-content: center;
+        max-width: 320px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+    }
+
+    /* Troca de carrossel no mobile */
+    .servicos-carousel-wrapper {
+        display: none !important;
+    }
+
+    .servicos-carousel-wrapper-mobile {
+        display: flex;
+        height: 420px;
+        margin: 0 0 2rem 0;
+        width: 100%;
+        padding: 0;
+        position: relative;
+    }
+
+    /* Card flutuante no topo centralizado no mobile */
+    .servicos-floating-card {
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        bottom: auto;
+        transform: translateX(-50%);
+        animation: none;
+        padding: 1rem 1.5rem;
+        z-index: 10;
+        width: fit-content;
+    }
+
+    .floating-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .floating-number {
+        font-size: 1.4rem;
+    }
+
+    .floating-label {
+        font-size: 0.75rem;
+    }
+
+    /* Controles centralizados no mobile */
+    .carousel-controls {
+        bottom: 1rem;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    .carousel-btn {
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+    }
+
+    /* Dots visíveis no mobile */
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        margin-top: -0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(0, 53, 131, 0.2);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .carousel-dot.active {
+        background: var(--azul-principal);
+        width: 24px;
+        border-radius: 5px;
+    }
+
+    .servico-badge,
+    .servico-badge-more {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+}

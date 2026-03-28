@@ -1,66 +1,66 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{ __('Todos Usuários')}}</h1>
-            <div class="title-actions">
-                <a href="{{route('user.admin.create')}}" class="btn btn-primary">{{ __('Adicionar novo usuário')}}</a>
-                <a class="btn btn-warning btn-icon" href="{{ route("user.admin.export") }}" target="_blank" title="{{ __("Exportar em excel") }}">
-                    <i class="icon ion-md-cloud-download"></i> {{ __("Exportar em excel") }}
-                </a>
-            </div>
+<div class="container-fluid">
+    <div class="d-flex justify-content-between mb20">
+        <h1 class="title-bar">{{ __('Todos Usuários')}}</h1>
+        <div class="title-actions">
+            <a href="{{route('user.admin.create')}}" class="btn btn-primary">{{ __('Adicionar novo usuário')}}</a>
+            <a class="btn btn-warning btn-icon" href="{{ route("user.admin.export") }}" target="_blank" title="{{ __("Exportar em excel") }}">
+                <i class="icon ion-md-cloud-download"></i> {{ __("Exportar em excel") }}
+            </a>
         </div>
-        @include('admin.message')
-        <div class="filter-div d-flex justify-content-between ">
-            <div class="col-left">
-                @if(!empty($rows))
-                    <form method="post" action="{{route('user.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
-                        {{csrf_field()}}
-                        <select name="action" class="form-control">
-                            <option value="">{{__("Ações em Massa")}}</option>
-                            <option value="delete">{{__("Excluir")}}</option>
-                        </select>
-                        <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
-                    </form>
-                @endif
-            </div>
-            <div class="col-left">
-                <form method="get" class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
-                    <select class="form-control" name="role">
-                        <option value="">{{ __('-- Selecione --')}}</option>
-                        @foreach($roles as $role)
-                            <option value="{{$role->name}}" @if(Request()->role == $role->name) selected @endif >{{ucfirst($role->name)}}</option>
-                        @endforeach
-                    </select>
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
-                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Buscar Usuário')}}</button>
-                </form>
-            </div>
+    </div>
+    @include('admin.message')
+    <div class="filter-div d-flex justify-content-between ">
+        <div class="col-left">
+            @if(!empty($rows))
+            <form method="post" action="{{route('user.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
+                {{csrf_field()}}
+                <select name="action" class="form-control">
+                    <option value="">{{__("Ações em Massa")}}</option>
+                    <option value="delete">{{__("Excluir")}}</option>
+                </select>
+                <button data-confirm="{{__("Você quer apagar?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Aplicar')}}</button>
+            </form>
+            @endif
         </div>
-        <div class="text-right">
-            <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
+        <div class="col-left">
+            <form method="get" class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
+                <select class="form-control" name="role">
+                    <option value="">{{ __('-- Selecione --')}}</option>
+                    @foreach($roles as $role)
+                    <option value="{{$role->name}}" @if(Request()->role == $role->name) selected @endif >{{ucfirst($role->name)}}</option>
+                    @endforeach
+                </select>
+                <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
+                <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Buscar Usuário')}}</button>
+            </form>
         </div>
-        <div class="panel">
-            <div class="panel-body">
-                <form action="" class="bravo-form-item">
-                    <div class="table-responsive">
+    </div>
+    <div class="text-right">
+        <p><i>{{__('Encontrado :total items',['total'=>$rows->total()])}}</i></p>
+    </div>
+    <div class="panel">
+        <div class="panel-body">
+            <form action="" class="bravo-form-item">
+                <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
-                        <tr>
-                            <th width="60px"><input type="checkbox" class="check-all"></th>
-                            <th>{{__('Nome')}}</th>
-                            <th>{{__('Email')}}</th>
-                            <th>{{__('Crédito')}}</th>
-                            <th>{{__('Telefone')}}</th>
-                            <th>{{__('Função')}}</th>
-                            <th class="date">{{ __('Data')}}</th>
-{{--                            <th class="status">{{__('Status')}}</th>--}}
-                            <th></th>
-                        </tr>
+                            <tr>
+                                <th width="60px"><input type="checkbox" class="check-all"></th>
+                                <th>{{__('Nome')}}</th>
+                                <th>{{__('Email')}}</th>
+                                <th>{{__('Status')}}</th>
+                                <th>{{__('Telefone')}}</th>
+                                <th>{{__('Função')}}</th>
+                                <th class="date">{{ __('Data')}}</th>
+                                {{-- <th class="status">{{__('Status')}}</th>--}}
+                                <th></th>
+                            </tr>
                         </thead>
                         <tbody>
-                        @foreach($rows as $row)
+                            @foreach($rows as $row)
                             <tr>
                                 <td><input type="checkbox" name="ids[]" value="{{$row->id}}" class="check-item"></td>
                                 <td class="title">
@@ -68,15 +68,24 @@
                                 </td>
                                 <td>{{$row->email}}
                                     @if($row->email_verified_at)
-                                        <i class="fa fa-check-circle text-success" title="{{__("Verificado")}}"></i>
+                                    <i class="fa fa-check-circle text-success" title="{{__("Verificado")}}"></i>
                                     @else
-                                        <i class="fa fa-info-circle text-warning" title="{{__("Não verificado")}}"></i>
+                                    <i class="fa fa-info-circle text-warning" title="{{__("Não verificado")}}"></i>
                                     @endif
                                 </td>
-                                <td>{{$row->balance}}</td>
+                                <td>
+                                    @php
+                                    $statusName = [
+                                    'publish'=>__('Pago'),
+                                    'blocked'=>__('Bloqueado'),
+                                    'draft'=>__('Pendente'),
+                                    ]
+                                    @endphp
+                                    {{ $statusName[$row->status] ?? $row->status }}
+                                </td>
                                 <td>{{$row->phone}}</td>
                                 <td>
-                                    {{$row->role->name ?? ''}}
+                                    {{$row->role_name}}
                                 </td>
                                 <td>{{ display_date($row->created_at)}}</td>
                                 {{--<td class="status">{{$row->status}}</td>--}}
@@ -86,11 +95,11 @@
                                             <i class="fa fa-th"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item"  href="{{route('user.admin.detail',['id'=>$row->id])}}"><i class="fa fa-edit"></i> {{__('Editar')}}</a>
+                                            <a class="dropdown-item" href="{{route('user.admin.detail',['id'=>$row->id])}}"><i class="fa fa-edit"></i> {{__('Editar')}}</a>
                                             @if(!$row->hasVerifiedEmail())
-                                                <a class="dropdown-item"  href="{{route('user.admin.verifyEmail',$row)}}"><i class="fa fa-edit"></i> {{__('Verificar e-mail')}}</a>
-                                                @else
-                                                <a class="dropdown-item"  href="#" ><i class="fa fa-check"></i> {{__('E-mail verificado')}}</a>
+                                            <a class="dropdown-item" href="{{route('user.admin.verifyEmail',$row)}}"><i class="fa fa-edit"></i> {{__('Verificar e-mail')}}</a>
+                                            @else
+                                            <a class="dropdown-item" href="#"><i class="fa fa-check"></i> {{__('E-mail verificado')}}</a>
                                             @endif
                                             <a class="dropdown-item" href="{{route('user.admin.password',['id'=>$row->id])}}"><i class="fa fa-lock"></i> {{__('Alterar Senha')}}</a>
                                             <a href="{{route('user.admin.wallet.addCredit',['id'=>$row->id])}}" class="dropdown-item"><i class="fa fa-plus"></i> {{__("Adicionar crédito")}}</a>
@@ -98,13 +107,13 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
-                    </div>
-                </form>
-                {{$rows->appends(request()->query())->links()}}
-            </div>
+                </div>
+            </form>
+            {{$rows->appends(request()->query())->links()}}
         </div>
     </div>
+</div>
 @endsection

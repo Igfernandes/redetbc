@@ -94,7 +94,7 @@
                             </button>
                             <h4>
                                 <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
-                                {{ trans('installer_messages.forms.errorTitle') }}
+                                {{ __("Por favor, verifique o formulário abaixo em busca de erros") }}
                             </h4>
                             <ul>
                                 @foreach($errors->all() as $error)

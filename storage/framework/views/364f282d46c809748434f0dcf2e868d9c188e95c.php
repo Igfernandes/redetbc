@@ -1,5 +1,5 @@
 <?php
-    $translation = $row->translate();
+$translation = $row->translate();
 ?>
 <div class="card transition-3d-hover shadow-hover-2 item-loop <?php echo e($wrap_class ?? ''); ?>">
     <div class="position-relative">
@@ -13,22 +13,27 @@
         </div>
         <div class="position-absolute bottom-0 left-0 right-0 text-content">
             <div class="px-3 pb-2">
-                <a <?php if(!empty($blank)): ?> target="_blank" <?php endif; ?> href="<?php echo e($row->getDetailUrl($include_param ?? true)); ?>" >
+                <a <?php if(!empty($blank)): ?> target="_blank" <?php endif; ?> href="<?php echo e($row->getDetailUrl($include_param ?? true)); ?>">
                     <span class="text-white font-weight-bold font-size-17"><?php echo clean($translation->title); ?></span>
                 </a>
                 <div class="text-white my-2">
+                    <?php if($row->price == 0): ?>
+                    <span class="font-size-14">Solicite Orçamento</span>
+                    <?php else: ?>
                     <small class="mr-1 font-size-14"><?php echo e(__("De")); ?></small>
                     <small class="mr-1 font-size-13 text-decoration-line-through">
                         <?php echo e($row->display_sale_price); ?>
 
                     </small>
+                    <?php endif; ?>
+
                     <span class="font-weight-bold font-size-19"><?php echo e($row->display_price); ?></span>
                     <span class="mr-1 font-size-14">
-                         <?php if($row->getBookingType()=="by_day"): ?>
-                            <?php echo e(__("/day")); ?>
+                        <?php if($row->getBookingType()=="by_day"): ?>
+                        <?php echo e(__("/day")); ?>
 
                         <?php else: ?>
-                            <?php echo e(__("/noite")); ?>
+                        <?php echo e(__("/noite")); ?>
 
                         <?php endif; ?>
                     </span>
@@ -38,23 +43,23 @@
         <div class="location d-none position-absolute bottom-0 left-0 right-0">
             <div class="px-4 pb-3">
                 <?php if(!empty($row->location->name)): ?>
-                    <?php $location =  $row->location->translate(); ?>
-                    <a href="<?php echo e($row->location->getDetailUrl() ?? ''); ?>" class="d-block">
-                        <div class="d-flex align-items-center font-size-14 text-white">
-                            <i class="icon flaticon-pin-1 mr-2 font-size-20"></i> <?php echo e($location->name ?? ''); ?>
+                <?php $location = $row->location->translate(); ?>
+                <a href="<?php echo e($row->location->getDetailUrl() ?? ''); ?>" class="d-block">
+                    <div class="d-flex align-items-center font-size-14 text-white">
+                        <i class="icon flaticon-pin-1 mr-2 font-size-20"></i> <?php echo e($location->name ?? ''); ?>
 
-                        </div>
-                    </a>
+                    </div>
+                </a>
                 <?php endif; ?>
             </div>
         </div>
     </div>
     <div class="position-absolute top-0 left-0 pt-4 pl-3 featured">
         <?php if($row->is_featured == "1"): ?>
-            <span class="badge badge-pill bg-white text-primary px-4 mr-3 py-2 font-size-14 font-weight-normal"><?php echo e(__("Apresentou")); ?></span>
+        <span class="badge badge-pill bg-white text-primary px-4 mr-3 py-2 font-size-14 font-weight-normal"><?php echo e(__("Apresentou")); ?></span>
         <?php endif; ?>
         <?php if($row->discount_percent): ?>
-            <span class="badge badge-pill bg-white px-3  py-2 font-size-14 font-weight-normal " style="color:#c47a1d;"><?php echo e($row->discount_percent); ?></span>
+        <span class="badge badge-pill bg-white px-3  py-2 font-size-14 font-weight-normal " style="color:#c47a1d;"><?php echo e($row->discount_percent); ?></span>
         <?php endif; ?>
     </div>
 
@@ -62,8 +67,8 @@
         <a <?php if(!empty($blank)): ?> target="_blank" <?php endif; ?> href="<?php echo e($row->getDetailUrl($include_param ?? true)); ?>" class="d-block location">
             <div class="d-flex align-items-center font-size-14 text-gray-1">
                 <?php if(!empty($row->location->name)): ?>
-                    <?php $location =  $row->location->translate() ?>
-                    <i class="icon flaticon-placeholder mr-2 font-size-20"></i> <?php echo e($location->name ?? ''); ?>
+                <?php $location = $row->location->translate() ?>
+                <i class="icon flaticon-placeholder mr-2 font-size-20"></i> <?php echo e($location->name ?? ''); ?>
 
                 <?php endif; ?>
             </div>
@@ -73,22 +78,22 @@
         </a>
         <div class="mt-1 service-review">
             <?php if(setting_item('space_enable_review')): ?>
-                <?php
-                    $reviewData = $row->getScoreReview();
-                    $score_total = $reviewData['score_total'];
-                ?>
-                <span class="py-1 font-size-14 border-radius-3 font-weight-normal pagination-v2-arrow-color rate">
-                    <?php echo e($score_total); ?>/5 <span class="rate-text"><?php echo e($reviewData['review_text']); ?></span>
-                </span>
-                <span class="font-size-14 text-gray-1 ml-2 review">
-                    <?php if($reviewData['total_review'] > 1): ?>
-                        <?php echo e(__(":number Avaliações",["number"=>$reviewData['total_review'] ])); ?>
+            <?php
+            $reviewData = $row->getScoreReview();
+            $score_total = $reviewData['score_total'];
+            ?>
+            <span class="py-1 font-size-14 border-radius-3 font-weight-normal pagination-v2-arrow-color rate">
+                <?php echo e($score_total); ?>/5 <span class="rate-text"><?php echo e($reviewData['review_text']); ?></span>
+            </span>
+            <span class="font-size-14 text-gray-1 ml-2 review">
+                <?php if($reviewData['total_review'] > 1): ?>
+                <?php echo e(__(":number Avaliações",["number"=>$reviewData['total_review'] ])); ?>
 
-                    <?php else: ?>
-                        <?php echo e(__(":number Avaliação",["number"=>$reviewData['total_review'] ])); ?>
+                <?php else: ?>
+                <?php echo e(__(":number Avaliação",["number"=>$reviewData['total_review'] ])); ?>
 
-                    <?php endif; ?>
-                </span>
+                <?php endif; ?>
+            </span>
             <?php endif; ?>
         </div>
         <div class="g-price d-none">
@@ -146,5 +151,4 @@
             </div>
         </div>
     </div>
-</div>
-<?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\themes/Mytravel/Space/Views/frontend/layouts/search/loop-grid.blade.php ENDPATH**/ ?>
+</div><?php /**PATH D:\wamp64\www\CompanyMarket\PROGRESSO\redetbc\themes/Mytravel/Space/Views/frontend/layouts/search/loop-grid.blade.php ENDPATH**/ ?>

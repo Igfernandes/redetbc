@@ -18,11 +18,11 @@ define('YEAR_IN_SECONDS', 365 * DAY_IN_SECONDS);
 
 function setting_item($item, $default = '', $isArray = false)
 {
-
     $res = Settings::item($item, $default);
 
     if ($isArray and !is_array($res)) {
-        $res = (array) json_decode($res, true);
+        $res = (array) json_decode($res, true);  
+       
     }
 
     return $res;
@@ -910,10 +910,11 @@ function booking_status_to_text($status)
 {
     switch ($status) {
         case "draft":
-            return __('Rascunho');
+            return __('Pendente');
             break;
+        case "published":
         case "unpaid":
-            return __('Não pago');
+            return __('Aceita');
             break;
         case "paid":
             return __('Pago');
@@ -927,6 +928,7 @@ function booking_status_to_text($status)
         case "confirmed":
             return __('Confirmado');
             break;
+        case "refused":
         case "cancelled":
             return __('Cancelado');
             break;

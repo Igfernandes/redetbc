@@ -422,7 +422,7 @@ class Tour extends Bookable
             event(new BookingConfirmEvent($booking));
 
             return $this->sendSuccess([
-                'url' => "user/chat?bk=$booking->id",
+                'url' => "/user/chat?bk=$booking->id",
             ]);
         }
 
@@ -507,12 +507,12 @@ class Tour extends Bookable
 
         if ($this->isFixedDate()) {
             if (Carbon::parse($request->start_date . ' 00:00:00') <= $this->last_booking_date) {
-                return $this->sendError(__("Este passeio não está disponível nas datas selecionadas"));
+                return $this->sendError(__("Este Passeio não está disponível nas datas selecionadas"));
             }
         } else {
             // Validate Date and Booking
             if (!$this->isAvailableInRanges($start_date)) {
-                return $this->sendError(__("Este passeio não está disponível nas datas selecionadas"));
+                return $this->sendError(__("Este Passeio não está disponível nas datas selecionadas"));
             }
 
             if ($meta) {
@@ -521,7 +521,7 @@ class Tour extends Bookable
                     $open_hours = $meta->open_hours;
                     $nDate = date('N', strtotime($start_date));
                     if (!isset($open_hours[$nDate]) or empty($open_hours[$nDate]['enable'])) {
-                        return $this->sendError(__("Este passeio não está aberto no dia selecionado"));
+                        return $this->sendError(__("Este Passeio não está aberto no dia selecionado"));
                     }
                 }
             }

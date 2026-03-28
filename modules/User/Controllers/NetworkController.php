@@ -11,6 +11,7 @@ use Modules\Booking\Models\Booking;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Modules\Booking\Models\Enquiry;
 use Modules\Booking\Models\Payment;
+use Modules\User\Models\PlanPayment;
 use Modules\User\Models\WithdrawAccount;
 use Modules\User\Traits\Network\CardsNetwork;
 use Modules\User\Traits\Network\GraphicNetwork;
@@ -33,6 +34,37 @@ class NetworkController extends FrontendController
     public function index()
     {
         $user_id = Auth::id();
+
+        $commission = Auth::user()->commission_amount;
+
+        $affiliates = User::where("owner_id", $user_id)
+            ->get()
+            ->map(function ($affiliate) use ($commission) {
+
+                // Total gerado pelo afiliado (ex: planos)
+                $generated = Payment::where([
+                    'user_id' => $affiliate->id,
+                    'object_model' => 'plan'
+                ])->sum('amount');
+
+                // Total já sacado referente a ele (se existir esse vínculo)
+                $received = Payment::where([
+                    'user_id' => $affiliate->id,
+                    'object_model' => 'withdraw'
+                ])->sum('amount');
+
+                $toReceive = ($generated / $commission) - $received;
+
+                return [
+                    'id'            => $affiliate->id,
+                    'name'          => $affiliate->name,
+                    'email'         => $affiliate->email,
+                    'started_at'    => $affiliate->created_at->format('d/m/Y'),
+                    'amount'        => format_money_main($toReceive < 0 ? 0 : $toReceive),
+                    'raw_amount'    => $toReceive < 0 ? 0 : $toReceive,
+                ];
+            });
+
         $data = [
             'cards_report'       => $this->getCards($user_id),
             'earning_chart_data' => $this->getUserNetworkChartData(strtotime('monday this week'), time(), $user_id),
@@ -46,7 +78,8 @@ class NetworkController extends FrontendController
                     'name'  => __('Afiliado de rede'),
                     'class' => 'active'
                 ]
-            ]
+            ],
+            'affiliates' =>  $affiliates,
         ];
         return view('User::frontend.network.index', $data);
     }
@@ -56,6 +89,11 @@ class NetworkController extends FrontendController
         $user_id = Auth::id();
         $from = strtotime(date('Y-m-01 00:00:00'));
         $to   = strtotime(date('Y-m-t 23:59:59'));
+
+        $solicitations = PlanPayment::where([
+            "object_model" => 'withdraw',
+            'user_id' => $user_id
+        ])->get();
 
         $data = [
             'cards_report'       => $this->getCards($user_id),
@@ -67,8 +105,10 @@ class NetworkController extends FrontendController
                     'name'  => __('Afiliado de rede'),
                     'class' => 'active'
                 ]
-            ]
+            ],
+            'solicitations' =>  $solicitations
         ];
+
         return view('User::frontend.network.wallet', $data);
     }
 
@@ -126,12 +166,13 @@ class NetworkController extends FrontendController
             "user_id" => $user_id,
             "object_model" => "withdraw"
         ])->get();
+
         $pendents = Payment::whereIn("user_id", [...$usersLinkedIds, ...$usersIndirectLinkedIds])->where([
             "object_model" => "plan"
         ])->get()->sum('amount');
 
         $received = $payments->sum('amount');
-        $pendentAmount = ($pendents / $commission) - $received;
+        $pendentAmount = $commission > 0 && $pendents > 0 ? ($pendents / $commission) - $received  : 0;
 
         if ($pendentAmount <= 0)
             return back()->with('error', 'Não há saldo disponível para solicitar saque');
@@ -145,8 +186,9 @@ class NetworkController extends FrontendController
             description: "Saque solicitado em " . now()->format('d/m/Y')
         );
 
-        if (!$response) {
-            return back()->with('error', 'Erro ao solicitar o saque.');
+
+        if (isset($response['error']) && !empty($response['error'])) {
+            return back()->with('error', $response['error'] ?? 'Erro ao solicitar o saque.');
         }
 
         return back()->with('success', 'Saque solicitado com sucesso!');

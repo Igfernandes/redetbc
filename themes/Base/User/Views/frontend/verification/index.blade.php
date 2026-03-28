@@ -2,11 +2,12 @@
 
 @section('content')
 <h2 class="title-bar">
-    {{__("Dados de verificação")}}
+    {{__("Dados de verificação - Titular")}}
 </h2>
 <div class="booking-history-manager">
     <div class="text">
         <p class="text-justify">Para que possamos garantir a segurança das informações, a legitimidade dos usuários e o uso adequado de todos os recursos da plataforma, será necessário realizar um processo de verificação de identidade. Esse processo tem como objetivo confirmar que o cadastro está sendo feito por uma pessoa real e que os documentos apresentados são autênticos.</p>
+        <p>logo após a validação da sua identidade suas informações são excluídas de nosso Banco de Dados.</p>
     </div>
     @foreach($fields as $field)
     @switch($field['type'])
@@ -37,7 +38,7 @@
     <hr>
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <a href="{{route('user.verification.update')}}" class="btn btn-warning"> <i class="fa fa-edit"></i> &nbsp;&nbsp; {{__("Atualizar dados de verificação")}} </a>
         </div>
     </div>

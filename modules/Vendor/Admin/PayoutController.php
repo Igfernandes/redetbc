@@ -25,7 +25,7 @@ class PayoutController extends AdminController
     {
         $this->checkPermission('vendor_payout_view');
 
-        $query = $this->vendorPayoutClass::query() ;
+        $query = $this->vendorPayoutClass::query();
         $query->orderBy('id', 'desc');
 
         if($request->query('s'))

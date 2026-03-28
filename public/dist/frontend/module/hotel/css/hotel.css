@@ -162,7 +162,6 @@
 }
 .hotel_rooms_form .hotel_room_book_status .row_total_price .col-md-6 {
   position: initial;
-  min-height: 70px;
 }
 .hotel_rooms_form .hotel_room_book_status .row_total_price .col-md-6:nth-child(2) {
   border-left: solid 1px #ccc;
@@ -172,6 +171,9 @@
     border: none;
     min-height: auto;
   }
+}
+.hotel_rooms_form .hotel_room_book_status .row_total_price .col-md-6 {
+  min-height: 70px;
 }
 .hotel_rooms_form .heading-section {
   margin: 20px 0px;
@@ -734,11 +736,11 @@
   color: #687882;
   opacity: 0.6;
 }
-.bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop .service-review {
-  margin: 10px 15px 0;
-}
 .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop .service-review .rate {
   color: #5191FA;
+}
+.bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop .service-review {
+  margin: 10px 15px 0;
 }
 .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop .service-review .review {
   margin-left: 30px;
@@ -992,12 +994,11 @@
 .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop-list .thumb-image .service-wishlist.active i {
   color: #ff0000;
 }
-.bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop-list .service-review {
-  padding: 10px 0px 0;
-  display: none;
-}
 .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop-list .service-review .rate {
   color: #5191FA;
+}
+.bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop-list .service-review {
+  padding: 10px 0px 0;
 }
 .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop-list .service-review .review {
   margin-left: 30px;
@@ -1013,6 +1014,9 @@
   border-radius: 50%;
   left: -18px;
   top: 8px;
+}
+.bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop-list .service-review {
+  display: none;
 }
 @media (max-width: 766px) {
   .bravo_wrap .bravo_search_hotel .bravo-list-item .list-item .item-loop-list .service-review {
@@ -2186,11 +2190,11 @@
   color: #687882;
   opacity: 0.6;
 }
-.bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop .service-review {
-  margin: 10px 15px 0;
-}
 .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop .service-review .rate {
   color: #5191FA;
+}
+.bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop .service-review {
+  margin: 10px 15px 0;
 }
 .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop .service-review .review {
   margin-left: 30px;
@@ -2444,12 +2448,11 @@
 .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop-list .thumb-image .service-wishlist.active i {
   color: #ff0000;
 }
-.bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop-list .service-review {
-  padding: 10px 0px 0;
-  display: none;
-}
 .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop-list .service-review .rate {
   color: #5191FA;
+}
+.bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop-list .service-review {
+  padding: 10px 0px 0;
 }
 .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop-list .service-review .review {
   margin-left: 30px;
@@ -2465,6 +2468,9 @@
   border-radius: 50%;
   left: -18px;
   top: 8px;
+}
+.bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop-list .service-review {
+  display: none;
 }
 @media (max-width: 766px) {
   .bravo_wrap .bravo_detail_hotel .bravo-list-hotel-related .item-loop-list .service-review {
@@ -3862,11 +3868,11 @@
   color: #687882;
   opacity: 0.6;
 }
-.has-search-map .bravo_search_map .results_map .item-loop .service-review {
-  margin: 10px 15px 0;
-}
 .has-search-map .bravo_search_map .results_map .item-loop .service-review .rate {
   color: #5191FA;
+}
+.has-search-map .bravo_search_map .results_map .item-loop .service-review {
+  margin: 10px 15px 0;
 }
 .has-search-map .bravo_search_map .results_map .item-loop .service-review .review {
   margin-left: 30px;
@@ -4120,12 +4126,11 @@
 .has-search-map .bravo_search_map .results_map .item-loop-list .thumb-image .service-wishlist.active i {
   color: #ff0000;
 }
-.has-search-map .bravo_search_map .results_map .item-loop-list .service-review {
-  padding: 10px 0px 0;
-  display: none;
-}
 .has-search-map .bravo_search_map .results_map .item-loop-list .service-review .rate {
   color: #5191FA;
+}
+.has-search-map .bravo_search_map .results_map .item-loop-list .service-review {
+  padding: 10px 0px 0;
 }
 .has-search-map .bravo_search_map .results_map .item-loop-list .service-review .review {
   margin-left: 30px;
@@ -4141,6 +4146,9 @@
   border-radius: 50%;
   left: -18px;
   top: 8px;
+}
+.has-search-map .bravo_search_map .results_map .item-loop-list .service-review {
+  display: none;
 }
 @media (max-width: 766px) {
   .has-search-map .bravo_search_map .results_map .item-loop-list .service-review {

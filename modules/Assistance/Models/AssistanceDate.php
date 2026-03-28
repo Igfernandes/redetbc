@@ -5,19 +5,34 @@ use App\BaseModel;
 
 class AssistanceDate extends BaseModel
 {
-    protected $table = 'bravo_assistances_dates';
+    protected $table = 'bravo_assistance_dates';
+    protected $assistanceMetaClass;
 
     protected $casts = [
-        'person_types'=>'array',
-        'price'=>'float',
-        'sale_price'=>'float',
+        'person_types'=>'array'
     ];
 
-    public static function getDatesInRanges($start_date,$end_date,$id){
+    public function __construct()
+    {
+        parent::__construct();
+        $this->assistanceMetaClass = AssistanceMeta::class;
+    }
+
+    public static function getDatesInRanges($date,$target_id){
         return static::query()->where([
-            ['start_date','>=',$start_date],
-            ['end_date','<=',$end_date],
-            ['target_id','=',$id],
-        ])->take(100)->get();
+            ['start_date','>=',$date],
+            ['end_date','<=',$date],
+            ['target_id','=',$target_id],
+        ])->first();
+    }
+    public function saveMeta(\Illuminate\Http\Request $request)
+    {
+        $locale = $request->input('lang');
+        $meta = $this->assistanceMetaClass::where('assistance_date_id', $this->id)->first();
+        if (!$meta) {
+            $meta = new $this->assistanceMetaClass();
+            $meta->assistance_date_id = $this->id;
+        }
+        return $meta->saveMetaOriginOrTranslation($request->input() , $locale);
     }
 }

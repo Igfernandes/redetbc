@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Modules\User\Models\PlanPayment;
 use Modules\User\Models\WithdrawAccount;
+use Carbon\Carbon;
 
 trait Withdrawal
 {
@@ -45,11 +46,18 @@ trait Withdrawal
                 $payload['operationType'] = $wallet->operation_type ?? 'TED';
             }
 
-            // Agenda 30 dias à frente se não informado
-            $payload['scheduleDate'] = $scheduleDate ?? now()->addDays(30)->format('Y-m-d');
+            $now = Carbon::now();
+
+            if ($now->day >= 5) {
+                $schedule = $now->addMonth()->day(5);
+            } else {
+                $schedule = $now->day(5);
+            }
+
+            $payload['scheduleDate'] = $schedule->format('Y-m-d');
 
             // Chamada à API Asaas
-            $response = Http::withHeaders([
+            $response = Http::withoutVerifying()->withHeaders([
                 'access_token' => env('GATEWAY_ACCESS_TOKEN'),
                 'accept' => 'application/json'
             ])->post(env('GATEWAY_API_URL') . "/transfers", $payload);
@@ -59,7 +67,10 @@ trait Withdrawal
                     'payload' => $payload,
                     'response' => $response->body()
                 ]);
-                return false;
+                $data = json_decode($response->body(), true);
+                return  [
+                    "error" => $data['errors'][0]['description'] ?? 'Erro ao solicitar o saque.'
+                ];
             }
 
             $user = auth()->user();
@@ -77,8 +88,8 @@ trait Withdrawal
             $planPayment->save();
 
             return $response->json();
-
         } catch (\Throwable $th) {
+
             Log::error('Erro interno ao criar saque', ['error' => $th->getMessage()]);
             return false;
         }

@@ -1950,7 +1950,8 @@ Pricing Section
   top: -50px;
   display: block !important;
 }
-.bravo_wrap .page-template-content .bravo-list-tour .owl-nav .owl-prev, .bravo_wrap .page-template-content .bravo-list-tour .owl-nav .owl-next {
+.bravo_wrap .page-template-content .bravo-list-tour .owl-nav .owl-prev,
+.bravo_wrap .page-template-content .bravo-list-tour .owl-nav .owl-next {
   font-size: 40px;
   line-height: 33px;
   border: solid 1px #000;
@@ -1958,7 +1959,8 @@ Pricing Section
   margin-left: 10px;
   outline: none;
 }
-.bravo_wrap .page-template-content .bravo-list-tour .owl-nav .owl-prev span, .bravo_wrap .page-template-content .bravo-list-tour .owl-nav .owl-next span {
+.bravo_wrap .page-template-content .bravo-list-tour .owl-nav .owl-prev span,
+.bravo_wrap .page-template-content .bravo-list-tour .owl-nav .owl-next span {
   position: relative;
   top: -1px;
   outline: none !important;
@@ -1983,7 +1985,7 @@ Pricing Section
   position: relative;
   overflow: hidden;
   border-radius: 5px;
-  background: #FFF;
+  background: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   height: 100%;
 }
@@ -2006,7 +2008,7 @@ Pricing Section
   top: 20px;
   left: 0;
   font-size: 13px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 500;
   z-index: 8;
   background: #cc0033;
@@ -2095,12 +2097,12 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-list-tour.box_shadow .list-item .item .caption .title-address .duration {
   margin-bottom: 0;
-  color: #7E7E7E;
+  color: #7e7e7e;
   font-size: 13px;
 }
 .bravo_wrap .page-template-content .bravo-list-tour.box_shadow .list-item .item .caption .tour-price {
   position: absolute;
-  color: #FF7430;
+  color: #ff7430;
   font-size: 34px;
   right: 22px;
   top: 20px;
@@ -2158,7 +2160,7 @@ Pricing Section
   content: "";
   height: 2px;
   width: 80px;
-  background: var(--link-color, #5191FA);
+  background: var(--link-color, #5191fa);
   bottom: 0;
   left: 0;
 }
@@ -2208,7 +2210,7 @@ Pricing Section
   right: -2px;
   bottom: -2px;
   z-index: 8;
-  background: var(--link-color, #5191FA);
+  background: var(--link-color, #5191fa);
   padding: 5px 10px 5px 20px;
   margin-top: 0;
   opacity: 0.9;
@@ -2247,7 +2249,7 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-form-search-tour .text-heading {
   font-weight: 500;
   font-size: 54px;
-  color: #FFF;
+  color: #fff;
 }
 @media (max-width: 766px) {
   .bravo_wrap .page-template-content .bravo-form-search-tour .text-heading {
@@ -2256,7 +2258,7 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-form-search-tour .sub-heading {
   font-size: 18px;
-  color: #FFF;
+  color: #fff;
   font-weight: normal;
 }
 @media (max-width: 766px) {
@@ -2323,12 +2325,16 @@ Pricing Section
     margin: 0;
   }
 }
-.bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .effect .owl-carousel, .bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .effect .owl-stage-outer, .bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .effect .owl-stage, .bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .effect .owl-item {
+.bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .effect .owl-carousel,
+.bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .effect .owl-stage-outer,
+.bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .effect .owl-stage,
+.bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .effect .owl-item {
   height: 100%;
   background-size: cover;
   background-position: center;
 }
-.bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .owl-nav, .bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .owl-dots {
+.bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .owl-nav,
+.bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .owl-dots {
   display: none !important;
 }
 .bravo_wrap .page-template-content .bravo-form-search-tour.carousel_v2 .g-form-control {
@@ -2385,12 +2391,12 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-featured-item.style2 .number-circle {
   width: 70px;
   height: 70px;
-  border: 2px solid #5191FA;
+  border: 2px solid #5191fa;
   border-radius: 50%;
   text-align: center;
   line-height: 69px;
   font-size: 40px;
-  color: #5191FA;
+  color: #5191fa;
   transition: all 0.3s;
   display: inline-block;
 }
@@ -2413,7 +2419,7 @@ Pricing Section
   padding: 0px;
 }
 .bravo_wrap .page-template-content .bravo-featured-item.style3 .featured-item:hover {
-  border-color: #5191FA;
+  border-color: #5191fa;
 }
 .bravo_wrap .page-template-content .bravo-featured-item.style4 {
   background-color: #f6f9ff;
@@ -2443,7 +2449,7 @@ Pricing Section
   }
 }
 .bravo_wrap .page-template-content .bravo-testimonial .item {
-  border: 1px solid #D7DCE3;
+  border: 1px solid #d7dce3;
   border-radius: 3px;
   padding: 30px;
   min-height: 250px;
@@ -2476,7 +2482,7 @@ Pricing Section
   margin-bottom: 8px;
 }
 .bravo_wrap .page-template-content .bravo-testimonial .item .author .author-meta .star .fa {
-  color: #FFDC00;
+  color: #ffdc00;
   font-size: 16px;
   margin-right: 2px;
 }
@@ -2621,7 +2627,8 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-list-locations .row {
   padding: 0 -10px;
 }
-.bravo_wrap .page-template-content .bravo-list-locations .row .col-md-4, .bravo_wrap .page-template-content .bravo-list-locations .row .col-md-8 {
+.bravo_wrap .page-template-content .bravo-list-locations .row .col-md-4,
+.bravo_wrap .page-template-content .bravo-list-locations .row .col-md-8 {
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -2675,7 +2682,7 @@ Pricing Section
   margin-bottom: 0px;
   font-size: 28px;
   font-weight: 400;
-  color: #FFF;
+  color: #fff;
 }
 @media (max-width: 766px) {
   .bravo_wrap .page-template-content .bravo-list-locations .list-item .destination-item .image .content .title {
@@ -2684,10 +2691,10 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-list-locations .list-item .destination-item .image .content .desc {
   display: inline-block;
-  background: #5191FA;
+  background: #5191fa;
   border-radius: 100px;
   font-size: 14px !important;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 5px 20px;
   margin-top: 10px;
 }
@@ -2737,9 +2744,9 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-list-locations.style_2 .list-item .destination-item .content .title {
   font-size: 16px;
-  color: #1A2B48;
+  color: #1a2b48;
   padding: 8px 25px;
-  background: #FFF;
+  background: #fff;
   text-transform: uppercase;
   white-space: nowrap;
   display: inline-block;
@@ -2875,11 +2882,13 @@ Pricing Section
   top: 125px;
   background: none !important;
 }
-.bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc a, .bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc span {
+.bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc a,
+.bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc span {
   color: #fff;
   font-size: 14px;
 }
-.bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc a:after, .bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc span:after {
+.bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc a:after,
+.bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc span:after {
   content: "";
   height: 5px;
   width: 5px;
@@ -2890,7 +2899,8 @@ Pricing Section
   margin-left: 10px;
   margin-right: 10px;
 }
-.bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc a:last-child:after, .bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc span:last-child:after {
+.bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc a:last-child:after,
+.bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .content .desc span:last-child:after {
   display: none;
 }
 .bravo_wrap .page-template-content .bravo-list-locations.style_4 .list-item .destination-item .image {
@@ -3026,7 +3036,7 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-client-feedback .list-item .item .title {
   font-size: 16px;
   font-weight: 500;
-  color: var(--main-color, #1A2B48);
+  color: var(--main-color, #1a2b48);
   line-height: 26px;
   text-transform: capitalize;
   margin-bottom: 5px;
@@ -3047,7 +3057,8 @@ Pricing Section
   font-size: 32px;
   color: #1a2b48;
 }
-.bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-prev, .bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-next {
+.bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-prev,
+.bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-next {
   line-height: 33px;
   padding-right: 15px !important;
   outline: none;
@@ -3056,11 +3067,13 @@ Pricing Section
   color: #5191fa;
 }
 @media (max-width: 1023px) {
-  .bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-prev, .bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-next {
+  .bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-prev,
+  .bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-next {
     margin-top: 0;
   }
 }
-.bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-prev span, .bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-next span {
+.bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-prev span,
+.bravo_wrap .page-template-content .bravo-client-feedback .owl-nav .owl-next span {
   position: relative;
   outline: none !important;
 }
@@ -3326,14 +3339,16 @@ Pricing Section
   top: -50px;
   display: block !important;
 }
-.bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-prev, .bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-next {
+.bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-prev,
+.bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-next {
   font-size: 40px;
   line-height: 33px;
   border: solid 1px #000;
   padding: 0px 10px !important;
   margin-left: 10px;
 }
-.bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-prev span, .bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-next span {
+.bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-prev span,
+.bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-next span {
   position: relative;
   top: -1px;
   outline: none !important;
@@ -3352,7 +3367,7 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-form-search-space .text-heading {
   font-weight: 500;
   font-size: 54px;
-  color: #FFF;
+  color: #fff;
 }
 @media (max-width: 766px) {
   .bravo_wrap .page-template-content .bravo-form-search-space .text-heading {
@@ -3361,7 +3376,7 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-form-search-space .sub-heading {
   font-size: 18px;
-  color: #FFF;
+  color: #fff;
   font-weight: normal;
 }
 @media (max-width: 766px) {
@@ -3420,7 +3435,7 @@ Pricing Section
   margin-top: 20px;
   font-size: 14px;
   font-weight: 500;
-  color: #1A2B48;
+  color: #1a2b48;
 }
 .bravo_wrap .page-template-content .bravo-featured-box .featured-item img {
   transition: all 0.3s;
@@ -3443,7 +3458,7 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-form-search-hotel .text-heading {
   font-weight: 500;
   font-size: 54px;
-  color: #FFF;
+  color: #fff;
 }
 @media (max-width: 766px) {
   .bravo_wrap .page-template-content .bravo-form-search-hotel .text-heading {
@@ -3452,7 +3467,7 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-form-search-hotel .sub-heading {
   font-size: 18px;
-  color: #FFF;
+  color: #fff;
   font-weight: normal;
 }
 @media (max-width: 766px) {
@@ -3500,7 +3515,8 @@ Pricing Section
   background-size: cover;
   background-position: center;
 }
-.bravo_wrap .page-template-content .bravo-form-search-slider .owl-nav, .bravo_wrap .page-template-content .bravo-form-search-slider .owl-dots {
+.bravo_wrap .page-template-content .bravo-form-search-slider .owl-nav,
+.bravo_wrap .page-template-content .bravo-form-search-slider .owl-dots {
   display: none !important;
 }
 .bravo_wrap .page-template-content .bravo-form-search-all {
@@ -3517,7 +3533,7 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-form-search-all .text-heading {
   font-weight: 500;
   font-size: 54px;
-  color: #FFF;
+  color: #fff;
 }
 @media (max-width: 766px) {
   .bravo_wrap .page-template-content .bravo-form-search-all .text-heading {
@@ -3526,7 +3542,7 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-form-search-all .sub-heading {
   font-size: 18px;
-  color: #FFF;
+  color: #fff;
   font-weight: normal;
 }
 @media (max-width: 766px) {
@@ -3552,9 +3568,9 @@ Pricing Section
   margin-top: 50px;
 }
 .bravo_wrap .page-template-content .bravo-form-search-all .g-form-control .nav-tabs li a {
-  background-color: #1A2B47;
+  background-color: #1a2b47;
   color: #fff;
-  border-color: #1A2B47;
+  border-color: #1a2b47;
   padding: 7px 25px;
   border-radius: 3px 3px 0 0;
   font-size: 14px;
@@ -3572,6 +3588,23 @@ Pricing Section
     padding: 7px 10px;
   }
 }
+.bravo_wrap .page-template-content .bravo-form-search-all .g-form-control .nav-tabs li a .nav-icon {
+  height: 60px;
+  width: 60px;
+  border: 7px solid #fff;
+  box-shadow: 1px 1px 5px black;
+  border-radius: 100%;
+  background: #003583;
+  margin: 0 auto;
+  color: #fff;
+}
+@media (max-width: 460px) {
+  .bravo_wrap .page-template-content .bravo-form-search-all .g-form-control .nav-tabs li a .nav-icon {
+    height: 45px;
+    width: 45px;
+    border: 4px solid #fff;
+  }
+}
 .bravo_wrap .page-template-content .bravo-form-search-all .g-form-control .nav-tabs li a i {
   font-size: 16px;
   position: relative;
@@ -3580,9 +3613,9 @@ Pricing Section
   margin-right: 2px;
 }
 .bravo_wrap .page-template-content .bravo-form-search-all .g-form-control .nav-tabs li a.active {
-  background-color: #5192FA;
+  background-color: #5192fa;
   color: #fff;
-  border-color: #5192FA;
+  border-color: #5192fa;
 }
 .bravo_wrap .page-template-content .bravo-form-search-all .g-form-control .tab-content {
   position: relative;
@@ -3649,12 +3682,16 @@ Pricing Section
     padding-top: 60px;
   }
 }
-.bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .effect .owl-carousel, .bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .effect .owl-stage-outer, .bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .effect .owl-stage, .bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .effect .owl-item {
+.bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .effect .owl-carousel,
+.bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .effect .owl-stage-outer,
+.bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .effect .owl-stage,
+.bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .effect .owl-item {
   height: 100%;
   background-size: cover;
   background-position: center;
 }
-.bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .owl-nav, .bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .owl-dots {
+.bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .owl-nav,
+.bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .owl-dots {
   display: none !important;
 }
 .bravo_wrap .page-template-content .bravo-form-search-all.carousel_v2 .g-form-control {
@@ -3769,7 +3806,7 @@ Pricing Section
   border: 1px solid #fff;
 }
 .bravo_wrap .page-template-content .bravo-offer .item a.btn-default:hover {
-  color: #5191FA;
+  color: #5191fa;
   background: #fff;
 }
 @media (max-width: 1023px) {
@@ -3814,7 +3851,7 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-form-search-car .text-heading {
   font-weight: 500;
   font-size: 54px;
-  color: #FFF;
+  color: #fff;
 }
 @media (max-width: 766px) {
   .bravo_wrap .page-template-content .bravo-form-search-car .text-heading {
@@ -3823,7 +3860,7 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-form-search-car .sub-heading {
   font-size: 18px;
-  color: #FFF;
+  color: #fff;
   font-weight: normal;
 }
 @media (max-width: 766px) {
@@ -3930,14 +3967,16 @@ Pricing Section
   top: -50px;
   display: block !important;
 }
-.bravo_wrap .page-template-content .bravo-list-car .owl-nav .owl-prev, .bravo_wrap .page-template-content .bravo-list-car .owl-nav .owl-next {
+.bravo_wrap .page-template-content .bravo-list-car .owl-nav .owl-prev,
+.bravo_wrap .page-template-content .bravo-list-car .owl-nav .owl-next {
   font-size: 40px;
   line-height: 33px;
   border: solid 1px #000;
   padding: 0px 10px !important;
   margin-left: 10px;
 }
-.bravo_wrap .page-template-content .bravo-list-car .owl-nav .owl-prev span, .bravo_wrap .page-template-content .bravo-list-car .owl-nav .owl-next span {
+.bravo_wrap .page-template-content .bravo-list-car .owl-nav .owl-prev span,
+.bravo_wrap .page-template-content .bravo-list-car .owl-nav .owl-next span {
   position: relative;
   top: -1px;
   outline: none !important;
@@ -4162,14 +4201,16 @@ Pricing Section
   top: -50px;
   display: block !important;
 }
-.bravo_wrap .page-template-content .bravo-list-event .owl-nav .owl-prev, .bravo_wrap .page-template-content .bravo-list-event .owl-nav .owl-next {
+.bravo_wrap .page-template-content .bravo-list-event .owl-nav .owl-prev,
+.bravo_wrap .page-template-content .bravo-list-event .owl-nav .owl-next {
   font-size: 40px;
   line-height: 33px;
   border: solid 1px #000;
   padding: 0px 10px !important;
   margin-left: 10px;
 }
-.bravo_wrap .page-template-content .bravo-list-event .owl-nav .owl-prev span, .bravo_wrap .page-template-content .bravo-list-event .owl-nav .owl-next span {
+.bravo_wrap .page-template-content .bravo-list-event .owl-nav .owl-prev span,
+.bravo_wrap .page-template-content .bravo-list-event .owl-nav .owl-next span {
   position: relative;
   top: -1px;
   outline: none !important;
@@ -4188,7 +4229,7 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-form-search-event .text-heading {
   font-weight: 500;
   font-size: 54px;
-  color: #FFF;
+  color: #fff;
 }
 @media (max-width: 766px) {
   .bravo_wrap .page-template-content .bravo-form-search-event .text-heading {
@@ -4197,7 +4238,7 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-form-search-event .sub-heading {
   font-size: 18px;
-  color: #FFF;
+  color: #fff;
   font-weight: normal;
 }
 @media (max-width: 766px) {
@@ -4295,7 +4336,7 @@ Pricing Section
   }
 }
 .bravo_wrap .page-template-content .bravo-list-news .item-news .caption .item-title a {
-  color: #1A2B50;
+  color: #1a2b50;
 }
 .bravo_wrap .page-template-content .bravo-list-news .item-news .caption .item-desc {
   color: #7a7a7a;
@@ -4338,7 +4379,7 @@ Pricing Section
 .bravo_wrap .page-template-content .bravo-form-search-service .text-heading {
   font-weight: 500;
   font-size: 54px;
-  color: #FFF;
+  color: #fff;
 }
 @media (max-width: 766px) {
   .bravo_wrap .page-template-content .bravo-form-search-service .text-heading {
@@ -4347,7 +4388,7 @@ Pricing Section
 }
 .bravo_wrap .page-template-content .bravo-form-search-service .sub-heading {
   font-size: 18px;
-  color: #FFF;
+  color: #fff;
   font-weight: normal;
 }
 @media (max-width: 766px) {
@@ -4388,196 +4429,198 @@ Pricing Section
   font-size: 14px;
   margin-bottom: 15px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour {
   border: 1px solid #dfdfdf;
+  border-radius: 3px;
   overflow: hidden;
   padding-bottom: 15px;
   position: relative;
   margin-bottom: 30px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop a {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour a {
   text-decoration: none;
   transition: all 0.3s;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .sale_info {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .sale_info {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  right: 10px;
-  top: -25px;
+  width: 80px;
+  height: 48px;
+  transform: rotate(45deg);
+  right: -30px;
+  top: -13px;
+  line-height: 65px;
+  text-align: center;
   color: #fff;
   font-size: 15px;
-  background-color: #5191fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  z-index: 999;
-  border: solid 3px #fff;
+  z-index: 8;
+  background-color: #cc0033;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .featured {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .featured {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  background: #1a2b48;
-  display: inline-block;
-  padding: 0 10px;
-  color: #FFF;
+  top: 20px;
+  left: 0;
   font-size: 13px;
+  color: #FFFFFF;
   font-weight: 500;
-  z-index: 1;
-  height: 30px;
-  line-height: 30px;
-  border-radius: 5px;
+  z-index: 8;
+  background: #5191fa;
+  border-radius: 0 3px 3px 0;
+  padding: 6px 10px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .thumb-image {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .thumb-image {
   overflow: hidden;
-  background: #FFF;
-  position: relative;
-  padding-bottom: 55%;
+  height: 170px;
+  background: #ccc;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .thumb-image:hover a img {
-  transform: scale(1.1);
-}
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .thumb-image a img {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .thumb-image a img {
   transition: all 0.3s;
   max-width: 100%;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .thumb-image .service-wishlist {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .thumb-image a:hover img {
+  transform: scale(1.1);
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .thumb-image .service-wishlist {
   position: absolute;
   right: 5px;
   z-index: 10;
-  top: 0px;
-  color: #000;
+  bottom: 0px;
+  color: #fff;
   padding: 10px;
   cursor: pointer;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .thumb-image .service-wishlist i {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .thumb-image .service-wishlist i {
   transition: all 0.3s;
   font-size: 16px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .thumb-image .service-wishlist:hover i, .bravo_wrap .page-template-content .bravo-list-service .item-loop .thumb-image .service-wishlist.loading i {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .thumb-image .service-wishlist:hover i, .bravo_wrap .page-template-content .bravo-list-service .item-tour .thumb-image .service-wishlist.loading i {
   color: #ff9290;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .thumb-image .service-wishlist.active i {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .thumb-image .service-wishlist.active i {
   color: #ff0000;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .thumb-image .service-wishlist.active i:before {
-  content: "\f004";
-}
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .location {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .location {
   font-size: 13px;
-  color: #5e6d77;
-  margin: 15px 15px 0;
+  color: #5E6D77;
+  margin: 15px 15px 10px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .location i {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .location i {
   position: relative;
   font-size: 16px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .category {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .category {
   margin: 0 15px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .category .fa {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .category .fa {
   color: #687882;
   opacity: 0.6;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .service-review .rate {
-  color: #5191FA;
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review {
+  margin: 10px 15px 15px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .service-review {
-  margin: 0 15px 0;
-  font-size: 13px;
-}
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .service-review .review {
-  margin-left: 15px;
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review .list-star {
+  display: inline-block;
+  line-height: 13px;
   position: relative;
-  color: #6A7A84;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .service-review .review:after {
-  position: absolute;
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review .list-star .booking-item-rating-stars {
+  padding: 0;
+  margin: 0;
+  width: 90px;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review .list-star .booking-item-rating-stars:before, .bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review .list-star .booking-item-rating-stars:after {
   content: "";
-  width: 4px;
-  height: 4px;
-  background: #D0D7DD;
-  border-radius: 50%;
-  left: -10px;
-  top: 8px;
+  display: table;
+  clear: both;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .item-title {
-  margin: 0 15px;
-  font-size: 16px;
-  font-weight: 500;
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review .list-star .booking-item-rating-stars li {
+  list-style: none;
+  float: left;
+  margin-right: 5px;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review .list-star .booking-item-rating-stars li:last-child {
+  margin-right: 0;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review .list-star .booking-item-rating-stars li .fa {
+  font-size: 15px;
+  color: #FFDC00;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review .list-star .booking-item-rating-stars-active {
+  position: absolute;
+  width: 0;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .service-review .review {
   position: relative;
+  top: -2px;
+  font-size: 13px;
+  color: #768092;
+  margin-left: 10px;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .item-title {
+  margin: 0 15px 0;
+  font-size: 16px;
+  line-height: 22px;
+  min-height: 45px;
 }
 @media (max-width: 766px) {
-  .bravo_wrap .page-template-content .bravo-list-service .item-loop .item-title {
+  .bravo_wrap .page-template-content .bravo-list-service .item-tour .item-title {
     min-height: auto;
   }
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .item-title a {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .item-title a {
   color: #1A2B50;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .item-title i {
-  color: #ffc107;
-  font-size: 15px;
-  margin-right: 2px;
-}
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .info {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .info {
   margin: 0 15px 0;
+  display: flex;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .info .g-price .prefix {
-  color: #5e6d77;
-  display: inline-block;
-  font-weight: normal;
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .info .duration {
+  flex: auto;
+  align-items: center;
+  color: #5E6D77;
   position: relative;
+  top: 5px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .info .g-price .prefix i {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .info .duration i {
+  position: relative;
+  font-size: 17px;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .info .g-price {
+  flex: auto;
+  text-align: right;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .info .g-price .prefix {
+  color: #5E6D77;
+  display: inline-block;
+}
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .info .g-price .prefix i {
   font-size: 16px;
   color: #ffc107;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .info .g-price .price {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .info .g-price .price {
   position: relative;
   display: inline-block;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .info .g-price .price .text-price {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .info .g-price .price .text-price {
   font-size: 18px;
   color: #1A2B48;
   font-weight: 500;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .info .g-price .price .onsale {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour .info .g-price .price .onsale {
+  position: absolute;
+  right: 0;
+  top: -15px;
   text-decoration: line-through;
   font-size: 14px;
   color: #c47a1d;
   font-weight: 400;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .info .g-price .price .unit {
-  font-size: 14px;
-  color: #5E6D77;
-  font-weight: normal;
-}
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .amenities {
-  margin: 10px 15px 5px;
-  display: flex;
-  font-size: 13px;
-  justify-content: space-between;
-}
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .amenities .amenity {
-  align-items: center;
-  text-align: center;
-}
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .amenities .amenity .input-icon {
-  font-size: 26px;
-  color: #1a2b48;
-  position: relative;
-  top: 1px;
-}
-.bravo_wrap .page-template-content .bravo-list-service .item-loop .amenities .amenity .text {
-  display: block;
-}
-.bravo_wrap .page-template-content .bravo-list-service .item-loop.infobox-item {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour.infobox-item {
   position: relative;
 }
-.bravo_wrap .page-template-content .bravo-list-service .item-loop.infobox-item:after {
+.bravo_wrap .page-template-content .bravo-list-service .item-tour.infobox-item:after {
   content: "";
   width: 0;
   height: 0;
@@ -4619,14 +4662,16 @@ Pricing Section
   top: -50px;
   display: block !important;
 }
-.bravo_wrap .page-template-content .bravo-list-service .owl-nav .owl-prev, .bravo_wrap .page-template-content .bravo-list-service .owl-nav .owl-next {
+.bravo_wrap .page-template-content .bravo-list-service .owl-nav .owl-prev,
+.bravo_wrap .page-template-content .bravo-list-service .owl-nav .owl-next {
   font-size: 40px;
   line-height: 33px;
   border: solid 1px #000;
   padding: 0px 10px !important;
   margin-left: 10px;
 }
-.bravo_wrap .page-template-content .bravo-list-service .owl-nav .owl-prev span, .bravo_wrap .page-template-content .bravo-list-service .owl-nav .owl-next span {
+.bravo_wrap .page-template-content .bravo-list-service .owl-nav .owl-prev span,
+.bravo_wrap .page-template-content .bravo-list-service .owl-nav .owl-next span {
   position: relative;
   top: -1px;
   outline: none !important;
@@ -4702,7 +4747,7 @@ Pricing Section
   box-shadow: 0 6px 15px rgba(64, 79, 104, 0.05);
 }
 .bravo_wrap .bravo_form {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   display: flex;
@@ -4770,7 +4815,7 @@ Pricing Section
   }
 }
 .bravo_wrap .bravo_form .border-right {
-  border-right: 1px solid #D7DCE3;
+  border-right: 1px solid #d7dce3;
 }
 @media (max-width: 1023px) {
   .bravo_wrap .bravo_form .border-right {
@@ -4795,7 +4840,7 @@ Pricing Section
   position: absolute;
   right: 10px;
   top: 50px;
-  color: #5191FA;
+  color: #5191fa;
   border-top: 0.4em solid;
   border-right: 0.2em solid transparent;
   border-left: 0.32em solid transparent;
@@ -4812,11 +4857,12 @@ Pricing Section
 }
 .bravo_wrap .bravo_form .form-content label {
   font-size: 14px;
-  color: #5E6D77;
+  color: #5e6d77;
   font-weight: 400;
   margin-bottom: 0px;
 }
-.bravo_wrap .bravo_form .form-content .form-date-search .check-in-out, .bravo_wrap .bravo_form .form-content .form-date-search-hotel .check-in-out {
+.bravo_wrap .bravo_form .form-content .form-date-search .check-in-out,
+.bravo_wrap .bravo_form .form-content .form-date-search-hotel .check-in-out {
   position: absolute;
   left: -15px;
   bottom: 1px;
@@ -4828,12 +4874,13 @@ Pricing Section
     max-height: 45px;
   }
 }
-.bravo_wrap .bravo_form .form-content .date-wrapper .check-in-wrapper .check-in-render, .bravo_wrap .bravo_form .form-content .date-wrapper .check-in-wrapper .check-out-render {
+.bravo_wrap .bravo_form .form-content .date-wrapper .check-in-wrapper .check-in-render,
+.bravo_wrap .bravo_form .form-content .date-wrapper .check-in-wrapper .check-out-render {
   display: inline-block;
   width: auto;
 }
 .bravo_wrap .bravo_form .form-content .date-wrapper .check-in-wrapper span {
-  color: #5E6D77;
+  color: #5e6d77;
   position: relative;
   top: -7px;
 }
@@ -4855,7 +4902,7 @@ Pricing Section
   box-shadow: none;
   padding: 0;
   font-size: 16px;
-  color: #5191FA;
+  color: #5191fa;
   position: relative;
   left: -5px;
   height: 25px !important;
@@ -5746,14 +5793,16 @@ Pricing Section
   top: -50px;
   display: block !important;
 }
-.bravo_wrap .bravo-list-hotel .owl-nav .owl-prev, .bravo_wrap .bravo-list-hotel .owl-nav .owl-next {
+.bravo_wrap .bravo-list-hotel .owl-nav .owl-prev,
+.bravo_wrap .bravo-list-hotel .owl-nav .owl-next {
   font-size: 40px;
   line-height: 33px;
   border: solid 1px #000;
   padding: 0px 10px !important;
   margin-left: 10px;
 }
-.bravo_wrap .bravo-list-hotel .owl-nav .owl-prev span, .bravo_wrap .bravo-list-hotel .owl-nav .owl-next span {
+.bravo_wrap .bravo-list-hotel .owl-nav .owl-prev span,
+.bravo_wrap .bravo-list-hotel .owl-nav .owl-next span {
   position: relative;
   top: -1px;
   outline: none !important;
@@ -5786,8 +5835,10 @@ Pricing Section
   align-items: center;
   padding-right: 14px;
 }
-.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-minus, .bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-add,
-.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-minus2, .bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-add2,
+.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-minus,
+.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-add,
+.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-minus2,
+.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-add2,
 .bravo_wrap .select-seat-type-dropdown .dropdown-item-row .btn-minus,
 .bravo_wrap .select-seat-type-dropdown .dropdown-item-row .btn-add,
 .bravo_wrap .select-seat-type-dropdown .dropdown-item-row .btn-minus2,
@@ -5795,8 +5846,10 @@ Pricing Section
   padding: 0px 5px;
   cursor: pointer;
 }
-.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-minus i, .bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-add i,
-.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-minus2 i, .bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-add2 i,
+.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-minus i,
+.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-add i,
+.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-minus2 i,
+.bravo_wrap .select-guests-dropdown .dropdown-item-row .btn-add2 i,
 .bravo_wrap .select-seat-type-dropdown .dropdown-item-row .btn-minus i,
 .bravo_wrap .select-seat-type-dropdown .dropdown-item-row .btn-add i,
 .bravo_wrap .select-seat-type-dropdown .dropdown-item-row .btn-minus2 i,
@@ -5805,7 +5858,7 @@ Pricing Section
 }
 .bravo_wrap .select-guests-dropdown .dropdown-item-row .count-display,
 .bravo_wrap .select-seat-type-dropdown .dropdown-item-row .count-display {
-  color: #5191FA;
+  color: #5191fa;
   min-width: 25px;
   text-align: center;
 }
@@ -5876,7 +5929,7 @@ Pricing Section
   transition: all 0.3s;
   padding-left: 25px;
   font-size: 14px;
-  color: #5E6D77;
+  color: #5e6d77;
   font-weight: normal;
   margin-bottom: 0px;
 }
@@ -5890,7 +5943,7 @@ Pricing Section
   position: absolute;
   top: 0;
   width: 17px;
-  border: solid 1px #A0A9B2;
+  border: solid 1px #a0a9b2;
   border-radius: 2px;
   background: #fff;
 }
@@ -5911,7 +5964,7 @@ Pricing Section
   top: 2px;
   width: 5px;
   height: 8px;
-  border: solid #5191FA;
+  border: solid #5191fa;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -5931,11 +5984,11 @@ Pricing Section
 .bravo_wrap .bravo-contact-block .form_wrapper .contact-header {
   padding-bottom: 30px;
   margin-bottom: 30px;
-  border-bottom: 2px solid #EBEEF1;
+  border-bottom: 2px solid #ebeef1;
 }
 .bravo_wrap .bravo-contact-block .form_wrapper .contact-header h1 {
   font-size: 24px;
-  color: #1A2B48;
+  color: #1a2b48;
   margin-top: 0px;
 }
 .bravo_wrap .bravo-contact-block .form_wrapper .contact-header h2 {
@@ -5959,7 +6012,7 @@ Pricing Section
   top: 50%;
   margin-top: -185px;
   margin-left: -130px;
-  background: #FA5636;
+  background: #fa5636;
   padding: 30px;
   min-width: 385px;
   /*min-height: 370px;*/
@@ -5973,7 +6026,7 @@ Pricing Section
 }
 .bravo_wrap .bravo-contact-block .contact-info .info-content h3 {
   font-size: 24px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0;
 }
 .bravo_wrap .bravo-contact-block .contact-info .info-content .sub {
@@ -5982,7 +6035,7 @@ Pricing Section
 }
 .bravo_wrap .bravo-contact-block .contact-info .info-content .sub p {
   font-size: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 5px;
   letter-spacing: normal;
   width: 100%;
@@ -6037,14 +6090,14 @@ Pricing Section
 }
 .bravo_wrap .bravo-list-item .topbar-search .control {
   flex: 1 1 55%;
-  color: #1A2B48;
+  color: #1a2b48;
   text-align: right;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 .bravo_wrap .bravo-list-item .topbar-search .control a {
-  color: #1A2B48;
+  color: #1a2b48;
   text-decoration: none;
   cursor: pointer;
 }
@@ -6067,7 +6120,7 @@ Pricing Section
 }
 .bravo_wrap .bravo-list-item .topbar-search .control .item .dropdown .dropdown-toggle {
   padding: 7px 15px;
-  border: solid 1px #CCc;
+  border: solid 1px #ccc;
 }
 .bravo_wrap .bravo-list-item .topbar-search .control .item .dropdown .dropdown-item {
   color: #000;
@@ -6093,7 +6146,7 @@ Pricing Section
   position: absolute;
   right: 10px;
   top: 10px;
-  border: solid 1px #1A2B48;
+  border: solid 1px #1a2b48;
   border-radius: 50%;
   width: 25px;
   height: 25px;
@@ -6103,38 +6156,44 @@ Pricing Section
   justify-content: center;
   cursor: pointer;
   opacity: 1 !important;
-  color: #1A2B48;
+  color: #1a2b48;
   z-index: 10;
   background: #fff;
 }
 
-.bravo_content .g-faq, .page-template-content .g-faq {
+.bravo_content .g-faq,
+.page-template-content .g-faq {
   border-bottom: solid 1px #D7DCE3;
   margin-bottom: 25px;
   border-top: solid 1px #D7DCE3;
   padding-top: 25px;
 }
-.bravo_content .g-faq .item, .page-template-content .g-faq .item {
+.bravo_content .g-faq .item,
+.page-template-content .g-faq .item {
   border-bottom: 1px solid #D7DCE3;
   margin-bottom: 10px;
 }
-.bravo_content .g-faq .item:last-child, .page-template-content .g-faq .item:last-child {
+.bravo_content .g-faq .item:last-child,
+.page-template-content .g-faq .item:last-child {
   border: none;
 }
-.bravo_content .g-faq .item .header, .page-template-content .g-faq .item .header {
+.bravo_content .g-faq .item .header,
+.page-template-content .g-faq .item .header {
   margin-bottom: 10px;
   overflow: hidden;
   padding-top: 15px;
   cursor: pointer;
 }
-.bravo_content .g-faq .item .header .field-icon, .page-template-content .g-faq .item .header .field-icon {
+.bravo_content .g-faq .item .header .field-icon,
+.page-template-content .g-faq .item .header .field-icon {
   float: left;
   font-size: 25px;
   margin-right: 10px;
   top: -3px;
   position: relative;
 }
-.bravo_content .g-faq .item .header h5, .page-template-content .g-faq .item .header h5 {
+.bravo_content .g-faq .item .header h5,
+.page-template-content .g-faq .item .header h5 {
   float: left;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -6142,17 +6201,20 @@ Pricing Section
   color: #1A2B48;
 }
 @media (max-width: 990px) {
-  .bravo_content .g-faq .item .header h5, .page-template-content .g-faq .item .header h5 {
+  .bravo_content .g-faq .item .header h5,
+  .page-template-content .g-faq .item .header h5 {
     font-size: 14px;
   }
 }
-.bravo_content .g-faq .item .header .arrow, .page-template-content .g-faq .item .header .arrow {
+.bravo_content .g-faq .item .header .arrow,
+.page-template-content .g-faq .item .header .arrow {
   float: right;
   font-size: 20px;
   position: relative;
   top: -8px;
 }
-.bravo_content .g-faq .item .body, .page-template-content .g-faq .item .body {
+.bravo_content .g-faq .item .body,
+.page-template-content .g-faq .item .body {
   font-size: 14px;
   color: #5E6D77;
   transition: all 0.3s;
@@ -6160,10 +6222,12 @@ Pricing Section
   overflow: hidden;
   padding-bottom: 0px;
 }
-.bravo_content .g-faq .item.active .header .arrow, .page-template-content .g-faq .item.active .header .arrow {
+.bravo_content .g-faq .item.active .header .arrow,
+.page-template-content .g-faq .item.active .header .arrow {
   transform: rotate(180deg);
 }
-.bravo_content .g-faq .item.active .body, .page-template-content .g-faq .item.active .body {
+.bravo_content .g-faq .item.active .body,
+.page-template-content .g-faq .item.active .body {
   height: auto;
   padding-bottom: 20px;
 }
@@ -6583,6 +6647,60 @@ ol {
   display: none;
 }
 
+.subscribe-plan .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffa636;
+  font-weight: 500;
+  padding: 10px;
+}
+.subscribe-plan .content a {
+  background: #19427f;
+  color: #fff;
+  text-align: center;
+  padding: 5px 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 3px;
+  margin-left: 4px;
+}
+.subscribe-plan .content a:hover {
+  color: #fff;
+}
+@media (max-width: 380px) {
+  .subscribe-plan .content a {
+    font-size: 0.65rem;
+  }
+}
+@media (max-width: 330px) {
+  .subscribe-plan .content a {
+    font-size: 0.6rem;
+    width: 37%;
+  }
+}
+.subscribe-plan .content p {
+  color: #fff;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .subscribe-plan .content p {
+    width: 53%;
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 380px) {
+  .subscribe-plan .content p {
+    font-size: 0.65rem;
+  }
+}
+@media (max-width: 330px) {
+  .subscribe-plan .content p {
+    font-size: 0.6rem;
+    width: 56%;
+  }
+}
+
 .bravo_wrap .bravo_footer .mailchimp {
   padding-top: 65px;
   padding-bottom: 40px;
@@ -6889,7 +7007,7 @@ ol {
 }
 .box-icons.roles ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style: none;
   margin-top: 0.5rem;
 }

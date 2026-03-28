@@ -4,7 +4,7 @@
     @php $services  = []; @endphp
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("Calendário de Disponibilidade de Serviços")}}</h1>
+            <h1 class="title-bar">{{__("Calendários de disponibilidade de Serviços")}}</h1>
         </div>
         @include('admin.message')
         <div class="panel">
@@ -13,7 +13,7 @@
                     <div class="col-left">
                         <form method="get" action="" class="filter-form filter-form-left d-flex flex-column flex-sm-row" role="search">
                             <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Pesquisar por nome')}}" class="form-control">
-                            <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Procurar')}}</button>
+                            <button class="btn-info btn btn-icon btn_search " type="submit">{{__('Procurar')}}</button>
                         </form>
                     </div>
                     <div class="col-right">
@@ -24,6 +24,7 @@
                 </div>
             </div>
         </div>
+
         @if(count($rows))
         <div class="panel">
             <div class="panel-title"><strong>{{__('Disponibilidade')}}</strong></div>
@@ -47,16 +48,18 @@
         @else
             <div class="alert alert-warning">{{__("Nenhum serviço encontrado")}}</div>
         @endif
+
         <div class="d-flex justify-content-center">
             {{$rows->appends($request->query())->links()}}
         </div>
     </div>
+
     <div id="bravo_modal_calendar" class="modal fade">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-dialog modal-lg  modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">{{__('Informações de data')}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -68,37 +71,61 @@
                                 <input readonly type="text" class="form-control has-daterangepicker">
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label >{{__('Status')}}</label>
                                 <br>
-                                <label ><input true-value=1 false-value=0 type="checkbox" v-model="form.active"> {{__('Disponível para reserva?')}}</label>
+                                <label><input true-value=1 false-value=0 type="checkbox" v-model="form.active"> {{__('Disponível para reserva?')}}</label>
                             </div>
                         </div>
-                        <div class="col-md-6" v-show="form.active">
+
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label >{{__('Preço por hora')}}</label>
-                                <input type="number"  v-model="form.price_per_hour" class="form-control">
+                                <label >{{__('Número máximo de convidados')}}</label>
+                                <input type="number"  v-model="form.max_guests" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6" v-show="form.active">
-                            <div class="form-group">
-                                <label >{{__('Preço por dia')}}</label>
-                                <input type="number"  v-model="form.price_per_day" class="form-control">
+
+                        <div class="" v-if="person_types">
+                            <div class="col-md-12" v-for="(type,index) in person_types">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__("Nome")}}</label>
+                                            <input type="text" readonly class="form-control" v-model="person_types[index].name">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>{{__("Min")}}</label>
+                                            <input type="text" v-model="person_types[index].min" class="form-control">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>{{__("Max")}}</label>
+                                            <input type="text" v-model="person_types[index].max" class="form-control">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>{{__("Preço")}}</label>
+                                            <input type="text" v-model="person_types[index].price" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 d-none" v-show="form.active">
+
+                        <div class="col-md-6" v-else>
                             <div class="form-group">
-                                <label >{{__('Número')}}</label>
-                                <input type="number"  v-model="form.number" class="form-control">
+                                <label >{{__("Preço")}}</label>
+                                <input type="text" v-model="form.price" class="form-control">
                             </div>
                         </div>
                     </form>
+
                     <div v-if="lastResponse.message">
                         <br>
-                        <div  class="alert" :class="!lastResponse.status ? 'alert-danger':'alert-success'">@{{ lastResponse.message }}</div>
+                        <div class="alert" :class="!lastResponse.status ? 'alert-danger':'alert-success'">@{{ lastResponse.message }}</div>
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Fechar')}}</button>
                     <button type="button" class="btn btn-primary" @click="saveForm">{{__('Salvar alterações')}}</button>
@@ -119,7 +146,7 @@
             white-space: nowrap;
             overflow: hidden;
         }
-        #dates-calendar .loading{
+        .tooltip.show {
 
         }
     </style>
@@ -133,47 +160,47 @@
     <script src="{{asset('libs/fullcalendar-4.2.0/daygrid/main.js')}}"></script>
 
     <script>
-		var calendarEl,calendar,lastId,formModal;
+        var calendarEl,calendar,lastId,formModal;
         $('#items_tab').on('show.bs.tab',function (e) {
-			calendarEl = document.getElementById('dates-calendar');
-			lastId = $(e.target).data('id');
+            calendarEl = document.getElementById('dates-calendar');
+            lastId = $(e.target).data('id');
             if(calendar){
-				calendar.destroy();
+                calendar.destroy();
             }
-			calendar = new FullCalendar.Calendar(calendarEl, {
+            calendar = new FullCalendar.Calendar(calendarEl, {
                 buttonText:{
-                    today:  '{{ __('Hoje') }}',
+                    today:  '{{ __("Hoje") }}',
                 },
-				plugins: [ 'dayGrid' ,'interaction'],
-				header: {},
-				selectable: true,
-				selectMirror: false,
-				allDay:false,
-				editable: false,
-				eventLimit: true,
-				defaultView: 'dayGridMonth',
+
+                plugins: [ 'dayGrid' ,'interaction'],
+                selectable: true,
+                selectMirror: false,
+                allDay:false,
+                editable: false,
+                eventLimit: true,
+                defaultView: 'dayGridMonth',
                 firstDay: daterangepickerLocale.first_day_of_week,
-				events:{
-                    	url:"{{route('assistance.admin.availability.loadDates')}}",
-						extraParams:{
-							id:lastId,
-                        }
+                events:{
+                    url:"{{route('assistance.admin.availability.loadDates')}}",
+                    extraParams:{
+                        id:lastId,
+                    }
                 },
-				loading:function (isLoading) {
-					if(!isLoading){
-						$(calendarEl).removeClass('loading');
-					}else{
-						$(calendarEl).addClass('loading');
-					}
-				},
-				select: function(arg) {
+                loading:function (isLoading) {
+                    if(!isLoading){
+                        $(calendarEl).removeClass('loading');
+                    }else{
+                        $(calendarEl).addClass('loading');
+                    }
+                },
+                select: function(arg) {
                     formModal.show({
                         start_date:moment(arg.start).format('YYYY-MM-DD'),
                         end_date:moment(arg.end).format('YYYY-MM-DD'),
                     });
-				},
+                },
                 eventClick:function (info) {
-					var form = Object.assign({},info.event.extendedProps);
+                    var form = Object.assign({},info.event.extendedProps);
                     form.start_date = moment(info.event.start).format('YYYY-MM-DD');
                     form.end_date = moment(info.event.start).format('YYYY-MM-DD');
                     console.log(form);
@@ -181,10 +208,11 @@
                 },
                 eventRender: function (info) {
                     $(info.el).find('.fc-title').html(info.event.title);
+                    $(info.el).find('.fc-content').attr("data-html","true").attr("title",info.event.title).tooltip({ boundary: 'window' })
                 }
-			});
-			calendar.render();
-		});
+            });
+            calendar.render();
+        });
 
         $('.event-name:first-child a').trigger('click');
 
@@ -197,27 +225,30 @@
                 },
                 form:{
                     id:'',
-                    price_per_hour:'',
-                    price_per_day:'',
+                    price:'',
                     start_date:'',
                     end_date:'',
-                    is_instant:'',
                     min_guests:0,
                     max_guests:0,
-                    active:0,
-                    number:0
+                    active:0
                 },
                 formDefault:{
                     id:'',
-                    price_per_hour:'',
-                    price_per_day:'',
+                    price:'',
                     start_date:'',
                     end_date:'',
-                    is_instant:'',
                     min_guests:0,
                     max_guests:0,
-                    active:0,
-                    number:0
+                    active:0
+                },
+                person_types:[
+                ],
+                person_type_item:{
+                    name:'',
+                    desc:'',
+                    min:'',
+                    max:'',
+                    price:'',
                 },
                 onSubmit:false
             },
@@ -229,6 +260,11 @@
 
                     if(typeof form !='undefined'){
                         this.form = Object.assign({},form);
+                        if(typeof this.form.person_types == 'object'){
+                            this.person_types = this.form.person_types;
+                        }else{
+                            this.person_types = false;
+                        }
                         if(form.start_date){
                             var drp = $('.has-daterangepicker').data('daterangepicker');
                             drp.setStartDate(moment(form.start_date).format(bookingCore.date_format));
@@ -239,6 +275,7 @@
                 hide:function () {
                     $(this.$el).modal('hide');
                     this.form = Object.assign({},this.formDefault);
+                    this.person_types = false;
                 },
                 saveForm:function () {
                     this.form.target_id = lastId;
@@ -249,15 +286,16 @@
                     if(!this.validateForm()) return;
 
                     this.onSubmit = true;
+                    this.form.person_types = this.person_types;
                     $.ajax({
-                        url:'{{route('assistance.admin.availability.store')}}',
+                        url:'{{route("assistance.admin.availability.store")}}',
                         data:this.form,
                         dataType:'json',
                         method:'post',
                         success:function (json) {
                             if(json.status){
                                 if(calendar)
-                                calendar.refetchEvents();
+                                    calendar.refetchEvents();
                                 me.hide();
                             }
                             me.lastResponse = json;
@@ -280,18 +318,16 @@
                 this.$nextTick(function () {
                     $('.has-daterangepicker').daterangepicker({ "locale": {"format": bookingCore.date_format}})
                      .on('apply.daterangepicker',function (e,picker) {
-                         console.log(picker);
                          me.form.start_date = picker.startDate.format('YYYY-MM-DD');
                          me.form.end_date = picker.endDate.format('YYYY-MM-DD');
                      });
+
                     $(me.$el).on('hide.bs.modal',function () {
                         this.form = Object.assign({},this.formDefault);
+                        this.person_types = [];
                     });
                 })
             },
-            mounted:function () {
-
-            }
         });
 
     </script>

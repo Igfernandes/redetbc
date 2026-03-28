@@ -2,7 +2,7 @@
 
 @section ('content')
     <h2 class="title-bar no-border-bottom">
-        {{ __("Serviços de disponibilidade") }}
+        {{ __("Viagens de Disponibilidade") }}
     </h2>
     <div class="language-navigation">
         <div class="panel-body">
@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-right">
                     @if($rows->total() > 0)
-                        <span class="count-string">{{ __("Mostrando :from - :to of :total services",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                        <span class="count-string">{{ __("Mostrando :from - :to of :total serviços",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                     @endif
                 </div>
             </div>
@@ -48,7 +48,7 @@
         {{$rows->appends($request->query())->links()}}
     </div>
     <div id="bravo_modal_calendar" class="modal fade">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg  modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">{{__('Informações de data')}}</h5>
@@ -71,22 +71,40 @@
                                 <label ><input true-value=1 false-value=0 type="checkbox" v-model="form.active"> {{__('Disponível para reserva?')}}</label>
                             </div>
                         </div>
-                        <div class="col-md-6" v-show="form.active">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label >{{__('Preço por hora')}}</label>
-                                <input type="number"  v-model="form.price_per_hour" class="form-control">
+                                <label >{{__('Convidado Máximo')}}</label>
+                                <input type="number"  v-model="form.max_guests" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6" v-show="form.active">
-                            <div class="form-group">
-                                <label >{{__('Preço por dia')}}</label>
-                                <input type="number"  v-model="form.price_per_day" class="form-control">
+                        <div class="" v-if="person_types">
+                            <div class="col-md-12" v-for="(type,index) in person_types">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__("Nome")}}</label>
+                                            <input type="text" readonly class="form-control" v-model="person_types[index].name">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>{{__("Min")}}</label>
+                                            <input type="text" v-model="person_types[index].min" class="form-control">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>{{__("Max")}}</label>
+                                            <input type="text" v-model="person_types[index].max" class="form-control">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>{{__("Preço")}}</label>
+                                            <input type="text" v-model="person_types[index].price" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 d-none" v-show="form.active">
+                        <div class="col-md-6" v-else>
                             <div class="form-group">
-                                <label >{{__('Número')}}</label>
-                                <input type="number"  v-model="form.number" class="form-control">
+                                <label >{{__("Preço")}}</label>
+                                <input type="text" v-model="form.price" class="form-control">
                             </div>
                         </div>
                     </form>
@@ -129,44 +147,44 @@
     <script src="{{asset('libs/fullcalendar-4.2.0/daygrid/main.js')}}"></script>
 
     <script>
-		var calendarEl,calendar,lastId,formModal;
+        var calendarEl,calendar,lastId,formModal;
         $('#items_tab').on('show.bs.tab',function (e) {
-			calendarEl = document.getElementById('dates-calendar');
-			lastId = $(e.target).data('id');
+            calendarEl = document.getElementById('dates-calendar');
+            lastId = $(e.target).data('id');
             if(calendar){
-				calendar.destroy();
+                calendar.destroy();
             }
-			calendar = new FullCalendar.Calendar(calendarEl, {
-				plugins: [ 'dayGrid' ,'interaction'],
-				header: {},
-				selectable: true,
-				selectMirror: false,
-				allDay:false,
-				editable: false,
-				eventLimit: true,
-				defaultView: 'dayGridMonth',
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: [ 'dayGrid' ,'interaction'],
+                header: {},
+                selectable: true,
+                selectMirror: false,
+                allDay:false,
+                editable: false,
+                eventLimit: true,
+                defaultView: 'dayGridMonth',
                 firstDay: daterangepickerLocale.first_day_of_week,
-				events:{
-                    	url:"{{route('assistance.vendor.availability.loadDates')}}",
-						extraParams:{
-							id:lastId,
-                        }
+                events:{
+                    url:"{{route('assistance.vendor.availability.loadDates')}}",
+                    extraParams:{
+                        id:lastId,
+                    }
                 },
-				loading:function (isLoading) {
-					if(!isLoading){
-						$(calendarEl).removeClass('loading');
-					}else{
-						$(calendarEl).addClass('loading');
-					}
-				},
-				select: function(arg) {
+                loading:function (isLoading) {
+                    if(!isLoading){
+                        $(calendarEl).removeClass('loading');
+                    }else{
+                        $(calendarEl).addClass('loading');
+                    }
+                },
+                select: function(arg) {
                     formModal.show({
                         start_date:moment(arg.start).format('YYYY-MM-DD'),
                         end_date:moment(arg.end).format('YYYY-MM-DD'),
                     });
-				},
+                },
                 eventClick:function (info) {
-					var form = Object.assign({},info.event.extendedProps);
+                    var form = Object.assign({},info.event.extendedProps);
                     form.start_date = moment(info.event.start).format('YYYY-MM-DD');
                     form.end_date = moment(info.event.start).format('YYYY-MM-DD');
                     console.log(form);
@@ -174,10 +192,11 @@
                 },
                 eventRender: function (info) {
                     $(info.el).find('.fc-title').html(info.event.title);
+                    $(info.el).find('.fc-content').attr("data-html","true").attr("title",info.event.title).tooltip({ boundary: 'window' })
                 }
-			});
-			calendar.render();
-		});
+            });
+            calendar.render();
+        });
 
         $('.event-name:first-child a').trigger('click');
 
@@ -193,24 +212,18 @@
                     price:'',
                     start_date:'',
                     end_date:'',
-                    is_instant:'',
-                    enable_person:0,
                     min_guests:0,
                     max_guests:0,
-                    active:0,
-                    number:0
+                    active:0
                 },
                 formDefault:{
                     id:'',
                     price:'',
                     start_date:'',
                     end_date:'',
-                    is_instant:'',
-                    enable_person:0,
                     min_guests:0,
                     max_guests:0,
-                    active:0,
-                    number:0
+                    active:0
                 },
                 person_types:[
 
@@ -233,21 +246,21 @@
                     if(typeof form !='undefined'){
                         this.form = Object.assign({},form);
                         if(typeof this.form.person_types == 'object'){
-                            this.person_types = Object.assign({},this.form.person_types);
+                            this.person_types = this.form.person_types;
+                        }else{
+                            this.person_types = false;
                         }
-
                         if(form.start_date){
                             var drp = $('.has-daterangepicker').data('daterangepicker');
                             drp.setStartDate(moment(form.start_date).format(bookingCore.date_format));
                             drp.setEndDate(moment(form.end_date).format(bookingCore.date_format));
-
                         }
                     }
                 },
                 hide:function () {
                     $(this.$el).modal('hide');
                     this.form = Object.assign({},this.formDefault);
-                    this.person_types = [];
+                    this.person_types = false;
                 },
                 saveForm:function () {
                     this.form.target_id = lastId;
@@ -258,16 +271,16 @@
                     if(!this.validateForm()) return;
 
                     this.onSubmit = true;
-                    this.form.person_types = Object.assign({},this.person_types);
+                    this.form.person_types = this.person_types;
                     $.ajax({
-                        url:'{{route('assistance.vendor.availability.store')}}',
+                        url:'{{route("assistance.vendor.availability.store")}}',
                         data:this.form,
                         dataType:'json',
                         method:'post',
                         success:function (json) {
                             if(json.status){
                                 if(calendar)
-                                calendar.refetchEvents();
+                                    calendar.refetchEvents();
                                 me.hide();
                             }
                             me.lastResponse = json;
@@ -284,23 +297,15 @@
 
                     return true;
                 },
-                addItem:function () {
-                    console.log(this.person_types);
-                    this.person_types.push(Object.assign({},this.person_type_item));
-                },
-                deleteItem:function (index) {
-                    this.person_types.splice(index,1);
-                }
             },
             created:function () {
                 var me = this;
                 this.$nextTick(function () {
                     $('.has-daterangepicker').daterangepicker({ "locale": {"format": bookingCore.date_format}})
-                     .on('apply.daterangepicker',function (e,picker) {
-                         console.log(picker);
-                         me.form.start_date = picker.startDate.format('YYYY-MM-DD');
-                         me.form.end_date = picker.endDate.format('YYYY-MM-DD');
-                     });
+                        .on('apply.daterangepicker',function (e,picker) {
+                            me.form.start_date = picker.startDate.format('YYYY-MM-DD');
+                            me.form.end_date = picker.endDate.format('YYYY-MM-DD');
+                        });
 
                     $(me.$el).on('hide.bs.modal',function () {
 

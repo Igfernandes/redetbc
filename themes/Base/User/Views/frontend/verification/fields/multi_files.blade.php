@@ -1,10 +1,10 @@
 <div class="form-group">
     <div class="row">
 
-        <label class="col-md-4 col-form-label" >{{$field['name_'.app()->getLocale()] ?? $field['name'] ?? $field['id']}}
+        <label class="col-md-4 col-form-label">{{$field['name_'.app()->getLocale()] ?? $field['name'] ?? $field['id']}}
 
             @if(!empty($field['required']))
-                <span class="text-danger">*</span>
+            <span class="text-danger">*</span>
             @endif
             :
         </label>
@@ -12,28 +12,37 @@
             <div class="private-file-lists mb-2">
                 @php ($old = $field['data'])
                 @if(!empty($old) and is_array($old))
-                    @foreach($old as $file)
-                        <div>
-                            <input type="hidden" name="verify_data_{{$field['id']}}[]" value="{{json_encode($file)}}">
-                            <a target="_blank" href="{{route('media.private.view',['path'=>$file['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("Visualizar documento")}}  &nbsp;&nbsp; <i class="fa fa-download"></i></a>
-                        </div>
-                    @endforeach
+                @foreach($old as $file)
+                <div>
+                    <input type="hidden" name="verify_data_{{$field['id']}}[]" value="{{json_encode($file)}}">
+                    <a target="_blank" href="{{route('media.private.view',['path'=>$file['path'] ?? '','v'=>uniqid()])}}" class="file-item">{{__("Visualizar documento")}} &nbsp;&nbsp; <i class="fa fa-download"></i></a>
+                </div>
+                @endforeach
                 @endif
             </div>
 
             @if(empty($only_show_data))
-                <span class="btn btn-primary btn-sm "><i class="fa fa-upload"></i> &nbsp;&nbsp; {{__('Selecionar arquivo')}}
-                    <input class="btn-upload-private-file" multiple data-name="verify_data_{{$field['id']}}[]"  data-multiple="true" type="file" >
-                </span>
+            <div class="file-group">
+                <div class="not_loading">
+                    <span class="btn btn-primary btn-sm "><i class="fa fa-upload"></i>&nbsp;&nbsp; {{__('Selecione o arquivo')}}
+                        <input class="btn-upload-private-file" data-name="verify_data_{{$field['id']}}" data-multiple="" type="file">
+                    </span>
+                </div>
+                <div class="is_loading">
+                    <span class="btn btn-primary btn-sm px-4">
+                        <i class="fa fa-spinner fa-spin"></i> {{__('Carregando...')}}
+                    </span>
+                </div>
+            </div>
             @else
-                @if(empty($field['data']))
-                    <div><strong>{{__('N/A')}}</strong></div>
-                @endif
-                @if(!empty($field['is_verified']))
-                    <a class="badge badge-success" href="#" onclick="return false"><i>{{__("Verificado")}}</i></a>
-                @else
-                    <span class="badge badge-secondary"><i>{{__("Não verificado")}}</i></span>
-                @endif
+            @if(empty($field['data']))
+            <div><strong>{{__('N/A')}}</strong></div>
+            @endif
+            @if(!empty($field['is_verified']))
+            <a class="badge badge-success" href="#" onclick="return false"><i>{{__("Verificado")}}</i></a>
+            @else
+            <span class="badge badge-secondary"><i>{{__("Não verificado")}}</i></span>
+            @endif
             @endif
         </div>
     </div>

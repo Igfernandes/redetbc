@@ -27,7 +27,7 @@ class ThemeProvider extends AbstractThemeProvider
         'booking'=>\Modules\Booking\ModuleProvider::class,
         'hotel'=>\Modules\Hotel\ModuleProvider::class,
         'space'=>\Modules\Space\ModuleProvider::class,
-        'event'=>\Modules\Event\ModuleProvider::class,
+        // 'event'=>\Modules\Event\ModuleProvider::class,
         'tour'=>\Modules\Tour\ModuleProvider::class,
         'assistance'=>\Modules\Assistance\ModuleProvider::class,
         'contact'=>\Modules\Contact\ModuleProvider::class,

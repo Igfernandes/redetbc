@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-right">
                         @if($rows->total() > 0)
-                            <span class="count-string">{{ __("Mostrando :from - :to de :total passeios",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                            <span class="count-string">{{ __("Mostrando :from - :to de :total Passeios",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                         @endif
                     </div>
                 </div>
@@ -46,7 +46,7 @@
             </div>
         </div>
         @else
-            <div class="alert alert-warning">{{__("Nenhum passeio encontrado")}}</div>
+            <div class="alert alert-warning">{{__("Nenhum Passeio encontrado")}}</div>
         @endif
 
         <div class="d-flex justify-content-center">

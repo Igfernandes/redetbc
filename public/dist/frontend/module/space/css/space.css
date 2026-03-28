@@ -288,11 +288,11 @@
   color: #687882;
   opacity: 0.6;
 }
-.bravo_wrap .bravo_search_space .bravo-list-item .list-item .item-loop .service-review {
-  margin: 10px 15px 0;
-}
 .bravo_wrap .bravo_search_space .bravo-list-item .list-item .item-loop .service-review .rate {
   color: #5191FA;
+}
+.bravo_wrap .bravo_search_space .bravo-list-item .list-item .item-loop .service-review {
+  margin: 10px 15px 0;
 }
 .bravo_wrap .bravo_search_space .bravo-list-item .list-item .item-loop .service-review .review {
   margin-left: 30px;
@@ -1024,11 +1024,11 @@
   color: #687882;
   opacity: 0.6;
 }
-.bravo_wrap .bravo_detail_space .bravo-list-space-related .item-loop .service-review {
-  margin: 10px 15px 0;
-}
 .bravo_wrap .bravo_detail_space .bravo-list-space-related .item-loop .service-review .rate {
   color: #5191FA;
+}
+.bravo_wrap .bravo_detail_space .bravo-list-space-related .item-loop .service-review {
+  margin: 10px 15px 0;
 }
 .bravo_wrap .bravo_detail_space .bravo-list-space-related .item-loop .service-review .review {
   margin-left: 30px;
@@ -2142,11 +2142,11 @@
   color: #687882;
   opacity: 0.6;
 }
-.has-search-map .bravo_search_map .results_map .item-loop .service-review {
-  margin: 10px 15px 0;
-}
 .has-search-map .bravo_search_map .results_map .item-loop .service-review .rate {
   color: #5191FA;
+}
+.has-search-map .bravo_search_map .results_map .item-loop .service-review {
+  margin: 10px 15px 0;
 }
 .has-search-map .bravo_search_map .results_map .item-loop .service-review .review {
   margin-left: 30px;

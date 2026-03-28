@@ -24,7 +24,7 @@
                     <div class="col-right">
                         @if($rows->total() > 0)
                             <span class="count-string">
-                                {{ __("Mostrando :from - :to de :total espaços", ["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}
+                                {{ __("Mostrando :from - :to de :total Espaços", ["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}
                             </span>
                         @endif
                     </div>

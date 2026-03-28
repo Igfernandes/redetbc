@@ -48,9 +48,7 @@
         <div>{{__("Pago")}}: {{format_money_main($booking->paid)}}</div>
         <div>{{__("Restante")}}: {{format_money($booking->total - $booking->paid)}}</div>
     </td>
-    <td>
-        {{ format_money($booking->commission) }}
-    </td>
+
     <td class="{{$booking->status}} a-hidden">{{$booking->statusName}}</td>
     <td width="2%">
         @if($service = $booking->service)

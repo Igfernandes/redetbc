@@ -31,7 +31,14 @@
                                 @if($service = $booking->service)
                                 <i class="{{ $service->getServiceIconFeatured() }} fs-5"></i>
                                 @endif
-                                <small class="d-block text-muted">{{ ucfirst($booking->object_model ?? 'hotel') }}</small>
+                                @php
+                                $modules = [
+                                "assistance" => "Serviços",
+                                "tour" => "Experiências",
+                                "space" => "Espaços"
+                                ];
+                                @endphp
+                                <small class="d-block text-muted">{{ $modules[$booking->object_model ] ?? "Serviço" }}</small>
                             </td>
 
                             {{-- Serviço --}}
@@ -58,8 +65,28 @@
 
                             {{-- Status --}}
                             <td>
-                                <span class="badge bg-{{ $booking->status == 'draft' ? 'warning' : 'success' }}">
-                                    {{ ucfirst($booking->status == 'draft' ? 'Pendente' : 'Finalizada') }}
+                                @php
+                                $status = [
+                                'draft' => [
+                                'color' => 'warning',
+                                'text' => 'Pendente'
+                                ],
+                                'published' => [
+                                'color' => 'success',
+                                'text' => 'Finalizada'
+                                ],
+                                'refused' => [
+                                'color' => 'danger',
+                                'text' => $booking->vendor_id != Auth::user()->id ? 'Cancelada' : 'Recusada'
+                                ],
+                                'unpaid' => [
+                                'color' => 'warning',
+                                'text' => 'Não Pago'
+                                ]
+                                ];
+                                @endphp
+                                <span class="badge bg-{{ $status[$booking->status ?? 'draft']['color'] }}">
+                                    {{ ucfirst($status[$booking->status ?? 'draft']['text']) }}
                                 </span>
                             </td>
 
@@ -78,11 +105,27 @@
                                                 <i class="icofont-eye"></i> &nbsp; {{ __("Visualizar") }}
                                             </a>
                                         </li>
+                                        @if( $booking->status === "draft")
+                                        @if($booking->vendor_id == Auth::user()->id)
                                         <li>
-                                            <a class="dropdown-item" href="{{ route('user.chat', ['bk' => $booking->id]) }}">
-                                                <i class="icofont-eye"></i> &nbsp; {{ __("Conversar") }}
+                                            <a class="dropdown-item" href="{{ route('user.accept', ['id' => $booking->id]) }}">
+                                                <i class="icofont-check"></i> &nbsp; {{ __("Aceitar") }}
                                             </a>
                                         </li>
+                                        @endif
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('user.refuse', ['id' => $booking->id]) }}">
+                                                <i class="icofont-close"></i> &nbsp; {{ __( $booking->vendor_id != Auth::user()->id ? "Cancelar" :"Recusar") }}
+                                            </a>
+                                        </li>
+                                        @elseif($booking->status === "published")
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('user.chat', ['bk' => $booking->id]) }}">
+                                                <i class="icofont-comments"></i> &nbsp; {{ __("Conversar") }}
+                                            </a>
+                                        </li>
+                                        @endif
+
                                     </ul>
                                 </div>
                             </td>

@@ -3,6 +3,7 @@
 namespace Modules\User\Controllers;
 
 use App\Models\User;
+use DateTime;
 use Illuminate\Validation\Rule;
 use Matrix\Exception;
 use Modules\Assistance\Models\Assistance;
@@ -87,40 +88,49 @@ class UserController extends FrontendController
 
     public function profileUpdate(Request $request)
     {
-        if (is_demo_mode()) {
-            return back()->with('error', "Demo mode: disabled");
-        }
+
         $user = Auth::user();
-        $messages = [
-            'user_name.required'      => __('O campo Nome de usuário é obrigatório.'),
-        ];
+
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name'  => 'required|max:255',
+            'facebook' => 'nullable|url|max:255',
+            'instagram' => 'nullable|url|max:255',
+            'twitter' => 'nullable|url|max:255',
+            'whatsapp' => 'nullable|url|max:255',
             'email'      => [
                 'required',
                 'email',
                 'max:255',
                 Rule::unique('users')->ignore($user->id)
             ],
-            'user_name' => [
-                'required',
-                'max:255',
-                'min:4',
-                'string',
-                'alpha_dash',
-                Rule::unique('users')->ignore($user->id)
-            ],
+            'purposes' => 'required|array|min:3',
+            'purposes.*' => 'string',
             'phone'       => [
                 'required',
                 Rule::unique('users')->ignore($user->id)
             ],
-        ], $messages);
+        ], [
+            'purposes.required' => 'Selecione pelo menos 3 Afinidades.',
+            'purposes.min' => 'Você precisa escolher no mínimo :min Afinidades.',
+            'purposes.array' => 'Selecione opções válidas.',
+        ]);
+
+        if ($request->input('facebook') == null && $request->input('instagram') == null) {
+            return redirect()->back()->with('error', 'É obrigatório colocar o link de pelo menos do facebook ou instagram');
+        }
+
         $input = $request->except('bio');
+        $purposes = $request->input('purposes', []);
+        $input['purposes'] = implode(',', $purposes);
+
         $user->fill($input);
         $user->bio = clean($request->input('bio'));
-        $user->birthday = date("Y-m-d", strtotime($user->birthday));
-        $user->user_name = Str::slug($request->input('user_name'), "_");
+        $birthday = DateTime::createFromFormat('d/m/Y', $input['birthday']);
+        $user->birthday = $birthday?->format('Y-m-d');
+        $user->user_name = Str::slug($request->input('first_name'), "_");
+
+        $user->is_verified = 1;
         $user->save();
         return redirect()->back()->with('success', __('Atualizado com sucesso'));
     }
@@ -171,7 +181,7 @@ class UserController extends FrontendController
 
     public function upgradeVendorPlans()
     {
-        
+
         $plans = User::query()->whereStatus('publish')->get();
 
         $plansAnnual = \array_filter($plans->toArray(), fn($plan) => !empty($plan['annual_price']) && $plan['annual_price'] > 0);

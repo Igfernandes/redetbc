@@ -13,7 +13,7 @@
                             @endphp
                             @if($logo_id)
                             <?php $logo = get_file_url($logo_id, 'full'); ?>
-                            <img src="{{$logo}}" alt="{{ setting_item('site_title') }}">
+                            <img src="{{asset($logo)}}" alt="{{ setting_item('site_title') }}">
                             @endif
                         </a>
                     </div>
@@ -43,7 +43,7 @@
 
                     <div style="text-align: center;">
                         @if(!empty($avatar))
-                        <img src="{{ $avatar }}" alt="Avatar" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:15px;">
+                        <img src="{{ asset($avatar) }}" alt="Avatar" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:15px;">
                         @endif
 
                         <p style="font-size: 15px; color:#555; line-height: 1.5;">
@@ -80,21 +80,6 @@
         <tfoot>
             <tr>
                 <td style="padding: 30px 0;border-bottom: 10px solid #ececec;">
-                    <div style="text-align: center;">
-                        <a href="{{ url('/') }}" class="bravo-logo">
-                            @php
-                            $logo_id = setting_item("logo_id");
-                            if(!empty($row->custom_logo)){
-                            $logo_id = $row->custom_logo;
-                            }
-                            @endphp
-                            @if($logo_id)
-                            <?php $logo = get_file_url($logo_id, 'full'); ?>
-                            <img src="{{$logo}}" alt="{{ setting_item('site_title') }}">
-                            @endif
-                        </a>
-                    </div>
-
                     <div style="text-align: center;margin-top: 40px;border-top: 4px solid #ececec;padding-top: 35px;">
                         <a style="color: #0076ff;margin: 0 15px;" href="{{ url('/user/dashboard') }}" target="_blank" rel="noopener noreferrer">
                             {{ __('Acessar minha conta') }}
@@ -109,7 +94,7 @@
             <tr>
                 <td style="padding: 30px;text-align: center;color: gray;">
                     <p style="margin: 10px 0 5px;">{{ __('O maior portal nacional de aluguel de temporada do Brasil.') }}</p>
-                    <span>{{ __('Servindo milhões de viajantes e anunciantes desde 2025.') }}</span>
+                    <span>{{ __('Servindo milhões de membros e anunciantes desde 2025.') }}</span>
                 </td>
             </tr>
         </tfoot>

@@ -9,8 +9,7 @@
             padding: 10px;
 
             @media (max-width: 768px) {
-              display: block;
-
+                display: block;
             }
 
             p {
@@ -180,6 +179,50 @@
 
                 @media (max-width: 991px) {
                     flex: initial;
+                    width: 100%;
+                }
+                .box-content {
+                    .filter-key {
+                        margin-left: 7% !important;
+                    }
+                    @media (max-width: 991px) {
+                        flex-wrap: wrap;
+                        width: 100%;
+                        justify-content: center;
+                        .filter-key {
+                            margin-left: 0% !important;
+                        }
+                    }
+                    img{
+                        width: 100%;
+                    }
+                }
+
+                .bravo-more-menu {
+                    border: none;
+                    background: transparent;
+                    font-size: 32px;
+                    padding: 0px 10px;
+                    float: right;
+                    display: none;
+                    color: #003583;
+
+                    @media (max-width: 991px) {
+                        display: block;
+                        float: right;
+                    }
+
+                    -webkit-transition: all 0.3s;
+                    -moz-transition: all 0.3s;
+                    -ms-transition: all 0.3s;
+                    -o-transition: all 0.3s;
+                    transition: all 0.3s;
+
+                    &.active {
+                        background: #1a2b48;
+                        color: #fff;
+                        border-radius: 5px;
+                    }
                 }
 
                 .bravo-menu {
@@ -222,7 +265,7 @@
                                 color: #1a2b47;
                             }
 
-                            >.fa {
+                            > .fa {
                                 position: absolute;
                                 top: 50%;
                                 margin-top: -9px;
@@ -231,7 +274,7 @@
                                 transition: all 0.3s;
                             }
 
-                            >.menu-dropdown {
+                            > .menu-dropdown {
                                 list-style: none;
                                 position: absolute;
                                 left: 0;
@@ -275,17 +318,17 @@
                             }
 
                             &:hover {
-                                >.menu-dropdown {
+                                > .menu-dropdown {
                                     top: 100%;
                                     opacity: 1;
                                     visibility: visible;
                                 }
 
-                                >a {
+                                > a {
                                     color: #3266b4;
                                 }
 
-                                >.fa {
+                                > .fa {
                                     color: #003583;
                                 }
                             }
@@ -295,7 +338,7 @@
                     .main-menu {
                         .depth-0 {
                             &:last-child {
-                                >.menu-dropdown {
+                                > .menu-dropdown {
                                     left: auto;
                                     right: 0;
                                 }
@@ -367,7 +410,7 @@
                     }
 
                     .login-item {
-                        >.is_login {
+                        > .is_login {
                             padding-right: 50px;
                             display: block;
 
@@ -520,7 +563,7 @@
                     &.multi-lang {
                         padding: 0;
 
-                        >li {
+                        > li {
                             padding: 15px 20px;
                             border-top: solid 1px #e6e6e6;
 
@@ -538,7 +581,7 @@
                             }
 
                             &.show {
-                                >a {
+                                > a {
                                     i {
                                         &:before {
                                             content: "\f107";
@@ -563,7 +606,8 @@
 
                                         &:before {
                                             content: "\f178";
-                                            font: normal normal normal 14px/1 FontAwesome;
+                                            font: normal normal normal 14px/1
+                                                FontAwesome;
                                             padding-right: 5px;
                                             color: #383838;
                                         }
@@ -583,11 +627,11 @@
                 overflow-x: scroll;
                 width: 100%;
 
-                >ul {
+                > ul {
                     padding: 10px 20px;
                     list-style: none;
 
-                    >li {
+                    > li {
                         a {
                             color: #1a2b48;
                             border-bottom: solid 1px #e6e6e6;
@@ -616,7 +660,7 @@
                             }
                         }
 
-                        >.children-menu {
+                        > .children-menu {
                             display: none;
                             list-style: none;
 
@@ -625,7 +669,7 @@
                                     padding-left: 15px;
                                 }
 
-                                >.children-menu {
+                                > .children-menu {
                                     display: none;
                                     list-style: none;
 
@@ -639,27 +683,27 @@
                         }
 
                         &.active {
-                            >a {
+                            > a {
                                 border-bottom: dashed 1px #1a2b48;
 
-                                >.caret {
+                                > .caret {
                                     &:before {
                                         content: "\f107";
                                     }
                                 }
                             }
 
-                            >.children-menu {
+                            > .children-menu {
                                 display: block;
 
-                                >li {
+                                > li {
                                     &.active {
-                                        >.children-menu {
+                                        > .children-menu {
                                             display: block;
                                         }
 
-                                        >a {
-                                            >.caret {
+                                        > a {
+                                            > .caret {
                                                 &:before {
                                                     content: "\f107";
                                                 }
@@ -676,7 +720,6 @@
     }
 
     #header {
-
         &.js-header-fix-moment,
         &.header-white {
             .bravo-more-menu {
@@ -695,17 +738,17 @@
                         }
 
                         &:hover {
-                            >.menu-dropdown {
+                            > .menu-dropdown {
                                 top: 100%;
                                 opacity: 1;
                                 visibility: visible;
                             }
 
-                            >a {
+                            > a {
                                 color: #003583 !important;
                             }
 
-                            >.fa {
+                            > .fa {
                                 color: #003583 !important;
                             }
                         }
@@ -724,7 +767,10 @@
                     color: #3b444f;
                 }
 
-                &.u-header__topbar [class*="u-header__topbar-divider"]:not(.list-inline):before {
+                &.u-header__topbar
+                    [class*="u-header__topbar-divider"]:not(
+                        .list-inline
+                    ):before {
                     background-color: #3b444f;
                 }
 
@@ -789,7 +835,7 @@
                     .content {
                         .header-left {
                             .bravo-menu {
-                                >ul>li>a {
+                                > ul > li > a {
                                     color: #fff;
                                 }
                             }
@@ -799,7 +845,7 @@
             }
 
             .page-template-content {
-                >div:first-child {
+                > div:first-child {
                     padding-top: 220px;
                 }
 

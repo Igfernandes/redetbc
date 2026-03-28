@@ -3,7 +3,7 @@
     <h2 class="title-bar">
         {{!empty($recovery) ?__('Recuperação Espaços') : __("Gerenciar Espaços")}}
         @if(Auth::user()->hasPermission('space_create')&& empty($recovery))
-            <a href="{{ route("space.vendor.create") }}" class="btn-change-password">{{__("Adicionar Novo Espaço")}}</a>
+            <a href="{{ route("space.vendor.create") }}" class="btn-change-password">{{__("Adicionar Novo espaço")}}</a>
         @endif
     </h2>
     @include('admin.message')

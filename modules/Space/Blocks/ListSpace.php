@@ -124,7 +124,7 @@ class ListSpace extends BaseBlock
                     ])
                 ],
             ],
-            'category' => __("Serviço de Espaço")
+            'category' => __("Serviço de espaço")
         ];
     }
 

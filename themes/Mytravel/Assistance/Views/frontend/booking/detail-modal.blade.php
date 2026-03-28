@@ -1,9 +1,11 @@
 <div class="modal fade" id="modal-booking-{{$booking->id}}">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
+            <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">{{__("ID da Reserva")}}: #{{$booking->id}}</h4>
             </div>
+            <!-- Modal body -->
             <div class="modal-body">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -11,7 +13,8 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#booking-customer-{{$booking->id}}">
-                            {{__("Informação do Cliente")}}
+
+                            {{__("Informações do Cliente")}}
                         </a>
                     </li>
                 </ul>
@@ -23,11 +26,11 @@
                                     <div class="info-form">
                                         <ul>
                                             <li>
-                                                <div class="label">{{__('Status da Reserva')}}</div>
+                                                <div class="label">{{__('Status da reserva')}}</div>
                                                 <div class="val">{{$booking->statusName}}</div>
                                             </li>
                                             <li>
-                                                <div class="label">{{__('Data da Reserva')}}</div>
+                                                <div class="label">{{__('Data da reserva')}}</div>
                                                 <div class="val">{{display_date($booking->created_at)}}</div>
                                             </li>
                                             @if(!empty($booking->gateway))
@@ -48,7 +51,7 @@
                                             @php $vendor = $service->author; @endphp
                                             @if($vendor->hasPermission('dashboard_vendor_access') and !$vendor->hasPermission('dashboard_access'))
                                                 <li>
-                                                    <div class="label">{{ __("Fornecedor") }}</div>
+                                                    <div class="label">{{ __("Anfitrião") }}</div>
                                                     <div class="val"><a href="{{route('user.profile',['id'=>$vendor->id])}}" target="_blank" >{{$vendor->getDisplayName()}}</a></div>
                                                 </li>
                                             @endif
@@ -66,6 +69,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal footer -->
             <div class="modal-footer">
                 <span class="btn btn-secondary" data-dismiss="modal">{{__("Fechar")}}</span>
             </div>

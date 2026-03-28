@@ -28,7 +28,7 @@ trait CardsNetwork
         ])->get()->sum('amount');
 
         $received = $payments->sum('amount');
-        $pendentAmount = ($pendents / $commission) - $received;
+        $pendentAmount = $commission > 0 && $pendents > 0 ? ($pendents / $commission) - $received  : 0;
 
         $res[] = [
             'title'  => __("Membros Diretos"),

@@ -1,3 +1,16 @@
 {
-    "Sign in or Register": "Entrar ou Registrar"
+    "presenter": "Anfitrião",
+    "traveler": "Viajante",
+    "Both": "Ambos",
+    "administrator": "Administrador",
+    "vendor": "Vendedor",
+    "Sign in or Register": "Entrar ou Registrar",
+    "Verification data": "Dados de verificação",
+    "Photos of front document": "Fotos da frente do documento",
+    "Photos of back document": "Fotos do verso do documento",
+    "Photo holding document": "Foto segurando o documento",
+    "Select Sex": "Selecione o Sexo",
+    "Select religion": "Selecione a religião",
+    "The :name is required": "O :name é obrigatório",
+    "Please check the form below for errors": "Por favor, verifique o formulário abaixo em busca de erros"
 }

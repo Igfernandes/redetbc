@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Modules\AdminController;
 use Modules\User\Models\Plan;
 use Modules\User\Models\PlanTranslation;
+use Modules\User\Models\UserPlan;
 
 class PlanController extends AdminController
 {
@@ -111,34 +112,51 @@ class PlanController extends AdminController
 
     public function bulkEdit(Request $request)
     {
-        if (is_demo_mode()) {
-            return back()->with('error', "Demo mode: disabled");
-        }
-        $this->checkPermission('dashboard_access');
         $ids = $request->input('ids');
-        $action = $request->input('action');
+        $actions = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
-            return redirect()->back()->with('error', __('Selecione pelo menos 1 item!'));
+            return back()->with('danger', __('Por favor, selecione pelo menos 1 item!'));
         }
-        if (empty($action)) {
-            return redirect()->back()->with('error', __('Selecione uma ação!'));
-        }
-        if ($action == "delete") {
-            foreach ($ids as $id) {
-                $query = $this->planClass::where("id", $id)->first();
-                if (!empty($query)) {
-                    //Del parent category
-                    $query->delete();
-                }
+
+        foreach ($ids as $id) {
+            if (!isset($actions[$id])) continue;
+
+            $query = UserPlan::where("id", $id);
+            $row = $query->first();
+
+            if (empty($row)) {
+                return back()->with('danger', __('Item não encontrado!'));
             }
-        } else {
-            foreach ($ids as $id) {
-                $query = $this->planClass::where("id", $id);
-                $query->update(['status' => $action]);
+
+            switch ($actions[$id]) {
+                case "delete":
+                    foreach ($ids as $id) {
+                        $query = UserPlan::where("id", $id);
+                        $row = $query->first();
+                        if (!empty($row)) {
+                            $row->delete();
+                        }
+                    }
+                    return back()->with('success', __('Deletado com sucesso!'));
+                    break;
+                case "gratuity":
+                    foreach ($ids as $id) {
+                        $query = UserPlan::where("id", $id);
+                        $row = $query->first();
+                        if (!empty($row)) {
+                            $row->status = 1;
+                            $row->end_date = null;
+                            $row->save();
+                        }
+                    }
+                    return back()->with('success', __('Atualizado com sucesso!'));
+                    break;
             }
         }
-        return redirect()->back()->with('success', __('Atualizado com sucesso!'));
+
+        return back()->with('danger', __('Não há o que atualizar.'));
     }
+
 
     public function getForSelect2(Request $request)
     {

@@ -77,8 +77,8 @@
                     "markers" => $markers,
                     'fragments'=>[
                         '.ajax-search-result'=>view('Tour::frontend.ajax.search-result'.($for_map ? '-map' : ''), $data)->render(),
-                        '.result-count'=>$list->total() ? ($list->total() > 1 ? __(":count de tours encontrados",['count'=>$list->total()]) : __(":count de tour encontrado",['count'=>$list->total()])) : '',
-                        '.count-string'=> $list->total() ? __("Mostrando :from - :to of :total Tours",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
+                        '.result-count'=>$list->total() ? ($list->total() > 1 ? __(":count de passeios encontrados",['count'=>$list->total()]) : __(":count de tour encontrado",['count'=>$list->total()])) : '',
+                        '.count-string'=> $list->total() ? __("Mostrando :from - :to de :total passeios",["from"=>$list->firstItem(),"to"=>$list->lastItem(),"total"=>$list->total()]) : ''
                     ]
                 ]);
             }

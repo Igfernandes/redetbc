@@ -11,8 +11,6 @@ var mapEngine = new BravoMapEngine('bravo_results_map',{
     }
 });
 jQuery(function ($) {
-
-
 	$(".bravo-filter-price").each(function () {
 		var input_price = $(this).find(".filter-price");
 		var min = input_price.data("min");
@@ -50,12 +48,27 @@ jQuery(function ($) {
 		$('#advance_filters').addClass('d-none');
 	})
 
-	function reloadForm(){
+	function reloadForm(byUrl){
+        let filterFormData = $('.bravo_form_search_map').find('input,textarea,select').serializeArray().filter(function (x) {
+            return x.value;
+        });
+        let advanceFormData = $('#advance_filters').find('input,textarea,select').serializeArray().filter(function (x) {
+            return x.value;
+        });
+        const params = [...filterFormData,...advanceFormData];
 		$('.map_loading').show();
+        const fullUrl = typeof byUrl !== 'undefined' ? byUrl : currentUrl + '?' + params.map((p)=>p.name+"="+p.value).join('&');
+
+        window.history.pushState({}, '', fullUrl);
+
+        $('.item-loop-wrap').addClass('skeleton-loading');
+
 		$.ajax({
-			data:$('.bravo_form_search_map input,select,textarea,input:hidden,#advance_filters input,select,textarea').serialize()+'&_ajax=1',
-			url:window.location.href.split('?')[0],
-			dataType:'json',
+            url:fullUrl,
+            data:{
+                _ajax:1,
+                _map:1
+            },
 			type:'get',
 			success:function (json) {
 				$('.map_loading').hide();
@@ -64,7 +77,11 @@ jQuery(function ($) {
 					mapEngine.clearMarkers();
 					mapEngine.addMarkers2(json.markers);
 
-					$('.bravo-list-item').replaceWith(json.html);
+                    if(typeof json.fragments !== 'undefined'){
+                        for(const k in json.fragments){
+                            $(k).html(json.fragments[k]);
+                        }
+                    }
 
 					$('.listing_items').animate({
                         scrollTop:0
@@ -86,47 +103,6 @@ jQuery(function ($) {
 		})
 	}
 
-	function reloadFormByUrl(url){
-        $('.map_loading').show();
-        $.ajax({
-            url:url,
-            dataType:'json',
-            type:'get',
-            success:function (json) {
-                $('.map_loading').hide();
-                if(json.status)
-                {
-                    mapEngine.clearMarkers();
-                    mapEngine.addMarkers2(json.markers);
-
-                    $('.bravo-list-item').replaceWith(json.html);
-
-					setTimeout(function () {
-						$('.listing_items').animate({
-							scrollTop:0
-						},'fast');
-						if($(document).width() < 991){
-							$('html,body').animate({
-								scrollTop: $(".listing_items").offset().top - 50
-							},'fast');
-						}
-					},500);
-
-                    if(window.lazyLoadInstance){
-                        window.lazyLoadInstance.update();
-                    }
-                }
-
-            },
-            error:function (e) {
-                $('.map_loading').hide();
-                if(e.responseText){
-                    $('.bravo-list-item').html('<p class="alert-text danger">'+e.responseText+'</p>')
-                }
-            }
-        })
-	}
-
 	$('.toggle-advance-filter').click(function () {
 		var id = $(this).data('target');
 		$(id).toggleClass('d-none');
@@ -140,7 +116,7 @@ jQuery(function ($) {
     })
 		.on('click','.bravo-pagination a',function (e) {
 			e.preventDefault();
-            reloadFormByUrl($(this).attr('href'));
+            reloadForm($(this).attr('href'));
         })
 	;
 

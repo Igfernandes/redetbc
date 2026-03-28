@@ -2,8 +2,8 @@
 use Modules\User\Models\Role;
 
 $roles = [];
-foreach (Role::all(['id', 'name'])->toArray() as $role) {
-$roles[strtolower($role['name'])] = $role['id'];
+foreach (Role::all(['id', 'code'])->toArray() as $role) {
+$roles[strtolower($role['code'])] = $role['id'];
 }
 @endphp
 
@@ -37,17 +37,17 @@ $roles[strtolower($role['name'])] = $role['id'];
                 <span class="invalid-feedback error error-role"></span>
             </div>
             <ul>
-                @if(isset($roles['traveler']))
-                <li>
-                    <input type="radio" name="role" value="{{$roles['traveler']}}">
+                @if(isset($roles['member']))
+                <li class="mx-1">
+                    <input type="radio" name="role" value="{{$roles['member']}}">
                     <div class="text">
                         <i class="icofont-travelling"></i>
-                        <span>{{__('Viajante')}}</span>
+                        <span>{{__('Membro')}}</span>
                     </div>
                 </li>
                 @endif
                 @if(isset($roles['presenter']))
-                <li>
+                <li class="mx-1">
                     <input type="radio" name="role" value="{{$roles['presenter']}}">
                     <div class="text">
                         <i class="icofont-hotel-boy-alt"></i>
@@ -55,8 +55,8 @@ $roles[strtolower($role['name'])] = $role['id'];
                     </div>
                 </li>
                 @endif
-                @if(isset($roles['hotel']))
-                <li>
+                @if(false)
+                <li class="mx-1">
                     <input type="radio" name="role" value="{{$roles['hotel']}}">
                     <div class="text">
                         <i class="icofont-building-alt"></i>

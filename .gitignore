@@ -7,6 +7,8 @@
 /public/storage/framework/views/*
 /storage/*.key
 /storage/framework/cache/data
+/storage/framework/views/*
+/storage/framework/sessions/*
 /storage/logs/*
 /storage/debugbar/*
 /storage/app/private/*

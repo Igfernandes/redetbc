@@ -75,12 +75,12 @@
                         {!! setting_item_with_lang("invoice_company_info") !!}
                     </div>
                 </th>
-                <th width="50%" align="right" class="text-right">
+                <!-- <th width="50%" align="right" class="text-right">
                     <h2 class="invoice-text-title">{{__("Fatura")}}</h2>
                     {{__('Invoice #: :number',['number'=>$booking->id])}}
                     <br>
                     {{__('Created: :date',['date'=>display_date($booking->created_at)])}}
-                </th>
+                </th> -->
             </tr>
             <tr>
                 <th width="50%">

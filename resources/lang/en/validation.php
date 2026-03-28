@@ -151,6 +151,8 @@ return [
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',
     'uuid' => 'The :attribute field must be a valid UUID.',
+    "Please check the form below for errors" => "Por favor, verifique o formulário abaixo em busca de erros",
+    'form_has_errors' => 'Por favor, verifique o formulário abaixo para corrigir os erros.',
 
     /*
     |--------------------------------------------------------------------------

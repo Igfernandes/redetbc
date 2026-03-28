@@ -1,14 +1,15 @@
 <?php
 namespace Modules\Assistance\Blocks;
 
+use Modules\Assistance\Models\AssistanceCategory;
 use Modules\Template\Blocks\BaseBlock;
 use Modules\Location\Models\Location;
 use Modules\Media\Helpers\FileHelper;
+use Modules\Assistance\Models\TourCategory;
 
-class FormSearchAssistance extends BaseBlock
+class  FormSearchAssistance extends BaseBlock
 {
-    public function getOptions()
-    {
+    public function getOptions(){
         return [
             'settings' => [
                 [
@@ -33,8 +34,12 @@ class FormSearchAssistance extends BaseBlock
                             'name' => __("Normal")
                         ],
                         [
-                            'value'   => 'assistanceousel',
-                            'name' => __("Slider Assistanceousel")
+                            'value'   => 'carousel',
+                            'name' => __("Carrossel deslizante")
+                        ],
+                        [
+                            'value'   => 'carousel_v2',
+                            'name' => __("Slider Carousel Ver 2")
                         ]
                     ]
                 ],
@@ -50,6 +55,18 @@ class FormSearchAssistance extends BaseBlock
                     'title_field' => 'title',
                     'settings'    => [
                         [
+                            'id'        => 'title',
+                            'type'      => 'input',
+                            'inputType' => 'text',
+                            'label'     => __('Título (using for slider ver 2)')
+                        ],
+                        [
+                            'id'        => 'desc',
+                            'type'      => 'input',
+                            'inputType' => 'text',
+                            'label'     => __('Desc (using for slider ver 2)')
+                        ],
+                        [
                             'id'    => 'bg_image',
                             'type'  => 'uploader',
                             'label' => __('Carregador de Imagem de Fundo')
@@ -57,13 +74,13 @@ class FormSearchAssistance extends BaseBlock
                     ]
                 ]
             ],
-            'category'=>__("Serviço Serviço")
+            'category'=>__("Serviços")
         ];
     }
 
     public function getName()
     {
-        return __('Serviço: Pesquisa de Formulário');
+        return __('Serviços: Formulário de Pesquisa');
     }
 
     public function content($model = [])
@@ -73,7 +90,7 @@ class FormSearchAssistance extends BaseBlock
             $limit_location = 1000;
         }
         $data = [
-            'list_location' => Location::where("status","publish")->limit($limit_location)->with(['translation'])->get()->toTree(),
+            'assistance_location' => Location::where("status","publish")->limit($limit_location)->with(['translation'])->get()->toTree(),
             'bg_image_url'  => '',
         ];
         $data = array_merge($model, $data);
@@ -82,7 +99,8 @@ class FormSearchAssistance extends BaseBlock
         }
         $data['style'] = $model['style'] ?? "";
         $data['list_slider'] = $model['list_slider'] ?? "";
-        return $this->view('Assistance::frontend.blocks.form-search-assistance.index', $data);
+        $data['assistance_category'] = AssistanceCategory::where('status', 'publish')->with(['translation'])->get()->toTree();
+        return view('Assistance::frontend.blocks.form-search-assistance.index', $data);
     }
 
     public function contentAPI($model = []){

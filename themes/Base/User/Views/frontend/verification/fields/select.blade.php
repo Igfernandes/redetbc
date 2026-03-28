@@ -13,7 +13,7 @@
                 @foreach($field['options'] ?? [] as $optionValue => $optionLabel)
                 <option value="{{$optionValue}}"
                     {{$field['data'] == $optionValue ? 'selected' : ''}}>
-                    {{$optionLabel}}
+                    {{__($optionLabel)}}
                 </option>
                 @endforeach
             </select>

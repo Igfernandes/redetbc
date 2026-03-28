@@ -1,16 +1,21 @@
 <?php
 namespace Modules\Assistance;
-use Modules\Assistance\Models\Assistance;
+
+use Illuminate\Support\ServiceProvider;
+use Modules\Core\Helpers\SitemapHelper;
 use Modules\ModuleServiceProvider;
+use Modules\Assistance\Models\Assistance;
 use Modules\User\Helpers\PermissionHelper;
 
 class ModuleProvider extends ModuleServiceProvider
 {
-
-    public function boot(){
-
-        $this->mergeConfigFrom(__DIR__ . '/Configs/assistance.php','assistance');
+    public function boot(SitemapHelper $sitemapHelper)
+    {
         $this->loadMigrationsFrom(__DIR__ . '/Migrations');
+
+        if(is_installed() and Assistance::isEnable()){
+            $sitemapHelper->add("assistance",[app()->make(Assistance::class),'getForSitemap']);
+        }
 
         PermissionHelper::add([
             // Assistance
@@ -22,6 +27,7 @@ class ModuleProvider extends ModuleServiceProvider
             'assistance_manage_attributes',
         ]);
     }
+
     /**
      * Register bindings in the container.
      *
@@ -32,35 +38,53 @@ class ModuleProvider extends ModuleServiceProvider
         $this->app->register(RouterServiceProvider::class);
     }
 
-    public static function getAdminMenu()
+    public static function getBookableServices()
     {
         if(!Assistance::isEnable()) return [];
         return [
-            'assistance'=>[
-                "position"=>45,
+            'assistance' => Assistance::class,
+        ];
+    }
+
+    public static function getAdminMenu()
+    {
+        $res = [];
+        if(Assistance::isEnable()){
+            $res['assistance'] = [
+                "position"=>40,
                 'url'        => route('assistance.admin.index'),
-                'title'      => __('Serviços'),
-                'icon'       => 'ion-ios-bookmarks',
+                'title'      => __("Serviços"),
+                'icon'       => 'icon ion-md-umbrella',
                 'permission' => 'assistance_view',
                 'children'   => [
-                    'add'=>[
+                    'assistance_view'=>[
                         'url'        => route('assistance.admin.index'),
-                        'title'      => __('Todos os Serviços'),
+                        'title'      => __('Todos Serviços'),
                         'permission' => 'assistance_view',
                     ],
-                    'create'=>[
+                    'assistance_create'=>[
                         'url'        => route('assistance.admin.create'),
-                        'title'      => __('Todos os Novos serviços'),
+                        'title'      => __("Adicionar Serviço"),
                         'permission' => 'assistance_create',
                     ],
-                    'attribute'=>[
+                    'assistance_category'=>[
+                        'url'        => route('assistance.admin.category.index'),
+                        'title'      => __('Categorias'),
+                        'permission' => 'assistance_manage_others',
+                    ],
+                    'assistance_attribute'=>[
                         'url'        => route('assistance.admin.attribute.index'),
                         'title'      => __('Atributos'),
                         'permission' => 'assistance_manage_attributes',
                     ],
-                    'availability'=>[
+                    'assistance_availability'=>[
                         'url'        => route('assistance.admin.availability.index'),
                         'title'      => __('Disponibilidade'),
+                        'permission' => 'assistance_create',
+                    ],
+                    'assistance_booking'=>[
+                        'url'        => route('assistance.admin.booking.index'),
+                        'title'      => __('Calendário de Reservas'),
                         'permission' => 'assistance_create',
                     ],
                     'recovery'=>[
@@ -69,30 +93,11 @@ class ModuleProvider extends ModuleServiceProvider
                         'permission' => 'assistance_view',
                     ],
                 ]
-            ]
-        ];
+            ];
+        }
+        return $res;
     }
 
-    public static function getBookableServices()
-    {
-        if(!Assistance::isEnable()) return [];
-        return [
-            'assistance'=>Assistance::class
-        ];
-    }
-
-    public static function getMenuBuilderTypes()
-    {
-        if(!Assistance::isEnable()) return [];
-        return [
-            'assistance'=>[
-                'class' => Assistance::class,
-                'name'  => __("Serviços"),
-                'items' => Assistance::searchForMenu(),
-                'position'=>51
-            ]
-        ];
-    }
 
     public static function getUserMenu()
     {
@@ -100,18 +105,18 @@ class ModuleProvider extends ModuleServiceProvider
         if(Assistance::isEnable()){
             $res['assistance'] = [
                 'url'   => route('assistance.vendor.index'),
-                'title'      => __("Gerenciar serviços"),
+                'title'      => __("Gerenciar Serviços"),
                 'icon'       => Assistance::getServiceIconFeatured(),
-                'position'   => 70,
                 'permission' => 'assistance_view',
-                'children' => [
+                'position'   => 40,
+                'children'   => [
                     [
                         'url'   => route('assistance.vendor.index'),
-                        'title'  => __("Todos os serviços"),
+                        'title' => __("Todos Serviços"),
                     ],
                     [
-                        'url'   => route('assistance.vendor.create'),
-                        'title'      => __("Adicionar serviços"),
+                        'url'        => route('assistance.vendor.create'),
+                        'title'      => __("Adicionar Serviço"),
                         'permission' => 'assistance_create',
                     ],
                     [
@@ -130,11 +135,33 @@ class ModuleProvider extends ModuleServiceProvider
         return $res;
     }
 
+    public static function getMenuBuilderTypes()
+    {
+        if(!Assistance::isEnable()) return [];
+
+        return [
+            [
+                'class' => \Modules\Assistance\Models\Assistance::class,
+                'name'  => __("Serviço"),
+                'items' => \Modules\Assistance\Models\Assistance::searchForMenu(),
+                'position'=>20
+            ],
+            [
+                'class' => \Modules\Assistance\Models\AssistanceCategory::class,
+                'name'  => __("Serviço Categoria"),
+                'items' => \Modules\Assistance\Models\AssistanceCategory::searchForMenu(),
+                'position'=>30
+            ],
+        ];
+    }
+
     public static function getTemplateBlocks(){
         if(!Assistance::isEnable()) return [];
+
         return [
+            'list_assistances'=>"\\Modules\\Assistance\\Blocks\\ListAssistances",
             'form_search_assistance'=>"\\Modules\\Assistance\\Blocks\\FormSearchAssistance",
-            'list_assistance'=>"\\Modules\\Assistance\\Blocks\\ListAssistance",
+            'box_category_assistance'=>"\\Modules\\Assistance\\Blocks\\BoxCategoryAssistance",
         ];
     }
 }

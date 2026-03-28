@@ -4,7 +4,6 @@ namespace Modules\User\Listeners;
 
 use Illuminate\Support\Facades\Mail;
 use Modules\User\Emails\AdminUpdateVerifyDataToUser;
-use Modules\User\Emails\RegisteredEmail;
 use Modules\User\Emails\UserVerificationSubmitToAdmin;
 use Modules\User\Emails\VendorApprovedEmail;
 use Modules\User\Events\AdminUpdateVerificationData;

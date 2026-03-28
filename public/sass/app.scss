@@ -56,6 +56,53 @@ ol {
     display: none;
 }
 @import "header";
+
+
+.subscribe-plan {
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffa636;
+        font-weight: 500;
+        padding: 10px;
+        a {
+            background: #19427f;
+            color: #fff;
+            text-align: center;
+            padding: 5px 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 3px;
+            margin-left: 4px;
+            &:hover {
+                color: #fff;
+            }
+            @media (max-width: 380px) {
+                font-size: 0.65rem;
+            }
+            @media (max-width: 330px) {
+                font-size: 0.6rem;
+                width: 37%;
+            }
+        }
+        p {
+            color: #fff;
+            margin: 0;
+            @media (max-width: 768px) {
+                width: 53%;
+                font-size: 0.75rem;
+            }
+            @media (max-width: 380px) {
+                font-size: 0.65rem;
+            }
+            @media (max-width: 330px) {
+                font-size: 0.6rem;
+                width: 56%;
+            }
+        }
+    }
+}
 .bravo_wrap {
     .bravo_footer {
         .mailchimp {
@@ -370,7 +417,7 @@ ol {
     }
     ul {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         list-style: none;
         margin-top: 0.5rem;
         li {

@@ -2,6 +2,8 @@
 
 namespace App\Services\Traits;
 
+use Illuminate\Support\Facades\Mail;
+use Modules\User\Emails\PaymentReceivedEmail;
 use Modules\User\Events\CreatePlanRequest;
 use Modules\User\Models\PlanPayment;
 use Modules\User\Models\UserPlan;
@@ -28,19 +30,23 @@ trait HandlePlan
 
         $plan = $userPlan->plan;
 
-        $planPayment = new PlanPayment();
-        $savedPlan = $planPayment->where([
-            "object_id" => (string)$plan->id,
-            "user_id" => $userPlan->user_id,
-            "code" => $checkoutId
-        ])->first();
+        $savedPlan = PlanPayment::where([
+            'object_id' => (string)$plan->id,
+            'user_id'   => $userPlan->user_id,
+            'code'      => $checkoutId
+        ])->firstOrNew();
 
+
+        $user = $userPlan->user;
         switch ((string)$payment['status']) {
             case "CONFIRMED":
                 $this->updatePlan($userPlan);
+                break;
             case "ACTIVE":
                 if ($plan->days_gratuity && $plan->days_gratuity > 0) {
                     $this->updatePlan($userPlan);
+                    $content = "Seu pagamento foi confirmado. Seu Plano está ativo!";
+                    Mail::to($user->email)->send(new PaymentReceivedEmail($user, $content, $user->email));
                 }
                 break;
         }
@@ -48,7 +54,7 @@ trait HandlePlan
         $planPayment = !empty($savedPlan) ? $savedPlan : new PlanPayment();
         $planPayment->object_model = 'plan';
         $planPayment->code = $checkoutId;
-        $planPayment->meta = $payment['id'];
+        $planPayment->meta = json_encode($payment);
         $planPayment->object_id = $plan->id;
         $planPayment->status = 'publish';
         $planPayment->payment_gateway = "Asaas";

@@ -4,7 +4,7 @@
     <div class="row align-items-center">
         <div class="col-12 col-md-6">
             <h2 class="title-bar no-border-bottom">
-                {{__("Rede")}}
+                {{__("Minha Rede")}}
             </h2>
         </div>
         <div class="col-12 col-md-6">
@@ -38,6 +38,38 @@
         </div>
         @endforeach
         @endif
+    </div>
+</div>
+<div class="bg-white pt-4 pb-3
+ px-3 my-4">
+    <div>
+        <h6>Membros da sua Rede</h6>
+    </div>
+    <div class="table-responsive form-group" data-condition="enable_open_hours:is(1)">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ __('Nome') }}</th>
+                    <th>{{ __('Comissão') }}</th>
+                    <th>{{ __('Iniciado em') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($affiliates as $affiliate)
+                <tr>
+                    <td>{{ $affiliate['name'] }}</td>
+                    <td>{{ $affiliate['amount'] }}</td>
+                    <td>{{ $affiliate['started_at'] }}</td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="3" class="text-center text-muted">
+                        {{ __('Nenhum afiliado encontrado') }}
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 </div>
 <div class="bravo-user-link bg-white my-4">

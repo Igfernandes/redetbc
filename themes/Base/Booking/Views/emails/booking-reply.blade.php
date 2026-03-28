@@ -27,7 +27,7 @@
                         </span>
                     </div>
                     <div style="padding: 0 30px;">
-                        <h1><strong>{{ __('Você recebeu uma resposta sobre o imóvel em :immobile', ['immobile' => $immobile['name']]) }}</strong></h1>
+                        <h1><strong>{{ __('Você recebeu uma resposta sobre o '.$immobile['type'].' em :immobile', ['immobile' => $immobile['name']]) }}</strong></h1>
                     </div>
                 </th>
             </tr>
@@ -49,15 +49,15 @@
             <tr>
                 <td style="padding: 30px;border-bottom: 10px solid #ececec;">
                     <div>
-                        <span style="font-size: 1.4rem;"><strong>{{ __('O imóvel consultado') }}</strong></span>
+                        <span style="font-size: 1.4rem;"><strong>{{ __('O '.$immobile['type'].' consultado') }}</strong></span>
                         <a style="border: 1px solid #9d9c9c;float: right;font-size: .8rem;text-decoration: none;color: black;padding: 5px 10px;border-radius: 17px;" href="{{ url('/hotel/'.$immobile['id']) }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Ver imóvel >') }}
+                            {{ __('Ver '.$immobile['type']) }}
                         </a>
                     </div>
                     <div style="margin: 15px 0;">
                         <a href="{{ url('/hotel/'.$immobile['id']) }}" target="_blank" rel="noopener noreferrer">
                             @if(!empty($immobile['image']['file_path']))
-                            <img src="{{ asset('uploads/'.$immobile['image']['file_path']) }}" alt="{{ __('Imagem do imóvel') }}">
+                            <img src="{{ asset('uploads/'.$immobile['image']['file_path']) }}" alt="{{ __('Imagem do '.$immobile['type']) }}">
                             @endif
                             <p></p>
                         </a>
@@ -68,7 +68,7 @@
                     </div>
                     <div style="text-align: center;margin: 30px 0 20px;">
                         <a style="background: #50a6fb;color: #ffff;text-decoration: none;padding: 16px 34px;border-radius: 10px;display: inline-block;" href="{{ url('/hotel/'.$immobile['id']) }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Ver imóvel →') }}
+                            {{ __('Ver '.$immobile['type'].' →') }}
                         </a>
                     </div>
                 </td>
@@ -96,7 +96,7 @@
                             </a> e
                             <a href="https://facebook.com/sua_conta" target="_blank">
                                 Facebook
-                            </a>, {{ __('postamos diariamente sugestões de imóveis sensacionais.') }} <br><br>
+                            </a>, {{ __('postamos diariamente sugestões sensacionais.') }} <br><br>
                             {{ __('No') }}
                             <a href="{{ url('') }}" target="_blank" rel="noopener noreferrer">
                                 {{ __('Blog do TemporadaLivre') }}
@@ -125,10 +125,10 @@
                     </div>
                     <div style="text-align: center;margin-top: 40px;border-top: 4px solid #ececec;padding-top: 35px;">
                         <a style="color: #0076ff;margin: 0 15px;" href="{{ url('/?action=register') }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Sua Área do Viajante') }}
+                            {{ __('Sua Área do membro') }}
                         </a>
                         <a style="color: #0076ff;margin: 0 15px;" href="{{ url('page/noticias') }}" target="_blank" rel="noopener noreferrer">
-                            {{ __('Dicas para viajantes') }}
+                            {{ __('Dicas para membros') }}
                         </a>
                     </div>
                 </td>
@@ -136,7 +136,7 @@
             <tr>
                 <td style="padding: 30px;text-align: center;color: gray;">
                     <p style="margin: 10px 0 5px;">{{ __('O maior portal nacional de aluguel de temporada do Brasil.') }}</p>
-                    <span>{{ __('Servindo milhões de viajantes e anunciantes desde 2025.') }}</span>
+                    <span>{{ __('Servindo milhões de membros e anunciantes desde 2025.') }}</span>
                     <div>
                         <!-- SVGs mantidos como estão -->
                     </div>

@@ -140,18 +140,11 @@ class ModuleProvider extends ModuleServiceProvider
             ];
         }
 
-        $is_disable_verification_feature = !!setting_item('user_disable_verification_feature') || $user->is_verified === 0;
-        if (!empty($user->verification_fields) and $is_disable_verification_feature) {
-            $res['verification'] = [
-                'url'        => route('user.verification.index'),
-                'title'      => __("Verificações"),
-                'icon'       => 'fa fa-handshake-o',
-                'position'   => 85,
-                'is_verified' => 0
-            ];
-        }
+      
 
-        if (setting_item('inbox_enable')) {
+        $isValid = !empty($user->user_plan) && $user->user_plan->isValid() === 1;
+
+        if (setting_item('inbox_enable') &&  $isValid) {
             $count = auth()->user()->unseen_message_count;
             $res['chat'] = [
                 'position' => 90,
@@ -168,17 +161,6 @@ class ModuleProvider extends ModuleServiceProvider
                 'title' => __("Autenticação 2F"),
             ];
         }
-
-        if (is_enable_plan())
-            $res['my_plan'] = [
-                'url' => 'user/my-plan',
-                'title' => __("Meus Planos"),
-                'icon' => 'fa fa-list-alt',
-                'permission' => 'dashboard_vendor_access',
-                'enable' => true,
-                'position' => 95,
-            ];
-
         return $res;
     }
 }

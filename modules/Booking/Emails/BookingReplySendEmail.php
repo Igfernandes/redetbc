@@ -62,13 +62,19 @@ class BookingReplySendEmail extends Mailable
                 $immobile = $modelClass::find($booking->object_id);
             }
         }
+        $titles = [
+            "hotel" => "Hotel",
+            "assistance" => "Serviço",
+            "space" => "Espaço",
+            "tour" => "Passeio"
+        ];
 
         // 📨 Define o assunto do e-mail
         $subject = match ($this->destinyType) {
-            'vendor' => __('[:site_name] Você recebeu uma nova solicitação sobre o seu imóvel', [
+            'vendor' => __('[:site_name] Você recebeu uma nova solicitação sobre o seu' . $titles[$booking->object_model ?? "hotel"], [
                 'site_name' => $site_name
             ]),
-            default => __('[:site_name] Resposta sobre o imóvel que você consultou', [
+            default => __('[:site_name] Resposta sobre o ' . $titles[$booking->object_model ?? "hotel"] . ' que você consultou', [
                 'site_name' => $site_name
             ]),
         };
@@ -81,10 +87,12 @@ class BookingReplySendEmail extends Mailable
             'guest' => $booking->total_guests,
         ];
 
-      
+
+
         $this->immobile = [
             'id' => $immobile->id ?? $booking->object_id,
             'name' => $immobile->title ?? 'Imóvel',
+            "type" => $titles[$booking->object_model ?? "hotel"],
             'image' => [
                 'file_path' => method_exists($immobile, 'getImageUrl')
                     ? $immobile->getImageUrl()

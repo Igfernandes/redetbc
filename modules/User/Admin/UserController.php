@@ -154,10 +154,6 @@ class UserController extends AdminController
 
     public function store(Request $request, $id)
     {
-        if (is_demo_mode()) {
-            return back()->with('danger',  __('DEMO Mode: You can not do this'));
-        }
-
         if ($id and $id > 0) {
             $this->checkPermission('user_update');
             $row = User::find($id);
@@ -178,34 +174,48 @@ class UserController extends AdminController
             'business_name'              => 'nullable|max:255',
             'status'              => 'required|max:50',
             'role_id'              => 'required|max:11',
+            'purposes' => 'required|array|min:3',
+            'purposes.*' => 'string',
+            'facebook'      => 'nullable|url|max:255',
+            'instagram'     => 'nullable|url|max:255',
+            'twitter'       => 'nullable|url|max:255',
+            'whatsapp'      => 'nullable|url|max:255',
             'email'              => [
                 'required',
                 'email',
                 'max:255',
                 $id > 0 ? Rule::unique('users')->ignore($row->id) : Rule::unique('users')
             ],
-            'user_name' => [
-                'required',
-                'max:255',
-                'min:4',
-                'string',
-                'alpha_dash',
-                $id > 0 ? Rule::unique('users')->ignore($row->id) : Rule::unique('users')
-            ],
         ];
 
-        $request->validate($rules);
+        $request->validate($rules, [
+            'purposes.required' => 'Selecione pelo menos 3 Afinidades.',
+            'purposes.min' => 'Você precisa escolher no mínimo :min Afinidades.',
+            'purposes.array' => 'Selecione opções válidas.',
+        ]);
+
+        $purposes = $request->input('purposes', []);
+        $purposes = implode(',', $purposes);
+
+        if ($request->input('facebook') == null && $request->input('instagram') == null) {
+            return redirect()->back()->with('error', 'É obrigatório colocar o link de pelo menos do facebook ou instagram');
+        }
 
         $data = [
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
-            'user_name' => $request->input('user_name'),
+            'user_name' => $request->input('first_name'),
+            'purposes' => $purposes,
             'phone' => $request->input('phone'),
             'birthday' => $request->input('birthday') ? date("Y-m-d", strtotime($request->input('birthday'))) : null,
             'bio' => $request->input('bio'),
             'status' => $request->input('status'),
             'avatar_id' => $request->input('avatar_id'),
             'email' => $request->input('email'),
+            'facebook' => $request->input('facebook'),
+            'instagram' => $request->input('instagram'),
+            'twitter' => $request->input('twitter'),
+            'whatsapp' => $request->input('whatsapp'),
             'business_name' => $request->input('business_name'),
             'name' => $request->input('name'),
             'address' => $request->input('address'),
@@ -218,6 +228,7 @@ class UserController extends AdminController
             'vendor_commission_amount' => $request->input('vendor_commission_amount'),
             'commission_amount' => $request->input('commission_amount'),
         ];
+
         $row->role_id = $request->input('role_id');
         if ($request->input('is_email_verified')) {
             if (!$row->email_verified_at) $row->email_verified_at = date('Y-m-d H:i:s');

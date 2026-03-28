@@ -30,7 +30,7 @@ mix.sass('../../module/assistance/scss/assistance.scss','module/assistance/css')
 mix.sass('../../module/support/scss/support.scss', 'module/support/css');
 
 mix.browserSync({
-    proxy: 'http://localhost:8000',
+    proxy: 'https://unmarvellous-fatimah-boorishly.ngrok-free.dev',
     host: 'booking.test',
     open:"external",
     files: [

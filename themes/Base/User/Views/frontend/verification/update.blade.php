@@ -1,8 +1,10 @@
 @extends('layouts.user')
 @section('content')
 <h2 class="title-bar">
-    {{__("Atualizar dados de verificação")}}
+    {{__("Dados de verificação")}}
 </h2>
+<p>logo após a validação da sua identidade suas informações são excluídas de nosso Banco de Dados
+</p>
 @include('admin.message')
 <div class="booking-history-manager">
     <form action="{{route('user.verification.store')}}" method="post">
@@ -20,7 +22,7 @@
         @break
         @case("file")
         @include('User::frontend.verification.fields.file')
-        @break 
+        @break
         @case("select")
         @include('User::frontend.verification.fields.select')
         @break
@@ -36,8 +38,12 @@
         <hr>
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-md-4">
-                <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Salvar alterações")}} </button>
+            <div class="col-md-5">
+                @if(Auth::user()->is_verified)
+                    <span class="btn btn-warning"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Perfil Verificado")}} </span>
+                @else
+                    <button class="btn btn-success"> <i class="fa fa-save"></i>&nbsp;&nbsp; {{__("Salvar alterações")}} </button>
+                @endif
             </div>
         </div>
     </form>

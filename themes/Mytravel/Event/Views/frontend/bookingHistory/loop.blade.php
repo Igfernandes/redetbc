@@ -35,9 +35,9 @@
             </a>
             @include ($service->checkout_booking_detail_modal_file ?? '')
         @endif
-        <a href="{{route('user.booking.invoice',['code'=>$booking->code])}}" class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1" onclick="window.open(this.href); return false;">
+        <!-- <a href="{{route('user.booking.invoice',['code'=>$booking->code])}}" class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1" onclick="window.open(this.href); return false;">
             <i class="fa fa-print"></i>{{__("Fatura")}}
-        </a>
+        </a> -->
         <a href="{{route('user.booking.ticket',['code'=>$booking->code])}}" class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1" onclick="window.open(this.href); return false;">
             <i class="fa fa-print"></i>{{__("Imprimir Bilhete")}}
         </a>

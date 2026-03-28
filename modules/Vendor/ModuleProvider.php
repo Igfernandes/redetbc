@@ -56,24 +56,24 @@ class ModuleProvider extends ModuleServiceProvider
         ];
 
 
-        $res['enquiry']= [
-            'position'   => 82,
-            'icon'       => 'icofont-ebook',
-            'url'        => route('vendor.enquiry_report'),
-            'title'      => __("Relatório de Consultas"),
-            'permission' => 'enquiry_view',
-        ];
+        // $res['enquiry']= [
+        //     'position'   => 82,
+        //     'icon'       => 'icofont-ebook',
+        //     'url'        => route('vendor.enquiry_report'),
+        //     'title'      => __("Relatório de Consultas"),
+        //     'permission' => 'enquiry_view',
+        // ];
 
-        if(!setting_item('disable_payout'))
-        {
-            $res['payout']= [
-                'url'        => route('vendor.payout.index'),
-                'title'      => __("Pagamentos"),
-                'icon'       => 'icon ion-md-card',
-                'position'   => 90,
-                'permission' => 'dashboard_vendor_access',
-            ];
-        }
+        // if(!setting_item('disable_payout'))
+        // {
+        //     $res['payout']= [
+        //         'url'        => route('vendor.payout.index'),
+        //         'title'      => __("Pagamentos"),
+        //         'icon'       => 'icon ion-md-card',
+        //         'position'   => 90,
+        //         'permission' => 'dashboard_vendor_access',
+        //     ];
+        // }
         if(is_enable_vendor_team()){
 
             $res['team']= [

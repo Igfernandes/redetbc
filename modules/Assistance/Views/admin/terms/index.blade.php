@@ -10,7 +10,7 @@
                 <div class="panel">
                     <div class="panel-title">{{__("Adicionar termo")}}</div>
                     <div class="panel-body">
-                        <form action="{{route('assistance.admin.attribute.term.store')}}" method="post">
+                        <form action="{{route('assistance.admin.attribute.term.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
                             @include('Assistance::admin/terms/form')
                             <div class="">
@@ -35,7 +35,7 @@
                         @endif
                     </div>
                     <div class="col-left">
-                        <form method="get" action="{{ route('assistance.admin.attribute.term.index',['id'=>$attr->id])}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
+                        <form method="get" action="{{ route('assistance.admin.attribute.term.index',['attr_id' => $attr->id]) }} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
                             <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Pesquisar por nome")}}">
                             <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Procurar')}}</button>
                         </form>
@@ -50,8 +50,7 @@
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
                                     <th>{{__("Nome")}}</th>
-                                    <th class="date">{{__("Dados")}}</th>
-                                    <th class="date"></th>
+                                    <th class="date">{{__("Data")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -60,10 +59,9 @@
                                         <tr>
                                             <td><input type="checkbox" class="check-item" name="ids[]" value="{{$row->id}}"></td>
                                             <td class="title">
-                                                <a href="{{route('assistance.admin.attribute.term.edit',['id'=>$row->id])}}">{{$row->name}}</a>
+                                                <a href="{{route('assistance.admin.attribute.term.edit', ['id' => $row->id])}}">{{$row->name}}</a>
                                             </td>
                                             <td>{{ display_date($row->updated_at)}}</td>
-                                            <td><a class="btn btn-primary btn-sm" href="{{route('assistance.admin.attribute.term.edit',['id'=>$row->id])}}"><i class="fa fa-edit"></i> {{__('Editar')}}</a></td>
                                         </tr>
                                     @endforeach
                                 @else

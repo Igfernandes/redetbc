@@ -20,7 +20,7 @@ class CoreSettingsSeeder extends Seeder
             [
                 'val' => json_encode([
                     "document_back" => [
-                        "name"     => "Photos of back document",
+                        "name"     => "Fotos do verso do documento",
                         "type"     => "upload-image",
                         "roles"    => ["2", "3", "4", "5"],
                         "required" => "1",
@@ -28,38 +28,12 @@ class CoreSettingsSeeder extends Seeder
                         "icon"     => "fa fa-copyright",
                     ],
                     "document_front" => [
-                        "name"     => "Photos of front document",
+                        "name"     => "Fotos do frente do documento",
                         "type"     => "upload-image",
                         "roles"    => ["2", "3", "4", "5"],
                         "required" => "1",
                         "order"    => "0",
                         "icon"     => "fa fa-copyright",
-                    ],
-                    "id_card_front" => [
-                        "name"     => "Photo holding document",
-                        "type"     => "upload-image",
-                        "roles"    => ["2", "3", "4", "5"],
-                        "required" => "1",
-                        "order"    => "0",
-                        "icon"     => "fa fa-id-card",
-                    ],
-                    "sex" => [
-                        "name"     => "Select Sex",
-                        "type"     => "select",
-                        "options" => ['Select sex', 'MASCULINE' => 'MASCULINE', 'FEMININE' => 'FEMININE'],
-                        "roles"    => ["2", "3"],
-                        "required" => "1",
-                        "order"    => "0",
-                        "icon"     => "fa fa-id-card",
-                    ],
-                    "religion" => [
-                        "name"     => "Select Religion",
-                        "type"     => "select",
-                        "options" => ['Select Religion', "CATHOLIC" => "CATHOLIC", "EVANGELICAL" => "EVANGELICAL", "BOTH" => "BOTH"],
-                        "roles"    => ["2", "3"],
-                        "required" => "1",
-                        "order"    => "0",
-                        "icon"     => "fa fa-id-card",
                     ],
                 ]),
                 'autoload'    => 0,

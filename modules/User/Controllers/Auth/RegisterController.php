@@ -25,6 +25,7 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
         if (!is_enable_registration()) {
             return $this->sendError(__("Você não tem permissão para se registrar"));
         }
+
         $rules = [
             'first_name' => [
                 'required',
@@ -85,46 +86,56 @@ class RegisterController extends \App\Http\Controllers\Auth\RegisterController
             }
         }
         $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
+        if ($validator->fails())
             return response()->json([
                 'error'    => true,
                 'messages' => $validator->errors()
             ], 200);
-        } else {
-            $data = [
-                'name' => explode("@", "$request->input('email')")[0],
-                'first_name' => $request->input('first_name'),
-                'last_name'  => $request->input('last_name'),
-                'email'      => $request->input('email'),
-                'password'   => Hash::make($request->input('password')),
-                'status'    => $request->input('publish', 'publish'),
-                'phone'    => $request->input('phone'),
-                'is_affiliate' => true
-            ];
 
-            $relationKey = session('relationKey');
+        $data = [
+            'name' => explode("@", "$request->input('email')")[0],
+            'first_name' => $request->input('first_name'),
+            'last_name'  => $request->input('last_name'),
+            'email'      => $request->input('email'),
+            'password'   => Hash::make($request->input('password')),
+            'status'    => $request->input('publish', 'publish'),
+            'phone'    => $request->input('phone'),
+            'is_affiliate' => true
+        ];
+        $asaas = new AsaasService();
 
-            if (!empty($relationKey))
-                $data['owner_id'] = $relationKey;
+        $customer = $asaas->getOrCreateCustomer([
+            'name' => $data['first_name'] . ' ' . $data['last_name'],
+            'email' => $data['email'],
+            'phone' => $data['phone']
+        ]);
 
-            $user = \App\User::create($data);
-
-            event(new Registered($user));
-            Auth::loginUsingId($user->id);
-
-            try {
-                event(new SendMailUserRegistered($user));
-            } catch (Exception $exception) {
-
-                Log::warning("SendMailUserRegistered: " . $exception->getMessage());
-            }
-            $user->assignRole($request->input('role'));
-            
-            return response()->json([
-                'error'    => false,
-                'messages' => false,
-                'redirect' => url('/plan')
-            ],);
+        if (!empty($customer['id'])) {
+            $data['gateway_customer_id'] = $customer['id'];
         }
+
+        $relationKey = session('relationKey');
+
+        if (!empty($relationKey))
+            $data['owner_id'] = $relationKey;
+
+        $user = \App\User::create($data);
+
+        event(new Registered($user));
+        Auth::loginUsingId($user->id);
+
+        try {
+            event(new SendMailUserRegistered($user));
+        } catch (Exception $exception) {
+
+            Log::warning("SendMailUserRegistered: " . $exception->getMessage());
+        }
+        $user->assignRole($request->input('role'));
+
+        return response()->json([
+            'error'    => false,
+            'messages' => false,
+            'redirect' => url('/plan')
+        ],);
     }
 }

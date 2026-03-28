@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Report\Admin;
 
 use Illuminate\Http\Request;
@@ -20,7 +21,6 @@ class EnquiryController extends AdminController
     {
         $this->setActiveMenu(route('report.admin.booking'));
         $this->enquiryClass = $enquiry;
-
     }
 
     public function index(Request $request)
@@ -33,7 +33,7 @@ class EnquiryController extends AdminController
             $title_page = __('Buscar resultado: ":s"', ["s" => $request->s]);
         }
         $query->whereIn('object_model', array_keys(get_bookable_services()));
-        $query->orderBy('id','desc');
+        $query->orderBy('id', 'desc');
         $data = [
             'rows'                  => $query->withCount(['replies'])->paginate(20),
             'breadcrumbs' => [
@@ -49,7 +49,7 @@ class EnquiryController extends AdminController
             'enquiry_update'        => $this->hasPermission('enquiry_update'),
             'enquiry_manage_others' => $this->hasPermission('enquiry_manage_others'),
             'statues'        => $this->enquiryClass->enquiryStatus,
-            'page_title'=> $title_page ?? __("Gerenciamento de Inquérito")
+            'page_title' => $title_page ?? __("Gerenciamento de Inquérito")
         ];
 
         return view('Report::admin.enquiry.index', $data);
@@ -73,7 +73,7 @@ class EnquiryController extends AdminController
                     $this->checkPermission('enquiry_update');
                 }
                 $query->first();
-                if(!empty($query)){
+                if (!empty($query)) {
                     $query->delete();
                 }
             }
@@ -85,7 +85,7 @@ class EnquiryController extends AdminController
                     $this->checkPermission('enquiry_update');
                 }
                 $item = $query->first();
-                if(!empty($item)){
+                if (!empty($item)) {
                     $item->status = $action;
                     $item->save();
                 }
@@ -94,11 +94,12 @@ class EnquiryController extends AdminController
         return redirect()->back()->with('success', __('Atualização bem-sucedida'));
     }
 
-    public function reply(Enquiry $enquiry,Request  $request){
+    public function reply(Enquiry $enquiry, Request  $request)
+    {
         $this->checkPermission('enquiry_view');
 
         $data = [
-            'rows'=>$enquiry->replies()->orderByDesc('id')->paginate(20),
+            'rows' => $enquiry->replies()->orderByDesc('id')->paginate(20),
 
             'breadcrumbs' => [
                 [
@@ -106,25 +107,49 @@ class EnquiryController extends AdminController
                     'url'  => route('report.admin.enquiry.index')
                 ],
                 [
-                    'name'  => __('Inquérito :name',['name'=>'#'.$enquiry->id.' - '.($enquiry->service->title ?? '')]),
+                    'name'  => __('Inquérito :name', ['name' => '#' . $enquiry->id . ' - ' . ($enquiry->service->title ?? '')]),
                 ],
                 [
                     'name'  => __('Todas Respostas'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Respostas"),
-            'enquiry'=>$enquiry
+            'page_title' => __("Respostas"),
+            'enquiry' => $enquiry
         ];
 
-        return view("Report::admin.enquiry.reply",$data);
+        return view("Report::admin.enquiry.reply", $data);
     }
 
-    public function replyStore(Enquiry $enquiry,Request  $request){
+
+    public function refuse(Enquiry $enquiry, Request $request)
+    {
+        $this->checkPermission('enquiry_update');
+
+        // Se não puder gerenciar outros
+        if (!$this->hasPermission('enquiry_manage_others')) {
+            if ($enquiry->vendor_id != Auth::id()) {
+                abort(403);
+            }
+        }
+
+        // Atualiza status para recusado
+        $enquiry->status = 'refused'; // ou 'rejected'
+        $enquiry->save();
+
+        return redirect()
+            ->route('report.admin.enquiry.index')
+            ->with('success', __('Solicitação recusada com sucesso'));
+    }
+
+
+
+    public function replyStore(Enquiry $enquiry, Request  $request)
+    {
         $this->checkPermission('enquiry_view');
 
         $request->validate([
-            'content'=>'required'
+            'content' => 'required'
         ]);
 
         $reply = new EnquiryReply();
@@ -134,9 +159,8 @@ class EnquiryController extends AdminController
 
         $reply->save();
 
-        EnquiryReplyCreated::dispatch($reply,$enquiry);
+        EnquiryReplyCreated::dispatch($reply, $enquiry);
 
-        return back()->with('success',__("Resposta adicionada"));
+        return back()->with('success', __("Resposta adicionada"));
     }
-
 }

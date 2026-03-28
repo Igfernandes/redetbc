@@ -130,6 +130,7 @@ class RoleController extends AdminController
         $this->checkPermission('role_manage');
         $this->setActiveMenu(route('user.admin.index'));
 
+
         $data = [
             'roles' => Role::all(),
             'fields'=>setting_item_array('role_verify_fields'),

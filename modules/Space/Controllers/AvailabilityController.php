@@ -77,7 +77,7 @@ class AvailabilityController extends FrontendController{
                 'class' => 'active'
             ],
         ];
-        $page_title = __('Disponibilidade do Espaço');
+        $page_title = __('Disponibilidade do espaço');
 
         return view($this->indexView,compact('rows','breadcrumbs','current_month','page_title','request'));
     }
@@ -95,7 +95,7 @@ class AvailabilityController extends FrontendController{
         }
         $space = $this->spaceClass::find($request->query('id'));
         if(empty($space)){
-            return $this->sendError(__('Espaço não encontrado'));
+            return $this->sendError(__('espaço não encontrado'));
         }
         $is_single = $request->query('for_single');
         $query = $this->spaceDateClass::query();
@@ -255,7 +255,7 @@ class AvailabilityController extends FrontendController{
         $target_id = $request->input('target_id');
 
         if(empty($space)){
-            return $this->sendError(__('Espaço não encontrado'));
+            return $this->sendError(__('espaço não encontrado'));
         }
 
         if(!$this->hasPermission('space_manage_others')){

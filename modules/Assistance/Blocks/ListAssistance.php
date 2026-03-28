@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Assistance\Blocks;
+namespace Modules\Tour\Blocks;
 
 use Modules\Template\Blocks\BaseBlock;
 use Modules\Assistance\Models\Assistance;
@@ -7,10 +7,12 @@ use Modules\Assistance\Models\Assistance;
 class ListAssistance extends BaseBlock
 {
     protected $assistanceClass;
+
     public function __construct(Assistance $assistanceClass)
     {
         $this->assistanceClass = $assistanceClass;
     }
+
     public function getOptions(){
         return [
             'settings' => [
@@ -24,13 +26,13 @@ class ListAssistance extends BaseBlock
                     'id'        => 'desc',
                     'type'      => 'input',
                     'inputType' => 'text',
-                    'label'     => __('Desc')
+                    'label'     => __('Descrição')
                 ],
                 [
                     'id'        => 'number',
                     'type'      => 'input',
                     'inputType' => 'number',
-                    'label'     => __('Item numérico')
+                    'label'     => __('Número de Itens')
                 ],
                 [
                     'id'            => 'style',
@@ -43,14 +45,37 @@ class ListAssistance extends BaseBlock
                         ],
                         [
                             'value'   => 'carousel',
-                            'name' => __("Carrossel deslizante")
-                        ]
+                            'name' => __("Carrossel")
+                        ],
+                        [
+                            'value'   => 'box_shadow',
+                            'name' => __("Sombra da Caixa")
+                        ],
+                        [
+                            'value'   => 'carousel_simple',
+                            'name' => __("Carrossel Deslizante Simples")
+                        ],
                     ]
+                ],
+                [
+                    'id'      => 'category_id',
+                    'type'    => 'select2',
+                    'label'   => __('Filtrar por Categoria'),
+                    'select2' => [
+                        'ajax'  => [
+                            'url'      => route('tour.admin.category.category.getForSelect2'),
+                            'dataType' => 'json'
+                        ],
+                        'width' => '100%',
+                        'allowClear' => 'true',
+                        'placeholder' => __('-- Selecione --')
+                    ],
+                    'pre_selected'=>route('tour.admin.category.category.getForSelect2',['pre_selected'=>1])
                 ],
                 [
                     'id'      => 'location_id',
                     'type'    => 'select2',
-                    'label'   => __('Filtrar por localização'),
+                    'label'   => __('Filtrar por Localização'),
                     'select2' => [
                         'ajax'  => [
                             'url'      => route('location.admin.getForSelect2'),
@@ -65,11 +90,11 @@ class ListAssistance extends BaseBlock
                 [
                     'id'            => 'order',
                     'type'          => 'radios',
-                    'label'         => __('Ordem'),
+                    'label'         => __('Ordenar por Campo'),
                     'values'        => [
                         [
                             'value'   => 'id',
-                            'name' => __("Data de Criação")
+                            'name' => __("ID")
                         ],
                         [
                             'value'   => 'title',
@@ -80,7 +105,7 @@ class ListAssistance extends BaseBlock
                 [
                     'id'            => 'order_by',
                     'type'          => 'radios',
-                    'label'         => __('Ordenar por'),
+                    'label'         => __('Ordem'),
                     'values'        => [
                         [
                             'value'   => 'asc',
@@ -94,35 +119,35 @@ class ListAssistance extends BaseBlock
                 ],
                 [
                     'type'=> "checkbox",
-                    'label'=>__("Somente itens em destaque?"),
+                    'label'=>__("Somente itens em Destaque?"),
                     'id'=> "is_featured",
                     'default'=>true
                 ],
                 [
                     'id'           => 'custom_ids',
                     'type'         => 'select2',
-                    'label'        => __('Listar por IDs'),
+                    'label'        => __('Listar por IDs Personalizados'),
                     'select2'      => [
-                        'ajax'        => [
-                            'url'      => route('assistance.admin.getForSelect2'),
+                        'ajax'     => [
+                            'url'      => route('tour.admin.getForSelect2'),
                             'dataType' => 'json'
                         ],
-                        'width'       => '100%',
-                        'multiple'    => "true",
+                        'width'    => '100%',
+                        'multiple' => "true",
                         'placeholder' => __('-- Selecione --')
                     ],
-                    'pre_selected' => route('assistance.admin.getForSelect2', [
+                    'pre_selected' => route('tour.admin.getForSelect2', [
                         'pre_selected' => 1
                     ])
                 ],
             ],
-            'category'=>__("Serviço Serviço")
+            'category'=>__("Serviços")
         ];
     }
 
     public function getName()
     {
-        return __('Serviço: Listar Itens');
+        return __('Serviços: Lista de Itens');
     }
 
     public function content($model = [])
@@ -131,10 +156,10 @@ class ListAssistance extends BaseBlock
         $data = [
             'rows'       => $list,
             'style_list' => $model['style'],
-            'title'      => $model['title'],
-            'desc'       => $model['desc'],
+            'title'      => $model['title'] ?? "",
+            'desc'      => $model['desc'] ?? "",
         ];
-        return $this->view('Assistance::frontend.blocks.list-assistance.index', $data);
+        return view('Assistance::frontend.blocks.list-assistance.index', $data);
     }
 
     public function contentAPI($model = []){
@@ -146,8 +171,8 @@ class ListAssistance extends BaseBlock
     }
 
     public function query($model){
-        $listCar = $this->assistanceClass->search($model);
+        $listAssistance = $this->assistanceClass->search($model);
         $limit = $model['number'] ?? 5;
-        return $listCar->paginate($limit);
+        return $listAssistance->paginate($limit);
     }
 }

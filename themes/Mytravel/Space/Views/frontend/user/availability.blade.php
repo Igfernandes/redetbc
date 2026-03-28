@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-right">
                     @if($rows->total() > 0)
-                        <span class="count-string">{{ __("Mostrando :from - :to de :total espaços",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                        <span class="count-string">{{ __("Mostrando :from - :to de :total Espaços",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                     @endif
                 </div>
             </div>
@@ -42,7 +42,7 @@
         </div>
     </div>
     @else
-        <div class="alert alert-warning">{{__("Espaço não encontrado")}}</div>
+        <div class="alert alert-warning">{{__("espaço não encontrado")}}</div>
     @endif
     <div class="d-flex justify-content-center">
         {{$rows->appends($request->query())->links()}}

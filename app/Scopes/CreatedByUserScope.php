@@ -5,8 +5,6 @@ namespace App\Scopes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreatedByUserScope implements Scope
@@ -18,13 +16,14 @@ class CreatedByUserScope implements Scope
         $modelTable = $model->getTable();
 
         // ⚠️ Não aplica o filtro se o valor for vazio ou nulo
-        if (empty($religion)) {
+        if (empty($religion) && array_search($religion, ['CATHOLIC', 'EVANGELICAL']) === false) {
             return;
         }
 
         // ✅ Só aplica se a tabela tiver a coluna 'religion'
         if (Schema::hasColumn($modelTable, 'religion')) {
-            $builder->where("{$modelTable}.religion", $religion);
+            $builder->where("{$modelTable}.religion", $religion)
+            ->orWhere("{$modelTable}.religion", "BOTH");
         }
     }
 }

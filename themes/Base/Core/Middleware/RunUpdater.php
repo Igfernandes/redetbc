@@ -438,21 +438,21 @@ class RunUpdater
         $role->givePermission('enquiry_view');
         $role->givePermission('enquiry_update');
         $role->givePermission('enquiry_manage_others');
-        $role->givePermission('event_view');
-        $role->givePermission('event_create');
-        $role->givePermission('event_update');
-        $role->givePermission('event_delete');
-        $role->givePermission('event_manage_others');
-        $role->givePermission('event_manage_attributes');
+        // $role->givePermission('event_view');
+        // $role->givePermission('event_create');
+        // $role->givePermission('event_update');
+        // $role->givePermission('event_delete');
+        // $role->givePermission('event_manage_others');
+        // $role->givePermission('event_manage_attributes');
 
         // Vendor
         $role = Role::firstOrCreate(['name' => 'vendor']);
         $role->givePermission('enquiry_view');
         $role->givePermission('enquiry_update');
-        $role->givePermission('event_view');
-        $role->givePermission('event_create');
-        $role->givePermission('event_update');
-        $role->givePermission('event_delete');
+        // $role->givePermission('event_view');
+        // $role->givePermission('event_create');
+        // $role->givePermission('event_update');
+        // $role->givePermission('event_delete');
 
         Settings::store('update_to_170', true);
         Artisan::call('cache:clear');
@@ -574,14 +574,14 @@ class RunUpdater
             }
         });
 
-        Schema::table('bravo_events', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_events', 'end_time')) {
-                $table->string('end_time', 255)->nullable();
-            }
-            if (!Schema::hasColumn('bravo_events', 'duration_unit')) {
-                $table->string('duration_unit', 255)->nullable();
-            }
-        });
+        // Schema::table('bravo_events', function (Blueprint $table) {
+        //     if (!Schema::hasColumn('bravo_events', 'end_time')) {
+        //         $table->string('end_time', 255)->nullable();
+        //     }
+        //     if (!Schema::hasColumn('bravo_events', 'duration_unit')) {
+        //         $table->string('duration_unit', 255)->nullable();
+        //     }
+        // });
 
         if (!Schema::hasTable("bravo_booking_time_slots")) {
             Schema::create("bravo_booking_time_slots", function (Blueprint $table) {
@@ -601,11 +601,11 @@ class RunUpdater
             });
         }
 
-        Schema::table('bravo_event_dates', function (Blueprint $table) {
-            if (!Schema::hasColumn('bravo_event_dates', 'price')) {
-                $table->decimal('price')->nullable();
-            }
-        });
+        // Schema::table('bravo_event_dates', function (Blueprint $table) {
+        //     if (!Schema::hasColumn('bravo_event_dates', 'price')) {
+        //         $table->decimal('price')->nullable();
+        //     }
+        // });
 
         Schema::table('bravo_tours', function (Blueprint $table) {
             if (!Schema::hasColumn('bravo_tours', 'min_day_before_booking')) {
@@ -807,17 +807,17 @@ class RunUpdater
         if (LocationCategory::query()->count() == 0) {
             $argv = [
                 [
-                    'name'       => 'Education',
+                    'name'       => 'Educação',
                     'icon_class' => 'icofont-education',
                     'status'     => 'publish'
                 ],
                 [
-                    'name'       => 'Health',
+                    'name'       => 'Bem Estar',
                     'icon_class' => 'fa fa-hospital-o',
                     'status'     => 'publish'
                 ],
                 [
-                    'name'       => 'Transportation',
+                    'name'       => 'Transporte',
                     'icon_class' => 'fa fa-subway',
                     'status'     => 'publish'
                 ],
